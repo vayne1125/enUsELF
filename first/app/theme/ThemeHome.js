@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useNavigation} from '@react-navigation/native';
 //import { StackNavigator } from "react-navigation";
 //import {ViewPropTypes} from 'deprecated-react-native-prop-types';
 import ThemeTop from './ThemeTop';
@@ -49,23 +50,7 @@ const pics = [
 
 const ThemeHome = ({navigation}) => {
   const Card = ({pic}) => {
-    //const { navigate } = this.props.navigation;
     return (
-      //   <View style={styles.card}
-      //   onStartShouldSetResponder={() =>
-      //     //this.props.navigation.navigate('./ThemeTop', {name: 'Brent'})
-      //     console.log("123456")}
-
-      //   >
-      //     <View style={{flex:3,alignItems:'center',}}>
-      //       {<Image style={{flex:1,resizeMode:'center',}}source={pic.img}/>}
-      //       {/*<Image style={styles.image}source={pic.img}/>*/}
-      //     </View>
-      //     <View style={styles.textContainer}>
-      //       <Text style={styles.textStyle}>{pic.name}</Text>
-      //     </View>
-      //   </View>
-
       <TouchableOpacity
         onPress={() => {
           navigation.navigate("Result", pic);
@@ -84,14 +69,11 @@ const ThemeHome = ({navigation}) => {
       </TouchableOpacity>
     );
   };
-  //const {state} = this.props.navigation;
   return (
-   
-
     <View style={styles.container}>
       {/*頂部*/}
       <View style={styles.topbar}>
-        <ThemeTop />
+        <ThemeTop navigation={navigation}/>
       </View>
 
       {/*內容*/}

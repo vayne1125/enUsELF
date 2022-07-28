@@ -19,44 +19,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Theme from '../theme/Theme';
 import Media from '../media/Media';
 import Personal from '../personal/Personal';
-import ListScreen from '../list/List';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
-// export default class Nav extends Component {
-//   render() {
-//     return (
-//       <View>
-//         <Text>123</Text>
-//       </View>
-//     );
-//   }
-// }
-
-/*export default Nav = TabNavigator({
-    Theme:{
-      screen: ThemeScreen
-    },
-    SocialMedia:{
-      screen: SocialMediaScreen
-    }
-})*/
-
-// function HomeScreen() {
-//   return (
-//     <View >
-//       <Text>Home!</Text>
-//     </View>
-//   );
-// }
-
-// function SettingsScreen() {
-//   return (
-//     <View >
-//       <Text>Settings!</Text>
-//     </View>
-//   );
-// }
 
 const Tab = createBottomTabNavigator();
 
@@ -79,6 +44,10 @@ const Nav = () => {
           else if (route.name === 'Personal') {
             iconName = focused ? 'settings' : 'settings-outline';
             size = focused ? size + 8 : size+3;
+          }
+          else
+          {
+            size=0;
           }
           return <Icons name={iconName} size={size} color={color} />;
         },

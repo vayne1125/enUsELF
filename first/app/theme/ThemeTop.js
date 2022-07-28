@@ -1,28 +1,37 @@
 // import {Component} from 'react';
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  FlatList,
+  Image,
+  Button,
+  TouchableOpacity,
+} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
+const Stack = createNativeStackNavigator();
 
-export default class ThemeTop extends Component {
-  render() {
+const ThemeTop = ({navigation}) => {
+  const navigation2 = useNavigation();
     return (
       <View style={styles.container}>
         <Text style={styles.textStyle}>主題分類</Text>
-        {/* <View style={{alignSelf: 'flex-end',backgroundColor: 'pink'}}>
-        <Icons name="calendar-outline" size={30} />
-        </View> */}
         <View style={styles.iconContainer}>
           <Icons
             name="calendar-outline"
             size={33}
             color={'#5f695d'}
             style={styles.iconStyle}
+            onPress={({navigation})=>{console.log("123");navigation2.navigate("List")}}
           />
         </View>
       </View>
     );
-  }
 }
 
 const styles = StyleSheet.create({
@@ -53,3 +62,5 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
 });
+
+export default ThemeTop;

@@ -16,10 +16,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StackNavigator } from "react-navigation";
 import 'react-native-gesture-handler';
 //import {ViewPropTypes} from 'deprecated-react-native-prop-types';
-import ThemeTop from './ThemeTop';
 import Result from './Result';
-//----------
-import ThemeHome from './ThemeHome'
+import ThemeHome from './ThemeHome';
+import List from '../list/List';
+
 const Stack=createStackNavigator();
 
 export default class Theme extends Component {
@@ -29,6 +29,7 @@ export default class Theme extends Component {
         <Stack.Navigator initialRouteName="ThemeHome" screenOptions={{header: () => null}} >
           <Stack.Screen name="ThemeHome" component={ThemeHome}/>
           <Stack.Screen name="Result" component={Result}/>
+          <Stack.Screen name="List" component={List}/>
         </Stack.Navigator>
       //</NavigationContainer>
       //   <Button
