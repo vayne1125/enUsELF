@@ -17,8 +17,8 @@ const posts = [
   {
     id: 1,
     name: 'abc123',
-    img: require('../../assets/post1.jpg'),
-    content: '風景超美!爬上去很值得',
+    img: require('../../assets/food2.png'),
+    content: '推 這家總匯吐司超好吃!',
   },
   {
     id: 2,
@@ -76,6 +76,21 @@ export default class Media extends Component {
           <MediaTop />
         </View>
         {/*內容*/}
+        {/* <View
+          style={{
+            backgroundColor: 'white',
+            //flex:11,
+          }}>
+          <Text
+            style={{
+              fontSize: 40,
+              fontWeight: 'bold',
+              letterSpacing: 5,
+              color: 'black',
+            }}>
+            社群
+          </Text>
+        </View> */}
         <FlatList
           //columnWrapperStyle={{justifyContent:'space-between'}}
           showsVerticalScrollIndicator={false}

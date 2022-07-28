@@ -1,4 +1,3 @@
-// import {Component} from 'react';
 import React, {Component} from 'react';
 import {
   View,
@@ -15,10 +14,9 @@ import {
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
-//import ThemeScreen from '../theme/Theme';
-import Theme from '../theme/Theme';
-import Media from '../media/Media';
-import Personal from '../personal/Personal';
+import ThemeScreen from '../theme/Theme';
+import SocialMediaScreen from '../media/Media';
+import PersonalScreen from '../personal/Personal';
 import ListScreen from '../list/List';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -69,14 +67,14 @@ const Nav = () => {
         tabBarIcon: ({focused, size, color}) => {
           //let iconName = 'home';
           let iconName;
-          if (route.name === 'Theme') {
+          if (route.name === '主題') {
             iconName = focused ? 'apps' : 'apps-outline';
             size = focused ? size + 8 : size+3;
-          } else if (route.name === 'Media') {
+          } else if (route.name === '社群') {
             iconName = focused ? 'people' : 'people-outline';
             size = focused ? size + 8 : size+3;
           }
-          else if (route.name === 'Personal') {
+          else if (route.name === '個人設置') {
             iconName = focused ? 'settings' : 'settings-outline';
             size = focused ? size + 8 : size+3;
           }
@@ -99,9 +97,9 @@ const Nav = () => {
         },
         tabBarShowLabel:false,
       })}>
-      <Tab.Screen name="Theme" component={Theme} />
-      <Tab.Screen name="Media" component={Media} />
-      <Tab.Screen name="Personal" component={Personal} />
+      <Tab.Screen name="主題" component={ThemeScreen} />
+      <Tab.Screen name="社群" component={SocialMediaScreen} />
+      <Tab.Screen name="個人設置" component={PersonalScreen} />
     </Tab.Navigator>
 
     );

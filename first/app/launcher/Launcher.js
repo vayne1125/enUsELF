@@ -7,7 +7,8 @@ export default class Launcher extends Component {
     return (
       <View>     
           <Image
-            source={require('../../assets/login.png')}
+            source={require('D:/react/first/assets/login.png')}
+            //source={require('.../assets/login.png')}
             style={{width:width,height}}/>
       </View>
     );
