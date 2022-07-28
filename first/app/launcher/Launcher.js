@@ -13,23 +13,3 @@ export default class Launcher extends Component {
     );
   }
 }
-
-/*const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    //justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#000000',
-  },
-
-  image: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  tt: {
-    flex: 1,
-    color: '#f44336',
-    justifyContent: 'flex-end',
-    backgroundColor: 'red',
-  },
-});*/
