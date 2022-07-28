@@ -1,4 +1,3 @@
-// import {Component} from 'react';
 import React, {Component} from 'react';
 import {
   View,
@@ -16,23 +15,28 @@ import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
 const Stack = createNativeStackNavigator();
 
-const ThemeTop = ({navigation}) => {
-  const navigation2 = useNavigation();
-    return (
-      <View style={styles.container}>
-        <Text style={styles.textStyle}>主題分類</Text>
+const ThemeTop = () => {
+  const navigation = useNavigation();
+  return (
+    <View style={styles.container}>
+      <Text style={styles.textStyle}>主題分類</Text>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('List');
+        }}
+        style={{flex: 1}}>
         <View style={styles.iconContainer}>
           <Icons
             name="calendar-outline"
             size={33}
             color={'#5f695d'}
             style={styles.iconStyle}
-            onPress={({navigation})=>{console.log("123");navigation2.navigate("List")}}
           />
         </View>
-      </View>
-    );
-}
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   textStyle: {
@@ -42,7 +46,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     color: '#ffffff',
-    letterSpacing:10,
+    letterSpacing: 10,
   },
   container: {
     flexDirection: 'row',

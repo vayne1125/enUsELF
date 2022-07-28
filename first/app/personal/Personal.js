@@ -5,7 +5,7 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const width=Dimensions.get("screen").width/2-20
-export default class Media extends Component {
+export default class Personal extends Component {
   render() {
     return (
       <View style={styles.container}>

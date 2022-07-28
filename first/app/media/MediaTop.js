@@ -1,13 +1,26 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  FlatList,
+  Image,
+  Button,
+  TouchableOpacity,
+} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
+const Stack = createNativeStackNavigator();
 
-export default class ThemeTop extends Component {
-  render() {
+const MediaTop = () => {
+  const navigation = useNavigation();
     return (
       <View style={styles.container}>
         <Text style={styles.textStyle}>社群</Text>
+        <TouchableOpacity onPress={()=>{navigation.navigate("List")}} style={{flex:1,}}>
         <View style={styles.iconContainer}>
           <Icons
             name="calendar-outline"
@@ -16,9 +29,9 @@ export default class ThemeTop extends Component {
             style={styles.iconStyle}
           />
         </View>
+        </TouchableOpacity>
       </View>
     );
-  }
 }
 const styles = StyleSheet.create({
     textStyle: {
@@ -49,4 +62,4 @@ const styles = StyleSheet.create({
     },
   });
 
-  
+  export default MediaTop;

@@ -1,4 +1,3 @@
-// import {Component} from 'react';
 import React, {Component} from 'react';
 import {
   View,
@@ -51,13 +50,12 @@ const pics = [
 const ThemeHome = ({navigation}) => {
   const Card = ({pic}) => {
     return (
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("Result", pic);
-        }}
-        style={{flex:1}}
-        >
-        <View style={styles.card}>
+      <View style={styles.card}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Result', pic);
+          }}
+          style={{flex: 1,}}>
           <View style={{flex: 3, alignItems: 'center'}}>
             {<Image style={{flex: 1, resizeMode: 'center'}} source={pic.img} />}
             {/*<Image style={styles.image}source={pic.img}/>*/}
@@ -65,15 +63,15 @@ const ThemeHome = ({navigation}) => {
           <View style={styles.textContainer}>
             <Text style={styles.textStyle}>{pic.name}</Text>
           </View>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </View>
     );
   };
   return (
     <View style={styles.container}>
       {/*頂部*/}
       <View style={styles.topbar}>
-        <ThemeTop navigation={navigation}/>
+        <ThemeTop />
       </View>
 
       {/*內容*/}
@@ -87,7 +85,6 @@ const ThemeHome = ({navigation}) => {
         numColumns={2}
         data={pics}
         renderItem={({item}) => <Card pic={item} />}></FlatList>
-            
     </View>
     //   <Button
     //     onPress={()=>this.props.navigation.navigate()}
