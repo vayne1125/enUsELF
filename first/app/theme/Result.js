@@ -1,10 +1,20 @@
-import React, { Component } from 'react'
-import {View, Text, StyleSheet,  Dimensions,FlatList,Image} from 'react-native';
+// import {Component} from 'react';
+import React, {Component} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  FlatList,
+  Image,
+} from 'react-native';
 
-export default class Result extends Component {
-  render() {
-    return (
-      <div>Result</div>
-    )
-  }
-}
+const Result = ({navigation, route}) => {
+  const themeName = route.params;
+  return (
+    <View tyle={{flex:1,}}>
+      <Text>{themeName.name}123</Text>
+    </View>
+  );
+};
+export default Result;

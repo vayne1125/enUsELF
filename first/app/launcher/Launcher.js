@@ -8,7 +8,6 @@ export default class Launcher extends Component {
       <View>     
           <Image
             source={require('../../assets/login.png')}
-            //source={require('.../assets/login.png')}
             style={{width:width,height}}/>
       </View>
     );
