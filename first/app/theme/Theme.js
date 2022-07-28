@@ -1,38 +1,60 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet,  Dimensions,FlatList,Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  FlatList,
+  Image,
+  Button,
+  TouchableOpacity,
+} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+//import { StackNavigator } from "react-navigation";
 //import {ViewPropTypes} from 'deprecated-react-native-prop-types';
 import ThemeTop from './ThemeTop';
-const width=Dimensions.get("screen").width/2-20
-const pics=[
+import tp from './Result';
+const width = Dimensions.get('screen').width / 2 - 20;
+const pics = [
   {
-    id:1,
-    name:'美食',
-    img:require('../../assets/food2.png'),
+    id: 1,
+    name: '美食',
+    img: require('../../assets/food2.png'),
   },
   {
-    id:2,
-    name:'自然',
-    img:require('../../assets/mountain.png'),
+    id: 2,
+    name: '自然',
+    img: require('../../assets/mountain.png'),
   },
   {
-    id:3,
-    name:'網美景點',
-    img:require('../../assets/camera3.jpg'),
+    id: 3,
+    name: '網美景點',
+    img: require('../../assets/camera3.jpg'),
   },
   {
-    id:4,
-    name:'古蹟',
-    img:require('../../assets/temple4.png'),
+    id: 4,
+    name: '古蹟',
+    img: require('../../assets/temple4.png'),
   },
   {
-    id:5,
-    name:'住宿',
-    img:require('../../assets/suitcase.jpg'),
+    id: 5,
+    name: '住宿',
+    img: require('../../assets/suitcase.jpg'),
   },
 ];
 
-const Card=({pic})=>{
-  return <View style={styles.card}>
+const Card = ({pic}) => {
+  //const { navigate } = this.props.navigation;
+  return(
+
+
+  <View style={styles.card}
+  onStartShouldSetResponder={() =>
+    //this.props.navigation.navigate('./ThemeTop', {name: 'Brent'})
+    console.log("123456")}
+
+  >
     <View style={{flex:3,alignItems:'center',}}>
       {<Image style={{flex:1,resizeMode:'center',}}source={pic.img}/>}
       {/*<Image style={styles.image}source={pic.img}/>*/}
@@ -41,8 +63,22 @@ const Card=({pic})=>{
       <Text style={styles.textStyle}>{pic.name}</Text>
     </View>
   </View>
-};
+  // <TouchableOpacity onPress={()=>{     console.log("123456");
+  // //this.props.navigation.navigate(tp,pic)
 
+  // }}>
+  // <View style={styles.card}>
+  //   <View style={{flex: 3, alignItems: 'center'}}>
+  //     {<Image style={{flex: 1, resizeMode: 'center'}} source={pic.img} />}
+  //     {/*<Image style={styles.image}source={pic.img}/>*/}
+  //   </View>
+  //   <View style={styles.textContainer}>
+  //     <Text style={styles.textStyle}>{pic.name}</Text>
+  //   </View>
+  // </View>
+  // </TouchableOpacity> 
+  )
+};
 
 export default class Theme extends Component {
   render() {
@@ -52,18 +88,18 @@ export default class Theme extends Component {
         <View style={styles.topbar}>
           <ThemeTop />
         </View>
-        
+
         {/*內容*/}
-        <FlatList 
-          columnWrapperStyle={{justifyContent:'space-between'}}
+        <FlatList
+          columnWrapperStyle={{justifyContent: 'space-between'}}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{
-            marginTop:25,
-            paddingBottom:80,
+            marginTop: 25,
+            paddingBottom: 80,
           }}
-          numColumns={2} 
-          data={pics} 
-          renderItem={({item})=> <Card pic={item}/>}></FlatList>
+          numColumns={2}
+          data={pics}
+          renderItem={({item}) => <Card pic={item} />}></FlatList>
       </View>
       //   <Button
       //     onPress={()=>this.props.navigation.navigate()}
@@ -86,40 +122,40 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2F2F2',
     flex: 1,
   },
-  card:{
-    height:170,
+  card: {
+    height: 170,
     //backgroundColor:'#D1DED7',
-    backgroundColor:'#ffffff',
+    backgroundColor: '#ffffff',
     width,
-    marginHorizontal:10,
-    borderRadius:10,
-    marginBottom:15,
+    marginHorizontal: 10,
+    borderRadius: 10,
+    marginBottom: 15,
     //paddingTop:5,
-    padding:5,
-    borderColor:'#D1DED7',
-    borderWidth:3,
+    padding: 5,
+    borderColor: '#D1DED7',
+    borderWidth: 3,
     //borderColor:'black',
     //borderStyle:'solid',
     //borderBottomWidth:2,
     //borderBottomColor:'#D9DEC1',
   },
-  textStyle:{
-    alignSelf:'center',
-    fontWeight:'bold',
-    fontSize:19,
-    color:'#5f695d',
-    top:8,
-    letterSpacing:10,
+  textStyle: {
+    alignSelf: 'center',
+    fontWeight: 'bold',
+    fontSize: 19,
+    color: '#5f695d',
+    top: 8,
+    letterSpacing: 10,
   },
-  image:{
-    width:175,
-    height:125,
+  image: {
+    width: 175,
+    height: 125,
   },
-  textContainer:{
-    backgroundColor:'#D1DED7',
-    flex:1,
+  textContainer: {
+    backgroundColor: '#D1DED7',
+    flex: 1,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     //position:'relative',
-  }
+  },
 });
