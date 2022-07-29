@@ -17,69 +17,100 @@ import Icons from 'react-native-vector-icons/Ionicons';
 
 import ResultTop from './ResultTop';
 const Stack = createNativeStackNavigator();
-const width = Dimensions.get('screen').width - 20;
+const width = Dimensions.get('screen').width;
 
 const sites = [
   {
     id: 1,
-    name: 'abc123',
-    img: require('../../assets/post1.jpg'),
-    content: '風景超美!爬上去很值得',
+    name: '陽明山國家公園',
+    img: require('../../assets/site1.jpg'),
+    address: '台北市士林區竹子湖路1-20號',
+    star: 4.5,
   },
   {
     id: 2,
-    name: 'def456',
-    img: require('../../assets/post2.jpg'),
-    content: '這家咖啡廳氣氛不錯~',
+    name: '日月潭',
+    img: require('../../assets/site2.webp'),
+    address: '南投縣魚池鄉日月村',
+    star: 4.6,
   },
   {
     id: 3,
-    name: 'ghi789',
-    img: require('../../assets/camera3.jpg'),
-    content: '在這裡收穫很多美照~',
+    name: '高美濕地',
+    img: require('../../assets/site3.jpg'),
+    address: '台中市清水區美堤街',
+    star: 4.5,
   },
   {
     id: 4,
-    name: 'andy',
-    img: require('../../assets/temple4.png'),
-    content: '增加文化氣息',
+    name: '野柳地質公園',
+    img: require('../../assets/site4.jpg'),
+    address: '增加文化氣息',
+    star: 4.4,
   },
   {
     id: 5,
     name: 'lady',
     img: require('../../assets/suitcase.jpg'),
-    content: '乾淨又舒服!',
+    address: '乾淨又舒服!',
+    star: 5.0,
   },
 ];
 
 const Result = ({navigation, route}) => {
   const theme = route.params;
-
+  const Stars = score => {
+    var tp = parseFloat(score.star);
+    var starsIcon = [];
+    for (let i = 0; i < 5; i++) {
+      //starsIcon.push(<Icons name={'star-sharp'} />);
+      if (tp >= 1) {
+        starsIcon.push(<Icon name={'star'} color={'#ffb129'}size={18} />);
+        tp = tp - 1;
+      } else if (tp == 0) {
+        starsIcon.push(<Icon name={'star-o'}color={'#ffb129'} size={18} />);
+      } else {
+        starsIcon.push(<Icon name={'star-half-empty'} color={'#ffb129'} size={18} />);
+        tp = 0;
+      }
+    }
+    return (
+      <View style={styles.starStyle}>
+        <Text>{score.star} </Text>
+        {starsIcon}
+      </View>
+    );
+  };
   const Card = ({site}) => {
     return (
       <View style={styles.card}>
-        <View style={styles.nameContainer}>
-          <View style={styles.info}>
-            <Icons name={'person-circle-outline'} size={32} />
-          </View>
-          <Text style={styles.nameStyle}>{site.name}</Text>
-        </View>
         <View style={styles.imageContainer}>
-          {<Image style={{flex: 1, resizeMode: 'contain'}} source={site.img} />}
-          {/*<Image style={styles.image}source={pic.img}/>*/}
+          {/*<Image style={{flex: 1, resizeMode: 'center'}} source={site.img} />*/}
+          {<Image style={styles.image} source={site.img} />}
         </View>
-        <View style={styles.textContainer}>
-          <Icon name={'heart'} size={24} />
-          <Text style={styles.textStyle}>{site.content}</Text>
-        </View>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            onPress={() => {
-              console.log('456'), navigation.navigate('Schedule');
-            }}
-            style={{flex: 1}}>
-            <Text style={styles.buttonText}>加入清單</Text>
-          </TouchableOpacity>
+        <View style={styles.info}>
+          <View style={styles.textContainer}>
+            <Text style={styles.nameStyle}>{site.name}</Text>
+          </View>
+          <Stars star={site.star} />
+          <View style={styles.buttonContainer2}>
+            <TouchableOpacity
+              onPress={() => {
+                console.log('123'); //navigation.navigate('Schedule');
+              }}
+              style={{flex: 2}}>
+              <Text style={styles.buttonText2}>詳細資訊</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              onPress={() => {
+                console.log('456'); //navigation.navigate('Schedule');
+              }}
+              style={{flex: 1}}>
+              <Text style={styles.buttonText}>加入清單</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     );
@@ -124,17 +155,20 @@ const styles = StyleSheet.create({
     //backgroundColor:'#D1DED7',
     backgroundColor: '#ffffff',
     width,
-    marginHorizontal: 10,
-    borderRadius: 10,
+    //marginHorizontal: 10,
+    //borderRadius: 10,
     marginBottom: 15,
     //paddingTop:5,
     padding: 5,
-    borderColor: '#D1DED7',
-    borderWidth: 3,
-    //borderColor:'black',
-    //borderStyle:'solid',
-    //borderBottomWidth:2,
-    //borderBottomColor:'#D9DEC1',
+    //right: 2,
+    //borderColor: '#D1DED7',
+    //borderWidth: 3,
+    flex: 1,
+    flexDirection: 'row',
+    borderBottomWidth: 3,
+    borderBottomColor:'#D1DED7',
+    borderRightWidth:3,
+    borderRightColor:'#ffffff',
   },
   textStyle: {
     alignSelf: 'center',
@@ -145,15 +179,83 @@ const styles = StyleSheet.create({
     letterSpacing: 10,
   },
   image: {
-    width: 175,
-    height: 125,
+    width: 230,
+    height: 140,
+    top: 6,
+    borderRadius: 10,
+    left: 2,
   },
   textContainer: {
-    backgroundColor: '#D1DED7',
-    flex: 1,
+    flex: 2,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
+    alignSelf: 'center',
+    alignItems: 'center',
+    top: 13,
+    right: 8,
     //position:'relative',
+  },
+  buttonContainer: {
+    backgroundColor: '#fbb856', //較深黃
+    //backgroundColor: '#ffc56b',//較淺黃
+    //flex: 1,
+    width: 120,
+    alignSelf: 'flex-end',
+    right: 7,
+    bottom: 4,
+    borderRadius: 25,
+    height: 32,
+    //flexDirection: 'row',
+  },
+  buttonText: {
+    fontWeight: '800',
+    fontSize: 16,
+    color: '#6b5238',
+    top: 6,
+    letterSpacing: 10,
+    left: 7,
+  },
+  buttonContainer2: {
+    backgroundColor: '#E3E3E3', //較淺黃
+    //flex: 1,
+    width: 120,
+    alignSelf: 'flex-end',
+    right: 7,
+    bottom: 10,
+    borderRadius: 25,
+    height: 32,
+    //flexDirection: 'row',
+  },
+  buttonText2: {
+    fontWeight: '800',
+    fontSize: 16,
+    top: 6,
+    letterSpacing: 10,
+    left: 7,
+  },
+  imageContainer: {
+    flex: 3,
+    alignItems: 'center',
+    padding: 3,
+  },
+  nameStyle: {
+    alignSelf: 'center',
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: '#5f695d',
+    left: 15,
+    letterSpacing: 1,
+  },
+  info: {
+    flex: 2,
+  },
+  starStyle: {
+    flex: 2,
+    flexDirection: 'row',
+    alignSelf: 'center',
+    left: 5,
+    top: 4,
+    //color:'#f5f6a3',
   },
 });
 
