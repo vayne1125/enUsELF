@@ -1,20 +1,20 @@
 import React, {Component} from 'react';
 import {View, Text,StyleSheet} from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
+//import Icon from 'react-native-vector-icons/Entypo';
+import ListTop from './ListTop'
 
-import Icon from 'react-native-vector-icons/FontAwesome';
-export default class Media extends Component {
+export default class List extends Component {
   render() {
     return (
-      <View style={{
-        hight:'100%',
-        backgroundColor:'#DFF6A3',
-        justifyContent:'center',
-        alignItems:'center',
-        flex:1,
-    }}>
-        <Text style={{fontSize:40,fontWeight:'bold',letterSpacing:5,color:'white'}}>行程表清單</Text>
-            <Icons name="person" size={100} color={'#a0522d'}/>
+        <View style={styles.container}>
+            <View style={styles.topbar}>
+                <ListTop/>
+            </View>
+            <View style={styles.items}>
+                <Text style={styles.textStyle}>目前是空的</Text>
+                <Icons name="person" size={100} color={'#a0522d'}/>
+            </View>
         </View>
     //   <Button
     //     onPress={()=>this.props.navigation.navigate()}
@@ -22,3 +22,30 @@ export default class Media extends Component {
     );
   }
 }
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        hight: '100%',
+        backgroundColor: '#F2F2F2',
+    },
+    topbar: {
+        backgroundColor: '#5f695d',
+        flex:0.11,
+        height: 63,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+        //opacity: 0.9,
+    },
+    items: {
+        flex: 0.89,
+        alignItems:'center',
+        justifyContent:'center',
+    },
+    textStyle:{
+        fontSize:40,
+        textAlign: 'center',
+        fontWeight:'bold',
+        letterSpacing:5,
+        color:'white',
+    },
+});
