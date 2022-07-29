@@ -45,22 +45,22 @@ const sites = [
     id: 4,
     name: '野柳地質公園',
     img: require('../../assets/site4.jpg'),
-    address: '增加文化氣息',
+    address: '新北市萬里區野柳里港東路167-1號',
     star: 4.4,
   },
   {
     id: 5,
-    name: 'lady',
-    img: require('../../assets/suitcase.jpg'),
-    address: '乾淨又舒服!',
-    star: 5.0,
+    name: '雪霸國家公園',
+    img: require('../../assets/site5.webp'),
+    address: '苗栗縣大湖鄉富興村水尾坪100號',
+    star: 4.5,
   },
 ];
 
 const Result = ({navigation, route}) => {
   const theme = route.params;
-  const Stars = score => {
-    var tp = parseFloat(score.star);
+  const Stars = (score) => {
+    var tp = parseFloat(score.starsNum);
     var starsIcon = [];
     for (let i = 0; i < 5; i++) {
       //starsIcon.push(<Icons name={'star-sharp'} />);
@@ -76,7 +76,7 @@ const Result = ({navigation, route}) => {
     }
     return (
       <View style={styles.starStyle}>
-        <Text>{score.star} </Text>
+        <Text>{score.starsNum} </Text>
         {starsIcon}
       </View>
     );
@@ -92,7 +92,7 @@ const Result = ({navigation, route}) => {
           <View style={styles.textContainer}>
             <Text style={styles.nameStyle}>{site.name}</Text>
           </View>
-          <Stars star={site.star} />
+          <Stars starsNum={site.star} />
           <View style={styles.buttonContainer2}>
             <TouchableOpacity
               onPress={() => {
