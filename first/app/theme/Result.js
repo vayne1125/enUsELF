@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component,useState} from 'react';
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   FlatList,
   Image,
   Button,
+  Modal,
   TouchableOpacity,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
@@ -16,65 +17,90 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 
 import ResultTop from './ResultTop';
+import Detail from '../detail/Detail';
 const Stack = createNativeStackNavigator();
 const width = Dimensions.get('screen').width;
 
 const sites = [
   {
-    id: 1-3,
+    id: 1,
     name: '陽明山國家公園',
     img: require('../../assets/site1.jpg'),
     address: '台北市士林區竹子湖路1-20號',
     star: 4.5,
+    info:'陽明山國家公園是臺灣離都會區最近的一座國家公園，這裡地貌多變、生態豐富，孕育了許多珍貴的保育類動物，幸運的話，可以在這裏發現臺灣特有種鳥類－臺灣藍鵲的蹤跡。'
   },
   {
-    id: 2-3,
+    id: 2,
     name: '日月潭',
     img: require('../../assets/site2.webp'),
     address: '南投縣魚池鄉日月村',
     star: 4.6,
   },
   {
-    id: 3-3,
+    id: 3,
     name: '高美濕地',
     img: require('../../assets/site3.jpg'),
     address: '台中市清水區美堤街',
     star: 4.5,
   },
   {
-    id: 4-3,
+    id: 4,
     name: '野柳地質公園',
     img: require('../../assets/site4.jpg'),
     address: '新北市萬里區野柳里港東路167-1號',
     star: 4.4,
   },
   {
-    id: 5-3,
+    id: 5,
     name: '雪霸國家公園',
     img: require('../../assets/site5.webp'),
     address: '苗栗縣大湖鄉富興村水尾坪100號',
     star: 4.5,
   },
 ];
-
+const initialState = {
+  "site": {
+      "id":{},
+      "name": {},
+      "img": {},
+      "address":{},
+      "info":{},
+  }
+}
 const Result = ({navigation, route}) => {
   const theme = route.params;
-  const Stars = (score) => {
+  //-------------------------------------------------------------------------
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalEntry, setModalEntry] = useState(initialState);
+  //--------------------------------------------------------------------------
+
+  const Stars = score => {
     var tp = parseFloat(score.starsNum);
     var starsIcon = [];
-    let cnt=0;
+    let cnt = 0;
     for (let i = 0; i < 5; i++) {
-      //starsIcon.push(<Icons name={'star-sharp'} />);
       if (tp >= 1) {
-        starsIcon.push(<Icon key={cnt} name={'star'} color={'#ffb129'}size={18} />);
+        starsIcon.push(
+          <Icon key={cnt} name={'star'} color={'#ffb129'} size={18} />,
+        );
         tp = tp - 1;
       } else if (tp == 0) {
-        starsIcon.push(<Icon key={cnt} name={'star-o'}color={'#ffb129'} size={18} />);
+        starsIcon.push(
+          <Icon key={cnt} name={'star-o'} color={'#ffb129'} size={18} />,
+        );
       } else {
-        starsIcon.push(<Icon key={cnt} name={'star-half-empty'} color={'#ffb129'} size={18} />);
+        starsIcon.push(
+          <Icon
+            key={cnt}
+            name={'star-half-empty'}
+            color={'#ffb129'}
+            size={18}
+          />,
+        );
         tp = 0;
       }
-      cnt+=1;
+      cnt += 1;
     }
     return (
       <View style={styles.starStyle}>
@@ -87,7 +113,6 @@ const Result = ({navigation, route}) => {
     return (
       <View style={styles.card}>
         <View style={styles.imageContainer}>
-          {/*<Image style={{flex: 1, resizeMode: 'center'}} source={site.img} />*/}
           {<Image style={styles.image} source={site.img} />}
         </View>
         <View style={styles.info}>
@@ -98,7 +123,13 @@ const Result = ({navigation, route}) => {
           <View style={styles.buttonContainer2}>
             <TouchableOpacity
               onPress={() => {
-                console.log('123'); //navigation.navigate('Schedule');
+                console.log('123');
+                //------------------------------------
+                setModalVisible(!modalVisible);
+                setModalEntry({site});
+                console.log('site');
+                console.log({site});
+                //-------------------------------------
               }}
               style={{flex: 2}}>
               <Text style={styles.buttonText2}>詳細資訊</Text>
@@ -107,7 +138,7 @@ const Result = ({navigation, route}) => {
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               onPress={() => {
-                console.log('456'); //navigation.navigate('Schedule');
+                console.log('456');
               }}
               style={{flex: 1}}>
               <Text style={styles.buttonText}>加入清單</Text>
@@ -118,7 +149,17 @@ const Result = ({navigation, route}) => {
     );
   };
   return (
+   
     <View style={styles.container}>
+
+      {/*浮動視窗-------------------------------------------------------------------------------*/}
+       <Detail
+    entry={modalEntry}//傳進去的資料參數
+    modalVisible={modalVisible}//可不可見
+    onClose={() => {setModalVisible(false);console.log("close")}}//關閉函式
+    />
+    {/*浮動視窗-------------------------------------------------------------------------------*/}
+
       {/*頂部*/}
       <View style={styles.topbar}>
         <ResultTop theme={theme} />
@@ -168,9 +209,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     borderBottomWidth: 3,
-    borderBottomColor:'#D1DED7',
-    borderRightWidth:3,
-    borderRightColor:'#ffffff',
+    borderBottomColor: '#D1DED7',
+    borderRightWidth: 3,
+    borderRightColor: '#ffffff',
   },
   textStyle: {
     alignSelf: 'center',
