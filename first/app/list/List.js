@@ -3,6 +3,7 @@ import {View, Text,StyleSheet} from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
 //import Icon from 'react-native-vector-icons/Entypo';
 import ListTop from './ListTop'
+import ListBottom from './ListBottom'
 
 export default class List extends Component {
   render() {
@@ -14,6 +15,9 @@ export default class List extends Component {
             <View style={styles.items}>
                 <Text style={styles.textStyle}>目前是空的</Text>
                 <Icons name="person" size={100} color={'#a0522d'}/>
+            </View>
+            <View style={styles.bottombar}>
+                <ListBottom/>
             </View>
         </View>
     //   <Button
@@ -37,7 +41,7 @@ const styles = StyleSheet.create({
         //opacity: 0.9,
     },
     items: {
-        flex: 0.89,
+        flex: 0.78,
         alignItems:'center',
         justifyContent:'center',
     },
@@ -47,5 +51,11 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         letterSpacing:5,
         color:'white',
+    },
+    bottombar: {
+        backgroundColor: '#5f695d',
+        flex:0.11,
+        height: 63,
+        //opacity: 0.9,
     },
 });
