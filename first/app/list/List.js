@@ -4,6 +4,7 @@ import Icons from 'react-native-vector-icons/Ionicons';
 //import Icon from 'react-native-vector-icons/Entypo';
 import ListTop from './ListTop'
 import ListBottom from './ListBottom'
+import Items from './Items';
 
 export default class List extends Component {
   render() {
@@ -13,8 +14,7 @@ export default class List extends Component {
                 <ListTop/>
             </View>
             <View style={styles.items}>
-                <Text style={styles.textStyle}>目前是空的</Text>
-                <Icons name="person" size={100} color={'#a0522d'}/>
+                <Items/>
             </View>
             <View style={styles.bottombar}>
                 <ListBottom/>
