@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { useState } from "react";
 import {
     View,
     Text,
@@ -8,9 +8,10 @@ import {
     Image,
     Alert,
     TouchableOpacity,
-    Checkbox,
   } from 'react-native';
 import Icons from 'react-native-vector-icons/Entypo';
+//import CheckBox from '@react-native-community/checkbox';
+import  CheckBox  from 'react-native-checkbox';
 const width = Dimensions.get('screen').width;
 
 const sites = [
@@ -52,9 +53,19 @@ const Items = () => {
         );
     };
     const Card = ({site}) => {
+        const [isSelected, setSelection] = useState(false);
         return (
             <View style={styles.card}>
                 <View style={styles.ChanceContainer}>
+                    <CheckBox
+                    //checkedIcon='dot-circle-o'
+                    //uncheckedIcon='circle-o' 
+                    //tintColors = { true?  'green': 'red'}
+                    value={isSelected}
+                    onValueChange={setSelection}
+                    //style={styles.CheckBox}
+                    testID={site.id}
+                    />
                 </View>
                 <View style={styles.imageContainer}>
                     {/*<Image style={{flex: 1, resizeMode: 'center'}} source={site.img} />*/}
@@ -182,6 +193,14 @@ const styles = StyleSheet.create({
         left: 15,
         letterSpacing: 1,
     },
+    /*CheckBox:{
+        height: 50,             
+        width: 50,
+        borderWidth: 1,        
+        backgroundColor: 'red', 
+        borderColor: 'green',   
+        borderStyle: 'dotted',
+    },*/
   });
   
 export default Items;
