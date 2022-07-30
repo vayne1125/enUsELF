@@ -37,13 +37,18 @@ const sites = [
 const Items = () => {
     const CheckDel = () =>{
         Alert.alert(
+            "",
             "確定要刪除嗎?",
-            [ 
+            [
                 //{text: '确认', onPress: () => showTip()},
-                {text: '确认', style: 'cancel'},
-                {text: '取消', style: 'cancel'}, 
+                {
+                    text: '確認',
+                    onPress: () => {},
+                },
+                {
+                    text: "取消",
+                },
             ],
-            {cancelable: false}
         );
     };
     const Card = ({site}) => {
