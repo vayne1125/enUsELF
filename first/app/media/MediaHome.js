@@ -21,31 +21,31 @@ const width = Dimensions.get('screen').width - 20;
 
 const posts = [
   {
-    id: 1,
+    id: 1-2,
     name: 'abc123',
     img: require('../../assets/post1.jpg'),
     content: '風景超美!爬上去很值得',
   },
   {
-    id: 2,
+    id: 2-2,
     name: 'def456',
     img: require('../../assets/post2.jpg'),
     content: '這家咖啡廳氣氛不錯~',
   },
   {
-    id: 3,
+    id: 3-2,
     name: 'ghi789',
     img: require('../../assets/camera3.jpg'),
     content: '在這裡收穫很多美照~',
   },
   {
-    id: 4,
+    id: 4-2,
     name: 'andy',
     img: require('../../assets/temple4.png'),
     content: '增加文化氣息',
   },
   {
-    id: 5,
+    id: 5-2,
     name: 'lady',
     img: require('../../assets/suitcase.jpg'),
     content: '乾淨又舒服!',

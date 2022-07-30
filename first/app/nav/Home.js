@@ -16,25 +16,20 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StackNavigator } from "react-navigation";
 import 'react-native-gesture-handler';
 //import {ViewPropTypes} from 'deprecated-react-native-prop-types';
-import Result from './Result';
-import ThemeHome from './ThemeHome';
-//import List from '../list/List';
+import Schedule from '../media/Schedule';
+import Nav from './Nav';
+import List from '../list/List';
 
 const Stack=createStackNavigator();
 
-export default class Theme extends Component {
+export default class Home extends Component {
   render() {
     return (
-      //<NavigationContainer>
-        <Stack.Navigator initialRouteName="ThemeHome" screenOptions={{header: () => null}} >
-          <Stack.Screen name="ThemeHome" component={ThemeHome}/>
-          <Stack.Screen name="Result" component={Result}/>
-          {/* <Stack.Screen name="List" component={List}/> */}
+        <Stack.Navigator initialRouteName="Nav" screenOptions={{header: () => null}} >
+          <Stack.Screen name="Nav" component={Nav}/>
+          <Stack.Screen name="Schedule" component={Schedule}/>
+          <Stack.Screen name="List" component={List}/>
         </Stack.Navigator>
-      //</NavigationContainer>
-      //   <Button
-      //     onPress={()=>this.props.navigation.navigate()}
-      //   />
     );
   }
 }

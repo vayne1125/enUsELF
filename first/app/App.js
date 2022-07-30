@@ -4,7 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Launcher from './launcher/Launcher';
-import Nav from './nav/Nav';
+//import Nav from './nav/Nav';
+import Home from './nav/Home';
 import ListScreen from './list/List';
 
 import Icons from 'react-native-vector-icons/Ionicons';
@@ -31,7 +32,7 @@ export default class App extends Component {
       {
         this.state.isShowLauncher ? 
         <Launcher /> :
-        <Nav />
+        <Home />
       }
       </NavigationContainer> 
     )  

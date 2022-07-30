@@ -16,9 +16,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StackNavigator } from "react-navigation";
 import 'react-native-gesture-handler';
 //import {ViewPropTypes} from 'deprecated-react-native-prop-types';
-import Schedule from './Schedule';
+//import Schedule from './Schedule';
 import MediaHome from './MediaHome';
-import List from '../list/List';
+//import List from '../list/List';
 
 const Stack=createStackNavigator();
 
@@ -27,8 +27,8 @@ export default class Theme extends Component {
     return (
         <Stack.Navigator initialRouteName="MediaHome" screenOptions={{header: () => null}} >
           <Stack.Screen name="MediaHome" component={MediaHome}/>
-          <Stack.Screen name="Schedule" component={Schedule}/>
-          <Stack.Screen name="List" component={List}/>
+          {/* <Stack.Screen name="Schedule" component={Schedule}/> */}
+          {/* <Stack.Screen name="List" component={List}/> */}
         </Stack.Navigator>
     );
   }

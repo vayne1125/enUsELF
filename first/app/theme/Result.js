@@ -21,35 +21,35 @@ const width = Dimensions.get('screen').width;
 
 const sites = [
   {
-    id: 1,
+    id: 1-3,
     name: '陽明山國家公園',
     img: require('../../assets/site1.jpg'),
     address: '台北市士林區竹子湖路1-20號',
     star: 4.5,
   },
   {
-    id: 2,
+    id: 2-3,
     name: '日月潭',
     img: require('../../assets/site2.webp'),
     address: '南投縣魚池鄉日月村',
     star: 4.6,
   },
   {
-    id: 3,
+    id: 3-3,
     name: '高美濕地',
     img: require('../../assets/site3.jpg'),
     address: '台中市清水區美堤街',
     star: 4.5,
   },
   {
-    id: 4,
+    id: 4-3,
     name: '野柳地質公園',
     img: require('../../assets/site4.jpg'),
     address: '新北市萬里區野柳里港東路167-1號',
     star: 4.4,
   },
   {
-    id: 5,
+    id: 5-3,
     name: '雪霸國家公園',
     img: require('../../assets/site5.webp'),
     address: '苗栗縣大湖鄉富興村水尾坪100號',
@@ -62,17 +62,19 @@ const Result = ({navigation, route}) => {
   const Stars = (score) => {
     var tp = parseFloat(score.starsNum);
     var starsIcon = [];
+    let cnt=0;
     for (let i = 0; i < 5; i++) {
       //starsIcon.push(<Icons name={'star-sharp'} />);
       if (tp >= 1) {
-        starsIcon.push(<Icon name={'star'} color={'#ffb129'}size={18} />);
+        starsIcon.push(<Icon key={cnt} name={'star'} color={'#ffb129'}size={18} />);
         tp = tp - 1;
       } else if (tp == 0) {
-        starsIcon.push(<Icon name={'star-o'}color={'#ffb129'} size={18} />);
+        starsIcon.push(<Icon key={cnt} name={'star-o'}color={'#ffb129'} size={18} />);
       } else {
-        starsIcon.push(<Icon name={'star-half-empty'} color={'#ffb129'} size={18} />);
+        starsIcon.push(<Icon key={cnt} name={'star-half-empty'} color={'#ffb129'} size={18} />);
         tp = 0;
       }
+      cnt+=1;
     }
     return (
       <View style={styles.starStyle}>

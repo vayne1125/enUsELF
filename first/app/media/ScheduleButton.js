@@ -14,8 +14,6 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Entypo';
 //import Icon from 'react-native-vector-icons/FontAwesome';
-import Schedule from './Schedule';
-
 
 const ScheduleButton = () => {
     return(
