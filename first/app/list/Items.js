@@ -12,6 +12,7 @@ import {
 import Icons from 'react-native-vector-icons/Entypo';
 //import CheckBox from '@react-native-community/checkbox';
 import  CheckBox  from 'react-native-checkbox';
+//import CheckBox from 'react-native-icon-checkbox';
 const width = Dimensions.get('screen').width;
 
 const sites = [
@@ -58,10 +59,8 @@ const Items = () => {
             <View style={styles.card}>
                 <View style={styles.ChanceContainer}>
                     <CheckBox
-                    //checkedIcon='dot-circle-o'
-                    //uncheckedIcon='circle-o' 
-                    //tintColors = { true?  'green': 'red'}
-                    value={isSelected}
+                    uncheckedIconName = "circle-o"
+                    checkedIconName = "circle-with-cross"
                     onValueChange={setSelection}
                     //style={styles.CheckBox}
                     testID={site.id}
