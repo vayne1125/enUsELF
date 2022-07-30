@@ -24,7 +24,7 @@ const ListBottom = () => {
         <TouchableOpacity
             //wait the map
             onPress={() => {
-                navigation.navigate('List', pic);
+                //navigation.navigate('Map', pic);
             }}>
             <View style={styles.OkContainer}>
                 <Text style={styles.OkText}>完成</Text>
