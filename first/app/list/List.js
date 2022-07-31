@@ -1,61 +1,32 @@
-import React, {Component} from 'react';
-import {View, Text,StyleSheet} from 'react-native';
-import Icons from 'react-native-vector-icons/Ionicons';
-//import Icon from 'react-native-vector-icons/Entypo';
-import ListTop from './ListTop'
-import ListBottom from './ListBottom'
-import Items from './Items';
+import React,{Component} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  FlatList,
+  Image,
+  Button,
+  //TouchableOpacity,
+} from 'react-native';
+import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
+import {NavigationContainer} from '@react-navigation/native';
+//import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
+import { StackNavigator } from "react-navigation";
+import 'react-native-gesture-handler';
+import ListHome from './ListHome';
+import Map from '../map/Map'
 
-export default class List extends Component {
+const Stack=createStackNavigator();
+
+export default class Theme extends Component {
   render() {
     return (
-        <View style={styles.container}>
-            <View style={styles.topbar}>
-                <ListTop/>
-            </View>
-            <View style={styles.items}>
-                <Items/>
-            </View>
-            <View style={styles.bottombar}>
-                <ListBottom/>
-            </View>
-        </View>
-    //   <Button
-    //     onPress={()=>this.props.navigation.navigate()}
-    //   />
+        <Stack.Navigator initialRouteName="ListHome" screenOptions={{header: () => null}} >
+          <Stack.Screen name="ListHome" component={ListHome}/>
+          <Stack.Screen name="Map" component={Map}/>
+        </Stack.Navigator>
     );
   }
 }
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        hight: '100%',
-        backgroundColor: '#F2F2F2',
-    },
-    topbar: {
-        backgroundColor: '#5f695d',
-        flex:0.11,
-        height: 63,
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
-        //opacity: 0.9,
-    },
-    items: {
-        flex: 0.78,
-        alignItems:'center',
-        justifyContent:'center',
-    },
-    textStyle:{
-        fontSize:40,
-        textAlign: 'center',
-        fontWeight:'bold',
-        letterSpacing:5,
-        color:'white',
-    },
-    bottombar: {
-        backgroundColor: '#5f695d',
-        flex:0.11,
-        height: 63,
-        //opacity: 0.9,
-    },
-});
