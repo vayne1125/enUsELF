@@ -20,7 +20,7 @@ import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const width = Dimensions.get('screen').width - 50;
-
+const height=Dimensions.get('screen').height/1.3;
 
 
 const Detail = ({entry, modalVisible, onClose}) => {
@@ -120,7 +120,8 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     width: '95%',
-    height: 600,
+    height,
+    //height: 600,
     backgroundColor: 'white',
     //paddingHorizontal: 20,
     //paddingVertical: 20,
