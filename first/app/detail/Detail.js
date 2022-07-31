@@ -32,7 +32,7 @@ const Detail = ({entry, modalVisible, onClose}) => {
         <View style={styles.modalBackGround}>
           <View  style={styles.modalContainer}>
           <View style={styles.header}>
-              <Text style={styles.textStyle}>{entry["site"]["name"]}</Text>
+              <Text style={styles.textStyle}>{entry["name"]}</Text>
               <TouchableOpacity onPress={() => onClose()} style={{flex: 1}}>
                 <View style={styles.iconContainer}>
                   <Icons name="cross" size={45} color={'#5f695d'} />
@@ -41,17 +41,17 @@ const Detail = ({entry, modalVisible, onClose}) => {
             </View>
             <View style={styles.infoContainer}>
           <ScrollView >
-              <Image style={styles.image} source={entry["site"]["img"]} />
+              <Image style={styles.image} source={entry["img"]} />
             <View style={styles.infoStyle}>
              
               <Text style={styles.infoTitle}>
               <Icon name="map-marker" size={25} color={'#5f695d'} />地址
               </Text>
-              <Text style={styles.infoTextStyle}>{entry["site"]["address"]}{"\n"}</Text>
+              <Text style={styles.infoTextStyle}>{entry["address"]}{"\n"}</Text>
               <Text style={styles.infoTitle}> 
               <Icon name="info-circle" size={23} color={'#5f695d'} />簡介
               </Text>
-              <Text style={styles.infoTextStyle}>{entry["site"]["info"]}{"\n"}</Text>
+              <Text style={styles.infoTextStyle}>{entry["info"]}{"\n"}</Text>
               <Text style={styles.infoTitle}> 
               <Icon3 name="weather-cloudy" size={23} color={'#5f695d'} />天氣
               </Text>

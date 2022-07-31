@@ -60,13 +60,11 @@ const sites = [
   },
 ];
 const initialState = {
-  "site": {
       "id":{},
       "name": {},
       "img": {},
       "address":{},
       "info":{},
-  }
 }
 const Result = ({navigation, route}) => {
   const theme = route.params;
@@ -126,9 +124,8 @@ const Result = ({navigation, route}) => {
                 console.log('123');
                 //------------------------------------
                 setModalVisible(!modalVisible);
-                setModalEntry({site});
+                setModalEntry(site);
                 console.log('site');
-                console.log({site});
                 //-------------------------------------
               }}
               style={{flex: 2}}>
