@@ -10,8 +10,8 @@ import {
     TouchableOpacity,
   } from 'react-native';
 import Icons from 'react-native-vector-icons/Entypo';
-//import CheckBox from '@react-native-community/checkbox';
-import  CheckBox  from 'react-native-checkbox';
+import CheckBox from '@react-native-community/checkbox';
+//import  CheckBox  from 'react-native-checkbox';
 //import CheckBox from 'react-native-icon-checkbox';
 const width = Dimensions.get('screen').width;
 
