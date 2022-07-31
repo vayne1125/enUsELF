@@ -17,20 +17,20 @@ import Icons from 'react-native-vector-icons/Ionicons';
 
 import ScheduleTop from './ScheduleTop';
 import ScheduleButton from './ScheduleButton';
+import Scheduleitem from './Scheduleitem';
 const Stack = createNativeStackNavigator();
 const width = Dimensions.get('screen').width;
 
-export default class Media extends Component {
-  render() {
+
+const Schedule = ({navigation, route}) => {
+    const theme = route.params;
     return (
       <View style={styles.Container}>
             <View style={styles.topbar}>
-                <ScheduleTop/>
+                <ScheduleTop theme={theme}/>
             </View>
               <View style={styles.items}>
-                <Text style={styles.textStyle}>目前是空的</Text>
-                <Icons name="person" size={300} color={'#a0522d'}/>
-               
+               <Scheduleitem/>
             </View>
 
             <View style={styles.buttonbar}>
@@ -38,7 +38,6 @@ export default class Media extends Component {
             </View>
         </View>
     );
-  }
 }
 
 const styles = StyleSheet.create({
@@ -96,9 +95,10 @@ const styles = StyleSheet.create({
     padding: 3,
   },
   buttonbar: {
-     backgroundColor: '#5f695d',
-     flex:0.2,
+    // backgroundColor: '#5f695d',
+     flex:0.15,
      height: 200,
       //opacity: 0.9,
   },
 });
+export default Schedule;

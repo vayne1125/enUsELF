@@ -7,6 +7,7 @@ import {
   FlatList,
   Image,
   Button,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
@@ -16,13 +17,14 @@ import Icons from 'react-native-vector-icons/Entypo';
 //import Icon from 'react-native-vector-icons/FontAwesome';
 
 const ScheduleButton = () => {
+  const showok =()=>{Alert.alert('已加入清單')  
+    }
     return(
       <View style = {styles.Container}>
       <View style={styles.ChanceContainer}>
           <Text style={styles.ChanceText}>全選</Text>
       </View>
-      <TouchableOpacity //onPress={()=>{navigation.navigate('Schedule',pic)}}>
-       > 
+      <TouchableOpacity onPress={showok}>
        <View  style={styles.OkContainer}>
          <Text style={styles.OkText}>完成</Text>
         </View>
@@ -43,7 +45,7 @@ const styles = StyleSheet.create({
   ChanceText: {
     //position: 'absolute',
     left:10,
-    top: 150,
+    top: 40,
     fontSize: 10,
     fontWeight: 'bold',
     color: 'black',
@@ -55,7 +57,7 @@ const styles = StyleSheet.create({
   },
   OkText: {
     position: 'absolute',
-    left: 15,
+    left: 18,
     top: 10,
     fontSize: 30,
     fontWeight: 'bold',

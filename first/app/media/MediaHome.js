@@ -72,7 +72,7 @@ const MediaHome = ({navigation}) => {
         </View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
-            onPress={() => {navigation.navigate('Schedule');
+            onPress={() => {navigation.navigate('Schedule',post);
             }}
             style={{flex: 1}}>
             <Text style={styles.buttonText}>他的行程</Text>

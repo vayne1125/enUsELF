@@ -15,8 +15,9 @@ import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-const ScheduleTop = () => {
-  const navigation = useNavigation();
+const ScheduleTop = (props) => {
+ const navigation = useNavigation();
+  const aurInfo=props;
   return (
     <View style={styles.container}>
       
@@ -35,14 +36,14 @@ const ScheduleTop = () => {
         </View>
       </TouchableOpacity>
 
-      <Text style={styles.text}>abc123的行程</Text>
+      <Text style={styles.text}>{aurInfo.theme.name}</Text>
     </View>
   );
 };
 const styles = StyleSheet.create({
   text: {
-    //left: 15,
-    right:100,
+    left: -200,
+    //right:,
     top: 20,
     fontSize:20,
     fontWeight: 'bold',
