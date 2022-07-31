@@ -33,7 +33,7 @@ export default class App extends Component {
       {
         this.state.isShowLauncher ? 
         <Launcher /> :
-        <Map />
+        <Home />
       }
       </NavigationContainer> 
     )  

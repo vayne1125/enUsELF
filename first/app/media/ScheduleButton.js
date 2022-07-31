@@ -16,13 +16,13 @@ import Icons from 'react-native-vector-icons/Entypo';
 //import Icon from 'react-native-vector-icons/FontAwesome';
 
 const ScheduleButton = () => {
+    const navigation = useNavigation();
     return(
       <View style = {styles.Container}>
       <View style={styles.ChanceContainer}>
           <Text style={styles.ChanceText}>全選</Text>
       </View>
-      <TouchableOpacity //onPress={()=>{navigation.navigate('Schedule',pic)}}>
-       > 
+      <TouchableOpacity onPress={()=>{navigation.navigate("List")}}>
        <View  style={styles.OkContainer}>
          <Text style={styles.OkText}>完成</Text>
         </View>
