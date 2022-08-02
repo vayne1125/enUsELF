@@ -30,7 +30,7 @@ const Schedule = ({navigation, route}) => {
                 <ScheduleTop theme={theme}/>
             </View>
               <View style={styles.items}>
-               <Scheduleitem/>
+              <Scheduleitem/>
             </View>
 
             <View style={styles.buttonbar}>
@@ -54,7 +54,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2F2F2',
     flex: 1,
   },
-  
   image: {
     width: 230,
     height: 140,

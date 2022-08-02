@@ -5,6 +5,7 @@ import {
   Dimensions,
   Text,
   TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker, Polyline } from 'react-native-maps';
 import { mapStyle } from './mapStyle';
@@ -14,51 +15,62 @@ import { HOL_DATA } from './HolData';  //shop景點的資料
 import { MAIN_ROUTE_DATA } from './MainRoute'; //主路線的資料
 import { ORI_DATA } from './OriData'; //空資料 -> 初始化
 import  Detail  from '../detail/Detail';
-
+import {useNavigation} from '@react-navigation/native';
+import Icons from 'react-native-vector-icons/Entypo';
 const Map = () => {
+  
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState(initialState);
 
   const [hotPress, setHotPress] = useState(false);
   const [shopPress, setShopPress] = useState(false);
   const [holPress, setHolPress] = useState(false);
-  const [data, setData] = useState(ORI_DATA);
+  const [hotData, setHotData] = useState(ORI_DATA);
+  const [holData, setHolData] = useState(ORI_DATA);
+  const [shopData, setShopData] = useState(ORI_DATA);
   const onPressHandlerForComlete = () => {
     console.log("press complete");
   }
   const onPressHandlerForHot = () => {
     if (hotPress) {
-      setData(ORI_DATA);
+      setHotData(ORI_DATA);
     } else {
-      setData(HOT_DATA);
-      setShopPress(false);
-      setHolPress(false);
+      setHotData(HOT_DATA);
     }
     setHotPress(!hotPress); //打開
   }
   const onPressHandlerForShop = () => {
     if (shopPress) {
-      setData(ORI_DATA);
+      setShopData(ORI_DATA);
     } else {
-      setData(SHOP_DATA);
-      setHotPress(false);
-      setHolPress(false);
+      setShopData(SHOP_DATA);
     }
     setShopPress(!shopPress); //打開
   }
   const onPressHandlerForHoliday = () => {
     if (holPress) {
-      setData(ORI_DATA);
+      setHolData(ORI_DATA);
     } else {
-      setData(HOL_DATA);
-      setShopPress(false);
-      setHotPress(false);
+      setHolData(HOL_DATA);
     }
     setHolPress(!holPress); //打開
   }
   return (
-    <View style={styles.container}>
-
+    <View style={styles.container}> 
+    <TouchableOpacity
+        onPress={() => {
+            navigation.goBack();
+        }}
+        style={styles.a}>
+        <View style={styles.iconContainer}>
+          <Icons
+            name="chevron-left"
+            size={60}
+            color={'#5f695d'}
+            style={styles.iconStyle}
+          />
+        </View>
+      </TouchableOpacity>
       {/*浮動視窗-------------------------------------------------------------------------------*/}
       <Detail
         entry={modalEntry}//傳進去的資料參數
@@ -127,7 +139,7 @@ const Map = () => {
           ></Marker>
         ))}
 
-        {data.map((marker) => (
+        {hotData.map((marker) => (
           <Marker
             key={marker.id}
             coordinate={{
@@ -136,12 +148,36 @@ const Map = () => {
             }}
             pinColor={marker.pinColor}
             onPress={(e) => {
-              //console.log(e.nativeEvent);
-              //console.log('pu');
               setModalVisible(!modalVisible);
               setModalEntry(sites);
-              //console.log('site');
-              //console.log({site});
+            }}
+          ></Marker>
+        ))}
+        {holData.map((marker) => (
+          <Marker
+            key={marker.id}
+            coordinate={{
+              latitude: marker.latitude,
+              longitude: marker.longitude,
+            }}
+            pinColor={marker.pinColor}
+            onPress={(e) => {
+              setModalVisible(!modalVisible);
+              setModalEntry(sites);
+            }}
+          ></Marker>
+        ))}
+        {shopData.map((marker) => (
+          <Marker
+            key={marker.id}
+            coordinate={{
+              latitude: marker.latitude,
+              longitude: marker.longitude,
+            }}
+            pinColor={marker.pinColor}
+            onPress={(e) => {
+              setModalVisible(!modalVisible);
+              setModalEntry(sites);
             }}
           ></Marker>
         ))}
@@ -210,8 +246,8 @@ const styles = StyleSheet.create({
     zIndex: 2,
     left: 15,
     position: 'absolute',
-    top: '3%',
-    backgroundColor: '#D1DED7',
+    top: '8%',
+    backgroundColor: '#FF9797',
     width: '30%',
     height: 40,
     alignItems: 'center',
@@ -223,8 +259,8 @@ const styles = StyleSheet.create({
     zIndex: 2,
     left: 15,
     position: 'absolute',
-    top: '9%',
-    backgroundColor: '#D1DED7',
+    top: '15%',
+    backgroundColor: '#FFFFB9',
     width: '30%',
     height: 40,
     alignItems: 'center',
@@ -236,8 +272,8 @@ const styles = StyleSheet.create({
     zIndex: 2,
     left: 15,
     position: 'absolute',
-    top: '15%',
-    backgroundColor: '#D1DED7',
+    top: '22%',
+    backgroundColor: '#C4E1FF',
     width: '30%',
     height: 40,
     alignItems: 'center',
@@ -252,6 +288,31 @@ const styles = StyleSheet.create({
   textForOption: {
     fontSize: 17,
     color: '#5f695d',
+  },
+  topbar: {
+    backgroundColor: '#5f695d',
+    //flex:1,
+    height: 63,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    //opacity: 0.9,
+  },
+  a:{
+    zIndex:2,
+    position: 'absolute',
+    left:15,
+    top: "1%",
+  },
+  iconContainer: {
+    backgroundColor: '#D1DED7',
+    width: 40,
+    height: 40,
+    borderRadius: 30,
+  },
+  iconStyle: {
+    fontSize:45,
+    top: -4,
+    left: -2,
   },
 });
 export default Map; 

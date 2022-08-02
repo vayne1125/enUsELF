@@ -17,19 +17,25 @@ import Icons from 'react-native-vector-icons/Entypo';
 //import Icon from 'react-native-vector-icons/FontAwesome';
 
 const ScheduleButton = () => {
-  const showok =()=>{Alert.alert('已加入清單')  
+  const [hotPress, setHotPress] = useState(false);
+  const [hotData, setHotData] = useState(ORI_DATA);
+  const onPressHandlerForHot = () => {
+    console.log("k");
+    if (hotPress) {
+      setHotData(ORI_DATA);
+    } else {
+      setHotData(HOT_DATA);
     }
+    setHotPress(!hotPress); //打開
+  }
     return(
-      <View style = {styles.Container}>
-      <View style={styles.ChanceContainer}>
-          <Text style={styles.ChanceText}>全選</Text>
-      </View>
-      <TouchableOpacity onPress={showok}>
+    <View style = {styles.Container}>
+      <TouchableOpacity onPress={onPressHandlerForHot}>
        <View  style={styles.OkContainer}>
-         <Text style={styles.OkText}>完成</Text>
+         <Text style={styles.OkText}>熱門景點</Text>
         </View>
       </TouchableOpacity>
-  </View>
+    </View>
     );
 };
 const styles = StyleSheet.create({
@@ -37,19 +43,6 @@ const styles = StyleSheet.create({
     flex: 1,   
     backgroundColor:"#88bd80", 
     flexDirection: 'row',
-  },
-  ChanceContainer:{
-    backgroundColor: '#ffffff',
-    flex: 0.7,
-  },
-  ChanceText: {
-    //position: 'absolute',
-    left:10,
-    top: 40,
-    fontSize: 10,
-    fontWeight: 'bold',
-    color: 'black',
-    letterSpacing: 4,
   },
   OkContainer: {
     backgroundColor: '#88bd80',

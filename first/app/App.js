@@ -6,7 +6,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Launcher from './launcher/Launcher';
 //import Nav from './nav/Nav';
 import Home from './nav/Home';
-import Map from './map/Map';
+import MapHome from './map/MapHome';
 import ListScreen from './list/List';
 
 import Icons from 'react-native-vector-icons/Ionicons';
