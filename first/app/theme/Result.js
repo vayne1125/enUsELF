@@ -1,4 +1,4 @@
-import React, {Component,useState} from 'react';
+import React, {Component, useState} from 'react';
 import {
   View,
   Text,
@@ -18,6 +18,8 @@ import Icons from 'react-native-vector-icons/Ionicons';
 
 import ResultTop from './ResultTop';
 import Detail from '../detail/Detail';
+import Notice from './Notice';
+
 const Stack = createNativeStackNavigator();
 const width = Dimensions.get('screen').width;
 
@@ -28,7 +30,7 @@ const sites = [
     img: require('../../assets/site1.jpg'),
     address: '台北市士林區竹子湖路1-20號',
     star: 4.5,
-    info:'陽明山國家公園是臺灣離都會區最近的一座國家公園，這裡地貌多變、生態豐富，孕育了許多珍貴的保育類動物，幸運的話，可以在這裏發現臺灣特有種鳥類－臺灣藍鵲的蹤跡。'
+    info: '陽明山國家公園是臺灣離都會區最近的一座國家公園，這裡地貌多變、生態豐富，孕育了許多珍貴的保育類動物，幸運的話，可以在這裏發現臺灣特有種鳥類－臺灣藍鵲的蹤跡。',
   },
   {
     id: 2,
@@ -36,41 +38,56 @@ const sites = [
     img: require('../../assets/site2.webp'),
     address: '南投縣魚池鄉日月村',
     star: 4.6,
+    info: '',
   },
   {
     id: 3,
+    name: '阿里山',
+    img: require('../../assets/site6.jpg'),
+    address: '嘉義縣阿里山鄉59號',
+    star: 4.6,
+    info: '阿里山的美，除了我們印象中的日出、鐵道之外，還有層巒疊翠的山林綠意，變幻莫測的流雲、飛瀑，層次分明的茶園風光及原鄉人文采風等你體驗',
+  },
+  {
+    id: 4,
     name: '高美濕地',
     img: require('../../assets/site3.jpg'),
     address: '台中市清水區美堤街',
     star: 4.5,
+    info: '',
   },
   {
-    id: 4,
+    id: 5,
     name: '野柳地質公園',
     img: require('../../assets/site4.jpg'),
     address: '新北市萬里區野柳里港東路167-1號',
     star: 4.4,
+    info: '',
   },
   {
-    id: 5,
+    id: 6,
     name: '雪霸國家公園',
     img: require('../../assets/site5.webp'),
     address: '苗栗縣大湖鄉富興村水尾坪100號',
     star: 4.5,
+    info: '雪霸休閒農場位於新竹五峰鄉，鄰近觀霧森林遊樂區，海拔1,923公尺，擁有世外桃源般的環境與現代化住宿，小木屋區年年進行整修、衛浴備品一應俱全、淋浴設備水壓充足，是前往清泉溫泉與雪霸國家公園最舒適、豪華的住宿地點。在這裡可以遠眺著名的雪霸聖稜線，還可以在雲海環繞的戶外庭園喝咖啡，夜晚遼闊的天空與星光閃爍，讓人心情開朗！',
   },
 ];
 const initialState = {
-      "id":{},
-      "name": {},
-      "img": {},
-      "address":{},
-      "info":{},
-}
+  id: {},
+  name: {},
+  img: {},
+  address: {},
+  info: {},
+};
 const Result = ({navigation, route}) => {
   const theme = route.params;
-  //-------------------------------------------------------------------------
+
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState(initialState);
+  //-------------------------------------------------------------------------
+  const [noticeVisible, setNoticeVisible] = useState(false);
+  const [noticeEntry, setNoticeEntry] = useState(initialState);
   //--------------------------------------------------------------------------
 
   const Stars = score => {
@@ -121,12 +138,9 @@ const Result = ({navigation, route}) => {
           <View style={styles.buttonContainer2}>
             <TouchableOpacity
               onPress={() => {
-                console.log('123');
-                //------------------------------------
                 setModalVisible(!modalVisible);
                 setModalEntry(site);
                 console.log('site');
-                //-------------------------------------
               }}
               style={{flex: 2}}>
               <Text style={styles.buttonText2}>詳細資訊</Text>
@@ -135,7 +149,11 @@ const Result = ({navigation, route}) => {
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               onPress={() => {
-                console.log('456');
+                //------------------------------------
+                setNoticeVisible(!noticeVisible);
+                setNoticeEntry(site);
+                console.log('plus');
+                //-------------------------------------
               }}
               style={{flex: 1}}>
               <Text style={styles.buttonText}>加入清單</Text>
@@ -146,16 +164,27 @@ const Result = ({navigation, route}) => {
     );
   };
   return (
-   
     <View style={styles.container}>
-
       {/*浮動視窗-------------------------------------------------------------------------------*/}
-       <Detail
-    entry={modalEntry}//傳進去的資料參數
-    modalVisible={modalVisible}//可不可見
-    onClose={() => {setModalVisible(false);console.log("close")}}//關閉函式
-    />
-    {/*浮動視窗-------------------------------------------------------------------------------*/}
+      <Detail
+        entry={modalEntry} //傳進去的資料參數
+        modalVisible={modalVisible} //可不可見
+        onClose={() => {
+          setModalVisible(false);
+        }} //關閉函式
+      />
+      {/*浮動視窗-------------------------------------------------------------------------------*/}
+
+      {/*通知視窗-------------------------------------------------------------------------------*/}
+      <Notice
+        entry={noticeEntry} //傳進去的資料參數
+        noticeVisible={noticeVisible} //可不可見
+        onClose={() => {
+          console.log('2s');
+          setNoticeVisible(false);
+        }} //關閉函式
+      />
+      {/*通知視窗-------------------------------------------------------------------------------*/}
 
       {/*頂部*/}
       <View style={styles.topbar}>
