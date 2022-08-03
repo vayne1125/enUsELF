@@ -6,13 +6,13 @@ export const END_DATA = [
         pinColor: '#D1DED7'
     }, {
         id : "e2",
-        latitude: 23.503666,
-        longitude: 120.6762536,
+        latitude: 23.559718,
+        longitude: 120.5986966,
         pinColor: '#D1DED7'
     }, {
         id : "e3",
-        latitude: 23.559718,
-        longitude: 120.5986966,
+        latitude: 23.503666,
+        longitude: 120.6762536,
         pinColor: '#D1DED7'
     }, {
         id : "e4",

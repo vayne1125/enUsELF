@@ -49,20 +49,20 @@ const Map = () => {
         latitude: 24.9536339,
         longitude: 121.2234045,
       },{
+        latitude: 23.559718,
+        longitude: 120.5986966,
+      },{
         latitude: 23.503666,
         longitude: 120.6762536,
       },{
-        latitude: 23.559718,
-        longitude: 120.5986966,
+        latitude: 23.517405,
+        longitude: 120.7914543,
       },{
         latitude: 23.45498,
         longitude: 120.1392385,
       },{
         latitude: 23.4858371,
         longitude: 120.4504105,
-      },{
-        latitude: 23.517405,
-        longitude: 120.7914543,
       }
     ])
   }
