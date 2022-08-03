@@ -67,7 +67,6 @@ const Scheduleitem = () => {
                     onValueChange={setSelection}
                     uncheckedIconName = "circle-o"
                     checkedIconName = "circle-with-cross"
-                    onValueChange={setSelection}
                     //style={styles.CheckBox}
                     testID={site.id}
                     />

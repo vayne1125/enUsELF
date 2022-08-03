@@ -20,15 +20,12 @@ const ListBottom = () => {
             <View style={styles.ChanceContainer}>
                 <Text style={styles.ChanceText}>全選</Text>
             </View>
-            <TouchableOpacity
-            //wait the map
-            onPress={() => {
-                navigation.navigate('Map');
-            }}>
             <View style={styles.OkContainer}>
-                <Text style={styles.OkText}>完成</Text>
+                <TouchableOpacity
+                onPress={() => {navigation.navigate('Map');}}>
+                    <Text style={styles.OkText}>完成</Text> 
+                </TouchableOpacity>
             </View>
-        </TouchableOpacity>
     </View>
   );
 };

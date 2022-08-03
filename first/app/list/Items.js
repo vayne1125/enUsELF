@@ -11,28 +11,29 @@ import {
   } from 'react-native';
 import Icons from 'react-native-vector-icons/Entypo';
 //import CheckBox from '@react-native-community/checkbox';
-import  CheckBox  from 'react-native-checkbox';
+//import  CheckBox  from 'react-native-checkbox';
 //import CheckBox from 'react-native-icon-checkbox';
+import CheckBox from './CheckBox'
 const width = Dimensions.get('screen').width;
 
 const sites = [
     {
-      id: 1-3,
-      name: '日月潭',
-      img: require('../../assets/site2.webp'),
-      address: '南投縣魚池鄉',
+        id: 1,
+        name: '陽明山國家公園',
+        img: require('../../assets/site1.jpg'),
+        address: '台北市士林區',
     },
     {
-      id: 2-3,
-      name: '高美濕地',
-      img: require('../../assets/site3.jpg'),
-      address: '台中市清水區',
+        id: 2,
+        name: '高美濕地',
+        img: require('../../assets/site3.jpg'),
+        address: '台中市清水區',
     },
     {
-      id: 3-3,
-      name: '雪霸國家公園',
-      img: require('../../assets/site5.webp'),
-      address: '苗栗縣大湖鄉',
+        id: 3,
+        name: '雪霸國家公園',
+        img: require('../../assets/site5.webp'),
+        address: '苗栗縣大湖鄉',
     },
 ];
 
@@ -54,20 +55,12 @@ const Items = () => {
         );
     };
     const Card = ({site}) => {
-        const [isSelected, setSelection] = useState(false);
         return (
             <View style={styles.card}>
                 <View style={styles.ChanceContainer}>
-                    <CheckBox
-                    uncheckedIconName = "circle-o"
-                    checkedIconName = "circle-with-cross"
-                    onValueChange={setSelection}
-                    //style={styles.CheckBox}
-                    testID={site.id}
-                    />
+                   <CheckBox/>
                 </View>
                 <View style={styles.imageContainer}>
-                    {/*<Image style={{flex: 1, resizeMode: 'center'}} source={site.img} />*/}
                     {<Image style={styles.image} source={site.img} />}
                 </View>
                 <View style={{flex: 2}}>
