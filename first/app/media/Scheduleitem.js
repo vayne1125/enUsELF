@@ -21,12 +21,10 @@ import CheckBox from './CheckBox'
 const sites = [
     {
       id: 1,
-      name: '陽明山國家公園',
-      img: require('../../assets/site1.jpg'),
-      address: '台北市士林區竹子湖路1-20號',
-      star: 4.5,
-      info:'陽明山國家公園是臺灣離都會區最近的一座國家公園，這裡地貌多變、生態豐富，孕育了許多珍貴的保育類動物，幸運的話，可以在這裏發現臺灣特有種鳥類－臺灣藍鵲的蹤跡。'
-    },
+      name: '阿里山',
+      img: require('../../assets/site6.jpg'),
+      address: '嘉義縣阿里山鄉59號',
+     },
     {
       id: 2,
       name: '日月潭',
