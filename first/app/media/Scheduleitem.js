@@ -15,7 +15,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/AntDesign';
-import  CheckBox  from 'react-native-checkbox';
+//import  CheckBox  from 'react-native-checkbox';
+import CheckBox from './CheckBox'
 
 const sites = [
     {
@@ -61,15 +62,8 @@ const Scheduleitem = () => {
         const [isSelected, setSelection] = useState(false);
         return (
             <View style={styles.card}>
-                <View style={styles.ChanceContainer}>
-                   <CheckBox
-                    value={isSelected}
-                    onValueChange={setSelection}
-                    uncheckedIconName = "circle-o"
-                    checkedIconName = "circle-with-cross"
-                    //style={styles.CheckBox}
-                    testID={site.id}
-                    />
+                <View style={styles.boxContainer}>
+                <CheckBox/>
                 </View>
                 <View style={styles.imageContainer}>
                     {/*<Image style={{flex: 1, resizeMode: 'center'}} source={site.img} />*/}
@@ -169,9 +163,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 3,
   },
-  ChanceContainer:{
+  boxContainer:{
       flexDirection: 'column',
       flex:0.8,
+      right:10,
       alignSelf: 'center',
       justifyContent:'center',
   },
