@@ -19,9 +19,9 @@ const width = Dimensions.get('screen').width;
 const sites = [
     {
         id: 1,
-        name: '陽明山國家公園',
-        img: require('../../assets/site1.jpg'),
-        address: '台北市士林區',
+        name: '阿里山',
+        img: require('../../assets/site6.jpg'),
+        address: '嘉義縣阿里山鄉',
     },
     {
         id: 2,
