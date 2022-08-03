@@ -22,7 +22,7 @@ const ListBottom = () => {
             </View>
             <View style={styles.OkContainer}>
                 <TouchableOpacity
-                onPress={() => {navigation.navigate('Map');}}>
+                onPress={() => {navigation.navigate("Map");}}>
                     <Text style={styles.OkText}>完成</Text> 
                 </TouchableOpacity>
             </View>
