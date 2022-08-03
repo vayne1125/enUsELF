@@ -23,7 +23,7 @@ const posts = [
   {
     id: 1,
     name: 'abc123',
-    img: require('../../assets/post1.jpg'),
+    img: require('../../assets/site6.jpg'),
     content: '風景超美!爬上去很值得',
   },
   {
@@ -35,7 +35,7 @@ const posts = [
   {
     id: 3,
     name: 'ghi789',
-    img: require('../../assets/camera3.jpg'),
+    img: require('../../assets/post1.jpg'),
     content: '在這裡收穫很多美照~',
   },
   {
@@ -63,8 +63,8 @@ const MediaHome = ({navigation}) => {
           <Text style={styles.nameStyle}>{post.name}</Text>
         </View>
         <View style={styles.imageContainer}>
-          {<Image style={{flex: 1, resizeMode: 'contain'}} source={post.img} />}
-          {/*<Image style={styles.image}source={pic.img}/>*/}
+          {/*<Image style={{flex: 1, resizeMode: 'contain'}} source={post.img} />*/}
+          <Image style={styles.image}source={post.img}/>
         </View>
         <View style={styles.textContainer}>
           <Icon name={'heart'} size={24} />
@@ -141,8 +141,8 @@ const styles = StyleSheet.create({
     letterSpacing: 8,
   },
   image: {
-    width: 175,
-    height: 125,
+    width: '95%',
+    height: '95%',
   },
   textContainer: {
     //backgroundColor: '#D1DED7',

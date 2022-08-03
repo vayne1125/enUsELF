@@ -17,6 +17,7 @@
     "@react-navigation/native": "^6.0.11",
     "@react-navigation/native-stack": "^6.7.0",
     "@react-navigation/stack": "^6.2.2",
+    "@rneui/themed": "^4.0.0-rc.6",
     "deprecated-react-native-prop-types": "^2.3.0",
     "link": "^1.5.1",
     "patch-package": "^6.4.7",
