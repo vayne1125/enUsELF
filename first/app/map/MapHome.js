@@ -14,22 +14,57 @@ import { SHOP_DATA } from './ShopData';  //shop景點的資料
 import { HOL_DATA } from './HolData';  //shop景點的資料
 import { MAIN_ROUTE_DATA } from './MainRoute'; //主路線的資料
 import { ORI_DATA } from './OriData'; //空資料 -> 初始化
+import { END_DATA } from './EndData';
 import  Detail  from '../detail/Detail';
 import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Entypo';
 const Map = () => {
-  
+  const tp = [{
+    latitude: 24.9536339,
+    longitude: 121.2234045,
+  },
+  {
+    latitude: 23.517405,
+    longitude: 120.7914543,
+  }];
+  const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState(initialState);
-
+  const [tpData,setData] = useState(tp);
   const [hotPress, setHotPress] = useState(false);
   const [shopPress, setShopPress] = useState(false);
   const [holPress, setHolPress] = useState(false);
   const [hotData, setHotData] = useState(ORI_DATA);
   const [holData, setHolData] = useState(ORI_DATA);
   const [shopData, setShopData] = useState(ORI_DATA);
+  const [endData, setEndData] = useState(ORI_DATA);
   const onPressHandlerForComlete = () => {
     console.log("press complete");
+    setHotData(ORI_DATA);
+    setHolData(ORI_DATA);
+    setShopData(ORI_DATA);
+    setEndData(END_DATA);
+    setData([
+      {
+        latitude: 24.9536339,
+        longitude: 121.2234045,
+      },{
+        latitude: 23.503666,
+        longitude: 120.6762536,
+      },{
+        latitude: 23.559718,
+        longitude: 120.5986966,
+      },{
+        latitude: 23.45498,
+        longitude: 120.1392385,
+      },{
+        latitude: 23.4858371,
+        longitude: 120.4504105,
+      },{
+        latitude: 23.517405,
+        longitude: 120.7914543,
+      }
+    ])
   }
   const onPressHandlerForHot = () => {
     if (hotPress) {
@@ -120,10 +155,10 @@ const Map = () => {
         provider={PROVIDER_GOOGLE}
         style={styles.mapStyle}
         initialRegion={{
-          latitude: 25.1505495,
-          longitude: 121.7735869,
-          latitudeDelta: 0.005,
-          longitudeDelta: 0.005,
+          latitude: 24.2355194,
+          longitude: 121.007429,
+          latitudeDelta: 1.2,
+          longitudeDelta: 1.2,
         }}
         mapType="standard"
       >
@@ -151,6 +186,7 @@ const Map = () => {
               setModalVisible(!modalVisible);
               setModalEntry(sites);
             }}
+            title={marker.name}
           ></Marker>
         ))}
         {holData.map((marker) => (
@@ -181,17 +217,24 @@ const Map = () => {
             }}
           ></Marker>
         ))}
+        {endData.map((marker) => (
+          <Marker
+            key={marker.id}
+            coordinate={{
+              latitude: marker.latitude,
+              longitude: marker.longitude,
+            }}
+            pinColor={marker.pinColor}
+            onPress={(e) => {
+              setModalVisible(!modalVisible);
+              setModalEntry(sites);
+            }}
+          ></Marker>
+        ))}
 
 
         <Polyline
-          coordinates={[{
-            latitude: 25.1492020,
-            longitude: 121.7725950,
-          },
-          {
-            latitude: 25.1538028,
-            longitude: 121.7747954,
-          }]}
+          coordinates={tpData}
           strokeColor="#5f695d"
           //strokeColors={['#7F0000']}
           strokeWidth={3}

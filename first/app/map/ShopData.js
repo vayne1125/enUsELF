@@ -1,14 +1,16 @@
 export const SHOP_DATA = [
     {
         id: 's1',
-        latitude: 25.1519528,
-        longitude: 121.7751954,
-        pinColor: 'blue'
+        latitude: 23.4858371,
+        longitude: 120.4504105,
+        pinColor: 'blue',
+        name:"福義軒"
     },
     {
         id: 's2',
-        latitude: 25.1504028,
-        longitude: 121.7740954,
-        pinColor: 'blue'
+        latitude: 23.4659625,
+        longitude: 120.4195825,
+        pinColor: 'blue',
+        name:"老楊方塊酥",
     },
   ];
