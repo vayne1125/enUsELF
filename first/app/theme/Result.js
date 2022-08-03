@@ -140,7 +140,6 @@ const Result = ({navigation, route}) => {
               onPress={() => {
                 setModalVisible(!modalVisible);
                 setModalEntry(site);
-                console.log('site');
               }}
               style={{flex: 2}}>
               <Text style={styles.buttonText2}>詳細資訊</Text>
@@ -152,7 +151,6 @@ const Result = ({navigation, route}) => {
                 //------------------------------------
                 setNoticeVisible(!noticeVisible);
                 setNoticeEntry(site);
-                console.log('plus');
                 //-------------------------------------
               }}
               style={{flex: 1}}>
@@ -180,7 +178,7 @@ const Result = ({navigation, route}) => {
         entry={noticeEntry} //傳進去的資料參數
         noticeVisible={noticeVisible} //可不可見
         onClose={() => {
-          console.log('2s');
+          console.log('1.3s');
           setNoticeVisible(false);
         }} //關閉函式
       />

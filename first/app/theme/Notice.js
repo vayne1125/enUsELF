@@ -19,45 +19,14 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const width = Dimensions.get('screen').width - 50;
+const width = Dimensions.get('screen').width/2;
 const height = Dimensions.get('screen').height / 4;
 
-// const Notice = ({modalVisible, onClose}) => {
-//   return (
-//     componentDidMount() {
-//         setTimeout(() => {
-//             onClose();
-//         }, 2000);
-//       }
-//       console.log(entry),
-//       <Modal
-//         transparent={true}
-//         visible={modalVisible}>
-//         <View style={styles.modalBackGround}>
-//           <View  style={styles.modalContainer}>
-//             <Text>已加入清單</Text>
-//           </View>
-//         </View>
-//       </Modal>
-//   );
-// };
+
 export default class Notice extends Component {
-  //     constructor(props) {
-  //         super(props);
-  //         this.state = {
-  //           isShowNotice: true,
-  //         };
-  //       }
-  //   componentDidMount() {
-  //     setTimeout(() => {
-  //         this.setState({
-  //             isShowNotice: false,
-  //         });
-  //     }, 1000);
-  //   }
 
   render() {
-    console.log(this.props.entry);
+    //console.log(this.props.entry);
     console.log('close?');
     if (this.props.noticeVisible == true) {
       setTimeout(() => {
@@ -68,7 +37,8 @@ export default class Notice extends Component {
       <Modal transparent={true} visible={this.props.noticeVisible}>
         <View style={styles.modalBackGround}>
           <View style={styles.modalContainer}>
-            <Text>已加入清單</Text>
+            <Icon2 name={"checkmark-circle-outline"} size={70} color={"green"}/>
+            <Text style={styles.textStyle}>已成功加入清單</Text>
           </View>
         </View>
       </Modal>
@@ -81,9 +51,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     flex: 1,
+    justifyContent:"center",
+    alignItems:"center",
   },
   modalContainer: {
-    width: '95%',
+    width: '80%',
     height,
     //height: 600,
     backgroundColor: 'white',
@@ -92,10 +64,13 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 20,
     elevation: 20,
-    top: 65,
-    left: 10,
+    justifyContent:"space-around",
+    padding:25,
+    alignItems:"center",
+    
     //flex:1,
   },
+  textStyle:{
+    fontSize:25,
+  }
 });
-
-//export default Notice;
