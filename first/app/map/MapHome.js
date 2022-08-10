@@ -5,9 +5,8 @@ import {
   Dimensions,
   Text,
   TouchableHighlight,
-  TouchableOpacity,
 } from 'react-native';
-import MapView, { PROVIDER_GOOGLE, Marker, Polyline } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker, Polyline, Callout } from 'react-native-maps';
 import { mapStyle } from './mapStyle';
 import { HOT_DATA } from './HotData';  //hot景點的資料
 import { SHOP_DATA } from './ShopData';  //shop景點的資料
@@ -16,8 +15,7 @@ import { MAIN_ROUTE_DATA } from './MainRoute'; //主路線的資料
 import { ORI_DATA } from './OriData'; //空資料 -> 初始化
 import { END_DATA } from './EndData';
 import  Detail  from '../detail/Detail';
-import {useNavigation} from '@react-navigation/native';
-import Icons from 'react-native-vector-icons/Entypo';
+import Back from './Back';
 const Map = () => {
   const tp = [{
     latitude: 24.9536339,
@@ -27,7 +25,6 @@ const Map = () => {
     latitude: 23.517405,
     longitude: 120.7914543,
   }];
-  const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState(initialState);
   const [tpData,setData] = useState(tp);
@@ -39,7 +36,6 @@ const Map = () => {
   const [shopData, setShopData] = useState(ORI_DATA);
   const [endData, setEndData] = useState(ORI_DATA);
   const onPressHandlerForComlete = () => {
-    console.log("press complete");
     setHotData(ORI_DATA);
     setHolData(ORI_DATA);
     setShopData(ORI_DATA);
@@ -92,20 +88,6 @@ const Map = () => {
   }
   return (
     <View style={styles.container}> 
-    <TouchableOpacity
-        onPress={() => {
-            navigation.goBack();
-        }}
-        style={styles.a}>
-        <View style={styles.iconContainer}>
-          <Icons
-            name="chevron-left"
-            size={60}
-            color={'#5f695d'}
-            style={styles.iconStyle}
-          />
-        </View>
-      </TouchableOpacity>
       {/*浮動視窗-------------------------------------------------------------------------------*/}
       <Detail
         entry={modalEntry}//傳進去的資料參數
@@ -239,9 +221,11 @@ const Map = () => {
           //strokeColors={['#7F0000']}
           strokeWidth={3}
         />
+   
       </MapView>
-
-
+      <Callout>
+          <Back/>
+      </Callout>
     </View>
   );
 }
@@ -331,20 +315,6 @@ const styles = StyleSheet.create({
   textForOption: {
     fontSize: 17,
     color: '#5f695d',
-  },
-  topbar: {
-    backgroundColor: '#5f695d',
-    //flex:1,
-    height: 63,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-    //opacity: 0.9,
-  },
-  a:{
-    zIndex:2,
-    position: 'absolute',
-    left:15,
-    top: "1%",
   },
   iconContainer: {
     backgroundColor: '#D1DED7',

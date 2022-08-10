@@ -13,21 +13,20 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Entypo';
-//import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Back = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Text style={styles.textStyle}>清單</Text>
       <TouchableOpacity
         onPress={() => {
             navigation.goBack();
         }}
         style={{flex: 1}}>
+        
         <View style={styles.iconContainer}>
           <Icons
-            name="cross"
+            name="chevron-left"
             size={60}
             color={'#5f695d'}
             style={styles.iconStyle}
@@ -38,30 +37,22 @@ const Back = () => {
   );
 };
 const styles = StyleSheet.create({
-  textStyle: {
-    position: 'absolute',
-    left: 15,
-    top: 10,
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#ffffff',
-    letterSpacing: 10,
-  },
   container: {
-    flexDirection: 'row',
+    flex:1,
+    flexDirection:'row',
   },
   iconStyle: {
-    top: -6,
-    left: -6,
+    top: -4,
+    left: -2,
+    fontSize:45,
   },
   iconContainer: {
     position: 'absolute',
-    right: 24,
-    top: 6,
+    left: -180,
+    top: -350,
     backgroundColor: '#D1DED7',
-    width: 48,
-    height: 48,
-    alignSelf: 'center',
+    width: 40,
+    height: 40,
     borderRadius: 30,
   },
 });
