@@ -19,6 +19,7 @@ import 'react-native-gesture-handler';
 //import Schedule from './Schedule';
 import MediaHome from './MediaHome';
 //import List from '../list/List';
+import Post from './Post';
 
 const Stack=createStackNavigator();
 
@@ -27,6 +28,7 @@ export default class Theme extends Component {
     return (
         <Stack.Navigator initialRouteName="MediaHome" screenOptions={{header: () => null}} >
           <Stack.Screen name="MediaHome" component={MediaHome}/>
+          <Stack.Screen name="Post" component={Post}/>
           {/* <Stack.Screen name="Schedule" component={Schedule}/> */}
           {/* <Stack.Screen name="List" component={List}/> */}
         </Stack.Navigator>

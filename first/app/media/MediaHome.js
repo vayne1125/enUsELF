@@ -20,6 +20,12 @@ import MediaTop from './MediaTop';
 const width = Dimensions.get('screen').width - 20;
 
 const posts = [
+   {
+    id: 0,
+    name: 'lalala',
+    img: require('../../assets/site6.jpg'),
+    content: '風景超美!爬上去很值得',
+  },
   {
     id: 1,
     name: 'abc123',
@@ -54,6 +60,24 @@ const posts = [
 
 const MediaHome = ({navigation}) => {
   const Card = ({post}) => {
+    if(post.id==0){
+      return (
+        <View style={styles.mycard}>
+        <View style={styles.nameContainer}>
+          <View style={styles.info}>
+            <Icons name={'person-circle-outline'} size={32} />
+          </View>
+             <TouchableOpacity
+              onPress={() => {navigation.navigate("Post",post);
+              }}
+            style={{flex: 1}}>
+            <Text style={styles.buttonText}>在想些甚麼?</Text>
+          </TouchableOpacity>
+        </View>
+        
+      </View>
+      );
+    }else{
     return (
       <View style={styles.card}>
         <View style={styles.nameContainer}>
@@ -80,6 +104,7 @@ const MediaHome = ({navigation}) => {
         </View>
       </View>
     );
+  }
   };
   return (
     <View style={styles.container}>
@@ -121,6 +146,23 @@ const styles = StyleSheet.create({
     //backgroundColor:'#D1DED7',
     backgroundColor: '#ffffff',
     width,
+    marginHorizontal: 10,
+    borderRadius: 10,
+    marginBottom: 15,
+    //paddingTop:5,
+    //padding: 5,
+    borderColor: '#D1DED7',
+    //borderWidth: 2,
+    //borderStyle:'solid',
+    borderBottomWidth:3,
+    //borderRightWidth:2,
+    //borderStyle:'dashed',
+  },
+  mycard: {
+    height: 50,
+    //backgroundColor:'#D1DED7',
+    backgroundColor: '#ffffff',
+    //width,
     marginHorizontal: 10,
     borderRadius: 10,
     marginBottom: 15,
