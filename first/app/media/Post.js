@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {
   View,
   Text,
+  TextInput,
   StyleSheet,
   Dimensions,
   FlatList,
@@ -14,34 +15,51 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
+import PostTop from './PostTop'
 
 const Stack = createNativeStackNavigator();
 const width = Dimensions.get('screen').width;
 
 const Post = ({navigation, route}) => {
-    const theme = route.params;
+    const userdata = route.params;
     return (
       
-      <View >
-      <Text>122334344</Text>
+      <View style={styles.container}>
+        <View style={styles.topbar}>
+          <PostTop userdata={userdata}/>
         </View>
+        <View style={styles.userpost}>
+          <View style={styles.info}>
+           <Icons name={'person-circle-outline'} size={32} />
+             <View style={styles.namestyle}><Text>{userdata.name}</Text></View>
+          </View>
+            <TextInput placeholder="在想什麼">
+            </TextInput>          
+        </View>
+      </View>
     );
 }
 
 //button一定要有title
 const styles = StyleSheet.create({
   topbar: {
-    backgroundColor: '#5f695d',
+    backgroundColor: '#e2e2e2',//'#F2F2F2',
+    //#5f695d',
     //flex:1,
-    height: 63,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
+    height: 50,
+    borderColor: '#AAAAAA',
+    borderBottomWidth:1,
+   // borderBottomLeftRadius: 20,
+   // borderBottomRightRadius: 20,
     //opacity: 0.9,
   },
   container: {
     hight: '100%',
     backgroundColor: '#F2F2F2',
     flex: 1,
+  },
+  userpost:{
+    flexDirection:'row',
   },
   card: {
     height: 400,

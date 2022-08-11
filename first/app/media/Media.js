@@ -28,7 +28,7 @@ export default class Theme extends Component {
     return (
         <Stack.Navigator initialRouteName="MediaHome" screenOptions={{header: () => null}} >
           <Stack.Screen name="MediaHome" component={MediaHome}/>
-          <Stack.Screen name="Post" component={Post}/>
+          {/*<Stack.Screen name="Post" component={Post}>*/}
           {/* <Stack.Screen name="Schedule" component={Schedule}/> */}
           {/* <Stack.Screen name="List" component={List}/> */}
         </Stack.Navigator>
