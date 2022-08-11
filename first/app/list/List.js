@@ -23,7 +23,7 @@ const Stack=createStackNavigator();
 export default class Theme extends Component {
   render() {
     return (
-        <Stack.Navigator initialRouteName="ListHome" screenOptions={{header: () => null}} >
+        <Stack.Navigator initialRouteName="List" screenOptions={{header: () => null}} >
           <Stack.Screen name="ListHome" component={ListHome}/>
           <Stack.Screen name="Map" component={Map}/>
         </Stack.Navigator>
