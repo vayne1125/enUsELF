@@ -19,6 +19,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Notice from '../theme/Notice';
+import Weather from './Weather';
+
 const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.3;
 
@@ -70,71 +72,9 @@ const Detail = ({entry, modalVisible, onClose}) => {
                     <Icon3 name="weather-cloudy" size={23} color={'#5f695d'} />
                     天氣
                   </Text>
-                  <View style={styles.weatherContainer}>
-                    <View>
-                      <Text>週日</Text>
-                      <Icon3
-                        name="weather-cloudy"
-                        size={23}
-                        color={'#5f695d'}
-                      />
-                      <Text>14°C</Text>
-                    </View>
-                    <View>
-                      <Text>週一</Text>
-                      <Icon3
-                        name="weather-pouring"
-                        size={23}
-                        color={'#5f695d'}
-                      />
-                      <Text>19°C</Text>
-                    </View>
-                    <View>
-                      <Text>週二</Text>
-                      <Icon3
-                        name="weather-pouring"
-                        size={23}
-                        color={'#5f695d'}
-                      />
-                      <Text>18°C</Text>
-                    </View>
-                    <View>
-                      <Text>週三</Text>
-                      <Icon3
-                        name="weather-pouring"
-                        size={23}
-                        color={'#5f695d'}
-                      />
-                      <Text>19°C</Text>
-                    </View>
-                    <View>
-                      <Text>週四</Text>
-                      <Icon3
-                        name="weather-pouring"
-                        size={23}
-                        color={'#5f695d'}
-                      />
-                      <Text>18°C</Text>
-                    </View>
-                    <View>
-                      <Text>週五</Text>
-                      <Icon3
-                        name="weather-pouring"
-                        size={23}
-                        color={'#5f695d'}
-                      />
-                      <Text>17°C</Text>
-                    </View>
-                    <View>
-                      <Text>週六</Text>
-                      <Icon3
-                        name="weather-pouring"
-                        size={23}
-                        color={'#5f695d'}
-                      />
-                      <Text>17°C</Text>
-                    </View>
-                  </View>
+                  <Weather 
+                    city={entry['city']}
+                    region={entry['region']}/>
                 </View>
               </ScrollView>
             </View>

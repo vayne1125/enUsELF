@@ -29,11 +29,11 @@ export default class App extends Component {
 
   render() {
     return (
-       <NavigationContainer style={styles.container}>
+      <NavigationContainer style={styles.container}>
       {
         this.state.isShowLauncher ? 
         <Launcher /> :
-        <MapHome />
+        <Home />
       }
       </NavigationContainer> 
     )  
