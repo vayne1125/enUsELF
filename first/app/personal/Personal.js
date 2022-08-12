@@ -1,10 +1,14 @@
-import React, {Component} from 'react';
-import {View, Text, StyleSheet,Dimensions,FlatList,Image} from 'react-native';
+import React, {Component, useState} from 'react';
+import {View, Text, StyleSheet,Dimensions,FlatList,Image,TouchableOpacity} from 'react-native';
 import PersonalTop from './PersonalTop';
 import Icons from 'react-native-vector-icons/Ionicons';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 const width=Dimensions.get("screen").width/2-20
+const userdata={
+  name:"lalala",
+  Nickname:"la",
+  mail:"12323@gmail.com",
+};
 export default class Personal extends Component {
   render() {
     return (
@@ -13,21 +17,25 @@ export default class Personal extends Component {
         <View style={styles.topbar}>
           <PersonalTop />
         </View>
+        <View style={styles.iconContainer}>
+            <Icons name={'person-circle-outline'} size={180} />
+          </View>
         {/*內容*/}
-        <View
-          style={{
-            backgroundColor: 'white',
-            //flex:11,
-          }}>
-          <Text
-            style={{
-              fontSize: 40,
-              fontWeight: 'bold',
-              letterSpacing: 5,
-              color: 'black',
-            }}>
-            個人設置
-          </Text>
+        <View style={styles.data}>
+            <Text style={styles.text}>{userdata.name} </Text>
+            <Text style={styles.text}>{userdata.mail} </Text>
+        </View>
+        
+        <View style={styles.buttonContainer}>
+            <TouchableOpacity /*onPress={showok}*/>
+             <Text style={styles.editText}>編輯個人檔案</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.buttonContainer}>
+            <TouchableOpacity /*onPress={showok}*/>
+             <Text style={styles.editText}>收藏</Text>
+          </TouchableOpacity>
         </View>
       </View>
       //   <Button
@@ -49,9 +57,39 @@ const styles = StyleSheet.create({
     container: {
       hight: '100%',
       backgroundColor: '#F2F2F2',
+      alignContent:"center",
       flex: 1,
     },
-    card:{
+    iconContainer:{
+      alignItems:"center",
+    },
+    data:{
+      alignItems:"center",
+    },
+    text:{
+      fontSize:20,
+      top:5,
+    },
+    buttonContainer: {
+      backgroundColor: '#DDDDDD', //較深黃
+      //backgroundColor: '#ffc56b',//較淺黃
+      //flex: 1,
+      width: 200,
+      alignSelf: 'center',
+      alignItems:'center',
+      //right: 7,
+      top:100,
+      //bottom: 50,
+      borderRadius: 5,
+      height: 32,
+      top:200,
+      margin:10,
+      //flexDirection: 'row',
+    },
+    editText:{
+      fontSize:20,
+    },
+    /*card:{
       height:170,
       //backgroundColor:'#D1DED7',
       backgroundColor:'#ffffff',
@@ -86,5 +124,5 @@ const styles = StyleSheet.create({
       borderBottomLeftRadius: 10,
       borderBottomRightRadius: 10,
       //position:'relative',
-    }
+    }*/
   });

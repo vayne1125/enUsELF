@@ -16,6 +16,7 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 import PostTop from './PostTop'
+import PostButton from './PostButton'
 
 const Stack = createNativeStackNavigator();
 const width = Dimensions.get('screen').width;
@@ -29,13 +30,18 @@ const Post = ({navigation, route}) => {
           <PostTop userdata={userdata}/>
         </View>
         <View style={styles.userpost}>
-          <View style={styles.info}>
-           <Icons name={'person-circle-outline'} size={32} />
-             <View style={styles.namestyle}><Text>{userdata.name}</Text></View>
+          <View style={styles.iconContainer}>
+            <Icons name={'person-circle-outline'} size={45} />
           </View>
-            <TextInput placeholder="在想什麼">
-            </TextInput>          
+            <Text style={styles.nameStyle}>{userdata.name}</Text>
         </View>
+        <View style={styles.contentContainer}> 
+              <TextInput style={styles.contentText} 
+              placeholder="在想些什麼呢?" />
+        </View>
+        <View style={styles.buttonbar}>
+          <PostButton/>
+        </View>   
       </View>
     );
 }
@@ -61,40 +67,6 @@ const styles = StyleSheet.create({
   userpost:{
     flexDirection:'row',
   },
-  card: {
-    height: 400,
-    //backgroundColor:'#D1DED7',
-    backgroundColor: '#ffffff',
-    //width,
-    marginHorizontal: 10,
-    borderRadius: 10,
-    marginBottom: 15,
-    //paddingTop:5,
-    //padding: 5,
-    borderColor: '#D1DED7',
-    //borderWidth: 2,
-    //borderStyle:'solid',
-    borderBottomWidth:3,
-    //borderRightWidth:2,
-    //borderStyle:'dashed',
-  },
-  mycard: {
-    height: 50,
-    //backgroundColor:'#D1DED7',
-    backgroundColor: '#ffffff',
-    //width,
-    marginHorizontal: 10,
-    borderRadius: 10,
-    marginBottom: 15,
-    //paddingTop:5,
-    //padding: 5,
-    borderColor: '#D1DED7',
-    //borderWidth: 2,
-    //borderStyle:'solid',
-    borderBottomWidth:3,
-    //borderRightWidth:2,
-    //borderStyle:'dashed',
-  },
   textStyle: {
     fontWeight: 'bold',
     fontSize: 17,
@@ -106,18 +78,13 @@ const styles = StyleSheet.create({
     width: '95%',
     height: '95%',
   },
-  textContainer: {
-    //backgroundColor: '#D1DED7',
+  contentContainer: {
     flex: 3,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-    left: 14,
-    top: 5,
-    //borderRadius:5,
-    //borderTopWidth:2,
-    borderColor: '#D1DED7',
-    //position:'relative',
-
+  },
+  contentText: {
+    fontSize:20,
+    left:10,
+   // color:"red",
   },
   nameStyle: {
     alignSelf: 'center',
@@ -125,16 +92,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#5f695d',
     left: 15,
+    top:5,
+    letterSpacing: 1,
   },
   nameContainer: {
     flexDirection: 'row',
     backgroundColor: '#D1DED7',
     flex: 1,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
     //position:'relative',
   },
-  info: {
+  iconContainer: {
     left: 8,
     top: 5,
   },
@@ -163,6 +130,9 @@ const styles = StyleSheet.create({
     borderColor: '#D1DED7',
     borderWidth: 3,
     borderBottomWidth:10,
+  },
+  buttonbar: {
+    flex:0.35,    
   },
 });
 
