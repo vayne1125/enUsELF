@@ -22,7 +22,7 @@ const PersonalTop = () => {
       <Text style={styles.textStyle}>個人設置</Text>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('List');
+          navigation.goBack();
         }}
         style={{flex: 1}}>
         <View style={styles.iconContainer}>
@@ -39,7 +39,7 @@ const PersonalTop = () => {
 };
 const styles = StyleSheet.create({
   textStyle: {
-    position: 'absolute',
+   // position: 'absolute',
     left: 15,
     top: 10,
     fontSize: 30,

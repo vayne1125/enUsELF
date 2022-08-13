@@ -20,6 +20,7 @@ import Schedule from '../media/Schedule';
 import Post from '../media/Post';
 import Nav from './Nav';
 import List from '../list/List';
+import PersonalFile from '../personal/PersonalFile';
 
 const Stack=createStackNavigator();
 
@@ -29,6 +30,7 @@ export default class Home extends Component {
         <Stack.Navigator initialRouteName="Home" screenOptions={{header: () => null}} >
           <Stack.Screen name="Nav" component={Nav}/>
           <Stack.Screen name="Schedule" component={Schedule}/>
+           <Stack.Screen name="PersonalFile" component={PersonalFile}/>
           <Stack.Screen name="Post" component={Post}/>
           <Stack.Screen name="List" component={List}/>
         </Stack.Navigator>

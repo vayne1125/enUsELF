@@ -15,7 +15,7 @@ import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Entypo';
 //import Icon from 'react-native-vector-icons/FontAwesome';
 
-const PostTop = ({userdata}) => {
+const PersonalFileTop = ({userdata}) => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
@@ -34,14 +34,14 @@ const PostTop = ({userdata}) => {
             />
          </TouchableOpacity>
         </View>
-        <Text style={styles.textStyle}>分享旅途</Text>
+        <Text style={styles.textStyle}>編輯個人檔案</Text>
         <View style={styles.buttonContainer2}>
               <TouchableOpacity
                 //回到社群
-                onPress={() => {navigation.navigate("MediaHome");
+                onPress={() => {navigation.navigate("PersonalFile");
                }}
                style={{flex: 1}}>
-               <Text style={styles.buttonText}>發布</Text>
+               <Text style={styles.buttonText}>完成</Text>
              </TouchableOpacity>
         </View>
     </View>
@@ -49,13 +49,13 @@ const PostTop = ({userdata}) => {
 };
 const styles = StyleSheet.create({
   textStyle: {
-    //left:150,
+    right:40,
     //top: 10,
     fontSize: 20,
     fontWeight: 'bold',
     color: '#5f695d',
     letterSpacing: 2,
-    flex:1,
+    //flex:1,
   },
   container: {
     flexDirection: 'row',
@@ -80,14 +80,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fbb856',//較深黃
     //backgroundColor: '#ffc56b',//較淺黃
   //  flex: 1,
-    width: 120,
+    width: 80,
     //alignSelf: 'flex-end',
     right: 7,
     bottom: 10,
     borderRadius: 20,
   },
   buttonContainer2: {
-    flex:0.5,
+    //flex:0.5,
     backgroundColor: '#D9D9D9', //較淺黃
     //flex: 1,
     width: 65,
@@ -111,4 +111,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PostTop;
+export default PersonalFileTop;
