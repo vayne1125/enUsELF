@@ -26,7 +26,7 @@ const Stack=createStackNavigator();
 export default class Home extends Component {
   render() {
     return (
-        <Stack.Navigator initialRouteName="Nav" screenOptions={{header: () => null}} >
+        <Stack.Navigator initialRouteName="Home" screenOptions={{header: () => null}} >
           <Stack.Screen name="Nav" component={Nav}/>
           <Stack.Screen name="Schedule" component={Schedule}/>
           <Stack.Screen name="Post" component={Post}/>
