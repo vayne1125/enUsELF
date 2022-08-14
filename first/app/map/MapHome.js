@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -17,6 +17,7 @@ import { ORI_DATA } from './OriData'; //空資料 -> 初始化
 import { END_DATA } from './EndData';
 import Detail from '../detail/Detail';
 import Back from './Back';
+import { element } from 'prop-types';
 const Map = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState(initialState);
@@ -29,6 +30,9 @@ const Map = () => {
   const [shopData, setShopData] = useState(ORI_DATA);
   const [endData, setEndData] = useState(ORI_DATA);
   const [currentPlace, setCurrentPlace] = useState();
+  const hotMarkers = [];
+  const shopMarkers = [];
+  const holMarkers = [];
   const onPressHandlerForComlete = () => {
     setCompletePress(true);
     setHotData(ORI_DATA);
@@ -38,12 +42,12 @@ const Map = () => {
     getCurrentLocation();
   }
   const onPressHandlerForHot = () => {
-    if (hotPress) {
-      setHotData(ORI_DATA);
-    } else {
-      setHotData(HOT_DATA);
-    }
-    setHotPress(!hotPress); //打開
+    // if (hotPress) {
+    //   setHotData(ORI_DATA);
+    // } else {
+    //   setHotData(hotMarkers);
+    // }
+    // setHotPress(!hotPress); //打開
   }
   const onPressHandlerForShop = () => {
     if (shopPress) {
@@ -62,47 +66,107 @@ const Map = () => {
     setHolPress(!holPress); //打開
   }
   //取得當前位置
-  const getCurrentLocation = ()=>{
+  const getCurrentLocation = () => {
     var positionOption = { timeout: 50000, enableHighAccuracy: true };
-    Geolocation.getCurrentPosition(position =>{
-      setCurrentPlace({latitude:position.coords.latitude,longitude:position.coords.longitude});
-      const lat = position.coords.latitude;
-      const long = position.coords.longitude;
-      console.log(lat);
-      console.log(long);
+    Geolocation.getCurrentPosition(position => {
+      setCurrentPlace({ latitude: position.coords.latitude, longitude: position.coords.longitude });
+      // const lat = position.coords.latitude;
+      // const long = position.coords.longitude;
+      // console.log(lat);
+      // console.log(long);
     },
-    console.log("wait second..."),positionOption)
+      console.log("wait second..."), positionOption)
   }
   //取URL
-  const getPlaceURL = (lat,long,radius,type,apiKey) =>{
+  const getPlaceURL = (lat, long, radius, type, apiKey) => {
     const baseURL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?`;
     const location = `location=${lat},${long}&radius=${radius}`;
     const typeData = `&types=${type}`
-    const api = `&key=${apiKey}`;
+    const api = `&language=zh-TW&key=${apiKey}`;
     return `${baseURL}${location}${typeData}${api}`
   }
+  //取下一頁的資料
+  const getPlaceURL_next_page = (next_page_token, apiKey) => {
+    const baseURL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?`;
+    const api = `&language=zh-TW&key=${apiKey}`;
+    const next = `pagetoken=${next_page_token}`;
+    return `${baseURL}${next}${api}`
+  }
   //用2點斜率算出路上的每個點的經緯度座標
-  const getPositionArray = (array) =>{
+  const getPositionArray = (array) => {
     const rt = [];
-    array.map((i)=>(
-      rt.push({lat:i.latitude,long:i.longitude})
+    array.map((i) => (
+      rt.push({ lat: i.latitude, long: i.longitude })
     ))
     console.log(rt);
     return rt;
   }
+  //生成座標
+  const genMarker = (element) => {
+    const Obj = {};
+    Obj.id = element.place_id;
+    Obj.name = element.name;
+    Obj.photos = element.photos;
+    Obj.rating = element.rating;
+    Obj.types = element.types;
+    Obj.marker = {
+      latitude: element.geometry.location.lat,
+      longitude: element.geometry.location.lng
+    };
+    Obj.vicinity = element.vicinity;
+    Obj.opening_hours = element.opening_hours;
+    Obj.addr = element.plus_code.compound_code;
+    Obj.pinColor = 'red';
+    return Obj;
+  }
+  //取得更多資料 -- 待完成 一直出錯qq
+  // const getNextPagePlace = async(next,tar)=>{
+  //    if(next == undefined) return;
+  //    console.log("next = ",next);
+  //    await fetch(getPlaceURL_next_page(next,"AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
+  //       .then((response) => response.json())
+  //       .then((response) => {
+  //         //console.log(response);
+  //         if(response.next_page_token != undefined) getNextPagePlace(response.next_page_token,tar);
+  //         console.log("response.next_page_token = ",response.next_page_token);
+  //         response.results.map((element, index) => {
+  //           if (element.rating > 4 && element.user_ratings_total > 5000){
+  //             tar.push(genMarker(element));
+  //           }
+  //         })
+  //       })
+  //       .catch((error) => console.log(error));
+  // }
+  //取得熱門景點 條件:評論數5000 星級4
+  const getHotMarker = async(place) => {
+    await fetch(getPlaceURL(place.lat, place.long, 3000, "tourist_attraction", "AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
+      .then((response) => response.json())
+      .then((response) => {
+       // getNextPagePlace(response.next_page_token,hotMarkers);
+        response.results.map((element, index) => {
+          if (element.rating > 4 && element.user_ratings_total > 5000) {
+            //console.log(genMarker(element));
+            hotMarkers.push(genMarker(element));
+          }
+        })
+        //console.log(next_page_token);
+      })
+      .catch((error) => console.log(error));
+      setHotData(hotMarkers);
+
+      //console.log(hotMarkers);
+  }
   //算出附近的點
-  const getPlace = (array) =>{
-    const hotMarkers = [];
-    const shopMarkers = [];
-    const holMarkers = [];
-    array.map((i)=>(
+  const getPlace = (array) => {
+    array.map((i) => (
       //25.040749,121.5719052
       //getPlaceURL(i.lat,i.long,1500,"store","AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY")
-      fetch(getPlaceURL(i.lat,i.long,3000,"store,restaurant,","AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
-        .then((response) => response.json())
-        .then((response)=>{
-          console.log(response);
-        })
+      //department_store store shopping_mall supermarket
+      //tourist_attraction,zoo,spa,museum,amusement_park,aquarium,art_gallery,bar,restaurant,night_club,park,rv_park
+      //23.4487536,120.1281548
+      //半徑最大50000m
+      //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=24.9536339,121.2234045&radius=3000&types=tourist_attraction&language=%22en%22&key=AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY
+      getHotMarker(i)
     ))
   }
 
@@ -110,7 +174,7 @@ const Map = () => {
     getCurrentLocation();  //取得位置
     const PositionArray = getPositionArray(MAIN_ROUTE_DATA);
     getPlace(PositionArray);
-  },[])
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -184,8 +248,8 @@ const Map = () => {
 
         <Polyline
           coordinates={
-            (completePress?END_DATA:MAIN_ROUTE_DATA).map((data)=>(
-              {latitude:data.latitude,longitude:data.longitude}
+            (completePress ? END_DATA : MAIN_ROUTE_DATA).map((data) => (
+              { latitude: data.latitude, longitude: data.longitude }
             ))
           }
           strokeColor="#5f695d"
@@ -196,10 +260,7 @@ const Map = () => {
         {hotData.map((marker) => (
           <Marker
             key={marker.id}
-            coordinate={{
-              latitude: marker.latitude,
-              longitude: marker.longitude,
-            }}
+            coordinate={marker.marker}
             pinColor={marker.pinColor}
             onPress={(e) => {
               setModalVisible(!modalVisible);
@@ -253,7 +314,7 @@ const Map = () => {
 
       </MapView>
       <Callout>
-        <Back />
+        {/* <Back /> */}
       </Callout>
     </View>
   );
