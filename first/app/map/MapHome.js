@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import {
   StyleSheet,
   View,
@@ -6,6 +6,7 @@ import {
   Text,
   TouchableHighlight,
 } from 'react-native';
+import Geolocation from '@react-native-community/geolocation';
 import MapView, { PROVIDER_GOOGLE, Marker, Polyline, Callout } from 'react-native-maps';
 import { mapStyle } from './mapStyle';
 import { HOT_DATA } from './HotData';  //hot景點的資料
@@ -14,20 +15,12 @@ import { HOL_DATA } from './HolData';  //shop景點的資料
 import { MAIN_ROUTE_DATA } from './MainRoute'; //主路線的資料
 import { ORI_DATA } from './OriData'; //空資料 -> 初始化
 import { END_DATA } from './EndData';
-import  Detail  from '../detail/Detail';
+import Detail from '../detail/Detail';
 import Back from './Back';
 const Map = () => {
-  const tp = [{
-    latitude: 24.9536339,
-    longitude: 121.2234045,
-  },
-  {
-    latitude: 23.517405,
-    longitude: 120.7914543,
-  }];
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState(initialState);
-  const [tpData,setData] = useState(tp);
+  const [completePress, setCompletePress] = useState(false);
   const [hotPress, setHotPress] = useState(false);
   const [shopPress, setShopPress] = useState(false);
   const [holPress, setHolPress] = useState(false);
@@ -35,32 +28,14 @@ const Map = () => {
   const [holData, setHolData] = useState(ORI_DATA);
   const [shopData, setShopData] = useState(ORI_DATA);
   const [endData, setEndData] = useState(ORI_DATA);
+  const [currentPlace, setCurrentPlace] = useState();
   const onPressHandlerForComlete = () => {
+    setCompletePress(true);
     setHotData(ORI_DATA);
     setHolData(ORI_DATA);
     setShopData(ORI_DATA);
     setEndData(END_DATA);
-    setData([
-      {
-        latitude: 24.9536339,
-        longitude: 121.2234045,
-      },{
-        latitude: 23.559718,
-        longitude: 120.5986966,
-      },{
-        latitude: 23.503666,
-        longitude: 120.6762536,
-      },{
-        latitude: 23.517405,
-        longitude: 120.7914543,
-      },{
-        latitude: 23.45498,
-        longitude: 120.1392385,
-      },{
-        latitude: 23.4858371,
-        longitude: 120.4504105,
-      }
-    ])
+    getCurrentLocation();
   }
   const onPressHandlerForHot = () => {
     if (hotPress) {
@@ -86,16 +61,67 @@ const Map = () => {
     }
     setHolPress(!holPress); //打開
   }
+  //取得當前位置
+  const getCurrentLocation = ()=>{
+    var positionOption = { timeout: 50000, enableHighAccuracy: true };
+    Geolocation.getCurrentPosition(position =>{
+      setCurrentPlace({latitude:position.coords.latitude,longitude:position.coords.longitude});
+      const lat = position.coords.latitude;
+      const long = position.coords.longitude;
+      console.log(lat);
+      console.log(long);
+    },
+    console.log("wait second..."),positionOption)
+  }
+  //取URL
+  const getPlaceURL = (lat,long,radius,type,apiKey) =>{
+    const baseURL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?`;
+    const location = `location=${lat},${long}&radius=${radius}`;
+    const typeData = `&types=${type}`
+    const api = `&key=${apiKey}`;
+    return `${baseURL}${location}${typeData}${api}`
+  }
+  //用2點斜率算出路上的每個點的經緯度座標
+  const getPositionArray = (array) =>{
+    const rt = [];
+    array.map((i)=>(
+      rt.push({lat:i.latitude,long:i.longitude})
+    ))
+    console.log(rt);
+    return rt;
+  }
+  //算出附近的點
+  const getPlace = (array) =>{
+    const hotMarkers = [];
+    const shopMarkers = [];
+    const holMarkers = [];
+    array.map((i)=>(
+      //25.040749,121.5719052
+      //getPlaceURL(i.lat,i.long,1500,"store","AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY")
+      fetch(getPlaceURL(i.lat,i.long,3000,"store,restaurant,","AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
+        .then((response) => response.json())
+        .then((response)=>{
+          console.log(response);
+        })
+    ))
+  }
+
+  useEffect(() => {
+    getCurrentLocation();  //取得位置
+    const PositionArray = getPositionArray(MAIN_ROUTE_DATA);
+    getPlace(PositionArray);
+  },[])
+
   return (
-    <View style={styles.container}> 
+    <View style={styles.container}>
       {/*浮動視窗-------------------------------------------------------------------------------*/}
       <Detail
         entry={modalEntry}//傳進去的資料參數
         modalVisible={modalVisible}//可不可見
-        onClose={() => {setModalVisible(false);console.log("close")}}//關閉函式
+        onClose={() => { setModalVisible(false); console.log("close") }}//關閉函式
       />
       {/*浮動視窗-------------------------------------------------------------------------------*/}
-      
+
       {/*熱門景點*/}
       <TouchableHighlight
         style={styles.buttonForHot}
@@ -156,6 +182,17 @@ const Map = () => {
           ></Marker>
         ))}
 
+        <Polyline
+          coordinates={
+            (completePress?END_DATA:MAIN_ROUTE_DATA).map((data)=>(
+              {latitude:data.latitude,longitude:data.longitude}
+            ))
+          }
+          strokeColor="#5f695d"
+          //strokeColors={['#7F0000']}
+          strokeWidth={3}
+        />
+
         {hotData.map((marker) => (
           <Marker
             key={marker.id}
@@ -214,37 +251,29 @@ const Map = () => {
           ></Marker>
         ))}
 
-
-        <Polyline
-          coordinates={tpData}
-          strokeColor="#5f695d"
-          //strokeColors={['#7F0000']}
-          strokeWidth={3}
-        />
-   
       </MapView>
       <Callout>
-          <Back/>
+        <Back />
       </Callout>
     </View>
   );
 }
 const initialState = {
-      "id":{},
-      "name": {},
-      "img": {},
-      "address":{},
-      "info":{},
+  "id": {},
+  "name": {},
+  "img": {},
+  "address": {},
+  "info": {},
 }
-const sites = 
-  {
-    id: 1,
-    name: '陽明山國家公園',
-    img: require('../../assets/site1.jpg'),
-    address: '台北市士林區竹子湖路1-20號',
-    star: 4.5,
-    info:'陽明山國家公園是臺灣離都會區最近的一座國家公園，這裡地貌多變、生態豐富，孕育了許多珍貴的保育類動物，幸運的話，可以在這裏發現臺灣特有種鳥類－臺灣藍鵲的蹤跡。'
-  };
+const sites =
+{
+  id: 1,
+  name: '陽明山國家公園',
+  img: require('../../assets/site1.jpg'),
+  address: '台北市士林區竹子湖路1-20號',
+  star: 4.5,
+  info: '陽明山國家公園是臺灣離都會區最近的一座國家公園，這裡地貌多變、生態豐富，孕育了許多珍貴的保育類動物，幸運的話，可以在這裏發現臺灣特有種鳥類－臺灣藍鵲的蹤跡。'
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -323,7 +352,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
   iconStyle: {
-    fontSize:45,
+    fontSize: 45,
     top: -4,
     left: -2,
   },
