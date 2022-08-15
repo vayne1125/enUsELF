@@ -19,6 +19,7 @@ import Detail from '../detail/Detail';
 import Back from './Back';
 import { element } from 'prop-types';
 import { SensorType } from 'react-native-reanimated';
+import MapViewDirections from 'react-native-maps-directions';
 const Map = () => {
   const [once,setOnce] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
@@ -41,6 +42,7 @@ const Map = () => {
     //getCurrentLocation();
   }
   const onPressHandlerForHot = () => {
+    //console.log(hotData);
     setHotPress(!hotPress); //打開
   }
   const onPressHandlerForShop = () => {
@@ -88,17 +90,11 @@ const Map = () => {
   //用2點斜率算出路上的每個點的經緯度座標
   const getPositionArray = (array) => {
     const rt = [];
+    var cnt = 0;
     array.map((i) => (
-      rt.push({ lat: i.latitude, long: i.longitude })
+      cnt+=1,
+      (cnt%10==0)?rt.push({ lat: i.latitude, long: i.longitude }):1
     ))
-    for(let i=0;i<rt.length;i++){
-      for(let j=0;j<rt.length-1;j++){
-        if(rt[j].lat < rt[j+1].lat){
-          [rt[j],rt[j+1]]= [rt[j+1],rt[j]];
-        }
-      }
-    }
-    console.log(rt);
     return rt;
   }
   //生成座標
@@ -143,15 +139,22 @@ const Map = () => {
   //       .catch((error) => console.log(error));
   // }
   
-  //取得熱門景點 條件:評論數5000 星級4
+  //取得熱門景點 條件:評論數6000 星級4
   const getHotMarker = (place) => {
     fetch(getPlaceURL(place.lat, place.long,"", 3000, "tourist_attraction","AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
       .then((response) => response.json())
       .then((response) => {
        // getNextPagePlace(response.next_page_token,hotMarkers);
         response.results.map((element) => {
-          if (element.rating > 3 && element.user_ratings_total > 1000) {
-            hotData.push(genMarker(element,'red'));
+          if (element.rating > 4 && element.user_ratings_total > 6000) {
+            ok = true;
+            for(i =0;i<hotData.length;i++){
+              if(hotData[i].id === element.place_id){
+                ok = false;
+                break;
+              }
+            }
+            if(ok) hotData.push(genMarker(element,'red'));
           }
         })
       })
@@ -166,8 +169,15 @@ const Map = () => {
         .then((response) => {
          // getNextPagePlace(response.next_page_token,hotMarkers);
           response.results.map((element) => {
-            if (element.rating > 4 && element.user_ratings_total > 500) {
-              shopData.push(genMarker(element,'blue'));
+            if (element.rating > 4 && element.user_ratings_total > 1000) {
+              ok = true;
+              for(i =0;i<hotData.length;i++){
+                if(hotData[i].id === element.place_id){
+                  ok = false;
+                  break;
+                }
+              }
+              if(ok) shopData.push(genMarker(element,'blue'));
             }
           })
         })
@@ -185,20 +195,23 @@ const Map = () => {
       //半徑最大50000m
       //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=24.9536339,121.2234045&radius=3000&types=tourist_attraction&language=%22en%22&key=AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY
       getHotMarker(i),
-      getShopMarker(i),
-      console.log("嗨")
+      getShopMarker(i)
     ))
-    console.log("嗨lll")
-   // setHotData(hotMarkers);
+  }
+
+  const SetData = (array) =>{
+    const PositionArray = getPositionArray(array);
+    getPlace(PositionArray);
   }
 
   useEffect(() => {
+    console.log("pupupupu");
     if(once){
       getCurrentLocation();  //取得位置
-      const PositionArray = getPositionArray(MAIN_ROUTE_DATA);
-      getPlace(PositionArray);
+      //const PositionArray = getPositionArray(MAIN_ROUTE_DATA);
+      //getPlace(PositionArray);
     }
-    setOnce(false);
+    //setOnce(false);
   }, [])
 
   return (
@@ -249,7 +262,7 @@ const Map = () => {
 
       
       <MapView //todo:初始化位置 
-        customMapStyle={mapStyle}
+        // customMapStyle={mapStyle}
         provider={PROVIDER_GOOGLE}
         style={styles.mapStyle}
         initialRegion={{
@@ -271,8 +284,21 @@ const Map = () => {
             pinColor={marker.pinColor}
           ></Marker>
         ))}
-
-        <Polyline
+        <MapViewDirections
+          origin={{latitude: 24.9536339,longitude: 121.2234045}}
+          destination={{latitude: 23.517405,longitude: 120.7914543,}}
+          apikey={"AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"}
+          strokeWidth={3}
+          strokeColor="#5f695d"
+          onReady={(result)=>{
+            console.log("q");
+            if(once){
+              SetData(result.coordinates);
+            }
+            setOnce(false);
+          }}
+        />
+        {/* <Polyline
           coordinates={
             (completePress ? END_DATA : MAIN_ROUTE_DATA).map((data) => (
               { latitude: data.latitude, longitude: data.longitude }
@@ -281,7 +307,7 @@ const Map = () => {
           strokeColor="#5f695d"
           //strokeColors={['#7F0000']}
           strokeWidth={3}
-        />
+        /> */}
 
 {/* const sites =
 {
