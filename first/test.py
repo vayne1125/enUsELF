@@ -1,3 +1,4 @@
+from calendar import c
 from urllib import request
 import requests
 import os
@@ -5,9 +6,9 @@ import sys
 from bs4 import BeautifulSoup
 import json
 sys.stdout = open('output.txt', 'w', encoding='UTF-8')
-json_path = 'D:\\react\\enUsELF\\first\\app\\theme\\KOL.json'
-json_path1 = 'D:\\react\\enUsELF\\first\\app\\theme\\KOL_.json'
-img_path = 'D:\\react\\enUsELF\\first\\assets\\KOLImage\\'
+json_path = 'D:\\react\\enUsELF\\first\\app\\theme\\Food.json'
+json_path1 = 'D:\\react\\enUsELF\\first\\app\\theme\\Food_.json'
+img_path = 'D:\\react\\enUsELF\\first\\assets\\foodImage\\'
 
 
 def get_json_data(json_path):
@@ -15,26 +16,35 @@ def get_json_data(json_path):
     with open(json_path1, 'rb') as f:
         res = json.load(f)
     f.close()
-    url = "https://www.eztravel.com.tw/events/taiwanpromo/island.html"
+    url = "https://www.funtime.com.tw/blog/funtime/western-taichung-food"
     response = requests.get(url)
     response.encoding = 'UTF-8'
     soup = BeautifulSoup(response.text, "html.parser")
-    infos = soup.find_all("div", class_="col-md-4 col-sm-6 col-xs-12 Pro")
-    id = 154
+    infos = soup.find_all("p",class_="t5")
+    id = 0
     cnt = 0
     res2 = []
+    pro = []
+    address = []
+    time = []
+    ck = 0
     for info in infos:
-        tt = info.find("span", class_="Img").find("img")
-        t2=tt.attrs['src']
-        t2=t2.split("/")
-        if(t2[-1].split("_")[0]!="spot"):
+        if(cnt<=36 or cnt>=56):
+            if(cnt%2==0):
+                cnt+=1
+                continue
+        else:
+            if(cnt%2==1):
+                cnt+=1
+                continue
+        if(cnt==15):
+            cnt+=1
             continue
-        print(tt)
-        img_links[res[cnt]["name"]]=tt.attrs['src']
-        if(cnt == 29):
-            break
-        cnt += 1
+        img_links[res[id]["name"]]=info.find('img').attrs['data-lazy-src']
+        id+=1
+        cnt+=1
     print(img_links)
+
     # for info in res:
     #     res[cnt]["id"]=id
     #     id+=1
@@ -75,13 +85,13 @@ def get_json_data(json_path):
     #         res.append(tp)
     # f.close()
     # download picture
-    for name in img_links:
-        print(name)
-        img_content=requests.get(img_links[name])
-        with open(img_path+name+".jpg","wb") as file:
-            file.write(img_content.content)
-        file.close()
-    return res2
+    # for name in img_links:
+    #     print(name)
+    #     img_content=requests.get(img_links[name])
+    #     with open(img_path+name+".jpg","wb") as file:
+    #         file.write(img_content.content)
+    #     file.close()
+    return res
 
 
 def add_json_data(data):
@@ -93,13 +103,10 @@ def add_json_data(data):
 def transform():
     with open(json_path, 'rb') as f2:
         items = json.load(f2)
-        cnt=1
+        cnt = 1
         for item in items:
-            if(cnt<=29):
-                cnt+=1
-                continue
             print(
-                "exports."+item["name"] + "= require('../../assets/KOLImage/"+item["name"]+".jpg');")
+                "exports."+item["name"] + "= require('../../assets/foodImage/"+item["name"]+".jpg');")
     f2.close()
 
 

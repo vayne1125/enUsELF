@@ -21,6 +21,7 @@ import Detail from '../detail/Detail';
 import Notice from './Notice';
 import NatureData from './Nature';
 import KOLData from './KOL';
+import FoodData from './Food';
 import Image_link from './Image';
 
 const Stack = createNativeStackNavigator();
@@ -101,6 +102,7 @@ const themeData=
 {
   "自然":NatureData,
   "網美景點":KOLData,
+  "美食":FoodData,
 };
 const Result = ({navigation, route}) => {
   const theme = route.params;
