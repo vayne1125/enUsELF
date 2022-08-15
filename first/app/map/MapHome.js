@@ -18,43 +18,32 @@ import { END_DATA } from './EndData';
 import Detail from '../detail/Detail';
 import Back from './Back';
 import { element } from 'prop-types';
+import { SensorType } from 'react-native-reanimated';
 const Map = () => {
+  const [once,setOnce] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState(initialState);
   const [completePress, setCompletePress] = useState(false);
   const [hotPress, setHotPress] = useState(false);
   const [shopPress, setShopPress] = useState(false);
   const [holPress, setHolPress] = useState(false);
-  const [hotData, setHotData] = useState(ORI_DATA);
-  const [holData, setHolData] = useState(ORI_DATA);
-  const [shopData, setShopData] = useState(ORI_DATA);
+  const [hotData, setHotData] = useState([]);
+  const [holData, setHolData] = useState([]);
+  const [shopData, setShopData] = useState([]);
   const [endData, setEndData] = useState(ORI_DATA);
   const [currentPlace, setCurrentPlace] = useState();
-  const hotMarkers = [];
-  const shopMarkers = [];
-  const holMarkers = [];
   const onPressHandlerForComlete = () => {
     setCompletePress(true);
     setHotData(ORI_DATA);
     setHolData(ORI_DATA);
     setShopData(ORI_DATA);
     setEndData(END_DATA);
-    getCurrentLocation();
+    //getCurrentLocation();
   }
   const onPressHandlerForHot = () => {
-    // if (hotPress) {
-    //   setHotData(ORI_DATA);
-    // } else {
-    //   setHotData(hotMarkers);
-    // }
-    // setHotPress(!hotPress); //打開
+    setHotPress(!hotPress); //打開
   }
   const onPressHandlerForShop = () => {
-    if (shopPress) {
-      setShopData(ORI_DATA);
-    } else {
-      setShopData(SHOP_DATA);
-    }
     setShopPress(!shopPress); //打開
   }
   const onPressHandlerForHoliday = () => {
@@ -78,12 +67,16 @@ const Map = () => {
       console.log("wait second..."), positionOption)
   }
   //取URL
-  const getPlaceURL = (lat, long, radius, type, apiKey) => {
+  const getPlaceURL = (lat, long, keyword,radius, type, apiKey) => {
     const baseURL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?`;
     const location = `location=${lat},${long}&radius=${radius}`;
     const typeData = `&types=${type}`
+    const keyWord = `&keyword=${keyword}`
     const api = `&language=zh-TW&key=${apiKey}`;
-    return `${baseURL}${location}${typeData}${api}`
+    if(keyword==="")
+      return `${baseURL}${location}${typeData}${api}`
+    else
+      return `${baseURL}${location}${keyWord}${typeData}${api}`
   }
   //取下一頁的資料
   const getPlaceURL_next_page = (next_page_token, apiKey) => {
@@ -98,11 +91,18 @@ const Map = () => {
     array.map((i) => (
       rt.push({ lat: i.latitude, long: i.longitude })
     ))
+    for(let i=0;i<rt.length;i++){
+      for(let j=0;j<rt.length-1;j++){
+        if(rt[j].lat < rt[j+1].lat){
+          [rt[j],rt[j+1]]= [rt[j+1],rt[j]];
+        }
+      }
+    }
     console.log(rt);
     return rt;
   }
   //生成座標
-  const genMarker = (element) => {
+  const genMarker = (element,color) => {
     const Obj = {};
     Obj.id = element.place_id;
     Obj.name = element.name;
@@ -116,9 +116,14 @@ const Map = () => {
     Obj.vicinity = element.vicinity;
     Obj.opening_hours = element.opening_hours;
     Obj.addr = element.plus_code.compound_code;
-    Obj.pinColor = 'red';
+    Obj.pinColor = color;
+    var tp = Obj.addr.trim().split(' ');
+    tp[1] = tp[1].substr(0,5);
+    Obj.myAddr = tp[1] +  Obj.vicinity;
+    //console.log(Obj.myAddr);
     return Obj;
   }
+
   //取得更多資料 -- 待完成 一直出錯qq
   // const getNextPagePlace = async(next,tar)=>{
   //    if(next == undefined) return;
@@ -137,25 +142,38 @@ const Map = () => {
   //       })
   //       .catch((error) => console.log(error));
   // }
+  
   //取得熱門景點 條件:評論數5000 星級4
-  const getHotMarker = async(place) => {
-    await fetch(getPlaceURL(place.lat, place.long, 3000, "tourist_attraction", "AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
+  const getHotMarker = (place) => {
+    fetch(getPlaceURL(place.lat, place.long,"", 3000, "tourist_attraction","AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
       .then((response) => response.json())
       .then((response) => {
        // getNextPagePlace(response.next_page_token,hotMarkers);
-        response.results.map((element, index) => {
-          if (element.rating > 4 && element.user_ratings_total > 5000) {
-            //console.log(genMarker(element));
-            hotMarkers.push(genMarker(element));
+        response.results.map((element) => {
+          if (element.rating > 3 && element.user_ratings_total > 1000) {
+            hotData.push(genMarker(element,'red'));
           }
         })
-        //console.log(next_page_token);
       })
       .catch((error) => console.log(error));
-      setHotData(hotMarkers);
-
-      //console.log(hotMarkers);
   }
+
+    //取得購物景點 關鍵字:伴手禮
+    const getShopMarker = (place) => {
+      //console.log(getPlaceURL(place.lat, place.long,"伴手禮", 3000, "store,","AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"));
+      fetch(getPlaceURL(place.lat, place.long,"伴手禮", 3000, "store,","AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
+        .then((response) => response.json())
+        .then((response) => {
+         // getNextPagePlace(response.next_page_token,hotMarkers);
+          response.results.map((element) => {
+            if (element.rating > 4 && element.user_ratings_total > 500) {
+              shopData.push(genMarker(element,'blue'));
+            }
+          })
+        })
+        .catch((error) => console.log(error));
+    }
+
   //算出附近的點
   const getPlace = (array) => {
     array.map((i) => (
@@ -166,14 +184,21 @@ const Map = () => {
       //23.4487536,120.1281548
       //半徑最大50000m
       //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=24.9536339,121.2234045&radius=3000&types=tourist_attraction&language=%22en%22&key=AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY
-      getHotMarker(i)
+      getHotMarker(i),
+      getShopMarker(i),
+      console.log("嗨")
     ))
+    console.log("嗨lll")
+   // setHotData(hotMarkers);
   }
 
   useEffect(() => {
-    getCurrentLocation();  //取得位置
-    const PositionArray = getPositionArray(MAIN_ROUTE_DATA);
-    getPlace(PositionArray);
+    if(once){
+      getCurrentLocation();  //取得位置
+      const PositionArray = getPositionArray(MAIN_ROUTE_DATA);
+      getPlace(PositionArray);
+    }
+    setOnce(false);
   }, [])
 
   return (
@@ -222,7 +247,8 @@ const Map = () => {
         <Text style={styles.text}>完成</Text>
       </TouchableHighlight>
 
-      <MapView //初始化位置
+      
+      <MapView //todo:初始化位置 
         customMapStyle={mapStyle}
         provider={PROVIDER_GOOGLE}
         style={styles.mapStyle}
@@ -257,14 +283,32 @@ const Map = () => {
           strokeWidth={3}
         />
 
-        {hotData.map((marker) => (
+{/* const sites =
+{
+  id: 1,
+  name: '陽明山國家公園',
+  img: require('../../assets/site1.jpg'),
+  address: '台北市士林區竹子湖路1-20號',
+  star: 4.5,
+  info: '陽明山國家公園是臺灣離都會區最近的一座國家公園，這裡地貌多變、生態豐富，孕育了許多珍貴的保育類動物，幸運的話，可以在這裏發現臺灣特有種鳥類－臺灣藍鵲的蹤跡。'
+}; */}
+        {(hotPress?hotData:ORI_DATA).map((marker) => (
           <Marker
             key={marker.id}
             coordinate={marker.marker}
             pinColor={marker.pinColor}
+            //todo 名字過長 簡介 營業時間 按下變色
             onPress={(e) => {
               setModalVisible(!modalVisible);
-              setModalEntry(sites);
+              setModalEntry({
+                id:marker.place_id,
+                name: marker.name,
+                img: require('../../assets/site1.jpg'),
+                address: marker.myAddr,
+                star: marker.rating,
+                info: marker.name});
+              //marker.pinColor = 'green';  todo:他不是即時更新
+              console.log(marker.pinColor);
             }}
             title={marker.name}
           ></Marker>
@@ -283,20 +327,20 @@ const Map = () => {
             }}
           ></Marker>
         ))}
-        {shopData.map((marker) => (
+
+        {(shopPress?shopData:ORI_DATA).map((marker) => (
           <Marker
             key={marker.id}
-            coordinate={{
-              latitude: marker.latitude,
-              longitude: marker.longitude,
-            }}
+            coordinate={marker.marker}
             pinColor={marker.pinColor}
             onPress={(e) => {
               setModalVisible(!modalVisible);
               setModalEntry(sites);
             }}
+            title={marker.name}
           ></Marker>
         ))}
+
         {endData.map((marker) => (
           <Marker
             key={marker.id}
