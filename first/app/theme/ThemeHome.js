@@ -55,7 +55,7 @@ const ThemeHome = ({navigation}) => {
           onPress={() => {
             navigation.navigate('Result', pic);
           }}
-          style={{flex: 1,}}>
+          style={{flex: 1,width:"100%",}}>
           <View style={{flex: 3, alignItems: 'center'}}>
             {<Image style={{flex: 1, resizeMode: 'center'}} source={pic.img} />}
             {/*<Image style={styles.image}source={pic.img}/>*/}
@@ -75,16 +75,18 @@ const ThemeHome = ({navigation}) => {
       </View>
 
       {/*內容*/}
-      <FlatList
-        columnWrapperStyle={{justifyContent: 'space-between'}}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          marginTop: 25,
-          paddingBottom: 80,
-        }}
-        numColumns={2}
-        data={pics}
-        renderItem={({item}) => <Card pic={item} />}></FlatList>
+      <View style={{flex:1}}>
+        <FlatList
+          columnWrapperStyle={{justifyContent: 'space-between'}}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            marginTop: 25,
+            paddingBottom: 80,
+          }}
+          numColumns={2}
+          data={pics}
+          renderItem={({item}) => <Card pic={item} />}></FlatList>
+      </View>
     </View>
     //   <Button
     //     onPress={()=>this.props.navigation.navigate()}

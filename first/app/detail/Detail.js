@@ -20,6 +20,7 @@ import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Notice from '../theme/Notice';
 import Weather from './Weather';
+import Image_link from '../theme/Image';
 
 const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.3;
@@ -41,7 +42,9 @@ const Detail = ({entry, modalVisible, onClose}) => {
         <View style={styles.modalBackGround}>
           <View style={styles.modalContainer}>
             <View style={styles.header}>
+              <View style={{flex: 5}}>
               <Text style={styles.textStyle}>{entry['name']}</Text>
+              </View>
               <TouchableOpacity onPress={() => onClose()} style={{flex: 1}}>
                 <View style={styles.iconContainer}>
                   <Icons name="cross" size={45} color={'#5f695d'} />
@@ -50,7 +53,7 @@ const Detail = ({entry, modalVisible, onClose}) => {
             </View>
             <View style={styles.infoContainer}>
               <ScrollView>
-                <Image style={styles.image} source={entry['img']} />
+                <Image style={styles.image} source={Image_link[entry['name']]} />
                 <View style={styles.infoStyle}>
                   <Text style={styles.infoTitle}>
                     <Icon name="map-marker" size={25} color={'#5f695d'} />
@@ -58,6 +61,14 @@ const Detail = ({entry, modalVisible, onClose}) => {
                   </Text>
                   <Text style={styles.infoTextStyle}>
                     {entry['address']}
+                    {'\n'}
+                  </Text>
+                  <Text style={styles.infoTitle}>
+                    <Icon name="clock-o" size={23} color={'#5f695d'} />
+                    營業時間
+                  </Text>
+                  <Text style={styles.infoTextStyle}>
+                    {entry['time']}
                     {'\n'}
                   </Text>
                   <Text style={styles.infoTitle}>

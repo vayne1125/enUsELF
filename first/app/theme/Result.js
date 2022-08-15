@@ -19,6 +19,9 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import ResultTop from './ResultTop';
 import Detail from '../detail/Detail';
 import Notice from './Notice';
+import NatureData from './Nature';
+import KOLData from './KOL';
+import Image_link from './Image';
 
 const Stack = createNativeStackNavigator();
 const width = Dimensions.get('screen').width;
@@ -88,11 +91,16 @@ const sites = [
 const initialState = {
   id: {},
   name: {},
-  img: {},
   address: {},
   city:{},
   region:{},
   info: {},
+  time:{},
+};
+const themeData=
+{
+  "自然":NatureData,
+  "網美景點":KOLData,
 };
 const Result = ({navigation, route}) => {
   const theme = route.params;
@@ -142,11 +150,11 @@ const Result = ({navigation, route}) => {
     return (
       <View style={styles.card}>
         <View style={styles.imageContainer}>
-          {<Image style={styles.image} source={site.img} />}
+          {<Image style={styles.image} source={Image_link[site.name]} />}
         </View>
         <View style={styles.info}>
           <View style={styles.textContainer}>
-            <Text style={styles.nameStyle}>{site.name}</Text>
+            <Text numberOfLines={1} style={styles.nameStyle}>{site.name}</Text>
           </View>
           <Stars starsNum={site.star} />
           <View style={styles.buttonContainer2}>
@@ -212,11 +220,12 @@ const Result = ({navigation, route}) => {
           paddingBottom: 80,
         }}
         numColumns={1}
-        data={sites}
+        data={themeData[theme["name"]]}
         renderItem={({item}) => <Card site={item} />}></FlatList>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   topbar: {
     backgroundColor: '#5f695d',

@@ -65,6 +65,15 @@ const icon = {
   "40":require('../../assets/weatherIcon/41.png'),//無
   "41":require('../../assets/weatherIcon/41.png'),
 };
+const day={
+  "Mon":"週一",
+  "Tue":"週二",
+  "Wed":"週三",
+  "Thu":"週四",
+  "Fri":"週五",
+  "Sat":"週六",
+  "Sun":"週日",
+}
 const test = ({city, region}) => {
   const [result, setResult] = useState(initialState);
   const headers = {
@@ -94,43 +103,43 @@ const test = ({city, region}) => {
     console.log(result.icon_num[0]),
     <View style={styles.weatherContainer}>
       <View style={styles.container}>
-        <Text>{Moment(result['time'][0]).format('ddd')}</Text>
+        <Text>{day[Moment(result['time'][0]).format('ddd')]}</Text>
         <Image source={icon[result.icon_num[0]]} style={styles.image} />
         <Text>{result['max_tem'][0]}</Text>
         <Text>{result['min_tem'][0]}</Text>
       </View>
       <View style={styles.container}>
-        <Text>{Moment(result['time'][1]).format('ddd')}</Text>
+        <Text>{day[Moment(result['time'][1]).format('ddd')]}</Text>
         <Image source={icon[result.icon_num[1]]} style={styles.image} />
         <Text>{result['max_tem'][1]}</Text>
         <Text>{result['min_tem'][1]}</Text>
       </View>
       <View style={styles.container}>
-        <Text>{Moment(result['time'][2]).format('ddd')}</Text>
+        <Text>{day[Moment(result['time'][2]).format('ddd')]}</Text>
         <Image source={icon[result.icon_num[2]]} style={styles.image} />
         <Text>{result['max_tem'][2]}</Text>
         <Text>{result['min_tem'][2]}</Text>
       </View>
       <View style={styles.container}>
-        <Text>{Moment(result['time'][3]).format('ddd')}</Text>
+        <Text>{day[Moment(result['time'][3]).format('ddd')]}</Text>
         <Image source={icon[result.icon_num[3]]} style={styles.image} />
         <Text>{result['max_tem'][3]}</Text>
         <Text>{result['min_tem'][3]}</Text>
       </View>
       <View style={styles.container}>
-        <Text>{Moment(result['time'][4]).format('ddd')}</Text>
+        <Text>{day[Moment(result['time'][4]).format('ddd')]}</Text>
         <Image source={icon[result.icon_num[4]]} style={styles.image} />
         <Text>{result['max_tem'][4]}</Text>
         <Text>{result['min_tem'][4]}</Text>
       </View>
       <View style={styles.container}>
-        <Text>{Moment(result['time'][5]).format('ddd')}</Text>
+        <Text>{day[Moment(result['time'][5]).format('ddd')]}</Text>
         <Image source={icon[result.icon_num[5]]} style={styles.image} />
         <Text>{result['max_tem'][5]}</Text>
         <Text>{result['min_tem'][5]}</Text>
       </View>
       <View style={styles.container}>
-        <Text>{Moment(result['time'][6]).format('ddd')}</Text>
+        <Text>{day[Moment(result['time'][6]).format('ddd')]}</Text>
         <Image source={icon[result.icon_num[6]]} style={styles.image} />
         <Text>{result['max_tem'][6]}</Text>
         <Text>{result['min_tem'][6]}</Text>
