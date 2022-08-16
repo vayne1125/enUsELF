@@ -20,8 +20,9 @@ import Back from './Back';
 import { element } from 'prop-types';
 import { SensorType } from 'react-native-reanimated';
 import MapViewDirections from 'react-native-maps-directions';
+import { set } from 'date-fns';
 const Map = () => {
-  const [once,setOnce] = useState(true);
+  const [once, setOnce] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState(initialState);
   const [completePress, setCompletePress] = useState(false);
@@ -69,13 +70,13 @@ const Map = () => {
       console.log("wait second..."), positionOption)
   }
   //取URL
-  const getPlaceURL = (lat, long, keyword,radius, type, apiKey) => {
+  const getPlaceURL = (lat, long, keyword, radius, type, apiKey) => {
     const baseURL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?`;
     const location = `location=${lat},${long}&radius=${radius}`;
     const typeData = `&types=${type}`
     const keyWord = `&keyword=${keyword}`
     const api = `&language=zh-TW&key=${apiKey}`;
-    if(keyword==="")
+    if (keyword === "")
       return `${baseURL}${location}${typeData}${api}`
     else
       return `${baseURL}${location}${keyWord}${typeData}${api}`
@@ -87,18 +88,18 @@ const Map = () => {
     const next = `pagetoken=${next_page_token}`;
     return `${baseURL}${next}${api}`
   }
-  //用2點斜率算出路上的每個點的經緯度座標
+  //過濾導航線的點
   const getPositionArray = (array) => {
     const rt = [];
     var cnt = 0;
     array.map((i) => (
-      cnt+=1,
-      (cnt%10==0)?rt.push({ lat: i.latitude, long: i.longitude }):1
+      cnt += 1,
+      (cnt % 10 == 0) ? rt.push({ lat: i.latitude, long: i.longitude }) : 1
     ))
     return rt;
   }
   //生成座標
-  const genMarker = (element,color) => {
+  const genMarker = (element, color) => {
     const Obj = {};
     Obj.id = element.place_id;
     Obj.name = element.name;
@@ -110,13 +111,21 @@ const Map = () => {
       longitude: element.geometry.location.lng
     };
     Obj.vicinity = element.vicinity;
-    Obj.opening_hours = element.opening_hours;
+    //Obj.opening_hours = opening_hours;
     Obj.addr = element.plus_code.compound_code;
     Obj.pinColor = color;
     var tp = Obj.addr.trim().split(' ');
-    tp[1] = tp[1].substr(0,5);
-    Obj.myAddr = tp[1] +  Obj.vicinity;
-    //console.log(Obj.myAddr);
+    tp[1] = tp[1].substr(0, 5);
+    Obj.myAddr = tp[1] + Obj.vicinity;
+    rt = false;
+    url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${Obj.id}&language=zh-TW&key=AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY`;
+    //console.log(url);
+    // await fetch(url)
+    //   .then((response) => response.json())
+    //   .then((response) => {
+    //     Obj.opening_hours = response.result.opening_hours.weekday_text;
+    //   })
+    // console.log(Obj)
     return Obj;
   }
 
@@ -138,51 +147,47 @@ const Map = () => {
   //       })
   //       .catch((error) => console.log(error));
   // }
-  
+  const hotSet = new Set();
+  const shopSet = new Set();
   //取得熱門景點 條件:評論數6000 星級4
-  const getHotMarker = (place) => {
-    fetch(getPlaceURL(place.lat, place.long,"", 3000, "tourist_attraction","AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
+  const getHotMarker = async(place) => {
+    
+    await fetch(getPlaceURL(place.lat, place.long, "", 3000, "tourist_attraction", "AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
       .then((response) => response.json())
       .then((response) => {
-       // getNextPagePlace(response.next_page_token,hotMarkers);
+        // getNextPagePlace(response.next_page_token,hotMarkers);
         response.results.map((element) => {
           if (element.rating > 4 && element.user_ratings_total > 6000) {
-            ok = true;
-            for(i =0;i<hotData.length;i++){
-              if(hotData[i].id === element.place_id){
-                ok = false;
-                break;
-              }
+            if(hotSet.has(element.place_id) == false){
+              hotData.push(genMarker(element, 'red'));
+              hotSet.add(element.place_id);
+              //console.log(element.place_id);
             }
-            if(ok) hotData.push(genMarker(element,'red'));
           }
         })
       })
       .catch((error) => console.log(error));
   }
 
-    //取得購物景點 關鍵字:伴手禮
-    const getShopMarker = (place) => {
-      //console.log(getPlaceURL(place.lat, place.long,"伴手禮", 3000, "store,","AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"));
-      fetch(getPlaceURL(place.lat, place.long,"伴手禮", 3000, "store,","AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
-        .then((response) => response.json())
-        .then((response) => {
-         // getNextPagePlace(response.next_page_token,hotMarkers);
-          response.results.map((element) => {
-            if (element.rating > 4 && element.user_ratings_total > 1000) {
-              ok = true;
-              for(i =0;i<hotData.length;i++){
-                if(hotData[i].id === element.place_id){
-                  ok = false;
-                  break;
-                }
-              }
-              if(ok) shopData.push(genMarker(element,'blue'));
+  //取得購物景點 關鍵字:伴手禮
+  const getShopMarker = (place) => {
+    //console.log(getPlaceURL(place.lat, place.long,"伴手禮", 3000, "store,","AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"));
+    fetch(getPlaceURL(place.lat, place.long, "伴手禮名產", 3000, "store,", "AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
+      .then((response) => response.json())
+      .then((response) => {
+        // getNextPagePlace(response.next_page_token,hotMarkers);
+        response.results.map((element) => {
+          if (element.rating > 4 && element.user_ratings_total > 1500) {
+            if(shopSet.has(element.place_id) == false){
+              shopData.push(genMarker(element, 'blue'));
+              shopSet.add(element.place_id);
+              //console.log(element.place_id);
             }
-          })
+          }
         })
-        .catch((error) => console.log(error));
-    }
+      })
+      .catch((error) => console.log(error));
+  }
 
   //算出附近的點
   const getPlace = (array) => {
@@ -199,14 +204,14 @@ const Map = () => {
     ))
   }
 
-  const SetData = (array) =>{
+  const SetData = (array) => {
     const PositionArray = getPositionArray(array);
     getPlace(PositionArray);
   }
 
   useEffect(() => {
     console.log("pupupupu");
-    if(once){
+    if (once) {
       getCurrentLocation();  //取得位置
       //const PositionArray = getPositionArray(MAIN_ROUTE_DATA);
       //getPlace(PositionArray);
@@ -260,7 +265,7 @@ const Map = () => {
         <Text style={styles.text}>完成</Text>
       </TouchableHighlight>
 
-      
+
       <MapView //todo:初始化位置 
         // customMapStyle={mapStyle}
         provider={PROVIDER_GOOGLE}
@@ -285,14 +290,14 @@ const Map = () => {
           ></Marker>
         ))}
         <MapViewDirections
-          origin={{latitude: 24.9536339,longitude: 121.2234045}}
-          destination={{latitude: 23.517405,longitude: 120.7914543,}}
+          origin={{ latitude: 24.9536339, longitude: 121.2234045 }}
+          destination={{ latitude: 23.517405, longitude: 120.7914543, }}
           apikey={"AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"}
           strokeWidth={3}
           strokeColor="#5f695d"
-          onReady={(result)=>{
+          onReady={(result) => {
             console.log("q");
-            if(once){
+            if (once) {
               SetData(result.coordinates);
             }
             setOnce(false);
@@ -309,16 +314,7 @@ const Map = () => {
           strokeWidth={3}
         /> */}
 
-{/* const sites =
-{
-  id: 1,
-  name: '陽明山國家公園',
-  img: require('../../assets/site1.jpg'),
-  address: '台北市士林區竹子湖路1-20號',
-  star: 4.5,
-  info: '陽明山國家公園是臺灣離都會區最近的一座國家公園，這裡地貌多變、生態豐富，孕育了許多珍貴的保育類動物，幸運的話，可以在這裏發現臺灣特有種鳥類－臺灣藍鵲的蹤跡。'
-}; */}
-        {(hotPress?hotData:ORI_DATA).map((marker) => (
+        {(hotPress ? hotData : ORI_DATA).map((marker) => (
           <Marker
             key={marker.id}
             coordinate={marker.marker}
@@ -327,12 +323,14 @@ const Map = () => {
             onPress={(e) => {
               setModalVisible(!modalVisible);
               setModalEntry({
-                id:marker.place_id,
+                id: marker.place_id,
                 name: marker.name,
                 img: require('../../assets/site1.jpg'),
                 address: marker.myAddr,
                 star: marker.rating,
-                info: marker.name});
+                info: marker.name,
+                time:marker.opening_hours
+              });
               //marker.pinColor = 'green';  todo:他不是即時更新
               console.log(marker.pinColor);
             }}
@@ -349,19 +347,35 @@ const Map = () => {
             pinColor={marker.pinColor}
             onPress={(e) => {
               setModalVisible(!modalVisible);
-              setModalEntry(sites);
+              setModalEntry({
+                id: marker.place_id,
+                name: marker.name,
+                img: require('../../assets/site1.jpg'),
+                address: marker.myAddr,
+                star: marker.rating,
+                info: marker.name,
+                time:marker.opening_hours
+              });
             }}
           ></Marker>
         ))}
 
-        {(shopPress?shopData:ORI_DATA).map((marker) => (
+        {(shopPress ? shopData : ORI_DATA).map((marker) => (
           <Marker
             key={marker.id}
             coordinate={marker.marker}
             pinColor={marker.pinColor}
             onPress={(e) => {
               setModalVisible(!modalVisible);
-              setModalEntry(sites);
+              setModalEntry({
+                id: marker.place_id,
+                name: marker.name,
+                img: require('../../assets/site1.jpg'),
+                address: marker.myAddr,
+                star: marker.rating,
+                info: marker.name,
+                time:marker.opening_hours
+              });
             }}
             title={marker.name}
           ></Marker>
@@ -384,7 +398,7 @@ const Map = () => {
 
       </MapView>
       <Callout>
-        {/* <Back /> */}
+        <Back />
       </Callout>
     </View>
   );
@@ -396,15 +410,6 @@ const initialState = {
   "address": {},
   "info": {},
 }
-const sites =
-{
-  id: 1,
-  name: '陽明山國家公園',
-  img: require('../../assets/site1.jpg'),
-  address: '台北市士林區竹子湖路1-20號',
-  star: 4.5,
-  info: '陽明山國家公園是臺灣離都會區最近的一座國家公園，這裡地貌多變、生態豐富，孕育了許多珍貴的保育類動物，幸運的話，可以在這裏發現臺灣特有種鳥類－臺灣藍鵲的蹤跡。'
-};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
