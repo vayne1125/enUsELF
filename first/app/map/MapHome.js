@@ -9,8 +9,6 @@ import {
 import Geolocation from '@react-native-community/geolocation';
 import MapView, { PROVIDER_GOOGLE, Marker, Polyline, Callout } from 'react-native-maps';
 import { mapStyle } from './mapStyle';
-import { HOT_DATA } from './HotData';  //hot景點的資料
-import { SHOP_DATA } from './ShopData';  //shop景點的資料
 import { HOL_DATA } from './HolData';  //shop景點的資料
 import { MAIN_ROUTE_DATA } from './MainRoute'; //主路線的資料
 import { ORI_DATA } from './OriData'; //空資料 -> 初始化
@@ -111,24 +109,27 @@ const Map = () => {
       longitude: element.geometry.location.lng
     };
     Obj.vicinity = element.vicinity;
-    //Obj.opening_hours = opening_hours;
+    Obj.opening_hours = element.opening_hours.weekday_text;
+
     Obj.addr = element.plus_code.compound_code;
     Obj.pinColor = color;
+
     var tp = Obj.addr.trim().split(' ');
     tp[1] = tp[1].substr(0, 5);
     Obj.myAddr = tp[1] + Obj.vicinity;
-    rt = false;
-    url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${Obj.id}&language=zh-TW&key=AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY`;
-    //console.log(url);
-    // await fetch(url)
-    //   .then((response) => response.json())
-    //   .then((response) => {
-    //     Obj.opening_hours = response.result.opening_hours.weekday_text;
-    //   })
-    // console.log(Obj)
     return Obj;
   }
-
+  const getDetail = (who,place_id) =>{
+    url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&language=zh-TW&key=AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((response) => {
+        if(who == 0)
+          hotData.push(genMarker(response.result,'red'));
+        else if(who == 1)
+          shopData.push(genMarker(response.result,'blue'));
+      })
+  }
   //取得更多資料 -- 待完成 一直出錯qq
   // const getNextPagePlace = async(next,tar)=>{
   //    if(next == undefined) return;
@@ -150,18 +151,16 @@ const Map = () => {
   const hotSet = new Set();
   const shopSet = new Set();
   //取得熱門景點 條件:評論數6000 星級4
-  const getHotMarker = async(place) => {
-    
-    await fetch(getPlaceURL(place.lat, place.long, "", 3000, "tourist_attraction", "AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
+  const getHotMarker = (place) => {
+    fetch(getPlaceURL(place.lat, place.long, "", 3000, "tourist_attraction", "AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
       .then((response) => response.json())
       .then((response) => {
         // getNextPagePlace(response.next_page_token,hotMarkers);
         response.results.map((element) => {
           if (element.rating > 4 && element.user_ratings_total > 6000) {
             if(hotSet.has(element.place_id) == false){
-              hotData.push(genMarker(element, 'red'));
+              getDetail(0,element.place_id);
               hotSet.add(element.place_id);
-              //console.log(element.place_id);
             }
           }
         })
@@ -179,7 +178,7 @@ const Map = () => {
         response.results.map((element) => {
           if (element.rating > 4 && element.user_ratings_total > 1500) {
             if(shopSet.has(element.place_id) == false){
-              shopData.push(genMarker(element, 'blue'));
+              getDetail(1,element.place_id);
               shopSet.add(element.place_id);
               //console.log(element.place_id);
             }
@@ -319,7 +318,7 @@ const Map = () => {
             key={marker.id}
             coordinate={marker.marker}
             pinColor={marker.pinColor}
-            //todo 名字過長 簡介 營業時間 按下變色
+            //todo 簡介 按下變色
             onPress={(e) => {
               setModalVisible(!modalVisible);
               setModalEntry({
@@ -329,7 +328,9 @@ const Map = () => {
                 address: marker.myAddr,
                 star: marker.rating,
                 info: marker.name,
-                time:marker.opening_hours
+                time: marker.opening_hours.map((i)=>{
+                  return i + '\n';
+                })
               });
               //marker.pinColor = 'green';  todo:他不是即時更新
               console.log(marker.pinColor);
@@ -374,7 +375,9 @@ const Map = () => {
                 address: marker.myAddr,
                 star: marker.rating,
                 info: marker.name,
-                time:marker.opening_hours
+                time: marker.opening_hours.map((i)=>{
+                  return i + '\n';
+                })
               });
             }}
             title={marker.name}
@@ -398,7 +401,7 @@ const Map = () => {
 
       </MapView>
       <Callout>
-        <Back />
+        {/* <Back /> */}
       </Callout>
     </View>
   );
