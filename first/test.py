@@ -5,10 +5,11 @@ import os
 import sys
 from bs4 import BeautifulSoup
 import json
+import parsel
 sys.stdout = open('output.txt', 'w', encoding='UTF-8')
-json_path = 'D:\\react\\enUsELF\\first\\app\\theme\\Food.json'
-json_path1 = 'D:\\react\\enUsELF\\first\\app\\theme\\Food_.json'
-img_path = 'D:\\react\\enUsELF\\first\\assets\\foodImage\\'
+json_path = 'D:\\react\\enUsELF\\first\\app\\theme\\Monuments.json'
+json_path1 = 'D:\\react\\enUsELF\\first\\app\\theme\\Monuments_.json'
+img_path = 'D:\\react\\enUsELF\\first\\assets\\monumentsImage\\'
 
 
 def get_json_data(json_path):
@@ -16,75 +17,79 @@ def get_json_data(json_path):
     with open(json_path1, 'rb') as f:
         res = json.load(f)
     f.close()
-    url = "https://www.funtime.com.tw/blog/funtime/western-taichung-food"
-    response = requests.get(url)
-    response.encoding = 'UTF-8'
+    # url = "https://www.welcometw.com/台中住宿/"
+    # response = requests.get(url)
+    # response.encoding = 'UTF-8'
+    # soup = BeautifulSoup(response.text, "html.parser")
+    # infos = soup.find_all("pre")
+
+    headers = {
+        #'cookie': 'TADCID=w9vVt2L4b-8tpPAPABQCFdpBzzOuRA-9xvCxaMyI12-Pv2FD2kQ6MpDVdQGQxbVy2SOJUSLYzz8QFg7w-ve4K_fBRTsFY_kacdY; TAUnique=%1%enc%3AHARC1EMLan58P07MI4ZMcqI%2BzHGWuLGBt6TE6zQDNwk%3D; TASSK=enc%3AAL%2Bm9xwFy7%2BjYONIRS%2F2kEbA%2FtOrlDbcW%2FwCSHs44XP9R3ddE%2BKJxi3FiDuozLe0Ov2ujtnFah8i0sN%2FRdUxZGis0TClwsaz7%2B7Uv8dh%2BvHM%2FfH9C%2FcEYLBYBtn1yLmBNg%3D%3D; ServerPool=A; PMC=V2*MS.2*MD.20220311*LD.20220311; TART=%1%enc%3AfD9OzCOGTHLKxR1qLNfmGZurd9xliidHT5bmQw2z505WnDQeBJdPDWc64WFlxikpNox8JbUSTxk%3D; TATravelInfo=V2*A.2*MG.-1*HP.2*FL.3*RS.1; TASID=9CCF4EA45B4141A8B5E4F03D36821474; ak_bmsc=31083286436C157F558D959D23D94849~000000000000000000000000000000~YAAQqF1kX6lPsVF/AQAAhTyqdw8F4+OoWZwjJCqsKUS/ykkFQHkXml5We7WY4q6KDUeIkm36a0Fs41jt7Jx6MFwnzloND2Iry1Iuwnj5I7oPxsI1RTjfGXSr408rscnzKPJHpRIXwuuiL+SNZxp233DOhrqrbTQ2cDTiGPk8qAYcLYq1OHpyOjLpc6L2zPbiSdvfDAuz2ujLUbWZV33YVrUd1UcmBMKJOSS/C12JeFdLCcjOihJvc4Zlu5HMYQUBdjTaV4zll3YO9YWxdm5pUT57vjI3WjxNhLwOXS93F3ogo/VOzmvk2n4rptCDH1vffz7Dpmp4yRn0dnX8RtiKiolFV00rBs0yC9Nxa67F0qPkJMMS6t6pNo+08PIre7VIiAIxQoWUNNiBiNDXeQ==; PAC=AHc5Ocqizh5jbN81AnjCtcF7k5P54vojrezhxeu8s4DdhkIZSMBuxXUioaVGVVo99Ysr_IbYXqNKjsddfzI8psluCp1NwuwQiBOvmdhP_r8ntVPeHXBc5u782Y8i4KrpV0a29aTnmykzihOxeEfilEfHZOGZxkWN8GRLwHay1MUpBazo7e4Pdtl3tndoYnNIDWcRtHzZJIDE9odWhqOzUE0%3D; TAReturnTo=%1%%2FRestaurants-g188590-Amsterdam_North_Holland_Province.html; roybatty=TNI1625!AJyUZ5ejQVombB9Jv3PVhqqhyMhwsanzT2C6omYz8l6mQNt%2FP5v6CLnnlymNXfhMwolnHznm%2BAmT81YSeygcVxnWHERn16eR747rX9fmWmeCMoris6ffxKTbJ6%2BjObZ6rmffv7I5wEGZ009WzKMlVA%2BXJAheGoIKHOD3gUDLVYlY%2C1; TATrkConsent=eyJvdXQiOiIiLCJpbiI6IkFMTCJ9; TASession=V2ID.9CCF4EA45B4141A8B5E4F03D36821474*SQ.9*LS.PageMoniker*GR.82*TCPAR.12*TBR.1*EXEX.98*ABTR.74*PHTB.27*FS.67*CPU.8*HS.recommended*ES.popularity*DS.5*SAS.popularity*FPS.oldFirst*LF.en*FA.1*DF.0*TRA.false*LD.188590*EAU._; TAUD=LA-1646980142821-1*RDD-1-2022_03_11*LG-863371-2.1.F.*LD-863372-.....; _pbjs_userid_consent_data=3524755945110770; _li_dcdm_c=.tripadvisor.com; _lc2_fpi=b140173de591--01fxvvhm5q52dte42gshbn1234; __gads=ID=887c76ae8964a5bc:T=1646981079:S=ALNI_MYwTZNsJPdidCGF3BTM3pOV79wAUg; _lr_sampling_rate=100; _lr_retry_request=true; _lr_env_src_ats=false; __li_idex_cache=%7B%7D; pbjs_li_nonid=%7B%7D; __vt=bI5Nl4_3wIiyQqd-ABQCIf6-ytF7QiW7ovfhqc-AvRvwyUuxl21BvNUgBcewLtYtxhD9pK8plYHHUPpFuGJQzlL9HjsNiQXGwLu0f-XidRXohA9m08ary-La12XkjuKCU2QeR3ijnhWjQ8bnjvOcAaUKoA; bm_sv=867C80B13B2E8AE707E1A411B950E849~HDnKV8jbSFu9eHNiLb/p3fK3KqcxdMjPpLXFMD9YvvwLoQEuDGPgZZwEDhQeezJZJhdrUxX02mvzmDqkV7615Fm508wASvLcLsXmW/6+1K9pDp2UuCDIYbuZgv/2m76YS7Og/SBcU6xkIVnHhMVqpxWfro/1T3kO1LdXuFuprhA=; OptanonConsent=isGpcEnabled=0&datestamp=Fri+Mar+11+2022+14%3A53%3A51+GMT%2B0800+(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)&version=6.30.0&isIABGlobal=false&hosts=&consentId=cc7e2f72-5007-428f-a72e-392f9741b69d&interactionCount=1&landingPath=https%3A%2F%2Fwww.tripadvisor.com%2FRestaurants-g188590-Amsterdam_North_Holland_Province.html&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36',
+    }
+    url = 'https://www.tripadvisor.com.tw/Attractions-g293910-Activities-c47-t17-oa60-Taiwan.html'
+    response = requests.get(url, headers=headers)
+    html_data = response.text
+    selector = parsel.Selector(html_data)
     soup = BeautifulSoup(response.text, "html.parser")
-    infos = soup.find_all("p",class_="t5")
-    id = 0
-    cnt = 0
-    res2 = []
-    pro = []
-    address = []
-    time = []
-    ck = 0
-    for info in infos:
-        if(cnt<=36 or cnt>=56):
-            if(cnt%2==0):
-                cnt+=1
-                continue
-        else:
-            if(cnt%2==1):
-                cnt+=1
-                continue
-        if(cnt==15):
-            cnt+=1
+    # 提取标签的属性内容 ::attr(href) 链接
+    link_list = soup.find_all("div",class_="alPVI eNNhq PgLKC tnGGX")
+    id=61
+    res2=[]
+    for link in link_list:
+        link = 'https://www.tripadvisor.com.tw/' + link.find("a").attrs["href"]
+        detail_html = requests.get(link, headers=headers)
+        soup2 = BeautifulSoup(detail_html.text, "html.parser")
+        address=soup2.find("div",class_="Kxegy _R w _Z GA")
+        print(address)
+        if(id-61+1==28):
+            id+=1
             continue
-        img_links[res[id]["name"]]=info.find('img').attrs['data-lazy-src']
+        img_links[res[id-61]["name"]]=address.attrs["style"][21:-1]
         id+=1
-        cnt+=1
-    print(img_links)
+        #print(soup2.find("button",class_="UikNM _G B- _S _T c G_ P0 bYExr wnNQG raEkE"))
+        #res2.append(tp)
 
-    # for info in res:
-    #     res[cnt]["id"]=id
-    #     id+=1
-    #     cnt+=1
-    # print(res)
+# for info in res:
+#     res[cnt]["id"]=id
+#     id+=1
+#     cnt+=1
+# print(res)
 
-    # with open(json_path,'rb')as file:
-    #     res=json.load(file)
-    # file.close()
-    # print(res)
-    # print("----------------------------")
-    # with open(json_path1,'rb') as f:
-    #     items=json.load(f)
-    #     id=19
-    #     for item in items:
-    #         tp={}
-    #         tp["id"]=id
-    #         id=id+1
-    #         tp["name"]=item["TR_CNAME"]
-    #         tp["address"]=item["TR_POSITION"]
-    #         tp["city"]=item["TR_POSITION"][0:3]
-    #         tp["region"]=item["TR_POSITION"][3:]
-    #         tp["star"]=0
-    #         tp["info"]=item["GUIDE_CONTENT"]
-    #         tp["time"]="無"
-    #         url=item["URL"]
-    #         response = requests.get(url)
-    #         soup = BeautifulSoup(response.text, "html.parser")
-    #         div=soup.find("div",class_="img_block")
-    #         img=div.find("img").attrs['src']
-    #         img_links[item["TR_CNAME"]]="https://recreation.forest.gov.tw/"+img
-    #         img_links[item["TR_CNAME"]]=item["IMG_URL"]
-    #         item["IMG_URL"]="https://recreation.forest.gov.tw/"+img
-    #         item["IMG"]=item["TR_CNAME"]+".jpg"
-    #         address=item["ADMIN_Name"]
-    #         item["city"]=address[0:3]
-    #         item["region"]=address[3:]
-    #         res.append(tp)
-    # f.close()
-    # download picture
+# with open(json_path,'rb')as file:
+#     res=json.load(file)
+# file.close()
+# print(res)
+# print("----------------------------")
+# with open(json_path1,'rb') as f:
+#     items=json.load(f)
+#     id=19
+#     for item in items:
+#         tp={}
+#         tp["id"]=id
+#         id=id+1
+#         tp["name"]=item["TR_CNAME"]
+#         tp["address"]=item["TR_POSITION"]
+#         tp["city"]=item["TR_POSITION"][0:3]
+#         tp["region"]=item["TR_POSITION"][3:]
+#         tp["star"]=0
+#         tp["info"]=item["GUIDE_CONTENT"]
+#         tp["time"]="無"
+#         url=item["URL"]
+#         response = requests.get(url)
+#         soup = BeautifulSoup(response.text, "html.parser")
+#         div=soup.find("div",class_="img_block")
+#         img=div.find("img").attrs['src']
+#         img_links[item["TR_CNAME"]]="https://recreation.forest.gov.tw/"+img
+#         img_links[item["TR_CNAME"]]=item["IMG_URL"]
+#         item["IMG_URL"]="https://recreation.forest.gov.tw/"+img
+#         item["IMG"]=item["TR_CNAME"]+".jpg"
+#         address=item["ADMIN_Name"]
+#         item["city"]=address[0:3]
+#         item["region"]=address[3:]
+#         res.append(tp)
+# f.close()
+# download picture
     # for name in img_links:
     #     print(name)
     #     img_content=requests.get(img_links[name])
@@ -106,7 +111,7 @@ def transform():
         cnt = 1
         for item in items:
             print(
-                "exports."+item["name"] + "= require('../../assets/foodImage/"+item["name"]+".jpg');")
+                "exports."+item["name"] + "= require('../../assets/monumentsImage/"+item["name"]+".jpg');")
     f2.close()
 
 
