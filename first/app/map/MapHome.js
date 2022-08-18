@@ -13,7 +13,7 @@ import { HOL_DATA } from './HolData';  //shop景點的資料
 import { MAIN_ROUTE_DATA } from './MainRoute'; //主路線的資料
 import { ORI_DATA } from './OriData'; //空資料 -> 初始化
 import { END_DATA } from './EndData';
-import Detail from '../detail/Detail';
+import DetailForMap from '../detail/DetailForMap';
 import Back from './Back';
 import { element } from 'prop-types';
 import { SensorType } from 'react-native-reanimated';
@@ -101,7 +101,7 @@ const Map = () => {
     const Obj = {};
     Obj.id = element.place_id;
     Obj.name = element.name;
-    Obj.photos = element.photos;
+    Obj.photo = element.photos[0];
     Obj.rating = element.rating;
     Obj.types = element.types;
     Obj.marker = {
@@ -117,11 +117,13 @@ const Map = () => {
     var tp = Obj.addr.trim().split(' ');
     tp[1] = tp[1].substr(0, 5);
     Obj.myAddr = tp[1] + Obj.vicinity;
+    Obj.city = tp[1].substr(2,3);
+    Obj.reg = Obj.vicinity.substr(0,3);
     return Obj;
   }
-  const getDetail = (who,place_id) =>{
+  const getDetail = async(who,place_id) =>{
     url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&language=zh-TW&key=AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY`;
-    fetch(url)
+    await fetch(url)
       .then((response) => response.json())
       .then((response) => {
         if(who == 0)
@@ -151,8 +153,8 @@ const Map = () => {
   const hotSet = new Set();
   const shopSet = new Set();
   //取得熱門景點 條件:評論數6000 星級4
-  const getHotMarker = (place) => {
-    fetch(getPlaceURL(place.lat, place.long, "", 3000, "tourist_attraction", "AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
+  const getHotMarker = async(place) => {
+    await fetch(getPlaceURL(place.lat, place.long, "", 3000, "tourist_attraction", "AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
       .then((response) => response.json())
       .then((response) => {
         // getNextPagePlace(response.next_page_token,hotMarkers);
@@ -221,7 +223,7 @@ const Map = () => {
   return (
     <View style={styles.container}>
       {/*浮動視窗-------------------------------------------------------------------------------*/}
-      <Detail
+      <DetailForMap
         entry={modalEntry}//傳進去的資料參數
         modalVisible={modalVisible}//可不可見
         onClose={() => { setModalVisible(false); console.log("close") }}//關閉函式
@@ -302,16 +304,6 @@ const Map = () => {
             setOnce(false);
           }}
         />
-        {/* <Polyline
-          coordinates={
-            (completePress ? END_DATA : MAIN_ROUTE_DATA).map((data) => (
-              { latitude: data.latitude, longitude: data.longitude }
-            ))
-          }
-          strokeColor="#5f695d"
-          //strokeColors={['#7F0000']}
-          strokeWidth={3}
-        /> */}
 
         {(hotPress ? hotData : ORI_DATA).map((marker) => (
           <Marker
@@ -330,7 +322,15 @@ const Map = () => {
                 info: marker.name,
                 time: marker.opening_hours.map((i)=>{
                   return i + '\n';
-                })
+                }),
+                city: marker.city,
+                region: marker.reg,
+                source:{
+                  uri:
+                  // "https://images.unsplash.com/photo-1552334405-4929565998d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+                  `https://maps.googleapis.com/maps/api/place/photo?photoreference=${marker.photo.photo_reference}&sensor=false&maxheight=${marker.photo.height}&maxwidth=${marker.photo.width}&key=AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY`
+                }
+               // image:
               });
               //marker.pinColor = 'green';  todo:他不是即時更新
               console.log(marker.pinColor);
