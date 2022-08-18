@@ -88,12 +88,15 @@ const Map = () => {
   }
   //過濾導航線的點
   const getPositionArray = (array) => {
+    //const rt = [{lat:24.9536339,long:121.2234045}];
     const rt = [];
     var cnt = 0;
     array.map((i) => (
       cnt += 1,
+      //rt.push({ lat: i.latitude, long: i.longitude })
       (cnt % 10 == 0) ? rt.push({ lat: i.latitude, long: i.longitude }) : 1
     ))
+    
     return rt;
   }
   //生成座標
@@ -109,7 +112,12 @@ const Map = () => {
       longitude: element.geometry.location.lng
     };
     Obj.vicinity = element.vicinity;
-    Obj.opening_hours = element.opening_hours.weekday_text;
+    if(element.opening_hours != undefined){
+      Obj.opening_hours = element.opening_hours; //weekday_text
+      if(Obj.opening_hours.weekday_text == undefined) {
+        Obj.opening_hours = Obj.opening_hours.weekday_text;
+      }else Obj.opening_hours = ["無提供此資訊"];
+    }
 
     Obj.addr = element.plus_code.compound_code;
     Obj.pinColor = color;
@@ -132,34 +140,48 @@ const Map = () => {
           shopData.push(genMarker(response.result,'blue'));
       })
   }
-  //取得更多資料 -- 待完成 一直出錯qq
-  // const getNextPagePlace = async(next,tar)=>{
-  //    if(next == undefined) return;
-  //    console.log("next = ",next);
-  //    await fetch(getPlaceURL_next_page(next,"AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
-  //       .then((response) => response.json())
-  //       .then((response) => {
-  //         //console.log(response);
-  //         if(response.next_page_token != undefined) getNextPagePlace(response.next_page_token,tar);
-  //         console.log("response.next_page_token = ",response.next_page_token);
-  //         response.results.map((element, index) => {
-  //           if (element.rating > 4 && element.user_ratings_total > 5000){
-  //             tar.push(genMarker(element));
-  //           }
-  //         })
-  //       })
-  //       .catch((error) => console.log(error));
-  // }
   const hotSet = new Set();
   const shopSet = new Set();
+
+  //取得更多資料 -- 待完成 一直出錯qq
+  const getNextPagePlace = (next,tar,cnt,rating,total)=>{
+    //console.log("next = ",next);
+      fetch(getPlaceURL_next_page(next,"AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
+        .then((response) => response.json())
+        .then((response) => {
+         //console.log(response);
+         if(response.next_page_token != undefined) {
+            getNextPagePlace(response.next_page_token,tar,cnt+1,rating,total);
+            console.log(cnt," ");
+         }else{
+            console.log("undefine ",cnt," ",response);
+         }
+          response.results.map((element, index) => {
+            //console.log(element);
+            if (element.rating > rating && element.user_ratings_total > total) {
+              if(tar == 0){
+                if(hotSet.has(element.place_id) == false){
+                  console.log("enter");
+                  getDetail(tar,element.place_id);
+                  hotSet.add(element.place_id);
+                }
+              }
+          }
+          })
+        })
+        .catch((error) => console.log("have error: ",error));
+  }
+  
   //取得熱門景點 條件:評論數6000 星級4
-  const getHotMarker = async(place) => {
-    await fetch(getPlaceURL(place.lat, place.long, "", 3000, "tourist_attraction", "AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
+  const getHotMarker = (place,rating,total) => {
+    fetch(getPlaceURL(place.lat, place.long, "", 50000, "tourist_attraction", "AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
+    //await fetch('https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=AeJbb3fIO_KPNeg_m_LTpCyqI8Dz8JGIqzPY97NnjAP_L4HE9WN_8kb0jBwHY8KlI_VLD5jcwwpOncvmRAMC99DGQ79ybtqYxlspNBnKg9nNDljID9LaWH_vznfwLtsGpJlK2DxoR8wOFmR3xJPbMGwU4YzJPSKw3UvLDNKQzq9XngWke7KleFn-KTNUjXz7RDWXZ2U-EDU9Voc95qrGyPbICupg8FKZX2_NcdFwTRIwK2GrLNhjI7JIhlBSWuczHz7OkgeNVwPHb_T-uqOeO9enLLSx1FVllmMkxTvdNpR9zsWHXx-Zijxbu51GPMCRAYfxF2qwe8W6RsFmFAqCt8Wqs9XdiSK_zE9MsQTNlBtAapaP05I1KC8gCmK7kOGpgP2Wish_8Ihy2si9D16AEEArjTzqOY2pCPexvd6ovJZqGuhEVPMa_asO13zgUouBiGqY1u6UUDr8pWCT1ghH9HoJ90UV_mj49jfpqbLkbuXf13LbrEMRiJ2YdE55kix8bVzUInFVs0UTM_1LeUa71CuVF30xyzTtUuvyv9ZLfqQVWl3Ztf-3Ykpm770jeSIeQAkdLnCLEOCnwXu6_ikMuc9TLY7uojnDHXNSK6H5js8AVNtOQIa4Hl9h9kYEFr2ui-QVQPQn3V0WuxSKDTJ7GT7Go79s6UST&language=zh-TW&key=AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY') 
       .then((response) => response.json())
       .then((response) => {
-        // getNextPagePlace(response.next_page_token,hotMarkers);
+      if(response.next_page_token!=undefined) getNextPagePlace(response.next_page_token,0,0,rating,total);
+        //console.log(response);
         response.results.map((element) => {
-          if (element.rating > 4 && element.user_ratings_total > 6000) {
+          if (element.rating > rating && element.user_ratings_total > total) {
             if(hotSet.has(element.place_id) == false){
               getDetail(0,element.place_id);
               hotSet.add(element.place_id);
@@ -170,9 +192,8 @@ const Map = () => {
       .catch((error) => console.log(error));
   }
 
-  //取得購物景點 關鍵字:伴手禮
+  //取得購物景點 關鍵字:伴手禮名產
   const getShopMarker = (place) => {
-    //console.log(getPlaceURL(place.lat, place.long,"伴手禮", 3000, "store,","AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"));
     fetch(getPlaceURL(place.lat, place.long, "伴手禮名產", 3000, "store,", "AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
       .then((response) => response.json())
       .then((response) => {
@@ -200,7 +221,7 @@ const Map = () => {
       //23.4487536,120.1281548
       //半徑最大50000m
       //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=24.9536339,121.2234045&radius=3000&types=tourist_attraction&language=%22en%22&key=AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY
-      getHotMarker(i),
+      getHotMarker(i,3.8,4000),
       getShopMarker(i)
     ))
   }
@@ -219,14 +240,13 @@ const Map = () => {
     }
     //setOnce(false);
   }, [])
-
   return (
     <View style={styles.container}>
       {/*浮動視窗-------------------------------------------------------------------------------*/}
       <DetailForMap
         entry={modalEntry}//傳進去的資料參數
         modalVisible={modalVisible}//可不可見
-        onClose={() => { setModalVisible(false); console.log("close") }}//關閉函式
+        onClose={() => { setModalVisible(false);}}//關閉函式
       />
       {/*浮動視窗-------------------------------------------------------------------------------*/}
 
@@ -327,7 +347,6 @@ const Map = () => {
                 region: marker.reg,
                 source:{
                   uri:
-                  // "https://images.unsplash.com/photo-1552334405-4929565998d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
                   `https://maps.googleapis.com/maps/api/place/photo?photoreference=${marker.photo.photo_reference}&sensor=false&maxheight=${marker.photo.height}&maxwidth=${marker.photo.width}&key=AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY`
                 }
                // image:
@@ -371,13 +390,18 @@ const Map = () => {
               setModalEntry({
                 id: marker.place_id,
                 name: marker.name,
-                img: require('../../assets/site1.jpg'),
                 address: marker.myAddr,
                 star: marker.rating,
                 info: marker.name,
                 time: marker.opening_hours.map((i)=>{
                   return i + '\n';
-                })
+                }),
+                city: marker.city,
+                region: marker.reg,
+                source:{
+                  uri:
+                  `https://maps.googleapis.com/maps/api/place/photo?photoreference=${marker.photo.photo_reference}&sensor=false&maxheight=${marker.photo.height}&maxwidth=${marker.photo.width}&key=AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY`
+                }
               });
             }}
             title={marker.name}

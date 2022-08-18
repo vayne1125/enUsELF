@@ -69,8 +69,8 @@ const DetailForMap = ({entry, modalVisible, onClose}) => {
           entry={noticeEntry} //傳進去的資料參數
           noticeVisible={noticeVisible} //可不可見
           onClose={() => {
-            console.log('1.3s --2');
             setNoticeVisible(false);
+            onClose();
           }} //關閉函式
         />
         <View style={styles.modalBackGround}>
@@ -128,7 +128,6 @@ const DetailForMap = ({entry, modalVisible, onClose}) => {
                 onPress={() => {
                   setNoticeVisible(!noticeVisible);
                   setNoticeEntry(entry);
-                  console.log('plus2');
                 }}
                 style={{flex: 1}}>
                 <Text style={styles.buttonText}>加入行程表</Text>
