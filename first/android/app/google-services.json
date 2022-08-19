@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "372448762955",
+    "project_id": "enuself-baaa6",
+    "storage_bucket": "enuself-baaa6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:372448762955:android:32f22fe1fbe93344ce41ce",
+        "android_client_info": {
+          "package_name": "com.first"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "372448762955-9p9baqrpj6kct0gs93q3lg7l6fi5l3pi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfNmBcx9W8I57e5gl8YfC0j5i2BzW_Brs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "372448762955-9p9baqrpj6kct0gs93q3lg7l6fi5l3pi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
