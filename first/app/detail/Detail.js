@@ -48,7 +48,7 @@ const Detail = ({entry, modalVisible, onClose}) => {
             key={cnt}
             name={'star-half-empty'}
             color={'#ffb129'}
-            size={18}
+            size={24}
           />,
         );
         tp = 0;
