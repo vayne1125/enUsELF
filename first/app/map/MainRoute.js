@@ -1,9 +1,9 @@
 export const MAIN_ROUTE_DATA = [
     {
-      //24.9536339,121.2234045
+      //24.1365593,120.6835935
       id: 'm1',
-      latitude: 24.9536339,
-      longitude: 121.2234045,
+      latitude: 24.1365593,
+      longitude: 120.6835935,
       pinColor: '#D1DED7'
     },
     {

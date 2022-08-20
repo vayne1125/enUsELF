@@ -1,0 +1,58 @@
+//取得更多資料 -- 待完成 一直出錯qq
+  const getNextPagePlace = async(next,tar,rating,total)=>{
+   // console.log("next = ",next);
+    var cnt = 0;
+    while(next != undefined){
+      const response = await fetch(getPlaceURL_next_page(next,"AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"));
+      const val = await response.json();
+      console.log(cnt);
+      cnt+=1;
+      next = val.next_page_token;
+      //if(next == undefined) console.log(val);
+      val.results.map((element) => {
+        if (element.rating > rating && element.user_ratings_total > total) {
+          if(tar == 0){
+            if(hotSet.has(element.place_id) == false){
+              console.log("enter");
+              getDetail(tar,element.place_id);
+              hotSet.add(element.place_id);
+            }
+          }
+      }
+      })
+    }
+      // fetch(getPlaceURL_next_page(next,"AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"))
+      //   .then((response) => response.json())
+      //   .then((response) => {
+      //    //console.log(response);
+      //    if(response.next_page_token != undefined) {
+      //       getNextPagePlace(response.next_page_token,tar,cnt+1,rating,total);
+      //       console.log(cnt," ");
+      //    }else{
+      //       console.log("undefine ",cnt," ",response);
+      //    }
+      //     response.results.map((element, index) => {
+      //       //console.log(element);
+      //       if (element.rating > rating && element.user_ratings_total > total) {
+      //         if(tar == 0){
+      //           if(hotSet.has(element.place_id) == false){
+      //             console.log("enter");
+      //             getDetail(tar,element.place_id);
+      //             hotSet.add(element.place_id);
+      //           }
+      //         }
+      //     }
+      //     })
+      //   })
+      //   .catch((error) => console.log("have error: ",error));
+  }
+
+
+
+  //取下一頁的資料
+  const getPlaceURL_next_page = (next_page_token, apiKey) => {
+    const baseURL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?`;
+    const api = `&language=zh-TW&key=${apiKey}`;
+    const next = `pagetoken=${next_page_token}`;
+    return `${baseURL}${next}${api}`
+  }

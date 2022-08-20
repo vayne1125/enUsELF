@@ -5,7 +5,6 @@ import {
   Dimensions,
   Text,
   TouchableHighlight,
-  Image,
 } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import MapView, { PROVIDER_GOOGLE, Marker, Polyline, Callout } from 'react-native-maps';
@@ -16,9 +15,11 @@ import { ORI_DATA } from './OriData'; //空資料 -> 初始化
 import { END_DATA } from './EndData';
 import DetailForMap from '../detail/DetailForMap';
 import Back from './Back';
+import { element } from 'prop-types';
+import { SensorType } from 'react-native-reanimated';
 import MapViewDirections from 'react-native-maps-directions';
-import Hotplace from './Hotplace'
-import Shopplace from './Shopplace'
+import { set } from 'date-fns';
+import { resolvePath } from 'react-native-reanimated/lib/types/lib/reanimated2/animation/styleAnimation';
 const Map = () => {
   const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
   const [once, setOnce] = useState(true);
@@ -42,6 +43,7 @@ const Map = () => {
     //getCurrentLocation();
   }
   const onPressHandlerForHot = () => {
+    //console.log(hotData);
     setHotPress(!hotPress); //打開
   }
   const onPressHandlerForShop = () => {
@@ -67,61 +69,152 @@ const Map = () => {
     },
       console.log("wait second..."), positionOption)
   }
+  //取URL
+  const getPlaceURL = (lat, long, keyword, radius, type, apiKey) => {
+    const baseURL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?`;
+    const location = `location=${lat},${long}&radius=${radius}`;
+    const typeData = `&types=${type}`
+    const keyWord = `&keyword=${keyword}`
+    const api = `&language=zh-TW&key=${apiKey}`;
+    if (keyword === "")
+      return `${baseURL}${location}${typeData}${api}`
+    else
+      return `${baseURL}${location}${keyWord}${typeData}${api}`
+  }
 
   //過濾導航線的點 最多抓20個點
   const getPositionArray = (array) => {
     const rt = [];
     const sz = array.length;
+    console.log("len ",array.length);
     var a = 1;
     if(sz>20)
       a = sz/20;
     var cnt = 0;
-    array.map((i) => {
-      cnt += 1;
+    array.map((i) => (
+      cnt += 1,
       //rt.push({ lat: i.latitude, long: i.longitude })
-      (cnt % a == 0) ? rt.push({ lat: i.latitude, lng: i.longitude }) : 1;
-    })
+      (cnt % a == 0) ? rt.push({ lat: i.latitude, long: i.longitude }) : 1
+    ))
     return rt;
+  }
+  //生成座標
+  const genMarker = (element, color) => {
+    const Obj = {};
+    Obj.id = element.place_id;
+    Obj.info = element.name;
+    var tp = Obj.info.trim().split(' ');
+    Obj.name = tp[0];
+    Obj.photo = element.photos[0];
+    Obj.rating = element.rating;
+    Obj.types = element.types;
+    Obj.marker = {
+      latitude: element.geometry.location.lat,
+      longitude: element.geometry.location.lng
+    };
+    Obj.vicinity = element.vicinity;
+    if(element.opening_hours != undefined){
+      Obj.opening_hours = element.opening_hours; //weekday_text
+      if(Obj.opening_hours.weekday_text != undefined) {
+        Obj.opening_hours = Obj.opening_hours.weekday_text;
+      }else Obj.opening_hours = ["無提供此資訊"];
+    }else  Obj.opening_hours = ["無提供此資訊"];
+
+    Obj.addr = element.plus_code.compound_code;
+    Obj.pinColor = color;
+
+    tp = Obj.addr.trim().split(' ');
+    tp[1] = tp[1].substr(0, 5);
+    Obj.myAddr = tp[1] + Obj.vicinity;
+    Obj.city = tp[1].substr(2,3);
+    Obj.reg = Obj.vicinity.substr(0,3);
+    return Obj;
+  }
+
+  const getDetail = async(who,place_id) =>{
+    url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&language=zh-TW&key=${API_key}`;
+    await fetch(url)
+      .then((response) => response.json())
+      .then((response) => {
+        if(who == 0)
+          hotData.push(genMarker(response.result,'red'));
+        else if(who == 1)
+          shopData.push(genMarker(response.result,'blue'));
+      })
   }
 
   const hotSet = new Set();
   const shopSet = new Set();
   const totalData = [];
   const cityTable = {'台北':0,'新北':1,'桃園':2,'新竹':3,'彰化':4,'嘉義':5,'苗栗':6,'雲林':7,'南投':8,'台中':9,'台南':10};
+  //取得熱門景點
+  const getHotMarker = async(place,radius,rating,total) => {
+    //console.log(getPlaceURL(place.lat, place.long, "熱門景點+推薦+必去", radius, "tourist_attraction", "AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"));
+    await fetch(getPlaceURL(place.lat, place.long, "熱門景點+推薦+必去", radius, "tourist_attraction", API_key))
+    //await fetch('https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=AeJbb3fIO_KPNeg_m_LTpCyqI8Dz8JGIqzPY97NnjAP_L4HE9WN_8kb0jBwHY8KlI_VLD5jcwwpOncvmRAMC99DGQ79ybtqYxlspNBnKg9nNDljID9LaWH_vznfwLtsGpJlK2DxoR8wOFmR3xJPbMGwU4YzJPSKw3UvLDNKQzq9XngWke7KleFn-KTNUjXz7RDWXZ2U-EDU9Voc95qrGyPbICupg8FKZX2_NcdFwTRIwK2GrLNhjI7JIhlBSWuczHz7OkgeNVwPHb_T-uqOeO9enLLSx1FVllmMkxTvdNpR9zsWHXx-Zijxbu51GPMCRAYfxF2qwe8W6RsFmFAqCt8Wqs9XdiSK_zE9MsQTNlBtAapaP05I1KC8gCmK7kOGpgP2Wish_8Ihy2si9D16AEEArjTzqOY2pCPexvd6ovJZqGuhEVPMa_asO13zgUouBiGqY1u6UUDr8pWCT1ghH9HoJ90UV_mj49jfpqbLkbuXf13LbrEMRiJ2YdE55kix8bVzUInFVs0UTM_1LeUa71CuVF30xyzTtUuvyv9ZLfqQVWl3Ztf-3Ykpm770jeSIeQAkdLnCLEOCnwXu6_ikMuc9TLY7uojnDHXNSK6H5js8AVNtOQIa4Hl9h9kYEFr2ui-QVQPQn3V0WuxSKDTJ7GT7Go79s6UST&language=zh-TW&key=AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY') 
+      .then((response) => response.json())
+      .then((response) => {
+        response.results.map((element) => {
+          // var tp = element.plus_code.compound_code.trim().split(' ');
+          // tp = tp[1].substr(2,2); 
+          //if (element.rating >= rating && element.user_ratings_total > total) {
+            if(hotSet.has(element.place_id) == false){
+              totalData.push(element.place_id)
+              console.log(totalData.length);
+              //getDetail(0,element.place_id);
+              // cityTable[tp].push([element.place_id,element.rating,element.user_ratings_total]);
+              // console.log(city[cityTable[tp]]);
+              //if(cityTable[tp] == undefined) console.log(tp);
+              hotSet.add(element.place_id);
+            }
+          //}
+        })
+      })
+      .catch((error) => console.log(error));
+  }
 
-  const getDis = (pos,place) => {
-    rt = (pos.lat - place.location.lat)*(pos.lat - place.location.lat) + (pos.lng - place.location.lng)*(pos.lng - place.location.lng);
-    return Math.sqrt(rt)
+  //取得購物景點 關鍵字:伴手禮名產
+  const getShopMarker = async(place,radius,rating,total) => {
+    await fetch(getPlaceURL(place.lat, place.long, "伴手禮名產+旅遊必買+在地名產", radius, "store,", API_key))
+      .then((response) => response.json())
+      .then((response) => {
+        // getNextPagePlace(response.next_page_token,hotMarkers);
+        response.results.map((element) => {
+          if (element.rating >= rating && element.user_ratings_total > total) {
+            console.log("shop");
+            if(shopSet.has(element.place_id) == false){
+              getDetail(1,element.place_id);
+              shopSet.add(element.place_id);
+              //console.log(element.place_id);
+            }
+          }
+        })
+      })
+      .catch((error) => console.log(error));
   }
 
   //算出附近的點
   const getPlace = (array) => {
-    //1 -> 111km  0.1 -> 11km
-    console.log(Hotplace.length);
-    array.map((pos) => {
-      for(i=0;i<Hotplace.length;i++){
-        if(hotSet.has(Hotplace[i].id))
-          continue; 
-        if(getDis(pos,Hotplace[i]) <= 0.3){
-          hotData.push(Hotplace[i]);
-          hotSet.add(Hotplace[i].id);
-       }
-      }
-      for(i=0;i<Shopplace.length;i++){
-        if(shopSet.has(Shopplace[i].id))
-          continue; 
-        if(getDis(pos,Shopplace[i]) <= 0.3){
-          shopData.push(Shopplace[i]);
-          shopSet.add(Shopplace[i].id);
-       }
-      }
-    })
+    array.map((i) => (
+      //25.040749,121.5719052
+      //getPlaceURL(i.lat,i.long,1500,"store","AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY")
+      //department_store store shopping_mall supermarket
+      //tourist_attraction,zoo,spa,museum,amusement_park,aquarium,art_gallery,bar,restaurant,night_club,park,rv_park
+      //23.4487536,120.1281548
+      //半徑最大50000m
+      //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=24.9536339,121.2234045&radius=3000&types=tourist_attraction&language=%22en%22&key=AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY
+      getHotMarker(i,20000,4,3000),
+      getShopMarker(i,20000,4,3000)
+    ))
   }
 
   const SetData = (array) => {
     const PositionArray = getPositionArray(array);  //一般的fun
-    //console.log(PositionArray);
-    getPlace(PositionArray);
+    getPlace(PositionArray); //調用fetch的fun
+    console.log("my pupu ",pu);
+    setTimeout(()=>{
+      
+    },3000);
   }
 
   useEffect(() => {
@@ -135,7 +228,6 @@ const Map = () => {
   }, [])
   return (
     <View style={styles.container}>
-
       {/*浮動視窗-------------------------------------------------------------------------------*/}
       <DetailForMap
         entry={modalEntry}//傳進去的資料參數
@@ -182,16 +274,14 @@ const Map = () => {
 
 
       <MapView //todo:初始化位置 
-        //customMapStyle={mapStyle}
+        // customMapStyle={mapStyle}
         provider={PROVIDER_GOOGLE}
         style={styles.mapStyle}
-        //to do 取起終的中點
         initialRegion={{
-          //23.8269823,120.737534
-          latitude: 23.8269823,
-          longitude: 120.737534,
-          latitudeDelta: 0.7, //數字越小 地圖道路越大
-          longitudeDelta: 0.7,
+          latitude: 24.2355194,
+          longitude: 121.007429,
+          latitudeDelta: 1.2,
+          longitudeDelta: 1.2,
         }}
         mapType="standard"
       >
@@ -203,20 +293,18 @@ const Map = () => {
               latitude: marker.latitude,
               longitude: marker.longitude,
             }}
-          >
-            <Image source={require('../../assets/pin/green.png')}/>
-          </Marker>
+            pinColor={marker.pinColor}
+          ></Marker>
         ))}
         <MapViewDirections
           //optimizeWaypoints={true}
-          //24.1365593,120.6835935
-          origin={{ latitude: 24.1365593, longitude: 120.6835935 }} //to do抓當前位置
-          destination={{ latitude: 23.517405, longitude: 120.7914543, }} //to do抓最遠目的地
-          apikey={API_key}
+          origin={{ latitude: 24.9536339, longitude: 121.2234045 }}
+          destination={{ latitude: 23.517405, longitude: 120.7914543, }}
+          apikey={"AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY"}
           strokeWidth={3}
           strokeColor="#5f695d"
           onReady={(result) => {
-            console.log("pol ready");
+            console.log("q");
             if (once) {
               SetData(result.coordinates);
             }
@@ -228,8 +316,8 @@ const Map = () => {
           <Marker
             tracksViewChanges={false}
             key={index}
-            coordinate={{latitude:marker.location.lat,longitude:marker.location.lng}}
-            pinColor='red'
+            coordinate={marker.marker}
+            pinColor={marker.pinColor}
             //todo 簡介 按下變色
             onPress={(e) => {
               setModalVisible(!modalVisible);
@@ -247,18 +335,22 @@ const Map = () => {
                 region: marker.reg,
                 source:{
                   uri:
-                  `https://maps.googleapis.com/maps/api/place/photo?photoreference=${marker.photo.photo_reference}&sensor=false&maxheight=${marker.photo.height}&maxwidth=${marker.photo.width}&key=${API_key}`
+                  `https://maps.googleapis.com/maps/api/place/photo?photoreference=${marker.photo.photo_reference}&sensor=false&maxheight=${marker.photo.height}&maxwidth=${marker.photo.width}&key=AIzaSyDnwR27cx8SVopcsqtZ0nYfGXM_2LQbgGY`
                 }
+               // image:
               });
               //marker.pinColor = 'green';  todo:他不是即時更新
               //console.log(marker.pinColor);
             }}
-          >   
-          <View style={styles.markerCss}>
-              <Text style={styles.markerText}>{marker.name}</Text>
-              <Image style={styles.markerImg}source={require('../../assets/pin/red.png')}/>
-          </View> 
-              
+            icon={require('../../assets/pin/red_pin96.png')}
+            //title={marker.name}
+            //anchor={{x: 0.5, y: 1}}
+            //centerOffset={{x: 0.5, y: 1}}
+          >  
+              <View style={styles.markerCss}>
+                {/* <Image source={require('../../assets/pin/red_pin.jpg')}/> */}
+                <Text style={styles.markerText}>{marker.name}</Text>
+              </View>
             </Marker>
         ))}
         {holData.map((marker) => (
@@ -274,6 +366,7 @@ const Map = () => {
               setModalEntry({
                 id: marker.place_id,
                 name: marker.name,
+               
                 address: marker.myAddr,
                 star: marker.rating,
                 info: marker.name,
@@ -286,9 +379,8 @@ const Map = () => {
         {(shopPress ? shopData : ORI_DATA).map((marker) => (
           <Marker
             key={marker.id}
-            coordinate={{latitude:marker.location.lat,longitude:marker.location.lng}}
-            pinColor='blue'
-            title={marker.name}
+            coordinate={marker.marker}
+            pinColor={marker.pinColor}
             onPress={(e) => {
               setModalVisible(!modalVisible);
               setModalEntry({
@@ -308,10 +400,8 @@ const Map = () => {
                 }
               });
             }}
-          >
-            <Image source={require('../../assets/pin/blue.png')}/>
-            <Text style={styles.markerText}>{marker.name}</Text>
-          </Marker>
+            title={marker.name}
+          ></Marker>
         ))}
 
         {endData.map((marker) => (
@@ -414,14 +504,23 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: '#5f695d',
   },
+  iconContainer: {
+    backgroundColor: '#D1DED7',
+    width: 40,
+    height: 40,
+    borderRadius: 30,
+  },
+  iconStyle: {
+    fontSize: 45,
+    top: -4,
+    left: -2,
+  },
   markerCss:{
-    alignItems: 'center',
-    justifyContent: 'center',
+
   },
   markerText:{
-    color: '#5f695d',
-    fontSize: 15,
-    fontWeight: "bold",
-  },
+    color: '#000',
+    //fontWeight: "bold",
+  }
 });
 export default Map; 
