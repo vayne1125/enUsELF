@@ -23,8 +23,8 @@ const posts = [
    {
     id: 0,
     name: 'lalala',
-    img: require('../../assets/site6.jpg'),
-    content: '風景超美!爬上去很值得',
+    img: null,
+    content: null,
   },
   {
     id: 1,

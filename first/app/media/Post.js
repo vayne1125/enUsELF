@@ -6,9 +6,10 @@ import {
   TextInput,
   StyleSheet,
   Dimensions,
-  FlatList,
   Image,
-  Button,
+  ScrollView,
+  ActivityIndicator,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
@@ -18,8 +19,11 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/AntDesign';//照片icon
 import Icon3 from 'react-native-vector-icons/MaterialIcons';//行李箱icon
+import Iconcross from 'react-native-vector-icons/Entypo';
+import storage from '@react-native-firebase/storage';
+import firestore from '@react-native-firebase/firestore';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import PostTop from './PostTop'
+//import PostTop from './PostTop'
 //import PostButton from './PostButton'
 
 const Stack = createNativeStackNavigator();
@@ -31,12 +35,9 @@ const Post = ({navigation, route}) => {
     const [image, setImage] = useState(null);
     const [data, setdata] = useState(null);
     const [uploading, setUploading] = useState(false);
-    const [transferred, setTransferred] = useState(0);
+    //const [transferred, setTransferred] = useState(0);
+    const [post, setPost] = useState(null);
 
-
-    
-    const showok =()=>{Alert.alert('已加入清單')  
-    }
     const selectImage = () => {
         const options = {
           maxWidth: 2000,
@@ -59,11 +60,102 @@ const Post = ({navigation, route}) => {
         });
       };
 
+      const SubmitPost = async ()=>{
+        const imageUrl=await uploadImage();//等他做完我才跑
+          console.log('imageUrl:',imageUrl);
+
+        firestore()
+        .collection('posts')
+        .add({
+          userid:userdata.name,
+          post:post,
+          postImg:imageUrl,
+          postTime:firestore.Timestamp.fromDate(new Date()),
+          //coomments:null,
+        }).then(()=>{
+          console.log('Post add !');
+          setPost(null);
+          Alert.alert("成功發布");
+          
+        }).catch((error)=>{
+          console.log('Post Failed!',error);
+        });
+          
+      }
+    
+      const uploadImage = async () => {
+        const  uri  = image.uri;
+            console.log('image= ',image.uri);
+        let filename = uri.substring(uri.lastIndexOf('/') + 1);
+            console.log('filename= ',filename);
+      //have change
+        setUploading(true);
+            // transferred(0);//轉圈圈
+        
+        const storageRef=storage().ref(`photos/${filename}`);//creat a folder
+        const task=storageRef.putFile(uri);
+       task.on('state_changed', taskSnapshot => {
+      //file size<256 kb(very small size)" 所以我的上傳才會只有0跟100%
+        console.log(`${taskSnapshot.bytesTransferred} transferred out of ${taskSnapshot.totalBytes}`);
+      });
+      
+       try{
+         //等待一下
+         await  task;
+        //get download Url storageRef是自訂的路徑
+        //上面的filename是我們自己設的
+        const Url = await storageRef.getDownloadURL();
+         console.log("url= ",Url)
+         setUploading(false);
+         setImage(null);
+         return Url;
+       }catch(e)
+       {
+         console.log(e);
+         setImage(null);
+         return null;
+       }
+      
+      };
+
     return (
       
       <View style={styles.container}>
+      {/*topbar */}
         <View style={styles.topbar}>
-          <PostTop userdata={userdata}/>
+          <View style={styles.Topcontainer}>
+              <View style={styles.TopiconContainer}>
+                  <TouchableOpacity
+                    //返回建X
+                    onPress={() => {
+                      navigation.goBack();
+                    }}
+                    style={{flex: 1}}>
+                    <Iconcross
+                        name="cross"
+                        size={40}
+                          color={'#5f695d'}
+                          style={styles.TopiconStyle}
+                      />
+                  </TouchableOpacity>
+                  </View>
+                  <Text style={styles.ToptextStyle}>分享旅途</Text>
+                  <View style={styles.TopbuttonContainer2}>
+                  {uploading ? (
+                  <View style={styles.cycleContainer}>
+                  {/* <Progress.Bar progress={transferred} width={300} />*/}
+                  {/*轉圈圈*/} 
+                   <ActivityIndicator size='small' color='#2f2f2f'/>
+                    </View>
+                    ) : ( <TouchableOpacity
+                        //回到社群
+                        onPress={SubmitPost}
+                      style={{flex: 1}}>
+                      <Text style={styles.TopbuttonText}>發布</Text>
+                    </TouchableOpacity>
+                  )}
+                  </View>
+              </View>
         </View>
         <View style={styles.userpost}>
           <View style={styles.iconContainer}>
@@ -71,11 +163,15 @@ const Post = ({navigation, route}) => {
           </View>
             <Text style={styles.nameStyle}>{userdata.name}</Text>
         </View>
-        <View style={styles.contentContainer}> 
-            {image != null ? <Image source={{uri: image.uri}} style={{  height: 300}} /> : null}
+        <ScrollView style={styles.contentContainer}> 
+            {image != null ? <Image source={{uri: image.uri}} style={{  height: 300,width:width}} /> : null}
               <TextInput style={styles.contentText} 
+              multiline        
+              //numberOfLines={4}
+              value={post}
+              onChangeText={(context)=>setPost(context)}
               placeholder="在想些什麼呢?" />
-        </View>
+        </ScrollView>
         
         {/*下方bar*/}
         <View style={styles.buttonbar}>
@@ -126,6 +222,73 @@ const styles = StyleSheet.create({
    // borderBottomRightRadius: 20,
     //opacity: 0.9,
   },
+  ToptextStyle: {
+    //left:150,
+    //top: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#5f695d',
+    letterSpacing: 2,
+    flex:1,
+  },
+  Topcontainer: {
+    flexDirection: 'row',
+    margin:20,
+    left:0,
+  },
+  TopiconStyle: {
+    top: -6,
+    left: -6,
+  },
+  TopiconContainer: {
+   // right: 340,
+   // top: 8,
+    //backgroundColor: '#D1DED7',
+    flex:1,
+    width: 48,
+    height: 48,
+    alignSelf: 'center',
+    borderRadius: 30,
+  },
+  TopbuttonContainer: {
+    backgroundColor: '#fbb856',//較深黃
+    //backgroundColor: '#ffc56b',//較淺黃
+  //  flex: 1,
+    width: 120,
+    //alignSelf: 'flex-end',
+    right: 7,
+    bottom: 10,
+    borderRadius: 20,
+  },
+  TopbuttonContainer2: {
+    flex:0.5,
+    backgroundColor: '#D9D9D9', //較淺黃
+    //flex: 1,
+    width: 65,
+    //alignSelf: 'flex-end',
+   // left:320,
+    //bottom: 10,
+    borderRadius: 3,
+    height: 25,
+   // top:13,
+    //flexDirection: 'row',
+  },
+  TopbuttonText: {
+    fontWeight: '800',
+    fontSize: 17,
+    color: '#AAAAAA',
+   // top: 1,
+   //alignItems:'center', 
+   //alignContent:'center',
+   letterSpacing: 2,
+    left: 15,
+  },
+  cycleContainer:{
+  top:2,
+  //justifyContent:'center',  
+  //alignContent:'center',
+  },
+//body
   container: {
     hight: '100%',
     backgroundColor: '#F2F2F2',
@@ -172,6 +335,11 @@ const styles = StyleSheet.create({
     left: 8,
     top: 5,
   },
+//button
+  
+  buttonbar: {
+   flex:0.11,    
+  },
   buttonContainer: {
     backgroundColor: '#fbb856',//較深黃
     //backgroundColor: '#ffc56b',//較淺黃
@@ -197,9 +365,6 @@ const styles = StyleSheet.create({
     borderColor: '#D1DED7',
     borderWidth: 3,
     borderBottomWidth:10,
-  },
-  buttonbar: {
-    flex:0.35,    
   },
   butContainer: {
     flex: 1,   
