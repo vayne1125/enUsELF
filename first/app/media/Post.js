@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import  { useState } from 'react';
+import  { useState,useContext} from 'react';
 import {
   View,
   Text,
@@ -23,6 +23,7 @@ import Iconcross from 'react-native-vector-icons/Entypo';
 import storage from '@react-native-firebase/storage';
 import firestore from '@react-native-firebase/firestore';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {AuthContext} from '../routes/AutoProvider';
 //import PostTop from './PostTop'
 //import PostButton from './PostButton'
 
@@ -31,7 +32,7 @@ const width = Dimensions.get('screen').width;
 
 const Post = ({navigation, route}) => {
     const userdata = route.params;
-
+    const {user, logout} = useContext(AuthContext);
     const [image, setImage] = useState(null);
     const [data, setdata] = useState(null);
     const [uploading, setUploading] = useState(false);
@@ -67,7 +68,8 @@ const Post = ({navigation, route}) => {
         firestore()
         .collection('posts')
         .add({
-          userid:userdata.name,
+          userid:user.uid,
+         // name:user.name,
           post:post,
           postImg:imageUrl,
           postTime:firestore.Timestamp.fromDate(new Date()),
