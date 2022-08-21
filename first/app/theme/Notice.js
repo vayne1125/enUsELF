@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useState,PureComponent} from 'react';
 import {
   View,
   Text,
@@ -23,15 +23,14 @@ const width = Dimensions.get('screen').width/2;
 const height = Dimensions.get('screen').height / 4;
 
 
-export default class Notice extends Component {
+export default class Notice extends PureComponent {
 
   render() {
-    //console.log(this.props.entry);
     console.log('close?');
     if (this.props.noticeVisible == true) {
       setTimeout(() => {
         this.props.onClose();
-      }, 1300);
+      }, 1200);
     }
     return (
       <Modal transparent={true} visible={this.props.noticeVisible}>

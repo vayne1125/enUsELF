@@ -25,7 +25,7 @@ import FoodData from './Food';
 import HotelData from './Hotel';
 import MonumentsData from './Monuments';
 import Image_link from './Image';
-//import Card from './Card';
+import Card from './Card';
 const Stack = createNativeStackNavigator();
 const width = Dimensions.get('screen').width;
 
@@ -56,77 +56,6 @@ const Result = ({navigation, route}) => {
   const [noticeEntry, setNoticeEntry] = useState(initialState);
   //--------------------------------------------------------------------------
 
-  const Stars = score => {
-    var tp = parseFloat(score.starsNum);
-    var starsIcon = [];
-    let cnt = 0;
-    for (let i = 0; i < 5; i++) {
-      if (tp >= 1) {
-        starsIcon.push(
-          <Icon key={cnt} name={'star'} color={'#ffb129'} size={18} />,
-        );
-        tp = tp - 1;
-      } else if (tp == 0) {
-        starsIcon.push(
-          <Icon key={cnt} name={'star-o'} color={'#ffb129'} size={18} />,
-        );
-      } else {
-        starsIcon.push(
-          <Icon
-            key={cnt}
-            name={'star-half-empty'}
-            color={'#ffb129'}
-            size={18}
-          />,
-        );
-        tp = 0;
-      }
-      cnt += 1;
-    }
-    return (
-      <View style={styles.starStyle}>
-        <Text>{score.starsNum} </Text>
-        {starsIcon}
-      </View>
-    );
-  };
-  const Card = ({site}) => {
-    return (
-      <View style={styles.card}>
-        <View style={styles.imageContainer}>
-          {<Image style={styles.image} source={Image_link[site.name]} />}
-        </View>
-        <View style={styles.info}>
-          <View style={styles.textContainer}>
-            <Text numberOfLines={1} style={styles.nameStyle}>{site.name}</Text>
-          </View>
-          <Stars starsNum={site.star} />
-          <View style={styles.buttonContainer2}>
-            <TouchableOpacity
-              onPress={() => {
-                setModalVisible(!modalVisible);
-                setModalEntry(site);
-              }}
-              style={{flex: 2}}>
-              <Text style={styles.buttonText2}>詳細資訊</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              onPress={() => {
-                //------------------------------------
-                setNoticeVisible(!noticeVisible);
-                setNoticeEntry(site);
-                //-------------------------------------
-              }}
-              style={{flex: 1}}>
-              <Text style={styles.buttonText}>加入清單</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-    );
-  };
   return (
     <View style={styles.container}>
       {/*浮動視窗-------------------------------------------------------------------------------*/}
@@ -144,7 +73,6 @@ const Result = ({navigation, route}) => {
         entry={noticeEntry} //傳進去的資料參數
         noticeVisible={noticeVisible} //可不可見
         onClose={() => {
-          console.log('1.3s');
           setNoticeVisible(false);
         }} //關閉函式
       />
@@ -165,8 +93,21 @@ const Result = ({navigation, route}) => {
         }}
         numColumns={1}
         data={themeData[theme["name"]]}
-        initialNumToRender={7}
-        renderItem={({item}) => <Card site={item} />}></FlatList>
+        initialNumToRender={5}
+        renderItem={({item}) => 
+        <Card 
+          sites={item} 
+          onPress1={(site) => {
+            setModalVisible(!modalVisible);
+            setModalEntry(site);
+          }}
+          onPress2={(site) => {
+            setNoticeVisible(!noticeVisible);
+            setNoticeEntry(site);
+          }}
+        />}
+        >
+        </FlatList>
     </View>
   );
 };
