@@ -141,104 +141,108 @@ def google_api():
         res = json.load(f)
     f.close()
     ck = 0
-    id = 50
+    id = 40
     result = {}
-    # for i in range(30, 60):
-    #     url = google_api_url(res[i]["name"])
-    #     url = quote(url, safe=string.printable)
-    #     jsonurl = urllib.request.urlopen(url)
-    #     result = json.loads(jsonurl.read())
-    #     print(i+1)
-    #     print(res[i]["name"])
-    #     print(result["candidates"][0]["name"])
-    #     res[i]["place_id"] = result["candidates"][0]["place_id"]
-    #     ans = gmaps.place(result["candidates"][0]
-    #                       ["place_id"], language='zh-TW')
-    #     res[i]["lat"] = ans["result"]["geometry"]["location"]["lat"]
-    #     res[i]["lng"] = ans["result"]["geometry"]["location"]["lng"]
-    #     print(ans["result"]["formatted_address"])
-    #     # res[i]["address"]=ans["result"]["formatted_address"]
-    #     # res[i]["city"]=ans["result"]["address_components"][-3]["long_name"]
-    #     # res[i]["region"]=ans["result"]["address_components"][-4]["long_name"]
+    for i in range(75, 90):
+        url = google_api_url(res[i]["name"])
+        url = quote(url, safe=string.printable)
+        jsonurl = urllib.request.urlopen(url)
+        result = json.loads(jsonurl.read())
+        print(i+1)
+        print(res[i]["name"])
+        print(result["candidates"][0]["name"])
+        res[i]["place_id"] = result["candidates"][0]["place_id"]
+        ans = gmaps.place(result["candidates"][0]
+                          ["place_id"], language='zh-TW')
+        res[i]["lat"] = ans["result"]["geometry"]["location"]["lat"]
+        res[i]["lng"] = ans["result"]["geometry"]["location"]["lng"]
+        #print(ans["result"]["formatted_address"])
+        res[i]["address"]=ans["result"]["formatted_address"]
+        res[i]["city"]=ans["result"]["address_components"][-3]["long_name"]
+        res[i]["region"]=ans["result"]["address_components"][-4]["long_name"]
 
-    #     try:
-    #         # if(res[i]["time"] == "無"):
-    #         #     if(type(ans["result"]["opening_hours"]["weekday_text"]) == list):
-    #         #         s = ""
-    #         #         for day in ans["result"]["opening_hours"]["weekday_text"]:
-    #         #             s += day+"\n"
-    #         #         s = s[:-1]
-    #         #         res[i]["time"] = s
-    #         #     else:
-    #         #         res[i]["time"] = ans["result"]["opening_hours"]["weekday_text"]
+        try:
+            # if(res[i]["time"] == "無"):
+            #     if(type(ans["result"]["opening_hours"]["weekday_text"]) == list):
+            #         s = ""
+            #         for day in ans["result"]["opening_hours"]["weekday_text"]:
+            #             s += day+"\n"
+            #         s = s[:-1]
+            #         res[i]["time"] = s
+            #     else:
+            #         res[i]["time"] = ans["result"]["opening_hours"]["weekday_text"]
 
-    #         if(type(ans["result"]["opening_hours"]["weekday_text"]) == list):
-    #             s = ""
-    #             for day in ans["result"]["opening_hours"]["weekday_text"]:
-    #                 s += day+"\n"
-    #             s = s[:-1]
-    #             res[i]["time"] = s
-    #         else:
-    #             res[i]["time"] = ans["result"]["opening_hours"]["weekday_text"]
-    #     except KeyError:
-    #         # if(res[i]["time"] =="無"):
-    #         #     res[i]["time"] = "無"
-    #         #     print(i+1, "time")
+            if(type(ans["result"]["opening_hours"]["weekday_text"]) == list):
+                s = ""
+                for day in ans["result"]["opening_hours"]["weekday_text"]:
+                    s += day+"\n"
+                s = s[:-1]
+                res[i]["time"] = s
+            else:
+                res[i]["time"] = ans["result"]["opening_hours"]["weekday_text"]
+        except KeyError:
+            # if(res[i]["time"] =="無"):
+            #     res[i]["time"] = "無"
+            #     print(i+1, "time")
 
-    #         res[i]["time"] = "無"
-    #         print(i+1, "time")
-    #     try:
-    #         res[i]["star"] = ans["result"]["rating"]
-    #     except KeyError:
-    #         res[i]["star"] = 0
-    #         print(i+1, "star")
+            res[i]["time"] = "無"
+            print(i+1, "time")
+        try:
+            res[i]["star"] = ans["result"]["rating"]
+        except KeyError:
+            #res[i]["star"] = 0
+            print(i+1, "star")
 
-    url=google_api_url(res[id]["name"])
-    url = quote(url, safe=string.printable)
-    jsonurl = urllib.request.urlopen(url)
-    result = json.loads(jsonurl.read())
-    print(res[id]["name"])
-    print(result)
-    res[id]["place_id"]=result["candidates"][0]["place_id"]
-    ans=gmaps.place(result["candidates"][0]["place_id"],language='zh-TW')
-    res[id]["lat"]=ans["result"]["geometry"]["location"]["lat"]
-    res[id]["lng"]=ans["result"]["geometry"]["location"]["lng"]
-    res[id]["address"]=ans["result"]["formatted_address"]
-    #res[id]["city"]=ans["result"]["address_components"][-3]["long_name"]
-    #res[id]["region"]=ans["result"]["address_components"][-4]["long_name"]
-    try:
-        # if(res[id]["time"]=="無"):
-        #     if(type(ans["result"]["opening_hours"]["weekday_text"])==list):
-        #         s=""
-        #         for day in ans["result"]["opening_hours"]["weekday_text"]:
-        #             s+=day+"\n"
-        #         s=s[:-1]
-        #         res[id]["time"]=s
-        #     else:
-        #         res[id]["time"]=ans["result"]["opening_hours"]["weekday_text"]
+    # url=google_api_url("哈瑪星鐵道文化園區")
+    # url = quote(url, safe=string.printable)
+    # jsonurl = urllib.request.urlopen(url)
+    # result = json.loads(jsonurl.read())
+    # print(res[id]["name"])
+    # print(result)
+    # res[id]["place_id"]=result["candidates"][0]["place_id"]
+    # ans=gmaps.place(result["candidates"][0]["place_id"],language='zh-TW')
+    # res[id]["lat"]=ans["result"]["geometry"]["location"]["lat"]
+    # res[id]["lng"]=ans["result"]["geometry"]["location"]["lng"]
+    # res[id]["address"]=ans["result"]["formatted_address"]
+    # #res[id]["city"]=ans["result"]["address_components"][-3]["long_name"]
+    # #res[id]["region"]=ans["result"]["address_components"][-4]["long_name"]
+    # try:
+    #     # if(res[id]["time"]=="無"):
+    #     #     if(type(ans["result"]["opening_hours"]["weekday_text"])==list):
+    #     #         s=""
+    #     #         for day in ans["result"]["opening_hours"]["weekday_text"]:
+    #     #             s+=day+"\n"
+    #     #         s=s[:-1]
+    #     #         res[id]["time"]=s
+    #     #     else:
+    #     #         res[id]["time"]=ans["result"]["opening_hours"]["weekday_text"]
 
-        if(type(ans["result"]["opening_hours"]["weekday_text"])==list):
-            s=""
-            for day in ans["result"]["opening_hours"]["weekday_text"]:
-                s+=day+"\n"
-            s=s[:-1]
-            res[id]["time"]=s
-        else:
-            res[id]["time"]=ans["result"]["opening_hours"]["weekday_text"]
-    except KeyError:
-        if(res[id]["time"]=="無"):
-            res[id]["time"]="無"
-            print(id+1,"time")
+    #     if(type(ans["result"]["opening_hours"]["weekday_text"])==list):
+    #         s=""
+    #         for day in ans["result"]["opening_hours"]["weekday_text"]:
+    #             s+=day+"\n"
+    #         s=s[:-1]
+    #         res[id]["time"]=s
+    #     else:
+    #         res[id]["time"]=ans["result"]["opening_hours"]["weekday_text"]
+    # except KeyError:
+    #     # if(res[id]["time"]=="無"):
+    #     #     res[id]["time"]="無"
+    #     #     print(id+1,"time")
+        
+    #     res[id]["time"]="無"
+    #     print(id+1,"time")
 
-    try:
-        # if(res[id]["star"]==0):
-        #     res[id]["star"]=ans["result"]["rating"]
+    # try:
+    #     # if(res[id]["star"]==0):
+    #     #     res[id]["star"]=ans["result"]["rating"]
 
-        res[id]["star"]=ans["result"]["rating"]
-    except KeyError:
-            res[id]["star"]=0
-            print(id+1,"star")
-    add_json_data(ans,json_path2)
+    #     res[id]["star"]=ans["result"]["rating"]
+    # except KeyError:
+    #     if(res[id]["star"]==0):
+    #         res[id]["star"]=0
+    #         print(id+1,"star")
+    # add_json_data(ans,json_path2)
 
     return res
 
