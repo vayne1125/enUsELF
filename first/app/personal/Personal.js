@@ -26,7 +26,7 @@ const Stack=createStackNavigator();
 export default class Personal extends Component {
   render() {
     return (
-        <Stack.Navigator initialRouteName="PersonalHome" screenOptions={{header: () => null}} >
+        <Stack.Navigator initialRouteName="Personal" screenOptions={{header: () => null}} >
           <Stack.Screen name="PersonalHome" component={PersonalHome}/>
           {/*<Stack.Screen name="Post" component={Post}>*/}
           {/* <Stack.Screen name="Schedule" component={Schedule}/> */}

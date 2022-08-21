@@ -1,12 +1,8 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {View, Text, StyleSheet,Dimensions,Alert,Image,TouchableOpacity} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import PersonalTop from './PersonalTop';
-import PersonalFile from './PersonalFile';
 import Icons from 'react-native-vector-icons/Ionicons';
 import { AuthContext } from '../routes/AutoProvider';
-
-const width=Dimensions.get("screen").width/2-20
 
 const PersonalHome = ({navigation}) => {
     const userdata={
@@ -15,17 +11,19 @@ const PersonalHome = ({navigation}) => {
         mail:"12323@gmail.com",
         password:'123qqw',
     };
-    const [mess,setMess] = useState(String);
+    const [mess, setMess] = useState(String);
     const {user, logout} = useContext(AuthContext);
+
     useEffect(() => {
         console.log(mess);
         if(mess!=''){
             if(mess === 'success'){
-                Alert.alert('登出','你已登出\n如要使用請再次登入');
+                Alert.alert('登出成功','已成功登出\n如要使用請再次登入');
                 navigation.navigate("Login");
             }
         }
     }, [mess])
+    
     return (
         <View style={styles.container}>
             {/*頂部*/}
