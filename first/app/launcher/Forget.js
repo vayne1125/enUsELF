@@ -1,4 +1,4 @@
-import React, {Component,} from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet,
     Text,
@@ -6,88 +6,91 @@ import {
     TextInput,
     TouchableOpacity,
     Dimensions,
+    Alert,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import ForgetTop from './ForgetTop';
 
-class Signup extends Component {
-    constructor(props){
-        super(props);
-        this.state={
-            email:'',
-            check:'',
-            password: '',
-            checkpassword: '',
-        };
-    }
-    render() {
-        const { navigation } = this.props;
-        return(
-            <View style={styles.container}>
-                <View style={styles.topbar}>
-                    <ForgetTop/>
-                </View>
-                <View style ={styles.textcontain}>
-                    <View style ={styles.textinput}>
-                        <Text style = {styles.text}>信箱: </Text>
-                        <TextInput style={styles.inputBox} 
-                            //onChangeText={(email) => this.setState({email})}
-                            underlineColorAndroid='#BEBEBE'
-                            placeholder="請輸入信箱"
-                            placeholderTextColor='#BEBEBE'
-                            enablesReturnKeyAutomatically={true}>
-                        </TextInput>
-                    </View>
-                    <View style ={styles.textinput}>
-                        <Text style = {styles.text}>驗證碼: </Text>
-                        <TextInput style={styles.inputBox} 
-                            //onChangeText={(userid) => this.setState({userid})}
-                            underlineColorAndroid='#BEBEBE'
-                            placeholder="輸入驗證碼"
-                            placeholderTextColor='#BEBEBE'
-                            keyboardType="number-pad"//數字鍵盤吧?
-                            enablesReturnKeyAutomatically={true}
-                        />
-                    </View>
-                    <View style ={styles.textinput}>
-                        <Text style = {styles.text}>新密碼: </Text>
-                        <TextInput style={styles.inputBox}
-                            //onChangeText={(password) => this.setState({password})}
-                            secureTextEntry={true}
-                            underlineColorAndroid='#BEBEBE'
-                            placeholder="長度介於8-16，須包含英文字母及數字"
-                            placeholderTextColor='#BEBEBE'
-                            enablesReturnKeyAutomatically={true}
-                        />
-                    </View>
-                    <View style ={styles.textinput}>
-                        <Text style = {styles.text}>再次輸入新密碼: </Text>
-                        <TextInput style={styles.inputBox}
-                            onChangeText={(checkpassword) => this.setState({checkpassword})}
-                            secureTextEntry={true}
-                            underlineColorAndroid='#BEBEBE'
-                            placeholder="再次輸入新密碼"
-                            placeholderTextColor='#BEBEBE'
-                            enablesReturnKeyAutomatically={true}/>
-                    </View>
-                </View>
-                <View style={styles.Butcontainer}>
-                    <TouchableOpacity 
-                        style={styles.SendContain}
-                        onPress={()=>{alert('驗證碼已送至信箱')}/*sendemail*/}>
-                        <Text style={styles.SendText}>發送驗證碼</Text>
-                    </TouchableOpacity>
-                    <View style={{flex:0.05}}></View>
-                    <TouchableOpacity 
-                        style={styles.SignupBut}
-                        onPress={()=>{alert('密碼已更新');navigation.goBack();}/*this.checkandgoback*/}>
-                        <Text style={styles.SignupText}>完成</Text>
-                    </TouchableOpacity>
-                </View>   
+const Signup = ({navigation}) => {
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const [confirmpass, setConfirmpass] = useState();
+    const [check, setCheck] = useState();
+
+    return(
+        <View style={styles.container}>
+            <View style={styles.topbar}>
+                <ForgetTop/>
             </View>
-        )
-    }
+            <View style ={styles.textcontain}>
+                <View style ={styles.textinput}>
+                    <Text style = {styles.text}>信箱: </Text>
+                    <TextInput style={styles.inputBox} 
+                        onChangeText={(email) => setEmail(email)}
+                        //value = {this.state.email}
+                        underlineColorAndroid='#BEBEBE'
+                        placeholder="請輸入信箱"
+                        placeholderTextColor='#BEBEBE'
+                    />
+                </View>
+                <View style ={styles.textinput}>
+                    <Text style = {styles.text}>驗證碼: </Text>
+                    <TextInput style={styles.inputBox} 
+                        onChangeText={(check) => setCheck(check)}
+                        //value = {this.state.userid}
+                        underlineColorAndroid='#BEBEBE'
+                        placeholder="輸入驗證碼"
+                        placeholderTextColor='#BEBEBE'
+                        keyboardType="numeric"//數字鍵盤吧?
+                        maxLength={6}
+                    />
+                </View>
+                <View style ={styles.textinput}>
+                    <Text style = {styles.text}>新密碼: </Text>
+                    <TextInput style={styles.inputBox}
+                        onChangeText={(password) => setPassword(password)}
+                        //value = {this.state.password}
+                        secureTextEntry={true}
+                        underlineColorAndroid='#BEBEBE'
+                        placeholder="長度介於8-16，須包含英文字母及數字"
+                        placeholderTextColor='#BEBEBE'
+                        maxLength={16}
+                    />
+                </View>
+                <View style ={styles.textinput}>
+                    <Text style = {styles.text}>再次輸入新密碼: </Text>
+                    <TextInput style={styles.inputBox}
+                        onChangeText={(confirmpass) => setConfirmpass(confirmpass)}
+                        //value = {this.state.checkpassword}
+                        secureTextEntry={true}
+                        underlineColorAndroid='#BEBEBE'
+                        placeholder="再次輸入新密碼"
+                        placeholderTextColor='#BEBEBE'
+                        maxLength={16}
+                    />
+                </View>
+            </View>
+            <View style={styles.Butcontainer}>
+                <TouchableOpacity 
+                    style={styles.SendContain}
+                    onPress={() => {/*this.sendcheck*/}}>
+                    <Text style={styles.SendText}>發送驗證碼</Text>
+                </TouchableOpacity>
+                <View style={{flex:0.05}}></View>
+                <TouchableOpacity 
+                    style={styles.SignupBut}
+                    onPress={() => {}}>
+                    <Text style={styles.SignupText}>完成</Text>
+                </TouchableOpacity>
+            </View>   
+            <View style={{alignItems:'center'}}>
+                <TouchableOpacity onPress={() => {navigation.navigate("Signup");}}>
+                    <Text style={styles.forbut}>信箱未註冊?前往註冊</Text>
+                </TouchableOpacity>
+            </View> 
+        </View>
+    )
 }
+
 const styles = StyleSheet.create({
     container: {
         flex:1,
@@ -147,8 +150,11 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center',
     },
+    forbut: { 
+        color: '#BEBEBE',
+        fontSize:10,
+        fontWeight: '500',
+    },
 });
-export default function(props) {
-    const navigation = useNavigation();
-    return <Signup {...props} navigation={navigation} />;
-}
+
+export default Signup;

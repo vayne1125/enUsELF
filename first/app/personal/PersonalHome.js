@@ -1,52 +1,64 @@
-import React, {Component, useState} from 'react';
-import {View, Text, StyleSheet,Dimensions,FlatList,Image,TouchableOpacity} from 'react-native';
+import React, {useContext, useState, useEffect} from 'react';
+import {View, Text, StyleSheet,Dimensions,Alert,Image,TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import PersonalTop from './PersonalTop';
 import PersonalFile from './PersonalFile';
 import Icons from 'react-native-vector-icons/Ionicons';
+import { AuthContext } from '../routes/AutoProvider';
 
 const width=Dimensions.get("screen").width/2-20
 
 const PersonalHome = ({navigation}) => {
-  const userdata={
-  id:"lalala",
-  nickname:"lala",
-  mail:"12323@gmail.com",
-  password:'123qqw',
-};
-return (
-      <View style={styles.container}>
-        {/*頂部*/}
-        <View style={styles.topbar}>
-          <PersonalTop />
+    const userdata={
+        id:"lalala",
+        nickname:"lala",
+        mail:"12323@gmail.com",
+        password:'123qqw',
+    };
+    const [mess,setMess] = useState(String);
+    const {user, logout} = useContext(AuthContext);
+    useEffect(() => {
+        console.log(mess);
+        if(mess!=''){
+            if(mess === 'success'){
+                Alert.alert('登出','你已登出\n如要使用請再次登入');
+                navigation.navigate("Login");
+            }
+        }
+    }, [mess])
+    return (
+        <View style={styles.container}>
+            {/*頂部*/}
+            <View style={styles.topbar}>
+                <PersonalTop />
+            </View>
+            <View style={styles.iconContainer}>
+                <Icons name={'person-circle-outline'} size={180} />
+            </View>
+            {/*內容*/}
+            <View style={styles.data}>
+                <Text style={styles.text}>{userdata.id} </Text>
+                <Text style={styles.text}>{userdata.mail} </Text>
+            </View>
+            <View style={{flex:0.15}}></View>
+            <View style={{flex:0.6}}>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity onPress={() => {navigation.navigate("PersonalFile",userdata);}}>
+                        <Text style={styles.editText}>編輯個人檔案</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity /*onPress={showok}*/>
+                        <Text style={styles.editText}>收藏</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity onPress={() => {logout(setMess);}}>
+                        <Text style={styles.editText}>登出</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
         </View>
-        <View style={styles.iconContainer}>
-            <Icons name={'person-circle-outline'} size={180} />
-          </View>
-        {/*內容*/}
-        <View style={styles.data}>
-            <Text style={styles.text}>{userdata.id} </Text>
-            <Text style={styles.text}>{userdata.mail} </Text>
-        </View>
-        
-        <View style={styles.buttonContainer}>
-        <TouchableOpacity
-              onPress={() => {navigation.navigate("PersonalFile",userdata);
-              }}
-            style={{flex: 1}}>
-             <Text style={styles.editText}>編輯個人檔案</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.buttonContainer}>
-            <TouchableOpacity /*onPress={showok}*/>
-             <Text style={styles.editText}>收藏</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-      //   <Button
-      //     onPress={()=>this.props.navigation.navigate()}
-      //   />
     );
 }
 
@@ -59,14 +71,14 @@ const styles = StyleSheet.create({
       borderBottomRightRadius: 20,
       //opacity: 0.9,
     },
+    iconContainer:{
+        alignItems:"center",
+    },
     container: {
       hight: '100%',
       backgroundColor: '#F2F2F2',
       alignContent:"center",
       flex: 1,
-    },
-    iconContainer:{
-      alignItems:"center",
     },
     data:{
       alignItems:"center",
@@ -78,18 +90,14 @@ const styles = StyleSheet.create({
     buttonContainer: {
       backgroundColor: '#DDDDDD', //較深黃
       //backgroundColor: '#ffc56b',//較淺黃
-      //flex: 1,
+      flex: 0.3,
       width: 200,
+      height: 20,
       alignSelf: 'center',
       alignItems:'center',
-      //right: 7,
-      top:100,
-      //bottom: 50,
+      justifyContent:'center',
       borderRadius: 5,
-      height: 32,
-      top:200,
-      margin:10,
-      //flexDirection: 'row',
+      margin:8,
     },
     editText:{
       fontSize:20,
