@@ -1,5 +1,6 @@
 [
     {
+        "del":4,
         "id": "ChIJYXit0c6rQjQRdcPLEANquv4",
         "info": "法朋烘焙甜點坊",
         "name": "法朋烘焙甜點坊",
@@ -32,6 +33,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJBXu6uJQzaTQRp2drTQjPnN0",
         "info": "微光森林",
         "name": "微光森林",
@@ -64,6 +66,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJ2aVSgpIEbjQRkEFmoLUOO1g",
         "info": "猜心泡芙",
         "name": "猜心泡芙",
@@ -96,6 +99,7 @@
         ]
     },
     {
+        "del":0.52,
         "id": "ChIJFYmlucGfaDQRLdMuqxc6mJA",
         "info": "花蓮公正包子店",
         "name": "花蓮公正包子店",
@@ -128,6 +132,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJee-s4n3mZzQRrYZQxlv3VKY",
         "info": "奕順軒 羅東民權店",
         "name": "奕順軒",
@@ -160,6 +165,7 @@
         ]
     },
     {
+        "del":0.5,
         "id": "ChIJ3TrpqgmpQjQREzy1cKC6zK8",
         "info": "老天祿滷味",
         "name": "老天祿滷味",
@@ -192,6 +198,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJiXwhwldLXTQRhtYXa22HcYI",
         "info": "金山藷童瑤",
         "name": "金山藷童瑤",
@@ -224,9 +231,10 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJK1EhaCSUbjQRMnu8XJVSdVs",
         "info": "福義軒-成功門市",
-        "name": "福義軒-成功門市",
+        "name": "福義軒",
         "location": {
             "lat": 23.4722229,
             "lng": 120.4435202
@@ -256,6 +264,7 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJX7O6Doi3cTQRhTESIEEQeJI",
         "info": "正記 黃家綠豆蒜",
         "name": "正記",
@@ -288,9 +297,10 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJaXa719oqbDQRMk9Z9ePw3tE",
         "info": "錢來也商店（創始店）",
-        "name": "錢來也商店（創始店）",
+        "name": "錢來也商店",
         "location": {
             "lat": 23.2681164,
             "lng": 120.1236343
@@ -320,6 +330,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJ96H7-OoYaDQROPdHKCsGUsg",
         "info": "宏亞巧克力共和國 -(觀光工廠、博物館、伴手禮、親子 團體餐廳)",
         "name": "宏亞巧克力共和國",
@@ -352,6 +363,7 @@
         ]
     },
     {
+        "del":0.1256,
         "id": "ChIJYd50tR8PaTQROMewX71lIjI",
         "info": "垂坤食品 旗艦店",
         "name": "垂坤食品",
@@ -384,6 +396,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJ_09jHEEDaTQR6EgMuwU3k_g",
         "info": "江記永安喜餅旗艦店",
         "name": "江記永安喜餅旗艦店",
@@ -416,6 +429,7 @@
         ]
     },
     {
+        "del":0.52,
         "id": "ChIJGTvFXsLkZzQRAgn_vUlM3b8",
         "info": "奕順軒宜蘭店",
         "name": "奕順軒宜蘭店",
@@ -448,6 +462,7 @@
         ]
     },
     {
+        "del":0.52,
         "id": "ChIJq6qqqrq5bzQRLz8_254YaTo",
         "info": "阿美釋迦麻糬館",
         "name": "阿美釋迦麻糬館",
@@ -480,6 +495,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJ6xpijrghbjQRnzSWkMOmfHs",
         "info": "心之和乳酪",
         "name": "心之和乳酪",
@@ -512,6 +528,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJG3mSXX12bjQR3fbtCNTeg3s",
         "info": "克林台包",
         "name": "克林台包",
@@ -544,9 +561,10 @@
         ]
     },
     {
+        "del":0.256,
         "id": "ChIJASA5zcmyaDQRmTUK2NMPgtA",
         "info": "曾記麻糬-麻吉門市",
-        "name": "曾記麻糬-麻吉門市",
+        "name": "曾記麻糬",
         "location": {
             "lat": 23.9917221,
             "lng": 121.6030889
@@ -576,6 +594,7 @@
         ]
     },
     {
+        "del":0.256,
         "id": "ChIJq4s2Bu2rQjQRfjAcdNLFsrY",
         "info": "微熱山丘 台北民生公園門市",
         "name": "微熱山丘",
@@ -608,9 +627,10 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJn_Xa4UxtbzQRD8nQB-0N87Q",
         "info": "富里鄉農會羅山展售中心",
-        "name": "富里鄉農會羅山展售中心",
+        "name": "富里鄉農會",
         "location": {
             "lat": 23.2065403,
             "lng": 121.2727791
@@ -640,6 +660,7 @@
         ]
     },
     {
+        "del":0.256,
         "id": "ChIJH-2ay4p2bjQRzmiDlLRPu5g",
         "info": "連得堂煎餅",
         "name": "連得堂煎餅",
@@ -672,38 +693,7 @@
         ]
     },
     {
-        "id": "ChIJAQAAcIVabDQR9ByVCl2naHM",
-        "info": "Pier3 三號港",
-        "name": "Pier3",
-        "location": {
-            "lat": 23.5679684,
-            "lng": 119.5723022
-        },
-        "rating": 4.2,
-        "photo": {
-            "height": 1012,
-            "html_attributions": [
-                "<a href=\"https://maps.google.com/maps/contrib/101831530092829587304\">Pier3 三號港</a>"
-            ],
-            "photo_reference": "AeJbb3dx-JWq2VkKyEwBlZLLsj0B_e4H_jCOW8ehQUWNUUEiC6CurMRNU1JlRy5Huz-j8vrHpDkG_t4OSF4BHjGJnqwCoKDDCKLrsq9C1LfF7le7NKYvrD236FW7YwHXcOhjTxDRbGe6VXnVxrGtI493RcGd86oEX9UWo_bQ1-64ZaC4Bj3L",
-            "width": 1797
-        },
-        "vicinity": "馬公市同和路158號",
-        "addr": "HH9C+5W 台灣澎湖縣馬公市",
-        "myAddr": "台灣澎湖縣馬公市同和路158號",
-        "city": "澎湖縣",
-        "reg": "馬公市",
-        "opening_hours": [
-            "星期一: 10:30 – 21:00",
-            "星期二: 10:30 – 21:00",
-            "星期三: 10:30 – 21:00",
-            "星期四: 10:30 – 21:00",
-            "星期五: 10:30 – 21:00",
-            "星期六: 10:30 – 21:00",
-            "星期日: 10:30 – 21:00"
-        ]
-    },
-    {
+        "del":1.2,
         "id": "ChIJY-C7v4msQjQRXLokFNqZrqI",
         "info": "初心菓寮 文德總本店",
         "name": "初心菓寮",
@@ -736,6 +726,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJEewCSG0oZjQRxWPvxAF0Sk4",
         "info": "佳興冰菓店",
         "name": "佳興冰菓店",
@@ -768,9 +759,10 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJr-D_s5E4aTQRfn5O0IlVMX8",
         "info": "大元蔴薯(鹹麻糬)",
-        "name": "大元蔴薯(鹹麻糬)",
+        "name": "大元蔴薯",
         "location": {
             "lat": 24.07781629999999,
             "lng": 120.5426172
@@ -800,6 +792,7 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJV6cfak2-bjQRd5xDvsSdnUk",
         "info": "旺萊山鳳梨文化園區",
         "name": "旺萊山鳳梨文化園區",
@@ -832,9 +825,10 @@
         ]
     },
     {
+        "del":0.1257,
         "id": "ChIJTSs5txW5bzQRGZX_u1cA9Vs",
         "info": "台東客來吃樂/大腸蚵仔麵線/黑糖桂圓綠豆蒜",
-        "name": "台東客來吃樂/大腸蚵仔麵線/黑糖桂圓綠豆蒜",
+        "name": "台東客來吃樂",
         "location": {
             "lat": 22.7545696,
             "lng": 121.1459322
@@ -864,6 +858,7 @@
         ]
     },
     {
+        "del":0.52,
         "id": "ChIJEfjEcs_AbjQRpuEKDC5BGKk",
         "info": "梅問屋食品有限公司 梅子元氣館",
         "name": "梅問屋食品有限公司",
@@ -896,6 +891,7 @@
         ]
     },
     {
+        "del":0.52,
         "id": "ChIJ5T17N9GfaDQRmvStivGM5wQ",
         "info": "單一純賣 雞湯 小卷米粉",
         "name": "單一純賣",
@@ -928,6 +924,7 @@
         ]
     },
     {
+        "del":0.256,
         "id": "ChIJWYtbqEn7ZzQRlnnDFG-DiPw",
         "info": "超品起司烘焙工坊 CP Cheese Factory",
         "name": "超品起司烘焙工坊",
@@ -959,7 +956,8 @@
             "星期日: 09:00 – 18:00"
         ]
     },
-    {
+    {        
+        "del":4,
         "id": "ChIJeY9V-c6wcTQRE_tBKPOsow0",
         "info": "阿嘉的家",
         "name": "阿嘉的家",
@@ -992,6 +990,7 @@
         ]
     },
     {
+        "del":0.52,
         "id": "ChIJmxudf_weaDQRttV-QDew7C4",
         "info": "佳樂精緻蛋糕專賣店",
         "name": "佳樂精緻蛋糕專賣店",
@@ -1024,6 +1023,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJRZU0ZA1xbzQRWPBoHNHgYik",
         "info": "成功豆花",
         "name": "成功豆花",
@@ -1056,6 +1056,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJ9R0ZEcQ1aDQR4D_0WSzmc28",
         "info": "福源花生醬",
         "name": "福源花生醬",
@@ -1088,6 +1089,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJWzyxrTu5bzQRLBdZeT7p3TE",
         "info": "黃記蔥油餅",
         "name": "黃記蔥油餅",
@@ -1120,6 +1122,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJ5Y-GFZDZaDQRByLyFuGFNG8",
         "info": "天子舒芙蕾 慈恩街門市",
         "name": "天子舒芙蕾",
@@ -1152,6 +1155,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJa0lvH7rrbjQRIlSqKc1w4IY",
         "info": "旺萊山愛情大草原",
         "name": "旺萊山愛情大草原",
@@ -1184,6 +1188,7 @@
         ]
     },
     {
+        "del":0.5,
         "id": "ChIJjV1T8j65bzQRGwX2peQCmDs",
         "info": "榕樹下米苔目",
         "name": "榕樹下米苔目",
@@ -1216,9 +1221,10 @@
         ]
     },
     {
+        "del":0.5,
         "id": "ChIJq5nmyj65bzQRhOuZWSZl3J8",
         "info": "楊記家傳地瓜酥(振發老店 大同店）",
-        "name": "楊記家傳地瓜酥(振發老店",
+        "name": "楊記家傳地瓜酥",
         "location": {
             "lat": 22.7528907,
             "lng": 121.1534879
@@ -1248,6 +1254,7 @@
         ]
     },
     {
+        "del":0.1257,
         "id": "ChIJqe8TmkmUbjQR8SkX6QNKmJw",
         "info": "貓尾巴麵包店",
         "name": "貓尾巴麵包店",
@@ -1280,6 +1287,7 @@
         ]
     },
     {
+        "del":0.256,
         "id": "ChIJdzzG5pSrQjQR8r_CfyXqf7U",
         "info": "佳德鳳梨酥",
         "name": "佳德鳳梨酥",
@@ -1312,6 +1320,7 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJ8dGA-oOibjQREM5i-uMwMPQ",
         "info": "日興堂喜餅",
         "name": "日興堂喜餅",
@@ -1344,6 +1353,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJ9bYcneqfaDQR3kAUxnvi_jw",
         "info": "五霸焦糖包心粉圓",
         "name": "五霸焦糖包心粉圓",
@@ -1376,6 +1386,7 @@
         ]
     },
     {
+        "del":0.256,
         "id": "ChIJASR-N5U1aDQR5OnPyt0zoBU",
         "info": "一百種味道 總店 (僅提供外帶）",
         "name": "一百種味道",
@@ -1408,6 +1419,7 @@
         ]
     },
     {
+        "del":0.52,
         "id": "ChIJFb5sOkExaTQRDryCF2lCRN4",
         "info": "微熱山丘 南投三合院",
         "name": "微熱山丘",
@@ -1440,6 +1452,7 @@
         ]
     },
     {
+        "del":0.52,
         "id": "ChIJxwxiEU77ZzQRZ3a_KNM6LXg",
         "info": "亞典菓子工場",
         "name": "亞典菓子工場",

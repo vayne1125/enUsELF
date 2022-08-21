@@ -29,9 +29,11 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "del":0.0625
     },
     {
+        "del":2.3,
         "id": "ChIJ-b_-vgFNbzQR8qkajZZrKqU",
         "info": "大農大富平地森林園區",
         "name": "大農大富平地森林園區",
@@ -64,6 +66,7 @@
         ]
     },
     {
+        "del":0.23,
         "id": "ChIJpUASyeoDbjQRxlnmoOXkT0A",
         "info": "旗津海岸公園",
         "name": "旗津海岸公園",
@@ -96,6 +99,7 @@
         ]
     },
     {
+        "del":0.017,
         "id": "ChIJo7avkR12bjQR9Gvc2sRtx40",
         "info": "英商德記洋行",
         "name": "英商德記洋行",
@@ -127,7 +131,7 @@
             "星期日: 08:30 – 17:30"
         ]
     },
-    {
+    {   "del":4,
         "id": "ChIJeZhxjmg9aTQRu4ClJlnbzHk",
         "info": "一中街夜市",
         "name": "一中街夜市",
@@ -160,6 +164,7 @@
         ]
     },
     {
+        "del":0.95,
         "id": "ChIJn3Q73aXicTQRndQSbrqd9kg",
         "info": "紅毛港文化園區",
         "name": "紅毛港文化園區",
@@ -192,6 +197,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJN7CTMebvcTQRvlAZ2AQdHCE",
         "info": "烏鬼洞",
         "name": "烏鬼洞",
@@ -224,6 +230,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJOb09b8uVbjQRigoLMNW9rpE",
         "info": "檜意森活村 Hinoki Village",
         "name": "檜意森活村",
@@ -256,38 +263,7 @@
         ]
     },
     {
-        "id": "ChIJsfP_kPRabDQR4V5i3hwHoAM",
-        "info": "觀音亭親水遊憩區",
-        "name": "觀音亭親水遊憩區",
-        "location": {
-            "lat": 23.5686457,
-            "lng": 119.562431
-        },
-        "rating": 4.5,
-        "photo": {
-            "height": 3024,
-            "html_attributions": [
-                "<a href=\"https://maps.google.com/maps/contrib/107592560547838843618\">李金哲</a>"
-            ],
-            "photo_reference": "AeJbb3dYqsHRr2xQRZWQWJ_-F2s1bIjBmVRlfoVIpXyv5t5XQyk8DCPr07Hn_rVDnL96b_lcnTPWviyPxmRjqSh4QqIuoToAiXwevbkeCtIVOpR8moYslIP-GT2-MBre3_yop6TTujXXsmziTqerW5sEmyzuiaHDG8T7Ny8nGJaI0Gp39gMv",
-            "width": 4032
-        },
-        "vicinity": "馬公市介壽路7號",
-        "addr": "HH96+FX 台灣澎湖縣馬公市",
-        "myAddr": "台灣澎湖縣馬公市介壽路7號",
-        "city": "澎湖縣",
-        "reg": "馬公市",
-        "opening_hours": [
-            "星期一: 24 小時營業",
-            "星期二: 24 小時營業",
-            "星期三: 24 小時營業",
-            "星期四: 24 小時營業",
-            "星期五: 24 小時營業",
-            "星期六: 24 小時營業",
-            "星期日: 24 小時營業"
-        ]
-    },
-    {
+        "del":4,
         "id": "ChIJ66k9lP3kZzQR9wXQpqo4n28",
         "info": "積木博物館-展區整修中免門票/優惠活動DIY禮品舖UnderRenovation/GiftShopOpen",
         "name": "積木博物館",
@@ -320,6 +296,7 @@
         ]
     },
     {
+        "del:":4,
         "id": "ChIJq6qqqn4LbzQRr0p9zSWvkdE",
         "info": "大坡池",
         "name": "大坡池",
@@ -352,6 +329,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJpTcgYOidaDQRVHUO3ILkXJs",
         "info": "七星潭海岸風景特定區",
         "name": "七星潭海岸風景特定區",
@@ -384,6 +362,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJZ-TjeHN2bjQR8a3Jat0VHps",
         "info": "安平古堡",
         "name": "安平古堡",
@@ -416,6 +395,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJx9oJH165bzQRHtM1Bkgvyyo",
         "info": "臺東森林公園",
         "name": "臺東森林公園",
@@ -448,6 +428,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJ6eoEWazXaDQRdesTjsukxe8",
         "info": "HOHOCHA喝喝茶丨台灣香日月潭紅茶廠",
         "name": "HOHOCHA喝喝茶",
@@ -480,6 +461,7 @@
         ]
     },
     {
+        "del":0.23,
         "id": "ChIJX3qwoUvjZzQRD_TNlJmeDzQ",
         "info": "望龍埤",
         "name": "望龍埤",
@@ -506,6 +488,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJC_1Xj7y1QjQR_YL4J62VPKc",
         "info": "石門洞",
         "name": "石門洞",
@@ -538,6 +521,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJP0L-NKNKaDQRZp5YgpymGy4",
         "info": "賞蟹步道",
         "name": "賞蟹步道",
@@ -570,6 +554,7 @@
         ]
     },
     {
+        "del":0.1257,
         "id": "ChIJk_qk9P91bjQRTolgNlHUSrc",
         "info": "二鯤鯓砲臺(億載金城)",
         "name": "二鯤鯓砲臺(億載金城)",
@@ -602,6 +587,7 @@
         ]
     },
     {
+        "del":0.52,
         "id": "ChIJFbzVrGJ2bjQRkZC9jslaIgs",
         "info": "臺南孔廟",
         "name": "臺南孔廟",
@@ -634,6 +620,7 @@
         ]
     },
     {
+        "del":1.8,
         "id": "ChIJC7CiCuJ5bjQR0UEDGKs4KF0",
         "info": "國立臺灣歷史博物館",
         "name": "國立臺灣歷史博物館",
@@ -666,6 +653,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJ1bZU8hkQaTQRqWPxCYpghHE",
         "info": "麗寶樂園",
         "name": "麗寶樂園",
@@ -698,6 +686,7 @@
         ]
     },
     {
+        "del":1.0,
         "id": "ChIJX6iDchVOXTQR4atveHM3aYU",
         "info": "海洋廣場",
         "name": "海洋廣場",
@@ -730,6 +719,7 @@
         ]
     },
     {
+        "del":0.0625,
         "id": "ChIJKQHjEQ89aTQRUejNAZHJUz4",
         "info": "臺中刑務所演武場",
         "name": "臺中刑務所演武場",
@@ -762,6 +752,7 @@
         ]
     },
     {
+        "del":0.256,
         "id": "ChIJjZ7YYQkfaDQRADZ8bkIqXbs",
         "info": "風禾公園",
         "name": "風禾公園",
@@ -794,6 +785,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJRV43RoILbzQRQqeetM5fD40",
         "info": "金城武樹",
         "name": "金城武樹",
@@ -826,6 +818,7 @@
         ]
     },
     {
+        "del":0.052,
         "id": "ChIJcaKjTOw9aTQR4mAeJzejtdg",
         "info": "臺中國家歌劇院",
         "name": "臺中國家歌劇院",
@@ -858,6 +851,7 @@
         ]
     },
     {
+        "del":0.052,
         "id": "ChIJLY_oiYcBaDQRCELSB3LZxZk",
         "info": "碧潭-Bitan",
         "name": "碧潭-Bitan",
@@ -890,9 +884,10 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJ-eEKJmFabzQRb6HQhH532sw",
         "info": "靜浦北回歸線界標",
-        "name": "靜浦北回歸線界標",
+        "name": "北回歸線界標",
         "location": {
             "lat": 23.4513623,
             "lng": 121.4962333
@@ -922,6 +917,7 @@
         ]
     },
     {
+        "del":0.52,
         "id": "ChIJR3oKC51FXTQRV7n_bJH8yjI",
         "info": "深澳岬角 象鼻岩景觀區",
         "name": "深澳岬角",
@@ -954,6 +950,7 @@
         ]
     },
     {
+        "del":0.05,
         "id": "ChIJV6cfak2-bjQRd5xDvsSdnUk",
         "info": "旺萊山鳳梨文化園區",
         "name": "旺萊山鳳梨文化園區",
@@ -986,6 +983,7 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJIQbcHh2RbjQRqiMl6cn-q5k",
         "info": "白人牙膏觀光工廠",
         "name": "白人牙膏觀光工廠",
@@ -1018,9 +1016,10 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJXx8RkabGaDQR--M93L8duRo",
         "info": "奧萬大國家森林遊樂區",
-        "name": "奧萬大國家森林遊樂區",
+        "name": "奧萬大",
         "location": {
             "lat": 23.9643714,
             "lng": 121.1801555
@@ -1050,6 +1049,7 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJA0P9eml0bjQRAFSV5Tjabuc",
         "info": "十鼓仁糖文創園區",
         "name": "十鼓仁糖文創園區",
@@ -1082,6 +1082,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJK7_xN_zpaDQR7AmuJ4PT_6w",
         "info": "青青草原",
         "name": "青青草原",
@@ -1114,6 +1115,7 @@
         ]
     },
     {
+        "del":0.052,
         "id": "ChIJwyJxyO6pQjQRilcOb_lBRr4",
         "info": "國立國父紀念館",
         "name": "國立國父紀念館",
@@ -1146,9 +1148,10 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJSdPExVO-bjQRUEvIL0cuafE",
         "info": "民雄金桔觀光工廠",
-        "name": "民雄金桔觀光工廠",
+        "name": "金桔觀光工廠",
         "location": {
             "lat": 23.55810899999999,
             "lng": 120.4766908
@@ -1178,9 +1181,10 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJQXkJkKg9aDQRroQxl2JMErY",
         "info": "東眼山國家森林遊樂區",
-        "name": "東眼山國家森林遊樂區",
+        "name": "東眼山",
         "location": {
             "lat": 24.831161,
             "lng": 121.408162
@@ -1210,6 +1214,7 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJpWeyD14eaDQRfKFO3bEGa9k",
         "info": "虎頭山公園",
         "name": "虎頭山公園",
@@ -1242,6 +1247,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJ_TaOy7JwaDQRFf4T-zm2dqo",
         "info": "太平山國家森林遊樂區",
         "name": "太平山國家森林遊樂區",
@@ -1274,6 +1280,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJCd7n16ipQjQRihzEWF4z6Pg",
         "info": "龍山寺",
         "name": "龍山寺",
@@ -1306,6 +1313,7 @@
         ]
     },
     {
+        "del":0.052,
         "id": "ChIJdU4y8ie4cTQRe0BNxOo2HKc",
         "info": "車城福安宮",
         "name": "車城福安宮",
@@ -1338,6 +1346,7 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJEQQD_de3cTQROPaoxqTeFFY",
         "info": "四重溪溫泉公園",
         "name": "四重溪溫泉公園",
@@ -1364,6 +1373,7 @@
         ]
     },
     {
+        "del":0.052,
         "id": "ChIJtbdB0Xt2bjQR1IE4qcWD-lg",
         "info": "藍晒圖文創園區",
         "name": "藍晒圖文創園區",
@@ -1396,6 +1406,7 @@
         ]
     },
     {
+        "del":0.52,
         "id": "ChIJhbRgGMWfaDQRfYxPTbTPdoQ",
         "info": "松園別館",
         "name": "松園別館",
@@ -1428,6 +1439,7 @@
         ]
     },
     {
+        "del":0.0625,
         "id": "ChIJZc4QyaE9aTQRRVwjmQmYS7g",
         "info": "審計新村",
         "name": "審計新村",
@@ -1460,6 +1472,7 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJAQAAAKyfQjQR7fhsd-lMPDU",
         "info": "竹圍漁港",
         "name": "竹圍漁港",
@@ -1492,9 +1505,10 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJgVBR5NZFbzQRlahAiS__Yf4",
         "info": "北回歸線標誌公園",
-        "name": "北回歸線標誌公園",
+        "name": "北回公園",
         "location": {
             "lat": 23.465731,
             "lng": 121.3574028
@@ -1524,6 +1538,7 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJh-J5vhsRbjQR4AcXKxaTRt8",
         "info": "義大遊樂世界",
         "name": "義大遊樂世界",
@@ -1556,9 +1571,10 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJj4EySmCqQjQRZte0Cf0G_qo",
         "info": "臺北市立動物園",
-        "name": "臺北市立動物園",
+        "name": "動物園",
         "location": {
             "lat": 24.9980725,
             "lng": 121.5816589
@@ -1588,6 +1604,7 @@
         ]
     },
     {
+        "del":0.1257,
         "id": "ChIJAV0H0pTYbTQRuS5hyXnarzE",
         "info": "台江國家公園管理處遊客中心暨行政中心",
         "name": "台江國家公園",
@@ -1620,6 +1637,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJAQAAACzRbjQRUgTggaGCmkA",
         "info": "溪頭自然教育園區",
         "name": "溪頭自然教育園區",
@@ -1652,6 +1670,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJ-baSVPywcTQR9otP4FjiF_A",
         "info": "鹿境梅花鹿生態園區",
         "name": "鹿境梅花鹿生態園區",
@@ -1684,6 +1703,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJ86VLNp0hbjQRMoJG83pE5nM",
         "info": "林後四林平地森林園區",
         "name": "林後四林平地森林園區",
@@ -1716,6 +1736,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJddQWJkZwbzQR9yWN24_jSsM",
         "info": "三仙台跨海步橋",
         "name": "三仙台跨海步橋",
@@ -1748,6 +1769,7 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJP1TeZfkzaDQRzOAPuuWWoj4",
         "info": "小叮噹科學主題樂園",
         "name": "小叮噹科學主題樂園",
@@ -1780,6 +1802,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJSagIWjVLaTQRSDi4Pjkk7-M",
         "info": "台灣穀堡",
         "name": "台灣穀堡",
@@ -1812,6 +1835,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJAQAAADSkbzQR2E5XyomxUJo",
         "info": "鹿野高台",
         "name": "鹿野高台",
@@ -1844,6 +1868,7 @@
         ]
     },
     {
+        "del":0.016,
         "id": "ChIJ_____wN2bjQRIOio8uGV_Og",
         "info": "安平老街",
         "name": "安平老街",
@@ -1876,6 +1901,7 @@
         ]
     },
     {
+        "del":0.52,
         "id": "ChIJ58Fl7JE_aDQR5JhwZsUfWag",
         "info": "薰衣草森林新竹尖石店",
         "name": "薰衣草森林新竹尖石店",
@@ -1908,6 +1934,7 @@
         ]
     },
     {
+        "del":0.052,
         "id": "ChIJZatyKu4JbzQRyHuSojQ6qQ0",
         "info": "池上伯朗大道",
         "name": "池上伯朗大道",
@@ -1940,6 +1967,7 @@
         ]
     },
     {
+        "del":0.52,
         "id": "ChIJGWs7Pvs8aDQR85-UeY7fPWE",
         "info": "龍潭大池",
         "name": "龍潭大池",
@@ -1972,6 +2000,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJmWtqgIJnXTQRGWfG25olU-8",
         "info": "三貂角燈塔",
         "name": "三貂角燈塔",
@@ -2004,6 +2033,7 @@
         ]
     },
     {
+        "del":0.0625,
         "id": "ChIJq_-Vyp0XbjQRkWTVX78U7QA",
         "info": "勝利星村創意生活園區",
         "name": "勝利星村創意生活園區",
@@ -2036,6 +2066,7 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJ3-vwJLOzaDQRHnPlTZ31RsQ",
         "info": "林田山林業文化園區",
         "name": "林田山林業文化園區",
@@ -2068,6 +2099,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJ27GoR89AaDQR78D2c-yQhio",
         "info": "內灣老街",
         "name": "內灣老街",
@@ -2100,6 +2132,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJcYyEEWQGaDQRelCnuK4S6yo",
         "info": "烏來老街",
         "name": "烏來老街",
@@ -2132,6 +2165,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJaVMVJsHQbjQR77h647d6zCY",
         "info": "杉林溪森林生態渡假園區",
         "name": "杉林溪森林生態渡假園區",
@@ -2164,6 +2198,7 @@
         ]
     },
     {
+        "del":0.0625,
         "id": "ChIJqUZvRQ09aTQRqh9vWv4suqs",
         "info": "柳川水岸景觀步道",
         "name": "柳川水岸景觀步道",
@@ -2196,6 +2231,7 @@
         ]
     },
     {
+        "del":0.05,
         "id": "ChIJ9eOyO2JKaDQRakkYan8x6xg",
         "info": "青青草原",
         "name": "青青草原",
@@ -2228,6 +2264,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJz9-onDA9bjQR-VpoaS6wV6A",
         "info": "六堆客家文化園區",
         "name": "六堆客家文化園區",
@@ -2260,6 +2297,7 @@
         ]
     },
     {
+        "del":0.6,
         "id": "ChIJQ9W8A6plbjQRGDjCdnI9f9M",
         "info": "臺南左鎮化石園區",
         "name": "臺南左鎮化石園區",
@@ -2292,6 +2330,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJte6zETiTaDQRA6gtQKdhV8k",
         "info": "武嶺",
         "name": "武嶺",
@@ -2324,6 +2363,7 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJGTT2a3lPXTQRjkhw37cYOJM",
         "info": "潮境公園",
         "name": "潮境公園",
@@ -2356,6 +2396,7 @@
         ]
     },
     {
+        "del":0.0625,
         "id": "ChIJbYl7d2F2bjQRnFdvyMBuZfI",
         "info": "赤崁樓",
         "name": "赤崁樓",
@@ -2388,6 +2429,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJVVVVVWWuaTQRsf_BtcIo5Yo",
         "info": "後龍鎮半天寮休閒文化園區 - 好望角",
         "name": "後龍鎮半天寮休閒文化園區",
@@ -2420,9 +2462,10 @@
         ]
     },
     {
+        "del":0.05,
         "id": "ChIJH4Ouo2rBbjQR50c88GP53ew",
         "info": "太平雲梯遊客服務中心Visitor Service Center(附設雲中找茶複合式餐廳）",
-        "name": "太平雲梯遊客服務中心",
+        "name": "太平雲梯服務中心",
         "location": {
             "lat": 23.5597128,
             "lng": 120.6008854
@@ -2452,6 +2495,7 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJ772ubUr6ZzQRuY_2y4RvRrM",
         "info": "湯圍溝溫泉公園",
         "name": "湯圍溝溫泉公園",
@@ -2484,6 +2528,7 @@
         ]
     },
     {
+        "del":2.3,
         "id": "ChIJL25qhuqsQjQRjzwIZ7a6UbI",
         "info": "大湖公園 (防災公園）",
         "name": "大湖公園",
@@ -2516,38 +2561,7 @@
         ]
     },
     {
-        "id": "ChIJ-631YCtabDQR2Vh54vSyngI",
-        "info": "池東大菓葉玄武岩",
-        "name": "池東大菓葉玄武岩",
-        "location": {
-            "lat": 23.595584,
-            "lng": 119.5163386
-        },
-        "rating": 4.5,
-        "photo": {
-            "height": 3024,
-            "html_attributions": [
-                "<a href=\"https://maps.google.com/maps/contrib/104341365166418449237\">Po-Yao Hsu</a>"
-            ],
-            "photo_reference": "AeJbb3eBY-7RcSEfb6xWveNeLCjPxMSmsC5iF-Ci_FuS4sK6-MNOU1wuT3RPDLqdlnDDwMmyI8dGB6hQ0STx-EcmMUWgsyDLoIRi-gxINLZ1daLwMB1i_KCCMJju0hwzBAW-R43EZpQfN8Ew7giVpW21sjcA0qcVfsyK0_wH3jD0BwRxHD4y",
-            "width": 4032
-        },
-        "vicinity": "西嶼鄉10號",
-        "addr": "HGW8+6G 台灣澎湖縣西嶼鄉",
-        "myAddr": "台灣澎湖縣西嶼鄉10號",
-        "city": "澎湖縣",
-        "reg": "西嶼鄉",
-        "opening_hours": [
-            "星期一: 24 小時營業",
-            "星期二: 24 小時營業",
-            "星期三: 24 小時營業",
-            "星期四: 24 小時營業",
-            "星期五: 24 小時營業",
-            "星期六: 24 小時營業",
-            "星期日: 24 小時營業"
-        ]
-    },
-    {
+        "del":2.3,
         "id": "ChIJFfV1wfYDbjQRHdGpq6VRADM",
         "info": "打狗英國領事館官邸",
         "name": "打狗英國領事館官邸",
@@ -2580,6 +2594,7 @@
         ]
     },
     {
+        "del":1.8,
         "id": "ChIJV04XbMVEaDQRu-e6P6_tKAo",
         "info": "張學良文化園區",
         "name": "張學良文化園區",
@@ -2612,6 +2627,7 @@
         ]
     },
     {
+        "del":0.52,
         "id": "ChIJpcSL78qyaDQRpJX500RPFLo",
         "info": "花蓮觀光糖廠",
         "name": "花蓮觀光糖廠",
@@ -2638,6 +2654,7 @@
         ]
     },
     {
+        "del":4,
         "id": "ChIJIVlPqhY8aDQRcSMa0PLZrkk",
         "info": "小人國主題樂園",
         "name": "小人國主題樂園",
@@ -2670,6 +2687,7 @@
         ]
     },
     {
+        "del":0.052,
         "id": "ChIJe6XdK9SbbjQRy7gVi-RqGWk",
         "info": "國立故宮博物院南部院區",
         "name": "國立故宮博物院南部院區",
@@ -2702,6 +2720,7 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJbUfZ5SxBaTQRlP6jUJVdbMc",
         "info": "台灣優格餅乾學院 【DIY手作/餅乾/彰化景點/2022中秋禮盒/月餅蛋黃酥】",
         "name": "台灣優格餅乾學院",
@@ -2734,6 +2753,7 @@
         ]
     },
     {
+        "del":0.52,
         "id": "ChIJgS3U1LG5bzQRGuFTr11jV4A",
         "info": "小野柳",
         "name": "小野柳",
@@ -2766,6 +2786,7 @@
         ]
     },
     {
+        "del":1.2,
         "id": "ChIJ_XWXKXRMXTQRHRNq6ov7-rQ",
         "info": "野柳海洋世界",
         "name": "野柳海洋世界",
@@ -2798,6 +2819,7 @@
         ]
     },
     {
+        "del":0.0625,
         "id": "ChIJ04sByqE9aTQRnw6NwaSUZd8",
         "info": "審計368新創聚落",
         "name": "審計368新創聚落",
@@ -2830,6 +2852,7 @@
         ]
     },
     {
+        "del":1,
         "id": "ChIJa0lvH7rrbjQRIlSqKc1w4IY",
         "info": "旺萊山愛情大草原",
         "name": "旺萊山愛情大草原",
@@ -2862,6 +2885,7 @@
         ]
     },
     {
+        "del":0.256,
         "id": "ChIJ2fpFp28GaDQR3N-e1P4HJ-8",
         "info": "烏來瀑布",
         "name": "烏來瀑布",
@@ -2894,6 +2918,7 @@
         ]
     },
     {
+        "del":1.5,
         "id": "ChIJ_9bBguk1aTQRhCIhRswPh4o",
         "info": "成美文化園-永靖親子景點|打卡景點|推薦景點|親子園區|拍照景點|網紅景點",
         "name": "成美文化園",
