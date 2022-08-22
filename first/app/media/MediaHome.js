@@ -1,4 +1,4 @@
-import React, {Component,useEffect,useState} from 'react';
+import React, {Component,useEffect,useState,useContext} from 'react';
 import {
   View,
   Text,
@@ -16,6 +16,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
 import MediaTop from './MediaTop';
+import {AuthContext} from '../routes/AutoProvider';
 
 const width = Dimensions.get('screen').width - 20;
 
@@ -59,10 +60,10 @@ const posts = [
 ];
 
 const MediaHome = ({navigation}) => {
-
+  const {user, logout} = useContext(AuthContext);
   const [Posts,setPosts]=useState(null);
   const [loading, setLoading] = useState(true);
-
+const[name,setname]=useState(null);
    useEffect(()=>{
         const fetchPosts = async()=>{
         try{
@@ -83,6 +84,21 @@ const MediaHome = ({navigation}) => {
               })
             })
             setPosts(list);
+            await firestore()
+            .collection('users')
+            .get(use.uid)
+            .then((querySnapshot)=>{
+            //console.log('Total Posts:',querySnapshot.size);
+            querySnapshot.forEach(doc=>{
+                const {post,postImg,postTime}=doc.data();
+                list.push({
+                  //id:doc.id ,
+                  name: 'lalala',
+                  img: postImg,
+                  content: post,
+                });
+              })
+            })
             if(loading){
               setLoading(false);
             }
@@ -94,7 +110,25 @@ const MediaHome = ({navigation}) => {
         fetchPosts();
       },[]);
 
+const FlatList_Header=({})=>{
 
+  return (
+    <View style={styles.mycard}>
+    <View style={styles.nameContainer}>
+      <View style={styles.info}>
+        <Icons name={'person-circle-outline'} size={32} />
+      </View>
+         <TouchableOpacity
+          onPress={() => {navigation.navigate("Post",posts[0]);
+          }}
+        style={{flex: 1}}>
+        <Text style={styles.buttonText}>在想些甚麼?</Text>
+      </TouchableOpacity>
+    </View>
+    
+  </View>
+  );
+};
  const Card = ({post}) => {
    console.log('look ',post);
    if(post.id==0){
@@ -125,7 +159,7 @@ const MediaHome = ({navigation}) => {
        </View>
        <View style={styles.imageContainer}>
          {/*<Image style={{flex: 1, resizeMode: 'contain'}} source={post.img} />*/}
-         <Image style={styles.image}resizeMode={"stretch"}source={{uri:post.img}}/>
+         <Image style={styles.image} resizeMode={"stretch"}source={{uri:post.img}}/>
        </View>
        <View style={styles.textContainer}>
          <Icon name={'heart'} size={24} />
@@ -159,6 +193,7 @@ const MediaHome = ({navigation}) => {
        }}
        numColumns={1}
        data={Posts}
+       ListHeaderComponent={FlatList_Header}
        renderItem={({item}) => <Card post={item} />}></FlatList>
    </View>
  );

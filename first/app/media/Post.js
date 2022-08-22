@@ -57,7 +57,8 @@ const Post = ({navigation, route}) => {
            console.log('Response uri = ', response.assets[0].uri);
            console.log(source);
           setImage(source);
-        
+          console.log('user=',user);
+          console.log('user name=',user.mail);
         });
       };
 
@@ -69,7 +70,7 @@ const Post = ({navigation, route}) => {
         .collection('posts')
         .add({
           userid:user.uid,
-         // name:user.name,
+          //name:user.name,
           post:post,
           postImg:imageUrl,
           postTime:firestore.Timestamp.fromDate(new Date()),
