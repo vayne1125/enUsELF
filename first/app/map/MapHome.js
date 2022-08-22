@@ -20,6 +20,7 @@ import MapViewDirections from 'react-native-maps-directions';
 import Hotplace from './Hotplace'
 import Shopplace from './Shopplace'
 import Holplace from './Holplace'
+//import Hotplace from './tp'
 const Map = () => {
   const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
   const [once, setOnce] = useState(true);
@@ -139,7 +140,6 @@ const Map = () => {
   }, [])
 
   const [myLatitudeDelta, setMyLatitudeDelta] = useState(1.2);
-  // var myLatitudeDelta = 3.8;
 
   return (
     <View style={styles.container}>
@@ -255,7 +255,6 @@ const Map = () => {
                     info: marker.info,
                     address: marker.myAddr,
                     star: marker.rating,
-                    info: marker.name,
                     time: marker.opening_hours.map((i) => {
                       return i + '\n';
                     }),
@@ -280,11 +279,13 @@ const Map = () => {
 
 {(holPress ? holData : ORI_DATA).map((marker) => {
           if (marker.del >= myLatitudeDelta) {
+          //  {
             return(
           <Marker
             key={marker.id}
             coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
             onPress={(e) => {
+              console.log(marker.location.lat,",",marker.location.lng);
               setModalVisible(!modalVisible);
               setModalEntry({
                 id: marker.place_id,

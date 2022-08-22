@@ -1,0 +1,1487 @@
+[
+    {
+        "del":4,
+        "id": "ChIJYXit0c6rQjQRdcPLEANquv4",
+        "info": "法朋烘焙甜點坊",
+        "name": "法朋烘焙甜點坊",
+        "location": {
+            "lat": 25.0363654,
+            "lng": 121.5537954
+        },
+        "rating": 4,
+        "photo": {
+            "height": 1280,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/112808121797452807300\">Le Ruban Pâtisserie 法朋烘焙甜點坊</a>"
+            ],
+            "photo_reference": "AeJbb3dCE2PMjfFPtTsVu53bPgRBiScbDaBVuqvip2G-Qn-y0-A-ySSTqUWcfnUrly6nq8NlzcNStm_bcDqO8xZwk8dvwGbmh7TYSNj92wgTj8les7BgR3g38-1KGKam0q5olg8TUemPGO9iuHPCGhkHB39MPduEO2F8tZHw3JIhGAUjR-se",
+            "width": 1920
+        },
+        "vicinity": "大安區仁愛路四段300巷20弄11號",
+        "addr": "2HP3+GG 台灣台北市大安區",
+        "myAddr": "台灣台北市大安區仁愛路四段300巷20弄11號",
+        "city": "台北市",
+        "reg": "大安區",
+        "opening_hours": [
+            "星期一: 11:30 – 19:30",
+            "星期二: 11:30 – 19:30",
+            "星期三: 11:30 – 19:30",
+            "星期四: 11:30 – 19:30",
+            "星期五: 11:30 – 19:30",
+            "星期六: 11:30 – 19:30",
+            "星期日: 11:30 – 19:30"
+        ]
+    },
+    {
+        "del":4,
+        "id": "ChIJBXu6uJQzaTQRp2drTQjPnN0",
+        "info": "微光森林",
+        "name": "微光森林",
+        "location": {
+            "lat": 23.9191359,
+            "lng": 120.635527
+        },
+        "rating": 4,
+        "photo": {
+            "height": 4032,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/103585469521329975418\">Alex Cho</a>"
+            ],
+            "photo_reference": "AeJbb3ebdgBEwaowf10fgicJVBnDyKPfZgxDFUa-s6_hpnSgRJE5ze7ISf52rmIPuR3tUEDM4ALYFej1puUdVEk6hnddTPjEnXUPady-ESEeAuVPxUQem4ai-utS6tEtjj_nkxllxzT3ElydugcmVZsSbKIeI3VYkUFQ8WwjtE2LlS9U9g7x",
+            "width": 3024
+        },
+        "vicinity": "南投市八卦路703巷32號",
+        "addr": "WJ9P+M6 台灣南投縣南投市",
+        "myAddr": "台灣南投縣南投市八卦路703巷32號",
+        "city": "南投縣",
+        "reg": "南投市",
+        "opening_hours": [
+            "星期一: 08:00 – 18:00",
+            "星期二: 08:00 – 18:00",
+            "星期三: 08:00 – 18:00",
+            "星期四: 08:00 – 18:00",
+            "星期五: 08:00 – 18:00",
+            "星期六: 08:00 – 18:00",
+            "星期日: 08:00 – 18:00"
+        ]
+    },
+    {
+        "del":4,
+        "id": "ChIJ2aVSgpIEbjQRkEFmoLUOO1g",
+        "info": "猜心泡芙",
+        "name": "猜心泡芙",
+        "location": {
+            "lat": 22.6314535,
+            "lng": 120.3179784
+        },
+        "rating": 4.5,
+        "photo": {
+            "height": 4032,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/100027483483101514787\">dp living</a>"
+            ],
+            "photo_reference": "AeJbb3d_8zVAgHV7_YRC5onbj427WRYWChUejQoY4GXq-QgZixkJpPhyw5HxyFiRchQcVS2IMUrmb9LOIo4zpZDcQu53DAloKJIQbe6smlFQCFN8VpUy1lasA6tSGcHIJ6g0b8ePfXAzRyp3ZHawQ0p2W_NblvT8Yk-1gfSj1LhER9XIWCe4",
+            "width": 3024
+        },
+        "vicinity": "苓雅區泰順街60號",
+        "addr": "J8J9+H5 台灣高雄市苓雅區",
+        "myAddr": "台灣高雄市苓雅區泰順街60號",
+        "city": "高雄市",
+        "reg": "苓雅區",
+        "opening_hours": [
+            "星期一: 15:00 – 18:00",
+            "星期二: 15:00 – 18:00",
+            "星期三: 15:00 – 18:00",
+            "星期四: 15:00 – 18:00",
+            "星期五: 15:00 – 18:00",
+            "星期六: 15:00 – 18:00",
+            "星期日: 15:00 – 18:00"
+        ]
+    },
+    {
+        "del":0.52,
+        "id": "ChIJFYmlucGfaDQRLdMuqxc6mJA",
+        "info": "花蓮公正包子店",
+        "name": "花蓮公正包子店",
+        "location": {
+            "lat": 23.977137,
+            "lng": 121.6091151
+        },
+        "rating": 3.9,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/102463837509406560058\">宋Song</a>"
+            ],
+            "photo_reference": "AeJbb3fdMFbxJjl1hvCLUmvEbhbBxVYyWVjG_EkN55U9mvVnlb1JjbvqosHFP4S_3wssDIZ6WM4FRuXvEYywhqHS5-uyjWNaTVArQFrksvGttHsEjqH0gRZ7V2xqdcl1DKWoe_-QR4V3LF0riHyxg-Hq5dG2vh6MW5NOXblo-vQ_YIVVECA",
+            "width": 4032
+        },
+        "vicinity": "花蓮市中山路199-2號",
+        "addr": "XJG5+VJ 台灣花蓮縣花蓮市",
+        "myAddr": "台灣花蓮縣花蓮市中山路199-2號",
+        "city": "花蓮縣",
+        "reg": "花蓮市",
+        "opening_hours": [
+            "星期一: 09:00 – 21:00",
+            "星期二: 09:00 – 21:00",
+            "星期三: 09:00 – 21:00",
+            "星期四: 09:00 – 21:00",
+            "星期五: 09:00 – 21:00",
+            "星期六: 09:00 – 21:00",
+            "星期日: 09:00 – 21:00"
+        ]
+    },
+    {
+        "del":2.3,
+        "id": "ChIJee-s4n3mZzQRrYZQxlv3VKY",
+        "info": "奕順軒 羅東民權店",
+        "name": "奕順軒",
+        "location": {
+            "lat": 24.6765838,
+            "lng": 121.7658134
+        },
+        "rating": 4.4,
+        "photo": {
+            "height": 6936,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/111476009192528900367\">韓森博一</a>"
+            ],
+            "photo_reference": "AeJbb3fiQxyyTUtClzt-Y1725LFIsGxnqb0SoY8b5FijgtaVJczivfVGOvH9LlSrQpy5uGjcvMaadPiHmiwpSU_OxlHRibe__Fg9E-7lzwFHUJ0wj4BB2DvXQHnV8ziN_mCj5c4b4pKn5lB7OhjlrBewjvy0-KkeWFKK3RSP7UDPkjFCymiu",
+            "width": 9248
+        },
+        "vicinity": "羅東鎮民權路160號",
+        "addr": "MQG8+J8 台灣宜蘭縣羅東鎮",
+        "myAddr": "台灣宜蘭縣羅東鎮民權路160號",
+        "city": "宜蘭縣",
+        "reg": "羅東鎮",
+        "opening_hours": [
+            "星期一: 10:00 – 22:00",
+            "星期二: 10:00 – 22:00",
+            "星期三: 10:00 – 22:00",
+            "星期四: 10:00 – 22:00",
+            "星期五: 10:00 – 22:00",
+            "星期六: 10:00 – 22:00",
+            "星期日: 10:00 – 22:00"
+        ]
+    },
+    {
+        "del":0.5,
+        "id": "ChIJ3TrpqgmpQjQREzy1cKC6zK8",
+        "info": "老天祿滷味",
+        "name": "老天祿滷味",
+        "location": {
+            "lat": 25.0447586,
+            "lng": 121.507303
+        },
+        "rating": 3.9,
+        "photo": {
+            "height": 3456,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/110448502803753134477\">老天祿滷味</a>"
+            ],
+            "photo_reference": "AeJbb3csC91KbFieaqaJSJShfeWmvTjij2hQNfsECZ6rcz-wdhtT3NTfxbuZLl3o-0uSpERah4PfkdY-au-3JHehZ26rLf5opo4DnM6RJ30jxjY-YGdw0iFOsuOCWrjG6bHU0EJCKUz0HLf-weuyK83G4zNJLzjFA1rWCFOaDww11EraZqg1",
+            "width": 5184
+        },
+        "vicinity": "萬華區武昌街二段55號",
+        "addr": "2GV4+WW 台灣台北市萬華區",
+        "myAddr": "台灣台北市萬華區武昌街二段55號",
+        "city": "台北市",
+        "reg": "萬華區",
+        "opening_hours": [
+            "星期一: 09:30 – 21:30",
+            "星期二: 09:30 – 21:30",
+            "星期三: 09:30 – 21:30",
+            "星期四: 09:30 – 21:30",
+            "星期五: 09:30 – 22:00",
+            "星期六: 09:30 – 22:00",
+            "星期日: 09:30 – 22:00"
+        ]
+    },
+    {
+        "del":2.3,
+        "id": "ChIJiXwhwldLXTQRhtYXa22HcYI",
+        "info": "金山藷童瑤",
+        "name": "金山藷童瑤",
+        "location": {
+            "lat": 25.2214153,
+            "lng": 121.639321
+        },
+        "rating": 5,
+        "photo": {
+            "height": 1108,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/107205500206389589650\">金山藷童瑤</a>"
+            ],
+            "photo_reference": "AeJbb3ciokms4kBd1FGv7dhbl6slwAsW5sodX-ajNBAjtYin5DH3_dW6F6ByT-dx7LWkTc27XZLODoTdttl__tEun4tI7YUpE-E2ElzUBk5h89J-pixblrJEwgiwpEjisEXYhl6ONYcY_-vdxb8UC49CKgdoS2MH1BF7Ccw5ZZOHULY9ww-E",
+            "width": 1478
+        },
+        "vicinity": "金山區金包里街62號",
+        "addr": "6JCQ+HP 台灣新北市金山區",
+        "myAddr": "台灣新北市金山區金包里街62號",
+        "city": "新北市",
+        "reg": "金山區",
+        "opening_hours": [
+            "星期一: 09:00 – 19:00",
+            "星期二: 09:00 – 19:00",
+            "星期三: 09:00 – 19:00",
+            "星期四: 09:00 – 19:00",
+            "星期五: 09:00 – 19:00",
+            "星期六: 09:00 – 20:00",
+            "星期日: 09:00 – 20:00"
+        ]
+    },
+    {
+        "del":2.3,
+        "id": "ChIJK1EhaCSUbjQRMnu8XJVSdVs",
+        "info": "福義軒-成功門市",
+        "name": "福義軒",
+        "location": {
+            "lat": 23.4722229,
+            "lng": 120.4435202
+        },
+        "rating": 3.8,
+        "photo": {
+            "height": 2016,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/114971270723643173970\">Himmel Liu</a>"
+            ],
+            "photo_reference": "AeJbb3eTS1c-i64iblfFw_boCAd6aeheN59HNTmcRthjrYUz98APtYa3cxx7kp5eNTC1u7SPlOUdlDF6SDwa7Y1l_JN9Tc9ssQVn-VmN5i2f16HBLD7Eiryt36oEoeeZWSfpcfOM_lAhCqhoiNkLxhxp2xIXgpmA0l8UebjUr9Uun8ii_ztV",
+            "width": 4032
+        },
+        "vicinity": "西區成功街98號",
+        "addr": "FCCV+VC 台灣嘉義市西區",
+        "myAddr": "台灣嘉義市西區成功街98號",
+        "city": "嘉義市",
+        "reg": "西區成",
+        "opening_hours": [
+            "星期一: 08:00 – 20:00",
+            "星期二: 08:00 – 20:00",
+            "星期三: 08:00 – 20:00",
+            "星期四: 08:00 – 20:00",
+            "星期五: 08:00 – 20:00",
+            "星期六: 08:00 – 20:00",
+            "星期日: 08:00 – 17:00"
+        ]
+    },
+    {
+        "del":1.2,
+        "id": "ChIJX7O6Doi3cTQRhTESIEEQeJI",
+        "info": "正記 黃家綠豆蒜",
+        "name": "正記",
+        "location": {
+            "lat": 22.0702841,
+            "lng": 120.7129428
+        },
+        "rating": 4.1,
+        "photo": {
+            "height": 4032,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/113674265955557332968\">正記 黃家綠豆蒜</a>"
+            ],
+            "photo_reference": "AeJbb3dT5IaKCyKjHs-G_LrDIG5eO90LwVB7Rn9O4Pkc6KG5MvvzuJ-Ajk9iBgMnI6s6RqnAi0JI0iDRaFMb-H0OjJ_a38dBDJe69Vy1T2oJTz0Khppw6Hjxim7KU0Z3CTQA2eYJC1o8Tojg6logMYnQoMLY8s5-lMGzzTw-W7Juw7vrO7Yz",
+            "width": 2268
+        },
+        "vicinity": "車城鄉福安路3之36號",
+        "addr": "3PC7+45 台灣屏東縣車城鄉",
+        "myAddr": "台灣屏東縣車城鄉福安路3之36號",
+        "city": "屏東縣",
+        "reg": "車城鄉",
+        "opening_hours": [
+            "星期一: 10:00 – 16:30",
+            "星期二: 10:00 – 16:30",
+            "星期三: 休息",
+            "星期四: 10:00 – 16:30",
+            "星期五: 10:00 – 16:30",
+            "星期六: 09:30 – 17:00",
+            "星期日: 09:30 – 17:00"
+        ]
+    },
+    {
+        "del":4,
+        "id": "ChIJaXa719oqbDQRMk9Z9ePw3tE",
+        "info": "錢來也商店（創始店）",
+        "name": "錢來也商店",
+        "location": {
+            "lat": 23.2681164,
+            "lng": 120.1236343
+        },
+        "rating": 3.8,
+        "photo": {
+            "height": 540,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/109784312812093427624\">錢來也商店（創始店）</a>"
+            ],
+            "photo_reference": "AeJbb3eQZN8SVj5oMfR2z10A5jMOYeOB_EPb1XtQuiFkMbXhZ_hTTEDOggK_aQAcDV0tv6hFKgEuKaRk5FcjmzKbMVFGO3uKNL_y2gcs53GuNotM_bcboIYK9ImnO0noAwBleRIsMUqcnpuSGjpfY-M8PpROEvHvRIfclHVfIHKynY_vIKFk",
+            "width": 960
+        },
+        "vicinity": "北門區北門297之1號",
+        "addr": "749F+6F 台灣台南市北門區",
+        "myAddr": "台灣台南市北門區北門297之1號",
+        "city": "台南市",
+        "reg": "北門區",
+        "opening_hours": [
+            "星期一: 10:00 – 18:00",
+            "星期二: 10:00 – 18:00",
+            "星期三: 10:00 – 18:00",
+            "星期四: 10:00 – 18:00",
+            "星期五: 10:00 – 18:00",
+            "星期六: 09:00 – 18:00",
+            "星期日: 09:00 – 18:00"
+        ]
+    },
+    {
+        "del":4,
+        "id": "ChIJ96H7-OoYaDQROPdHKCsGUsg",
+        "info": "宏亞巧克力共和國 -(觀光工廠、博物館、伴手禮、親子 團體餐廳)",
+        "name": "宏亞巧克力共和國",
+        "location": {
+            "lat": 24.941744,
+            "lng": 121.2929231
+        },
+        "rating": 3.9,
+        "photo": {
+            "height": 683,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/117055628776579210685\">宏亞巧克力共和國 -(觀光工廠、博物館、伴手禮、親子 團體餐廳)</a>"
+            ],
+            "photo_reference": "AeJbb3e0jA7DIekwCXMT0BLHVZs1IHr7bO4JtEhY6kslLlidwNNvKSff84eiQdwlFqNjoKghdJqsynhW9ONa1XeEt3XZ3BP8Fk1ZUKjaZEfKmfn7-jmwGq12z1AsDmPOZzIwlu37XFzkNUv_3e_-1OSI_0WaaYTkFA7hX-mYnHTkDx8C19ck",
+            "width": 1024
+        },
+        "vicinity": "八德區巧克力街177號",
+        "addr": "W7RV+M5 台灣桃園市八德區",
+        "myAddr": "台灣桃園市八德區巧克力街177號",
+        "city": "桃園市",
+        "reg": "八德區",
+        "opening_hours": [
+            "星期一: 休息",
+            "星期二: 10:00 – 18:00",
+            "星期三: 休息",
+            "星期四: 休息",
+            "星期五: 休息",
+            "星期六: 10:00 – 18:00",
+            "星期日: 10:00 – 18:00"
+        ]
+    },
+    {
+        "del":0.1256,
+        "id": "ChIJYd50tR8PaTQROMewX71lIjI",
+        "info": "垂坤食品 旗艦店",
+        "name": "垂坤食品",
+        "location": {
+            "lat": 24.398842,
+            "lng": 120.6676111
+        },
+        "rating": 4.2,
+        "photo": {
+            "height": 3468,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/113554911232139961720\">Son Phan Hai</a>"
+            ],
+            "photo_reference": "AeJbb3fsVJgAeRoplNj1byJetKBb6Yy55QeH-gGl5PsRABWZ4y41G-N7noxT3lCbEFrXxnXxirMJ4u4dXM72_oVBT7Iy4eTBdAxhsJ5WjJjRZ8M2qm_SycEMh1gcZ6HM5oOJLLHVj_YqRD6s9XFofelJ58AmJsHAKCfI31Zwveqb9hBekVk3",
+            "width": 4624
+        },
+        "vicinity": "苑裡鎮里8鄰77-16號幸福",
+        "addr": "9MX9+G2 台灣苗栗縣苑裡鎮",
+        "myAddr": "台灣苗栗縣苑裡鎮里8鄰77-16號幸福",
+        "city": "苗栗縣",
+        "reg": "苑裡鎮",
+        "opening_hours": [
+            "星期一: 08:00 – 21:00",
+            "星期二: 08:00 – 21:00",
+            "星期三: 08:00 – 21:00",
+            "星期四: 08:00 – 21:00",
+            "星期五: 08:00 – 21:30",
+            "星期六: 08:00 – 21:30",
+            "星期日: 08:00 – 21:30"
+        ]
+    },
+    {
+        "del":4,
+        "id": "ChIJ_09jHEEDaTQR6EgMuwU3k_g",
+        "info": "江記永安喜餅旗艦店",
+        "name": "江記永安喜餅旗艦店",
+        "location": {
+            "lat": 24.3206718,
+            "lng": 120.8237874
+        },
+        "rating": 4.2,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/112208795127621415923\">Michelle Lee</a>"
+            ],
+            "photo_reference": "AeJbb3fHXArHd0SAvjlcqpUaHSc_x2QMyIk84NtcVS38Zd-RIoAYh_Juqcckssh6eeoIVPJHRYn3VVQ27zbqfO5rc0wHq0W03hhEySTuER4cVsG1qxfbW4BzqCkmkDjJHWtkJ3k8XzRmSbdHaGr4CSMK-Q4-QQkd7q_tbThmbv-TVGZM5mIf",
+            "width": 4032
+        },
+        "vicinity": "卓蘭鎮3697-12號",
+        "addr": "8RCF+7G 台灣苗栗縣卓蘭鎮",
+        "myAddr": "台灣苗栗縣卓蘭鎮3697-12號",
+        "city": "苗栗縣",
+        "reg": "卓蘭鎮",
+        "opening_hours": [
+            "星期一: 09:00 – 19:00",
+            "星期二: 09:00 – 19:00",
+            "星期三: 09:00 – 19:00",
+            "星期四: 09:00 – 19:00",
+            "星期五: 09:00 – 19:00",
+            "星期六: 09:00 – 19:00",
+            "星期日: 09:00 – 19:00"
+        ]
+    },
+    {
+        "del":0.52,
+        "id": "ChIJGTvFXsLkZzQRAgn_vUlM3b8",
+        "info": "奕順軒宜蘭店",
+        "name": "奕順軒宜蘭店",
+        "location": {
+            "lat": 24.7508665,
+            "lng": 121.7506887
+        },
+        "rating": 4.4,
+        "photo": {
+            "height": 3000,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/106388935200989111034\">James Wang</a>"
+            ],
+            "photo_reference": "AeJbb3fEQwaAxQynTSbTq3M2wTfFePkX0QvjvLzaKBrCyvPQowHCpjpqL5K40TIeNevcds17_3KvBZU9Qsm0YV1E5k8BtrtDfQF_NiiDIfHIHXl446mlksew2h39kCVaZJY7mvOj2XBcDiUvmyuv5rjuCF7Y-EbishVpXoG_6_0pE_jKJ1IK",
+            "width": 5333
+        },
+        "vicinity": "宜蘭市神農路二段17號",
+        "addr": "QQ22+87 台灣宜蘭縣宜蘭市",
+        "myAddr": "台灣宜蘭縣宜蘭市神農路二段17號",
+        "city": "宜蘭縣",
+        "reg": "宜蘭市",
+        "opening_hours": [
+            "星期一: 10:00 – 22:00",
+            "星期二: 10:00 – 22:00",
+            "星期三: 10:00 – 22:00",
+            "星期四: 10:00 – 22:00",
+            "星期五: 10:00 – 22:00",
+            "星期六: 10:00 – 22:00",
+            "星期日: 10:00 – 22:00"
+        ]
+    },
+    {
+        "del":0.52,
+        "id": "ChIJq6qqqrq5bzQRLz8_254YaTo",
+        "info": "阿美釋迦麻糬館",
+        "name": "阿美釋迦麻糬館",
+        "location": {
+            "lat": 22.8011905,
+            "lng": 121.0940522
+        },
+        "rating": 3.8,
+        "photo": {
+            "height": 1069,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/101909189719195149279\">蔡伯熙</a>"
+            ],
+            "photo_reference": "AeJbb3crfZ7UzEZo8eXMb3PwG8BmFsRGxgdC2wpqxYDEyTec3WKj-dO9CzWj02IUEm7JUXldwWUdlNZrGyfdNHvRf3hNoU-7oS7HGsy2mm3ZdwAT85UXAGAe3kMMcnGcYOPbcjWtwinvSf1T0KKMjjpblTBOaOg9a9hjaujJLpxSNBimMdIx",
+            "width": 2048
+        },
+        "vicinity": "台東市賓朗路303號",
+        "addr": "R32V+FJ 台灣台東縣台東市",
+        "myAddr": "台灣台東縣台東市賓朗路303號",
+        "city": "台東縣",
+        "reg": "台東市",
+        "opening_hours": [
+            "星期一: 08:30 – 17:30",
+            "星期二: 08:30 – 17:30",
+            "星期三: 08:30 – 17:30",
+            "星期四: 08:30 – 17:30",
+            "星期五: 08:30 – 17:30",
+            "星期六: 08:30 – 17:30",
+            "星期日: 08:30 – 17:30"
+        ]
+    },
+    {
+        "del":4,
+        "id": "ChIJ6xpijrghbjQRnzSWkMOmfHs",
+        "info": "心之和乳酪",
+        "name": "心之和乳酪",
+        "location": {
+            "lat": 22.5345698,
+            "lng": 120.5521351
+        },
+        "rating": 4.2,
+        "photo": {
+            "height": 3000,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/115134587377194308408\">Sofy0000 Huang</a>"
+            ],
+            "photo_reference": "AeJbb3fUiprP1D3IyRPcmXMRNOj-SIi0zA4CTBPg1Qs227ThkthuctbWJ4mzFeK5tuH-eLqS-VbOvM-V5c5uNLaWbqe9-ryfWZqVPL6enULw6LSXIBFOJTYVcZFbXtpSWTG4aU29FFajUVQWmBET3nnHDcwJ6nPICLwb5MivDNgSxQ64tTk7",
+            "width": 4000
+        },
+        "vicinity": "潮州鎮彭城路108號",
+        "addr": "GHM2+RV 台灣屏東縣潮州鎮",
+        "myAddr": "台灣屏東縣潮州鎮彭城路108號",
+        "city": "屏東縣",
+        "reg": "潮州鎮",
+        "opening_hours": [
+            "星期一: 休息",
+            "星期二: 10:00 – 18:00",
+            "星期三: 10:00 – 18:00",
+            "星期四: 10:00 – 18:00",
+            "星期五: 10:00 – 18:00",
+            "星期六: 10:00 – 18:00",
+            "星期日: 10:00 – 18:00"
+        ]
+    },
+    {
+        "del":4,
+        "id": "ChIJG3mSXX12bjQR3fbtCNTeg3s",
+        "info": "克林台包",
+        "name": "克林台包",
+        "location": {
+            "lat": 22.9891263,
+            "lng": 120.2047623
+        },
+        "rating": 4.1,
+        "photo": {
+            "height": 3840,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/115103559532187277668\">克林台包</a>"
+            ],
+            "photo_reference": "AeJbb3egp8o3V4rxViSzYuomZf5ZJ10adgKK2UKyFoK4N5CnLGlDcPyAKCaepwPgC2OMIVtnNILw4SXWnY44faBT_kfxBaKAt4bI2epUH9IL1QxLLvmROCYtSOhV5xeSJYfZ-Z7Q5OQnLgE6Dn8H4do51CRNAy7Lk3uD7T0-ETo3DFQsx-_r",
+            "width": 5760
+        },
+        "vicinity": "中西區府前路一段218號",
+        "addr": "X6Q3+MW 台灣台南市中西區",
+        "myAddr": "台灣台南市中西區府前路一段218號",
+        "city": "台南市",
+        "reg": "中西區",
+        "opening_hours": [
+            "星期一: 08:00 – 20:00",
+            "星期二: 08:00 – 20:00",
+            "星期三: 08:00 – 20:00",
+            "星期四: 08:00 – 20:00",
+            "星期五: 08:00 – 20:00",
+            "星期六: 08:00 – 20:00",
+            "星期日: 08:00 – 20:00"
+        ]
+    },
+    {
+        "del":0.256,
+        "id": "ChIJASA5zcmyaDQRmTUK2NMPgtA",
+        "info": "曾記麻糬-麻吉門市",
+        "name": "曾記麻糬",
+        "location": {
+            "lat": 23.9917221,
+            "lng": 121.6030889
+        },
+        "rating": 4.1,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/101613906319467347800\">陳宜東</a>"
+            ],
+            "photo_reference": "AeJbb3eCwq_tSIgOTkmClpee8i_6Q3SsKuQZfVGmaXsJFQVkbjKEID1rQDzyqrktR5zkG-LKjE6588O3YTOYOfpNzFntdPhwY9x4fCFKgsG2ZsfQjRXan8EKsnrH0taU4fs5Xj8_wkF1ZwRAribgjfmkeYPMtUbh4oXzj4gcyesU4mXvKwev",
+            "width": 4032
+        },
+        "vicinity": "花蓮市國聯一路79號",
+        "addr": "XJR3+M6 台灣花蓮縣花蓮市",
+        "myAddr": "台灣花蓮縣花蓮市國聯一路79號",
+        "city": "花蓮縣",
+        "reg": "花蓮市",
+        "opening_hours": [
+            "星期一: 07:00 – 21:30",
+            "星期二: 07:00 – 21:30",
+            "星期三: 07:00 – 21:30",
+            "星期四: 07:00 – 21:30",
+            "星期五: 07:00 – 21:30",
+            "星期六: 07:00 – 21:30",
+            "星期日: 07:00 – 21:30"
+        ]
+    },
+    {
+        "del":0.256,
+        "id": "ChIJq4s2Bu2rQjQRfjAcdNLFsrY",
+        "info": "微熱山丘 台北民生公園門市",
+        "name": "微熱山丘",
+        "location": {
+            "lat": 25.0578988,
+            "lng": 121.5571641
+        },
+        "rating": 4.5,
+        "photo": {
+            "height": 748,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/117580419532488061725\">微熱山丘 台北民生公園門市</a>"
+            ],
+            "photo_reference": "AeJbb3c8vVrN27U07_IKDt7cBzNj01EASGN5FrZWzAWLcpGW-6i59gN27jzYDMSbSc8SgUQnAwy84zTe04SWPlawlQMAZZqNiz9UEviktUEiuzhwPM9q86vNSL-v8nRw4xnGSSQE-VOvq-f3gxo5Kzet-o_x04RFc_WxlrkA2PPoS33xtMYs",
+            "width": 1200
+        },
+        "vicinity": "松山區民生東路五段36巷4弄1號1樓",
+        "addr": "3H54+5V 台灣台北市松山區",
+        "myAddr": "台灣台北市松山區民生東路五段36巷4弄1號1樓",
+        "city": "台北市",
+        "reg": "松山區",
+        "opening_hours": [
+            "星期一: 10:00 – 18:00",
+            "星期二: 10:00 – 18:00",
+            "星期三: 10:00 – 18:00",
+            "星期四: 10:00 – 18:00",
+            "星期五: 10:00 – 18:00",
+            "星期六: 10:00 – 18:00",
+            "星期日: 10:00 – 18:00"
+        ]
+    },
+    {
+        "del":2.3,
+        "id": "ChIJn_Xa4UxtbzQRD8nQB-0N87Q",
+        "info": "富里鄉農會羅山展售中心",
+        "name": "富里鄉農會",
+        "location": {
+            "lat": 23.2065403,
+            "lng": 121.2727791
+        },
+        "rating": 4.1,
+        "photo": {
+            "height": 2592,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/117204004180147247255\">Patrick Tu</a>"
+            ],
+            "photo_reference": "AeJbb3fp1fvDl4TgeYRnJuuk4ZyoMKt4ibacQeXZ6aeELfzgEZ2CDmjnK-CQF1LO3tQTfFqcMenvrEXvowiTIHnh7RjJR81qvkqd9gBUX4a2HHbexytyC4X-TooBJND19a0UxffbnZoU19YHbMKpwzXoPVh7wUamcpt-I39Ku6DBnpjXv65W",
+            "width": 5760
+        },
+        "vicinity": "No. 6號, 9鄰東湖, 富里鄉",
+        "addr": "674F+J4 台灣花蓮縣富里鄉",
+        "myAddr": "台灣花蓮縣No. 6號, 9鄰東湖, 富里鄉",
+        "city": "花蓮縣",
+        "reg": "No.",
+        "opening_hours": [
+            "星期一: 08:00 – 17:00",
+            "星期二: 08:00 – 17:00",
+            "星期三: 08:00 – 17:00",
+            "星期四: 08:00 – 17:00",
+            "星期五: 08:00 – 17:00",
+            "星期六: 08:00 – 17:00",
+            "星期日: 08:00 – 17:00"
+        ]
+    },
+    {
+        "del":0.256,
+        "id": "ChIJH-2ay4p2bjQRzmiDlLRPu5g",
+        "info": "連得堂煎餅",
+        "name": "連得堂煎餅",
+        "location": {
+            "lat": 23.0004068,
+            "lng": 120.2066691
+        },
+        "rating": 4.4,
+        "photo": {
+            "height": 1152,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/113652243969918661497\">陳交阿</a>"
+            ],
+            "photo_reference": "AeJbb3czpTUcaz6alGB9cFUyp7ZC4Ezxj9kP3ir_gd0NGchUu22Tis9PP2yHW4jj1fE1Ca-Ra0mJmt4NPAMooej9OM6fu5cVs_NfrywkIAAHQy8Hd30pVhHe0Y-gpMOYzNMgalaHWrxFnJqnANg346iX-6uUnTsvJxyOA8dx2edMYDaCulQ6",
+            "width": 2048
+        },
+        "vicinity": "北區崇安街54號",
+        "addr": "2624+5M 台灣台南市北區",
+        "myAddr": "台灣台南市北區崇安街54號",
+        "city": "台南市",
+        "reg": "北區崇",
+        "opening_hours": [
+            "星期一: 08:00 – 20:00",
+            "星期二: 08:00 – 20:00",
+            "星期三: 08:00 – 20:00",
+            "星期四: 08:00 – 20:00",
+            "星期五: 08:00 – 20:00",
+            "星期六: 08:00 – 18:00",
+            "星期日: 08:00 – 15:00"
+        ]
+    },
+    {
+        "del":1.2,
+        "id": "ChIJY-C7v4msQjQRXLokFNqZrqI",
+        "info": "初心菓寮 文德總本店",
+        "name": "初心菓寮",
+        "location": {
+            "lat": 25.078224,
+            "lng": 121.582136
+        },
+        "rating": 4.7,
+        "photo": {
+            "height": 3456,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/113961694640428168067\">RSoROT</a>"
+            ],
+            "photo_reference": "AeJbb3dHDDUdBLE2XRway3QiWQnlBxfBYDxlv0RImmSjmQTOea4qUWf5kbx8wdssnI3IfV_n5H490SUHOc0Mt0ak-cNkydyvdQe2-9rfhYDvMvqwEDDF64skHt5jqYmtFHmMvkkKtjEuqCYWolimZRVfvIL5Dr6zZYOZCKgRCQZixPxrZtpl",
+            "width": 5184
+        },
+        "vicinity": "內湖區文德路86號",
+        "addr": "3HHJ+7V 台灣台北市內湖區",
+        "myAddr": "台灣台北市內湖區文德路86號",
+        "city": "台北市",
+        "reg": "內湖區",
+        "opening_hours": [
+            "星期一: 09:00 – 20:30",
+            "星期二: 09:00 – 20:30",
+            "星期三: 09:00 – 20:30",
+            "星期四: 09:00 – 20:30",
+            "星期五: 09:00 – 20:30",
+            "星期六: 09:00 – 20:30",
+            "星期日: 09:00 – 20:30"
+        ]
+    },
+    {
+        "del":4,
+        "id": "ChIJEewCSG0oZjQRxWPvxAF0Sk4",
+        "info": "佳興冰菓店",
+        "name": "佳興冰菓店",
+        "location": {
+            "lat": 24.12644989999999,
+            "lng": 121.6518013
+        },
+        "rating": 4.1,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/104828613327183335040\">Jimmy Lin</a>"
+            ],
+            "photo_reference": "AeJbb3fItj14fYhEOMfvgmx3HWyjoBwvJT9I7sCobbaZYfFUATSj699OjI9x-IA_xTMlzza8WvK-aeJ_DXEM25qQzDnAINZTXXS8q8bU1SnL_s_Q0tZyBTOcANf0FCrPUGPbeejNT9E_bWu0CSbuVh6adr-KjOADxwivEPQN98hlMSVjh8tL",
+            "width": 4032
+        },
+        "vicinity": "新城鄉博愛路22號",
+        "addr": "4MG2+HP 台灣花蓮縣新城鄉",
+        "myAddr": "台灣花蓮縣新城鄉博愛路22號",
+        "city": "花蓮縣",
+        "reg": "新城鄉",
+        "opening_hours": [
+            "星期一: 08:00 – 17:00",
+            "星期二: 08:00 – 17:00",
+            "星期三: 休息",
+            "星期四: 08:00 – 17:00",
+            "星期五: 08:00 – 17:00",
+            "星期六: 08:00 – 17:00",
+            "星期日: 08:00 – 17:00"
+        ]
+    },
+    {
+        "del":2.3,
+        "id": "ChIJr-D_s5E4aTQRfn5O0IlVMX8",
+        "info": "大元蔴薯(鹹麻糬)",
+        "name": "大元蔴薯",
+        "location": {
+            "lat": 24.07781629999999,
+            "lng": 120.5426172
+        },
+        "rating": 4.4,
+        "photo": {
+            "height": 800,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/105164166200015789127\">東蛙池塘</a>"
+            ],
+            "photo_reference": "AeJbb3eiQYAFb_sgLqE1Pocz_R8yDx4kjLIZY6Q0v4GcXtHTrFBXNrOauFiLbm4JEqPS-M0812272YT2R_tpV4NDvAvhLY5_g2UFjF71MLNcfRjtvGLGaE-8gZC9JgwC4CxfU2I_c0-qG3nXPQww8W-hzPJElCypG4xDWCvIF7vX3kSJdL3m",
+            "width": 1200
+        },
+        "vicinity": "彰化市民生路129巷6號",
+        "addr": "3GHV+42 台灣彰化縣彰化市",
+        "myAddr": "台灣彰化縣彰化市民生路129巷6號",
+        "city": "彰化縣",
+        "reg": "彰化市",
+        "opening_hours": [
+            "星期一: 08:30 – 21:00",
+            "星期二: 08:30 – 21:00",
+            "星期三: 08:30 – 21:00",
+            "星期四: 08:30 – 21:00",
+            "星期五: 08:30 – 21:00",
+            "星期六: 08:30 – 21:00",
+            "星期日: 08:30 – 21:00"
+        ]
+    },
+    {
+        "del":1.2,
+        "id": "ChIJV6cfak2-bjQRd5xDvsSdnUk",
+        "info": "旺萊山鳳梨文化園區",
+        "name": "旺萊山鳳梨文化園區",
+        "location": {
+            "lat": 23.55306,
+            "lng": 120.480322
+        },
+        "rating": 4.2,
+        "photo": {
+            "height": 1754,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/110029554110210923296\">旺萊山鳳梨文化園區-嘉義景點推薦</a>"
+            ],
+            "photo_reference": "AeJbb3eBip_GuwBTnpsl4swdEVXoM5Q1huT1loJNj-HTD6547H-AZ0TrgPzsWoSHUkV5U-305reSrCb9MWtBRPc2cTZhJZLg2wkXw1hKCO2wZ5U3h9QCP8cqnVH7M8S1I7JmOdsDqA2NzAnvFY2j4bjtDVYrZ7F29eKlZOBVqb-fx-04BwXd",
+            "width": 1755
+        },
+        "vicinity": "民雄鄉三興村陳厝寮1-3號",
+        "addr": "HF3J+64 台灣嘉義縣民雄鄉",
+        "myAddr": "台灣嘉義縣民雄鄉三興村陳厝寮1-3號",
+        "city": "嘉義縣",
+        "reg": "民雄鄉",
+        "opening_hours": [
+            "星期一: 09:00 – 18:00",
+            "星期二: 09:00 – 18:00",
+            "星期三: 09:00 – 18:00",
+            "星期四: 09:00 – 18:00",
+            "星期五: 09:00 – 18:00",
+            "星期六: 09:00 – 18:00",
+            "星期日: 09:00 – 18:00"
+        ]
+    },
+    {
+        "del":0.1257,
+        "id": "ChIJTSs5txW5bzQRGZX_u1cA9Vs",
+        "info": "台東客來吃樂/大腸蚵仔麵線/黑糖桂圓綠豆蒜",
+        "name": "台東客來吃樂",
+        "location": {
+            "lat": 22.7545696,
+            "lng": 121.1459322
+        },
+        "rating": 4.4,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/115405155742755286820\">Ü Esther</a>"
+            ],
+            "photo_reference": "AeJbb3ehBr_fJpjrU4_09PuUFT5XMRrlUGLnLF_XbJTpWEhGqGhYAERoW0fThBZg6hh_Bb8uIyXjjbfJ9KQwMa-iqbgrxamnzCUnpd0Fu3IKZTwpCKweFhArdHCyBlIjsfrhS6jwRN0qHeCQz4h13Qz14FKIlWLTcWX_V-ZcLsesajeLSRVe",
+            "width": 4032
+        },
+        "vicinity": "台東市新生路218號",
+        "addr": "Q43W+R9 台灣台東縣台東市",
+        "myAddr": "台灣台東縣台東市新生路218號",
+        "city": "台東縣",
+        "reg": "台東市",
+        "opening_hours": [
+            "星期一: 10:00 – 20:00",
+            "星期二: 10:00 – 20:00",
+            "星期三: 10:00 – 20:00",
+            "星期四: 10:00 – 20:00",
+            "星期五: 10:00 – 20:00",
+            "星期六: 10:00 – 20:00",
+            "星期日: 10:00 – 20:00"
+        ]
+    },
+    {
+        "del":0.52,
+        "id": "ChIJEfjEcs_AbjQRpuEKDC5BGKk",
+        "info": "梅問屋食品有限公司 梅子元氣館",
+        "name": "梅問屋食品有限公司",
+        "location": {
+            "lat": 23.586802,
+            "lng": 120.550871
+        },
+        "rating": 3.9,
+        "photo": {
+            "height": 410,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/102762542255557954112\">梅問屋梅子元氣館Ume Tonya</a>"
+            ],
+            "photo_reference": "AeJbb3dev8N3Dc5-iHBwZi-P0gGXNQEYIxVaIwSYf6ol86nrhSCFRXBDPkAW6nS3L0h1njYHNRjcwP_OlcvxjL8tt9XiZldy6oKys3r3s-TISDAkqFXI2vNmgKnM8exKQFfzYJ91VhHiQg8pKqtZwkuK9Hd2WebOQYkPXgQ6rC3-ZQfm3Pjh",
+            "width": 729
+        },
+        "vicinity": "梅山鄉中山路527號",
+        "addr": "HHP2+P8 台灣嘉義縣梅山鄉",
+        "myAddr": "台灣嘉義縣梅山鄉中山路527號",
+        "city": "嘉義縣",
+        "reg": "梅山鄉",
+        "opening_hours": [
+            "星期一: 08:00 – 17:30",
+            "星期二: 08:00 – 17:30",
+            "星期三: 08:00 – 17:30",
+            "星期四: 08:00 – 17:30",
+            "星期五: 08:00 – 17:30",
+            "星期六: 08:00 – 17:30",
+            "星期日: 08:00 – 17:30"
+        ]
+    },
+    {
+        "del":0.52,
+        "id": "ChIJ5T17N9GfaDQRmvStivGM5wQ",
+        "info": "單一純賣 雞湯 小卷米粉",
+        "name": "單一純賣",
+        "location": {
+            "lat": 23.9870903,
+            "lng": 121.6219214
+        },
+        "rating": 4.3,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/104098226310432552025\">Millie Zeng</a>"
+            ],
+            "photo_reference": "AeJbb3dB4q74qhFqcsDMDlVTOxjCM_jpAhpoPBAoiRygFJs8pQBAaZZl6HIiL_xyEiGvcG73UJhVKeV8yYx86EE7rCD5Qi7QQnPIa2XKsQOaFwybQdc1BdB7YZV9tHu8G-TX7wwyU7SloK7cVLB956Tv6yDBTrojn3H7WX22DTikzheRMshi",
+            "width": 4032
+        },
+        "vicinity": "花蓮市中美路67-2號",
+        "addr": "XJPC+RQ 台灣花蓮縣花蓮市",
+        "myAddr": "台灣花蓮縣花蓮市中美路67-2號",
+        "city": "花蓮縣",
+        "reg": "花蓮市",
+        "opening_hours": [
+            "星期一: 11:00 – 14:00, 17:00 – 20:00",
+            "星期二: 11:00 – 14:00, 17:00 – 20:00",
+            "星期三: 11:00 – 14:00, 17:00 – 20:00",
+            "星期四: 11:00 – 14:00, 17:00 – 20:00",
+            "星期五: 11:00 – 14:00, 17:00 – 20:00",
+            "星期六: 11:00 – 14:00, 17:00 – 20:00",
+            "星期日: 11:00 – 14:00, 17:00 – 20:00"
+        ]
+    },
+    {
+        "del":0.256,
+        "id": "ChIJWYtbqEn7ZzQRlnnDFG-DiPw",
+        "info": "超品起司烘焙工坊 CP Cheese Factory",
+        "name": "超品起司烘焙工坊",
+        "location": {
+            "lat": 24.7804396,
+            "lng": 121.7396465
+        },
+        "rating": 4.4,
+        "photo": {
+            "height": 720,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/101305018340200488734\">超品起司烘焙工坊 CP Cheese Factory</a>"
+            ],
+            "photo_reference": "AeJbb3fcLjq7211fC4nlUD_ssJEvKAzbG_Az39yfEh9-KxUhWNcRFAfQA3qBmwcDRaoJmJiSdMnm9UlHVuFLeGuKKC7VB9fSaW-6m7QmFyYN3xsxK_R9FYoqGYIyv-IThfVhoxh4dTWeEfkshqxkwgynAmaz9Ca5uT5an75XMFBqJnvfyQPT",
+            "width": 960
+        },
+        "vicinity": "宜蘭市大坡路二段255號",
+        "addr": "QPJQ+5V 台灣宜蘭縣宜蘭市",
+        "myAddr": "台灣宜蘭縣宜蘭市大坡路二段255號",
+        "city": "宜蘭縣",
+        "reg": "宜蘭市",
+        "opening_hours": [
+            "星期一: 09:00 – 18:00",
+            "星期二: 09:00 – 18:00",
+            "星期三: 09:00 – 18:00",
+            "星期四: 09:00 – 18:00",
+            "星期五: 09:00 – 18:00",
+            "星期六: 09:00 – 18:00",
+            "星期日: 09:00 – 18:00"
+        ]
+    },
+    {        
+        "del":4,
+        "id": "ChIJeY9V-c6wcTQRE_tBKPOsow0",
+        "info": "阿嘉的家",
+        "name": "阿嘉的家",
+        "location": {
+            "lat": 22.0024028,
+            "lng": 120.7432474
+        },
+        "rating": 3.7,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/104513216104222543421\">江tmraene</a>"
+            ],
+            "photo_reference": "AeJbb3ePVJTbPOEIB8phVaVqiHppX8zNVAxREzbFarY0lJZcfX-nP8uy_xmlMqP7V8vVNjZUeF6WOxg7sv7Xj28l88TA76fQj_fWd8wYPs6RFdTiFygtvyUDdiw0pDzUcpLIjWRBHjgk0nYqBFHTIfvIHmhMhG0F6Gmbfsuut9YWyRADaM4",
+            "width": 4032
+        },
+        "vicinity": "恆春鎮光明路90號",
+        "addr": "2P2V+X7 台灣屏東縣恆春鎮",
+        "myAddr": "台灣屏東縣恆春鎮光明路90號",
+        "city": "屏東縣",
+        "reg": "恆春鎮",
+        "opening_hours": [
+            "星期一: 09:00 – 18:00",
+            "星期二: 09:00 – 18:00",
+            "星期三: 09:00 – 18:00",
+            "星期四: 09:00 – 18:00",
+            "星期五: 09:00 – 18:00",
+            "星期六: 09:00 – 18:00",
+            "星期日: 09:00 – 18:00"
+        ]
+    },
+    {
+        "del":0.52,
+        "id": "ChIJmxudf_weaDQRttV-QDew7C4",
+        "info": "佳樂精緻蛋糕專賣店",
+        "name": "佳樂精緻蛋糕專賣店",
+        "location": {
+            "lat": 24.992343,
+            "lng": 121.313999
+        },
+        "rating": 4.3,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/113765294601268279376\">Clifford Chiu</a>"
+            ],
+            "photo_reference": "AeJbb3eAMAwiJOfaM8NuSj7NpELM7iL9tMRHveiuhQLBfPPf6O16bxIj7JrWgSBcYvGtHuIJk9EQuk5QMlPp3n9AW_ON_RMQQ46YEVB9LORGKY-cA-yhCWqdM863Xyb1exbsZc_yICzgkk7SSn38NMyhD2sj4J85ziwJkw0a_mOTVTW-3W-g",
+            "width": 4032
+        },
+        "vicinity": "桃園區民生路124號",
+        "addr": "X8R7+WH 台灣桃園市桃園區",
+        "myAddr": "台灣桃園市桃園區民生路124號",
+        "city": "桃園市",
+        "reg": "桃園區",
+        "opening_hours": [
+            "星期一: 08:30 – 21:40",
+            "星期二: 08:30 – 21:40",
+            "星期三: 08:30 – 21:40",
+            "星期四: 08:30 – 21:40",
+            "星期五: 08:30 – 21:40",
+            "星期六: 08:00 – 21:40",
+            "星期日: 08:00 – 21:40"
+        ]
+    },
+    {
+        "del":4,
+        "id": "ChIJRZU0ZA1xbzQRWPBoHNHgYik",
+        "info": "成功豆花",
+        "name": "成功豆花",
+        "location": {
+            "lat": 23.1036273,
+            "lng": 121.3782624
+        },
+        "rating": 4.3,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/107759046081487937314\">歐遜ocean</a>"
+            ],
+            "photo_reference": "AeJbb3fLlfjHo5qJbjVemsenjtcfJfcr6k3GNNkaTkZn3B6MIo4qJK5cvrgS1aLZqcEsLwlyQfwN57q9j-edodMcNu1Z4bE6aXupkRRz5iEr6uFUGWejmiAtX2DDV7gco3YBFXTneAeDviVQCGii0738zLnxM7dLHMj8bkwVWpo3Bou9rKCa",
+            "width": 4032
+        },
+        "vicinity": "成功鎮中山路63號",
+        "addr": "493H+F8 台灣台東縣成功鎮",
+        "myAddr": "台灣台東縣成功鎮中山路63號",
+        "city": "台東縣",
+        "reg": "成功鎮",
+        "opening_hours": [
+            "星期一: 09:00 – 18:00",
+            "星期二: 09:00 – 18:00",
+            "星期三: 09:00 – 18:00",
+            "星期四: 09:00 – 18:00",
+            "星期五: 09:00 – 18:00",
+            "星期六: 09:00 – 18:00",
+            "星期日: 09:00 – 18:00"
+        ]
+    },
+    {
+        "del":4,
+        "id": "ChIJ9R0ZEcQ1aDQR4D_0WSzmc28",
+        "info": "福源花生醬",
+        "name": "福源花生醬",
+        "location": {
+            "lat": 24.8086696,
+            "lng": 120.971324
+        },
+        "rating": 4.1,
+        "photo": {
+            "height": 4000,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/108646160550400361004\">David Liao</a>"
+            ],
+            "photo_reference": "AeJbb3f8bf3EBrDKGFM7tJZDSPG9keSUn6Vv06YiELKpWFr5Id8OfXKZeagwh7Gy8gYGIImJ2LoEEMcFRnHnbSjorn76vZk7ZyWiGQXwECeDnUbY7eeAkzJDgbez4eZFaAA4ZKbSCg2-bJXEeI-QvmY7PEXmvFOjTeRC_0KTIi5CrE6DJ-YB",
+            "width": 3000
+        },
+        "vicinity": "東區東大路一段155號",
+        "addr": "RX5C+FG 台灣新竹市東區",
+        "myAddr": "台灣新竹市東區東大路一段155號",
+        "city": "新竹市",
+        "reg": "東區東",
+        "opening_hours": [
+            "星期一: 09:00 – 21:30",
+            "星期二: 09:00 – 21:30",
+            "星期三: 09:00 – 21:30",
+            "星期四: 09:00 – 21:30",
+            "星期五: 09:00 – 21:30",
+            "星期六: 09:00 – 21:30",
+            "星期日: 09:00 – 21:30"
+        ]
+    },
+    {
+        "del":4,
+        "id": "ChIJWzyxrTu5bzQRLBdZeT7p3TE",
+        "info": "黃記蔥油餅",
+        "name": "黃記蔥油餅",
+        "location": {
+            "lat": 22.7489713,
+            "lng": 121.1567531
+        },
+        "rating": 4.3,
+        "photo": {
+            "height": 3096,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/114469618932747527937\">chingyi cheng</a>"
+            ],
+            "photo_reference": "AeJbb3dTghNFlm_f-PytF3_c21iJPiFqceSVHrDOZzj6f3vYWcY79L7O1ytLnZFioX-LyKxFnToS8UeaA6UyE4u0VDMYsjse0BFSaEsGtKK4Rol85g0LfYSSl8sX-uBN6smyPWiMqpp3ioysqOwtX3w_k2c8NUQGmoqQ3cRtrUgIV-VvQhpr",
+            "width": 5504
+        },
+        "vicinity": "台東市南海路36號",
+        "addr": "P5X4+HP 台灣台東縣台東市",
+        "myAddr": "台灣台東縣台東市南海路36號",
+        "city": "台東縣",
+        "reg": "台東市",
+        "opening_hours": [
+            "星期一: 14:00 – 18:00",
+            "星期二: 14:00 – 18:00",
+            "星期三: 14:00 – 18:00",
+            "星期四: 14:00 – 18:00",
+            "星期五: 14:00 – 18:00",
+            "星期六: 14:00 – 18:00",
+            "星期日: 14:00 – 18:00"
+        ]
+    },
+    {
+        "del":4,
+        "id": "ChIJ5Y-GFZDZaDQRByLyFuGFNG8",
+        "info": "天子舒芙蕾 慈恩街門市",
+        "name": "天子舒芙蕾",
+        "location": {
+            "lat": 23.9576655,
+            "lng": 120.9749169
+        },
+        "rating": 4.8,
+        "photo": {
+            "height": 2048,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/107707608631412478833\">南投埔里最佳伴手禮 天子舒芙蕾 慈恩街門市</a>"
+            ],
+            "photo_reference": "AeJbb3coKlpyti-52rDASrUP8O1Tgsh6LeNtMO75k_bwGxoUpmGlbaCKJi1oCYKTgX_CHFe4pHyTOF-xFelJC9H9SvMnKs_oeCeTDRF5AdVneIDbKOlLZkhAeJ4usf0XvY8kxe_-QW9eciHRkPjueib9vOIKJMiTVyQZ9ie6luSFCDbG6Bio",
+            "width": 1152
+        },
+        "vicinity": "埔里鎮慈恩街11號",
+        "addr": "XX5F+3X 台灣南投縣埔里鎮",
+        "myAddr": "台灣南投縣埔里鎮慈恩街11號",
+        "city": "南投縣",
+        "reg": "埔里鎮",
+        "opening_hours": [
+            "星期一: 10:00 – 18:00",
+            "星期二: 10:00 – 18:00",
+            "星期三: 10:00 – 18:00",
+            "星期四: 10:00 – 18:00",
+            "星期五: 10:00 – 18:00",
+            "星期六: 10:00 – 19:00",
+            "星期日: 10:00 – 19:00"
+        ]
+    },
+    {
+        "del":4,
+        "id": "ChIJa0lvH7rrbjQRIlSqKc1w4IY",
+        "info": "旺萊山愛情大草原",
+        "name": "旺萊山愛情大草原",
+        "location": {
+            "lat": 23.4423814,
+            "lng": 120.5909368
+        },
+        "rating": 4.1,
+        "photo": {
+            "height": 3456,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/104014022833574724815\">王柔惠</a>"
+            ],
+            "photo_reference": "AeJbb3fiYF1aTpJvJoxayVGBl6hfJ_Fv5uMIjbVFbrtp1kAkgOw2b-CWZd2GJJQzeMVdUV69uA2peTNN5IdidNwUuM84-jBA25athUfP_UDg-lPQ5mtISa07RcJnH7asq7nPlqgI1F0PiEQFe6mUA7hhqlbgw1Oom8r8Qs47cNKbuabReI3s",
+            "width": 4608
+        },
+        "vicinity": "番路鄉7鄰15號",
+        "addr": "CHRR+X9 台灣嘉義縣番路鄉",
+        "myAddr": "台灣嘉義縣番路鄉7鄰15號",
+        "city": "嘉義縣",
+        "reg": "番路鄉",
+        "opening_hours": [
+            "星期一: 09:00 – 17:20",
+            "星期二: 09:00 – 17:20",
+            "星期三: 09:00 – 17:20",
+            "星期四: 09:00 – 17:20",
+            "星期五: 09:00 – 17:20",
+            "星期六: 09:00 – 17:20",
+            "星期日: 09:00 – 17:20"
+        ]
+    },
+    {
+        "del":0.5,
+        "id": "ChIJjV1T8j65bzQRGwX2peQCmDs",
+        "info": "榕樹下米苔目",
+        "name": "榕樹下米苔目",
+        "location": {
+            "lat": 22.7542326,
+            "lng": 121.1521495
+        },
+        "rating": 4.2,
+        "photo": {
+            "height": 9000,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/106508344148893357733\">yeshwant raj</a>"
+            ],
+            "photo_reference": "AeJbb3dsw67-xFYqUM20hu2FYelYECNmPlBO0rCBgjFd2wE4pVUR0RhmGA2fFrjqzDESxIuGC2M_y9dbZvwwFnqWtZ5TpSFIrvctJaOciOOJF3tOPvoN9JLIJt8tTN9z4WdMVpNckXQ1FMDvHpq8t42b4plCeJC-YeNfpuxyW6nwsN4am6Hi",
+            "width": 12000
+        },
+        "vicinity": "台東市大同路176號",
+        "addr": "Q532+MV 台灣台東縣台東市",
+        "myAddr": "台灣台東縣台東市大同路176號",
+        "city": "台東縣",
+        "reg": "台東市",
+        "opening_hours": [
+            "星期一: 10:30 – 14:30, 17:00 – 19:30",
+            "星期二: 10:30 – 14:30, 17:00 – 19:30",
+            "星期三: 休息",
+            "星期四: 10:30 – 14:30, 17:00 – 19:30",
+            "星期五: 10:30 – 14:30, 17:00 – 19:30",
+            "星期六: 10:30 – 14:30, 17:00 – 19:30",
+            "星期日: 10:30 – 14:30, 17:00 – 19:30"
+        ]
+    },
+    {
+        "del":0.5,
+        "id": "ChIJq5nmyj65bzQRhOuZWSZl3J8",
+        "info": "楊記家傳地瓜酥(振發老店 大同店）",
+        "name": "楊記家傳地瓜酥",
+        "location": {
+            "lat": 22.7528907,
+            "lng": 121.1534879
+        },
+        "rating": 4,
+        "photo": {
+            "height": 1675,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/103160832203034971613\">楊記家傳地瓜酥(振發老店 大同店）</a>"
+            ],
+            "photo_reference": "AeJbb3djfU3VRr0Gglm2Oa8ip4X4Oo43mk3FuAd4-jBDJ9tfNmxhA8Z6K6qPo85WNayQvXfi53hNTGCLuXH6FDdv8PZ-iaOI5iEVBLwVuNHJb8DlAWlVRraeWB0X87sG8hq6iTpTSnjNPCzL1V8puYFzG3_hObmkykfAO2bzlAtf0pS-CEeJ",
+            "width": 2976
+        },
+        "vicinity": "台東市大同路149-1號",
+        "addr": "Q533+59 台灣台東縣台東市",
+        "myAddr": "台灣台東縣台東市大同路149-1號",
+        "city": "台東縣",
+        "reg": "台東市",
+        "opening_hours": [
+            "星期一: 10:00 – 18:00",
+            "星期二: 10:00 – 18:00",
+            "星期三: 10:00 – 18:00",
+            "星期四: 10:00 – 18:00",
+            "星期五: 10:00 – 18:00",
+            "星期六: 10:00 – 18:00",
+            "星期日: 10:00 – 18:00"
+        ]
+    },
+    {
+        "del":0.1257,
+        "id": "ChIJqe8TmkmUbjQR8SkX6QNKmJw",
+        "info": "貓尾巴麵包店",
+        "name": "貓尾巴麵包店",
+        "location": {
+            "lat": 23.4769005,
+            "lng": 120.4610605
+        },
+        "rating": 4.2,
+        "photo": {
+            "height": 3456,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/105008133150245305377\">高山青澗水藍</a>"
+            ],
+            "photo_reference": "AeJbb3fis1FznvETU5GnstGoxn-KX6YVUw-u5IStwCQ8tT88zUCimd4inEjrZW8ep1w_WpmyCiq8zcu6n_oUq8AwC5iaCvB0TnS1yeF1BxAkgwi5hXD5I8FzM_gb0ElZHq15BYyeRhHgTRagnK1deYLheHf5mSQ4Jtotf7sme7knuewNfZI",
+            "width": 4608
+        },
+        "vicinity": "東區民族路25號",
+        "addr": "FFG6+QC 台灣嘉義市東區",
+        "myAddr": "台灣嘉義市東區民族路25號",
+        "city": "嘉義市",
+        "reg": "東區民",
+        "opening_hours": [
+            "星期一: 休息",
+            "星期二: 10:00 – 20:30",
+            "星期三: 10:00 – 20:30",
+            "星期四: 10:00 – 20:30",
+            "星期五: 10:00 – 20:30",
+            "星期六: 10:00 – 20:30",
+            "星期日: 10:00 – 20:30"
+        ]
+    },
+    {
+        "del":0.256,
+        "id": "ChIJdzzG5pSrQjQR8r_CfyXqf7U",
+        "info": "佳德鳳梨酥",
+        "name": "佳德鳳梨酥",
+        "location": {
+            "lat": 25.0512434,
+            "lng": 121.5614407
+        },
+        "rating": 4.2,
+        "photo": {
+            "height": 2160,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/117598984325232004127\">石在人</a>"
+            ],
+            "photo_reference": "AeJbb3fhu1FxF79r7qTzZdWKLWdTsVDiSgX6JqEbDhKf_D1Eh7MyZpDu0c2ZaHNmSWMs7xvETX75xv7bb7RpT84DLTY8oWj6HT0mJRuWaYT498tUO6VGTAsNNT5w9i_Ho5V9dUv-MTRJen-HnnVJoDAm9qoGkfFAhc03jU4PqwrWCFaFA1pA",
+            "width": 2880
+        },
+        "vicinity": "松山區南京東路五段88號",
+        "addr": "3H26+FH 台灣台北市松山區",
+        "myAddr": "台灣台北市松山區南京東路五段88號",
+        "city": "台北市",
+        "reg": "松山區",
+        "opening_hours": [
+            "星期一: 09:00 – 20:00",
+            "星期二: 09:00 – 20:00",
+            "星期三: 09:00 – 20:00",
+            "星期四: 09:00 – 20:00",
+            "星期五: 09:00 – 20:00",
+            "星期六: 09:00 – 20:00",
+            "星期日: 09:00 – 20:00"
+        ]
+    },
+    {
+        "del":1.2,
+        "id": "ChIJ8dGA-oOibjQREM5i-uMwMPQ",
+        "info": "日興堂喜餅",
+        "name": "日興堂喜餅",
+        "location": {
+            "lat": 23.5646671,
+            "lng": 120.3038715
+        },
+        "rating": 4.2,
+        "photo": {
+            "height": 2769,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/108851746985950164105\">曾智暉</a>"
+            ],
+            "photo_reference": "AeJbb3f_mTiVSSusJzaCvTV-TUod_JGzll5R7QJFCuWnUzU7ktmctwpodK2e4nkfxYUenoT_Swi9M9ZwDpk_K4MEjf4n_yJlFr4dT5uzK1vTHdT6QWDszWEHt29TdBpU6xzOXcIGQ4SMw5aNnu-fUvYS3CGiGCAcyh2GZCuAufMZqDkXSHOy",
+            "width": 3824
+        },
+        "vicinity": "北港鎮中山路3號",
+        "addr": "H873+VG 台灣雲林縣北港鎮",
+        "myAddr": "台灣雲林縣北港鎮中山路3號",
+        "city": "雲林縣",
+        "reg": "北港鎮",
+        "opening_hours": [
+            "星期一: 08:00 – 22:00",
+            "星期二: 08:00 – 22:00",
+            "星期三: 08:00 – 22:00",
+            "星期四: 08:00 – 22:00",
+            "星期五: 08:00 – 22:00",
+            "星期六: 08:00 – 22:00",
+            "星期日: 08:00 – 22:00"
+        ]
+    },
+    {
+        "del":4,
+        "id": "ChIJ9bYcneqfaDQR3kAUxnvi_jw",
+        "info": "五霸焦糖包心粉圓",
+        "name": "五霸焦糖包心粉圓",
+        "location": {
+            "lat": 23.9757545,
+            "lng": 121.6075486
+        },
+        "rating": 3.6,
+        "photo": {
+            "height": 2252,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/105494084495739954438\">王昱仁</a>"
+            ],
+            "photo_reference": "AeJbb3d1IRpQvhM_SOgCDhI5M_zNRHxexsLidLsrLRuEi9J7aoPyv5Qxe2ZQHFwq9OMNS0U7ajHm9kIsvGnNsY-AxP6UnmFgfYCxTgGPIFhbQUapsdIEhdI0QR9JD0mswKN_965XTawQlcVTVvHS4v4tMMgb5ycQp1fAHfnCbmbYHWN0ckqq",
+            "width": 4000
+        },
+        "vicinity": "花蓮市博愛街165號",
+        "addr": "XJG5+82 台灣花蓮縣花蓮市",
+        "myAddr": "台灣花蓮縣花蓮市博愛街165號",
+        "city": "花蓮縣",
+        "reg": "花蓮市",
+        "opening_hours": [
+            "星期一: 11:30 – 22:00",
+            "星期二: 11:30 – 22:00",
+            "星期三: 12:00 – 22:00",
+            "星期四: 11:30 – 22:00",
+            "星期五: 11:30 – 22:00",
+            "星期六: 11:30 – 22:00",
+            "星期日: 11:30 – 22:00"
+        ]
+    },
+    {
+        "del":0.256,
+        "id": "ChIJASR-N5U1aDQR5OnPyt0zoBU",
+        "info": "一百種味道 總店 (僅提供外帶）",
+        "name": "一百種味道",
+        "location": {
+            "lat": 24.8012879,
+            "lng": 120.9645255
+        },
+        "rating": 4.3,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/107747058312581793966\">I’m樹懶</a>"
+            ],
+            "photo_reference": "AeJbb3daMDyq8d4hugn92yKG6ZCysFkab279DGEDO_timuyXnV_uTfHDvi143X1RAR93TCaQqB46R0UchnD3wFcq6CRSYSOOlnkBhOBATAopV_-TDs_OGQ5fxjbYKKt8MPnsbPKB3gTJO9DUrmhecf20Os8Qh3vHOrXPG4vLMymeTCurKDIG",
+            "width": 4032
+        },
+        "vicinity": "北區勝利路183號",
+        "addr": "RX27+GR 台灣新竹市北區",
+        "myAddr": "台灣新竹市北區勝利路183號",
+        "city": "新竹市",
+        "reg": "北區勝",
+        "opening_hours": [
+            "星期一: 休息",
+            "星期二: 11:00 – 19:00",
+            "星期三: 11:00 – 19:00",
+            "星期四: 11:00 – 19:00",
+            "星期五: 11:00 – 19:00",
+            "星期六: 11:00 – 19:00",
+            "星期日: 11:00 – 19:00"
+        ]
+    },
+    {
+        "del":0.52,
+        "id": "ChIJFb5sOkExaTQRDryCF2lCRN4",
+        "info": "微熱山丘 南投三合院",
+        "name": "微熱山丘",
+        "location": {
+            "lat": 23.9337175,
+            "lng": 120.6380355
+        },
+        "rating": 4.2,
+        "photo": {
+            "height": 1365,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/104230243606010131545\">微熱山丘 南投三合院</a>"
+            ],
+            "photo_reference": "AeJbb3dO3AOtOgMjy9pqdvlbBwpFyCDDUJjQkoy9qb0C-tFpcvBliZCYBJ8TYSYOWEEO0-AuhHYDdYHTzhpAtQevH8hNtOV3K9PA_LbCf2UL4MeREau7-yodHPtc1s5GnZe85lfpXrHoMYvnpLlkESwlB76NL7TRmn2x1BSlxjTRlMBSJpzJ",
+            "width": 2048
+        },
+        "vicinity": "南投市八卦路1100巷2號",
+        "addr": "WJMQ+F6 台灣南投縣南投市",
+        "myAddr": "台灣南投縣南投市八卦路1100巷2號",
+        "city": "南投縣",
+        "reg": "南投市",
+        "opening_hours": [
+            "星期一: 10:00 – 18:00",
+            "星期二: 10:00 – 18:00",
+            "星期三: 10:00 – 18:00",
+            "星期四: 10:00 – 18:00",
+            "星期五: 10:00 – 18:00",
+            "星期六: 10:00 – 18:00",
+            "星期日: 10:00 – 18:00"
+        ]
+    },
+    {
+        "del":0.52,
+        "id": "ChIJxwxiEU77ZzQRZ3a_KNM6LXg",
+        "info": "亞典菓子工場",
+        "name": "亞典菓子工場",
+        "location": {
+            "lat": 24.7809913,
+            "lng": 121.7320056
+        },
+        "rating": 4,
+        "photo": {
+            "height": 5304,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/116957239177073899201\">亞典菓子工場</a>"
+            ],
+            "photo_reference": "AeJbb3fYvzrHFdl_ZJjXMPsnb8C60wN9kolMGv8E-1bwSgROxHoHRUbialEElTA_vDwUJy85U9JewB_X4c76HAf5vhfCTAzl2TSe90G8KtrCCkThVOyFxcwBsVgGpMa6C9-FKyDg3Bgi9vPUOX43tnsWlU-djpI43kAyGWUDFF9GaWKX7v9e",
+            "width": 7952
+        },
+        "vicinity": "宜蘭市梅洲二路122號",
+        "addr": "QPJJ+9R 台灣宜蘭縣宜蘭市",
+        "myAddr": "台灣宜蘭縣宜蘭市梅洲二路122號",
+        "city": "宜蘭縣",
+        "reg": "宜蘭市",
+        "opening_hours": [
+            "星期一: 09:30 – 18:00",
+            "星期二: 09:30 – 18:00",
+            "星期三: 09:30 – 18:00",
+            "星期四: 09:30 – 18:00",
+            "星期五: 09:30 – 18:00",
+            "星期六: 09:30 – 18:00",
+            "星期日: 09:30 – 18:00"
+        ]
+    }
+]
