@@ -31,30 +31,34 @@ const ListBottom = () => {
 };
 const styles = StyleSheet.create({
   Container: {
-    flex: 1,    
+    flex: 1,
     flexDirection: 'row',
+    borderTopWidth: 3,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+    backgroundColor:'white',
   },
-  ChanceContainer:{
+  ChanceContainer: {
     backgroundColor: '#ffffff',
     flex: 0.7,
+    alignItems:'flex-start',
+    justifyContent:'center',
+    padding:5,
   },
   ChanceText: {
-    position: 'absolute',
-    left: 50,
-    top: 25,
-    fontSize: 10,
+    //left: 10,
+    fontSize: 20,
     fontWeight: 'bold',
-    color: 'black',
-    letterSpacing: 4,
+    color: 'gray',
+    letterSpacing: 5,
   },
   OkContainer: {
     backgroundColor: '#88bd80',
     flex: 0.3,
+    padding:5,
+    alignItems:'center',
+    justifyContent:'center',
   },
   OkText: {
-    position: 'absolute',
-    left: 15,
-    top: 10,
     fontSize: 30,
     fontWeight: 'bold',
     color: '#ffffff',

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {
   View,
   Text,
@@ -15,51 +15,76 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Entypo';
 //import Icon from 'react-native-vector-icons/FontAwesome';
+import Notice from '../theme/Notice';
+
+const initialState = {
+  id: {},
+  name: {},
+  address: {},
+  city: {},
+  region: {},
+  info: {},
+  time: {},
+};
 
 const ScheduleButton = () => {
-  const showok =()=>{Alert.alert('已加入清單')  
-    }
-    return(
-      <View style = {styles.Container}>
+  const [noticeVisible, setNoticeVisible] = useState(false);
+  const [noticeEntry, setNoticeEntry] = useState(initialState);
+  return (
+    <View style={styles.Container}>
+      {/*通知視窗-------------------------------------------------------------------------------*/}
+      <Notice
+        entry={noticeEntry} //傳進去的資料參數
+        noticeVisible={noticeVisible} //可不可見
+        onClose={() => {
+          setNoticeVisible(false);
+        }} //關閉函式
+      />
+      {/*通知視窗-------------------------------------------------------------------------------*/}
       <View style={styles.ChanceContainer}>
-          <Text style={styles.ChanceText}>全選</Text>
+        <Text style={styles.ChanceText}>全選</Text>
       </View>
-      <TouchableOpacity onPress={showok}>
-       <View  style={styles.OkContainer}>
-         <Text style={styles.OkText}>完成</Text>
-        </View>
-      </TouchableOpacity>
-  </View>
-    );
+      <View style={styles.OkContainer}>
+        <TouchableOpacity
+          onPress={() => {
+            setNoticeVisible(!noticeVisible);
+          }}>
+          <Text style={styles.OkText}>加入清單</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
 };
 const styles = StyleSheet.create({
   Container: {
-    flex: 1,   
-    backgroundColor:"#88bd80", 
+    flex: 1,
     flexDirection: 'row',
+    borderTopWidth: 3,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
   },
-  ChanceContainer:{
+  ChanceContainer: {
     backgroundColor: '#ffffff',
-    flex: 0.7,
+    flex: 0.55,
+    alignItems:'flex-start',
+    justifyContent:'center',
+    padding:5,
   },
   ChanceText: {
-    //position: 'absolute',
-    left:10,
-    top: 40,
-    fontSize: 10,
+    //left: 10,
+    fontSize: 20,
     fontWeight: 'bold',
-    color: 'black',
-    letterSpacing: 4,
+    color: 'gray',
+    letterSpacing: 5,
   },
   OkContainer: {
     backgroundColor: '#88bd80',
-    flex: 0.3,
+    flex: 0.45,
+    padding:5,
+    alignItems:'center',
+    justifyContent:'center',
   },
   OkText: {
-    position: 'absolute',
-    left: 18,
-    top: 10,
-    fontSize: 30,
+    fontSize: 24,
     fontWeight: 'bold',
     color: '#ffffff',
     letterSpacing: 10,

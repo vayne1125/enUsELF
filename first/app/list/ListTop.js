@@ -28,7 +28,7 @@ const ListTop = () => {
         <View style={styles.iconContainer}>
           <Icons
             name="cross"
-            size={60}
+            size={56}
             color={'#5f695d'}
             style={styles.iconStyle}
           />
@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   iconStyle: {
-    top: -6,
-    left: -6,
+    top: -4,
+    left: -4,
   },
   iconContainer: {
     position: 'absolute',
@@ -62,6 +62,8 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     alignSelf: 'center',
+    alignItems:'center',
+    justifyContent:'center',
     borderRadius: 30,
   },
 });

@@ -34,14 +34,14 @@ const styles = StyleSheet.create({
     },
     topbar: {
         backgroundColor: '#5f695d',
-        flex:0.11,
+        flex:1,
         height: 63,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
         //opacity: 0.9,
     },
     items: {
-        flex: 0.78,
+        flex: 10,
         alignItems:'center',
         justifyContent:'center',
     },
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     },
     bottombar: {
         backgroundColor: '#5f695d',
-        flex:0.11,
+        flex:1,
         height: 63,
         //opacity: 0.9,
     },
