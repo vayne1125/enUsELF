@@ -20,6 +20,8 @@ import MapViewDirections from 'react-native-maps-directions';
 import Hotplace from './Hotplace'
 import Shopplace from './Shopplace'
 import Holplace from './Holplace'
+import { source } from 'deprecated-react-native-prop-types/DeprecatedImagePropType';
+import { set } from 'date-fns';
 //import Hotplace from './tp'
 const Map = () => {
   const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
@@ -33,14 +35,17 @@ const Map = () => {
   const [hotData, setHotData] = useState([]);
   const [holData, setHolData] = useState([]);
   const [shopData, setShopData] = useState([]);
-  const [endData, setEndData] = useState(ORI_DATA);
+  const [endData, setEndData] = useState([]);
+  const [waypoints,setWaypoints] = useState([]);
   const [currentPlace, setCurrentPlace] = useState();
+  const [addWaypoint,setAdd] = useState([]);
   const onPressHandlerForComlete = () => {
     setCompletePress(true);
     setHotData(ORI_DATA);
     setHolData(ORI_DATA);
     setShopData(ORI_DATA);
-    setEndData(END_DATA);
+    setWaypoints(addWaypoint);
+    console.log(addWaypoint);
     //getCurrentLocation();
   }
   const onPressHandlerForHot = () => {
@@ -120,7 +125,6 @@ const Map = () => {
       }
     })
     console.log('ok')
-    console.log(holData.length);
   }
 
   const SetData = (array) => {
@@ -140,7 +144,6 @@ const Map = () => {
   }, [])
 
   const [myLatitudeDelta, setMyLatitudeDelta] = useState(1.2);
-
   return (
     <View style={styles.container}>
 
@@ -148,7 +151,34 @@ const Map = () => {
       <DetailForMap
         entry={modalEntry}//傳進去的資料參數
         modalVisible={modalVisible}//可不可見
-        onClose={() => { setModalVisible(false); }}//關閉函式
+        onClose={() => { setModalVisible(false);}}//關閉函式
+        onPress1={(data)=>{
+          if(data.id.substr(0,3) === 'hot'){
+            for(i=0;i<hotData.length;i++){
+              if(hotData[i].id === data.id){
+                hotData.splice(i,1);
+                break;
+              }
+            }
+          }else if(data.id.substr(0,3) === 'hol'){
+            for(i=0;i<holData.length;i++){
+              if(holData[i].id === data.id){
+                holData.splice(i,1);
+                break;
+              }
+            }
+          }else{
+            for(i=0;i<shopData.length;i++){
+              if(shopData[i].id === data.id){
+                shopData.splice(i,1);
+                break;
+              }
+            }
+          }
+          console.log(data);
+          addWaypoint.push({latitude:data.location.lat,longitude:data.location.lng});
+          endData.push(data);
+        }}
       />
       {/*浮動視窗-------------------------------------------------------------------------------*/}
 
@@ -235,6 +265,7 @@ const Map = () => {
             }
             setOnce(false);
           }}
+          waypoints={waypoints}
         />
 
         {(hotPress ? hotData : ORI_DATA).map((marker, index) => {
@@ -245,12 +276,12 @@ const Map = () => {
                 tracksViewChanges={false}
                 key={index}
                 coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
-                pinColor='red'
                 //todo 簡介 按下變色
                 onPress={(e) => {
                   setModalVisible(!modalVisible);
                   setModalEntry({
-                    id: marker.place_id,
+                    location: marker.location,
+                    id: marker.id,
                     name: marker.name,
                     info: marker.info,
                     address: marker.myAddr,
@@ -265,8 +296,6 @@ const Map = () => {
                         `https://maps.googleapis.com/maps/api/place/photo?photoreference=${marker.photo.photo_reference}&sensor=false&maxheight=${marker.photo.height}&maxwidth=${marker.photo.width}&key=${API_key}`
                     }
                   });
-                  //marker.pinColor = 'green';  todo:他不是即時更新 method redraw
-                  //console.log(marker.pinColor);
                 }}
               >
                 <View style={styles.markerCss}>
@@ -285,13 +314,14 @@ const Map = () => {
             key={marker.id}
             coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
             onPress={(e) => {
-              console.log(marker.location.lat,",",marker.location.lng);
               setModalVisible(!modalVisible);
               setModalEntry({
-                id: marker.place_id,
+                id: marker.id,
                 name: marker.name,
                 address: marker.myAddr,
-                // star: marker.rating,
+                location: marker.location,
+                id: marker.id,
+                star: 0,
                 info: marker.name,
                 time: marker.opening_hours.map((i) => {
                   return i + '\n';
@@ -323,7 +353,8 @@ const Map = () => {
                 onPress={(e) => {
                   setModalVisible(!modalVisible);
                   setModalEntry({
-                    id: marker.place_id,
+                    location: marker.location,
+                    id: marker.id,
                     name: marker.name,
                     address: marker.myAddr,
                     star: marker.rating,
@@ -350,27 +381,41 @@ const Map = () => {
         }
         )}
 
-        {endData.map((marker) => (
-          <Marker
-            key={marker.id}
-            coordinate={{
-              latitude: marker.latitude,
-              longitude: marker.longitude,
-            }}
-            pinColor={marker.pinColor}
-            onPress={(e) => {
-              setModalVisible(!modalVisible);
-              setModalEntry(sites);
-            }}
-          ></Marker>
-        ))}
+      {(endData).map((marker) => {
+          if (1) {
+            return (
+              <Marker
+                key={marker.id}
+                coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
+                title={marker.name}
+                onPress={(e) => {
+                  setModalVisible(!modalVisible);
+                  setModalEntry({
+                    id: marker.id,
+                    name: marker.name,
+                    address: marker.address,
+                    star: marker.star,
+                    info: marker.info,
+                    time: marker.time,
+                    city: marker.city,
+                    region: marker.region,
+                    source: marker.source,
+                  });
+                }}
+              >
+                <View style={styles.markerCss}>
+                  <Text style={styles.markerText}>{marker.name}</Text>
+                  <Image style={styles.markerImg} source={require('../../assets/pin/green.png')} />
+                </View>
+              </Marker>
+            )
+          }
+        }
+        )}
 
       </MapView>
       <Callout>
         {/* <Back /> */}
-        {/* <Refresh onPress={() => {
-          console.log('refresh');
-        }}></Refresh> */}
       </Callout>
     </View>
   );

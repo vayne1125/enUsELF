@@ -25,7 +25,7 @@ import Image_link from '../theme/Image';
 const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.3;
 
-const DetailForMap = ({entry, modalVisible, onClose}) => {
+const DetailForMap = ({entry, modalVisible, onClose,onPress1}) => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(entry);
   const Stars = score => {
@@ -128,6 +128,8 @@ const DetailForMap = ({entry, modalVisible, onClose}) => {
                 onPress={() => {
                   setNoticeVisible(!noticeVisible);
                   setNoticeEntry(entry);
+                  //console.log(entry);
+                  onPress1(entry);
                 }}
                 style={{flex: 1}}>
                 <Text style={styles.buttonText}>加入行程表</Text>

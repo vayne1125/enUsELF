@@ -1,6 +1,6 @@
 [
     {
-        "id": "ChIJfQJ-NAsEbjQRiUmSi7LapjE",
+        "id": "hot1",
         "info": "壽山情人觀景台",
         "name": "壽山情人觀景台",
         "location": {
@@ -30,11 +30,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "del":0.0625
+        "del": 0.0625,
+        "place_id": "ChIJfQJ-NAsEbjQRiUmSi7LapjE"
     },
     {
-        "del":2.3,
-        "id": "ChIJ-b_-vgFNbzQR8qkajZZrKqU",
+        "del": 2.3,
+        "id": "hot2",
         "info": "大農大富平地森林園區",
         "name": "大農大富平地森林園區",
         "location": {
@@ -63,11 +64,12 @@
             "星期五: 08:00 – 17:00",
             "星期六: 08:00 – 17:00",
             "星期日: 08:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJ-b_-vgFNbzQR8qkajZZrKqU"
     },
     {
-        "del":0.23,
-        "id": "ChIJpUASyeoDbjQRxlnmoOXkT0A",
+        "del": 0.23,
+        "id": "hot3",
         "info": "旗津海岸公園",
         "name": "旗津海岸公園",
         "location": {
@@ -96,11 +98,12 @@
             "星期五: 09:00 – 17:00",
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJpUASyeoDbjQRxlnmoOXkT0A"
     },
     {
-        "del":0.017,
-        "id": "ChIJo7avkR12bjQR9Gvc2sRtx40",
+        "del": 0.017,
+        "id": "hot4",
         "info": "英商德記洋行",
         "name": "英商德記洋行",
         "location": {
@@ -129,10 +132,12 @@
             "星期五: 08:30 – 17:30",
             "星期六: 08:30 – 17:30",
             "星期日: 08:30 – 17:30"
-        ]
+        ],
+        "place_id": "ChIJo7avkR12bjQR9Gvc2sRtx40"
     },
-    {   "del":4,
-        "id": "ChIJeZhxjmg9aTQRu4ClJlnbzHk",
+    {
+        "del": 4,
+        "id": "hot5",
         "info": "一中街夜市",
         "name": "一中街夜市",
         "location": {
@@ -161,11 +166,12 @@
             "星期五: 11:00 – 22:10",
             "星期六: 11:00 – 22:10",
             "星期日: 11:00 – 22:10"
-        ]
+        ],
+        "place_id": "ChIJeZhxjmg9aTQRu4ClJlnbzHk"
     },
     {
-        "del":0.95,
-        "id": "ChIJn3Q73aXicTQRndQSbrqd9kg",
+        "del": 0.95,
+        "id": "hot6",
         "info": "紅毛港文化園區",
         "name": "紅毛港文化園區",
         "location": {
@@ -194,11 +200,12 @@
             "星期五: 15:00 – 20:00",
             "星期六: 10:00 – 21:00",
             "星期日: 10:00 – 21:00"
-        ]
+        ],
+        "place_id": "ChIJn3Q73aXicTQRndQSbrqd9kg"
     },
     {
-        "del":4,
-        "id": "ChIJN7CTMebvcTQRvlAZ2AQdHCE",
+        "del": 4,
+        "id": "hot7",
         "info": "烏鬼洞",
         "name": "烏鬼洞",
         "location": {
@@ -227,11 +234,12 @@
             "星期五: 07:00 – 18:00",
             "星期六: 07:00 – 18:00",
             "星期日: 07:00 – 18:00"
-        ]
+        ],
+        "place_id": "ChIJN7CTMebvcTQRvlAZ2AQdHCE"
     },
     {
-        "del":4,
-        "id": "ChIJOb09b8uVbjQRigoLMNW9rpE",
+        "del": 4,
+        "id": "hot8",
         "info": "檜意森活村 Hinoki Village",
         "name": "檜意森活村",
         "location": {
@@ -260,11 +268,12 @@
             "星期五: 10:00 – 18:00",
             "星期六: 10:00 – 18:00",
             "星期日: 10:00 – 18:00"
-        ]
+        ],
+        "place_id": "ChIJOb09b8uVbjQRigoLMNW9rpE"
     },
     {
-        "del":4,
-        "id": "ChIJ66k9lP3kZzQR9wXQpqo4n28",
+        "del": 4,
+        "id": "hot9",
         "info": "積木博物館-展區整修中免門票/優惠活動DIY禮品舖UnderRenovation/GiftShopOpen",
         "name": "積木博物館",
         "location": {
@@ -293,11 +302,12 @@
             "星期五: 10:00 – 17:00",
             "星期六: 10:00 – 17:00",
             "星期日: 10:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJ66k9lP3kZzQR9wXQpqo4n28"
     },
     {
-        "del:":4,
-        "id": "ChIJq6qqqn4LbzQRr0p9zSWvkdE",
+        "del:": 4,
+        "id": "hot10",
         "info": "大坡池",
         "name": "大坡池",
         "location": {
@@ -326,11 +336,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJq6qqqn4LbzQRr0p9zSWvkdE"
     },
     {
-        "del":4,
-        "id": "ChIJpTcgYOidaDQRVHUO3ILkXJs",
+        "del": 4,
+        "id": "hot11",
         "info": "七星潭海岸風景特定區",
         "name": "七星潭海岸風景特定區",
         "location": {
@@ -359,11 +370,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJpTcgYOidaDQRVHUO3ILkXJs"
     },
     {
-        "del":4,
-        "id": "ChIJZ-TjeHN2bjQR8a3Jat0VHps",
+        "del": 4,
+        "id": "hot12",
         "info": "安平古堡",
         "name": "安平古堡",
         "location": {
@@ -392,11 +404,12 @@
             "星期五: 08:30 – 20:00",
             "星期六: 08:30 – 20:00",
             "星期日: 08:30 – 20:00"
-        ]
+        ],
+        "place_id": "ChIJZ-TjeHN2bjQR8a3Jat0VHps"
     },
     {
-        "del":4,
-        "id": "ChIJx9oJH165bzQRHtM1Bkgvyyo",
+        "del": 4,
+        "id": "hot13",
         "info": "臺東森林公園",
         "name": "臺東森林公園",
         "location": {
@@ -425,11 +438,12 @@
             "星期五: 07:30 – 19:30",
             "星期六: 07:30 – 19:30",
             "星期日: 07:30 – 19:30"
-        ]
+        ],
+        "place_id": "ChIJx9oJH165bzQRHtM1Bkgvyyo"
     },
     {
-        "del":4,
-        "id": "ChIJ6eoEWazXaDQRdesTjsukxe8",
+        "del": 4,
+        "id": "hot14",
         "info": "HOHOCHA喝喝茶丨台灣香日月潭紅茶廠",
         "name": "HOHOCHA喝喝茶",
         "location": {
@@ -458,11 +472,12 @@
             "星期五: 09:00 – 17:20",
             "星期六: 09:00 – 17:50",
             "星期日: 09:00 – 17:50"
-        ]
+        ],
+        "place_id": "ChIJ6eoEWazXaDQRdesTjsukxe8"
     },
     {
-        "del":0.23,
-        "id": "ChIJX3qwoUvjZzQRD_TNlJmeDzQ",
+        "del": 0.23,
+        "id": "hot15",
         "info": "望龍埤",
         "name": "望龍埤",
         "location": {
@@ -485,11 +500,12 @@
         "reg": "員山鄉",
         "opening_hours": [
             "無"
-        ]
+        ],
+        "place_id": "ChIJX3qwoUvjZzQRD_TNlJmeDzQ"
     },
     {
-        "del":4,
-        "id": "ChIJC_1Xj7y1QjQR_YL4J62VPKc",
+        "del": 4,
+        "id": "hot16",
         "info": "石門洞",
         "name": "石門洞",
         "location": {
@@ -518,11 +534,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJC_1Xj7y1QjQR_YL4J62VPKc"
     },
     {
-        "del":2.3,
-        "id": "ChIJP0L-NKNKaDQRZp5YgpymGy4",
+        "del": 2.3,
+        "id": "hot17",
         "info": "賞蟹步道",
         "name": "賞蟹步道",
         "location": {
@@ -551,11 +568,12 @@
             "星期五: 09:00 – 18:00",
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
-        ]
+        ],
+        "place_id": "ChIJP0L-NKNKaDQRZp5YgpymGy4"
     },
     {
-        "del":0.1257,
-        "id": "ChIJk_qk9P91bjQRTolgNlHUSrc",
+        "del": 0.1257,
+        "id": "hot18",
         "info": "二鯤鯓砲臺(億載金城)",
         "name": "二鯤鯓砲臺(億載金城)",
         "location": {
@@ -584,11 +602,12 @@
             "星期五: 08:30 – 17:30",
             "星期六: 08:30 – 17:30",
             "星期日: 08:30 – 17:30"
-        ]
+        ],
+        "place_id": "ChIJk_qk9P91bjQRTolgNlHUSrc"
     },
     {
-        "del":0.52,
-        "id": "ChIJFbzVrGJ2bjQRkZC9jslaIgs",
+        "del": 0.52,
+        "id": "hot19",
         "info": "臺南孔廟",
         "name": "臺南孔廟",
         "location": {
@@ -617,11 +636,12 @@
             "星期五: 08:30 – 17:30",
             "星期六: 08:30 – 17:30",
             "星期日: 08:30 – 17:30"
-        ]
+        ],
+        "place_id": "ChIJFbzVrGJ2bjQRkZC9jslaIgs"
     },
     {
-        "del":1.8,
-        "id": "ChIJC7CiCuJ5bjQR0UEDGKs4KF0",
+        "del": 1.8,
+        "id": "hot20",
         "info": "國立臺灣歷史博物館",
         "name": "國立臺灣歷史博物館",
         "location": {
@@ -650,11 +670,12 @@
             "星期五: 09:00 – 17:00",
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJC7CiCuJ5bjQR0UEDGKs4KF0"
     },
     {
-        "del":2.3,
-        "id": "ChIJ1bZU8hkQaTQRqWPxCYpghHE",
+        "del": 2.3,
+        "id": "hot21",
         "info": "麗寶樂園",
         "name": "麗寶樂園",
         "location": {
@@ -683,11 +704,12 @@
             "星期五: 09:30 – 18:00",
             "星期六: 09:30 – 20:00",
             "星期日: 09:30 – 18:00"
-        ]
+        ],
+        "place_id": "ChIJ1bZU8hkQaTQRqWPxCYpghHE"
     },
     {
-        "del":1.0,
-        "id": "ChIJX6iDchVOXTQR4atveHM3aYU",
+        "del": 1.0,
+        "id": "hot22",
         "info": "海洋廣場",
         "name": "海洋廣場",
         "location": {
@@ -716,11 +738,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJX6iDchVOXTQR4atveHM3aYU"
     },
     {
-        "del":0.0625,
-        "id": "ChIJKQHjEQ89aTQRUejNAZHJUz4",
+        "del": 0.0625,
+        "id": "hot23",
         "info": "臺中刑務所演武場",
         "name": "臺中刑務所演武場",
         "location": {
@@ -749,11 +772,12 @@
             "星期五: 09:30 – 17:30",
             "星期六: 09:30 – 17:30",
             "星期日: 09:30 – 17:30"
-        ]
+        ],
+        "place_id": "ChIJKQHjEQ89aTQRUejNAZHJUz4"
     },
     {
-        "del":0.256,
-        "id": "ChIJjZ7YYQkfaDQRADZ8bkIqXbs",
+        "del": 0.256,
+        "id": "hot24",
         "info": "風禾公園",
         "name": "風禾公園",
         "location": {
@@ -782,11 +806,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJjZ7YYQkfaDQRADZ8bkIqXbs"
     },
     {
-        "del":2.3,
-        "id": "ChIJRV43RoILbzQRQqeetM5fD40",
+        "del": 2.3,
+        "id": "hot25",
         "info": "金城武樹",
         "name": "金城武樹",
         "location": {
@@ -815,11 +840,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJRV43RoILbzQRQqeetM5fD40"
     },
     {
-        "del":0.052,
-        "id": "ChIJcaKjTOw9aTQR4mAeJzejtdg",
+        "del": 0.052,
+        "id": "hot26",
         "info": "臺中國家歌劇院",
         "name": "臺中國家歌劇院",
         "location": {
@@ -848,11 +874,12 @@
             "星期五: 11:30 – 22:00",
             "星期六: 11:30 – 22:00",
             "星期日: 11:30 – 21:00"
-        ]
+        ],
+        "place_id": "ChIJcaKjTOw9aTQR4mAeJzejtdg"
     },
     {
-        "del":0.052,
-        "id": "ChIJLY_oiYcBaDQRCELSB3LZxZk",
+        "del": 0.052,
+        "id": "hot27",
         "info": "碧潭-Bitan",
         "name": "碧潭-Bitan",
         "location": {
@@ -881,11 +908,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJLY_oiYcBaDQRCELSB3LZxZk"
     },
     {
-        "del":2.3,
-        "id": "ChIJ-eEKJmFabzQRb6HQhH532sw",
+        "del": 2.3,
+        "id": "hot28",
         "info": "靜浦北回歸線界標",
         "name": "北回歸線界標",
         "location": {
@@ -914,11 +942,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJ-eEKJmFabzQRb6HQhH532sw"
     },
     {
-        "del":0.52,
-        "id": "ChIJR3oKC51FXTQRV7n_bJH8yjI",
+        "del": 0.52,
+        "id": "hot29",
         "info": "深澳岬角 象鼻岩景觀區",
         "name": "深澳岬角",
         "location": {
@@ -947,11 +976,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJR3oKC51FXTQRV7n_bJH8yjI"
     },
     {
-        "del":0.05,
-        "id": "ChIJV6cfak2-bjQRd5xDvsSdnUk",
+        "del": 0.05,
+        "id": "hot30",
         "info": "旺萊山鳳梨文化園區",
         "name": "旺萊山鳳梨文化園區",
         "location": {
@@ -980,11 +1010,12 @@
             "星期五: 09:00 – 18:00",
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
-        ]
+        ],
+        "place_id": "ChIJV6cfak2-bjQRd5xDvsSdnUk"
     },
     {
-        "del":1.2,
-        "id": "ChIJIQbcHh2RbjQRqiMl6cn-q5k",
+        "del": 1.2,
+        "id": "hot31",
         "info": "白人牙膏觀光工廠",
         "name": "白人牙膏觀光工廠",
         "location": {
@@ -1013,11 +1044,12 @@
             "星期五: 09:00 – 17:00",
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJIQbcHh2RbjQRqiMl6cn-q5k"
     },
     {
-        "del":1.2,
-        "id": "ChIJXx8RkabGaDQR--M93L8duRo",
+        "del": 1.2,
+        "id": "hot32",
         "info": "奧萬大國家森林遊樂區",
         "name": "奧萬大",
         "location": {
@@ -1046,11 +1078,12 @@
             "星期五: 08:00 – 17:00",
             "星期六: 08:00 – 17:00",
             "星期日: 08:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJXx8RkabGaDQR--M93L8duRo"
     },
     {
-        "del":1.2,
-        "id": "ChIJA0P9eml0bjQRAFSV5Tjabuc",
+        "del": 1.2,
+        "id": "hot33",
         "info": "十鼓仁糖文創園區",
         "name": "十鼓仁糖文創園區",
         "location": {
@@ -1079,11 +1112,12 @@
             "星期五: 10:00 – 20:20",
             "星期六: 09:30 – 20:20",
             "星期日: 09:30 – 20:20"
-        ]
+        ],
+        "place_id": "ChIJA0P9eml0bjQRAFSV5Tjabuc"
     },
     {
-        "del":2.3,
-        "id": "ChIJK7_xN_zpaDQR7AmuJ4PT_6w",
+        "del": 2.3,
+        "id": "hot34",
         "info": "青青草原",
         "name": "青青草原",
         "location": {
@@ -1112,11 +1146,12 @@
             "星期五: 08:00 – 17:00",
             "星期六: 08:00 – 17:00",
             "星期日: 08:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJK7_xN_zpaDQR7AmuJ4PT_6w"
     },
     {
-        "del":0.052,
-        "id": "ChIJwyJxyO6pQjQRilcOb_lBRr4",
+        "del": 0.052,
+        "id": "hot35",
         "info": "國立國父紀念館",
         "name": "國立國父紀念館",
         "location": {
@@ -1145,11 +1180,12 @@
             "星期五: 09:00 – 18:00",
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
-        ]
+        ],
+        "place_id": "ChIJwyJxyO6pQjQRilcOb_lBRr4"
     },
     {
-        "del":1.2,
-        "id": "ChIJSdPExVO-bjQRUEvIL0cuafE",
+        "del": 1.2,
+        "id": "hot36",
         "info": "民雄金桔觀光工廠",
         "name": "金桔觀光工廠",
         "location": {
@@ -1178,11 +1214,12 @@
             "星期五: 09:00 – 17:00",
             "星期六: 09:00 – 17:30",
             "星期日: 09:00 – 17:30"
-        ]
+        ],
+        "place_id": "ChIJSdPExVO-bjQRUEvIL0cuafE"
     },
     {
-        "del":1.2,
-        "id": "ChIJQXkJkKg9aDQRroQxl2JMErY",
+        "del": 1.2,
+        "id": "hot37",
         "info": "東眼山國家森林遊樂區",
         "name": "東眼山",
         "location": {
@@ -1211,11 +1248,12 @@
             "星期五: 08:00 – 17:00",
             "星期六: 07:00 – 17:00",
             "星期日: 07:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJQXkJkKg9aDQRroQxl2JMErY"
     },
     {
-        "del":1.2,
-        "id": "ChIJpWeyD14eaDQRfKFO3bEGa9k",
+        "del": 1.2,
+        "id": "hot38",
         "info": "虎頭山公園",
         "name": "虎頭山公園",
         "location": {
@@ -1244,11 +1282,12 @@
             "星期五: 08:00 – 17:00",
             "星期六: 08:00 – 17:00",
             "星期日: 08:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJpWeyD14eaDQRfKFO3bEGa9k"
     },
     {
-        "del":2.3,
-        "id": "ChIJ_TaOy7JwaDQRFf4T-zm2dqo",
+        "del": 2.3,
+        "id": "hot39",
         "info": "太平山國家森林遊樂區",
         "name": "太平山國家森林遊樂區",
         "location": {
@@ -1277,11 +1316,12 @@
             "星期五: 06:00 – 18:00",
             "星期六: 02:30 – 18:00",
             "星期日: 04:00 – 18:00"
-        ]
+        ],
+        "place_id": "ChIJ_TaOy7JwaDQRFf4T-zm2dqo"
     },
     {
-        "del":2.3,
-        "id": "ChIJCd7n16ipQjQRihzEWF4z6Pg",
+        "del": 2.3,
+        "id": "hot40",
         "info": "龍山寺",
         "name": "龍山寺",
         "location": {
@@ -1310,11 +1350,12 @@
             "星期五: 06:00 – 22:00",
             "星期六: 06:00 – 22:00",
             "星期日: 06:00 – 22:00"
-        ]
+        ],
+        "place_id": "ChIJCd7n16ipQjQRihzEWF4z6Pg"
     },
     {
-        "del":0.052,
-        "id": "ChIJdU4y8ie4cTQRe0BNxOo2HKc",
+        "del": 0.052,
+        "id": "hot41",
         "info": "車城福安宮",
         "name": "車城福安宮",
         "location": {
@@ -1343,11 +1384,12 @@
             "星期五: 05:00 – 21:00",
             "星期六: 05:00 – 21:00",
             "星期日: 05:00 – 21:00"
-        ]
+        ],
+        "place_id": "ChIJdU4y8ie4cTQRe0BNxOo2HKc"
     },
     {
-        "del":1.2,
-        "id": "ChIJEQQD_de3cTQROPaoxqTeFFY",
+        "del": 1.2,
+        "id": "hot42",
         "info": "四重溪溫泉公園",
         "name": "四重溪溫泉公園",
         "location": {
@@ -1370,11 +1412,12 @@
         "reg": "車城鄉",
         "opening_hours": [
             "無"
-        ]
+        ],
+        "place_id": "ChIJEQQD_de3cTQROPaoxqTeFFY"
     },
     {
-        "del":0.052,
-        "id": "ChIJtbdB0Xt2bjQR1IE4qcWD-lg",
+        "del": 0.052,
+        "id": "hot43",
         "info": "藍晒圖文創園區",
         "name": "藍晒圖文創園區",
         "location": {
@@ -1403,11 +1446,12 @@
             "星期五: 10:00 – 21:00",
             "星期六: 10:00 – 21:00",
             "星期日: 10:00 – 21:00"
-        ]
+        ],
+        "place_id": "ChIJtbdB0Xt2bjQR1IE4qcWD-lg"
     },
     {
-        "del":0.52,
-        "id": "ChIJhbRgGMWfaDQRfYxPTbTPdoQ",
+        "del": 0.52,
+        "id": "hot44",
         "info": "松園別館",
         "name": "松園別館",
         "location": {
@@ -1436,11 +1480,12 @@
             "星期五: 09:00 – 18:00",
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
-        ]
+        ],
+        "place_id": "ChIJhbRgGMWfaDQRfYxPTbTPdoQ"
     },
     {
-        "del":0.0625,
-        "id": "ChIJZc4QyaE9aTQRRVwjmQmYS7g",
+        "del": 0.0625,
+        "id": "hot45",
         "info": "審計新村",
         "name": "審計新村",
         "location": {
@@ -1469,11 +1514,12 @@
             "星期五: 09:00 – 19:00",
             "星期六: 09:00 – 19:00",
             "星期日: 09:00 – 19:00"
-        ]
+        ],
+        "place_id": "ChIJZc4QyaE9aTQRRVwjmQmYS7g"
     },
     {
-        "del":1.2,
-        "id": "ChIJAQAAAKyfQjQR7fhsd-lMPDU",
+        "del": 1.2,
+        "id": "hot46",
         "info": "竹圍漁港",
         "name": "竹圍漁港",
         "location": {
@@ -1502,11 +1548,12 @@
             "星期五: 08:00 – 18:00",
             "星期六: 08:00 – 18:00",
             "星期日: 08:00 – 18:00"
-        ]
+        ],
+        "place_id": "ChIJAQAAAKyfQjQR7fhsd-lMPDU"
     },
     {
-        "del":1.2,
-        "id": "ChIJgVBR5NZFbzQRlahAiS__Yf4",
+        "del": 1.2,
+        "id": "hot47",
         "info": "北回歸線標誌公園",
         "name": "北回公園",
         "location": {
@@ -1535,11 +1582,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJgVBR5NZFbzQRlahAiS__Yf4"
     },
     {
-        "del":1.2,
-        "id": "ChIJh-J5vhsRbjQR4AcXKxaTRt8",
+        "del": 1.2,
+        "id": "hot48",
         "info": "義大遊樂世界",
         "name": "義大遊樂世界",
         "location": {
@@ -1568,11 +1616,12 @@
             "星期五: 09:00 – 17:30",
             "星期六: 09:00 – 20:00",
             "星期日: 09:00 – 17:30"
-        ]
+        ],
+        "place_id": "ChIJh-J5vhsRbjQR4AcXKxaTRt8"
     },
     {
-        "del":1.2,
-        "id": "ChIJj4EySmCqQjQRZte0Cf0G_qo",
+        "del": 1.2,
+        "id": "hot49",
         "info": "臺北市立動物園",
         "name": "動物園",
         "location": {
@@ -1601,11 +1650,12 @@
             "星期五: 09:00 – 17:00",
             "星期六: 09:00 – 21:00",
             "星期日: 09:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJj4EySmCqQjQRZte0Cf0G_qo"
     },
     {
-        "del":0.1257,
-        "id": "ChIJAV0H0pTYbTQRuS5hyXnarzE",
+        "del": 0.1257,
+        "id": "hot50",
         "info": "台江國家公園管理處遊客中心暨行政中心",
         "name": "台江國家公園",
         "location": {
@@ -1634,11 +1684,12 @@
             "星期五: 09:00 – 17:00",
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJAV0H0pTYbTQRuS5hyXnarzE"
     },
     {
-        "del":2.3,
-        "id": "ChIJAQAAACzRbjQRUgTggaGCmkA",
+        "del": 2.3,
+        "id": "hot51",
         "info": "溪頭自然教育園區",
         "name": "溪頭自然教育園區",
         "location": {
@@ -1667,11 +1718,12 @@
             "星期五: 07:00 – 17:00",
             "星期六: 07:00 – 17:00",
             "星期日: 07:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJAQAAACzRbjQRUgTggaGCmkA"
     },
     {
-        "del":4,
-        "id": "ChIJ-baSVPywcTQR9otP4FjiF_A",
+        "del": 4,
+        "id": "hot52",
         "info": "鹿境梅花鹿生態園區",
         "name": "鹿境梅花鹿生態園區",
         "location": {
@@ -1700,11 +1752,12 @@
             "星期五: 10:00 – 17:00",
             "星期六: 10:00 – 17:00",
             "星期日: 10:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJ-baSVPywcTQR9otP4FjiF_A"
     },
     {
-        "del":2.3,
-        "id": "ChIJ86VLNp0hbjQRMoJG83pE5nM",
+        "del": 2.3,
+        "id": "hot53",
         "info": "林後四林平地森林園區",
         "name": "林後四林平地森林園區",
         "location": {
@@ -1733,11 +1786,12 @@
             "星期五: 08:00 – 17:00",
             "星期六: 08:00 – 17:00",
             "星期日: 08:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJ86VLNp0hbjQRMoJG83pE5nM"
     },
     {
-        "del":4,
-        "id": "ChIJddQWJkZwbzQR9yWN24_jSsM",
+        "del": 4,
+        "id": "hot54",
         "info": "三仙台跨海步橋",
         "name": "三仙台跨海步橋",
         "location": {
@@ -1766,11 +1820,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJddQWJkZwbzQR9yWN24_jSsM"
     },
     {
-        "del":1.2,
-        "id": "ChIJP1TeZfkzaDQRzOAPuuWWoj4",
+        "del": 1.2,
+        "id": "hot55",
         "info": "小叮噹科學主題樂園",
         "name": "小叮噹科學主題樂園",
         "location": {
@@ -1799,11 +1854,12 @@
             "星期五: 09:00 – 17:00",
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJP1TeZfkzaDQRzOAPuuWWoj4"
     },
     {
-        "del":2.3,
-        "id": "ChIJSagIWjVLaTQRSDi4Pjkk7-M",
+        "del": 2.3,
+        "id": "hot56",
         "info": "台灣穀堡",
         "name": "台灣穀堡",
         "location": {
@@ -1832,11 +1888,12 @@
             "星期五: 08:00 – 17:00",
             "星期六: 08:00 – 18:00",
             "星期日: 08:00 – 18:00"
-        ]
+        ],
+        "place_id": "ChIJSagIWjVLaTQRSDi4Pjkk7-M"
     },
     {
-        "del":4,
-        "id": "ChIJAQAAADSkbzQR2E5XyomxUJo",
+        "del": 4,
+        "id": "hot57",
         "info": "鹿野高台",
         "name": "鹿野高台",
         "location": {
@@ -1865,11 +1922,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJAQAAADSkbzQR2E5XyomxUJo"
     },
     {
-        "del":0.016,
-        "id": "ChIJ_____wN2bjQRIOio8uGV_Og",
+        "del": 0.016,
+        "id": "hot58",
         "info": "安平老街",
         "name": "安平老街",
         "location": {
@@ -1898,11 +1956,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJ_____wN2bjQRIOio8uGV_Og"
     },
     {
-        "del":0.52,
-        "id": "ChIJ58Fl7JE_aDQR5JhwZsUfWag",
+        "del": 0.52,
+        "id": "hot59",
         "info": "薰衣草森林新竹尖石店",
         "name": "薰衣草森林新竹尖石店",
         "location": {
@@ -1931,11 +1990,12 @@
             "星期五: 10:30 – 18:30",
             "星期六: 10:00 – 18:30",
             "星期日: 10:00 – 18:30"
-        ]
+        ],
+        "place_id": "ChIJ58Fl7JE_aDQR5JhwZsUfWag"
     },
     {
-        "del":0.052,
-        "id": "ChIJZatyKu4JbzQRyHuSojQ6qQ0",
+        "del": 0.052,
+        "id": "hot60",
         "info": "池上伯朗大道",
         "name": "池上伯朗大道",
         "location": {
@@ -1964,11 +2024,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJZatyKu4JbzQRyHuSojQ6qQ0"
     },
     {
-        "del":0.52,
-        "id": "ChIJGWs7Pvs8aDQR85-UeY7fPWE",
+        "del": 0.52,
+        "id": "hot61",
         "info": "龍潭大池",
         "name": "龍潭大池",
         "location": {
@@ -1997,11 +2058,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJGWs7Pvs8aDQR85-UeY7fPWE"
     },
     {
-        "del":2.3,
-        "id": "ChIJmWtqgIJnXTQRGWfG25olU-8",
+        "del": 2.3,
+        "id": "hot62",
         "info": "三貂角燈塔",
         "name": "三貂角燈塔",
         "location": {
@@ -2030,11 +2092,12 @@
             "星期五: 09:00 – 17:00",
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJmWtqgIJnXTQRGWfG25olU-8"
     },
     {
-        "del":0.0625,
-        "id": "ChIJq_-Vyp0XbjQRkWTVX78U7QA",
+        "del": 0.0625,
+        "id": "hot63",
         "info": "勝利星村創意生活園區",
         "name": "勝利星村創意生活園區",
         "location": {
@@ -2063,11 +2126,12 @@
             "星期五: 09:00 – 17:00",
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJq_-Vyp0XbjQRkWTVX78U7QA"
     },
     {
-        "del":1.2,
-        "id": "ChIJ3-vwJLOzaDQRHnPlTZ31RsQ",
+        "del": 1.2,
+        "id": "hot64",
         "info": "林田山林業文化園區",
         "name": "林田山林業文化園區",
         "location": {
@@ -2096,11 +2160,12 @@
             "星期五: 09:00 – 17:00",
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJ3-vwJLOzaDQRHnPlTZ31RsQ"
     },
     {
-        "del":2.3,
-        "id": "ChIJ27GoR89AaDQR78D2c-yQhio",
+        "del": 2.3,
+        "id": "hot65",
         "info": "內灣老街",
         "name": "內灣老街",
         "location": {
@@ -2129,11 +2194,12 @@
             "星期五: 10:00 – 18:00",
             "星期六: 10:00 – 18:00",
             "星期日: 10:00 – 18:00"
-        ]
+        ],
+        "place_id": "ChIJ27GoR89AaDQR78D2c-yQhio"
     },
     {
-        "del":2.3,
-        "id": "ChIJcYyEEWQGaDQRelCnuK4S6yo",
+        "del": 2.3,
+        "id": "hot66",
         "info": "烏來老街",
         "name": "烏來老街",
         "location": {
@@ -2162,11 +2228,12 @@
             "星期五: 10:00 – 17:00",
             "星期六: 10:00 – 18:00",
             "星期日: 10:00 – 18:00"
-        ]
+        ],
+        "place_id": "ChIJcYyEEWQGaDQRelCnuK4S6yo"
     },
     {
-        "del":2.3,
-        "id": "ChIJaVMVJsHQbjQR77h647d6zCY",
+        "del": 2.3,
+        "id": "hot67",
         "info": "杉林溪森林生態渡假園區",
         "name": "杉林溪森林生態渡假園區",
         "location": {
@@ -2195,11 +2262,12 @@
             "星期五: 07:00 – 21:00",
             "星期六: 07:00 – 21:00",
             "星期日: 07:00 – 21:00"
-        ]
+        ],
+        "place_id": "ChIJaVMVJsHQbjQR77h647d6zCY"
     },
     {
-        "del":0.0625,
-        "id": "ChIJqUZvRQ09aTQRqh9vWv4suqs",
+        "del": 0.0625,
+        "id": "hot68",
         "info": "柳川水岸景觀步道",
         "name": "柳川水岸景觀步道",
         "location": {
@@ -2228,11 +2296,12 @@
             "星期五: 06:00 – 22:00",
             "星期六: 06:00 – 00:00",
             "星期日: 06:00 – 00:00"
-        ]
+        ],
+        "place_id": "ChIJqUZvRQ09aTQRqh9vWv4suqs"
     },
     {
-        "del":0.05,
-        "id": "ChIJ9eOyO2JKaDQRakkYan8x6xg",
+        "del": 0.05,
+        "id": "hot69",
         "info": "青青草原",
         "name": "青青草原",
         "location": {
@@ -2261,11 +2330,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJ9eOyO2JKaDQRakkYan8x6xg"
     },
     {
-        "del":2.3,
-        "id": "ChIJz9-onDA9bjQR-VpoaS6wV6A",
+        "del": 2.3,
+        "id": "hot70",
         "info": "六堆客家文化園區",
         "name": "六堆客家文化園區",
         "location": {
@@ -2294,11 +2364,12 @@
             "星期五: 09:00 – 17:00",
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJz9-onDA9bjQR-VpoaS6wV6A"
     },
     {
-        "del":0.6,
-        "id": "ChIJQ9W8A6plbjQRGDjCdnI9f9M",
+        "del": 0.6,
+        "id": "hot71",
         "info": "臺南左鎮化石園區",
         "name": "臺南左鎮化石園區",
         "location": {
@@ -2327,11 +2398,12 @@
             "星期五: 09:00 – 17:00",
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJQ9W8A6plbjQRGDjCdnI9f9M"
     },
     {
-        "del":2.3,
-        "id": "ChIJte6zETiTaDQRA6gtQKdhV8k",
+        "del": 2.3,
+        "id": "hot72",
         "info": "武嶺",
         "name": "武嶺",
         "location": {
@@ -2360,11 +2432,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJte6zETiTaDQRA6gtQKdhV8k"
     },
     {
-        "del":1.2,
-        "id": "ChIJGTT2a3lPXTQRjkhw37cYOJM",
+        "del": 1.2,
+        "id": "hot73",
         "info": "潮境公園",
         "name": "潮境公園",
         "location": {
@@ -2393,11 +2466,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJGTT2a3lPXTQRjkhw37cYOJM"
     },
     {
-        "del":0.0625,
-        "id": "ChIJbYl7d2F2bjQRnFdvyMBuZfI",
+        "del": 0.0625,
+        "id": "hot74",
         "info": "赤崁樓",
         "name": "赤崁樓",
         "location": {
@@ -2426,11 +2500,12 @@
             "星期五: 08:30 – 21:30",
             "星期六: 08:30 – 21:30",
             "星期日: 08:30 – 21:30"
-        ]
+        ],
+        "place_id": "ChIJbYl7d2F2bjQRnFdvyMBuZfI"
     },
     {
-        "del":4,
-        "id": "ChIJVVVVVWWuaTQRsf_BtcIo5Yo",
+        "del": 4,
+        "id": "hot75",
         "info": "後龍鎮半天寮休閒文化園區 - 好望角",
         "name": "後龍鎮半天寮休閒文化園區",
         "location": {
@@ -2459,11 +2534,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJVVVVVWWuaTQRsf_BtcIo5Yo"
     },
     {
-        "del":0.05,
-        "id": "ChIJH4Ouo2rBbjQR50c88GP53ew",
+        "del": 0.05,
+        "id": "hot76",
         "info": "太平雲梯遊客服務中心Visitor Service Center(附設雲中找茶複合式餐廳）",
         "name": "太平雲梯服務中心",
         "location": {
@@ -2492,11 +2568,12 @@
             "星期五: 09:00 – 17:30",
             "星期六: 09:00 – 17:30, 18:00 – 20:00",
             "星期日: 09:00 – 17:30"
-        ]
+        ],
+        "place_id": "ChIJH4Ouo2rBbjQR50c88GP53ew"
     },
     {
-        "del":1.2,
-        "id": "ChIJ772ubUr6ZzQRuY_2y4RvRrM",
+        "del": 1.2,
+        "id": "hot77",
         "info": "湯圍溝溫泉公園",
         "name": "湯圍溝溫泉公園",
         "location": {
@@ -2525,11 +2602,12 @@
             "星期五: 06:30 – 23:00",
             "星期六: 06:30 – 23:00",
             "星期日: 06:30 – 22:00"
-        ]
+        ],
+        "place_id": "ChIJ772ubUr6ZzQRuY_2y4RvRrM"
     },
     {
-        "del":2.3,
-        "id": "ChIJL25qhuqsQjQRjzwIZ7a6UbI",
+        "del": 2.3,
+        "id": "hot78",
         "info": "大湖公園 (防災公園）",
         "name": "大湖公園",
         "location": {
@@ -2558,11 +2636,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJL25qhuqsQjQRjzwIZ7a6UbI"
     },
     {
-        "del":2.3,
-        "id": "ChIJFfV1wfYDbjQRHdGpq6VRADM",
+        "del": 2.3,
+        "id": "hot79",
         "info": "打狗英國領事館官邸",
         "name": "打狗英國領事館官邸",
         "location": {
@@ -2591,11 +2670,12 @@
             "星期五: 10:00 – 19:00",
             "星期六: 09:00 – 19:00",
             "星期日: 09:00 – 19:00"
-        ]
+        ],
+        "place_id": "ChIJFfV1wfYDbjQRHdGpq6VRADM"
     },
     {
-        "del":1.8,
-        "id": "ChIJV04XbMVEaDQRu-e6P6_tKAo",
+        "del": 1.8,
+        "id": "hot80",
         "info": "張學良文化園區",
         "name": "張學良文化園區",
         "location": {
@@ -2624,11 +2704,12 @@
             "星期五: 09:00 – 17:00",
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJV04XbMVEaDQRu-e6P6_tKAo"
     },
     {
-        "del":0.52,
-        "id": "ChIJpcSL78qyaDQRpJX500RPFLo",
+        "del": 0.52,
+        "id": "hot81",
         "info": "花蓮觀光糖廠",
         "name": "花蓮觀光糖廠",
         "location": {
@@ -2651,11 +2732,12 @@
         "reg": "光復鄉",
         "opening_hours": [
             "無"
-        ]
+        ],
+        "place_id": "ChIJpcSL78qyaDQRpJX500RPFLo"
     },
     {
-        "del":4,
-        "id": "ChIJIVlPqhY8aDQRcSMa0PLZrkk",
+        "del": 4,
+        "id": "hot82",
         "info": "小人國主題樂園",
         "name": "小人國主題樂園",
         "location": {
@@ -2684,11 +2766,12 @@
             "星期五: 09:30 – 17:00",
             "星期六: 09:30 – 17:00",
             "星期日: 09:30 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJIVlPqhY8aDQRcSMa0PLZrkk"
     },
     {
-        "del":0.052,
-        "id": "ChIJe6XdK9SbbjQRy7gVi-RqGWk",
+        "del": 0.052,
+        "id": "hot83",
         "info": "國立故宮博物院南部院區",
         "name": "國立故宮博物院南部院區",
         "location": {
@@ -2717,11 +2800,12 @@
             "星期五: 09:00 – 17:00",
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
-        ]
+        ],
+        "place_id": "ChIJe6XdK9SbbjQRy7gVi-RqGWk"
     },
     {
-        "del":1.2,
-        "id": "ChIJbUfZ5SxBaTQRlP6jUJVdbMc",
+        "del": 1.2,
+        "id": "hot84",
         "info": "台灣優格餅乾學院 【DIY手作/餅乾/彰化景點/2022中秋禮盒/月餅蛋黃酥】",
         "name": "台灣優格餅乾學院",
         "location": {
@@ -2750,11 +2834,12 @@
             "星期五: 09:00 – 18:00",
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
-        ]
+        ],
+        "place_id": "ChIJbUfZ5SxBaTQRlP6jUJVdbMc"
     },
     {
-        "del":0.52,
-        "id": "ChIJgS3U1LG5bzQRGuFTr11jV4A",
+        "del": 0.52,
+        "id": "hot85",
         "info": "小野柳",
         "name": "小野柳",
         "location": {
@@ -2783,11 +2868,12 @@
             "星期五: 08:30 – 17:30",
             "星期六: 08:30 – 17:30",
             "星期日: 08:30 – 17:30"
-        ]
+        ],
+        "place_id": "ChIJgS3U1LG5bzQRGuFTr11jV4A"
     },
     {
-        "del":1.2,
-        "id": "ChIJ_XWXKXRMXTQRHRNq6ov7-rQ",
+        "del": 1.2,
+        "id": "hot86",
         "info": "野柳海洋世界",
         "name": "野柳海洋世界",
         "location": {
@@ -2816,11 +2902,12 @@
             "星期五: 09:00 – 17:00",
             "星期六: 09:00 – 17:30",
             "星期日: 09:00 – 17:30"
-        ]
+        ],
+        "place_id": "ChIJ_XWXKXRMXTQRHRNq6ov7-rQ"
     },
     {
-        "del":0.0625,
-        "id": "ChIJ04sByqE9aTQRnw6NwaSUZd8",
+        "del": 0.0625,
+        "id": "hot87",
         "info": "審計368新創聚落",
         "name": "審計368新創聚落",
         "location": {
@@ -2849,11 +2936,12 @@
             "星期五: 11:30 – 20:30",
             "星期六: 11:30 – 20:30",
             "星期日: 11:30 – 20:30"
-        ]
+        ],
+        "place_id": "ChIJ04sByqE9aTQRnw6NwaSUZd8"
     },
     {
-        "del":1,
-        "id": "ChIJa0lvH7rrbjQRIlSqKc1w4IY",
+        "del": 1,
+        "id": "hot88",
         "info": "旺萊山愛情大草原",
         "name": "旺萊山愛情大草原",
         "location": {
@@ -2882,11 +2970,12 @@
             "星期五: 09:00 – 17:20",
             "星期六: 09:00 – 17:20",
             "星期日: 09:00 – 17:20"
-        ]
+        ],
+        "place_id": "ChIJa0lvH7rrbjQRIlSqKc1w4IY"
     },
     {
-        "del":0.256,
-        "id": "ChIJ2fpFp28GaDQR3N-e1P4HJ-8",
+        "del": 0.256,
+        "id": "hot89",
         "info": "烏來瀑布",
         "name": "烏來瀑布",
         "location": {
@@ -2915,11 +3004,12 @@
             "星期五: 24 小時營業",
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
-        ]
+        ],
+        "place_id": "ChIJ2fpFp28GaDQR3N-e1P4HJ-8"
     },
     {
-        "del":1.5,
-        "id": "ChIJ_9bBguk1aTQRhCIhRswPh4o",
+        "del": 1.5,
+        "id": "hot90",
         "info": "成美文化園-永靖親子景點|打卡景點|推薦景點|親子園區|拍照景點|網紅景點",
         "name": "成美文化園",
         "location": {
@@ -2948,6 +3038,7 @@
             "星期五: 09:00 – 17:00",
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
-        ]
+        ],
+        "place_id": "ChIJ_9bBguk1aTQRhCIhRswPh4o"
     }
 ]

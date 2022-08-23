@@ -88,7 +88,7 @@ const test = ({city, region}) => {
       });
       let result_ = res.data;
       setResult(result_);
-      console.log(result_);
+      //console.log(result_);
       //console.log(result_['icon_num'][0]);
       //console.log(icon[result_['icon_num'][0]].src);
     } catch (e) {

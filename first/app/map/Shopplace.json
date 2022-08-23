@@ -1,6 +1,6 @@
 [
     {
-        "id": "ChIJYXit0c6rQjQRdcPLEANquv4",
+        "id": "shop1",
         "info": "法朋烘焙甜點坊",
         "name": "法朋烘焙甜點坊",
         "location": {
@@ -30,10 +30,11 @@
             "星期六: 11:30 – 19:30",
             "星期日: 11:30 – 19:30"
         ],
-        "del": 4
+        "del": 4,
+        "place_id": "ChIJYXit0c6rQjQRdcPLEANquv4"
     },
     {
-        "id": "ChIJBXu6uJQzaTQRp2drTQjPnN0",
+        "id": "shop2",
         "info": "微光森林",
         "name": "微光森林",
         "location": {
@@ -63,10 +64,11 @@
             "星期六: 08:00 – 18:00",
             "星期日: 08:00 – 18:00"
         ],
-        "del": 4
+        "del": 4,
+        "place_id": "ChIJBXu6uJQzaTQRp2drTQjPnN0"
     },
     {
-        "id": "ChIJ2aVSgpIEbjQRkEFmoLUOO1g",
+        "id": "shop3",
         "info": "猜心泡芙",
         "name": "猜心泡芙",
         "location": {
@@ -96,10 +98,11 @@
             "星期六: 15:00 – 18:00",
             "星期日: 15:00 – 18:00"
         ],
-        "del": 4
+        "del": 4,
+        "place_id": "ChIJ2aVSgpIEbjQRkEFmoLUOO1g"
     },
     {
-        "id": "ChIJFYmlucGfaDQRLdMuqxc6mJA",
+        "id": "shop4",
         "info": "花蓮公正包子店",
         "name": "花蓮公正包子店",
         "location": {
@@ -129,10 +132,11 @@
             "星期六: 09:00 – 21:00",
             "星期日: 09:00 – 21:00"
         ],
-        "del": 4
+        "del": 4,
+        "place_id": "ChIJFYmlucGfaDQRLdMuqxc6mJA"
     },
     {
-        "id": "ChIJee-s4n3mZzQRrYZQxlv3VKY",
+        "id": "shop5",
         "info": "奕順軒 羅東民權店",
         "name": "奕順軒",
         "location": {
@@ -162,10 +166,11 @@
             "星期六: 10:00 – 22:00",
             "星期日: 10:00 – 22:00"
         ],
-        "del": 4
+        "del": 4,
+        "place_id": "ChIJee-s4n3mZzQRrYZQxlv3VKY"
     },
     {
-        "id": "ChIJK1EhaCSUbjQRMnu8XJVSdVs",
+        "id": "shop6",
         "info": "福義軒-成功門市",
         "name": "福義軒-成功門市",
         "location": {
@@ -195,10 +200,11 @@
             "星期六: 08:00 – 20:00",
             "星期日: 08:00 – 17:00"
         ],
-        "del": 4
+        "del": 4,
+        "place_id": "ChIJK1EhaCSUbjQRMnu8XJVSdVs"
     },
     {
-        "id": "ChIJX7O6Doi3cTQRhTESIEEQeJI",
+        "id": "shop7",
         "info": "正記 黃家綠豆蒜",
         "name": "正記",
         "location": {
@@ -228,10 +234,11 @@
             "星期六: 09:30 – 17:00",
             "星期日: 09:30 – 17:00"
         ],
-        "del": 4
+        "del": 4,
+        "place_id": "ChIJX7O6Doi3cTQRhTESIEEQeJI"
     },
     {
-        "id": "ChIJaXa719oqbDQRMk9Z9ePw3tE",
+        "id": "shop8",
         "info": "錢來也商店（創始店）",
         "name": "錢來也商店（創始店）",
         "location": {
@@ -261,10 +268,11 @@
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
         ],
-        "del": 4
+        "del": 4,
+        "place_id": "ChIJaXa719oqbDQRMk9Z9ePw3tE"
     },
     {
-        "id": "ChIJYd50tR8PaTQROMewX71lIjI",
+        "id": "shop9",
         "info": "垂坤食品 旗艦店",
         "name": "垂坤食品",
         "location": {
@@ -294,10 +302,11 @@
             "星期六: 08:00 – 21:30",
             "星期日: 08:00 – 21:30"
         ],
-        "del": 4
+        "del": 4,
+        "place_id": "ChIJYd50tR8PaTQROMewX71lIjI"
     },
     {
-        "id": "ChIJq6qqqrq5bzQRLz8_254YaTo",
+        "id": "shop10",
         "info": "阿美釋迦麻糬館",
         "name": "阿美釋迦麻糬館",
         "location": {
@@ -327,10 +336,11 @@
             "星期六: 08:30 – 17:30",
             "星期日: 08:30 – 17:30"
         ],
-        "del": 4
+        "del": 4,
+        "place_id": "ChIJq6qqqrq5bzQRLz8_254YaTo"
     },
     {
-        "id": "ChIJn_Xa4UxtbzQRD8nQB-0N87Q",
+        "id": "shop11",
         "info": "富里鄉農會羅山展售中心",
         "name": "富里鄉農會羅山展售中心",
         "location": {
@@ -360,10 +370,11 @@
             "星期六: 08:00 – 17:00",
             "星期日: 08:00 – 17:00"
         ],
-        "del": 4
+        "del": 4,
+        "place_id": "ChIJn_Xa4UxtbzQRD8nQB-0N87Q"
     },
     {
-        "id": "ChIJAQAAcIVabDQR9ByVCl2naHM",
+        "id": "shop12",
         "info": "Pier3 三號港",
         "name": "Pier3",
         "location": {
@@ -393,10 +404,11 @@
             "星期六: 10:30 – 21:00",
             "星期日: 10:30 – 21:00"
         ],
-        "del": 4
+        "del": 4,
+        "place_id": "ChIJAQAAcIVabDQR9ByVCl2naHM"
     },
     {
-        "id": "ChIJ9R0ZEcQ1aDQR4D_0WSzmc28",
+        "id": "shop13",
         "info": "福源花生醬",
         "name": "福源花生醬",
         "location": {
@@ -426,10 +438,11 @@
             "星期六: 09:00 – 21:30",
             "星期日: 09:00 – 21:30"
         ],
-        "del": 4
+        "del": 4,
+        "place_id": "ChIJ9R0ZEcQ1aDQR4D_0WSzmc28"
     },
     {
-        "id": "ChIJ5Y-GFZDZaDQRByLyFuGFNG8",
+        "id": "shop14",
         "info": "天子舒芙蕾 慈恩街門市",
         "name": "天子舒芙蕾",
         "location": {
@@ -459,10 +472,11 @@
             "星期六: 10:00 – 19:00",
             "星期日: 10:00 – 19:00"
         ],
-        "del": 4
+        "del": 4,
+        "place_id": "ChIJ5Y-GFZDZaDQRByLyFuGFNG8"
     },
     {
-        "id": "ChIJiXwhwldLXTQRhtYXa22HcYI",
+        "id": "shop15",
         "info": "金山藷童瑤",
         "name": "金山藷童瑤",
         "location": {
@@ -492,10 +506,11 @@
             "星期六: 09:00 – 20:00",
             "星期日: 09:00 – 20:00"
         ],
-        "del": 2.0
+        "del": 2.0,
+        "place_id": "ChIJiXwhwldLXTQRhtYXa22HcYI"
     },
     {
-        "id": "ChIJ96H7-OoYaDQROPdHKCsGUsg",
+        "id": "shop16",
         "info": "宏亞巧克力共和國 -(觀光工廠、博物館、伴手禮、親子 團體餐廳)",
         "name": "宏亞巧克力共和國",
         "location": {
@@ -525,10 +540,11 @@
             "星期六: 10:00 – 18:00",
             "星期日: 10:00 – 18:00"
         ],
-        "del": 2.0
+        "del": 2.0,
+        "place_id": "ChIJ96H7-OoYaDQROPdHKCsGUsg"
     },
     {
-        "id": "ChIJ_09jHEEDaTQR6EgMuwU3k_g",
+        "id": "shop17",
         "info": "江記永安喜餅旗艦店",
         "name": "江記永安喜餅旗艦店",
         "location": {
@@ -558,10 +574,11 @@
             "星期六: 09:00 – 19:00",
             "星期日: 09:00 – 19:00"
         ],
-        "del": 2.0
+        "del": 2.0,
+        "place_id": "ChIJ_09jHEEDaTQR6EgMuwU3k_g"
     },
     {
-        "id": "ChIJ6xpijrghbjQRnzSWkMOmfHs",
+        "id": "shop18",
         "info": "心之和乳酪",
         "name": "心之和乳酪",
         "location": {
@@ -591,10 +608,11 @@
             "星期六: 10:00 – 18:00",
             "星期日: 10:00 – 18:00"
         ],
-        "del": 2.0
+        "del": 2.0,
+        "place_id": "ChIJ6xpijrghbjQRnzSWkMOmfHs"
     },
     {
-        "id": "ChIJG3mSXX12bjQR3fbtCNTeg3s",
+        "id": "shop19",
         "info": "克林台包",
         "name": "克林台包",
         "location": {
@@ -624,10 +642,11 @@
             "星期六: 08:00 – 20:00",
             "星期日: 08:00 – 20:00"
         ],
-        "del": 2.0
+        "del": 2.0,
+        "place_id": "ChIJG3mSXX12bjQR3fbtCNTeg3s"
     },
     {
-        "id": "ChIJEewCSG0oZjQRxWPvxAF0Sk4",
+        "id": "shop20",
         "info": "佳興冰菓店",
         "name": "佳興冰菓店",
         "location": {
@@ -657,10 +676,11 @@
             "星期六: 08:00 – 17:00",
             "星期日: 08:00 – 17:00"
         ],
-        "del": 2.0
+        "del": 2.0,
+        "place_id": "ChIJEewCSG0oZjQRxWPvxAF0Sk4"
     },
     {
-        "id": "ChIJr-D_s5E4aTQRfn5O0IlVMX8",
+        "id": "shop21",
         "info": "大元蔴薯(鹹麻糬)",
         "name": "大元蔴薯(鹹麻糬)",
         "location": {
@@ -690,10 +710,11 @@
             "星期六: 08:30 – 21:00",
             "星期日: 08:30 – 21:00"
         ],
-        "del": 2.0
+        "del": 2.0,
+        "place_id": "ChIJr-D_s5E4aTQRfn5O0IlVMX8"
     },
     {
-        "id": "ChIJEfjEcs_AbjQRpuEKDC5BGKk",
+        "id": "shop22",
         "info": "梅問屋食品有限公司 梅子元氣館",
         "name": "梅問屋食品有限公司",
         "location": {
@@ -723,10 +744,11 @@
             "星期六: 08:00 – 17:30",
             "星期日: 08:00 – 17:30"
         ],
-        "del": 2.0
+        "del": 2.0,
+        "place_id": "ChIJEfjEcs_AbjQRpuEKDC5BGKk"
     },
     {
-        "id": "ChIJRZU0ZA1xbzQRWPBoHNHgYik",
+        "id": "shop23",
         "info": "成功豆花",
         "name": "成功豆花",
         "location": {
@@ -756,10 +778,11 @@
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
         ],
-        "del": 2.0
+        "del": 2.0,
+        "place_id": "ChIJRZU0ZA1xbzQRWPBoHNHgYik"
     },
     {
-        "id": "ChIJa0lvH7rrbjQRIlSqKc1w4IY",
+        "id": "shop24",
         "info": "旺萊山愛情大草原",
         "name": "旺萊山愛情大草原",
         "location": {
@@ -789,10 +812,11 @@
             "星期六: 09:00 – 17:20",
             "星期日: 09:00 – 17:20"
         ],
-        "del": 2.0
+        "del": 2.0,
+        "place_id": "ChIJa0lvH7rrbjQRIlSqKc1w4IY"
     },
     {
-        "id": "ChIJ8dGA-oOibjQREM5i-uMwMPQ",
+        "id": "shop25",
         "info": "日興堂喜餅",
         "name": "日興堂喜餅",
         "location": {
@@ -822,10 +846,11 @@
             "星期六: 08:00 – 22:00",
             "星期日: 08:00 – 22:00"
         ],
-        "del": 2.0
+        "del": 2.0,
+        "place_id": "ChIJ8dGA-oOibjQREM5i-uMwMPQ"
     },
     {
-        "id": "ChIJWYtbqEn7ZzQRlnnDFG-DiPw",
+        "id": "shop26",
         "info": "超品起司烘焙工坊 CP Cheese Factory",
         "name": "超品起司烘焙工坊",
         "location": {
@@ -855,10 +880,11 @@
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
         ],
-        "del": 1.0
+        "del": 1.0,
+        "place_id": "ChIJWYtbqEn7ZzQRlnnDFG-DiPw"
     },
     {
-        "id": "ChIJV6cfak2-bjQRd5xDvsSdnUk",
+        "id": "shop27",
         "info": "旺萊山鳳梨文化園區",
         "name": "旺萊山鳳梨文化園區",
         "location": {
@@ -888,10 +914,11 @@
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
         ],
-        "del": 0.5
+        "del": 0.5,
+        "place_id": "ChIJV6cfak2-bjQRd5xDvsSdnUk"
     },
     {
-        "id": "ChIJTSs5txW5bzQRGZX_u1cA9Vs",
+        "id": "shop28",
         "info": "台東客來吃樂/大腸蚵仔麵線/黑糖桂圓綠豆蒜",
         "name": "台東客來吃樂/大腸蚵仔麵線/黑糖桂圓綠豆蒜",
         "location": {
@@ -921,10 +948,11 @@
             "星期六: 10:00 – 20:00",
             "星期日: 10:00 – 20:00"
         ],
-        "del": 0.5
+        "del": 0.5,
+        "place_id": "ChIJTSs5txW5bzQRGZX_u1cA9Vs"
     },
     {
-        "id": "ChIJeY9V-c6wcTQRE_tBKPOsow0",
+        "id": "shop29",
         "info": "阿嘉的家",
         "name": "阿嘉的家",
         "location": {
@@ -954,10 +982,11 @@
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
         ],
-        "del": 0.5
+        "del": 0.5,
+        "place_id": "ChIJeY9V-c6wcTQRE_tBKPOsow0"
     },
     {
-        "id": "ChIJ3TrpqgmpQjQREzy1cKC6zK8",
+        "id": "shop30",
         "info": "老天祿滷味",
         "name": "老天祿滷味",
         "location": {
@@ -987,10 +1016,11 @@
             "星期六: 09:30 – 22:00",
             "星期日: 09:30 – 22:00"
         ],
-        "del": 0.25
+        "del": 0.25,
+        "place_id": "ChIJ3TrpqgmpQjQREzy1cKC6zK8"
     },
     {
-        "id": "ChIJGTvFXsLkZzQRAgn_vUlM3b8",
+        "id": "shop31",
         "info": "奕順軒宜蘭店",
         "name": "奕順軒宜蘭店",
         "location": {
@@ -1020,10 +1050,11 @@
             "星期六: 10:00 – 22:00",
             "星期日: 10:00 – 22:00"
         ],
-        "del": 0.25
+        "del": 0.25,
+        "place_id": "ChIJGTvFXsLkZzQRAgn_vUlM3b8"
     },
     {
-        "id": "ChIJASA5zcmyaDQRmTUK2NMPgtA",
+        "id": "shop32",
         "info": "曾記麻糬-麻吉門市",
         "name": "曾記麻糬-麻吉門市",
         "location": {
@@ -1053,10 +1084,11 @@
             "星期六: 07:00 – 21:30",
             "星期日: 07:00 – 21:30"
         ],
-        "del": 0.25
+        "del": 0.25,
+        "place_id": "ChIJASA5zcmyaDQRmTUK2NMPgtA"
     },
     {
-        "id": "ChIJq4s2Bu2rQjQRfjAcdNLFsrY",
+        "id": "shop33",
         "info": "微熱山丘 台北民生公園門市",
         "name": "微熱山丘",
         "location": {
@@ -1086,10 +1118,11 @@
             "星期六: 10:00 – 18:00",
             "星期日: 10:00 – 18:00"
         ],
-        "del": 0.25
+        "del": 0.25,
+        "place_id": "ChIJq4s2Bu2rQjQRfjAcdNLFsrY"
     },
     {
-        "id": "ChIJY-C7v4msQjQRXLokFNqZrqI",
+        "id": "shop34",
         "info": "初心菓寮 文德總本店",
         "name": "初心菓寮",
         "location": {
@@ -1119,10 +1152,11 @@
             "星期六: 09:00 – 20:30",
             "星期日: 09:00 – 20:30"
         ],
-        "del": 0.25
+        "del": 0.25,
+        "place_id": "ChIJY-C7v4msQjQRXLokFNqZrqI"
     },
     {
-        "id": "ChIJ5T17N9GfaDQRmvStivGM5wQ",
+        "id": "shop35",
         "info": "單一純賣 雞湯 小卷米粉",
         "name": "單一純賣",
         "location": {
@@ -1152,10 +1186,11 @@
             "星期六: 11:00 – 14:00, 17:00 – 20:00",
             "星期日: 11:00 – 14:00, 17:00 – 20:00"
         ],
-        "del": 0.25
+        "del": 0.25,
+        "place_id": "ChIJ5T17N9GfaDQRmvStivGM5wQ"
     },
     {
-        "id": "ChIJmxudf_weaDQRttV-QDew7C4",
+        "id": "shop36",
         "info": "佳樂精緻蛋糕專賣店",
         "name": "佳樂精緻蛋糕專賣店",
         "location": {
@@ -1185,10 +1220,11 @@
             "星期六: 08:00 – 21:40",
             "星期日: 08:00 – 21:40"
         ],
-        "del": 0.25
+        "del": 0.25,
+        "place_id": "ChIJmxudf_weaDQRttV-QDew7C4"
     },
     {
-        "id": "ChIJqe8TmkmUbjQR8SkX6QNKmJw",
+        "id": "shop37",
         "info": "貓尾巴麵包店",
         "name": "貓尾巴麵包店",
         "location": {
@@ -1218,10 +1254,11 @@
             "星期六: 10:00 – 20:30",
             "星期日: 10:00 – 20:30"
         ],
-        "del": 0.25
+        "del": 0.25,
+        "place_id": "ChIJqe8TmkmUbjQR8SkX6QNKmJw"
     },
     {
-        "id": "ChIJFb5sOkExaTQRDryCF2lCRN4",
+        "id": "shop38",
         "info": "微熱山丘 南投三合院",
         "name": "微熱山丘",
         "location": {
@@ -1251,10 +1288,11 @@
             "星期六: 10:00 – 18:00",
             "星期日: 10:00 – 18:00"
         ],
-        "del": 0.25
+        "del": 0.25,
+        "place_id": "ChIJFb5sOkExaTQRDryCF2lCRN4"
     },
     {
-        "id": "ChIJH-2ay4p2bjQRzmiDlLRPu5g",
+        "id": "shop39",
         "info": "連得堂煎餅",
         "name": "連得堂煎餅",
         "location": {
@@ -1284,10 +1322,11 @@
             "星期六: 08:00 – 18:00",
             "星期日: 08:00 – 15:00"
         ],
-        "del": 0.015625
+        "del": 0.015625,
+        "place_id": "ChIJH-2ay4p2bjQRzmiDlLRPu5g"
     },
     {
-        "id": "ChIJWzyxrTu5bzQRLBdZeT7p3TE",
+        "id": "shop40",
         "info": "黃記蔥油餅",
         "name": "黃記蔥油餅",
         "location": {
@@ -1317,10 +1356,11 @@
             "星期六: 14:00 – 18:00",
             "星期日: 14:00 – 18:00"
         ],
-        "del": 0.015625
+        "del": 0.015625,
+        "place_id": "ChIJWzyxrTu5bzQRLBdZeT7p3TE"
     },
     {
-        "id": "ChIJjV1T8j65bzQRGwX2peQCmDs",
+        "id": "shop41",
         "info": "榕樹下米苔目",
         "name": "榕樹下米苔目",
         "location": {
@@ -1350,10 +1390,11 @@
             "星期六: 10:30 – 14:30, 17:00 – 19:30",
             "星期日: 10:30 – 14:30, 17:00 – 19:30"
         ],
-        "del": 0.015625
+        "del": 0.015625,
+        "place_id": "ChIJjV1T8j65bzQRGwX2peQCmDs"
     },
     {
-        "id": "ChIJq5nmyj65bzQRhOuZWSZl3J8",
+        "id": "shop42",
         "info": "楊記家傳地瓜酥(振發老店 大同店）",
         "name": "楊記家傳地瓜酥(振發老店",
         "location": {
@@ -1383,10 +1424,11 @@
             "星期六: 10:00 – 18:00",
             "星期日: 10:00 – 18:00"
         ],
-        "del": 0.015625
+        "del": 0.015625,
+        "place_id": "ChIJq5nmyj65bzQRhOuZWSZl3J8"
     },
     {
-        "id": "ChIJdzzG5pSrQjQR8r_CfyXqf7U",
+        "id": "shop43",
         "info": "佳德鳳梨酥",
         "name": "佳德鳳梨酥",
         "location": {
@@ -1416,10 +1458,11 @@
             "星期六: 09:00 – 20:00",
             "星期日: 09:00 – 20:00"
         ],
-        "del": 0.015625
+        "del": 0.015625,
+        "place_id": "ChIJdzzG5pSrQjQR8r_CfyXqf7U"
     },
     {
-        "id": "ChIJ9bYcneqfaDQR3kAUxnvi_jw",
+        "id": "shop44",
         "info": "五霸焦糖包心粉圓",
         "name": "五霸焦糖包心粉圓",
         "location": {
@@ -1449,10 +1492,11 @@
             "星期六: 11:30 – 22:00",
             "星期日: 11:30 – 22:00"
         ],
-        "del": 0.015625
+        "del": 0.015625,
+        "place_id": "ChIJ9bYcneqfaDQR3kAUxnvi_jw"
     },
     {
-        "id": "ChIJASR-N5U1aDQR5OnPyt0zoBU",
+        "id": "shop45",
         "info": "一百種味道 總店 (僅提供外帶）",
         "name": "一百種味道",
         "location": {
@@ -1482,10 +1526,11 @@
             "星期六: 11:00 – 19:00",
             "星期日: 11:00 – 19:00"
         ],
-        "del": 0.015625
+        "del": 0.015625,
+        "place_id": "ChIJASR-N5U1aDQR5OnPyt0zoBU"
     },
     {
-        "id": "ChIJxwxiEU77ZzQRZ3a_KNM6LXg",
+        "id": "shop46",
         "info": "亞典菓子工場",
         "name": "亞典菓子工場",
         "location": {
@@ -1515,6 +1560,7 @@
             "星期六: 09:30 – 18:00",
             "星期日: 09:30 – 18:00"
         ],
-        "del": 0.015625
+        "del": 0.015625,
+        "place_id": "ChIJxwxiEU77ZzQRZ3a_KNM6LXg"
     }
 ]
