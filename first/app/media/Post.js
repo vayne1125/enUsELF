@@ -87,6 +87,8 @@ const Post = ({navigation, route}) => {
       }
     
       const uploadImage = async () => {
+        console.log(image);
+        if(image==null){return null;}
         const  uri  = image.uri;
             console.log('image= ',image.uri);
         let filename = uri.substring(uri.lastIndexOf('/') + 1);

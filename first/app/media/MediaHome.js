@@ -7,6 +7,7 @@ import {
   FlatList,
   Image,
   Button,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
@@ -14,10 +15,12 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
+import Iconcross from 'react-native-vector-icons/Entypo';
 import firestore from '@react-native-firebase/firestore';
+import storage from '@react-native-firebase/storage';
 import MediaTop from './MediaTop';
 import {AuthContext} from '../routes/AutoProvider';
-
+import Card from './Card'
 const width = Dimensions.get('screen').width - 20;
 
 const posts = [
@@ -63,55 +66,84 @@ const MediaHome = ({navigation}) => {
   const {user, logout} = useContext(AuthContext);
   const [Posts,setPosts]=useState(null);
   const [loading, setLoading] = useState(true);
-const[name,setname]=useState(null);
-   useEffect(()=>{
-        const fetchPosts = async()=>{
-        try{
-            const list=[];
-            await firestore()
-            .collection('posts')
-            .get()
-            .then((querySnapshot)=>{
-            //console.log('Total Posts:',querySnapshot.size);
-            querySnapshot.forEach(doc=>{
-                const {post,postImg,postTime}=doc.data();
-                list.push({
-                  //id:doc.id ,
-                  name: 'lalala',
-                  img: postImg,
-                  content: post,
-                });
-              })
-            })
-            setPosts(list);
-            await firestore()
-            .collection('users')
-            .get(use.uid)
-            .then((querySnapshot)=>{
-            //console.log('Total Posts:',querySnapshot.size);
-            querySnapshot.forEach(doc=>{
-                const {post,postImg,postTime}=doc.data();
-                list.push({
-                  //id:doc.id ,
-                  name: 'lalala',
-                  img: postImg,
-                  content: post,
-                });
-              })
-            })
-            if(loading){
-              setLoading(false);
-            }
-            console.log('post:',list);
-          }catch(e){
-            console.log(e);
-          };
+  const[deleted,setDeleted]=useState(false);
+
+  const fetchPosts = async()=>{
+    try{
+        const list=[];
+        await firestore()
+        .collection('posts')
+        .orderBy('postTime','desc')//照時間排
+        .get()
+        .then((querySnapshot)=>{
+        //console.log('Total Posts:',querySnapshot.size);
+        querySnapshot.forEach(doc=>{
+            const {userid,post,postImg,postTime}=doc.data();
+            list.push({
+              id:doc.id ,
+              userid,
+              name: 'lalala',
+              img: postImg,
+              content: post,
+            });
+          })
+        })
+        setPosts(list);
+        if(loading){
+          setLoading(false);
         }
+        console.log('post:',list);
+      }catch(e){
+        console.log(e);
+      };
+    }
+
+  useEffect(()=>{
         fetchPosts();
-      },[]);
+  },[]);
 
+useEffect(()=>{fetchPosts();
+   setDeleted(true);
+},[deleted]);   
+      
+const deletePost = (postId) => {
+  console.log('Current Post Id:',postId);
+  firestore()
+  .collection('posts')
+  .doc(postId)
+  .get()
+  .then(documentSnapshot => {
+    if(documentSnapshot.exists){
+      const {postImg} =documentSnapshot.data();
+      if(postImg!=null){
+        const storageRef=storage().refFromURL(postImg);
+        const imgRef=storage().ref(storageRef.fullPath); 
+        
+        imgRef
+        .delete()
+        .then(()=>{
+          console.log(`${postImg} has  delete`);
+          deleteFirebaseData(postId);
+          setDeleted(true);
+        }) 
+        .catch((e)=>{
+          console.log('Error: ',e);
+        })    
+      }
+    }
+  })
+}
+const deleteFirebaseData = (postId)=>{
+  firestore()
+  .collection('posts')
+  .doc(postId)
+  .delete()
+  .then(()=>{
+    Alert.alert('成功刪除貼文!');
+  })
+  .catch(e => console.log('山資料err ',e))
+}
 const FlatList_Header=({})=>{
-
   return (
     <View style={styles.mycard}>
     <View style={styles.nameContainer}>
@@ -129,54 +161,7 @@ const FlatList_Header=({})=>{
   </View>
   );
 };
- const Card = ({post}) => {
-   console.log('look ',post);
-   if(post.id==0){
-     return (
-       <View style={styles.mycard}>
-       <View style={styles.nameContainer}>
-         <View style={styles.info}>
-           <Icons name={'person-circle-outline'} size={32} />
-         </View>
-            <TouchableOpacity
-             onPress={() => {navigation.navigate("Post",post);
-             }}
-           style={{flex: 1}}>
-           <Text style={styles.buttonText}>在想些甚麼?</Text>
-         </TouchableOpacity>
-       </View>
-       
-     </View>
-     );
-   }else{
-   return (
-     <View style={styles.card}>
-       <View style={styles.nameContainer}>
-         <View style={styles.info}>
-           <Icons name={'person-circle-outline'} size={32} />
-         </View>
-         <Text style={styles.nameStyle}>{post.name}</Text>
-       </View>
-       <View style={styles.imageContainer}>
-         {/*<Image style={{flex: 1, resizeMode: 'contain'}} source={post.img} />*/}
-         <Image style={styles.image} resizeMode={"stretch"}source={{uri:post.img}}/>
-       </View>
-       <View style={styles.textContainer}>
-         <Icon name={'heart'} size={24} />
-         <Text style={styles.textStyle}>{post.content}</Text>
-       </View>
-       <View style={styles.buttonContainer}>
-         <TouchableOpacity
-           onPress={() => {navigation.navigate('Schedule',post);
-           }}
-           style={{flex: 1}}>
-           <Text style={styles.buttonText}>他的行程</Text>
-         </TouchableOpacity>
-       </View>
-     </View>
-   );
- }
- };
+
  return (
    <View style={styles.container}>
      {/*頂部*/}
@@ -194,7 +179,7 @@ const FlatList_Header=({})=>{
        numColumns={1}
        data={Posts}
        ListHeaderComponent={FlatList_Header}
-       renderItem={({item}) => <Card post={item} />}></FlatList>
+       renderItem={({item}) => <Card post={item} onDelete={deletePost} />}></FlatList>
    </View>
  );
 };
@@ -229,6 +214,9 @@ const styles = StyleSheet.create({
    borderBottomWidth:3,
    //borderRightWidth:2,
    //borderStyle:'dashed',
+ },
+ deliconContainer:{
+   left :250,
  },
  mycard: {
    height: 50,
