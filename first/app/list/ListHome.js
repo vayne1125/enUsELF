@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     },
     topbar: {
         backgroundColor: '#5f695d',
-        flex:1,
+        flex:1.2,
         height: 63,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     },
     bottombar: {
         backgroundColor: '#5f695d',
-        flex:1,
+        flex:1.2,
         height: 63,
         //opacity: 0.9,
     },

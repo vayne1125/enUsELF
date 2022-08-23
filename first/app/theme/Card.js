@@ -15,6 +15,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 import Image_link from './Image';
 
@@ -54,7 +56,7 @@ const Stars = score => {
       </View>
     );
   };
-
+const user = firestore().collection('users').doc(auth().currentUser.uid);
 export default class Card extends PureComponent  {
   render() {
     const site = this.props.sites;
@@ -82,6 +84,19 @@ export default class Card extends PureComponent  {
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               onPress={() => {
+                user.collection('list').doc(site.name)
+                .set({
+                    name: site.name,
+                    address: site.address,
+                    city: site.city,
+                    region: site.region,
+                    star: site.star,
+                    info: site.info,
+                    time: site.time,
+                    place_id: site.place_id,
+                    pos: [site.lat, site.lng],
+                })
+                console.log(site.name);
                 this.props.onPress2(site);
               }}
               style={{flex: 1}}>

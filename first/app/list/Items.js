@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     View,
     Text,
@@ -8,45 +8,71 @@ import {
     Image,
     Alert,
     TouchableOpacity,
+    DeviceEventEmitter,
   } from 'react-native';
 import Icons from 'react-native-vector-icons/Entypo';
-//import CheckBox from '@react-native-community/checkbox';
-//import  CheckBox  from 'react-native-checkbox';
-//import CheckBox from 'react-native-icon-checkbox';
-import CheckBox from './CheckBox'
+import { CheckBox } from '@rneui/themed';
+import Image_link from '../theme/Image';
+import firestore from '@react-native-firebase/firestore'
+import auth from '@react-native-firebase/auth'
+import { parseMapToJSON } from "source-map-resolve";
 const width = Dimensions.get('screen').width;
-
-const sites = [
-    {
-        id: 1,
-        name: '阿里山',
-        img: require('../../assets/site6.jpg'),
-        address: '嘉義縣阿里山鄉',
-    },
-    {
-        id: 2,
-        name: '高美濕地',
-        img: require('../../assets/site3.jpg'),
-        address: '台中市清水區',
-    },
-    {
-        id: 3,
-        name: '雪霸國家公園',
-        img: require('../../assets/site5.webp'),
-        address: '苗栗縣大湖鄉',
-    },
-];
-
+const user = firestore().collection('users').doc(auth().currentUser.uid);
 const Items = () => {
-    const CheckDel = () =>{
+    const [sites, setSites] = useState(null);
+    const [cnt, setCnt] = useState(0);
+    useEffect(()=>{
+        const Cnt = () => {
+            var count = 0;
+            user.collection('list').get()
+            .then((querySnapshot)=>{
+                querySnapshot.forEach(()=>(count++));
+            });
+            return count;
+        }
+        setCnt(Cnt);
+    },[user]);
+
+    useEffect(()=>{
+        const fetchSites = async() => {
+            try{
+                const list=[];
+                await user.collection('list').get()
+                .then((querySnapshot)=>{
+                    querySnapshot.forEach(doc => {
+                        const {name, address, city, info, place_id, pos, region, star, time} = doc.data();
+                        list.push({
+                            name: name,
+                            city: city,
+                            region: region,
+                        });
+                    })
+                })
+                setSites(list);
+            }
+          catch(e){
+            console.log(e);
+          };
+        }
+        fetchSites();
+    },[cnt]);
+
+    const CheckDel = (name) =>{
         Alert.alert(
             "",
             "確定要刪除嗎?",
             [
-                //{text: '确认', onPress: () => showTip()},
                 {
                     text: '確認',
-                    onPress: () => {},
+                    onPress: () => {
+                        user.collection('list').doc(name).delete().
+                        then(() =>{
+                                setCnt(cnt - 1);
+                                console('cnt: ', cnt);
+                            }
+                        )
+                        .catch(error => {})  
+                    },
                 },
                 {
                     text: "取消",
@@ -54,18 +80,33 @@ const Items = () => {
             ],
         );
     };
+
     const Card = ({site}) => {
+
+
+        {useEffect(() => {
+            const listen = DeviceEventEmitter
+            .addListener('allcheck',(check) => {setCheck(!check);});
+            return () => listen.remove();
+        },[]);}
+        const [check, setCheck] = useState(false);
         return (
             <View style={styles.card}>
                 <View style={styles.ChanceContainer}>
-                   <CheckBox/>
+                <><CheckBox
+                    center
+                    checkedIcon="dot-circle-o"
+                    uncheckedIcon="circle-o"
+                    checked={ check }
+                    onPress={() => {setCheck(!check);console.log('change: ',site.name)}}
+                /></>
                 </View>
                 <View style={styles.imageContainer}>
-                    {<Image style={styles.image} source={site.img} />}
+                    {<Image style={styles.image} source={Image_link[site.name]} />}
                 </View>
                 <View style={{flex: 2}}>
                     <TouchableOpacity
-                        onPress={()=>{CheckDel()}}>
+                        onPress={()=>{CheckDel(site.name)}}>
                         <View style={{right:-100}}>
                             <Icons
                             name="circle-with-cross"
@@ -79,12 +120,13 @@ const Items = () => {
                         <Text style={styles.nameStyle}>{site.name}</Text>
                     </View>
                     <View style={styles.textContainer}>
-                        <Text style={styles.addressStyle}>{site.address}</Text>
+                        <Text style={styles.addressStyle}>{site.city}{site.region}</Text>
                     </View>
                 </View>
             </View>
         );
     };
+
     return (
         <View style={styles.container}>
             <FlatList

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {
   View,
   Text,
@@ -8,18 +8,30 @@ import {
   Image,
   Button,
   TouchableOpacity,
+  DeviceEventEmitter,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
+import { CheckBox } from '@rneui/themed';
 //import Icon from 'react-native-vector-icons/FontAwesome';
 const ListBottom = () => {
     const navigation = useNavigation();
+    const [check, setCheck] = useState(false);
     return (
         <View style = {styles.Container}>
             <View style={styles.ChanceContainer}>
-                <Text style={styles.ChanceText}>全選</Text>
+                <><CheckBox
+                    //center
+                    title="全選"
+                    textStyle={{fontSize:12}}
+                    checkedIcon="dot-circle-o"
+                    uncheckedIcon="circle-o"
+                    checked={check}
+                    onPress={() => {DeviceEventEmitter.emit('allcheck', check);setCheck(!check);}}
+                /></>
             </View>
+            <View style={{flex:0.4}}></View>
             <View style={styles.OkContainer}>
                 <TouchableOpacity
                 onPress={() => {navigation.navigate("Map");}}>
@@ -38,18 +50,9 @@ const styles = StyleSheet.create({
     backgroundColor:'white',
   },
   ChanceContainer: {
-    backgroundColor: '#ffffff',
-    flex: 0.7,
-    alignItems:'flex-start',
+    flex: 0.3,
+    alignItems:'center',
     justifyContent:'center',
-    padding:5,
-  },
-  ChanceText: {
-    //left: 10,
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'gray',
-    letterSpacing: 5,
   },
   OkContainer: {
     backgroundColor: '#88bd80',
