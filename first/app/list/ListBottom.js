@@ -67,7 +67,7 @@ const ListBottom = () => {
             <View style={{flex:0.4}}></View>
             <View style={styles.OkContainer}>
                 <TouchableOpacity
-                onPress={() => {navigation.navigate("Map");}}>
+                onPress={() => {DeviceEventEmitter.emit('gotomap');}}>
                     <Text style={styles.OkText}>完成</Text> 
                 </TouchableOpacity>
             </View>

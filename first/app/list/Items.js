@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import {
     View,
     Text,
@@ -17,9 +17,10 @@ import firestore from '@react-native-firebase/firestore'
 import auth from '@react-native-firebase/auth'
 import { parseMapToJSON } from "source-map-resolve";
 import {AuthContext} from '../routes/AutoProvider';
+import { useNavigation } from '@react-navigation/native';
+import moment from "moment";
 
 const width = Dimensions.get('screen').width;
-//var user = auth().currentUser;
 
 const Items = () => {
     const {user} = useContext(AuthContext);
@@ -93,16 +94,16 @@ const Items = () => {
             ],
         );
     };
-
+    const [checksite,setChecksite]=useState([]);
+    const navigation = useRef(useNavigation());
     const Card = ({site}) => {
-
-
         useEffect(() => {
             const listen = DeviceEventEmitter
             .addListener('allcheck',(check) => {setCheck(!check);});
             return () => listen.remove();
         },[]);
         const [check, setCheck] = useState(false);
+        let Checksite = checksite;
         return (
             <View style={styles.card}>
                 <View style={styles.ChanceContainer}>
@@ -113,6 +114,15 @@ const Items = () => {
                     checked={ check }
                     onPress={() => {
                         DeviceEventEmitter.emit('itemscheck', check);
+                        if(!check){
+                            Checksite.push(site.name);
+                            setChecksite(Checksite);
+                        }
+                        else {
+                            const id = Checksite.indexOf(site.name);
+                            delete Checksite[id];
+                            setChecksite(Checksite);
+                        }
                         setCheck(!check);
                     }}
                 /></>
@@ -142,6 +152,37 @@ const Items = () => {
             </View>
         );
     };
+    useEffect(() => {
+        const listen = DeviceEventEmitter
+        .addListener('gotomap', () => {
+            if(user){
+                const users = firestore().collection('users').doc(user.uid);
+                const schedule = firestore().collection('schedule').doc(user.uid);
+                const creatAt = moment().format();
+                for(let i = 0; i < checksite.length; ++i){
+                    if(checksite[i]){   
+                        users.collection('list').doc(checksite[i])
+                        .onSnapshot((data) => {
+                            schedule.collection(creatAt).doc(checksite[i])
+                            .set({
+                                name: data.data().name,
+                                address: data.data().address,
+                                city: data.data().city,
+                                info: data.data().info,
+                                place_id: data.data().place_id,
+                                pos: data.data().pos,
+                                region: data.data().region,
+                                star: data.data().star,
+                                time: data.data().time,
+                            });
+                        })
+                    }
+                }   
+                navigation.current.navigate("Map",creatAt);   
+            }
+        });
+        return () => listen.remove();
+    },[]);
 
     return (
         <View style={styles.container}>
@@ -158,14 +199,13 @@ const Items = () => {
         </View>
     );
 }
+
 const styles = StyleSheet.create({
     topbar: {
       backgroundColor: '#5f695d',
-      //flex:1,
       height: 63,
       borderBottomLeftRadius: 20,
       borderBottomRightRadius: 20,
-      //opacity: 0.9,
     },
     container: {
       hight: '100%',
