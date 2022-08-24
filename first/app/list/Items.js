@@ -94,7 +94,7 @@ const Items = () => {
             ],
         );
     };
-    const [checksite,setChecksite]=useState([]);
+    const [checksite, setChecksite] = useState([]);
     const navigation = useRef(useNavigation());
     const Card = ({site}) => {
         useEffect(() => {
@@ -153,18 +153,21 @@ const Items = () => {
         );
     };
     useEffect(() => {
+        const schedule = [];
         const listen = DeviceEventEmitter
         .addListener('gotomap', () => {
             if(user){
                 const users = firestore().collection('users').doc(user.uid);
-                const schedule = firestore().collection('schedule').doc(user.uid);
-                const creatAt = moment().format();
-                for(let i = 0; i < checksite.length; ++i){
-                    if(checksite[i]){   
+                for(let i = 0; i <= checksite.length; ++i){
+                    var items = {};
+                    if(i==checksite.length){
+                        console.log(schedule);
+                        navigation.current.navigate("Map", schedule);   
+                    }
+                    else if(checksite[i]){
                         users.collection('list').doc(checksite[i])
                         .onSnapshot((data) => {
-                            schedule.collection(creatAt).doc(checksite[i])
-                            .set({
+                            items = {
                                 name: data.data().name,
                                 address: data.data().address,
                                 city: data.data().city,
@@ -174,11 +177,12 @@ const Items = () => {
                                 region: data.data().region,
                                 star: data.data().star,
                                 time: data.data().time,
-                            });
+                            }
                         })
+                        schedule.push(items);
+                        console.log(schedule.length);
                     }
-                }   
-                navigation.current.navigate("Map",creatAt);   
+                }
             }
         });
         return () => listen.remove();
