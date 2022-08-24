@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
     View,
     Text,
@@ -16,39 +16,51 @@ import Image_link from '../theme/Image';
 import firestore from '@react-native-firebase/firestore'
 import auth from '@react-native-firebase/auth'
 import { parseMapToJSON } from "source-map-resolve";
+import {AuthContext} from '../routes/AutoProvider';
+
 const width = Dimensions.get('screen').width;
-const user = firestore().collection('users').doc(auth().currentUser.uid);
+//var user = auth().currentUser;
+
 const Items = () => {
+    const {user} = useContext(AuthContext);
     const [sites, setSites] = useState(null);
     const [cnt, setCnt] = useState(0);
     useEffect(()=>{
         const Cnt = () => {
             var count = 0;
-            user.collection('list').get()
-            .then((querySnapshot)=>{
-                querySnapshot.forEach(()=>(count++));
-            });
-            return count;
+            if(user){
+                const users = firestore().collection('users').doc(user.uid);
+                users.collection('list').get()
+                .then((querySnapshot)=>{
+                    querySnapshot.forEach(()=>{count++;});
+                    setCnt(count);
+                })
+                .catch(()=>{return 0;})            
+            }
         }
-        setCnt(Cnt);
+        Cnt();
     },[user]);
 
     useEffect(()=>{
         const fetchSites = async() => {
             try{
                 const list=[];
-                await user.collection('list').get()
-                .then((querySnapshot)=>{
-                    querySnapshot.forEach(doc => {
-                        const {name, address, city, info, place_id, pos, region, star, time} = doc.data();
-                        list.push({
-                            name: name,
-                            city: city,
-                            region: region,
-                        });
+                if(user){
+                    const users = firestore().collection('users').doc(user.uid);
+                    await users.collection('list').get()
+                    .then((querySnapshot)=>{
+                        querySnapshot.forEach(doc => {
+                            const {name, address, city, info, place_id, pos, region, star, time} = doc.data();
+                            list.push({
+                                name: name,
+                                city: city,
+                                region: region,
+                            });
+                        })
                     })
-                })
-                setSites(list);
+                    setSites(list);
+                }
+                DeviceEventEmitter.emit('items', cnt);
             }
           catch(e){
             console.log(e);
@@ -65,13 +77,14 @@ const Items = () => {
                 {
                     text: '確認',
                     onPress: () => {
-                        user.collection('list').doc(name).delete().
-                        then(() =>{
+                        if(user){
+                            const users = firestore().collection('users').doc(user.uid);
+                            users.collection('list').doc(name).delete().
+                            then(() =>{
                                 setCnt(cnt - 1);
-                                console('cnt: ', cnt);
-                            }
-                        )
-                        .catch(error => {})  
+                            })
+                            .catch(error => {})  
+                        }
                     },
                 },
                 {
@@ -84,11 +97,11 @@ const Items = () => {
     const Card = ({site}) => {
 
 
-        {useEffect(() => {
+        useEffect(() => {
             const listen = DeviceEventEmitter
             .addListener('allcheck',(check) => {setCheck(!check);});
             return () => listen.remove();
-        },[]);}
+        },[]);
         const [check, setCheck] = useState(false);
         return (
             <View style={styles.card}>
@@ -98,7 +111,10 @@ const Items = () => {
                     checkedIcon="dot-circle-o"
                     uncheckedIcon="circle-o"
                     checked={ check }
-                    onPress={() => {setCheck(!check);console.log('change: ',site.name)}}
+                    onPress={() => {
+                        DeviceEventEmitter.emit('itemscheck', check);
+                        setCheck(!check);
+                    }}
                 /></>
                 </View>
                 <View style={styles.imageContainer}>

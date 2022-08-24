@@ -1,4 +1,4 @@
-import React, {Component, useState,PureComponent } from 'react';
+import React, {Component, useState, PureComponent, useContext} from 'react';
 import {
   View,
   Text,
@@ -9,6 +9,7 @@ import {
   Button,
   Modal,
   TouchableOpacity,
+  DeviceEventEmitter,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -19,6 +20,7 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 import Image_link from './Image';
+import {AuthContext} from '../routes/AutoProvider'
 
 const width = Dimensions.get('screen').width;
 
@@ -56,7 +58,7 @@ const Stars = score => {
       </View>
     );
   };
-const user = firestore().collection('users').doc(auth().currentUser.uid);
+var user = auth().currentUser;
 export default class Card extends PureComponent  {
   render() {
     const site = this.props.sites;
@@ -84,19 +86,22 @@ export default class Card extends PureComponent  {
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               onPress={() => {
-                user.collection('list').doc(site.name)
-                .set({
-                    name: site.name,
-                    address: site.address,
-                    city: site.city,
-                    region: site.region,
-                    star: site.star,
-                    info: site.info,
-                    time: site.time,
-                    place_id: site.place_id,
-                    pos: [site.lat, site.lng],
-                })
-                console.log(site.name);
+                if(user){
+                    const users = firestore().collection('users').doc(user.uid);
+                    users.collection('list').doc(site.name)
+                    .set({
+                        name: site.name,
+                        address: site.address,
+                        city: site.city,
+                        region: site.region,
+                        star: site.star,
+                        info: site.info,
+                        time: site.time,
+                        place_id: site.place_id,
+                        pos: [site.lat, site.lng],
+                    })
+                    console.log(site.name);
+                }
                 this.props.onPress2(site);
               }}
               style={{flex: 1}}>

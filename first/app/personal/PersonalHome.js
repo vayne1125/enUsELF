@@ -11,18 +11,7 @@ const PersonalHome = ({navigation}) => {
         mail:"12323@gmail.com",
         password:'123qqw',
     };
-    const [mess, setMess] = useState(String);
-    const {user, logout} = useContext(AuthContext);
-
-    useEffect(() => {
-        console.log(mess);
-        if(mess!=''){
-            if(mess === 'success'){
-                Alert.alert('登出成功','已成功登出\n如要使用請再次登入');
-                navigation.navigate("Login");
-            }
-        }
-    }, [mess])
+    const {logout} = useContext(AuthContext);
     
     return (
         <View style={styles.container}>
@@ -51,7 +40,7 @@ const PersonalHome = ({navigation}) => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity onPress={() => {logout(setMess);}}>
+                    <TouchableOpacity onPress={() => {logout();}}>
                         <Text style={styles.editText}>登出</Text>
                     </TouchableOpacity>
                 </View>

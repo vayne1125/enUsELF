@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -18,6 +18,34 @@ import { CheckBox } from '@rneui/themed';
 const ListBottom = () => {
     const navigation = useNavigation();
     const [check, setCheck] = useState(false);
+    const [items, setItems] = useState(0);
+    const [checkitems, setCheckitems] = useState(0);
+
+    useEffect(() => {
+        const listen = DeviceEventEmitter
+        .addListener('items', (count) => {
+            setItems(count);
+        });
+        return () => listen.remove();
+    },[]);
+
+    useEffect(() => {
+        const listen = DeviceEventEmitter
+        .addListener('itemscheck', (check) => {
+            if(check) setCheckitems(checkitems - 1);
+            else setCheckitems(checkitems + 1);
+        });
+        return () => listen.remove();
+    },[]);
+
+    useEffect(() => {
+        if(items != checkitems && items){
+            console.log('items:',items);
+            console.log('checkitems:',checkitems);
+            setCheck(false);
+        }
+    },[checkitems]);
+
     return (
         <View style = {styles.Container}>
             <View style={styles.ChanceContainer}>
@@ -28,7 +56,12 @@ const ListBottom = () => {
                     checkedIcon="dot-circle-o"
                     uncheckedIcon="circle-o"
                     checked={check}
-                    onPress={() => {DeviceEventEmitter.emit('allcheck', check);setCheck(!check);}}
+                    onPress={() => {
+                        DeviceEventEmitter.emit('allcheck', check);
+                        setCheck(!check);
+                        if(check) setCheckitems(0);
+                        else setCheckitems(items);
+                    }}
                 /></>
             </View>
             <View style={{flex:0.4}}></View>

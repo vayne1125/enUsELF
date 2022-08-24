@@ -50,10 +50,10 @@ export const AuthProvider = ({children}) => {
                     console.log(error);
                 }
             },
-            logout: async (setMess) => {
+            logout: async () => {
                 try {
                     await auth().signOut();
-                    setMess('success')
+                    Alert.alert('登出成功','已成功登出\n如要使用請再次登入');
                 }
                 catch (error) {
                     console.log('logout: ',error);

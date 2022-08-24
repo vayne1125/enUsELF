@@ -1,0 +1,902 @@
+[
+    {
+        "id": 1,
+        "name": "東照山關帝廟",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 2,
+        "name": "大龍峒保安宮",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 3,
+        "name": "台北孔廟",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 4,
+        "name": "崎頂一_二號隧道",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 5,
+        "name": "林本源園邸",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 6,
+        "name": "老塘湖藝術坊",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 7,
+        "name": "林安泰古厝",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 8,
+        "name": "林百貨",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 9,
+        "name": "公婆樹與土地公廟",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 10,
+        "name": "三峽祖師廟",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 11,
+        "name": "文武廟",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 12,
+        "name": "銀河洞",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 13,
+        "name": "烏來",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 14,
+        "name": "安平樹屋",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 15,
+        "name": "清涼山護國妙崇寺",
+        "star": 5.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 16,
+        "name": "迪化207博物館",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 17,
+        "name": "竹田驛園",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 18,
+        "name": "大溪老街",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 19,
+        "name": "天后宮",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 20,
+        "name": "剝皮寮老街",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 21,
+        "name": "松山火車站",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 22,
+        "name": "赤嵌樓",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 23,
+        "name": "美麗島站",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 24,
+        "name": "中平路故事館",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 25,
+        "name": "林田神社遺址",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 26,
+        "name": "美仁里彩繪巷",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 27,
+        "name": "山后民俗文化村",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 28,
+        "name": "北關",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 29,
+        "name": "雲林故事館",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 30,
+        "name": "法鼓山農禪寺",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 31,
+        "name": "鹿港",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 32,
+        "name": "新芳春行特展",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 33,
+        "name": "R28_淡水站",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 34,
+        "name": "二二八和平紀念公園",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 35,
+        "name": "永安居",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 36,
+        "name": "砲台山",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 37,
+        "name": "普濟殿",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 38,
+        "name": "山腳國小日治後期宿舍群",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 39,
+        "name": "大溪古鎮",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 40,
+        "name": "北門",
+        "star": 3.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 41,
+        "name": "哈瑪星",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 42,
+        "name": "善化慶安宮",
+        "star": 5.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 43,
+        "name": "后里圳磚橋",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 44,
+        "name": "新富町文化市場",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 45,
+        "name": "虎尾持法媽祖宮",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 46,
+        "name": "高雄意誠堂關帝廟",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 47,
+        "name": "嘉義阿里山林業村及檜意森活村",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 48,
+        "name": "大武崙砲台",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 49,
+        "name": "勝安宮",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 50,
+        "name": "台灣原住民文化園區",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 51,
+        "name": "蔡瑞月舞蹈研究社",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 52,
+        "name": "旗山天后宮",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 53,
+        "name": "接雲寺",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 54,
+        "name": "淡江中學",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 55,
+        "name": "豐原慈濟宮",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 56,
+        "name": "新化武德殿",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 57,
+        "name": "台北賓館",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 58,
+        "name": "舊鐵橋溼地教育園區",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 59,
+        "name": "永成古厝",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 60,
+        "name": "港天宮",
+        "star": 5.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 61,
+        "name": "三峽興隆宮媽祖廟",
+        "star": 3.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 62,
+        "name": "普濟寺",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 63,
+        "name": "旗山武德殿",
+        "star": 3.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 64,
+        "name": "清代機器局遺構",
+        "star": 3.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 65,
+        "name": "美濃警察分駐所",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 66,
+        "name": "大稻埕辜宅",
+        "star": 3.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 67,
+        "name": "淡水海關碼頭",
+        "star": 3.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 68,
+        "name": "旗山車站_糖鐵故事館",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 69,
+        "name": "理學堂大書院",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 70,
+        "name": "新北市瑞芳區九份國民小學",
+        "star": 3.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 71,
+        "name": "萬春宮",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 72,
+        "name": "北埔老街",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 73,
+        "name": "原台南測候所",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 74,
+        "name": "臨水夫人媽廟",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 75,
+        "name": "梁實秋故居",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 76,
+        "name": "殷海光故居",
+        "star": 4.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 77,
+        "name": "R22A_新北投站",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 78,
+        "name": "蔡英文總統古厝",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 79,
+        "name": "赤山龍湖巖",
+        "star": 5.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 80,
+        "name": "玄空法寺",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 81,
+        "name": "淡水街長多田榮吉故居",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 82,
+        "name": "士林慈誠宮",
+        "star": 3.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 83,
+        "name": "吳園藝文中心",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 84,
+        "name": "五番坑道紀念公園",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 85,
+        "name": "開基玉皇宮",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 86,
+        "name": "多田榮吉故居",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 87,
+        "name": "台北中山堂",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 88,
+        "name": "橋頭糖廠_中山堂",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 89,
+        "name": "成美文化園",
+        "star": 4.0,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    },
+    {
+        "id": 90,
+        "name": "安平老街",
+        "star": 3.5,
+        "address": "",
+        "city": "",
+        "region": "",
+        "info": "",
+        "time": ""
+    }
+]
