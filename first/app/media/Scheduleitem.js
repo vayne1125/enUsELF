@@ -18,44 +18,10 @@ import Icon from 'react-native-vector-icons/AntDesign';
 //import  CheckBox  from 'react-native-checkbox';
 import CheckBox from './CheckBox'
 
-const sites = [
-    {
-      id: 1,
-      name: '阿里山',
-      img: require('../../assets/site6.jpg'),
-      address: '嘉義縣阿里山鄉59號',
-     },
-    {
-      id: 2,
-      name: '日月潭',
-      img: require('../../assets/site2.webp'),
-      address: '南投縣魚池鄉日月村',
-      star: 4.6,
-    },
-    {
-      id: 3,
-      name: '高美濕地',
-      img: require('../../assets/site3.jpg'),
-      address: '台中市清水區美堤街',
-      star: 4.5,
-    },
-    {
-      id: 4,
-      name: '野柳地質公園',
-      img: require('../../assets/site4.jpg'),
-      address: '新北市萬里區野柳里港東路167-1號',
-      star: 4.4,
-    },
-    {
-      id: 5,
-      name: '雪霸國家公園',
-      img: require('../../assets/site5.webp'),
-      address: '苗栗縣大湖鄉富興村水尾坪100號',
-      star: 4.5,
-    },
-];
 
-const Scheduleitem = () => {
+const Scheduleitem = (userSchdule) => {
+  const sites=userSchdule;
+  console.log(sites);
     const Card = ({site}) => {
         const [isSelected, setSelection] = useState(false);
         return (

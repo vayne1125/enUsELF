@@ -67,10 +67,11 @@ const MediaHome = ({navigation}) => {
   const [Posts,setPosts]=useState(null);
   const [loading, setLoading] = useState(true);
   const[deleted,setDeleted]=useState(false);
-
+  const [userdata, setuserdata] = useState(null);
   const fetchPosts = async()=>{
     try{
         const list=[];
+        //get post
         await firestore()
         .collection('posts')
         .orderBy('postTime','desc')//照時間排
@@ -78,13 +79,14 @@ const MediaHome = ({navigation}) => {
         .then((querySnapshot)=>{
         //console.log('Total Posts:',querySnapshot.size);
         querySnapshot.forEach(doc=>{
-            const {userid,post,postImg,postTime}=doc.data();
+            const {userid,post,postImg,postTime,name}=doc.data();
             list.push({
               id:doc.id ,
               userid,
-              name: 'lalala',
+              name:name,
               img: postImg,
               content: post,
+              time:postTime,
             });
           })
         })
@@ -93,6 +95,16 @@ const MediaHome = ({navigation}) => {
           setLoading(false);
         }
         console.log('post:',list);
+    //get post user name 
+    await firestore()
+    .collection('users')
+    .doc(user.uid)
+    .get()
+    .then(documentSnapshot => {
+      const data =documentSnapshot.data();
+      setuserdata(data);
+    })  
+      console.log('!@: ',userdata);
       }catch(e){
         console.log(e);
       };
@@ -103,7 +115,7 @@ const MediaHome = ({navigation}) => {
   },[]);
 
 useEffect(()=>{fetchPosts();
-   setDeleted(true);
+   setDeleted(false);
 },[deleted]);   
       
 const deletePost = (postId) => {
@@ -130,6 +142,7 @@ const deletePost = (postId) => {
           console.log('Error: ',e);
         })    
       }
+      else{ deleteFirebaseData(postId);}
     }
   })
 }
@@ -140,6 +153,7 @@ const deleteFirebaseData = (postId)=>{
   .delete()
   .then(()=>{
     Alert.alert('成功刪除貼文!');
+    setDeleted(true);
   })
   .catch(e => console.log('山資料err ',e))
 }
@@ -151,7 +165,7 @@ const FlatList_Header=({})=>{
         <Icons name={'person-circle-outline'} size={32} />
       </View>
          <TouchableOpacity
-          onPress={() => {navigation.navigate("Post",posts[0]);
+          onPress={() => {navigation.navigate("Post",userdata);
           }}
         style={{flex: 1}}>
         <Text style={styles.buttonText}>在想些甚麼?</Text>
@@ -179,7 +193,7 @@ const FlatList_Header=({})=>{
        numColumns={1}
        data={Posts}
        ListHeaderComponent={FlatList_Header}
-       renderItem={({item}) => <Card post={item} onDelete={deletePost} />}></FlatList>
+       renderItem={({item}) => <Card navigation={navigation} post={item} onDelete={deletePost} />}></FlatList>
    </View>
  );
 };

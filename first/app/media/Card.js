@@ -20,12 +20,52 @@ import MediaTop from './MediaTop';
 import {AuthContext} from '../routes/AutoProvider';
 const width = Dimensions.get('screen').width - 20;
 
-const Card = ({post,onDelete}) => {
+const Card = ({navigation,post,onDelete}) => {
     const {user, logout} = useContext(AuthContext);
-    const [userData, setUserData] = useState(null);
-    console.log('look ',post);
+   // const [userData, setUserData] = useState(null);
+    const [userSchdule, setUserSchdule] = useState(null);
+    const username=post.name;
+    console.log('ㄟlook ',username);
     console.log('user.uid= ',user.uid);
     console.log('post.useid= ',post.userid);
+    console.log('sss =',post);
+
+  const fetchSchdule = async() =>{
+    try{
+    const list=[];
+    const view = firestore().collection('posts').doc(post.id);
+    
+    console.log('這 ',post.id);
+    await view.collection('list').get()
+    .then((querySnapshot)=>{
+      querySnapshot.forEach(doc=>{
+          const {name, address, city, info, place_id, pos, region, star, time} = doc.data();
+          list.push({
+              name: name,
+              city: city,
+              region: region,
+              address:address,
+              city:city,
+              info:info,
+              place_od:place_id,
+              pos:pos,
+              star:star,
+              time:time,
+        });
+      })
+    })
+    setUserSchdule(list);
+    console.log('行程= ',list);
+    console.log('行程2= ',userSchdule);
+
+    }catch(e){
+      console.log(e);
+    };
+  }
+
+  useEffect(()=>{
+       fetchSchdule();
+  },[]); 
        return (
          <View style={styles.card}>
            <View style={styles.nameContainer}>
@@ -57,7 +97,7 @@ const Card = ({post,onDelete}) => {
            </View>
            <View style={styles.buttonContainer}>
              <TouchableOpacity
-               onPress={() => {navigation.navigate('Schedule',post);
+               onPress={() => {navigation.navigate('Schedule',{userSchdule:userSchdule,username:username});
                }}
                style={{flex: 1}}>
                <Text style={styles.buttonText}>他的行程</Text>

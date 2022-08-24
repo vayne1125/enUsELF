@@ -33,12 +33,15 @@ const width = Dimensions.get('screen').width;
 const Post = ({navigation, route}) => {
     const userdata = route.params;
     const {user, logout} = useContext(AuthContext);
+console.log(user);
+    const users = firestore().collection('users').doc(user.uid);
     const [image, setImage] = useState(null);
-    const [data, setdata] = useState(null);
+   
     const [uploading, setUploading] = useState(false);
     //const [transferred, setTransferred] = useState(0);
     const [post, setPost] = useState(null);
-
+    
+console.log('!: ',users);
     const selectImage = () => {
         const options = {
           maxWidth: 2000,
@@ -70,7 +73,7 @@ const Post = ({navigation, route}) => {
         .collection('posts')
         .add({
           userid:user.uid,
-          //name:user.name,
+          name:userdata.name,
           post:post,
           postImg:imageUrl,
           postTime:firestore.Timestamp.fromDate(new Date()),

@@ -18,6 +18,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 const ScheduleTop = props => {
   const navigation = useNavigation();
   const aurInfo = props;
+  console.log(props);
   return (
     <View style={styles.container}>
         <TouchableOpacity onPress={()=>{navigation.goBack()}} style={{flex:1,}}>
@@ -31,7 +32,7 @@ const ScheduleTop = props => {
         </View>
         </TouchableOpacity>
         <View style={{flex:5,justifyContent:'center',top:5,}}>
-        <Text style={styles.textStyle}>{aurInfo.theme.name}的行程</Text>
+        <Text style={styles.textStyle}>{aurInfo.theme}的行程</Text>
         </View>
       </View>
   );

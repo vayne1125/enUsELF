@@ -27,7 +27,7 @@ const initialState = {
   time: {},
 };
 
-const ScheduleButton = () => {
+const ScheduleButton = (navigation) => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(initialState);
   return (
@@ -48,6 +48,7 @@ const ScheduleButton = () => {
         <TouchableOpacity
           onPress={() => {
             setNoticeVisible(!noticeVisible);
+           // navigation.navigate("Post",userdata);
           }}>
           <Text style={styles.OkText}>加入清單</Text>
         </TouchableOpacity>
