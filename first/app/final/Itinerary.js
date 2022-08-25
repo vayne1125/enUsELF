@@ -15,15 +15,15 @@ import {NavigationContainer} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StackNavigator } from "react-navigation";
 import 'react-native-gesture-handler';
-import MapHome from './MapHome';
+import ItineraryHome from './ItineraryHome';
 
 const Stack=createStackNavigator();
 
 export default class Theme extends Component {
   render() {
     return (
-        <Stack.Navigator initialRouteName="MapHome" screenOptions={{header: () => null}} >
-          <Stack.Screen name="MapHome" component={MapHome} >{props=>(navigation.param)}</Stack.Screen>
+        <Stack.Navigator initialRouteName="ItineraryHome" screenOptions={{header: () => null}} >
+          <Stack.Screen name="ItineraryHome" component={ItineraryHome}/>
           {/* <Stack.Screen name="Map" component={Map}/> */}
         </Stack.Navigator>
     );

@@ -160,12 +160,13 @@ const Items = () => {
                 const users = firestore().collection('users').doc(user.uid);
                 for(let i = 0; i <= checksite.length; ++i){
                     var items = {};
-                    if(i==checksite.length){
-                        console.log(schedule);
-                        navigation.current.navigate("Map", schedule);   
-                    }
-                    else if(checksite[i]){
-                        users.collection('list').doc(checksite[i])
+                    // if(i==checksite.length){
+                    //     console.log("finalSC: ",schedule);
+                    //     navigation.current.navigate("Map", schedule);   
+                    // }
+                    // else 
+                    if(checksite[i]){
+                       users.collection('list').doc(checksite[i])
                         .onSnapshot((data) => {
                             items = {
                                 name: data.data().name,
@@ -178,11 +179,39 @@ const Items = () => {
                                 star: data.data().star,
                                 time: data.data().time,
                             }
+                            schedule.push(items);
+                            //console.log("item: ",schedule);
+                            if(i == checksite.length-1){
+                                const waypoints = [];
+                                currentPlace = { lat: 24.1365593, lng: 120.6835935 }
+                                //getCurrentLocation();  //取得位置
+                                  console.log("pupupupu");
+                                  let data = schedule;        //購物車的參數
+                                  let maxDis = -1,index = 0;
+                                  for(j = 0;j<data.length;j++){
+                                    var nowDis = Math.sqrt((data[j].pos[0]-currentPlace.lat)*(data[j].pos[0]-currentPlace.lat) + (data[j].pos[1]-currentPlace.lng)*(data[j].pos[1]-currentPlace.lng))
+                                    if(nowDis > maxDis){
+                                      destination  = {latitude:data[j].pos[0],longitude:data[j].pos[1]};
+                                      console.log("setdes: ",destination);
+                                      index = j;
+                                      maxDis = nowDis;
+                                    }
+                                  }
+                                  for(j=0;j<data.length;j++){
+                                    if(j == index) continue;
+                                    waypoints.push({latitude:data[j].pos[0],longitude:data[j].pos[1]});
+                                  }
+                                //找終點
+                                navigation.current.navigate("MapHome", {
+                                    destination:destination,
+                                    waypoints:waypoints,
+                                    schedule:schedule,
+                                }); 
+                            }
                         })
-                        schedule.push(items);
-                        console.log(schedule.length);
                     }
                 }
+               // console.log("finalSC: ",schedule);
             }
         });
         return () => listen.remove();
