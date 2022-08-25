@@ -166,6 +166,7 @@ const Items = () => {
                                         info: info,
                                         place_id: place_id,
                                         region: region,
+                                        pos: pos,
                                         star: star,
                                         time: time,
                                     })
