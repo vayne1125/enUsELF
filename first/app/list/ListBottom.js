@@ -1,4 +1,4 @@
-import React, {Component, useState, useEffect} from 'react';
+import React, {Component, useState, useEffect, useContext} from 'react';
 import {
   View,
   Text,
@@ -14,37 +14,57 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import { CheckBox } from '@rneui/themed';
+import firestore from '@react-native-firebase/firestore'
 //import Icon from 'react-native-vector-icons/FontAwesome';
+import { AuthContext } from '../routes/AutoProvider';
+import BatchedBridge from 'react-native/Libraries/BatchedBridge/BatchedBridge';
+import { updateLocale } from 'moment';
 const ListBottom = () => {
-    const navigation = useNavigation();
+    const {user} = useContext(AuthContext);
     const [check, setCheck] = useState(false);
-    const [items, setItems] = useState(0);
-    const [checkitems, setCheckitems] = useState(0);
 
     useEffect(() => {
         const listen = DeviceEventEmitter
-        .addListener('items', (count) => {
-            setItems(count);
+        .addListener('items', () => {
+            const Cnt = async() => {
+                var count = 0;
+                var items = 0;
+                if(user){
+                    const users = firestore().collection('users').doc(user.uid);
+                    await users.collection('list').get()
+                    .then((querySnapshot)=>{
+                        querySnapshot.forEach((doc)=>{
+                            if(doc.data().check)items++;
+                            count++;
+                        });
+                    })
+                    .catch(()=>{return 0;})
+                    if(items==count && count)setCheck(true);
+                    else setCheck(false);          
+                }
+            }
+            Cnt();
         });
         return () => listen.remove();
     },[]);
 
-    useEffect(() => {
-        const listen = DeviceEventEmitter
-        .addListener('itemscheck', (check) => {
-            if(check) setCheckitems(checkitems - 1);
-            else setCheckitems(checkitems + 1);
-        });
-        return () => listen.remove();
-    },[]);
-
-    useEffect(() => {
-        if(items != checkitems && items){
-            console.log('items:',items);
-            console.log('checkitems:',checkitems);
-            setCheck(false);
+    const update = async() => {
+        try{
+            if(user){
+                const users = firestore().collection('users').doc(user.uid);
+                await users.collection('list').get()
+                .then((querySnapshot)=>{
+                    querySnapshot.forEach(doc =>{
+                        doc.ref.update({check:!check});
+                    })
+                })
+                setCheckitems()
+            }
         }
-    },[checkitems]);
+      catch(e){
+        console.log(e);
+      };
+    }
 
     return (
         <View style = {styles.Container}>
@@ -57,10 +77,11 @@ const ListBottom = () => {
                     uncheckedIcon="circle-o"
                     checked={check}
                     onPress={() => {
+                        if(user){
+                            update();
+                        }
                         DeviceEventEmitter.emit('allcheck', check);
                         setCheck(!check);
-                        if(check) setCheckitems(0);
-                        else setCheckitems(items);
                     }}
                 /></>
             </View>

@@ -26,6 +26,7 @@ const Items = () => {
     const {user} = useContext(AuthContext);
     const [sites, setSites] = useState([]);
     const [cnt, setCnt] = useState(0);
+
     useEffect(()=>{
         const Cnt = () => {
             var count = 0;
@@ -62,7 +63,7 @@ const Items = () => {
                     })
                     setSites(list);
                 }
-                DeviceEventEmitter.emit('items', cnt);
+                DeviceEventEmitter.emit('items');
             }
           catch(e){
             console.log(e);
@@ -111,11 +112,11 @@ const Items = () => {
                     uncheckedIcon="circle-o"
                     checked={ check }
                     onPress={() => {
-                        DeviceEventEmitter.emit('itemscheck', check);
                         if(user){
                             const users = firestore().collection('users').doc(user.uid);
                             users.collection('list').doc(site.name).update({check:!check})
                         }
+                        DeviceEventEmitter.emit('items');
                         setCheck(!check);
                     }}
                 /></>
@@ -166,8 +167,8 @@ const Items = () => {
                                         info: info,
                                         place_id: place_id,
                                         region: region,
-                                        pos: pos,
                                         star: star,
+                                        pos: pos,
                                         time: time,
                                     })
                                 }
