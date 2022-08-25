@@ -25,17 +25,17 @@ const Card = ({navigation,post,onDelete}) => {
    // const [userData, setUserData] = useState(null);
     const [userSchdule, setUserSchdule] = useState(null);
     const username=post.name;
-    console.log('ㄟlook ',username);
-    console.log('user.uid= ',user.uid);
-    console.log('post.useid= ',post.userid);
-    console.log('sss =',post);
+   // console.log('look ',username);
+   //// console.log('user.uid= ',user.uid);
+   // console.log('post.useid= ',post.userid);
+   // console.log('sss =',post);
 
   const fetchSchdule = async() =>{
     try{
     const list=[];
     const view = firestore().collection('posts').doc(post.id);
     
-    console.log('這 ',post.id);
+   // console.log('這 ',post.id);
     await view.collection('list').get()
     .then((querySnapshot)=>{
       querySnapshot.forEach(doc=>{
@@ -55,8 +55,8 @@ const Card = ({navigation,post,onDelete}) => {
       })
     })
     setUserSchdule(list);
-    console.log('行程= ',list);
-    console.log('行程2= ',userSchdule);
+    //console.log('行程= ',list);
+   // console.log('行程2= ',userSchdule);
 
     }catch(e){
       console.log(e);

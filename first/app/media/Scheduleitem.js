@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { useState } from "react";
+import { useState,useEffect,useContext } from "react";
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   Dimensions,
   FlatList,
   Image,
+  DeviceEventEmitter,
   Button,
   TouchableOpacity,
 } from 'react-native';
@@ -16,51 +17,124 @@ import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/AntDesign';
 //import  CheckBox  from 'react-native-checkbox';
-import CheckBox from './CheckBox'
-
+//import CheckBox from './CheckBox'
+import Image_link from '../theme/Image';
+import { CheckBox } from '@rneui/themed';
+import { checkPluginState } from 'react-native-reanimated/lib/reanimated2/core';
+import {AuthContext} from '../routes/AutoProvider';
+import firestore from '@react-native-firebase/firestore';
 
 const Scheduleitem = (userSchdule) => {
-  const sites=userSchdule;
-  console.log(sites);
-    const Card = ({site}) => {
-        const [isSelected, setSelection] = useState(false);
-        return (
-            <View style={styles.card}>
-                <View style={styles.boxContainer}>
-                <CheckBox/>
-                </View>
-                <View style={styles.imageContainer}>
-                    {/*<Image style={{flex: 1, resizeMode: 'center'}} source={site.img} />*/}
-                    {<Image style={styles.image} source={site.img} />}
-                </View>
-                <View style={{flex: 4,justifyContent:'space-around',padding:5,}}>
-                    <TouchableOpacity
-                        onPress={()=>{CheckDel()}}>
-                    </TouchableOpacity>
-                    <View style={styles.textContainer}>
-                        <Text style={styles.nameStyle}>{site.name}</Text>
-                    </View>
-                    <View style={styles.textContainer2}>
-                        <Text style={styles.addressStyle}>{site.address}</Text>
-                    </View>
-                </View>
-            </View>
-        );
-    };
-    return (
-        <View style={styles.container}>
-            <FlatList
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{
-                marginTop: 25,
-                paddingBottom: 80,
-            }}
-            numColumns={1}
-            data={sites}
-            renderItem={({item}) => <Card site={item} />}>     
-            </FlatList>
-        </View>
-    );
+  const {user, logout} = useContext(AuthContext);
+  const sites=userSchdule.userSchdule;
+  //DeviceEventEmitter.addListener('callback',(events) ={使用数据events});
+  //console.log('site: ',sites);
+  const len=sites.length;
+  console.log('長度',len);
+  const [isSelected, setSelection] = useState(false);
+    //全選
+   let set = new Set()
+  //const [list,setList]=useState([]);
+  const [checksite, setChecksite] = useState([]);
+  let Checksite = checksite;
+  useEffect(() => {
+    const listen = DeviceEventEmitter
+    .addListener('sendToDatabase',() => {
+      for(let i=0;i<len;++i){
+        if(set.has(sites[i].name))
+        {
+        console.log('新增uid ', user.uid);
+        console.log('新增name ', sites[i].name);
+        const users = firestore().collection('users').doc(user.uid);
+        users.collection('list').doc(sites[i].name)
+        .set({
+            name: sites[i].name,
+            address: sites[i].address,
+            city: sites[i].city,
+            region: sites[i].region,
+            star: sites[i].star,
+            info: sites[i].info,
+            time: sites[i].time,
+            place_id: sites[i].place_od,
+            pos:sites[i].pos,
+        }).then(()=>{
+            console.log('Post add !');
+            //Alert.alert("成功發布");
+            
+          }).catch((error)=>{
+            console.log('Post Failed!',error);
+          });
+        }
+      }
+  });
+  return () => listen.remove();
+},[]);
+
+const Card = ({site}) => {
+
+  //全選
+  useEffect(() => {
+    const listen = DeviceEventEmitter
+    .addListener('scheduleCheck',(check) => {//傳來Ttrue，我要全勾
+      console.log('look ',check);
+      if(check)
+        set.add(site.name);
+      else
+       set.delete(site.name);
+       console.log('set2= ',set);
+    setCheck(check);
+    });
+    return () => listen.remove();
+  },[]);
+  const [check, setCheck] = useState(false);
+  //console.log('see ', check);
+      return (
+          <View style={styles.card}>
+              <View style={styles.boxContainer}>
+              <CheckBox
+              center
+              checkedIcon="dot-circle-o"
+              uncheckedIcon="circle-o"
+              checked={ check }
+              onPress={()=>{
+                if(check)//選變不選(原本是選)
+                  {
+                    DeviceEventEmitter.emit('scheduleItemcheck',!check);
+                  }
+                console.log('Set: ', set);
+                setCheck(!check);
+              }}
+              />
+              </View>
+              <View style={styles.imageContainer}>
+                  {/*<Image style={{flex: 1, resizeMode: 'center'}} source={site.img} />*/}
+                  {<Image style={styles.image} source={Image_link[site.name]} />}
+              </View>
+              <View style={{flex: 4,justifyContent:'space-around',padding:5,}}>
+                  <View style={styles.textContainer}>
+                      <Text style={styles.nameStyle}>{site.name}</Text>
+                  </View>
+                  <View style={styles.textContainer2}>
+                      <Text style={styles.addressStyle}>{site.address}</Text>
+                  </View>
+              </View>
+          </View>
+      );
+};
+return (
+    <View style={styles.container}>
+        <FlatList
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+            marginTop: 25,
+            paddingBottom: 80,
+        }}
+        numColumns={1}
+        data={sites}
+        renderItem={({item}) => <Card site={item} />}>     
+        </FlatList>
+    </View>
+);
 };
 const styles = StyleSheet.create({
   container: {

@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component,useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -9,6 +9,7 @@ import {
   Button,
   Alert,
   TouchableOpacity,
+  DeviceEventEmitter,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -16,6 +17,7 @@ import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Entypo';
 //import Icon from 'react-native-vector-icons/FontAwesome';
 import Notice from '../theme/Notice';
+import { CheckBox } from '@rneui/themed';
 
 const initialState = {
   id: {},
@@ -30,6 +32,20 @@ const initialState = {
 const ScheduleButton = (navigation) => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(initialState);
+  const [check, setCheck] = useState(false);
+  
+  useEffect(() => {
+    const listen = DeviceEventEmitter
+    .addListener('scheduleItemcheck',(check) => {
+      setCheck(check);
+    });
+    return () => listen.remove();
+  },[]);
+
+  const change=async()=>{
+    setCheck(!check);
+    DeviceEventEmitter.emit('scheduleCheck',!check);
+  }
   return (
     <View style={styles.Container}>
       {/*通知視窗-------------------------------------------------------------------------------*/}
@@ -42,13 +58,25 @@ const ScheduleButton = (navigation) => {
       />
       {/*通知視窗-------------------------------------------------------------------------------*/}
       <View style={styles.ChanceContainer}>
-        <Text style={styles.ChanceText}>全選</Text>
+       <CheckBox
+        style={styles.ChanceText} 
+        center
+        checkedIcon="dot-circle-o"
+        uncheckedIcon="circle-o"
+        checked={check}
+        /*onPress={()=>{
+          change
+         
+        }
+        }*/
+        onPress={change}
+        title="全選"/>
       </View>
       <View style={styles.OkContainer}>
         <TouchableOpacity
           onPress={() => {
             setNoticeVisible(!noticeVisible);
-           // navigation.navigate("Post",userdata);
+            DeviceEventEmitter.emit('sendToDatabase');
           }}>
           <Text style={styles.OkText}>加入清單</Text>
         </TouchableOpacity>
@@ -68,7 +96,9 @@ const styles = StyleSheet.create({
     flex: 0.55,
     alignItems:'flex-start',
     justifyContent:'center',
-    padding:5,
+    padding:2,
+    left:-8,
+   // top:10,
   },
   ChanceText: {
     //left: 10,

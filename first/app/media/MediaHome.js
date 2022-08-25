@@ -23,45 +23,6 @@ import {AuthContext} from '../routes/AutoProvider';
 import Card from './Card'
 const width = Dimensions.get('screen').width - 20;
 
-const posts = [
-  {
-   id: 0,
-   name: 'lalala',
-   img: require('../../assets/site6.jpg'),
-   content: '風景超美!爬上去很值得',
- },
- {
-   id: 1,
-   name: 'abc123',
-   img: require('../../assets/site6.jpg'),
-   content: '風景超美!爬上去很值得',
- },
- {
-   id: 2,
-   name: 'def456',
-   img: require('../../assets/post2.jpg'),
-   content: '這家咖啡廳氣氛不錯~',
- },
- {
-   id: 3,
-   name: 'ghi789',
-   img: require('../../assets/post1.jpg'),
-   content: '在這裡收穫很多美照~',
- },
- {
-   id: 4,
-   name: 'andy',
-   img: require('../../assets/temple4.png'),
-   content: '增加文化氣息',
- },
- {
-   id: 5,
-   name: 'lady',
-   img: require('../../assets/suitcase.jpg'),
-   content: '乾淨又舒服!',
- },
-];
-
 const MediaHome = ({navigation}) => {
   const {user, logout} = useContext(AuthContext);
   const [Posts,setPosts]=useState(null);
@@ -94,7 +55,7 @@ const MediaHome = ({navigation}) => {
         if(loading){
           setLoading(false);
         }
-        console.log('post:',list);
+        console.log('ㄟㄟˋpost:',list);
     //get post user name 
     await firestore()
     .collection('users')

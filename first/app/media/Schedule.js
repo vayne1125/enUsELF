@@ -32,10 +32,10 @@ const Schedule = ({navigation, route}) => {
             <View style={styles.topbar}>
                 <ScheduleTop theme={username}/>
             </View>
-            {/*<View style={styles.items}>
+            {<View style={styles.items}>
               <Scheduleitem userSchdule={userSchdule}/>
             </View>
-    */}
+    }
         <View style={styles.buttonbar}>
                 <ScheduleButton/>
             </View>
