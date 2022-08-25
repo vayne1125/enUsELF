@@ -24,7 +24,7 @@ const width = Dimensions.get('screen').width;
 
 const Items = () => {
     const {user} = useContext(AuthContext);
-    const [sites, setSites] = useState(null);
+    const [sites, setSites] = useState([]);
     const [cnt, setCnt] = useState(0);
     useEffect(()=>{
         const Cnt = () => {
@@ -51,11 +51,12 @@ const Items = () => {
                     await users.collection('list').get()
                     .then((querySnapshot)=>{
                         querySnapshot.forEach(doc => {
-                            const {name, address, city, info, place_id, pos, region, star, time} = doc.data();
+                            const {name, check, address, city, info, place_id, pos, region, star, time} = doc.data();
                             list.push({
                                 name: name,
                                 city: city,
                                 region: region,
+                                check: check,
                             });
                         })
                     })
@@ -84,7 +85,7 @@ const Items = () => {
                             then(() =>{
                                 setCnt(cnt - 1);
                             })
-                            .catch(error => {})  
+                            .catch(error => {})
                         }
                     },
                 },
@@ -94,16 +95,13 @@ const Items = () => {
             ],
         );
     };
-    const [checksite, setChecksite] = useState([]);
-    const navigation = useRef(useNavigation());
     const Card = ({site}) => {
         useEffect(() => {
             const listen = DeviceEventEmitter
             .addListener('allcheck',(check) => {setCheck(!check);});
             return () => listen.remove();
         },[]);
-        const [check, setCheck] = useState(false);
-        let Checksite = checksite;
+        const [check, setCheck] = useState(site.check);
         return (
             <View style={styles.card}>
                 <View style={styles.ChanceContainer}>
@@ -114,14 +112,9 @@ const Items = () => {
                     checked={ check }
                     onPress={() => {
                         DeviceEventEmitter.emit('itemscheck', check);
-                        if(!check){
-                            Checksite.push(site.name);
-                            setChecksite(Checksite);
-                        }
-                        else {
-                            const id = Checksite.indexOf(site.name);
-                            delete Checksite[id];
-                            setChecksite(Checksite);
+                        if(user){
+                            const users = firestore().collection('users').doc(user.uid);
+                            users.collection('list').doc(site.name).update({check:!check})
                         }
                         setCheck(!check);
                     }}
@@ -152,45 +145,44 @@ const Items = () => {
             </View>
         );
     };
+    const navigation = useRef(useNavigation());
     useEffect(() => {
-        const schedule = [];
-        const listen = DeviceEventEmitter
-        .addListener('gotomap', () => {
-            if(user){
-                const users = firestore().collection('users').doc(user.uid);
-                for(let i = 0; i <= checksite.length; ++i){
-                    var items = {};
-                    // if(i==checksite.length){
-                    //     console.log("finalSC: ",schedule);
-                    //     navigation.current.navigate("Map", schedule);   
-                    // }
-                    // else 
-                    if(checksite[i]){
-                       users.collection('list').doc(checksite[i])
-                        .onSnapshot((data) => {
-                            items = {
-                                name: data.data().name,
-                                address: data.data().address,
-                                city: data.data().city,
-                                info: data.data().info,
-                                place_id: data.data().place_id,
-                                pos: data.data().pos,
-                                region: data.data().region,
-                                star: data.data().star,
-                                time: data.data().time,
-                            }
-                            schedule.push(items);
-                            //console.log("item: ",schedule);
-                            if(i == checksite.length-1){
-                                navigation.current.navigate("MapHome",schedule); 
-                            }
-                        })
-                    }
+        const fetchSchedule = () => {
+            const list = [];
+            const listen = DeviceEventEmitter
+            .addListener('gotomap', async() => {
+                try{
+                    if(user){
+                        const users = firestore().collection('users').doc(user.uid);
+                        await users.collection('list').get()
+                        .then((querySnapshot)=>{
+                            querySnapshot.forEach(doc => {
+                                const {name, check, address, city, info, place_id, pos, region, star, time} = doc.data();
+                                if(check){
+                                    list.push({
+                                        name: name,
+                                        address: address,
+                                        city: city,
+                                        info: info,
+                                        place_id: place_id,
+                                        region: region,
+                                        star: star,
+                                        time: time,
+                                    })
+                                }
+                            });
+                        });
+                        console.log(list);
+                        navigation.current.navigate("MapHome", list);
+                    };
                 }
-               // console.log("finalSC: ",schedule);
+                catch(e){};
+            });
+            return () => {
+                listen.remove();
             }
-        });
-        return () => listen.remove();
+        }
+        fetchSchedule();
     },[]);
 
     return (
