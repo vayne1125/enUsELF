@@ -47,14 +47,13 @@ const styles = StyleSheet.create({
     fontSize:45,
   },
   iconContainer: {
-    position: 'absolute',
-    left: -180,
-    top: -350,
+    //position: 'absolute',
+    left: -120,
+    top: -320,
     backgroundColor: '#D1DED7',
     width: 40,
     height: 40,
     borderRadius: 30,
   },
 });
-
 export default Back;

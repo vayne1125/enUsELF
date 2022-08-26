@@ -10,7 +10,6 @@ import {
 import Geolocation from '@react-native-community/geolocation';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import { mapStyle } from './mapStyle';
-//import { MAIN_ROUTE_DATA } from './MainRoute'; //主路線的資料
 import { ORI_DATA } from './OriData'; //空資料 -> 初始化
 import DetailForMap from '../detail/DetailForMap';
 import Back from './Back';
@@ -18,12 +17,11 @@ import MapViewDirections from 'react-native-maps-directions';
 import Hotplace from './Hotplace'
 import Shopplace from './Shopplace'
 import Holplace from './Holplace'
-import { useNavigation } from '@react-navigation/native';
-import { max } from 'date-fns';
 //import Hotplace from './tp'
 const MapHome = ({ navigation, route }) => {
   const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
-  const [once, setOnce] = useState(true);
+  const [once, setOnce] = useState(true);    //控制只會一次線
+  const [once2, setOnce2] = useState(true);  //控制地圖起點顯示
   //顯示detail
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState(initialState);
@@ -39,20 +37,29 @@ const MapHome = ({ navigation, route }) => {
   const [endData, setEndData] = useState([]);
   const [waypoints, setWaypoints] = useState([]);
   //當前位置
-  let currentPlace = {};
   const [origin, setOri] = useState({ latitude: 24.1365593, longitude: 120.6835935 })
   const [addWaypoint, setAdd] = useState([]);
   const [mainRoute, setMainRoute] = useState([]);
   const [destination, setDes] = useState({ latitude: 0, longitude: 0 });
+  const [initialRegion,setInitialRegion] = useState({ latitude: 24.1365593, longitude: 120.6835935,latitudeDelta:4,longitudeDelta:0 });
+  const [myLatitudeDelta, setMyLatitudeDelta] = useState(3.8); //地圖縮放程度的變數
   const onPressHandlerForComlete = () => {
     setCompletePress(true);
-    setHotData(ORI_DATA);
-    setHolData(ORI_DATA);
-    setShopData(ORI_DATA);
-    setWaypoints(addWaypoint);
-    console.log(addWaypoint);
-    navigation.navigate("ItineraryHome");
-    //getCurrentLocation();
+    // setHotData(ORI_DATA);
+    // setHolData(ORI_DATA);
+    // setShopData(ORI_DATA);
+    // setWaypoints(addWaypoint);
+    // console.log(addWaypoint);
+    console.log(endData);
+    //console.log("距離: ",Math.sqrt((origin.latitude-destination.latitude)*(origin.latitude-destination.latitude) + (origin.longitude-destination.longitude)*(origin.longitude-destination.longitude)));
+    navigation.navigate("ItineraryHome",{
+      route1: mainRoute,
+      route2: endData,
+      waypoints: waypoints.concat(addWaypoint),
+      origin: origin,
+      destination:destination,
+      initRegion:initialRegion
+    });
   }
   const onPressHandlerForHot = () => {
     setHotPress(!hotPress); //打開
@@ -74,10 +81,8 @@ const MapHome = ({ navigation, route }) => {
     var cnt = 0;
     array.map((i) => {
       cnt += 1;
-      //rt.push({ lat: i.latitude, long: i.longitude })
       (cnt % a == 0) ? rt.push({ lat: i.latitude, lng: i.longitude }) : 1;
     })
-    //console.log("getPositionArray ",rt);
     return rt;
   }
 
@@ -90,63 +95,60 @@ const MapHome = ({ navigation, route }) => {
     return Math.sqrt(rt)
   }
 
-  //算出附近的點
+  //算出附近的點(範圍20km內) 1 -> 111km  0.1 -> 11km
   const getPlace = (array) => {
 
-    mainRoute.map((place) => {
+    mainRoute.map((place) => {       //購物車和我重複地點消除
       mySet.add(place.place_id);
     })
-    //1 -> 111km  0.1 -> 11km
     array.map((pos) => {
       for (i = 0; i < Holplace.length; i++) {
-        if (mySet.has(Holplace[i].place_id))
+        if (mySet.has(Holplace[i].place_id)) {
+          //console.log(Holplace[i].id);
           continue;
+        }
         if (getDis(pos, Holplace[i].location) <= 0.2) {
           holData.push(Holplace[i]);
           mySet.add(Holplace[i].place_id);
         }
       }
       for (i = 0; i < Hotplace.length; i++) {
-        if (mySet.has(Hotplace[i].place_id))
-          continue;
+        if (mySet.has(Hotplace[i].place_id)) continue;
         if (getDis(pos, Hotplace[i].location) <= 0.2) {
           hotData.push(Hotplace[i]);
           mySet.add(Hotplace[i].place_id);
         }
       }
       for (i = 0; i < Shopplace.length; i++) {
-        if (mySet.has(Shopplace[i].place_id))
-          continue;
+        if (mySet.has(Shopplace[i].place_id)) continue;
         if (getDis(pos, Shopplace[i].location) <= 0.2) {
           shopData.push(Shopplace[i]);
           mySet.add(Shopplace[i].place_id);
         }
       }
     })
-    console.log('ok')
+    //console.log('ok')
   }
 
-  //得到中間有哪些點後去找附近的景點
+  //得到中間有哪些點後去找附近的景點(當導航線畫完才會觸發)
   const SetData = (array) => {
-    //console.log("array ",array);
-    const PositionArray = getPositionArray(array);  //一般的fun
-    //console.log(PositionArray);
-    getPlace(PositionArray);
+    const PositionArray = getPositionArray(array);  //過濾島航線的點(回傳[{lat:  ,lng:  }])
+    getPlace(PositionArray);  //用PositionArray去看附近有哪些景點
   }
 
   //重新渲染畫面也不會改的
   useEffect(() => {
-    var positionOption = { timeout: 50000, enableHighAccuracy: true };
+    var positionOption = { timeout: 50000, enableHighAccuracy: true };  //抓當前位置
     Geolocation.getCurrentPosition(position => {
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
       console.log(lat);
       console.log(long);
       setOri(position.coords);
-      //currentPlace = { lat: lat, lng: long };
     }, console.log("wait second..."), positionOption)
 
-    let data = route.params;        //購物車的參數
+    //找離當前位置最遠的點，並看中間經過誰，傳給map顯示
+    let data = route.params;
     let maxDis = -1, index = 0;
     let des = {};
     let way = [];
@@ -163,18 +165,34 @@ const MapHome = ({ navigation, route }) => {
       if (i == index) continue;
       way.push({ latitude: data[i].pos[0], longitude: data[i].pos[1] });
     }
-    console.log("des: ", des); //destination 
-    console.log("way: ", way);   //destination
-
+    //console.log("des: ", des);
+    //console.log("way: ", way);  
     setDes(des);
     setMainRoute(route.params);
     setWaypoints(way);
-
-    console.log("des: ", des); //destination 
-    console.log("way: ", way);   //destination
   }, [route.params])
 
-  const [myLatitudeDelta, setMyLatitudeDelta] = useState(1.2); //to do根據起終點決定數值
+  const getInit = ()=>{
+    var longestDis = getDis({ lat: origin.latitude, lng: origin.longitude },{ lat: destination.latitude, lng: destination.longitude }); 
+    var tp = 0;
+    if(longestDis >= 2){
+      tp = 3.8;
+    }else if(longestDis >= 1){
+      tp = 1.8;
+    }else if(longestDis >= 0.5){
+      tp = 0.9;
+    }else{
+      tp = 0.4;
+    }
+    let Region = {
+      latitude: (destination.latitude+origin.latitude)/2.0,
+      longitude: (destination.longitude+origin.longitude)/2.0,
+      latitudeDelta: tp, //數字越小 地圖道路越大
+      longitudeDelta: 0,
+    }
+    setInitialRegion(Region);
+  }
+
   return (
     <View style={styles.container}>
 
@@ -212,59 +230,20 @@ const MapHome = ({ navigation, route }) => {
       />
       {/*浮動視窗-------------------------------------------------------------------------------*/}
 
-      {/*熱門景點*/}
-      <TouchableHighlight
-        style={styles.buttonForHot}
-        onPress={onPressHandlerForHot}
-        underlayColor='#eeeeee'
-      >
-        <Text style={styles.textForOption}>熱門景點</Text>
-      </TouchableHighlight>
-
-      {/*節日*/}
-      <TouchableHighlight
-        style={styles.buttonHoliday}
-        onPress={onPressHandlerForHoliday}
-        underlayColor='#eeeeee'
-      >
-        <Text style={styles.textForOption}>節日</Text>
-      </TouchableHighlight>
-
-      {/*購物*/}
-      <TouchableHighlight
-        style={styles.buttonForShop}
-        onPress={onPressHandlerForShop}
-        underlayColor='#eeeeee'
-      >
-        <Text style={styles.textForOption}>購物</Text>
-      </TouchableHighlight>
-
-      {/*完成*/}
-      <TouchableHighlight
-        style={styles.buttonForComlete}
-        onPress={onPressHandlerForComlete}
-        underlayColor='#ddddd'
-      >
-        <Text style={styles.text}>完成</Text>
-      </TouchableHighlight>
 
       <MapView //todo:初始化位置 
         moveOnMarkerPress={false}
-        //rotateEnabled
-        //zoomEnabled
+        loadingEnabled = {true}
         onRegionChangeComplete={(e) => { setMyLatitudeDelta(e.latitudeDelta); }}
         //customMapStyle={mapStyle}
         provider={PROVIDER_GOOGLE}
         style={styles.mapStyle}
-        //to do 取起終的中點
-        initialRegion={{
-          //23.8269823,120.737534
-          latitude: 23.8269823,
-          longitude: 120.737534,
-          latitudeDelta: myLatitudeDelta, //數字越小 地圖道路越大
-          longitudeDelta: 0,
-        }}
+        region={initialRegion}
         mapType="standard"
+        onMapReady={()=>{
+          if(once2)getInit();
+          setOnce2(false);
+        }}
       >
 
 
@@ -276,8 +255,8 @@ const MapHome = ({ navigation, route }) => {
             coordinate={{ latitude: marker.pos[0], longitude: marker.pos[1] }}
             onPress={(e) => {
               console.log("k");
-              //setModalVisible(!modalVisible);
-              // setModalEntry({
+              setModalVisible(!modalVisible);
+              setModalEntry({
               //   location: marker.location,
               //   id: marker.id,
               //   name: marker.name,
@@ -293,7 +272,7 @@ const MapHome = ({ navigation, route }) => {
               //     uri:
               //       `https://maps.googleapis.com/maps/api/place/photo?photoreference=${marker.photo.photo_reference}&sensor=false&maxheight=${marker.photo.height}&maxwidth=${marker.photo.width}&key=${API_key}`
               //   }
-              // });
+               });
             }}
           >
             <View style={styles.markerCss}>
@@ -305,11 +284,7 @@ const MapHome = ({ navigation, route }) => {
 
 
         <MapViewDirections
-          //optimizeWaypoints={true}
-          //24.1365593,120.6835935
-          //{ latitude: 24.1365593, longitude: 120.6835935 }
-          //{ latitude: 23.517405, longitude: 120.7914543 }
-          origin={origin} //to do抓當前位置
+          origin={origin}
           destination={destination}
           apikey={API_key}
           strokeWidth={3}
@@ -479,6 +454,41 @@ const MapHome = ({ navigation, route }) => {
       </MapView>
       <Callout>
         <Back />
+        {/*熱門景點*/}
+      <TouchableHighlight
+        style={styles.buttonForHot}
+        onPress={onPressHandlerForHot}
+        underlayColor='#eeeeee'
+      >
+        <Text style={styles.textForOption}>熱門景點</Text>
+      </TouchableHighlight>
+
+      {/*節日*/}
+      <TouchableHighlight
+        style={styles.buttonHoliday}
+        onPress={onPressHandlerForHoliday}
+        underlayColor='#eeeeee'
+      >
+        <Text style={styles.textForOption}>節日</Text>
+      </TouchableHighlight>
+
+      {/*購物*/}
+      <TouchableHighlight
+        style={styles.buttonForShop}
+        onPress={onPressHandlerForShop}
+        underlayColor='#eeeeee'
+      >
+        <Text style={styles.textForOption}>購物</Text>
+      </TouchableHighlight>
+
+      {/*完成*/}
+      <TouchableHighlight
+        style={styles.buttonForComlete}
+        onPress={onPressHandlerForComlete}
+        underlayColor='#ddddd'
+      >
+        <Text style={styles.text}>完成</Text>
+      </TouchableHighlight>
       </Callout>
     </View>
   );
@@ -502,12 +512,11 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
   },
   buttonForComlete: {
-    zIndex: 2,
-    left: '30%',
-    position: 'absolute',
-    top: '92%',
+    zIndex:3,
+    //position: 'absolute',
+    top: 330,
     backgroundColor: '#5f695d',
-    width: '40%',
+    width: 120,
     height: 40,
     alignItems: 'center',
     justifyContent: 'center',
@@ -515,12 +524,12 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonForHot: {
-    zIndex: 2,
-    left: 15,
+    zIndex:2,
+    left: -120,
     position: 'absolute',
-    top: '8%',
+    top: -270,
     backgroundColor: '#FF9797',
-    width: '30%',
+    width: 120,
     height: 40,
     alignItems: 'center',
     justifyContent: 'center',
@@ -528,12 +537,12 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonHoliday: {
-    zIndex: 2,
-    left: 15,
+    zIndex:2,
+    left: -120,
     position: 'absolute',
-    top: '15%',
+    top: -220,
     backgroundColor: '#FFFFB9',
-    width: '30%',
+    width: 120,
     height: 40,
     alignItems: 'center',
     justifyContent: 'center',
@@ -541,12 +550,12 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonForShop: {
-    zIndex: 2,
-    left: 15,
+    zIndex:2,
+    left: -120,
     position: 'absolute',
-    top: '22%',
+    top: -170,
     backgroundColor: '#C4E1FF',
-    width: '30%',
+    width: 120,
     height: 40,
     alignItems: 'center',
     justifyContent: 'center',

@@ -12,9 +12,19 @@ import DetailForFinal from '../detail/DetailForFinal';
 //import Back from './Back';
 import MapViewDirections from 'react-native-maps-directions';
 
-const ItineraryHome = () => {
+const ItineraryHome = ({ navigation, route }) => {
+  const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
+  //console.log(route.params);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState({}); //initialState
+  /*---------這些參數全都要存---------*/
+  const mainRoute = route.params.route1;
+  const origin = route.params.origin;
+  const destination = route.params.destination;
+  const waypoints = route.params.waypoints;
+  const endRoute = route.params.route2;
+  const region = route.params.initRegion;
+  /*---------這些參數全都要存---------*/
   return (
     <View style={styles.container}>
       {/*浮動視窗-------------------------------------------------------------------------------*/}
@@ -25,22 +35,39 @@ const ItineraryHome = () => {
       />
       {/*浮動視窗-------------------------------------------------------------------------------*/}
       <MapView //todo:初始化位置 
+        loadingEnabled = {true}
         moveOnMarkerPress={false}
         rotateEnabled = {false}
         zoomEnabled = {false}
+        zoomControlEnabled = {false}
+        scrollEnabled = {false}
         //customMapStyle={mapStyle}
         provider={PROVIDER_GOOGLE}
         style={styles.mapStyle}
         //to do 取起終的中點
-        initialRegion={{
-          //23.8269823,120.737534
-          latitude: 23.8269823,
-          longitude: 120.737534,
-          latitudeDelta: 1.2, //數字越小 地圖道路越大
-          longitudeDelta: 0,
-        }}
+        initialRegion={region}
         mapType="standard"
       >
+        <MapViewDirections
+          origin={origin} //to do抓當前位置
+          destination={destination}
+          waypoints = {waypoints}
+          apikey={API_key}
+          strokeWidth={3}
+          strokeColor="#5f695d"
+        >
+        </MapViewDirections>
+
+        <Marker
+          pinColor='tan'
+          tracksViewChanges={false}
+          coordinate={origin}
+          title="你的位置"
+        />
+
+      
+        
+
       </MapView>
     </View>
   )
@@ -59,5 +86,3 @@ const styles = StyleSheet.create({
   }
 });
 export default ItineraryHome;
-
-//npx react-native run-android
