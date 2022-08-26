@@ -35,7 +35,7 @@ const PersonalHome = ({navigation}) => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity /*onPress={showok}*/>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("Collect");}}>
                         <Text style={styles.editText}>收藏</Text>
                     </TouchableOpacity>
                 </View>

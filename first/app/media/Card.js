@@ -25,6 +25,8 @@ const Card = ({navigation,post,onDelete}) => {
    // const [userData, setUserData] = useState(null);
     const [userSchdule, setUserSchdule] = useState(null);
     const username=post.name;
+    let timestamp = post.time;
+    console.log('time ',timestamp);
    // console.log('look ',username);
    //// console.log('user.uid= ',user.uid);
    // console.log('post.useid= ',post.userid);
