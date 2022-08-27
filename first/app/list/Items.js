@@ -52,7 +52,7 @@ const Items = () => {
                     await users.collection('list').get()
                     .then((querySnapshot)=>{
                         querySnapshot.forEach(doc => {
-                            const {name, check, address, city, info, place_id, pos, region, star, time} = doc.data();
+                            const {name, check, city, region} = doc.data();
                             list.push({
                                 name: name,
                                 city: city,
@@ -158,21 +158,11 @@ const Items = () => {
                         await users.collection('list').get()
                         .then((querySnapshot)=>{
                             querySnapshot.forEach(doc => {
-                                const {name, check, address, city, info, place_id, pos, region, star, time} = doc.data();
+                                const {id, place_id} = doc.data();
                                 if(check){
                                     list.push({
-                                        name: name,
-                                        myAddr: address,
-                                        city: city,
-                                        info: info,
+                                        id: id,
                                         place_id: place_id,
-                                        reg: region,
-                                        rating: star,
-                                        location: {
-                                            lat: pos[0], 
-                                            lng: pos[1]
-                                        },
-                                        opening_hours: [time],
                                     })
                                 }
                             });

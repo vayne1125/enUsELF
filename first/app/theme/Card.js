@@ -88,15 +88,12 @@ export default class Card extends PureComponent  {
                     const users = firestore().collection('users').doc(user.uid);
                     users.collection('list').doc(site.name)
                     .set({
+                        id: site.id,
                         name: site.name,
-                        address: site.address,
                         city: site.city,
                         region: site.region,
-                        star: site.star,
-                        info: site.info,
-                        time: site.time,
                         place_id: site.place_id,
-                        pos: [site.lat, site.lng],
+                        check: false,
                     })
                     console.log(site.name);
                 }
