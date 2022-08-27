@@ -20,10 +20,9 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 import Image_link from './Image';
-import {AuthContext} from '../routes/AutoProvider'
 
 const width = Dimensions.get('screen').width;
-
+const user = auth().currentUser;
 const Stars = score => {
     var tp = parseFloat(score.starsNum);
     var starsIcon = [];
@@ -57,8 +56,7 @@ const Stars = score => {
         {starsIcon}
       </View>
     );
-  };
-var user = auth().currentUser;
+};
 export default class Card extends PureComponent  {
   render() {
     const site = this.props.sites;
