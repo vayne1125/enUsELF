@@ -162,14 +162,17 @@ const Items = () => {
                                 if(check){
                                     list.push({
                                         name: name,
-                                        address: address,
+                                        myAddr: address,
                                         city: city,
                                         info: info,
                                         place_id: place_id,
-                                        region: region,
-                                        star: star,
-                                        pos: pos,
-                                        time: time,
+                                        reg: region,
+                                        rating: star,
+                                        location: {
+                                            lat: pos[0], 
+                                            lng: pos[1]
+                                        },
+                                        opening_hours: [time],
                                     })
                                 }
                             });

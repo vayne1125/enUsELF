@@ -25,7 +25,7 @@ import Image_link from '../theme/Image';
 const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.3;
 
-const DetailForMap = ({entry, modalVisible, onClose,onPress1}) => {
+const DetailForMap = ({entry, modalVisible, onClose,onPress1,canPress}) => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(entry);
   const Stars = score => {
@@ -84,7 +84,11 @@ const DetailForMap = ({entry, modalVisible, onClose,onPress1}) => {
             </View>
             <View style={styles.infoContainer}>
               <ScrollView>
-                <Image style={styles.image} source={entry['source']} />
+                {
+                canPress?
+                <Image style={styles.image} source={entry['source']} />:
+                <Image style={styles.image} source={Image_link[entry['name']]}/>
+                }
                 <View style={styles.infoStyle}>
                 <Text style={styles.textStyle2}>{entry['name']}</Text>
                   <Stars starsNum={entry['star']} />
@@ -123,6 +127,8 @@ const DetailForMap = ({entry, modalVisible, onClose,onPress1}) => {
                 </View>
               </ScrollView>
             </View>
+            {
+            (canPress) && (           
             <View style={styles.buttonContainer}>
               <TouchableOpacity
                 onPress={() => {
@@ -135,6 +141,8 @@ const DetailForMap = ({entry, modalVisible, onClose,onPress1}) => {
                 <Text style={styles.buttonText}>加入行程表</Text>
               </TouchableOpacity>
             </View>
+            )
+          }
           </View>
         </View>
       </Modal>

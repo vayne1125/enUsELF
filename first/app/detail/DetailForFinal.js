@@ -25,7 +25,7 @@ import Image_link from '../theme/Image';
 const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.3;
 
-const DetailForFinal = ({entry, modalVisible, onClose,onPress1}) => {
+const DetailForFinal = ({entry, modalVisible, onClose,isMain}) => {
   const Stars = score => {
     var tp = parseFloat(score.starsNum);
     var starsIcon = [];
@@ -74,7 +74,11 @@ const DetailForFinal = ({entry, modalVisible, onClose,onPress1}) => {
             </View>
             <View style={styles.infoContainer}>
               <ScrollView>
+                {
+                isMain?
+                <Image style={styles.image} source={Image_link[entry['name']]}/>:
                 <Image style={styles.image} source={entry['source']} />
+                }
                 <View style={styles.infoStyle}>
                 <Text style={styles.textStyle2}>{entry['name']}</Text>
                   <Stars starsNum={entry['star']} />
