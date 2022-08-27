@@ -37,7 +37,7 @@ const Items = () => {
                     querySnapshot.forEach(()=>{count++;});
                     setCnt(count);
                 })
-                .catch(()=>{return 0;})            
+                .catch(()=>{})            
             }
         }
         Cnt();
