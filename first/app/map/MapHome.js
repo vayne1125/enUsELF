@@ -83,9 +83,9 @@ const MapHome = ({ navigation, route }) => {
       {"city": "xxxxx", 
        "info": "xxxxx", 
        "location": {"lat": 25.0731088, "lng": 121.5155703}, 
-       "myAddr": "103台灣台北市大同區哈密街61號", 
+       "address": "103台灣台北市大同區哈密街61號", 
        "name": "大龍峒保安宮", 
-       "opening_hours": 
+       "time": 
        ["星期一: 06:30 – 21:00
         星期二: 06:30 – 21:00
         星期三: 06:30 – 21:00
@@ -94,7 +94,7 @@ const MapHome = ({ navigation, route }) => {
         星期六: 06:30 – 21:00
         星期日: 06:30 – 21:00"],  //這是字串陣列(只有一個字串的陣列)
       "place_id": "ChIJoWFCL2qpQjQRPOoT7nFV3YU", 
-      "rating": 4.6, 
+      "star": 4.6, 
       "reg": "大同區"
       }
       */
@@ -386,13 +386,13 @@ const MapHome = ({ navigation, route }) => {
                 location: marker.location,
                 name: marker.name,
                 info: marker.info,
-                address: marker.myAddr,
-                star: marker.rating,
-                time: marker.opening_hours.map((i) => {
+                address: marker.address,
+                star: marker.star,
+                time: marker.time.map((i) => {
                   return i + '\n';
                 }),
                 city: marker.city,
-                region: marker.reg,
+                region: marker.region,
               });
             }}
           >
@@ -446,13 +446,13 @@ const MapHome = ({ navigation, route }) => {
                     id: marker.id,
                     name: marker.name,
                     info: marker.info,
-                    address: marker.myAddr,
-                    star: marker.rating,
-                    time: marker.opening_hours.map((i) => {
+                    address: marker.address,
+                    star: marker.star,
+                    time: marker.time.map((i) => {
                       return i + '\n';
                     }),
                     city: marker.city,
-                    region: marker.reg,
+                    region: marker.region,
                     source: {
                       uri:
                         `https://maps.googleapis.com/maps/api/place/photo?photoreference=${marker.photo.photo_reference}&sensor=false&maxheight=${marker.photo.height}&maxwidth=${marker.photo.width}&key=${API_key}`
@@ -480,16 +480,16 @@ const MapHome = ({ navigation, route }) => {
                   setModalEntry({
                     id: marker.id,
                     name: marker.name,
-                    address: marker.myAddr,
+                    address: marker.address,
                     location: marker.location,
                     id: marker.id,
                     star: 0,
                     info: marker.name,
-                    time: marker.opening_hours.map((i) => {
+                    time: marker.time.map((i) => {
                       return i + '\n';
                     }),
                     city: marker.city,
-                    region: marker.reg,
+                    region: marker.region,
                     source: {
                       uri: marker.photo
                     }
@@ -519,14 +519,14 @@ const MapHome = ({ navigation, route }) => {
                     location: marker.location,
                     id: marker.id,
                     name: marker.name,
-                    address: marker.myAddr,
-                    star: marker.rating,
+                    address: marker.address,
+                    star: marker.star,
                     info: marker.name,
-                    time: marker.opening_hours.map((i) => {
+                    time: marker.time.map((i) => {
                       return i + '\n';
                     }),
                     city: marker.city,
-                    region: marker.reg,
+                    region: marker.region,
                     source: {
                       uri:
                         `https://maps.googleapis.com/maps/api/place/photo?photoreference=${marker.photo.photo_reference}&sensor=false&maxheight=${marker.photo.height}&maxwidth=${marker.photo.width}&key=${API_key}`

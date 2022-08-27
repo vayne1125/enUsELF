@@ -95,10 +95,10 @@ const ItineraryHome = ({ navigation, route }) => {
                 setModalVisible(!modalVisible);
                 setModalEntry({
                   name: marker.name,
-                  address: marker.myAddr,
+                  address: marker.address,
                   star: marker.star,
                   info: marker.info,
-                  time: marker.opening_hours,
+                  time: marker.time,
                   city: marker.city,
                   region: marker.region,
                 });
