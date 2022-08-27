@@ -158,9 +158,10 @@ const Items = () => {
                         await users.collection('list').get()
                         .then((querySnapshot)=>{
                             querySnapshot.forEach(doc => {
-                                const {id, place_id} = doc.data();
+                                const {type, id, place_id} = doc.data();
                                 if(check){
                                     list.push({
+                                        type: type;
                                         id: id,
                                         place_id: place_id,
                                     })

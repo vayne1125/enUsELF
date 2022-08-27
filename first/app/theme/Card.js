@@ -89,6 +89,7 @@ export default class Card extends PureComponent  {
                     users.collection('list').doc(site.name)
                     .set({
                         id: site.id,
+                        type: site.type,
                         name: site.name,
                         city: site.city,
                         region: site.region,
