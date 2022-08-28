@@ -37,7 +37,7 @@ const Items = () => {
                     querySnapshot.forEach(()=>{count++;});
                     setCnt(count);
                 })
-                .catch(()=>{return 0;})            
+                .catch(()=>{})            
             }
         }
         Cnt();
@@ -52,7 +52,7 @@ const Items = () => {
                     await users.collection('list').get()
                     .then((querySnapshot)=>{
                         querySnapshot.forEach(doc => {
-                            const {name, check, address, city, info, place_id, pos, region, star, time} = doc.data();
+                            const {name, check, city, region} = doc.data();
                             list.push({
                                 name: name,
                                 city: city,
@@ -158,23 +158,17 @@ const Items = () => {
                         await users.collection('list').get()
                         .then((querySnapshot)=>{
                             querySnapshot.forEach(doc => {
-                                const {name, check, address, city, info, place_id, pos, region, star, time} = doc.data();
+                                const {type, id, place_id,check} = doc.data();
                                 if(check){
                                     list.push({
-                                        name: name,
-                                        address: address,
-                                        city: city,
-                                        info: info,
+                                        type: type,
+                                        id: id,
                                         place_id: place_id,
-                                        region: region,
-                                        star: star,
-                                        pos: pos,
-                                        time: time,
-                                    })
+                                    });
                                 }
                             });
                         });
-                        console.log(list);
+                        //console.log(list);
                         navigation.current.navigate("MapHome", list);
                     };
                 }

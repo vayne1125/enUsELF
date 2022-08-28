@@ -22,6 +22,7 @@ import { updateLocale } from 'moment';
 const ListBottom = () => {
     const {user} = useContext(AuthContext);
     const [check, setCheck] = useState(false);
+    const [empty, setEmpty] = useState(false);
 
     useEffect(() => {
         const listen = DeviceEventEmitter
@@ -40,7 +41,8 @@ const ListBottom = () => {
                     })
                     .catch(()=>{return 0;})
                     if(items==count && count)setCheck(true);
-                    else setCheck(false);          
+                    else setCheck(false);
+                    setEmpty(items? false:true);
                 }
             }
             Cnt();
@@ -58,7 +60,7 @@ const ListBottom = () => {
                         doc.ref.update({check:!check});
                     })
                 })
-                setCheckitems()
+                setEmpty(check? true : false);
             }
         }
       catch(e){
@@ -86,12 +88,21 @@ const ListBottom = () => {
                 /></>
             </View>
             <View style={{flex:0.4}}></View>
-            <View style={styles.OkContainer}>
-                <TouchableOpacity
-                onPress={() => {DeviceEventEmitter.emit('gotomap');}}>
+            {empty?
+                <View style={styles.UntouchContainer}>
                     <Text style={styles.OkText}>完成</Text> 
-                </TouchableOpacity>
-            </View>
+                </View>:
+                <View style={styles.touchContainer}>
+                    <TouchableOpacity
+                    onPress={()=>{
+                      console.log('press');
+                      DeviceEventEmitter.emit('gotomap');
+                      }
+                      }>
+                        <Text style={styles.OkText}>完成</Text> 
+                    </TouchableOpacity>
+                </View>
+            }
     </View>
   );
 };
@@ -108,7 +119,7 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent:'center',
   },
-  OkContainer: {
+  touchContainer: {
     backgroundColor: '#88bd80',
     flex: 0.3,
     padding:5,
@@ -120,6 +131,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#ffffff',
     letterSpacing: 10,
+  },
+  UntouchContainer: {
+    backgroundColor: 'gray',
+    flex: 0.3,
+    padding:5,
+    alignItems:'center',
+    justifyContent:'center',
   },
 });
 
