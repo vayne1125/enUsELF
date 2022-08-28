@@ -54,6 +54,7 @@ const MapHome = ({ navigation, route }) => {
   const [site,setSite] = useState([]);  //過程的點
   const [desSite,setDesSite] = useState({}); //終點
 
+
   //伸蓉這個事件
   const onPressHandlerForComlete = () => {
     setCompletePress(true);
@@ -70,22 +71,10 @@ const MapHome = ({ navigation, route }) => {
     //console.log(route.params);
     //console.log("距離: ", Math.sqrt((origin.latitude - destination.latitude) * (origin.latitude - destination.latitude) + (origin.longitude - destination.longitude) * (origin.longitude - destination.longitude)));
     //-----------------------------
-    setDesSite(()=>{
-      for(i = 0;i<mainRoute.length;i++){
-        if(des.latitude == mainRoute[i].lat && des.longitude == mainRoute[i].lng){
-          return {
-            place_id: i.place_id,
-            id: i.id,
-            type: i.type
-          }
-        }
-      }
-    })
-
-    setSite(()=>{
+    
       var rt = [];
       for(i = 0;i<mainRoute.length;i++){
-        if(des.latitude == mainRoute[i].lat && des.longitude == mainRoute[i].lng){
+        if(destination.latitude == mainRoute[i].lat && destination.longitude == mainRoute[i].lng){
           continue;
         }
         rt.push({
@@ -101,12 +90,16 @@ const MapHome = ({ navigation, route }) => {
           type: i.type
         });
       })
-    })
-    navigation.navigate("ItineraryHome", {
-      origin:origin,
-      desSite:desSite,
-      site:site
-    });
+      console.log("rt: ",rt);
+
+    console.log("ori: ",origin);
+    console.log("desSite: ",desSite);
+    console.log("site: ",site);
+      navigation.navigate("ItineraryHome", {
+        origin:origin,
+        desSite:desSite,
+        site:rt
+      });
   }
   const onPressHandlerForHot = () => {
     setHotPress(!hotPress); //打開
@@ -144,7 +137,6 @@ const MapHome = ({ navigation, route }) => {
 
   //算出附近的點(範圍20km內) 1 -> 111km  0.1 -> 11km
   const getPlace = (array) => {
-
     setHolData(() => {
       var tp = [];
       array.map((pos) => {
@@ -158,7 +150,6 @@ const MapHome = ({ navigation, route }) => {
       })
       return tp;
     })
-
     setHotData(() => {
       var tp = [];
       array.map((pos) => {
@@ -172,7 +163,6 @@ const MapHome = ({ navigation, route }) => {
       })
       return tp;
     })
-
     setShopData(() => {
       var tp = [];
       array.map((pos) => {
@@ -229,8 +219,6 @@ const MapHome = ({ navigation, route }) => {
   //當主路線或是ori改變時，更新最遠點和中間點還有初始視野
   useEffect(() => {
     console.log("ori ", origin);
-    let index = 0;
-
     setDes(() => { 
       let des = { latitude: 24.1365593, longitude: 120.6835935 };
       let maxDis = -1;
@@ -240,23 +228,36 @@ const MapHome = ({ navigation, route }) => {
         if (nowDis > maxDis) {
           //console.log("in");
           des = { latitude: mainRoute[i].lat, longitude: mainRoute[i].lng };
-          index = i;
           maxDis = nowDis;
         }
       }
       return des;
     });
 
-    //找離當前位置最遠的點，並看中間經過誰，傳給map顯示
+    setDesSite(()=>{
+      for(i = 0;i<mainRoute.length;i++){
+        if(destination.latitude == mainRoute[i].lat && destination.longitude == mainRoute[i].lng){
+          return {
+            place_id: mainRoute[i].place_id,
+            id: mainRoute[i].id,
+            type: mainRoute[i].type
+          }
+        }
+      }
+    })
+  }, [origin,mainRoute])
+
+  useEffect(()=>{
     setWaypoints(() => {
       let way = [];
       for (i = 0; i < mainRoute.length; i++) {
-        if (i == index) continue;
+        if (destination.latitude == mainRoute[i].lat && destination.longitude == mainRoute[i].lng) continue;
         way.push({ latitude: mainRoute[i].lat, longitude: mainRoute[i].lng });
       }
+      console.log(destination);
+      console.log("way: ",way);
       return way;
     });
-
     setInitRegion(() => {
       var longestDis = getDis({ lat: origin.latitude, lng: origin.longitude }, { lat: destination.latitude, lng: destination.longitude });
       var tp = 0;
@@ -278,7 +279,7 @@ const MapHome = ({ navigation, route }) => {
         longitudeDelta: 0,
       }
     });
-  }, [origin,mainRoute])
+  },[destination])
 
   return (
     <View style={styles.container}>
@@ -398,7 +399,7 @@ const MapHome = ({ navigation, route }) => {
             return (
               <Marker
                 tracksViewChanges={false}
-                key={marker.id}
+                key={marker.type + (marker.id).toString()}
                 coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
                 onPress={(e) => {
                   setModalCanPress(true);
@@ -434,7 +435,7 @@ const MapHome = ({ navigation, route }) => {
           if (marker.del >= myLatitudeDelta) {
             return (
               <Marker
-                key={marker.id}
+              key={marker.type + (marker.id).toString()}
                 coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
                 onPress={(e) => {
                   setModalCanPress(true);
@@ -471,7 +472,7 @@ const MapHome = ({ navigation, route }) => {
           if (marker.del >= myLatitudeDelta) {
             return (
               <Marker
-                key={marker.id}
+              key={marker.type + (marker.id).toString()}
                 coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
                 pinColor='blue'
                 onPress={(e) => {
@@ -509,7 +510,7 @@ const MapHome = ({ navigation, route }) => {
         {(endData).map((marker) => {
           return (
             <Marker
-              key={marker.id}
+              key={marker.type + (marker.id).toString()}
               coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
               onPress={(e) => {
                 setModalVisible(!modalVisible);
