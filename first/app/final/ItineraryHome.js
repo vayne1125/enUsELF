@@ -18,12 +18,11 @@ const ItineraryHome = ({ navigation, route }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState({}); //initialState
   const [modalIsMain,setModalIsMain] = useState(false); 
-  const [mainRoute,setMainRoute] = useState(route.params.mainRoute);
+ 
   const [origin,setOrigin] = useState(route.params.origin);
-  const [destination,setDestination] = useState(route.params.destination);
-  const [endRoute,setEndRoute] = useState(route.params.endRoute);
-  const [region,setRegion] = useState(route.params.region);
-  const [waypoints,setWaypoints] = useState(route.params.waypoints);
+  const [destination,setDestination] = useState(route.params.origin);
+  const [waypoints,setWaypoints] = useState([]);
+  const [marker,setMarker] = useState([]);
   /*---------這些參數全都要存---------*/
 
   // const mainRoute = route.params.mainRoute;
@@ -32,16 +31,75 @@ const ItineraryHome = ({ navigation, route }) => {
   // const waypoints = route.params.waypoints;
   // const endRoute = route.params.endRoute;
   // const region = route.params.region;
-
+  // origin:origin,
+  // desSite:desSite,
+  // site:site
   /*---------這些參數全都要存---------*/
   useEffect(()=>{
-    console.log("mainRoute: ", mainRoute);
-    console.log("endRoute: ", endRoute);
-    console.log("waypoints: ", waypoints);
-    console.log("origin: ", origin);
-    console.log("destination: ", destination);
-    console.log("region: ", region);
-  })
+    setDestination(()=>{
+      if(desSite.type === "food"){
+        retrun (Food[param.id]);
+      }else if(desSite.type === "nature"){
+        retrun (desSite[param.id]);
+      }else if(param.type === "kol"){
+        retrun (KOL[param.id]);
+      }else if(desSite.type === "monuments"){
+        retrun (Monuments[param.id]);
+      }else if(desSite.type === "hotel"){
+        retrun (Hotel[param.id]);
+      }
+    })
+  },[route.params.desSite])
+
+  useEffect(()=>{
+    setMarker(()=>{           
+      var data = [];
+      (route.params.site).map((param)=>{
+        if(param.type === "food"){
+          data.push(Food[param.id]);
+        }else if(param.type === "nature"){
+          data.push(Nature[param.id]);
+        }else if(param.type === "kol"){
+          data.push(KOL[param.id]);
+        }else if(param.type === "monuments"){
+          data.push(Monuments[param.id]);
+        }else if(param.type === "hotel"){
+          data.push(Hotel[param.id]);
+        }else if(param.type === "hol"){
+
+        }else if(param.type === "hot"){
+
+        }else if(param.type === "shop"){
+
+          
+        }
+        mySet.add(param.place_id); 
+      })
+      return data;
+    })
+
+    setWaypoints(()=>{           
+      var data = [];
+      (route.params.site).map((param)=>{
+        if(param.type === "food"){
+          data.push(Food[param.id]);
+        }else if(param.type === "nature"){
+          data.push(Nature[param.id]);
+        }else if(param.type === "kol"){
+          data.push(KOL[param.id]);
+        }else if(param.type === "monuments"){
+          data.push(Monuments[param.id]);
+        }else if(param.type === "hotel"){
+          data.push(Hotel[param.id]);
+        }
+        mySet.add(param.place_id); 
+      })
+      return data;
+    })
+
+
+
+  },[route.params.site])
 
   return (
     <View style={styles.container}>
@@ -69,7 +127,10 @@ const ItineraryHome = ({ navigation, route }) => {
   >
         <MapViewDirections
           origin={origin} //to do抓當前位置
-          destination={destination}
+          destination={{
+            latitude: desSite.lat,
+            longitude: desSite.lng
+          }}
           waypoints = {waypoints}
           apikey={API_key}
           strokeWidth={3}

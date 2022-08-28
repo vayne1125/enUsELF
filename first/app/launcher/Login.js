@@ -82,7 +82,7 @@ const Login = ({navigation}) => {
             Alert.alert('註冊失敗','欄位不可為空');
         }
         else{
-            if(password.length() < 8){
+            if(password.length < 8){
                 Alert.alert('註冊失敗','密碼長度過短\n請再次輸入');
                 setPassword('');
             }

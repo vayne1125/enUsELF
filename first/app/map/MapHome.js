@@ -17,13 +17,16 @@ import MapViewDirections from 'react-native-maps-directions';
 import Hotplace from './Hotplace'
 import Shopplace from './Shopplace'
 import Holplace from './Holplace'
-import ThemedImage from '@rneui/themed/dist/Image';
+import Food from '../theme/Food'
+import Hotel from '../theme/Hotel'
+import KOL from '../theme/KOL'
+import Monuments from '../theme/Monuments'
+import Nature from '../theme/Nature'
 //import Hotplace from './tp'
 const MapHome = ({ navigation, route }) => {
   //console.log(route.params);
   const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
   const [once, setOnce] = useState(true);    //控制只會一次線
-  const [once2, setOnce2] = useState(true);  //控制地圖起點顯示
   //顯示detail
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState(initialState);
@@ -43,10 +46,13 @@ const MapHome = ({ navigation, route }) => {
   const [origin, setOri] = useState({ latitude: 24.1365593, longitude: 120.6835935 })
   const [addWaypoint, setAdd] = useState([]);
   const [mainRoute, setMainRoute] = useState([]);
-  const [destination, setDes] = useState({ latitude: 0, longitude: 0 });
+  const [destination, setDes] = useState({ latitude: 24.1365593, longitude: 120.6835935 });
   const [initRegion, setInitRegion] = useState({ latitude: 24.1365593, longitude: 120.6835935, latitudeDelta: 4, longitudeDelta: 0 });
   const [myLatitudeDelta, setMyLatitudeDelta] = useState(3.8); //地圖縮放程度的變數
-
+  
+  //origin 起點
+  const [site,setSite] = useState([]);  //過程的點
+  const [desSite,setDesSite] = useState({}); //終點
 
   //伸蓉這個事件
   const onPressHandlerForComlete = () => {
@@ -64,94 +70,42 @@ const MapHome = ({ navigation, route }) => {
     //console.log(route.params);
     //console.log("距離: ", Math.sqrt((origin.latitude - destination.latitude) * (origin.latitude - destination.latitude) + (origin.longitude - destination.longitude) * (origin.longitude - destination.longitude)));
     //-----------------------------
+    setDesSite(()=>{
+      for(i = 0;i<mainRoute.length;i++){
+        if(des.latitude == mainRoute[i].lat && des.longitude == mainRoute[i].lng){
+          return {
+            place_id: i.place_id,
+            id: i.id,
+            type: i.type
+          }
+        }
+      }
+    })
 
-
-
-
-    //伸蓉看這裡!!!!!!!!!!!!!!!
-    //存變數名稱用左邊的 <ex>mainRoute , endRoute .....
-    console.log("mainRoute: ", mainRoute);
-    console.log("endRoute: ", endData);
-    console.log("waypoints: ", waypoints.concat(addWaypoint));
-    console.log("origin: ", origin);
-    console.log("destination: ", destination);
-    console.log("region: ", initRegion);
-
+    setSite(()=>{
+      var rt = [];
+      for(i = 0;i<mainRoute.length;i++){
+        if(des.latitude == mainRoute[i].lat && des.longitude == mainRoute[i].lng){
+          continue;
+        }
+        rt.push({
+          place_id: mainRoute[i].place_id,
+          id: mainRoute[i].id,
+          type: mainRoute[i].type
+        });
+      }
+      endData.map((i)=>{
+        rt.push({
+          place_id: i.place_id,
+          id: i.id,
+          type: i.type
+        });
+      })
+    })
     navigation.navigate("ItineraryHome", {
-      mainRoute: mainRoute,  //[{},{},.....]
-      /*
-      {"city": "xxxxx", 
-       "info": "xxxxx", 
-       "location": {"lat": 25.0731088, "lng": 121.5155703}, 
-       "address": "103台灣台北市大同區哈密街61號", 
-       "name": "大龍峒保安宮", 
-       "time": 
-       ["星期一: 06:30 – 21:00
-        星期二: 06:30 – 21:00
-        星期三: 06:30 – 21:00
-        星期四: 06:30 – 21:00
-        星期五: 06:30 – 21:00
-        星期六: 06:30 – 21:00
-        星期日: 06:30 – 21:00"],  //這是字串陣列(只有一個字串的陣列)
-      "place_id": "ChIJoWFCL2qpQjQRPOoT7nFV3YU", 
-      "star": 4.6, 
-      "reg": "大同區"
-      }
-      */
-      endRoute: endData,//[{},{}]
-      /*
-      {
-      "address": "台灣苗栗縣後龍鎮半天寮", 
-      "city": "苗栗縣", 
-      "id": "hot75", 
-      "info": "xxxx", 
-      "location": {"lat": 24.601974, "lng": 120.731191}, 
-      "name": "後龍鎮半天寮休閒文化園區", 
-      "region": "後龍鎮", 
-      "source": 
-        { 
-          "uri": "https://maps.googleapis.com/maps/api/place/photo?photoreference=AeJbb3dAM2GC3nY_7mGglNkzLIFunFVnJgzGr65syILYMDuEqFEiVwgevgSpCRi-aKGvreH36gtrTFxt356_n7pM_dUK0g7m58lcVRwHJLGRgRRUu3yb_kz6MXzL1AwQWqne6graEwS8AiH1rGypEeTeomoK2SoSLTFgwBta7ZD81wJFhGDL&sensor=false&maxheight=1081&maxwidth=1440&key=AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY"
-        },   
-      "star": 4.3, 
-      "time": 
-        ["星期一: 24 小時營業", 
-         "星期二: 24 小時營業",
-         "星期三: 24 小時營業", 
-         "星期四: 24 小時營業",
-         "星期五: 24 小時營業",
-         "星期六: 24 小時營業", 
-         "星期日: 24 小時營業"]    //這是字串陣列(7個字串)
-        }
-      */
-      waypoints: waypoints.concat(addWaypoint),//[{},{}]
-      /*
-        {
-          "latitude": 24.49772399999999,
-          "longitude": 121.5350318
-        }
-      */
-      origin: origin,//{}
-      /*
-      {
-          "latitude": 24.49772399999999,
-          "longitude": 121.5350318
-      }
-      */
-      destination: destination,//{}
-      /*
-      {
-          "latitude": 24.49772399999999,
-          "longitude": 121.5350318
-      }
-      */
-      region: initRegion//{}
-      /* 
-      {
-        "latitude": 23.867910433333336, 
-        "latitudeDelta": 3.8, 
-        "longitude": 120.98405048333333, 
-        "longitudeDelta": 0}
-      */
+      origin:origin,
+      desSite:desSite,
+      site:site
     });
   }
   const onPressHandlerForHot = () => {
@@ -241,38 +195,51 @@ const MapHome = ({ navigation, route }) => {
     getPlace(PositionArray);  //用PositionArray去看附近有哪些景點
   }
 
-  //重新渲染畫面也不會改的
   useEffect(() => {
-    setMainRoute(route.params);
-
-    mainRoute.map((place) => {       //購物車和我重複地點消除
-      mySet.add(place.place_id);
+    //從theme的json抓取主路線資料
+    setMainRoute(()=>{           
+      var data = [];
+      (route.params).map((param)=>{
+        if(param.type === "food"){
+          data.push(Food[param.id]);
+        }else if(param.type === "nature"){
+          data.push(Nature[param.id]);
+        }else if(param.type === "kol"){
+          data.push(KOL[param.id]);
+        }else if(param.type === "monuments"){
+          data.push(Monuments[param.id]);
+        }else if(param.type === "hotel"){
+          data.push(Hotel[param.id]);
+        }
+        mySet.add(param.place_id); 
+      })
+      return data;
     })
-
+    //設置自己的位子
     var positionOption = { timeout: 50000, enableHighAccuracy: true };  //抓當前位置
     Geolocation.getCurrentPosition(position => {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
-      console.log(lat);
-      console.log(lng);
+      // console.log(lat);
+      // console.log(lng);
       setOri({ latitude: lat, longitude: lng });
     }, console.log("wait second..."), positionOption);
-
   }, [])
 
-
+  //當主路線或是ori改變時，更新最遠點和中間點還有初始視野
   useEffect(() => {
     console.log("ori ", origin);
+    let index = 0;
 
-    let data = route.params;
-    let maxDis = -1, index = 0;
-
-    setDes(() => {
-      let des = {};
-      for (i = 0; i < data.length; i++) {
-        var nowDis = getDis({ lat: origin.latitude, lng: origin.longitude }, data[i].location);
+    setDes(() => { 
+      let des = { latitude: 24.1365593, longitude: 120.6835935 };
+      let maxDis = -1;
+      console.log("main :",mainRoute.length);
+      for (i = 0; i < mainRoute.length; i++) {
+        var nowDis = getDis({ lat: origin.latitude, lng: origin.longitude }, mainRoute[i]);
         if (nowDis > maxDis) {
-          des = { latitude: data[i].location.lat, longitude: data[i].location.lng };
+          //console.log("in");
+          des = { latitude: mainRoute[i].lat, longitude: mainRoute[i].lng };
           index = i;
           maxDis = nowDis;
         }
@@ -283,14 +250,12 @@ const MapHome = ({ navigation, route }) => {
     //找離當前位置最遠的點，並看中間經過誰，傳給map顯示
     setWaypoints(() => {
       let way = [];
-      for (i = 0; i < data.length; i++) {
+      for (i = 0; i < mainRoute.length; i++) {
         if (i == index) continue;
-        way.push({ latitude: data[i].location.lat, longitude: data[i].location.lng });
+        way.push({ latitude: mainRoute[i].lat, longitude: mainRoute[i].lng });
       }
       return way;
     });
-
-    //console.log("way: ",waypoints);
 
     setInitRegion(() => {
       var longestDis = getDis({ lat: origin.latitude, lng: origin.longitude }, { lat: destination.latitude, lng: destination.longitude });
@@ -299,7 +264,9 @@ const MapHome = ({ navigation, route }) => {
         tp = 3.8;
       } else if (longestDis >= 1.5) {
         tp = 2.8;
-      } else if (longestDis >= 0.5) {
+      } else if(longestDis >= 1){
+        tp = 1.8;
+      }else if (longestDis >= 0.5) {
         tp = 0.9;
       } else {
         tp = 0.4;
@@ -311,11 +278,10 @@ const MapHome = ({ navigation, route }) => {
         longitudeDelta: 0,
       }
     });
-  }, [origin])
+  }, [origin,mainRoute])
 
   return (
     <View style={styles.container}>
-
       {/*浮動視窗-------------------------------------------------------------------------------*/}
       <DetailForMap
         entry={modalEntry}//傳進去的資料參數
@@ -324,7 +290,7 @@ const MapHome = ({ navigation, route }) => {
         onPress1={(data) => {
           console.log(data);
           var tp = {};
-          if (data.id.substr(0, 3) === 'hot') {
+          if (data.type === 'hot') {
             for (i = 0; i < hotData.length; i++) {
               if (hotData[i].id === data.id) {
                 tp = hotData[i];
@@ -332,7 +298,7 @@ const MapHome = ({ navigation, route }) => {
                 break;
               }
             }
-          } else if (data.id.substr(0, 3) === 'hol') {
+          } else if (data.type === 'hol') {
             for (i = 0; i < holData.length; i++) {
               if (holData[i].id === data.id) {
                 tp = holData[i];
@@ -349,7 +315,7 @@ const MapHome = ({ navigation, route }) => {
               }
             }
           }
-          addWaypoint.push({ latitude: data.location.lat, longitude: data.location.lng });
+          addWaypoint.push({ latitude: data.lat, longitude: data.lng });
           endData.push(tp);
         }}
         canPress={modalCanPress}
@@ -372,25 +338,21 @@ const MapHome = ({ navigation, route }) => {
       >
 
 
-        {/*market of main Route */}
         {(mainRoute).map((marker, index) => (
           <Marker
             //pinColor='green'
             tracksViewChanges={false}
-            key={"main" + index.toString()}
-            coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
+            key={marker.type + (marker.id).toString()}
+            coordinate={{ latitude: marker.lat, longitude: marker.lng }}
             onPress={(e) => {
               setModalCanPress(false);
               setModalVisible(!modalVisible);
               setModalEntry({
-                location: marker.location,
                 name: marker.name,
                 info: marker.info,
                 address: marker.address,
                 star: marker.star,
-                time: marker.time.map((i) => {
-                  return i + '\n';
-                }),
+                time: marker.time,
                 city: marker.city,
                 region: marker.region,
               });
@@ -418,7 +380,7 @@ const MapHome = ({ navigation, route }) => {
               SetData(result.coordinates);
             }
             setOnce(false);
-            console.log("way: ", waypoints);
+            //console.log("way: ", waypoints);
           }}
           waypoints={waypoints}
         />
@@ -442,7 +404,7 @@ const MapHome = ({ navigation, route }) => {
                   setModalCanPress(true);
                   setModalVisible(!modalVisible);
                   setModalEntry({
-                    location: marker.location,
+                    type: marker.type,
                     id: marker.id,
                     name: marker.name,
                     info: marker.info,
@@ -478,12 +440,12 @@ const MapHome = ({ navigation, route }) => {
                   setModalCanPress(true);
                   setModalVisible(!modalVisible);
                   setModalEntry({
+                    type: marker.type,
                     id: marker.id,
                     name: marker.name,
                     address: marker.address,
-                    location: marker.location,
                     id: marker.id,
-                    star: 0,
+                    star: 5,
                     info: marker.name,
                     time: marker.time.map((i) => {
                       return i + '\n';
@@ -516,7 +478,7 @@ const MapHome = ({ navigation, route }) => {
                   setModalCanPress(true);
                   setModalVisible(!modalVisible);
                   setModalEntry({
-                    location: marker.location,
+                    type: marker.type,
                     id: marker.id,
                     name: marker.name,
                     address: marker.address,
@@ -552,16 +514,22 @@ const MapHome = ({ navigation, route }) => {
               onPress={(e) => {
                 setModalVisible(!modalVisible);
                 setModalEntry({
-                  location: marker.location,
+                  type: marker.type,
                   id: marker.id,
                   name: marker.name,
                   address: marker.address,
                   star: marker.star,
                   info: marker.info,
-                  time: marker.time,
+                  time: marker.data + (
+                  marker.time.map((i) => {
+                    return i + '\n';
+                  })),
                   city: marker.city,
                   region: marker.region,
-                  source: marker.source,
+                  source: {
+                    uri:
+                      `https://maps.googleapis.com/maps/api/place/photo?photoreference=${marker.photo.photo_reference}&sensor=false&maxheight=${marker.photo.height}&maxwidth=${marker.photo.width}&key=${API_key}`
+                  }
                 });
               }}
             >

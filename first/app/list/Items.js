@@ -158,17 +158,17 @@ const Items = () => {
                         await users.collection('list').get()
                         .then((querySnapshot)=>{
                             querySnapshot.forEach(doc => {
-                                const {type, id, place_id} = doc.data();
+                                const {type, id, place_id,check} = doc.data();
                                 if(check){
                                     list.push({
-                                        type: type;
+                                        type: type,
                                         id: id,
                                         place_id: place_id,
-                                    })
+                                    });
                                 }
                             });
                         });
-                        console.log(list);
+                        //console.log(list);
                         navigation.current.navigate("MapHome", list);
                     };
                 }
