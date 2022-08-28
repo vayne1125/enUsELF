@@ -10,6 +10,7 @@ import {
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import DetailForFinal from '../detail/DetailForFinal';
 //import Back from './Back';
+import { mapStyle } from '../map/mapStyle';
 import MapViewDirections from 'react-native-maps-directions';
 import ItineraryTop from './ItineraryTop';
 import Hotplace from '../map/Hotplace'
@@ -26,6 +27,7 @@ const ItineraryHome = ({ navigation, route }) => {
   const [modalEntry, setModalEntry] = useState({}); //initialState
   const [modalIsMain,setModalIsMain] = useState(false); 
  
+  const [print,setPrint] = useState(false);
   const [region,setRegion] = useState({ latitude: 24.1365593, longitude: 120.6835935, latitudeDelta: 4, longitudeDelta: 0 });
   const [origin,setOrigin] = useState(route.params.origin);
   const [destination,setDestination] = useState({ lat: 24.1365593, lng: 120.6835935});
@@ -86,6 +88,12 @@ const ItineraryHome = ({ navigation, route }) => {
       }
       //console.log("des: ",destination);
       //console.log("l: ",longestDis,"   ,tp = ",tp);
+      console.log({
+        latitude: (destination.lat + origin.latitude) / 2.0,
+        longitude: (destination.lng + origin.longitude) / 2.0,
+        latitudeDelta: tp, //數字越小 地圖道路越大
+        longitudeDelta: 0,
+      });
       return {
         latitude: (destination.lat + origin.latitude) / 2.0,
         longitude: (destination.lng + origin.longitude) / 2.0,
@@ -96,29 +104,29 @@ const ItineraryHome = ({ navigation, route }) => {
   },[destination])
 
   useEffect(()=>{
-    setMarkers(()=>{           
-      var data = [];
-      (route.params.site).map((param)=>{
-        if(param.type === "food"){
-          data.push(Food[param.id]);
-        }else if(param.type === "nature"){
-          data.push(Nature[param.id]);
-        }else if(param.type === "kol"){
-          data.push(KOL[param.id]);
-        }else if(param.type === "monuments"){
-          data.push(Monuments[param.id]);
-        }else if(param.type === "hotel"){
-          data.push(Hotel[param.id]);
-        }else if(param.type === "hol"){
-          data.push(Holplace[param.id]);
-        }else if(param.type === "hot"){
-          data.push(Hotplace[param.id]);
-        }else if(param.type === "shop"){
-          data.push(Shopplace[param.id]);
-        }
+      setMarkers(()=>{           
+        var data = [];
+        (route.params.site).map((param)=>{
+          if(param.type === "food"){
+            data.push(Food[param.id]);
+          }else if(param.type === "nature"){
+            data.push(Nature[param.id]);
+          }else if(param.type === "kol"){
+            data.push(KOL[param.id]);
+          }else if(param.type === "monuments"){
+            data.push(Monuments[param.id]);
+          }else if(param.type === "hotel"){
+            data.push(Hotel[param.id]);
+          }else if(param.type === "hol"){
+            data.push(Holplace[param.id]);
+          }else if(param.type === "hot"){
+            data.push(Hotplace[param.id]);
+          }else if(param.type === "shop"){
+            data.push(Shopplace[param.id]);
+          }
+        })
+        return data;
       })
-      return data;
-    })
 
     setWaypoints(()=>{           
       var data = [];
@@ -142,7 +150,7 @@ const ItineraryHome = ({ navigation, route }) => {
           data.push({latitude: Shopplace[param.id].location.lat,longitude: Shopplace[param.id].location.lng});
         }
       })
-      //console.log("data: ",data);
+      console.log("data: ",data);
       return data;
     })
 
@@ -162,6 +170,7 @@ const ItineraryHome = ({ navigation, route }) => {
       <MapView //todo:初始化位置 
         loadingEnabled = {true}
         moveOnMarkerPress={false}
+        customMapStyle={mapStyle}
         //rotateEnabled = {false}
         //zoomEnabled = {false}
         //zoomControlEnabled = {false}
@@ -169,12 +178,15 @@ const ItineraryHome = ({ navigation, route }) => {
         //customMapStyle={mapStyle}
         provider={PROVIDER_GOOGLE}
         style={styles.mapStyle}
-        //to do 取起終的中點
         region={region}
         mapType="standard" 
+        onMapReady={()=>{
+          //if(print == false)setPrint(true);
+        }
+        }
   >
         <MapViewDirections
-          origin={origin} //to do抓當前位置
+          origin={origin}
           destination={{
             latitude: destination.lat,
             longitude: destination.lng
@@ -196,6 +208,7 @@ const ItineraryHome = ({ navigation, route }) => {
 
             <Marker
               key={'destination'}
+              pinColor='green'
               coordinate={{ 
                 latitude: destination.lat,
                 longitude: destination.lng
@@ -214,10 +227,16 @@ const ItineraryHome = ({ navigation, route }) => {
                 });
               }}
             >
-              <View style={styles.markerCss}>
+              
+                
+                {(print) && (
+                  <View style={styles.markerCss}>
                 <Text style={styles.markerText}>{destination.name}</Text>
-                <Image style={styles.markerImg} source={require('../../assets/pin/green.png')} />
-              </View>
+                <Image source={require('../../assets/pin/green.png')} />
+                </View>)
+                }
+                
+              
             </Marker>
 
 
@@ -225,6 +244,7 @@ const ItineraryHome = ({ navigation, route }) => {
         {(markers).map((marker) => {
           return (
             <Marker
+              pinColor='green'
               key={marker.type + (marker.id).toString()}
               coordinate={
                 (marker.type === "hot" || marker.type === "hol" || marker.type === "shop")?
@@ -257,15 +277,19 @@ const ItineraryHome = ({ navigation, route }) => {
                   region: marker.region,
                   source: {
                     uri:
-                      `https://maps.googleapis.com/maps/api/place/photo?photoreference=${marker.photo.photo_reference}&sensor=false&maxheight=${marker.photo.height}&maxwidth=${marker.photo.width}&key=${API_key}`
+                      (marker.type === "hol")?
+                        marker.photo:
+                        `https://maps.googleapis.com/maps/api/place/photo?photoreference=${marker.photo.photo_reference}&sensor=false&maxheight=${marker.photo.height}&maxwidth=${marker.photo.width}&key=${API_key}`
                   }
                 });
               }}
             >
-              <View style={styles.markerCss}>
+                {(print) && (
+                  <View style={styles.markerCss}>
                 <Text style={styles.markerText}>{marker.name}</Text>
-                <Image style={styles.markerImg} source={require('../../assets/pin/green.png')} />
-              </View>
+                <Image source={require('../../assets/pin/green.png')} />
+                </View>)
+                }
             </Marker>
           )
         }

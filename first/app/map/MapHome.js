@@ -24,7 +24,7 @@ import Monuments from '../theme/Monuments'
 import Nature from '../theme/Nature'
 //import Hotplace from './tp'
 const MapHome = ({ navigation, route }) => {
-  //console.log(route.params);
+  ////console.log(route.params);
   const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
   const [once, setOnce] = useState(true);    //控制只會一次線
   //顯示detail
@@ -65,11 +65,11 @@ const MapHome = ({ navigation, route }) => {
     // setHolData(ORI_DATA);
     // setShopData(ORI_DATA);
     // setWaypoints(addWaypoint);
-    // console.log(addWaypoint);
-    //console.log(initRegion);
-    //console.log(endData);
-    //console.log(route.params);
-    //console.log("距離: ", Math.sqrt((origin.latitude - destination.latitude) * (origin.latitude - destination.latitude) + (origin.longitude - destination.longitude) * (origin.longitude - destination.longitude)));
+    // //console.log(addWaypoint);
+    ////console.log(initRegion);
+    ////console.log(endData);
+    ////console.log(route.params);
+    ////console.log("距離: ", Math.sqrt((origin.latitude - destination.latitude) * (origin.latitude - destination.latitude) + (origin.longitude - destination.longitude) * (origin.longitude - destination.longitude)));
     //-----------------------------
     
       var rt = [];
@@ -90,11 +90,6 @@ const MapHome = ({ navigation, route }) => {
           type: i.type
         });
       })
-      console.log("rt: ",rt);
-
-    console.log("ori: ",origin);
-    console.log("desSite: ",desSite);
-    console.log("site: ",site);
       navigation.navigate("ItineraryHome", {
         origin:origin,
         desSite:desSite,
@@ -210,23 +205,23 @@ const MapHome = ({ navigation, route }) => {
     Geolocation.getCurrentPosition(position => {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
-      // console.log(lat);
-      // console.log(lng);
+      // //console.log(lat);
+      // //console.log(lng);
       setOri({ latitude: lat, longitude: lng });
     }, console.log("wait second..."), positionOption);
   }, [])
 
   //當主路線或是ori改變時，更新最遠點和中間點還有初始視野
   useEffect(() => {
-    console.log("ori ", origin);
+    //console.log("ori ", origin);
     setDes(() => { 
       let des = { latitude: 24.1365593, longitude: 120.6835935 };
       let maxDis = -1;
-      console.log("main :",mainRoute.length);
+      //console.log("main :",mainRoute.length);
       for (i = 0; i < mainRoute.length; i++) {
         var nowDis = getDis({ lat: origin.latitude, lng: origin.longitude }, mainRoute[i]);
         if (nowDis > maxDis) {
-          //console.log("in");
+          ////console.log("in");
           des = { latitude: mainRoute[i].lat, longitude: mainRoute[i].lng };
           maxDis = nowDis;
         }
@@ -254,8 +249,8 @@ const MapHome = ({ navigation, route }) => {
         if (destination.latitude == mainRoute[i].lat && destination.longitude == mainRoute[i].lng) continue;
         way.push({ latitude: mainRoute[i].lat, longitude: mainRoute[i].lng });
       }
-      console.log(destination);
-      console.log("way: ",way);
+      //console.log(destination);
+      //console.log("way: ",way);
       return way;
     });
     setInitRegion(() => {
@@ -289,7 +284,7 @@ const MapHome = ({ navigation, route }) => {
         modalVisible={modalVisible}//可不可見
         onClose={() => { setModalVisible(false); }}//關閉函式
         onPress1={(data) => {
-          console.log(data);
+          //console.log(data);
           var tp = {};
           if (data.type === 'hot') {
             for (i = 0; i < hotData.length; i++) {
@@ -328,7 +323,7 @@ const MapHome = ({ navigation, route }) => {
         moveOnMarkerPress={false}
         loadingEnabled={true}
         onRegionChangeComplete={(e) => { setMyLatitudeDelta(e.latitudeDelta); }}
-        //customMapStyle={mapStyle}
+        customMapStyle={mapStyle}
         provider={PROVIDER_GOOGLE}
         style={styles.mapStyle}
         region={initRegion}
@@ -337,8 +332,6 @@ const MapHome = ({ navigation, route }) => {
 
         }}
       >
-
-
         {(mainRoute).map((marker, index) => (
           <Marker
             //pinColor='green'
@@ -375,13 +368,13 @@ const MapHome = ({ navigation, route }) => {
           strokeWidth={3}
           strokeColor="#5f695d"
           onReady={(result) => {
-            console.log("pol ready");
+            //console.log("pol ready");
             if (once) {
-              //console.log("nono");
+              ////console.log("nono");
               SetData(result.coordinates);
             }
             setOnce(false);
-            //console.log("way: ", waypoints);
+            ////console.log("way: ", waypoints);
           }}
           waypoints={waypoints}
         />
@@ -395,7 +388,7 @@ const MapHome = ({ navigation, route }) => {
 
         {(hotPress ? hotData : ORI_DATA).map((marker, index) => {
           if (marker.del >= myLatitudeDelta) {
-            //console.log(myLatitudeDelta);
+            ////console.log(myLatitudeDelta);
             return (
               <Marker
                 tracksViewChanges={false}
