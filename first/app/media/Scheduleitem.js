@@ -29,6 +29,7 @@ const Scheduleitem = (userSchdule) => {
   const sites=userSchdule.userSchdule;
   //DeviceEventEmitter.addListener('callback',(events) ={使用数据events});
   //console.log('site: ',sites);
+  console.log('site: ',sites);
   const len=sites.length;
   console.log('長度',len);
   const [isSelected, setSelection] = useState(false);
@@ -49,14 +50,12 @@ const Scheduleitem = (userSchdule) => {
         users.collection('list').doc(sites[i].name)
         .set({
             name: sites[i].name,
-            address: sites[i].address,
             city: sites[i].city,
             region: sites[i].region,
-            star: sites[i].star,
-            info: sites[i].info,
-            time: sites[i].time,
+            check:sites[i].check,
+            id:sites[i].id,
             place_id: sites[i].place_od,
-            pos:sites[i].pos,
+            type: sites[i].type,
         }).then(()=>{
             console.log('Post add !');
             //Alert.alert("成功發布");
@@ -115,7 +114,7 @@ const Card = ({site}) => {
                       <Text style={styles.nameStyle}>{site.name}</Text>
                   </View>
                   <View style={styles.textContainer2}>
-                      <Text style={styles.addressStyle}>{site.address}</Text>
+            <Text style={styles.addressStyle}>{site.city} {site.region}</Text>
                   </View>
               </View>
           </View>

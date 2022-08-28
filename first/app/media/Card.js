@@ -36,23 +36,21 @@ const Card = ({navigation,post,onDelete}) => {
     try{
     const list=[];
     const view = firestore().collection('posts').doc(post.id);
-    
+    //const check=false;
    // console.log('這 ',post.id);
     await view.collection('list').get()
     .then((querySnapshot)=>{
       querySnapshot.forEach(doc=>{
-          const {name, address, city, info, place_id, pos, region, star, time} = doc.data();
+          const {name, city,id, place_id, region,type} = doc.data();
           list.push({
               name: name,
               city: city,
               region: region,
-              address:address,
               city:city,
-              info:info,
               place_od:place_id,
-              pos:pos,
-              star:star,
-              time:time,
+              type:type,
+              id:id,
+              check:false,
         });
       })
     })
