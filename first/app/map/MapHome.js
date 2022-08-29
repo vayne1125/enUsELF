@@ -117,7 +117,6 @@ const MapHome = ({ navigation, route }) => {
     console.log("origin: ",origin);
     console.log("desSite: ",desSite);
     console.log("site: ",rt);
-<<<<<<< HEAD
     const users = firestore().collection('users').doc(user.uid);
     users.collection('trip').doc(tripname)
     .set({
@@ -134,9 +133,6 @@ const MapHome = ({ navigation, route }) => {
       });
 
   //下面註解是跳轉
-=======
-    //下面註解是跳轉
->>>>>>> 0d1642a1c560279f37996f116e25227a0d02e3b1
     
     navigation.navigate("ItineraryHome", {
       tripname:tripname,
