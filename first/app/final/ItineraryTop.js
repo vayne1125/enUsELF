@@ -15,11 +15,12 @@ import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
 //const Stack = createNativeStackNavigator();
 
-const ItineraryTop = () => {
+const ItineraryTop = props => {
  // const navigation = useNavigation();
+ const aurInfo = props;
   return (
     <View style={styles.container}>
-      <Text style={styles.textStyle}>行程表</Text>
+      <Text style={styles.textStyle}>{aurInfo.tripname}</Text>
       <TouchableOpacity
         // onPress={() => {
         //   navigation.navigate('List');
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     color: '#ffffff',
-    letterSpacing: 10,
+    //letterSpacing: 10,
   },
   container: {
     flexDirection: 'row',
