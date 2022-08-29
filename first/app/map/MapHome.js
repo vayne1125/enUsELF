@@ -100,11 +100,20 @@ const MapHome = ({ navigation, route }) => {
         type: i.type
       });
     })
+    //伸蓉這邊是要的
+    console.log("tripname: ",tripname);
+    console.log("origin: ",origin);
+    console.log("desSite: ",desSite);
+    console.log("site: ",rt);
+    //下面註解是跳轉
+    /*
     navigation.navigate("ItineraryHome", {
+      tripname:tripname,
       origin:origin,
       desSite:desSite,
       site:rt
     });
+    */
   }
   //過濾導航線的點 最多抓20個點
   const getPositionArray = (array) => {
@@ -270,7 +279,7 @@ const MapHome = ({ navigation, route }) => {
 
       <Settripname
         modalVisible = {modalVisibleForName}
-        onClose = {() => { setModalVisible(false); }}
+        onClose = {() => { setModalVisibleForName(false); }}
         completePress = { (tripname) => {navToFinal(tripname)}}
       />
 
