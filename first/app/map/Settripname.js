@@ -34,7 +34,7 @@ const Settripname = ({ modalVisible, onClose,completePress}) => {
               </View>
               <View style={styles.setname}> 
             <TextInput style={styles.textStyle} 
-              keyboardType='ascii-capable'
+              keyboardType='default'
               value={tripname}
               underlineColorAndroid='#BEBEBE'
               onChangeText={(context)=>setTripname(context)}

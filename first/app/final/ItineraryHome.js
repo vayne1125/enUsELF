@@ -33,6 +33,7 @@ const ItineraryHome = ({ navigation, route }) => {
   const [destination,setDestination] = useState({ lat: 24.1365593, lng: 120.6835935});
   const [waypoints,setWaypoints] = useState([]);
   const [markers,setMarkers] = useState([]);
+  const [tripname,setTripname] = useState(route.params.tripname);
 
   const getDis = (pos, place) => {
     rt = (pos.lat - place.lat) * (pos.lat - place.lat) + (pos.lng - place.lng) * (pos.lng - place.lng);
@@ -289,7 +290,7 @@ const ItineraryHome = ({ navigation, route }) => {
       </MapView>
 
       <View style={styles.topbar}>
-        <ItineraryTop></ItineraryTop>
+        <ItineraryTop tripname = {tripname}></ItineraryTop>
       </View>
 
     </View>

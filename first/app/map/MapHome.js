@@ -106,14 +106,14 @@ const MapHome = ({ navigation, route }) => {
     console.log("desSite: ",desSite);
     console.log("site: ",rt);
     //下面註解是跳轉
-    /*
+    
     navigation.navigate("ItineraryHome", {
       tripname:tripname,
       origin:origin,
       desSite:desSite,
       site:rt
     });
-    */
+    
   }
   //過濾導航線的點 最多抓20個點
   const getPositionArray = (array) => {
