@@ -4,30 +4,16 @@ import {
   Text,
   StyleSheet,
   Dimensions,
-  FlatList,
-  Image,
-  Button,
   TextInput,
   Modal,
   TouchableOpacity,
-  ScrollView,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Entypo';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Icon2 from 'react-native-vector-icons/Ionicons';
-import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
-import Notice from '../theme/Notice';
-import Weather from './Weather';
-import Image_link from '../theme/Image';
-import { vi } from 'date-fns/locale';
 
 const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 4;
 
-const Settripname = ({ modalVisible, onClose,onPress1,canPress}) => {
+const Settripname = ({ modalVisible, onClose,completePress}) => {
   const [tripname,setTripname]=useState(null);
   return (
     (
@@ -35,7 +21,7 @@ const Settripname = ({ modalVisible, onClose,onPress1,canPress}) => {
         <View style={styles.modalBackGround}>
           <View style={styles.modalContainer}>
           <View style={styles.header}>
-              <TouchableOpacity onPress={() => onClose()} style={{flex: 1}}>
+              <TouchableOpacity onPress={()=>{onClose()}} style={{flex: 1}}>
                 <View style={styles.iconContainer}>
                   <Icons name="cross" size={45} color={'#5f695d'} />
                 </View>
@@ -48,6 +34,7 @@ const Settripname = ({ modalVisible, onClose,onPress1,canPress}) => {
               </View>
               <View style={styles.setname}> 
             <TextInput style={styles.textStyle} 
+              keyboardType='ascii-capable'
               value={tripname}
               underlineColorAndroid='#BEBEBE'
               onChangeText={(context)=>setTripname(context)}
@@ -57,8 +44,9 @@ const Settripname = ({ modalVisible, onClose,onPress1,canPress}) => {
             
             <View style={styles.buttonContainer}>
               <TouchableOpacity
-                //onPress={() => {navigation.navigate("ItineraryHome");
-              //}}
+                onPress={() => {
+                  completePress(tripname);
+                }}
                 style={{flex: 1}}>
                 <Text style={styles.buttonText}>完成</Text>
               </TouchableOpacity>

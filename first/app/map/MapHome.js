@@ -12,6 +12,7 @@ import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import { mapStyle } from './mapStyle';
 import { ORI_DATA } from './OriData'; //空資料 -> 初始化
 import DetailForMap from '../detail/DetailForMap';
+import Settripname from './Settripname';
 import Back from './Back';
 import MapViewDirections from 'react-native-maps-directions';
 import Hotplace from './Hotplace'
@@ -31,6 +32,8 @@ const MapHome = ({ navigation, route }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState(initialState);
   const [modalCanPress, setModalCanPress] = useState(true);
+  //顯示取名字
+  const [modalVisibleForName,setModalVisibleForName] = useState(false);
   //各式按鈕
   const [completePress, setCompletePress] = useState(false);
   const [hotPress, setHotPress] = useState(false);
@@ -50,51 +53,24 @@ const MapHome = ({ navigation, route }) => {
   const [initRegion, setInitRegion] = useState({ latitude: 24.1365593, longitude: 120.6835935, latitudeDelta: 4, longitudeDelta: 0 });
   const [myLatitudeDelta, setMyLatitudeDelta] = useState(3.8); //地圖縮放程度的變數
   
-  //origin 起點
-  const [site,setSite] = useState([]);  //過程的點
   const [desSite,setDesSite] = useState({}); //終點
 
 
   //伸蓉這個事件
   const onPressHandlerForComlete = () => {
     setCompletePress(true);
-
-
     //-----------------------------不重要的
     // setHotData(ORI_DATA);
     // setHolData(ORI_DATA);
     // setShopData(ORI_DATA);
     // setWaypoints(addWaypoint);
-    // //console.log(addWaypoint);
-    ////console.log(initRegion);
-    ////console.log(endData);
-    ////console.log(route.params);
-    ////console.log("距離: ", Math.sqrt((origin.latitude - destination.latitude) * (origin.latitude - destination.latitude) + (origin.longitude - destination.longitude) * (origin.longitude - destination.longitude)));
+    // console.log(addWaypoint);
+    // console.log(initRegion);
+    // console.log(endData);
+    // console.log(route.params);
+    // console.log("距離: ", Math.sqrt((origin.latitude - destination.latitude) * (origin.latitude - destination.latitude) + (origin.longitude - destination.longitude) * (origin.longitude - destination.longitude)));
     //-----------------------------
-    
-      var rt = [];
-      for(i = 0;i<mainRoute.length;i++){
-        if(destination.latitude == mainRoute[i].lat && destination.longitude == mainRoute[i].lng){
-          continue;
-        }
-        rt.push({
-          place_id: mainRoute[i].place_id,
-          id: mainRoute[i].id,
-          type: mainRoute[i].type
-        });
-      }
-      endData.map((i)=>{
-        rt.push({
-          place_id: i.place_id,
-          id: i.id,
-          type: i.type
-        });
-      })
-      navigation.navigate("ItineraryHome", {
-        origin:origin,
-        desSite:desSite,
-        site:rt
-      });
+    setModalVisibleForName(true);
   }
   const onPressHandlerForHot = () => {
     setHotPress(!hotPress); //打開
@@ -105,7 +81,31 @@ const MapHome = ({ navigation, route }) => {
   const onPressHandlerForHoliday = () => {
     setHolPress(!holPress); //打開
   }
-
+  const navToFinal = (tripname) =>{
+    var rt = [];
+    for(i = 0;i<mainRoute.length;i++){
+      if(destination.latitude == mainRoute[i].lat && destination.longitude == mainRoute[i].lng){
+        continue;
+      }
+      rt.push({
+        place_id: mainRoute[i].place_id,
+        id: mainRoute[i].id,
+        type: mainRoute[i].type
+      });
+    }
+    endData.map((i)=>{
+      rt.push({
+        place_id: i.place_id,
+        id: i.id,
+        type: i.type
+      });
+    })
+    navigation.navigate("ItineraryHome", {
+      origin:origin,
+      desSite:desSite,
+      site:rt
+    });
+  }
   //過濾導航線的點 最多抓20個點
   const getPositionArray = (array) => {
     const rt = [];
@@ -114,28 +114,25 @@ const MapHome = ({ navigation, route }) => {
     if (sz > 30)
       a = Math.floor(sz / 20);
     var cnt = 0;
-    array.map((i) => {
+    array.map((ele) => {
       cnt += 1;
-      (cnt % a == 0) ? rt.push({ lat: i.latitude, lng: i.longitude }) : 1;
+      (cnt % a == 0) ? rt.push({ lat: ele.latitude, lng: ele.longitude }) : 1;
     })
     return rt;
   }
-
   //避免重複抓景點
   const mySet = new Set();
-
   //找距離
   const getDis = (pos, place) => {
     rt = (pos.lat - place.lat) * (pos.lat - place.lat) + (pos.lng - place.lng) * (pos.lng - place.lng);
     return Math.sqrt(rt)
   }
-
   //算出附近的點(範圍20km內) 1 -> 111km  0.1 -> 11km
   const getPlace = (array) => {
     setHolData(() => {
       var tp = [];
       array.map((pos) => {
-        for (i = 0; i < Holplace.length; i++) {
+        for (var i = 0; i < Holplace.length; i++) {
           if (mySet.has(Holplace[i].place_id)) continue;
           if (getDis(pos, Holplace[i].location) <= 0.2) {
             tp.push(Holplace[i]);
@@ -148,7 +145,7 @@ const MapHome = ({ navigation, route }) => {
     setHotData(() => {
       var tp = [];
       array.map((pos) => {
-        for (i = 0; i < Hotplace.length; i++) {
+        for (var i = 0; i < Hotplace.length; i++) {
           if (mySet.has(Hotplace[i].place_id)) continue;
           if (getDis(pos, Hotplace[i].location) <= 0.2) {
             tp.push(Hotplace[i]);
@@ -172,14 +169,11 @@ const MapHome = ({ navigation, route }) => {
       return tp;
     })
   }
-
-
   //得到中間有哪些點後去找附近的景點(當導航線畫完才會觸發)
   const SetData = (array) => {
     const PositionArray = getPositionArray(array);  //過濾島航線的點(回傳[{lat:  ,lng:  }])
     getPlace(PositionArray);  //用PositionArray去看附近有哪些景點
   }
-
   useEffect(() => {
     //從theme的json抓取主路線資料
     setMainRoute(()=>{           
@@ -205,12 +199,11 @@ const MapHome = ({ navigation, route }) => {
     Geolocation.getCurrentPosition(position => {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
-      // //console.log(lat);
-      // //console.log(lng);
+      console.log(lat);
+      console.log(lng);
       setOri({ latitude: lat, longitude: lng });
     }, console.log("wait second..."), positionOption);
   }, [])
-
   //當主路線或是ori改變時，更新最遠點和中間點還有初始視野
   useEffect(() => {
     //console.log("ori ", origin);
@@ -218,7 +211,7 @@ const MapHome = ({ navigation, route }) => {
       let des = { latitude: 24.1365593, longitude: 120.6835935 };
       let maxDis = -1;
       //console.log("main :",mainRoute.length);
-      for (i = 0; i < mainRoute.length; i++) {
+      for (var i = 0; i < mainRoute.length; i++) {
         var nowDis = getDis({ lat: origin.latitude, lng: origin.longitude }, mainRoute[i]);
         if (nowDis > maxDis) {
           ////console.log("in");
@@ -228,9 +221,8 @@ const MapHome = ({ navigation, route }) => {
       }
       return des;
     });
-
     setDesSite(()=>{
-      for(i = 0;i<mainRoute.length;i++){
+      for(var i = 0;i<mainRoute.length;i++){
         if(destination.latitude == mainRoute[i].lat && destination.longitude == mainRoute[i].lng){
           return {
             place_id: mainRoute[i].place_id,
@@ -241,16 +233,13 @@ const MapHome = ({ navigation, route }) => {
       }
     })
   }, [origin,mainRoute])
-
   useEffect(()=>{
     setWaypoints(() => {
       let way = [];
-      for (i = 0; i < mainRoute.length; i++) {
+      for (var i = 0; i < mainRoute.length; i++) {
         if (destination.latitude == mainRoute[i].lat && destination.longitude == mainRoute[i].lng) continue;
         way.push({ latitude: mainRoute[i].lat, longitude: mainRoute[i].lng });
       }
-      //console.log(destination);
-      //console.log("way: ",way);
       return way;
     });
     setInitRegion(() => {
@@ -278,6 +267,13 @@ const MapHome = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
+
+      <Settripname
+        modalVisible = {modalVisibleForName}
+        onClose = {() => { setModalVisible(false); }}
+        completePress = { (tripname) => {navToFinal(tripname)}}
+      />
+
       {/*浮動視窗-------------------------------------------------------------------------------*/}
       <DetailForMap
         entry={modalEntry}//傳進去的資料參數
@@ -287,7 +283,7 @@ const MapHome = ({ navigation, route }) => {
           //console.log(data);
           var tp = {};
           if (data.type === 'hot') {
-            for (i = 0; i < hotData.length; i++) {
+            for (var i = 0; i < hotData.length; i++) {
               if (hotData[i].id === data.id) {
                 tp = hotData[i];
                 hotData.splice(i, 1);
@@ -295,7 +291,7 @@ const MapHome = ({ navigation, route }) => {
               }
             }
           } else if (data.type === 'hol') {
-            for (i = 0; i < holData.length; i++) {
+            for (var i = 0; i < holData.length; i++) {
               if (holData[i].id === data.id) {
                 tp = holData[i];
                 holData.splice(i, 1);
@@ -303,7 +299,7 @@ const MapHome = ({ navigation, route }) => {
               }
             }
           } else {
-            for (i = 0; i < shopData.length; i++) {
+            for (var i = 0; i < shopData.length; i++) {
               if (shopData[i].id === data.id) {
                 tp = shopData[i];
                 shopData.splice(i, 1);
@@ -328,9 +324,6 @@ const MapHome = ({ navigation, route }) => {
         style={styles.mapStyle}
         region={initRegion}
         mapType="standard"
-        onMapReady={() => {
-
-        }}
       >
         {(mainRoute).map((marker, index) => (
           <Marker
@@ -404,8 +397,8 @@ const MapHome = ({ navigation, route }) => {
                     info: marker.info,
                     address: marker.address,
                     star: marker.star,
-                    time: marker.time.map((i) => {
-                      return i + '\n';
+                    time: marker.time.map((ti) => {
+                      return ti + '\n';
                     }),
                     city: marker.city,
                     region: marker.region,
@@ -441,8 +434,8 @@ const MapHome = ({ navigation, route }) => {
                     id: marker.id,
                     star: 5,
                     info: marker.name,
-                    time: marker.time.map((i) => {
-                      return i + '\n';
+                    time: marker.time.map((ti) => {
+                      return ti + '\n';
                     }),
                     city: marker.city,
                     region: marker.region,
@@ -478,8 +471,8 @@ const MapHome = ({ navigation, route }) => {
                     address: marker.address,
                     star: marker.star,
                     info: marker.name,
-                    time: marker.time.map((i) => {
-                      return i + '\n';
+                    time: marker.time.map((ti) => {
+                      return ti + '\n';
                     }),
                     city: marker.city,
                     region: marker.region,
@@ -515,8 +508,8 @@ const MapHome = ({ navigation, route }) => {
                   star: marker.star,
                   info: marker.info,
                   time: marker.data + (
-                  marker.time.map((i) => {
-                    return i + '\n';
+                  marker.time.map((ti) => {
+                    return ti + '\n';
                   })),
                   city: marker.city,
                   region: marker.region,

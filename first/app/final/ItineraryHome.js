@@ -33,17 +33,7 @@ const ItineraryHome = ({ navigation, route }) => {
   const [destination,setDestination] = useState({ lat: 24.1365593, lng: 120.6835935});
   const [waypoints,setWaypoints] = useState([]);
   const [markers,setMarkers] = useState([]);
-  /*---------這些參數全都要存---------*/
-  // const mainRoute = route.params.mainRoute;
-  // const origin = route.params.origin;
-  // const destination = route.params.destination;
-  // const waypoints = route.params.waypoints;
-  // const endRoute = route.params.endRoute;
-  // const region = route.params.region;
-  // origin:origin,
-  // desSite:desSite,
-  // site:site
-  /*---------這些參數全都要存---------*/
+
   const getDis = (pos, place) => {
     rt = (pos.lat - place.lat) * (pos.lat - place.lat) + (pos.lng - place.lng) * (pos.lng - place.lng);
     return Math.sqrt(rt)
@@ -186,6 +176,7 @@ const ItineraryHome = ({ navigation, route }) => {
         }
   >
         <MapViewDirections
+          optimizeWaypoints={true}
           origin={origin}
           destination={{
             latitude: destination.lat,
