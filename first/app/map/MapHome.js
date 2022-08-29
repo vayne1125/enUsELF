@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect,useContext, useLayoutEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -23,6 +23,9 @@ import Hotel from '../theme/Hotel'
 import KOL from '../theme/KOL'
 import Monuments from '../theme/Monuments'
 import Nature from '../theme/Nature'
+import {AuthContext} from '../routes/AutoProvider';
+import firestore from '@react-native-firebase/firestore';
+
 //import Hotplace from './tp'
 const MapHome = ({ navigation, route }) => {
   ////console.log(route.params);
@@ -54,8 +57,8 @@ const MapHome = ({ navigation, route }) => {
   const [myLatitudeDelta, setMyLatitudeDelta] = useState(3.8); //地圖縮放程度的變數
   
   const [desSite,setDesSite] = useState({}); //終點
-
-
+  const [size,setSize]=useState(0);
+  const {user, logout} = useContext(AuthContext);//user uid
   //伸蓉這個事件
   const onPressHandlerForComlete = () => {
     setCompletePress(true);
@@ -70,6 +73,15 @@ const MapHome = ({ navigation, route }) => {
     // console.log(route.params);
     // console.log("距離: ", Math.sqrt((origin.latitude - destination.latitude) * (origin.latitude - destination.latitude) + (origin.longitude - destination.longitude) * (origin.longitude - destination.longitude)));
     //-----------------------------
+    firestore()
+        .collection('users')
+        .doc(user.uid)
+        .collection('trip')
+        .get()
+        .then((querySnapshot)=>{
+        setSize(querySnapshot.size);
+          })
+    console.log('size= ',size);
     setModalVisibleForName(true);
   }
   const onPressHandlerForHot = () => {
@@ -105,15 +117,30 @@ const MapHome = ({ navigation, route }) => {
     console.log("origin: ",origin);
     console.log("desSite: ",desSite);
     console.log("site: ",rt);
-    //下面註解是跳轉
-    /*
+    const users = firestore().collection('users').doc(user.uid);
+    users.collection('trip').doc(tripname)
+    .set({
+        name: tripname,
+        origin:origin,
+        desSite: desSite,
+        site:rt,
+    }).then(()=>{
+        console.log('trip add !');
+        //Alert.alert("成功發布");
+        
+      }).catch((error)=>{
+        console.log('trip Failed!',error);
+      });
+
+  //下面註解是跳轉
+    
     navigation.navigate("ItineraryHome", {
       tripname:tripname,
       origin:origin,
       desSite:desSite,
       site:rt
     });
-    */
+    
   }
   //過濾導航線的點 最多抓20個點
   const getPositionArray = (array) => {
@@ -279,6 +306,7 @@ const MapHome = ({ navigation, route }) => {
 
       <Settripname
         modalVisible = {modalVisibleForName}
+        size = {size}
         onClose = {() => { setModalVisibleForName(false); }}
         completePress = { (tripname) => {navToFinal(tripname)}}
       />

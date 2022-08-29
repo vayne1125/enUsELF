@@ -11,8 +11,7 @@ const PersonalHome = ({navigation}) => {
         mail:"12323@gmail.com",
         password:'123qqw',
     };
-    const {logout} = useContext(AuthContext);
-    
+    const {user, logout} = useContext(AuthContext);
     return (
         <View style={styles.container}>
             {/*頂部*/}
@@ -30,13 +29,18 @@ const PersonalHome = ({navigation}) => {
             <View style={{flex:0.15}}></View>
             <View style={{flex:0.6}}>
                 <View style={styles.buttonContainer}>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("Collect",user);}}>
+                        <Text style={styles.editText}>收藏</Text>
+                    </TouchableOpacity>
+                </View><View style={styles.buttonContainer}>
                     <TouchableOpacity onPress={() => {navigation.navigate("PersonalFile",userdata);}}>
                         <Text style={styles.editText}>編輯個人檔案</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity onPress={()=>{navigation.navigate("Collect");}}>
-                        <Text style={styles.editText}>收藏</Text>
+                    <TouchableOpacity 
+                    /*onPress={() => {navigation.navigate("PersonalFile",userdata);}}*/>
+                        <Text style={styles.editText}>歷史行程</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.buttonContainer}>
