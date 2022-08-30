@@ -75,12 +75,14 @@ const ItineraryHome = ({ navigation, route }) => {
   //todo:跳去歷史介面
   const navToHistory = () =>{
     setModalVisibleForName(true);
+    //navigation.navigate("HistoryHome");
   }
 
   //todo:返回
   //這邊存資料
   const navToBack = () => {
     console.log("goback");
+   // navigation.goBack();
 
   }
 

@@ -40,6 +40,7 @@ export default class Card extends PureComponent  {
           <View style={styles.buttonContainer2}>
             <TouchableOpacity
               onPress={() => {
+                //this.props.navigation.navigate("TripForhistory",trip);
                 this.props.onPress1();
               }}
               style={{flex: 2}}>

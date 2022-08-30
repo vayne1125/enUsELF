@@ -99,7 +99,9 @@ const Card = ({site}) => {
                 if(check)//選變不選(原本是選)
                   {
                     DeviceEventEmitter.emit('scheduleItemcheck',!check);
-                  }
+                    set.delete(site.name);
+                  }else 
+                 set.add(site.name);
                 console.log('Set: ', set);
                 setCheck(!check);
               }}

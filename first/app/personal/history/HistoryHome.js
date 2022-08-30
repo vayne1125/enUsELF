@@ -29,6 +29,7 @@ const data = [
     {tripname:"pupupupupu"}]
   
 const HistoryHome = () => {
+  const navigation = useNavigation();
   const {user, logout} = useContext(AuthContext);
   const [trip,setTrip]=useState(null);
     //todo:這裡要讀取資料庫的資料
@@ -58,7 +59,9 @@ const HistoryHome = () => {
               console.log(e);
           };
           setTrip(temp);
-          console.log('here ',temp);
+          //嘉羽
+          console.log('here temp',temp);
+          console.log('here trip',trip);
       }
 
 useEffect(()=>{
@@ -95,7 +98,10 @@ useEffect(()=>{
           trip={item}
           onPress1={() => {
             //todo從這裡跳轉去清單
-            console.log("顯示清單");
+            //this.props.navigation.navigate('TripForhistory' , item);
+            console.log("顯示清單1 ",item);
+            navigation.navigate("TripForhistory",item);            
+            console.log("顯示清單2 ",item);
           }}
           onPress2={() => {
             //todo從這裡跳轉去地圖
