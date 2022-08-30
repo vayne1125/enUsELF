@@ -8,14 +8,22 @@ import { AuthContext } from '../routes/AutoProvider';
 const{ width,height } = Dimensions.get("window")
 const Loading = () =>{
     const [ out, setOut ] = useState(false);
+    const [home, setHome] = useState(false);
     const { logout, user } = useContext( AuthContext );
     const navigation = useRef(useNavigation());
+
     useEffect(()=>{
         if( user ){
-            if(user.emailVerified){navigation.current.navigate('Home');}
+            if(user.emailVerified){setHome(true)}
             else{sendVerifyEmail();}
         }
     }, [user]);
+
+    useEffect(()=>{
+        if( home ){
+            navigation.current.navigate('Home');
+        }
+    }, [home]);
 
     useEffect(() => {
         if(out){
