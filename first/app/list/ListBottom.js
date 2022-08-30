@@ -49,6 +49,7 @@ const ListBottom = () => {
     },[]);
 
     const update = async() => {
+        var count=0;
         try{
             if(user){
                 const users = firestore().collection('users').doc(user.uid);
@@ -56,9 +57,13 @@ const ListBottom = () => {
                 .then((querySnapshot)=>{
                     querySnapshot.forEach(doc =>{
                         doc.ref.update({check:!check});
+                        count++;
                     })
                 })
-                setEmpty(check? true : false);
+                if(count){
+                    setCheck(!check);
+                    setEmpty(check? true : false);
+                }
             }
         }
       catch(e){
@@ -78,8 +83,7 @@ const ListBottom = () => {
                     checked={check}
                     onPress={() => {
                         if(user){update();}
-                        DeviceEventEmitter.emit('allcheck', check);
-                        setCheck(!check);
+                        DeviceEventEmitter.emit('allcheck', check);          
                     }}
                 /></>
             </View>
@@ -93,8 +97,7 @@ const ListBottom = () => {
                     onPress={()=>{
                       console.log('press');
                       DeviceEventEmitter.emit('gotomap');
-                      }
-                      }>
+                    }}>
                         <Text style={styles.OkText}>完成</Text> 
                     </TouchableOpacity>
                 </View>
