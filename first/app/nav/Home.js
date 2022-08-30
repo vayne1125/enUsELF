@@ -21,7 +21,8 @@ import Post from '../media/Post';
 import Nav from './Nav';
 import List from '../list/List';
 import PersonalFile from '../personal/PersonalFile';
-import Collect from '../personal/Collect';
+import Collect from '../personal/Collect/Collect';
+import HistoryHome from '../personal/history/HistoryHome';
 const Stack=createStackNavigator();
 
 export default class Home extends Component {
@@ -34,6 +35,7 @@ export default class Home extends Component {
             <Stack.Screen name="Post" component={Post}/>
             <Stack.Screen name="List" component={List}/>
             <Stack.Screen name="Collect" component={Collect}/>
+            <Stack.Screen name="HistoryHome" component={HistoryHome}/>
         </Stack.Navigator>
     );
   }

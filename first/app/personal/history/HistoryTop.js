@@ -17,10 +17,10 @@ import Icon from 'react-native-vector-icons/AntDesign';
 //const Stack = createNativeStackNavigator();
 
 const ResultTop = () => {
-  //const navigation = useNavigation();
+  const navigation = useNavigation();
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={()=>{/*navigation.goBack()*/}} style={{flex:1,}}>
+        <TouchableOpacity onPress={()=>{navigation.goBack()}} style={{flex:1,}}>
         <View style={styles.iconContainer2}>
           <Icons
             name="chevron-back-circle-outline"

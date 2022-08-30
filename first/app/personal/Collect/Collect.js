@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState,useContext} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -7,70 +7,22 @@ import {
   FlatList,
   Image,
   Button,
-  Modal,
   TouchableOpacity,
 } from 'react-native';
-
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Icons from 'react-native-vector-icons/Ionicons';
-import {AuthContext} from '../../routes/AutoProvider';
-import firestore from '@react-native-firebase/firestore';
+import CollectTop from './CollectTop'
 import Card from './Card';
-import HistoryTop from './HistoryTop';
-//import Card from './Card';
+
 const width = Dimensions.get('screen').width;
-
 const data = [
-    {tripname:"我與伸蓉的蜜月之旅"},
-    {tripname:"嘿嘿trip"},
-    {tripname:"pupupupupu"}]
-  
-const HistoryHome = () => {
-  const {user, logout} = useContext(AuthContext);
-  const [trip,setTrip]=useState(null);
-    //todo:這裡要讀取資料庫的資料
-    const fetchTrip = async()=>{
-      const temp=[];
-      try{           
-            //console.log('123 ',list);
-          await firestore()
-          .collection('users')
-          .doc(user.uid)
-          .collection('trip')
-          .get()
-          .then((querySnapshot)=>{
-            //console.log('Total Posts:',querySnapshot.size);
-            querySnapshot.forEach(doc=>{
-                const {desSite,name,origin,site} =doc.data();
-                temp.push({
-                  name,
-                  desSite ,
-                  origin,
-                  site,
-                  });
-                })
-                console.log('temp ',temp);
-            })
-            }catch(e){
-              console.log(e);
-          };
-          setTrip(temp);
-          console.log('here ',temp);
-      }
-
-useEffect(()=>{
-          fetchTrip();
-    },[]);
-
-
+  {tripname:"我與伸蓉的蜜月之旅"},
+  {tripname:"嘿嘿trip"},
+  {tripname:"pupupupupu"}]
+const Collect =() =>{
   return (
     <View style={styles.container}>
       {/*頂部*/}
       <View style={styles.topbar}>
-        <HistoryTop/>
+        <CollectTop/>
       </View>
 
       {/*內容*/}
@@ -82,11 +34,11 @@ useEffect(()=>{
           paddingBottom: 80,
         }}
         numColumns={1}
-        data={trip}
+        data={data}
         initialNumToRender={5}
         renderItem={({item}) => 
         <Card 
-          trip={item}
+          tripname = {item.tripname} 
           onPress1={() => {
             //todo從這裡跳轉去清單
             console.log("顯示清單");
@@ -224,5 +176,4 @@ const styles = StyleSheet.create({
     //color:'#f5f6a3',
   },
 });
-
-export default HistoryHome;
+export default Collect;

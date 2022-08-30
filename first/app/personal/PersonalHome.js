@@ -39,12 +39,12 @@ const PersonalHome = ({navigation}) => {
                 </View>
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity 
-                    /*onPress={() => {navigation.navigate("PersonalFile",userdata);}}*/>
+                    onPress={() => {navigation.navigate("HistoryHome");}}>
                         <Text style={styles.editText}>歷史行程</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity onPress={() => {logout();}}>
+                    <TouchableOpacity onPress={() => {logout();Alert.alert('登出成功','已成功登出\n如要使用請再次登入');}}>
                         <Text style={styles.editText}>登出</Text>
                     </TouchableOpacity>
                 </View>

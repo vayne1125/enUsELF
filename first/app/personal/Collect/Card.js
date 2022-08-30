@@ -25,15 +25,14 @@ const width = Dimensions.get('screen').width;
 //const user = auth().currentUser;
 export default class Card extends PureComponent  {
   render() {
-    const trip = this.props.trip;
-    console.log('tripname  ',trip);
+    const tripname = this.props.tripname;
     return (
       <View style={styles.card}>
 
         <View>
           <View style={styles.textContainer}>
             <Text numberOfLines={1} style={styles.nameStyle}>
-              {trip.name}
+              {tripname}
             </Text>
           </View>
           <View style={styles.info2}>
@@ -50,7 +49,7 @@ export default class Card extends PureComponent  {
             <TouchableOpacity
               onPress={() => {
                 this.props.onPress2();
-                console.log(this.props.name);
+                console.log(this.props.tripname);
               }}
               style={{flex: 1}}>
               <Text style={styles.buttonText}>地圖顯示</Text>
