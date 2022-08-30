@@ -30,7 +30,7 @@ const PersonalHome = ({navigation}) => {
             <View style={{flex:0.15}}></View>
             <View style={{flex:0.6}}>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity onPress={() => {navigation.navigate("PersonalFile",userdata);}}>
+                    <TouchableOpacity onPress={() => {navigation.navigate("PersonalFile", userdata);}}>
                         <Text style={styles.editText}>編輯個人檔案</Text>
                     </TouchableOpacity>
                 </View>
@@ -40,7 +40,11 @@ const PersonalHome = ({navigation}) => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity onPress={() => {logout();}}>
+                    <TouchableOpacity onPress={() => {
+                        logout();
+                        Alert.alert('登出成功','已成功登出\n如要使用請再次登入');
+                        }}
+                    >
                         <Text style={styles.editText}>登出</Text>
                     </TouchableOpacity>
                 </View>

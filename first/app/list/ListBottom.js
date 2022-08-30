@@ -17,8 +17,6 @@ import { CheckBox } from '@rneui/themed';
 import firestore from '@react-native-firebase/firestore'
 //import Icon from 'react-native-vector-icons/FontAwesome';
 import { AuthContext } from '../routes/AutoProvider';
-import BatchedBridge from 'react-native/Libraries/BatchedBridge/BatchedBridge';
-import { updateLocale } from 'moment';
 const ListBottom = () => {
     const {user} = useContext(AuthContext);
     const [check, setCheck] = useState(false);
@@ -79,9 +77,7 @@ const ListBottom = () => {
                     uncheckedIcon="circle-o"
                     checked={check}
                     onPress={() => {
-                        if(user){
-                            update();
-                        }
+                        if(user){update();}
                         DeviceEventEmitter.emit('allcheck', check);
                         setCheck(!check);
                     }}

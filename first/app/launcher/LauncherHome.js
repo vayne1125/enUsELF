@@ -15,17 +15,16 @@ import Icons from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
 import {AuthContext} from '../routes/AutoProvider';
 import { CheckBox } from '@rneui/themed';
-const{width,height} = Dimensions.get("window")
+const{width, height} = Dimensions.get("window")
 
-const Login = ({navigation}) => {
+const LauncherHome = ({navigation}) => {
+    const [username, setUsername] = useState(String);
     const [email, setEmail] = useState(String);
     const [password, setPassword] = useState(String);
-    const [username, setUsername] = useState(String);
-    const {login} = useContext(AuthContext);
-    const {register} = useContext(AuthContext);
     const [mess1, setMess1] = useState(String);
     const [mess2, setMess2] = useState(String);
     const [secret, setSecret] = useState(true);
+    const {login, register} = useContext(AuthContext);
 
     useEffect(() => {
         console.log(mess1);
@@ -37,10 +36,8 @@ const Login = ({navigation}) => {
             }
             else if(mess1 === 'auth/user-not-found'){
                 Alert.alert('登入失敗','該EMAIL尚未註冊');
-                setEmail('')
-                setPassword('')
             }
-            else {
+            else if(mess1 !== 'success'){
                 Alert.alert('登入失敗','密碼錯誤');
                 setPassword('')
             }
@@ -60,8 +57,6 @@ const Login = ({navigation}) => {
             }
             else if(mess2 === 'auth/email-already-in-use'){
                 Alert.alert('註冊失敗','該信箱已註冊過')
-                setEmail('')
-                setPassword('')
             }
         }
     }, [mess2])
@@ -82,7 +77,7 @@ const Login = ({navigation}) => {
             Alert.alert('註冊失敗','欄位不可為空');
         }
         else{
-            if(password.length() < 8){
+            if(password.length < 8){
                 Alert.alert('註冊失敗','密碼長度過短\n請再次輸入');
                 setPassword('');
             }
@@ -91,13 +86,14 @@ const Login = ({navigation}) => {
                 setPassword('');
             }
             else{
+                console.log('register');
                 register(username, email, password, setMess2)
             }
         }
     }
 
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.container} keyboardShouldPersistTaps='handled'>
             <View style={{flex:0.1}}></View>
             <View style={styles.logo}>
                 <Image
@@ -172,7 +168,7 @@ const styles = StyleSheet.create({
     },
     logo: {
         flex: 0.4,
-
+        height: '100%',
         justifyContent:'center',
         alignItems: 'center',
     },
@@ -230,4 +226,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Login;
+export default LauncherHome;

@@ -15,16 +15,18 @@ import {NavigationContainer} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StackNavigator } from "react-navigation";
 import 'react-native-gesture-handler';
-import MapHome from './MapHome';
+//import {ViewPropTypes} from 'deprecated-react-native-prop-types';
+import Home from '../nav/Home'
+import Loading from '../launcher/Loading';
 
-const Stack=createStackNavigator();
+const Stack = createStackNavigator();
 
-export default class Theme extends Component {
+export default class AppStack extends Component {
   render() {
     return (
-        <Stack.Navigator initialRouteName = "MapHome" screenOptions={{header: () => null}} >
-          <Stack.Screen name = "MapHome" component={MapHome} >{props=>(navigation.param)}</Stack.Screen>
-          {/* <Stack.Screen name="Map" component={Map}/> */}
+        <Stack.Navigator initialRouteName="AppStack" screenOptions={{header: () => null}} >
+            <Stack.Screen name='Loading' component={Loading}/>
+            <Stack.Screen name='Home' component={Home}/>
         </Stack.Navigator>
     );
   }

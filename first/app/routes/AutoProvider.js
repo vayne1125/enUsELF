@@ -12,7 +12,7 @@ export const AuthProvider = ({children}) => {
             value={{
             user,
             setUser,
-            login: async (email, password, setMess) => {
+            login: async(email, password, setMess) => {
                 try {
                     await auth().signInWithEmailAndPassword(email, password);
                 }
@@ -21,7 +21,7 @@ export const AuthProvider = ({children}) => {
                     console.log(error)
                 }
             },
-            register: async (username, email, password, setMess) => {
+            register: async(username, email, password, setMess) => {
                 try {
                     await auth().createUserWithEmailAndPassword(email, password)
                     .then(() => {
@@ -50,10 +50,9 @@ export const AuthProvider = ({children}) => {
                     console.log(error);
                 }
             },
-            logout: async () => {
+            logout: async() => {
                 try {
                     await auth().signOut();
-                    Alert.alert('登出成功','已成功登出\n如要使用請再次登入');
                 }
                 catch (error) {
                     console.log('logout: ',error);

@@ -52,12 +52,11 @@ const Items = () => {
                     await users.collection('list').get()
                     .then((querySnapshot)=>{
                         querySnapshot.forEach(doc => {
-                            const {name, check, city, region} = doc.data();
+                            const {name, city, region} = doc.data();
                             list.push({
                                 name: name,
                                 city: city,
                                 region: region,
-                                check: check,
                             });
                         })
                     })
@@ -99,7 +98,7 @@ const Items = () => {
     const Card = ({site}) => {
         useEffect(() => {
             const listen = DeviceEventEmitter
-            .addListener('allcheck',(check) => {setCheck(!check);});
+            .addListener('allcheck', (check) => {setCheck(!check);});
             return () => listen.remove();
         },[]);
         const [check, setCheck] = useState(site.check);
@@ -158,10 +157,10 @@ const Items = () => {
                         await users.collection('list').get()
                         .then((querySnapshot)=>{
                             querySnapshot.forEach(doc => {
-                                const {type, id, place_id} = doc.data();
+                                const {type, id, place_id, check} = doc.data();
                                 if(check){
                                     list.push({
-                                        type: type;
+                                        type: type,
                                         id: id,
                                         place_id: place_id,
                                     })
@@ -280,14 +279,6 @@ const styles = StyleSheet.create({
         left: 15,
         letterSpacing: 1,
     },
-    /*CheckBox:{
-        height: 50,             
-        width: 50,
-        borderWidth: 1,        
-        backgroundColor: 'red', 
-        borderColor: 'green',   
-        borderStyle: 'dotted',
-    },*/
   });
   
 export default Items;
