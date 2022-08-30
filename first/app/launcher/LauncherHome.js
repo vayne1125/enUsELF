@@ -66,7 +66,7 @@ const LauncherHome = ({navigation}) => {
             Alert.alert('登入失敗', '欄位不可為空');
         }
         else{
-            login(email, password, setMess1)
+            login(email, password, setMess1, "")
         }
     }
 
@@ -81,7 +81,7 @@ const LauncherHome = ({navigation}) => {
                 Alert.alert('註冊失敗','密碼長度過短\n請再次輸入');
                 setPassword('');
             }
-            if(!en.test(password) || !num.test(password)){
+            else if(!en.test(password) || !num.test(password)){
                 Alert.alert('註冊失敗','密碼須包含英文及數字\n請再次輸入');
                 setPassword('');
             }

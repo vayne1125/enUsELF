@@ -19,52 +19,22 @@ const PersonalFileTop = ({userdata}) => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-     <View style={styles.iconContainer}>
-         <TouchableOpacity
-          //返回建X
-           onPress={() => {
-             navigation.goBack();
-          }}
-          style={{flex: 1}}>
-           <Icons
-               name="cross"
-               size={40}
-                color={'#5f695d'}
-                style={styles.iconStyle}
-            />
-         </TouchableOpacity>
-        </View>
+        <View style={styles.iconContainer}/>
         <Text style={styles.textStyle}>編輯個人檔案</Text>
-        <View style={styles.buttonContainer2}>
-              <TouchableOpacity
-                //回到社群
-                onPress={() => {navigation.navigate("PersonalFile");
-               }}
-               style={{flex: 1}}>
-               <Text style={styles.buttonText}>完成</Text>
-             </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+            <TouchableOpacity onPress={() => {navigation.goBack();}} style={{flex: 1}}>
+                <Text style={styles.buttonText}>關閉</Text>
+            </TouchableOpacity>
         </View>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
-  textStyle: {
-    right:40,
-    //top: 10,
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#5f695d',
-    letterSpacing: 2,
-    //flex:1,
-  },
   container: {
     flexDirection: 'row',
     margin:20,
     left:0,
-  },
-  iconStyle: {
-    top: -6,
-    left: -6,
   },
   iconContainer: {
    // right: 340,
@@ -76,19 +46,18 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 30,
   },
-  buttonContainer: {
-    backgroundColor: '#fbb856',//較深黃
-    //backgroundColor: '#ffc56b',//較淺黃
-  //  flex: 1,
-    width: 80,
-    //alignSelf: 'flex-end',
-    right: 7,
-    bottom: 10,
-    borderRadius: 20,
+  textStyle: {
+    right:40,
+    //top: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#5f695d',
+    letterSpacing: 2,
+    //flex:1,
   },
-  buttonContainer2: {
+  buttonContainer: {
     //flex:0.5,
-    backgroundColor: '#D9D9D9', //較淺黃
+    backgroundColor: '#5f695d',
     //flex: 1,
     width: 65,
     //alignSelf: 'flex-end',
@@ -102,7 +71,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontWeight: '800',
     fontSize: 17,
-    color: '#AAAAAA',
+    color: 'white',
    // top: 1,
    //alignItems:'center', 
    //alignContent:'center',

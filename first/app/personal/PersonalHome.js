@@ -1,17 +1,45 @@
 import React, {useContext, useState, useEffect} from 'react';
-import {View, Text, StyleSheet,Dimensions,Alert,Image,TouchableOpacity} from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    Dimensions,
+    Alert,
+    Image,
+    TouchableOpacity,
+    DeviceEventEmitter,
+} from 'react-native';
 import PersonalTop from './PersonalTop';
 import Icons from 'react-native-vector-icons/Ionicons';
+import firestore from '@react-native-firebase/firestore'
 import { AuthContext } from '../routes/AutoProvider';
+import { setGestureState } from 'react-native-reanimated/lib/reanimated2/NativeMethods';
 
 const PersonalHome = ({navigation}) => {
-    const userdata={
-        id:"lalala",
-        nickname:"lala",
-        mail:"12323@gmail.com",
-        password:'123qqw',
-    };
-    const {logout} = useContext(AuthContext);
+    const [name, setName] = useState("");
+    const [mail, setMail] = useState("");
+    const [pass, setPass] = useState("");
+    const {user, logout} = useContext(AuthContext);
+    useEffect(() => {
+        if(user){
+            firestore().collection('users').doc(user.uid).get()
+            .then(doc=>{
+                setName(doc.data().name);
+                setMail(doc.data().email);
+                setPass(doc.data().password);
+            });
+        }
+    },[user]);
+
+    useEffect(() => {
+        const listen = DeviceEventEmitter
+        .addListener('userupdate', (update) => {
+            console.log(update);
+            setName(update.name);
+            setPass(update.password);
+        });
+        return () => listen.remove();
+    },[]);
     
     return (
         <View style={styles.container}>
@@ -24,13 +52,13 @@ const PersonalHome = ({navigation}) => {
             </View>
             {/*內容*/}
             <View style={styles.data}>
-                <Text style={styles.text}>{userdata.id} </Text>
-                <Text style={styles.text}>{userdata.mail} </Text>
+                <Text style={styles.text}>{name} </Text>
+                {/*<Text style={styles.text}>{mail} </Text>*/}
             </View>
             <View style={{flex:0.15}}></View>
             <View style={{flex:0.6}}>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity onPress={() => {navigation.navigate("PersonalFile",userdata);}}>
+                    <TouchableOpacity onPress={() => {navigation.navigate("PersonalFile",{name, mail, pass});}}>
                         <Text style={styles.editText}>編輯個人檔案</Text>
                     </TouchableOpacity>
                 </View>

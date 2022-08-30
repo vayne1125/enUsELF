@@ -12,13 +12,21 @@ export const AuthProvider = ({children}) => {
             value={{
             user,
             setUser,
-            login: async(email, password, setMess) => {
+            login: async(email, password, setMess, update) => {
                 try {
-                    await auth().signInWithEmailAndPassword(email, password);
+                    await auth().signInWithEmailAndPassword(email, password)
+                    .then(()=>{
+                        if(update){
+                            auth().currentUser.updatePassword(update)
+                            .then(() => {setMess('success')})
+                            .catch((error)=>{setMess(error)})
+                        }    
+                    })
+                    .catch((error) => {});
                 }
                 catch(error){
                     setMess(error.code);
-                    console.log(error)
+                    console.log(error);
                 }
             },
             register: async(username, email, password, setMess) => {

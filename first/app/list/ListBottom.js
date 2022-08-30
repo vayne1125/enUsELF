@@ -49,7 +49,7 @@ const ListBottom = () => {
     },[]);
 
     const update = async() => {
-        var count=0;
+        var count = 0;
         try{
             if(user){
                 const users = firestore().collection('users').doc(user.uid);
@@ -89,18 +89,18 @@ const ListBottom = () => {
             </View>
             <View style={{flex:0.4}}></View>
             {empty?
-                <View style={styles.UntouchContainer}>
+            <View style={styles.UntouchContainer}>
+                <Text style={styles.OkText}>完成</Text> 
+            </View>:
+            <View style={styles.touchContainer}>
+                <TouchableOpacity
+                onPress={()=>{
+                    console.log('press');
+                    DeviceEventEmitter.emit('gotomap');
+                }}>
                     <Text style={styles.OkText}>完成</Text> 
-                </View>:
-                <View style={styles.touchContainer}>
-                    <TouchableOpacity
-                    onPress={()=>{
-                      console.log('press');
-                      DeviceEventEmitter.emit('gotomap');
-                    }}>
-                        <Text style={styles.OkText}>完成</Text> 
-                    </TouchableOpacity>
-                </View>
+                </TouchableOpacity>
+            </View>
             }
     </View>
   );
