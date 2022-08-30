@@ -79,7 +79,7 @@ const DetailForFinal = ({entry, modalVisible, onClose,isMain}) => {
                 {
                 isMain?
                 <Image style={styles.image} source={Image_link[entry['name']]}/>:
-                <Image style={styles.image} source={Image_linkMap["hot0"]} />
+                <Image style={styles.image} source={Image_linkMap[entry['type']+(entry['id'].toString())]} />
                 }
                 <View style={styles.infoStyle}>
                 <Text style={styles.textStyle2}>{entry['name']}</Text>

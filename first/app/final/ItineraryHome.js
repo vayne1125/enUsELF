@@ -29,7 +29,7 @@ const ItineraryHome = ({ navigation, route }) => {
   const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState({}); //initialState
-  const [modalIsMain,setModalIsMain] = useState(false); 
+  const [modalIsMain,setModalIsMain] = useState(true); 
   //顯示取名字
   const [modalVisibleForName,setModalVisibleForName] = useState(false);
   const [print,setPrint] = useState(false);
