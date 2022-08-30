@@ -90,9 +90,6 @@ export default class Card extends PureComponent  {
                     .set({
                         id: site.id,
                         type: site.type,
-                        name: site.name,
-                        city: site.city,
-                        region: site.region,
                         place_id: site.place_id,
                         check: false,
                     })

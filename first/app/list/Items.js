@@ -18,7 +18,12 @@ import auth from '@react-native-firebase/auth'
 import { parseMapToJSON } from "source-map-resolve";
 import {AuthContext} from '../routes/AutoProvider';
 import { useNavigation } from '@react-navigation/native';
-import moment from "moment";
+
+import Food from '../theme/Food'
+import Hotel from '../theme/Hotel'
+import KOL from '../theme/KOL'
+import Monuments from '../theme/Monuments'
+import Nature from '../theme/Nature'
 
 const width = Dimensions.get('screen').width;
 
@@ -52,12 +57,18 @@ const Items = () => {
                     await users.collection('list').get()
                     .then((querySnapshot)=>{
                         querySnapshot.forEach(doc => {
-                            const {name, check, city, region} = doc.data();
+                            const {check, id, type} = doc.data();
+                            var data;
+                            if(type === "food") data = Food[id];
+                            else if(type === "nature") data = Nature[id];
+                            else if(param.type === "kol") data = KOL[id];
+                            else if(param.type === "monuments") data = Monuments[id];
+                            else if(param.type === "hotel") data = Hotel[id];
                             list.push({
-                                name: name,
-                                city: city,
-                                region: region,
-                                check: check,
+                                name: data.name,
+                                city: data.city,
+                                region: data.region,
+                                check: data.check,
                             });
                         })
                     })
@@ -158,7 +169,7 @@ const Items = () => {
                         await users.collection('list').get()
                         .then((querySnapshot)=>{
                             querySnapshot.forEach(doc => {
-                                const {type, id, place_id,check} = doc.data();
+                                const {type, id, place_id, check} = doc.data();
                                 if(check){
                                     list.push({
                                         type: type,

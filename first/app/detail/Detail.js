@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useState, useContext} from 'react';
 import {
   View,
   Text,
@@ -18,9 +18,12 @@ import Icons from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
+import firestore from '@react-native-firebase/firestore';
 import Notice from '../theme/Notice';
 import Weather from './Weather';
 import Image_link from '../theme/Image';
+
+import { AuthContext } from '../routes/AutoProvider';
 
 const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.3;
@@ -28,6 +31,7 @@ const height = Dimensions.get('screen').height / 1.3;
 const Detail = ({entry, modalVisible, onClose}) => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(entry);
+  const { user } = useContext(AuthContext);
   const Stars = score => {
     var tp = parseFloat(score.starsNum);
     var starsIcon = [];
@@ -126,6 +130,17 @@ const Detail = ({entry, modalVisible, onClose}) => {
             <View style={styles.buttonContainer}>
               <TouchableOpacity
                 onPress={() => {
+                    if(user){
+                        const users = firestore().collection('users').doc(user.uid);
+                        users.collection('list').doc(entry['name'])
+                        .set({
+                            id: entry['id'],
+                            type: entry['type'],
+                            place_id: entry['place_id'],
+                            check: false,
+                        })
+                        console.log(entry['name']);
+                    }
                   setNoticeVisible(!noticeVisible);
                   setNoticeEntry(entry);
                   console.log('plus2');
