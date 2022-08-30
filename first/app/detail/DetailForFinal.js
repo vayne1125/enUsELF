@@ -27,6 +27,7 @@ const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.3;
 
 const DetailForFinal = ({entry, modalVisible, onClose,isMain}) => {
+  console.log("entry: ",entry);
   const Stars = score => {
     var tp = parseFloat(score.starsNum);
     var starsIcon = [];
@@ -78,7 +79,7 @@ const DetailForFinal = ({entry, modalVisible, onClose,isMain}) => {
                 {
                 isMain?
                 <Image style={styles.image} source={Image_link[entry['name']]}/>:
-                <Image style={styles.image} source={Image_linkMap[entry['type']+(entry['id'].toString())]} />
+                <Image style={styles.image} source={Image_linkMap["hot0"]} />
                 }
                 <View style={styles.infoStyle}>
                 <Text style={styles.textStyle2}>{entry['name']}</Text>

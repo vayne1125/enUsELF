@@ -265,6 +265,8 @@ const ItineraryHome = ({ navigation, route }) => {
                 setModalIsMain(true);
                 setModalVisible(!modalVisible);
                 setModalEntry({
+                  id: destination.id,
+                  type:destination.type,
                   name: destination.name,
                   address: destination.address,
                   star: destination.star,
@@ -311,6 +313,8 @@ const ItineraryHome = ({ navigation, route }) => {
                 );
                 setModalVisible(!modalVisible);
                 setModalEntry({
+                  id: marker.id,
+                  type:marker.type,
                   name: marker.name,
                   address: marker.address,
                   star: marker.star,
@@ -323,12 +327,6 @@ const ItineraryHome = ({ navigation, route }) => {
                   ),
                   city: marker.city,
                   region: marker.region,
-                  source: {
-                    uri:
-                      (marker.type === "hol")?
-                        marker.photo:
-                        `https://maps.googleapis.com/maps/api/place/photo?photoreference=${marker.photo.photo_reference}&sensor=false&maxheight=${marker.photo.height}&maxwidth=${marker.photo.width}&key=${API_key}`
-                  }
                 });
               }}
             >
