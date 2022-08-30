@@ -10,6 +10,7 @@ import {
   ScrollView,
   ActivityIndicator,
   Alert,
+  DeviceEventEmitter,
   TouchableOpacity,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
@@ -86,7 +87,7 @@ console.log('!: ',users);
         }).catch((error)=>{
           console.log('Post Failed!',error);
         });
-          
+        DeviceEventEmitter.emit('postSend');
       }
     
       const uploadImage = async () => {

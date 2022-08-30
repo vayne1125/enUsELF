@@ -8,6 +8,7 @@ import {
   Image,
   Button,
   Alert,
+  DeviceEventEmitter,
   TouchableOpacity,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
@@ -74,18 +75,45 @@ const MediaHome = ({navigation}) => {
   useEffect(()=>{
         fetchPosts();
   },[]);
+  
+  useEffect(() => {
+    const listen = DeviceEventEmitter
+    .addListener('postSend',() => {
+      fetchPosts();
+    });
+    return () => listen.remove();
+  },[]);
 
 useEffect(()=>{fetchPosts();
    setDeleted(false);
 },[deleted]);   
-      
+
+const handleDelete = (postId) => {
+  Alert.alert(
+    '貼文刪除後不可復原',
+    '確定要刪除貼文嗎?',
+    [
+      {
+        text: '取消',
+        onPress: () => console.log('Cancel Pressed!'),
+        //style: 'cancel',
+      },
+      {
+        text: '確認',
+        onPress: () => deletePost(postId),
+      },
+    ],
+    //{cancelable: false},
+  );
+};
+
 const deletePost = (postId) => {
   console.log('Current Post Id:',postId);
   firestore()
   .collection('posts')
   .doc(postId)
   .get()
-  .then(documentSnapshot => {
+  .then((documentSnapshot) => {
     if(documentSnapshot.exists){
       const {postImg} =documentSnapshot.data();
       if(postImg!=null){
@@ -154,7 +182,7 @@ const FlatList_Header=({})=>{
        numColumns={1}
        data={Posts}
        ListHeaderComponent={FlatList_Header}
-       renderItem={({item}) => <Card navigation={navigation} post={item} onDelete={deletePost} />}></FlatList>
+       renderItem={({item}) => <Card navigation={navigation} post={item} onDelete={handleDelete} />}></FlatList>
    </View>
  );
 };

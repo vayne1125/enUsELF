@@ -1,6 +1,6 @@
 [
     {
-        "id": "hot1",
+        "id": 0,
         "info": "壽山情人觀景台",
         "name": "壽山情人觀景台",
         "location": {
@@ -20,7 +20,7 @@
         "addr": "J7GF+5J 台灣高雄市鼓山區",
         "address": "台灣高雄市鼓山區忠義路30號",
         "city": "高雄市",
-        "reg": "鼓山區",
+        "region": "鼓山區",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -31,11 +31,12 @@
             "星期日: 24 小時營業"
         ],
         "del": 0.0625,
-        "place_id": "ChIJfQJ-NAsEbjQRiUmSi7LapjE"
+        "place_id": "ChIJfQJ-NAsEbjQRiUmSi7LapjE",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot2",
+        "id": 1,
         "info": "大農大富平地森林園區",
         "name": "大農大富平地森林園區",
         "location": {
@@ -55,7 +56,7 @@
         "addr": "JC79+W3 台灣花蓮縣光復鄉",
         "address": "台灣花蓮縣光復鄉農場路32號",
         "city": "花蓮縣",
-        "reg": "光復鄉",
+        "region": "光復鄉",
         "time": [
             "星期一: 08:00 – 17:00",
             "星期二: 08:00 – 17:00",
@@ -65,11 +66,12 @@
             "星期六: 08:00 – 17:00",
             "星期日: 08:00 – 17:00"
         ],
-        "place_id": "ChIJ-b_-vgFNbzQR8qkajZZrKqU"
+        "place_id": "ChIJ-b_-vgFNbzQR8qkajZZrKqU",
+        "type": "hot"
     },
     {
         "del": 0.23,
-        "id": "hot3",
+        "id": 2,
         "info": "旗津海岸公園",
         "name": "旗津海岸公園",
         "location": {
@@ -89,7 +91,7 @@
         "addr": "J72F+CG 台灣高雄市前鎮區",
         "address": "台灣高雄市旗津區旗津三路990號",
         "city": "高雄市",
-        "reg": "旗津區",
+        "region": "旗津區",
         "time": [
             "星期一: 休息",
             "星期二: 09:00 – 17:00",
@@ -99,11 +101,12 @@
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
         ],
-        "place_id": "ChIJpUASyeoDbjQRxlnmoOXkT0A"
+        "place_id": "ChIJpUASyeoDbjQRxlnmoOXkT0A",
+        "type": "hot"
     },
     {
         "del": 0.017,
-        "id": "hot4",
+        "id": 3,
         "info": "英商德記洋行",
         "name": "英商德記洋行",
         "location": {
@@ -123,7 +126,7 @@
         "addr": "2535+9W 台灣台南市安平區",
         "address": "台灣台南市安平區古堡街108號",
         "city": "台南市",
-        "reg": "安平區",
+        "region": "安平區",
         "time": [
             "星期一: 08:30 – 17:30",
             "星期二: 08:30 – 17:30",
@@ -133,11 +136,12 @@
             "星期六: 08:30 – 17:30",
             "星期日: 08:30 – 17:30"
         ],
-        "place_id": "ChIJo7avkR12bjQR9Gvc2sRtx40"
+        "place_id": "ChIJo7avkR12bjQR9Gvc2sRtx40",
+        "type": "hot"
     },
     {
         "del": 4,
-        "id": "hot5",
+        "id": 4,
         "info": "一中街夜市",
         "name": "一中街夜市",
         "location": {
@@ -157,7 +161,7 @@
         "addr": "4MXM+5Q 台灣台中市北區",
         "address": "台灣台中市北區一中街",
         "city": "台中市",
-        "reg": "北區一",
+        "region": "北區一",
         "time": [
             "星期一: 11:00 – 22:10",
             "星期二: 11:00 – 22:10",
@@ -167,11 +171,12 @@
             "星期六: 11:00 – 22:10",
             "星期日: 11:00 – 22:10"
         ],
-        "place_id": "ChIJeZhxjmg9aTQRu4ClJlnbzHk"
+        "place_id": "ChIJeZhxjmg9aTQRu4ClJlnbzHk",
+        "type": "hot"
     },
     {
         "del": 0.95,
-        "id": "hot6",
+        "id": 5,
         "info": "紅毛港文化園區",
         "name": "紅毛港文化園區",
         "location": {
@@ -191,7 +196,7 @@
         "addr": "H829+75 台灣高雄市小港區",
         "address": "台灣高雄市小港區南星路2808號",
         "city": "高雄市",
-        "reg": "小港區",
+        "region": "小港區",
         "time": [
             "星期一: 15:00 – 20:00",
             "星期二: 15:00 – 20:00",
@@ -201,11 +206,12 @@
             "星期六: 10:00 – 21:00",
             "星期日: 10:00 – 21:00"
         ],
-        "place_id": "ChIJn3Q73aXicTQRndQSbrqd9kg"
+        "place_id": "ChIJn3Q73aXicTQRndQSbrqd9kg",
+        "type": "hot"
     },
     {
         "del": 4,
-        "id": "hot7",
+        "id": 6,
         "info": "烏鬼洞",
         "name": "烏鬼洞",
         "location": {
@@ -225,7 +231,7 @@
         "addr": "89J4+37 台灣屏東縣琉球鄉",
         "address": "台灣屏東縣Taiwan",
         "city": "屏東縣",
-        "reg": "Tai",
+        "region": "Tai",
         "time": [
             "星期一: 07:00 – 18:00",
             "星期二: 07:00 – 18:00",
@@ -235,11 +241,12 @@
             "星期六: 07:00 – 18:00",
             "星期日: 07:00 – 18:00"
         ],
-        "place_id": "ChIJN7CTMebvcTQRvlAZ2AQdHCE"
+        "place_id": "ChIJN7CTMebvcTQRvlAZ2AQdHCE",
+        "type": "hot"
     },
     {
         "del": 4,
-        "id": "hot8",
+        "id": 7,
         "info": "檜意森活村 Hinoki Village",
         "name": "檜意森活村",
         "location": {
@@ -259,7 +266,7 @@
         "addr": "FFP3+FJ 台灣嘉義市東區",
         "address": "台灣嘉義市東區林森東路1號",
         "city": "嘉義市",
-        "reg": "東區林",
+        "region": "東區林",
         "time": [
             "星期一: 10:00 – 18:00",
             "星期二: 10:00 – 18:00",
@@ -269,11 +276,12 @@
             "星期六: 10:00 – 18:00",
             "星期日: 10:00 – 18:00"
         ],
-        "place_id": "ChIJOb09b8uVbjQRigoLMNW9rpE"
+        "place_id": "ChIJOb09b8uVbjQRigoLMNW9rpE",
+        "type": "hot"
     },
     {
         "del": 4,
-        "id": "hot9",
+        "id": 8,
         "info": "積木博物館-展區整修中免門票/優惠活動DIY禮品舖UnderRenovation/GiftShopOpen",
         "name": "積木博物館",
         "location": {
@@ -293,7 +301,7 @@
         "addr": "PQJ7+QG 台灣宜蘭縣宜蘭市",
         "address": "台灣宜蘭縣宜蘭市縣政北路2號",
         "city": "宜蘭縣",
-        "reg": "宜蘭市",
+        "region": "宜蘭市",
         "time": [
             "星期一: 10:00 – 17:00",
             "星期二: 10:00 – 17:00",
@@ -303,11 +311,12 @@
             "星期六: 10:00 – 17:00",
             "星期日: 10:00 – 17:00"
         ],
-        "place_id": "ChIJ66k9lP3kZzQR9wXQpqo4n28"
+        "place_id": "ChIJ66k9lP3kZzQR9wXQpqo4n28",
+        "type": "hot"
     },
     {
         "del:": 4,
-        "id": "hot10",
+        "id": 9,
         "info": "大坡池",
         "name": "大坡池",
         "location": {
@@ -327,7 +336,7 @@
         "addr": "468G+G4 台灣台東縣池上鄉",
         "address": "台灣台東縣池上鄉池富道路23號",
         "city": "台東縣",
-        "reg": "池上鄉",
+        "region": "池上鄉",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -337,11 +346,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJq6qqqn4LbzQRr0p9zSWvkdE"
+        "place_id": "ChIJq6qqqn4LbzQRr0p9zSWvkdE",
+        "type": "hot"
     },
     {
         "del": 4,
-        "id": "hot11",
+        "id": 10,
         "info": "七星潭海岸風景特定區",
         "name": "七星潭海岸風景特定區",
         "location": {
@@ -361,7 +371,7 @@
         "addr": "2JJG+HV 台灣花蓮縣新城鄉",
         "address": "台灣花蓮縣新城鄉七星街79巷5號",
         "city": "花蓮縣",
-        "reg": "新城鄉",
+        "region": "新城鄉",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -371,11 +381,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJpTcgYOidaDQRVHUO3ILkXJs"
+        "place_id": "ChIJpTcgYOidaDQRVHUO3ILkXJs",
+        "type": "hot"
     },
     {
         "del": 4,
-        "id": "hot12",
+        "id": 11,
         "info": "安平古堡",
         "name": "安平古堡",
         "location": {
@@ -395,7 +406,7 @@
         "addr": "2526+J6 台灣台南市安平區",
         "address": "台灣台南市安平區國勝路82號",
         "city": "台南市",
-        "reg": "安平區",
+        "region": "安平區",
         "time": [
             "星期一: 08:30 – 17:30",
             "星期二: 08:30 – 17:30",
@@ -405,11 +416,12 @@
             "星期六: 08:30 – 20:00",
             "星期日: 08:30 – 20:00"
         ],
-        "place_id": "ChIJZ-TjeHN2bjQR8a3Jat0VHps"
+        "place_id": "ChIJZ-TjeHN2bjQR8a3Jat0VHps",
+        "type": "hot"
     },
     {
         "del": 4,
-        "id": "hot13",
+        "id": 12,
         "info": "臺東森林公園",
         "name": "臺東森林公園",
         "location": {
@@ -429,7 +441,7 @@
         "addr": "Q594+7G 台灣台東縣台東市",
         "address": "台灣台東縣台東市華泰路300號",
         "city": "台東縣",
-        "reg": "台東市",
+        "region": "台東市",
         "time": [
             "星期一: 07:30 – 19:30",
             "星期二: 07:30 – 19:30",
@@ -439,11 +451,12 @@
             "星期六: 07:30 – 19:30",
             "星期日: 07:30 – 19:30"
         ],
-        "place_id": "ChIJx9oJH165bzQRHtM1Bkgvyyo"
+        "place_id": "ChIJx9oJH165bzQRHtM1Bkgvyyo",
+        "type": "hot"
     },
     {
         "del": 4,
-        "id": "hot14",
+        "id": 13,
         "info": "HOHOCHA喝喝茶丨台灣香日月潭紅茶廠",
         "name": "HOHOCHA喝喝茶",
         "location": {
@@ -463,7 +476,7 @@
         "addr": "VWWM+FG 台灣南投縣魚池鄉",
         "address": "台灣南投縣魚池鄉魚池街443-36號",
         "city": "南投縣",
-        "reg": "魚池鄉",
+        "region": "魚池鄉",
         "time": [
             "星期一: 09:00 – 17:20",
             "星期二: 09:00 – 17:20",
@@ -473,11 +486,12 @@
             "星期六: 09:00 – 17:50",
             "星期日: 09:00 – 17:50"
         ],
-        "place_id": "ChIJ6eoEWazXaDQRdesTjsukxe8"
+        "place_id": "ChIJ6eoEWazXaDQRdesTjsukxe8",
+        "type": "hot"
     },
     {
         "del": 0.23,
-        "id": "hot15",
+        "id": 14,
         "info": "望龍埤",
         "name": "望龍埤",
         "location": {
@@ -497,15 +511,16 @@
         "addr": "QMGX+JJ 台灣宜蘭縣員山鄉",
         "address": "台灣宜蘭縣員山鄉枕山村坡城路18-6號",
         "city": "宜蘭縣",
-        "reg": "員山鄉",
+        "region": "員山鄉",
         "time": [
             "無"
         ],
-        "place_id": "ChIJX3qwoUvjZzQRD_TNlJmeDzQ"
+        "place_id": "ChIJX3qwoUvjZzQRD_TNlJmeDzQ",
+        "type": "hot"
     },
     {
         "del": 4,
-        "id": "hot16",
+        "id": 15,
         "info": "石門洞",
         "name": "石門洞",
         "location": {
@@ -525,7 +540,7 @@
         "addr": "7HW9+9C 台灣新北市石門區",
         "address": "台灣新北市石門區中央路",
         "city": "新北市",
-        "reg": "石門區",
+        "region": "石門區",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -535,11 +550,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJC_1Xj7y1QjQR_YL4J62VPKc"
+        "place_id": "ChIJC_1Xj7y1QjQR_YL4J62VPKc",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot17",
+        "id": 16,
         "info": "賞蟹步道",
         "name": "賞蟹步道",
         "location": {
@@ -559,7 +575,7 @@
         "addr": "QWM7+7P 台灣新竹市香山區",
         "address": "台灣新竹市香山區中華路五段320巷35號",
         "city": "新竹市",
-        "reg": "香山區",
+        "region": "香山區",
         "time": [
             "星期一: 休息",
             "星期二: 09:00 – 18:00",
@@ -569,11 +585,12 @@
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
         ],
-        "place_id": "ChIJP0L-NKNKaDQRZp5YgpymGy4"
+        "place_id": "ChIJP0L-NKNKaDQRZp5YgpymGy4",
+        "type": "hot"
     },
     {
         "del": 0.1257,
-        "id": "hot18",
+        "id": 17,
         "info": "二鯤鯓砲臺(億載金城)",
         "name": "二鯤鯓砲臺(億載金城)",
         "location": {
@@ -593,7 +610,7 @@
         "addr": "X5Q5+5P 台灣台南市安平區",
         "address": "台灣台南市安平區光州路3號",
         "city": "台南市",
-        "reg": "安平區",
+        "region": "安平區",
         "time": [
             "星期一: 08:30 – 17:30",
             "星期二: 08:30 – 17:30",
@@ -603,11 +620,12 @@
             "星期六: 08:30 – 17:30",
             "星期日: 08:30 – 17:30"
         ],
-        "place_id": "ChIJk_qk9P91bjQRTolgNlHUSrc"
+        "place_id": "ChIJk_qk9P91bjQRTolgNlHUSrc",
+        "type": "hot"
     },
     {
         "del": 0.52,
-        "id": "hot19",
+        "id": 18,
         "info": "臺南孔廟",
         "name": "臺南孔廟",
         "location": {
@@ -627,7 +645,7 @@
         "addr": "X6R3+5P 台灣台南市中西區",
         "address": "台灣台南市中西區南門路2號",
         "city": "台南市",
-        "reg": "中西區",
+        "region": "中西區",
         "time": [
             "星期一: 08:30 – 17:30",
             "星期二: 08:30 – 17:30",
@@ -637,11 +655,12 @@
             "星期六: 08:30 – 17:30",
             "星期日: 08:30 – 17:30"
         ],
-        "place_id": "ChIJFbzVrGJ2bjQRkZC9jslaIgs"
+        "place_id": "ChIJFbzVrGJ2bjQRkZC9jslaIgs",
+        "type": "hot"
     },
     {
         "del": 1.8,
-        "id": "hot20",
+        "id": 19,
         "info": "國立臺灣歷史博物館",
         "name": "國立臺灣歷史博物館",
         "location": {
@@ -661,7 +680,7 @@
         "addr": "365M+8X 台灣台南市安南區",
         "address": "台灣台南市安南區長和路一段250號",
         "city": "台南市",
-        "reg": "安南區",
+        "region": "安南區",
         "time": [
             "星期一: 休息",
             "星期二: 09:00 – 17:00",
@@ -671,11 +690,12 @@
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
         ],
-        "place_id": "ChIJC7CiCuJ5bjQR0UEDGKs4KF0"
+        "place_id": "ChIJC7CiCuJ5bjQR0UEDGKs4KF0",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot21",
+        "id": 20,
         "info": "麗寶樂園",
         "name": "麗寶樂園",
         "location": {
@@ -695,7 +715,7 @@
         "addr": "8MFW+66 台灣台中市后里區",
         "address": "台灣台中市后里區福容路8號",
         "city": "台中市",
-        "reg": "后里區",
+        "region": "后里區",
         "time": [
             "星期一: 09:30 – 18:00",
             "星期二: 09:30 – 18:00",
@@ -705,11 +725,12 @@
             "星期六: 09:30 – 20:00",
             "星期日: 09:30 – 18:00"
         ],
-        "place_id": "ChIJ1bZU8hkQaTQRqWPxCYpghHE"
+        "place_id": "ChIJ1bZU8hkQaTQRqWPxCYpghHE",
+        "type": "hot"
     },
     {
         "del": 1.0,
-        "id": "hot22",
+        "id": 21,
         "info": "海洋廣場",
         "name": "海洋廣場",
         "location": {
@@ -729,7 +750,7 @@
         "addr": "4PJR+CG 台灣基隆市仁愛區",
         "address": "台灣基隆市仁愛區忠一路",
         "city": "基隆市",
-        "reg": "仁愛區",
+        "region": "仁愛區",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -739,11 +760,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJX6iDchVOXTQR4atveHM3aYU"
+        "place_id": "ChIJX6iDchVOXTQR4atveHM3aYU",
+        "type": "hot"
     },
     {
         "del": 0.0625,
-        "id": "hot23",
+        "id": 22,
         "info": "臺中刑務所演武場",
         "name": "臺中刑務所演武場",
         "location": {
@@ -763,7 +785,7 @@
         "addr": "4MMF+QH 台灣台中市西區",
         "address": "台灣台中市西區林森路33號",
         "city": "台中市",
-        "reg": "西區林",
+        "region": "西區林",
         "time": [
             "星期一: 09:30 – 17:30",
             "星期二: 09:30 – 17:30",
@@ -773,11 +795,12 @@
             "星期六: 09:30 – 17:30",
             "星期日: 09:30 – 17:30"
         ],
-        "place_id": "ChIJKQHjEQ89aTQRUejNAZHJUz4"
+        "place_id": "ChIJKQHjEQ89aTQRUejNAZHJUz4",
+        "type": "hot"
     },
     {
         "del": 0.256,
-        "id": "hot24",
+        "id": 23,
         "info": "風禾公園",
         "name": "風禾公園",
         "location": {
@@ -797,7 +820,7 @@
         "addr": "272R+JF 台灣桃園市桃園區",
         "address": "台灣桃園市桃園區慈文路688號",
         "city": "桃園市",
-        "reg": "桃園區",
+        "region": "桃園區",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -807,11 +830,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJjZ7YYQkfaDQRADZ8bkIqXbs"
+        "place_id": "ChIJjZ7YYQkfaDQRADZ8bkIqXbs",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot25",
+        "id": 24,
         "info": "金城武樹",
         "name": "金城武樹",
         "location": {
@@ -831,7 +855,7 @@
         "addr": "36W3+XR 台灣台東縣池上鄉",
         "address": "台灣台東縣池上鄉伯朗大道",
         "city": "台東縣",
-        "reg": "池上鄉",
+        "region": "池上鄉",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -841,11 +865,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJRV43RoILbzQRQqeetM5fD40"
+        "place_id": "ChIJRV43RoILbzQRQqeetM5fD40",
+        "type": "hot"
     },
     {
         "del": 0.052,
-        "id": "hot26",
+        "id": 25,
         "info": "臺中國家歌劇院",
         "name": "臺中國家歌劇院",
         "location": {
@@ -865,7 +890,7 @@
         "addr": "5J7R+34 台灣台中市西屯區",
         "address": "台灣台中市西屯區惠來路二段101號",
         "city": "台中市",
-        "reg": "西屯區",
+        "region": "西屯區",
         "time": [
             "星期一: 休息",
             "星期二: 11:30 – 21:00",
@@ -875,11 +900,12 @@
             "星期六: 11:30 – 22:00",
             "星期日: 11:30 – 21:00"
         ],
-        "place_id": "ChIJcaKjTOw9aTQR4mAeJzejtdg"
+        "place_id": "ChIJcaKjTOw9aTQR4mAeJzejtdg",
+        "type": "hot"
     },
     {
         "del": 0.052,
-        "id": "hot27",
+        "id": 26,
         "info": "碧潭-Bitan",
         "name": "碧潭-Bitan",
         "location": {
@@ -899,7 +925,7 @@
         "addr": "XG4P+9J 台灣新北市新店區",
         "address": "台灣新北市新店區新店路",
         "city": "新北市",
-        "reg": "新店區",
+        "region": "新店區",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -909,11 +935,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJLY_oiYcBaDQRCELSB3LZxZk"
+        "place_id": "ChIJLY_oiYcBaDQRCELSB3LZxZk",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot28",
+        "id": 27,
         "info": "靜浦北回歸線界標",
         "name": "北回歸線界標",
         "location": {
@@ -933,7 +960,7 @@
         "addr": "FF2W+GF 台灣花蓮縣豐濱鄉",
         "address": "台灣花蓮縣豐濱鄉台11線",
         "city": "花蓮縣",
-        "reg": "豐濱鄉",
+        "region": "豐濱鄉",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -943,11 +970,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJ-eEKJmFabzQRb6HQhH532sw"
+        "place_id": "ChIJ-eEKJmFabzQRb6HQhH532sw",
+        "type": "hot"
     },
     {
         "del": 0.52,
-        "id": "hot29",
+        "id": 28,
         "info": "深澳岬角 象鼻岩景觀區",
         "name": "深澳岬角",
         "location": {
@@ -967,7 +995,7 @@
         "addr": "4RPF+6Q 台灣新北市瑞芳區",
         "address": "台灣新北市瑞芳區",
         "city": "新北市",
-        "reg": "瑞芳區",
+        "region": "瑞芳區",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -977,11 +1005,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJR3oKC51FXTQRV7n_bJH8yjI"
+        "place_id": "ChIJR3oKC51FXTQRV7n_bJH8yjI",
+        "type": "hot"
     },
     {
         "del": 0.05,
-        "id": "hot30",
+        "id": 29,
         "info": "旺萊山鳳梨文化園區",
         "name": "旺萊山鳳梨文化園區",
         "location": {
@@ -1001,7 +1030,7 @@
         "addr": "HF3J+64 台灣嘉義縣民雄鄉",
         "address": "台灣嘉義縣民雄鄉三興村陳厝寮1-3號",
         "city": "嘉義縣",
-        "reg": "民雄鄉",
+        "region": "民雄鄉",
         "time": [
             "星期一: 09:00 – 18:00",
             "星期二: 09:00 – 18:00",
@@ -1011,11 +1040,12 @@
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
         ],
-        "place_id": "ChIJV6cfak2-bjQRd5xDvsSdnUk"
+        "place_id": "ChIJV6cfak2-bjQRd5xDvsSdnUk",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot31",
+        "id": 30,
         "info": "白人牙膏觀光工廠",
         "name": "白人牙膏觀光工廠",
         "location": {
@@ -1035,7 +1065,7 @@
         "addr": "C9FR+WP 台灣嘉義縣水上鄉",
         "address": "台灣嘉義縣水上鄉十一指厝144號",
         "city": "嘉義縣",
-        "reg": "水上鄉",
+        "region": "水上鄉",
         "time": [
             "星期一: 09:00 – 17:00",
             "星期二: 09:00 – 17:00",
@@ -1045,11 +1075,12 @@
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
         ],
-        "place_id": "ChIJIQbcHh2RbjQRqiMl6cn-q5k"
+        "place_id": "ChIJIQbcHh2RbjQRqiMl6cn-q5k",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot32",
+        "id": 31,
         "info": "奧萬大國家森林遊樂區",
         "name": "奧萬大",
         "location": {
@@ -1069,7 +1100,7 @@
         "addr": "X57J+P3 台灣南投縣仁愛鄉",
         "address": "台灣南投縣仁愛鄉大安路153號",
         "city": "南投縣",
-        "reg": "仁愛鄉",
+        "region": "仁愛鄉",
         "time": [
             "星期一: 08:00 – 17:00",
             "星期二: 08:00 – 17:00",
@@ -1079,11 +1110,12 @@
             "星期六: 08:00 – 17:00",
             "星期日: 08:00 – 17:00"
         ],
-        "place_id": "ChIJXx8RkabGaDQR--M93L8duRo"
+        "place_id": "ChIJXx8RkabGaDQR--M93L8duRo",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot33",
+        "id": 32,
         "info": "十鼓仁糖文創園區",
         "name": "十鼓仁糖文創園區",
         "location": {
@@ -1103,7 +1135,7 @@
         "addr": "W6QJ+Q4 台灣台南市仁德區",
         "address": "台灣台南市仁德區文華路二段326號",
         "city": "台南市",
-        "reg": "仁德區",
+        "region": "仁德區",
         "time": [
             "星期一: 10:00 – 20:20",
             "星期二: 10:00 – 20:20",
@@ -1113,11 +1145,12 @@
             "星期六: 09:30 – 20:20",
             "星期日: 09:30 – 20:20"
         ],
-        "place_id": "ChIJA0P9eml0bjQRAFSV5Tjabuc"
+        "place_id": "ChIJA0P9eml0bjQRAFSV5Tjabuc",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot34",
+        "id": 33,
         "info": "青青草原",
         "name": "青青草原",
         "location": {
@@ -1137,7 +1170,7 @@
         "addr": "3546+WX 台灣南投縣仁愛鄉",
         "address": "台灣南投縣仁愛鄉仁和路170號",
         "city": "南投縣",
-        "reg": "仁愛鄉",
+        "region": "仁愛鄉",
         "time": [
             "星期一: 08:00 – 17:00",
             "星期二: 08:00 – 17:00",
@@ -1147,11 +1180,12 @@
             "星期六: 08:00 – 17:00",
             "星期日: 08:00 – 17:00"
         ],
-        "place_id": "ChIJK7_xN_zpaDQR7AmuJ4PT_6w"
+        "place_id": "ChIJK7_xN_zpaDQR7AmuJ4PT_6w",
+        "type": "hot"
     },
     {
         "del": 0.052,
-        "id": "hot35",
+        "id": 34,
         "info": "國立國父紀念館",
         "name": "國立國父紀念館",
         "location": {
@@ -1171,7 +1205,7 @@
         "addr": "2HR6+23 台灣台北市信義區",
         "address": "台灣台北市信義區仁愛路四段505號",
         "city": "台北市",
-        "reg": "信義區",
+        "region": "信義區",
         "time": [
             "星期一: 09:00 – 18:00",
             "星期二: 09:00 – 18:00",
@@ -1181,11 +1215,12 @@
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
         ],
-        "place_id": "ChIJwyJxyO6pQjQRilcOb_lBRr4"
+        "place_id": "ChIJwyJxyO6pQjQRilcOb_lBRr4",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot36",
+        "id": 35,
         "info": "民雄金桔觀光工廠",
         "name": "金桔觀光工廠",
         "location": {
@@ -1205,7 +1240,7 @@
         "addr": "HF5G+6M 台灣嘉義縣民雄鄉",
         "address": "台灣嘉義縣民雄鄉38號",
         "city": "嘉義縣",
-        "reg": "民雄鄉",
+        "region": "民雄鄉",
         "time": [
             "星期一: 09:00 – 17:00",
             "星期二: 09:00 – 17:00",
@@ -1215,11 +1250,12 @@
             "星期六: 09:00 – 17:30",
             "星期日: 09:00 – 17:30"
         ],
-        "place_id": "ChIJSdPExVO-bjQRUEvIL0cuafE"
+        "place_id": "ChIJSdPExVO-bjQRUEvIL0cuafE",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot37",
+        "id": 36,
         "info": "東眼山國家森林遊樂區",
         "name": "東眼山",
         "location": {
@@ -1239,7 +1275,7 @@
         "addr": "RCJ5+F7 台灣桃園市復興區",
         "address": "台灣桃園市優霞雲, No. 35號, 里佳志, 復興區",
         "city": "桃園市",
-        "reg": "優霞雲",
+        "region": "優霞雲",
         "time": [
             "星期一: 08:00 – 17:00",
             "星期二: 08:00 – 17:00",
@@ -1249,11 +1285,12 @@
             "星期六: 07:00 – 17:00",
             "星期日: 07:00 – 17:00"
         ],
-        "place_id": "ChIJQXkJkKg9aDQRroQxl2JMErY"
+        "place_id": "ChIJQXkJkKg9aDQRroQxl2JMErY",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot38",
+        "id": 37,
         "info": "虎頭山公園",
         "name": "虎頭山公園",
         "location": {
@@ -1273,7 +1310,7 @@
         "addr": "282J+P9 台灣桃園市桃園區",
         "address": "台灣桃園市桃園區公園路42號",
         "city": "桃園市",
-        "reg": "桃園區",
+        "region": "桃園區",
         "time": [
             "星期一: 08:00 – 17:00",
             "星期二: 08:00 – 17:00",
@@ -1283,11 +1320,12 @@
             "星期六: 08:00 – 17:00",
             "星期日: 08:00 – 17:00"
         ],
-        "place_id": "ChIJpWeyD14eaDQRfKFO3bEGa9k"
+        "place_id": "ChIJpWeyD14eaDQRfKFO3bEGa9k",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot39",
+        "id": 38,
         "info": "太平山國家森林遊樂區",
         "name": "太平山國家森林遊樂區",
         "location": {
@@ -1307,7 +1345,7 @@
         "addr": "FGXP+32 台灣宜蘭縣大同鄉",
         "address": "台灣宜蘭縣大同鄉太平巷58之1號",
         "city": "宜蘭縣",
-        "reg": "大同鄉",
+        "region": "大同鄉",
         "time": [
             "星期一: 06:00 – 18:00",
             "星期二: 06:00 – 18:00",
@@ -1317,11 +1355,12 @@
             "星期六: 02:30 – 18:00",
             "星期日: 04:00 – 18:00"
         ],
-        "place_id": "ChIJ_TaOy7JwaDQRFf4T-zm2dqo"
+        "place_id": "ChIJ_TaOy7JwaDQRFf4T-zm2dqo",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot40",
+        "id": 39,
         "info": "龍山寺",
         "name": "龍山寺",
         "location": {
@@ -1341,7 +1380,7 @@
         "addr": "2FPX+VX 台灣台北市萬華區",
         "address": "台灣台北市萬華區廣州街211號",
         "city": "台北市",
-        "reg": "萬華區",
+        "region": "萬華區",
         "time": [
             "星期一: 06:00 – 22:00",
             "星期二: 06:00 – 22:00",
@@ -1351,11 +1390,12 @@
             "星期六: 06:00 – 22:00",
             "星期日: 06:00 – 22:00"
         ],
-        "place_id": "ChIJCd7n16ipQjQRihzEWF4z6Pg"
+        "place_id": "ChIJCd7n16ipQjQRihzEWF4z6Pg",
+        "type": "hot"
     },
     {
         "del": 0.052,
-        "id": "hot41",
+        "id": 40,
         "info": "車城福安宮",
         "name": "車城福安宮",
         "location": {
@@ -1375,7 +1415,7 @@
         "addr": "3PC6+99 台灣屏東縣車城鄉",
         "address": "台灣屏東縣車城鄉福安路51號",
         "city": "屏東縣",
-        "reg": "車城鄉",
+        "region": "車城鄉",
         "time": [
             "星期一: 05:00 – 21:00",
             "星期二: 05:00 – 21:00",
@@ -1385,11 +1425,12 @@
             "星期六: 05:00 – 21:00",
             "星期日: 05:00 – 21:00"
         ],
-        "place_id": "ChIJdU4y8ie4cTQRe0BNxOo2HKc"
+        "place_id": "ChIJdU4y8ie4cTQRe0BNxOo2HKc",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot42",
+        "id": 41,
         "info": "四重溪溫泉公園",
         "name": "四重溪溫泉公園",
         "location": {
@@ -1409,15 +1450,16 @@
         "addr": "3PVW+VR 台灣屏東縣車城鄉",
         "address": "台灣屏東縣車城鄉文化路1號",
         "city": "屏東縣",
-        "reg": "車城鄉",
+        "region": "車城鄉",
         "time": [
             "無"
         ],
-        "place_id": "ChIJEQQD_de3cTQROPaoxqTeFFY"
+        "place_id": "ChIJEQQD_de3cTQROPaoxqTeFFY",
+        "type": "hot"
     },
     {
         "del": 0.052,
-        "id": "hot43",
+        "id": 42,
         "info": "藍晒圖文創園區",
         "name": "藍晒圖文創園區",
         "location": {
@@ -1437,7 +1479,7 @@
         "addr": "X5PW+RW 台灣台南市南區",
         "address": "台灣台南市南區西門路一段689巷12號",
         "city": "台南市",
-        "reg": "南區西",
+        "region": "南區西",
         "time": [
             "星期一: 10:00 – 21:00",
             "星期二: 休息",
@@ -1447,11 +1489,12 @@
             "星期六: 10:00 – 21:00",
             "星期日: 10:00 – 21:00"
         ],
-        "place_id": "ChIJtbdB0Xt2bjQR1IE4qcWD-lg"
+        "place_id": "ChIJtbdB0Xt2bjQR1IE4qcWD-lg",
+        "type": "hot"
     },
     {
         "del": 0.52,
-        "id": "hot44",
+        "id": 43,
         "info": "松園別館",
         "name": "松園別館",
         "location": {
@@ -1471,7 +1514,7 @@
         "addr": "XJM8+45 台灣花蓮縣花蓮市",
         "address": "台灣花蓮縣花蓮市松園街65號",
         "city": "花蓮縣",
-        "reg": "花蓮市",
+        "region": "花蓮市",
         "time": [
             "星期一: 09:00 – 18:00",
             "星期二: 09:00 – 18:00",
@@ -1481,11 +1524,12 @@
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
         ],
-        "place_id": "ChIJhbRgGMWfaDQRfYxPTbTPdoQ"
+        "place_id": "ChIJhbRgGMWfaDQRfYxPTbTPdoQ",
+        "type": "hot"
     },
     {
         "del": 0.0625,
-        "id": "hot45",
+        "id": 44,
         "info": "審計新村",
         "name": "審計新村",
         "location": {
@@ -1505,7 +1549,7 @@
         "addr": "4MV7+V3 台灣台中市西區",
         "address": "台灣台中市西區民生路368巷4弄8號",
         "city": "台中市",
-        "reg": "西區民",
+        "region": "西區民",
         "time": [
             "星期一: 09:00 – 19:00",
             "星期二: 09:00 – 19:00",
@@ -1515,11 +1559,12 @@
             "星期六: 09:00 – 19:00",
             "星期日: 09:00 – 19:00"
         ],
-        "place_id": "ChIJZc4QyaE9aTQRRVwjmQmYS7g"
+        "place_id": "ChIJZc4QyaE9aTQRRVwjmQmYS7g",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot46",
+        "id": 45,
         "info": "竹圍漁港",
         "name": "竹圍漁港",
         "location": {
@@ -1539,7 +1584,7 @@
         "addr": "468V+VQ 台灣桃園市大園區",
         "address": "台灣桃園市大園區漁港路451巷25號",
         "city": "桃園市",
-        "reg": "大園區",
+        "region": "大園區",
         "time": [
             "星期一: 08:00 – 18:00",
             "星期二: 08:00 – 18:00",
@@ -1549,11 +1594,12 @@
             "星期六: 08:00 – 18:00",
             "星期日: 08:00 – 18:00"
         ],
-        "place_id": "ChIJAQAAAKyfQjQR7fhsd-lMPDU"
+        "place_id": "ChIJAQAAAKyfQjQR7fhsd-lMPDU",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot47",
+        "id": 46,
         "info": "北回歸線標誌公園",
         "name": "北回公園",
         "location": {
@@ -1573,7 +1619,7 @@
         "addr": "F984+7X 台灣花蓮縣瑞穗鄉",
         "address": "台灣花蓮縣瑞穗鄉中正南路二段76-9號",
         "city": "花蓮縣",
-        "reg": "瑞穗鄉",
+        "region": "瑞穗鄉",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -1583,11 +1629,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJgVBR5NZFbzQRlahAiS__Yf4"
+        "place_id": "ChIJgVBR5NZFbzQRlahAiS__Yf4",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot48",
+        "id": 47,
         "info": "義大遊樂世界",
         "name": "義大遊樂世界",
         "location": {
@@ -1607,7 +1654,7 @@
         "addr": "PCJ5+8H 台灣高雄市大樹區",
         "address": "台灣高雄市大樹區學城路一段10號",
         "city": "高雄市",
-        "reg": "大樹區",
+        "region": "大樹區",
         "time": [
             "星期一: 09:00 – 17:30",
             "星期二: 09:00 – 17:30",
@@ -1617,11 +1664,12 @@
             "星期六: 09:00 – 20:00",
             "星期日: 09:00 – 17:30"
         ],
-        "place_id": "ChIJh-J5vhsRbjQR4AcXKxaTRt8"
+        "place_id": "ChIJh-J5vhsRbjQR4AcXKxaTRt8",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot49",
+        "id": 48,
         "info": "臺北市立動物園",
         "name": "動物園",
         "location": {
@@ -1641,7 +1689,7 @@
         "addr": "XHXJ+6M 台灣台北市文山區",
         "address": "台灣台北市文山區新光路二段30號",
         "city": "台北市",
-        "reg": "文山區",
+        "region": "文山區",
         "time": [
             "星期一: 09:00 – 17:00",
             "星期二: 09:00 – 17:00",
@@ -1651,11 +1699,12 @@
             "星期六: 09:00 – 21:00",
             "星期日: 09:00 – 17:00"
         ],
-        "place_id": "ChIJj4EySmCqQjQRZte0Cf0G_qo"
+        "place_id": "ChIJj4EySmCqQjQRZte0Cf0G_qo",
+        "type": "hot"
     },
     {
         "del": 0.1257,
-        "id": "hot50",
+        "id": 49,
         "info": "台江國家公園管理處遊客中心暨行政中心",
         "name": "台江國家公園",
         "location": {
@@ -1675,7 +1724,7 @@
         "addr": "242Q+QG 台灣台南市安南區",
         "address": "台灣台南市安南區四草大道118號",
         "city": "台南市",
-        "reg": "安南區",
+        "region": "安南區",
         "time": [
             "星期一: 休息",
             "星期二: 09:00 – 17:00",
@@ -1685,11 +1734,12 @@
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
         ],
-        "place_id": "ChIJAV0H0pTYbTQRuS5hyXnarzE"
+        "place_id": "ChIJAV0H0pTYbTQRuS5hyXnarzE",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot51",
+        "id": 50,
         "info": "溪頭自然教育園區",
         "name": "溪頭自然教育園區",
         "location": {
@@ -1709,7 +1759,7 @@
         "addr": "MQFW+RW 台灣南投縣鹿谷鄉",
         "address": "台灣南投縣鹿谷鄉森林巷9號",
         "city": "南投縣",
-        "reg": "鹿谷鄉",
+        "region": "鹿谷鄉",
         "time": [
             "星期一: 07:00 – 17:00",
             "星期二: 07:00 – 17:00",
@@ -1719,11 +1769,12 @@
             "星期六: 07:00 – 17:00",
             "星期日: 07:00 – 17:00"
         ],
-        "place_id": "ChIJAQAAACzRbjQRUgTggaGCmkA"
+        "place_id": "ChIJAQAAACzRbjQRUgTggaGCmkA",
+        "type": "hot"
     },
     {
         "del": 4,
-        "id": "hot52",
+        "id": 51,
         "info": "鹿境梅花鹿生態園區",
         "name": "鹿境梅花鹿生態園區",
         "location": {
@@ -1743,7 +1794,7 @@
         "addr": "2P6R+XM 台灣屏東縣恆春鎮",
         "address": "台灣屏東縣恆春鎮恆公路1097-1號",
         "city": "屏東縣",
-        "reg": "恆春鎮",
+        "region": "恆春鎮",
         "time": [
             "星期一: 10:00 – 17:00",
             "星期二: 10:00 – 17:00",
@@ -1753,11 +1804,12 @@
             "星期六: 10:00 – 17:00",
             "星期日: 10:00 – 17:00"
         ],
-        "place_id": "ChIJ-baSVPywcTQR9otP4FjiF_A"
+        "place_id": "ChIJ-baSVPywcTQR9otP4FjiF_A",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot53",
+        "id": 52,
         "info": "林後四林平地森林園區",
         "name": "林後四林平地森林園區",
         "location": {
@@ -1777,7 +1829,7 @@
         "addr": "GHQR+F5 台灣屏東縣潮州鎮",
         "address": "台灣屏東縣潮州鎮潮義路221-1號",
         "city": "屏東縣",
-        "reg": "潮州鎮",
+        "region": "潮州鎮",
         "time": [
             "星期一: 08:00 – 17:00",
             "星期二: 08:00 – 17:00",
@@ -1787,11 +1839,12 @@
             "星期六: 08:00 – 17:00",
             "星期日: 08:00 – 17:00"
         ],
-        "place_id": "ChIJ86VLNp0hbjQRMoJG83pE5nM"
+        "place_id": "ChIJ86VLNp0hbjQRMoJG83pE5nM",
+        "type": "hot"
     },
     {
         "del": 4,
-        "id": "hot54",
+        "id": 53,
         "info": "三仙台跨海步橋",
         "name": "三仙台跨海步橋",
         "location": {
@@ -1811,7 +1864,7 @@
         "addr": "4CF7+F5 台灣台東縣成功鎮",
         "address": "台灣台東縣成功鎮基翬路74號",
         "city": "台東縣",
-        "reg": "成功鎮",
+        "region": "成功鎮",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -1821,11 +1874,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJddQWJkZwbzQR9yWN24_jSsM"
+        "place_id": "ChIJddQWJkZwbzQR9yWN24_jSsM",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot55",
+        "id": 54,
         "info": "小叮噹科學主題樂園",
         "name": "小叮噹科學主題樂園",
         "location": {
@@ -1845,7 +1899,7 @@
         "addr": "VX9J+H2 台灣新竹縣新豐鄉",
         "address": "台灣新竹縣新豐鄉康和路199號",
         "city": "新竹縣",
-        "reg": "新豐鄉",
+        "region": "新豐鄉",
         "time": [
             "星期一: 09:00 – 17:00",
             "星期二: 09:00 – 17:00",
@@ -1855,11 +1909,12 @@
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
         ],
-        "place_id": "ChIJP1TeZfkzaDQRzOAPuuWWoj4"
+        "place_id": "ChIJP1TeZfkzaDQRzOAPuuWWoj4",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot56",
+        "id": 55,
         "info": "台灣穀堡",
         "name": "台灣穀堡",
         "location": {
@@ -1879,7 +1934,7 @@
         "addr": "VF95+VW 台灣彰化縣埤頭鄉",
         "address": "台灣彰化縣埤頭鄉彰水路二段526號",
         "city": "彰化縣",
-        "reg": "埤頭鄉",
+        "region": "埤頭鄉",
         "time": [
             "星期一: 08:00 – 17:00",
             "星期二: 08:00 – 17:00",
@@ -1889,11 +1944,12 @@
             "星期六: 08:00 – 18:00",
             "星期日: 08:00 – 18:00"
         ],
-        "place_id": "ChIJSagIWjVLaTQRSDi4Pjkk7-M"
+        "place_id": "ChIJSagIWjVLaTQRSDi4Pjkk7-M",
+        "type": "hot"
     },
     {
         "del": 4,
-        "id": "hot57",
+        "id": 56,
         "info": "鹿野高台",
         "name": "鹿野高台",
         "location": {
@@ -1913,7 +1969,7 @@
         "addr": "W48C+HJ 台灣台東縣鹿野鄉",
         "address": "台灣台東縣鹿野鄉高台路46號",
         "city": "台東縣",
-        "reg": "鹿野鄉",
+        "region": "鹿野鄉",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -1923,11 +1979,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJAQAAADSkbzQR2E5XyomxUJo"
+        "place_id": "ChIJAQAAADSkbzQR2E5XyomxUJo",
+        "type": "hot"
     },
     {
         "del": 0.016,
-        "id": "hot58",
+        "id": 57,
         "info": "安平老街",
         "name": "安平老街",
         "location": {
@@ -1947,7 +2004,7 @@
         "addr": "2526+7P 台灣台南市安平區",
         "address": "台灣台南市安平區延平街",
         "city": "台南市",
-        "reg": "安平區",
+        "region": "安平區",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -1957,11 +2014,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJ_____wN2bjQRIOio8uGV_Og"
+        "place_id": "ChIJ_____wN2bjQRIOio8uGV_Og",
+        "type": "hot"
     },
     {
         "del": 0.52,
-        "id": "hot59",
+        "id": 58,
         "info": "薰衣草森林新竹尖石店",
         "name": "薰衣草森林新竹尖石店",
         "location": {
@@ -1981,7 +2039,7 @@
         "addr": "P6MM+7H 台灣新竹縣尖石鄉",
         "address": "台灣新竹縣尖石鄉嘉樂129號",
         "city": "新竹縣",
-        "reg": "尖石鄉",
+        "region": "尖石鄉",
         "time": [
             "星期一: 10:30 – 18:30",
             "星期二: 10:30 – 18:30",
@@ -1991,11 +2049,12 @@
             "星期六: 10:00 – 18:30",
             "星期日: 10:00 – 18:30"
         ],
-        "place_id": "ChIJ58Fl7JE_aDQR5JhwZsUfWag"
+        "place_id": "ChIJ58Fl7JE_aDQR5JhwZsUfWag",
+        "type": "hot"
     },
     {
         "del": 0.052,
-        "id": "hot60",
+        "id": 59,
         "info": "池上伯朗大道",
         "name": "池上伯朗大道",
         "location": {
@@ -2015,7 +2074,7 @@
         "addr": "36X7+G2 台灣台東縣池上鄉",
         "address": "台灣台東縣池上鄉",
         "city": "台東縣",
-        "reg": "池上鄉",
+        "region": "池上鄉",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -2025,11 +2084,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJZatyKu4JbzQRyHuSojQ6qQ0"
+        "place_id": "ChIJZatyKu4JbzQRyHuSojQ6qQ0",
+        "type": "hot"
     },
     {
         "del": 0.52,
-        "id": "hot61",
+        "id": 60,
         "info": "龍潭大池",
         "name": "龍潭大池",
         "location": {
@@ -2049,7 +2109,7 @@
         "addr": "V675+CQ 台灣桃園市龍潭區",
         "address": "台灣桃園市龍潭區中豐路上林段115巷11號",
         "city": "桃園市",
-        "reg": "龍潭區",
+        "region": "龍潭區",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -2059,11 +2119,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJGWs7Pvs8aDQR85-UeY7fPWE"
+        "place_id": "ChIJGWs7Pvs8aDQR85-UeY7fPWE",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot62",
+        "id": 61,
         "info": "三貂角燈塔",
         "name": "三貂角燈塔",
         "location": {
@@ -2083,7 +2144,7 @@
         "addr": "2252+2Q 台灣新北市貢寮區",
         "address": "台灣新北市貢寮區馬崗街38號",
         "city": "新北市",
-        "reg": "貢寮區",
+        "region": "貢寮區",
         "time": [
             "星期一: 休息",
             "星期二: 09:00 – 17:00",
@@ -2093,11 +2154,12 @@
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
         ],
-        "place_id": "ChIJmWtqgIJnXTQRGWfG25olU-8"
+        "place_id": "ChIJmWtqgIJnXTQRGWfG25olU-8",
+        "type": "hot"
     },
     {
         "del": 0.0625,
-        "id": "hot63",
+        "id": 62,
         "info": "勝利星村創意生活園區",
         "name": "勝利星村創意生活園區",
         "location": {
@@ -2117,7 +2179,7 @@
         "addr": "MFHM+CR 台灣屏東縣屏東市",
         "address": "台灣屏東縣屏東市青島街106號",
         "city": "屏東縣",
-        "reg": "屏東市",
+        "region": "屏東市",
         "time": [
             "星期一: 09:00 – 17:00",
             "星期二: 09:00 – 17:00",
@@ -2127,11 +2189,12 @@
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
         ],
-        "place_id": "ChIJq_-Vyp0XbjQRkWTVX78U7QA"
+        "place_id": "ChIJq_-Vyp0XbjQRkWTVX78U7QA",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot64",
+        "id": 63,
         "info": "林田山林業文化園區",
         "name": "林田山林業文化園區",
         "location": {
@@ -2151,7 +2214,7 @@
         "addr": "P99X+6H 台灣花蓮縣鳳林鎮",
         "address": "台灣花蓮縣鳳林鎮林森路99巷99號",
         "city": "花蓮縣",
-        "reg": "鳳林鎮",
+        "region": "鳳林鎮",
         "time": [
             "星期一: 休息",
             "星期二: 09:00 – 17:00",
@@ -2161,11 +2224,12 @@
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
         ],
-        "place_id": "ChIJ3-vwJLOzaDQRHnPlTZ31RsQ"
+        "place_id": "ChIJ3-vwJLOzaDQRHnPlTZ31RsQ",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot65",
+        "id": 64,
         "info": "內灣老街",
         "name": "內灣老街",
         "location": {
@@ -2185,7 +2249,7 @@
         "addr": "P53M+G8 台灣新竹縣橫山鄉",
         "address": "台灣新竹縣橫山鄉光復路",
         "city": "新竹縣",
-        "reg": "橫山鄉",
+        "region": "橫山鄉",
         "time": [
             "星期一: 10:00 – 18:00",
             "星期二: 10:00 – 18:00",
@@ -2195,11 +2259,12 @@
             "星期六: 10:00 – 18:00",
             "星期日: 10:00 – 18:00"
         ],
-        "place_id": "ChIJ27GoR89AaDQR78D2c-yQhio"
+        "place_id": "ChIJ27GoR89AaDQR78D2c-yQhio",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot66",
+        "id": 65,
         "info": "烏來老街",
         "name": "烏來老街",
         "location": {
@@ -2219,7 +2284,7 @@
         "addr": "VH72+FH 台灣新北市烏來區",
         "address": "台灣新北市烏來區烏來街12號",
         "city": "新北市",
-        "reg": "烏來區",
+        "region": "烏來區",
         "time": [
             "星期一: 10:00 – 17:00",
             "星期二: 10:00 – 17:00",
@@ -2229,11 +2294,12 @@
             "星期六: 10:00 – 18:00",
             "星期日: 10:00 – 18:00"
         ],
-        "place_id": "ChIJcYyEEWQGaDQRelCnuK4S6yo"
+        "place_id": "ChIJcYyEEWQGaDQRelCnuK4S6yo",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot67",
+        "id": 66,
         "info": "杉林溪森林生態渡假園區",
         "name": "杉林溪森林生態渡假園區",
         "location": {
@@ -2253,7 +2319,7 @@
         "addr": "JQPV+PV 台灣南投縣竹山鎮",
         "address": "台灣南投縣竹山鎮溪山路6號",
         "city": "南投縣",
-        "reg": "竹山鎮",
+        "region": "竹山鎮",
         "time": [
             "星期一: 07:00 – 21:00",
             "星期二: 07:00 – 21:00",
@@ -2263,11 +2329,12 @@
             "星期六: 07:00 – 21:00",
             "星期日: 07:00 – 21:00"
         ],
-        "place_id": "ChIJaVMVJsHQbjQR77h647d6zCY"
+        "place_id": "ChIJaVMVJsHQbjQR77h647d6zCY",
+        "type": "hot"
     },
     {
         "del": 0.0625,
-        "id": "hot68",
+        "id": 67,
         "info": "柳川水岸景觀步道",
         "name": "柳川水岸景觀步道",
         "location": {
@@ -2287,7 +2354,7 @@
         "addr": "4MRG+XR 台灣台中市中區",
         "address": "台灣台中市中區柳川西路三段",
         "city": "台中市",
-        "reg": "中區柳",
+        "region": "中區柳",
         "time": [
             "星期一: 06:00 – 22:00",
             "星期二: 06:00 – 22:00",
@@ -2297,11 +2364,12 @@
             "星期六: 06:00 – 00:00",
             "星期日: 06:00 – 00:00"
         ],
-        "place_id": "ChIJqUZvRQ09aTQRqh9vWv4suqs"
+        "place_id": "ChIJqUZvRQ09aTQRqh9vWv4suqs",
+        "type": "hot"
     },
     {
         "del": 0.05,
-        "id": "hot69",
+        "id": 68,
         "info": "青青草原",
         "name": "青青草原",
         "location": {
@@ -2321,7 +2389,7 @@
         "addr": "QWFG+35 台灣新竹市香山區",
         "address": "台灣新竹市香山區草原路",
         "city": "新竹市",
-        "reg": "香山區",
+        "region": "香山區",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -2331,11 +2399,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJ9eOyO2JKaDQRakkYan8x6xg"
+        "place_id": "ChIJ9eOyO2JKaDQRakkYan8x6xg",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot70",
+        "id": 69,
         "info": "六堆客家文化園區",
         "name": "六堆客家文化園區",
         "location": {
@@ -2355,7 +2424,7 @@
         "addr": "MH55+9G 台灣屏東縣內埔鄉",
         "address": "台灣屏東縣內埔鄉信義路588號",
         "city": "屏東縣",
-        "reg": "內埔鄉",
+        "region": "內埔鄉",
         "time": [
             "星期一: 09:00 – 17:00",
             "星期二: 休息",
@@ -2365,11 +2434,12 @@
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
         ],
-        "place_id": "ChIJz9-onDA9bjQR-VpoaS6wV6A"
+        "place_id": "ChIJz9-onDA9bjQR-VpoaS6wV6A",
+        "type": "hot"
     },
     {
         "del": 0.6,
-        "id": "hot71",
+        "id": 70,
         "info": "臺南左鎮化石園區",
         "name": "臺南左鎮化石園區",
         "location": {
@@ -2389,7 +2459,7 @@
         "addr": "397Q+PM 台灣台南市左鎮區",
         "address": "台灣台南市左鎮區61-23號",
         "city": "台南市",
-        "reg": "左鎮區",
+        "region": "左鎮區",
         "time": [
             "星期一: 09:00 – 17:00",
             "星期二: 休息",
@@ -2399,11 +2469,12 @@
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
         ],
-        "place_id": "ChIJQ9W8A6plbjQRGDjCdnI9f9M"
+        "place_id": "ChIJQ9W8A6plbjQRGDjCdnI9f9M",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot72",
+        "id": 71,
         "info": "武嶺",
         "name": "武嶺",
         "location": {
@@ -2423,7 +2494,7 @@
         "addr": "47PG+R8 台灣南投縣仁愛鄉",
         "address": "台灣南投縣仁愛鄉仁和路170號",
         "city": "南投縣",
-        "reg": "仁愛鄉",
+        "region": "仁愛鄉",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -2433,11 +2504,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJte6zETiTaDQRA6gtQKdhV8k"
+        "place_id": "ChIJte6zETiTaDQRA6gtQKdhV8k",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot73",
+        "id": 72,
         "info": "潮境公園",
         "name": "潮境公園",
         "location": {
@@ -2457,7 +2529,7 @@
         "addr": "4RV3+99 台灣基隆市中正區",
         "address": "台灣基隆市中正區北寧路369巷61號",
         "city": "基隆市",
-        "reg": "中正區",
+        "region": "中正區",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -2467,11 +2539,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJGTT2a3lPXTQRjkhw37cYOJM"
+        "place_id": "ChIJGTT2a3lPXTQRjkhw37cYOJM",
+        "type": "hot"
     },
     {
         "del": 0.0625,
-        "id": "hot74",
+        "id": 73,
         "info": "赤崁樓",
         "name": "赤崁樓",
         "location": {
@@ -2491,7 +2564,7 @@
         "addr": "X6W3+X2 台灣台南市中西區",
         "address": "台灣台南市中西區民族路二段212號",
         "city": "台南市",
-        "reg": "中西區",
+        "region": "中西區",
         "time": [
             "星期一: 08:30 – 21:30",
             "星期二: 08:30 – 21:30",
@@ -2501,11 +2574,12 @@
             "星期六: 08:30 – 21:30",
             "星期日: 08:30 – 21:30"
         ],
-        "place_id": "ChIJbYl7d2F2bjQRnFdvyMBuZfI"
+        "place_id": "ChIJbYl7d2F2bjQRnFdvyMBuZfI",
+        "type": "hot"
     },
     {
         "del": 4,
-        "id": "hot75",
+        "id": 74,
         "info": "後龍鎮半天寮休閒文化園區 - 好望角",
         "name": "後龍鎮半天寮休閒文化園區",
         "location": {
@@ -2525,7 +2599,7 @@
         "addr": "JP2J+QF 台灣苗栗縣後龍鎮",
         "address": "台灣苗栗縣後龍鎮半天寮",
         "city": "苗栗縣",
-        "reg": "後龍鎮",
+        "region": "後龍鎮",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -2535,11 +2609,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJVVVVVWWuaTQRsf_BtcIo5Yo"
+        "place_id": "ChIJVVVVVWWuaTQRsf_BtcIo5Yo",
+        "type": "hot"
     },
     {
         "del": 0.05,
-        "id": "hot76",
+        "id": 75,
         "info": "太平雲梯遊客服務中心Visitor Service Center(附設雲中找茶複合式餐廳）",
         "name": "太平雲梯服務中心",
         "location": {
@@ -2559,7 +2634,7 @@
         "addr": "HJ52+V9 台灣嘉義縣梅山鄉",
         "address": "台灣嘉義縣下坑仔, 5號, 梅山乡",
         "city": "嘉義縣",
-        "reg": "下坑仔",
+        "region": "下坑仔",
         "time": [
             "星期一: 09:00 – 17:30",
             "星期二: 09:00 – 17:30",
@@ -2569,11 +2644,12 @@
             "星期六: 09:00 – 17:30, 18:00 – 20:00",
             "星期日: 09:00 – 17:30"
         ],
-        "place_id": "ChIJH4Ouo2rBbjQR50c88GP53ew"
+        "place_id": "ChIJH4Ouo2rBbjQR50c88GP53ew",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot77",
+        "id": 76,
         "info": "湯圍溝溫泉公園",
         "name": "湯圍溝溫泉公園",
         "location": {
@@ -2593,7 +2669,7 @@
         "addr": "RQH9+CX 台灣宜蘭縣礁溪鄉",
         "address": "台灣宜蘭縣礁溪鄉德陽路99-11號",
         "city": "宜蘭縣",
-        "reg": "礁溪鄉",
+        "region": "礁溪鄉",
         "time": [
             "星期一: 06:30 – 22:00",
             "星期二: 06:30 – 22:00",
@@ -2603,11 +2679,12 @@
             "星期六: 06:30 – 23:00",
             "星期日: 06:30 – 22:00"
         ],
-        "place_id": "ChIJ772ubUr6ZzQRuY_2y4RvRrM"
+        "place_id": "ChIJ772ubUr6ZzQRuY_2y4RvRrM",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot78",
+        "id": 77,
         "info": "大湖公園 (防災公園）",
         "name": "大湖公園",
         "location": {
@@ -2627,7 +2704,7 @@
         "addr": "3JJ3+WQ 台灣台北市內湖區",
         "address": "台灣台北市內湖區成功路五段31號",
         "city": "台北市",
-        "reg": "內湖區",
+        "region": "內湖區",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -2637,11 +2714,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJL25qhuqsQjQRjzwIZ7a6UbI"
+        "place_id": "ChIJL25qhuqsQjQRjzwIZ7a6UbI",
+        "type": "hot"
     },
     {
         "del": 2.3,
-        "id": "hot79",
+        "id": 78,
         "info": "打狗英國領事館官邸",
         "name": "打狗英國領事館官邸",
         "location": {
@@ -2661,7 +2739,7 @@
         "addr": "J798+GP 台灣高雄市鼓山區",
         "address": "台灣高雄市鼓山區蓮海路20號",
         "city": "高雄市",
-        "reg": "鼓山區",
+        "region": "鼓山區",
         "time": [
             "星期一: 休息",
             "星期二: 10:00 – 19:00",
@@ -2671,11 +2749,12 @@
             "星期六: 09:00 – 19:00",
             "星期日: 09:00 – 19:00"
         ],
-        "place_id": "ChIJFfV1wfYDbjQRHdGpq6VRADM"
+        "place_id": "ChIJFfV1wfYDbjQRHdGpq6VRADM",
+        "type": "hot"
     },
     {
         "del": 1.8,
-        "id": "hot80",
+        "id": 79,
         "info": "張學良文化園區",
         "name": "張學良文化園區",
         "location": {
@@ -2695,7 +2774,7 @@
         "addr": "H4C4+X5 台灣新竹縣五峰鄉",
         "address": "台灣新竹縣五峰鄉311號",
         "city": "新竹縣",
-        "reg": "五峰鄉",
+        "region": "五峰鄉",
         "time": [
             "星期一: 休息",
             "星期二: 09:00 – 17:00",
@@ -2705,11 +2784,12 @@
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
         ],
-        "place_id": "ChIJV04XbMVEaDQRu-e6P6_tKAo"
+        "place_id": "ChIJV04XbMVEaDQRu-e6P6_tKAo",
+        "type": "hot"
     },
     {
         "del": 0.52,
-        "id": "hot81",
+        "id": 80,
         "info": "花蓮觀光糖廠",
         "name": "花蓮觀光糖廠",
         "location": {
@@ -2729,15 +2809,16 @@
         "addr": "MC5C+F6 台灣花蓮縣光復鄉",
         "address": "台灣花蓮縣光復鄉糖廠街19號",
         "city": "花蓮縣",
-        "reg": "光復鄉",
+        "region": "光復鄉",
         "time": [
             "無"
         ],
-        "place_id": "ChIJpcSL78qyaDQRpJX500RPFLo"
+        "place_id": "ChIJpcSL78qyaDQRpJX500RPFLo",
+        "type": "hot"
     },
     {
         "del": 4,
-        "id": "hot82",
+        "id": 81,
         "info": "小人國主題樂園",
         "name": "小人國主題樂園",
         "location": {
@@ -2757,7 +2838,7 @@
         "addr": "R5JQ+F7 台灣桃園市龍潭區",
         "address": "台灣桃園市龍潭區高原路891號",
         "city": "桃園市",
-        "reg": "龍潭區",
+        "region": "龍潭區",
         "time": [
             "星期一: 09:30 – 17:00",
             "星期二: 09:30 – 17:00",
@@ -2767,11 +2848,12 @@
             "星期六: 09:30 – 17:00",
             "星期日: 09:30 – 17:00"
         ],
-        "place_id": "ChIJIVlPqhY8aDQRcSMa0PLZrkk"
+        "place_id": "ChIJIVlPqhY8aDQRcSMa0PLZrkk",
+        "type": "hot"
     },
     {
         "del": 0.052,
-        "id": "hot83",
+        "id": 82,
         "info": "國立故宮博物院南部院區",
         "name": "國立故宮博物院南部院區",
         "location": {
@@ -2791,7 +2873,7 @@
         "addr": "F7FV+73 台灣嘉義縣太保市",
         "address": "台灣嘉義縣太保市故宮大道888號",
         "city": "嘉義縣",
-        "reg": "太保市",
+        "region": "太保市",
         "time": [
             "星期一: 休息",
             "星期二: 09:00 – 17:00",
@@ -2801,11 +2883,12 @@
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
         ],
-        "place_id": "ChIJe6XdK9SbbjQRy7gVi-RqGWk"
+        "place_id": "ChIJe6XdK9SbbjQRy7gVi-RqGWk",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot84",
+        "id": 83,
         "info": "台灣優格餅乾學院 【DIY手作/餅乾/彰化景點/2022中秋禮盒/月餅蛋黃酥】",
         "name": "台灣優格餅乾學院",
         "location": {
@@ -2825,7 +2908,7 @@
         "addr": "4FG8+CF 台灣彰化縣線西鄉",
         "address": "台灣彰化縣線西鄉草豐路501巷5號",
         "city": "彰化縣",
-        "reg": "線西鄉",
+        "region": "線西鄉",
         "time": [
             "星期一: 09:00 – 18:00",
             "星期二: 09:00 – 18:00",
@@ -2835,11 +2918,12 @@
             "星期六: 09:00 – 18:00",
             "星期日: 09:00 – 18:00"
         ],
-        "place_id": "ChIJbUfZ5SxBaTQRlP6jUJVdbMc"
+        "place_id": "ChIJbUfZ5SxBaTQRlP6jUJVdbMc",
+        "type": "hot"
     },
     {
         "del": 0.52,
-        "id": "hot85",
+        "id": 84,
         "info": "小野柳",
         "name": "小野柳",
         "location": {
@@ -2859,7 +2943,7 @@
         "addr": "Q5VX+W7 台灣台東縣台東市",
         "address": "台灣台東縣台東市松江路一段500號",
         "city": "台東縣",
-        "reg": "台東市",
+        "region": "台東市",
         "time": [
             "星期一: 08:30 – 17:30",
             "星期二: 08:30 – 17:30",
@@ -2869,11 +2953,12 @@
             "星期六: 08:30 – 17:30",
             "星期日: 08:30 – 17:30"
         ],
-        "place_id": "ChIJgS3U1LG5bzQRGuFTr11jV4A"
+        "place_id": "ChIJgS3U1LG5bzQRGuFTr11jV4A",
+        "type": "hot"
     },
     {
         "del": 1.2,
-        "id": "hot86",
+        "id": 85,
         "info": "野柳海洋世界",
         "name": "野柳海洋世界",
         "location": {
@@ -2893,7 +2978,7 @@
         "addr": "6M4R+3G 台灣新北市萬里區",
         "address": "台灣新北市萬里區港東路167-3號",
         "city": "新北市",
-        "reg": "萬里區",
+        "region": "萬里區",
         "time": [
             "星期一: 09:00 – 17:00",
             "星期二: 09:00 – 17:00",
@@ -2903,11 +2988,12 @@
             "星期六: 09:00 – 17:30",
             "星期日: 09:00 – 17:30"
         ],
-        "place_id": "ChIJ_XWXKXRMXTQRHRNq6ov7-rQ"
+        "place_id": "ChIJ_XWXKXRMXTQRHRNq6ov7-rQ",
+        "type": "hot"
     },
     {
         "del": 0.0625,
-        "id": "hot87",
+        "id": 86,
         "info": "審計368新創聚落",
         "name": "審計368新創聚落",
         "location": {
@@ -2927,7 +3013,7 @@
         "addr": "4MV7+R5 台灣台中市西區",
         "address": "台灣台中市西區民生路368巷2弄12號",
         "city": "台中市",
-        "reg": "西區民",
+        "region": "西區民",
         "time": [
             "星期一: 11:30 – 20:30",
             "星期二: 11:30 – 20:30",
@@ -2937,11 +3023,12 @@
             "星期六: 11:30 – 20:30",
             "星期日: 11:30 – 20:30"
         ],
-        "place_id": "ChIJ04sByqE9aTQRnw6NwaSUZd8"
+        "place_id": "ChIJ04sByqE9aTQRnw6NwaSUZd8",
+        "type": "hot"
     },
     {
         "del": 1,
-        "id": "hot88",
+        "id": 87,
         "info": "旺萊山愛情大草原",
         "name": "旺萊山愛情大草原",
         "location": {
@@ -2961,7 +3048,7 @@
         "addr": "CHRR+X9 台灣嘉義縣番路鄉",
         "address": "台灣嘉義縣番路鄉7鄰15號",
         "city": "嘉義縣",
-        "reg": "番路鄉",
+        "region": "番路鄉",
         "time": [
             "星期一: 09:00 – 17:20",
             "星期二: 09:00 – 17:20",
@@ -2971,11 +3058,12 @@
             "星期六: 09:00 – 17:20",
             "星期日: 09:00 – 17:20"
         ],
-        "place_id": "ChIJa0lvH7rrbjQRIlSqKc1w4IY"
+        "place_id": "ChIJa0lvH7rrbjQRIlSqKc1w4IY",
+        "type": "hot"
     },
     {
         "del": 0.256,
-        "id": "hot89",
+        "id": 88,
         "info": "烏來瀑布",
         "name": "烏來瀑布",
         "location": {
@@ -2995,7 +3083,7 @@
         "addr": "RHW2+XQ 台灣新北市烏來區",
         "address": "台灣新北市烏來區瀑布路16號",
         "city": "新北市",
-        "reg": "烏來區",
+        "region": "烏來區",
         "time": [
             "星期一: 24 小時營業",
             "星期二: 24 小時營業",
@@ -3005,11 +3093,12 @@
             "星期六: 24 小時營業",
             "星期日: 24 小時營業"
         ],
-        "place_id": "ChIJ2fpFp28GaDQR3N-e1P4HJ-8"
+        "place_id": "ChIJ2fpFp28GaDQR3N-e1P4HJ-8",
+        "type": "hot"
     },
     {
         "del": 1.5,
-        "id": "hot90",
+        "id": 89,
         "info": "成美文化園-永靖親子景點|打卡景點|推薦景點|親子園區|拍照景點|網紅景點",
         "name": "成美文化園",
         "location": {
@@ -3029,7 +3118,7 @@
         "addr": "WGCX+37 台灣彰化縣永靖鄉",
         "address": "台灣彰化縣永靖鄉中山路二段60號",
         "city": "彰化縣",
-        "reg": "永靖鄉",
+        "region": "永靖鄉",
         "time": [
             "星期一: 09:00 – 17:00",
             "星期二: 09:00 – 17:00",
@@ -3039,6 +3128,7 @@
             "星期六: 09:00 – 17:00",
             "星期日: 09:00 – 17:00"
         ],
-        "place_id": "ChIJ_9bBguk1aTQRhCIhRswPh4o"
+        "place_id": "ChIJ_9bBguk1aTQRhCIhRswPh4o",
+        "type": "hot"
     }
 ]
