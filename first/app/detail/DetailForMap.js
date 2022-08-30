@@ -21,7 +21,7 @@ import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Notice from '../theme/Notice';
 import Weather from './Weather';
 import Image_link from '../theme/Image';
-
+import Image_linkMap from '../map/Image';
 const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.3;
 
@@ -86,7 +86,7 @@ const DetailForMap = ({entry, modalVisible, onClose,onPress1,canPress}) => {
               <ScrollView>
                 {
                 canPress?
-                <Image style={styles.image} source={entry['source']} />:
+                <Image style={styles.image} source={Image_linkMap[entry['type']+(entry['id'].toString())]} />:
                 <Image style={styles.image} source={Image_link[entry['name']]}/>
                 }
                 <View style={styles.infoStyle}>

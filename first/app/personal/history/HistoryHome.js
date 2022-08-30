@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {Component, useEffect, useState,useContext} from 'react';
 import {
   View,
   Text,
@@ -16,6 +16,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
+import {AuthContext} from '../../routes/AutoProvider';
+import firestore from '@react-native-firebase/firestore';
 import Card from './Card';
 import HistoryTop from './HistoryTop';
 //import Card from './Card';
@@ -27,15 +29,47 @@ const data = [
     {tripname:"pupupupupu"}]
   
 const HistoryHome = () => {
-
+  const {user, logout} = useContext(AuthContext);
+  const [trip,setTrip]=useState(null);
     //todo:這裡要讀取資料庫的資料
+    const fetchTrip = async()=>{
+      const temp=[];
+      try{           
+            //console.log('123 ',list);
+          await firestore()
+          .collection('users')
+          .doc(user.uid)
+          .collection('trip')
+          .get()
+          .then((querySnapshot)=>{
+            //console.log('Total Posts:',querySnapshot.size);
+            querySnapshot.forEach(doc=>{
+                const {desSite,name,origin,site} =doc.data();
+                temp.push({
+                  name,
+                  desSite ,
+                  origin,
+                  site,
+                  });
+                })
+                console.log('temp ',temp);
+            })
+            }catch(e){
+              console.log(e);
+          };
+          setTrip(temp);
+          console.log('here ',temp);
+      }
+
+useEffect(()=>{
+          fetchTrip();
+    },[]);
+
+
+    //todo: 對資料庫的資料作處理
     useEffect(()=>{
-     
 
-
-
-
-    },[])  
+    },[])
 
 
   return (
@@ -54,11 +88,11 @@ const HistoryHome = () => {
           paddingBottom: 80,
         }}
         numColumns={1}
-        data={data}
+        data={trip}
         initialNumToRender={5}
         renderItem={({item}) => 
         <Card 
-          tripname = {item.tripname} 
+          trip={item}
           onPress1={() => {
             //todo從這裡跳轉去清單
             console.log("顯示清單");
