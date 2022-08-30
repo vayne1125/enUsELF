@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -12,7 +12,6 @@ import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import { mapStyle } from './mapStyle';
 import { ORI_DATA } from './OriData'; //空資料 -> 初始化
 import DetailForMap from '../detail/DetailForMap';
-import Settripname from './Settripname';
 import Back from './Back';
 import MapViewDirections from 'react-native-maps-directions';
 import Hotplace from './Hotplace'
@@ -23,20 +22,16 @@ import Hotel from '../theme/Hotel'
 import KOL from '../theme/KOL'
 import Monuments from '../theme/Monuments'
 import Nature from '../theme/Nature'
-import {AuthContext} from '../routes/AutoProvider';
-import firestore from '@react-native-firebase/firestore';
-
 //import Hotplace from './tp'
+//{ navigation, route }
 const MapHome = ({ navigation, route }) => {
-  ////console.log(route.params);
+  // console.log("haha:",route.params);
   const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
   const [once, setOnce] = useState(true);    //控制只會一次線
   //顯示detail
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState(initialState);
   const [modalCanPress, setModalCanPress] = useState(true);
-  //顯示取名字
-  const [modalVisibleForName,setModalVisibleForName] = useState(false);
   //各式按鈕
   const [completePress, setCompletePress] = useState(false);
   const [hotPress, setHotPress] = useState(false);
@@ -49,7 +44,7 @@ const MapHome = ({ navigation, route }) => {
   const [endData, setEndData] = useState([]);
   const [waypoints, setWaypoints] = useState([]);
   //當前位置
-  const [origin, setOri] = useState({ latitude: 24.1365593, longitude: 120.6835935 })
+  const [origin, setOri] = useState({ latitude: 24.1365593, longitude: 120.6835935 });
   const [addWaypoint, setAdd] = useState([]);
   const [mainRoute, setMainRoute] = useState([]);
   const [destination, setDes] = useState({ latitude: 24.1365593, longitude: 120.6835935 });
@@ -57,11 +52,8 @@ const MapHome = ({ navigation, route }) => {
   const [myLatitudeDelta, setMyLatitudeDelta] = useState(3.8); //地圖縮放程度的變數
   
   const [desSite,setDesSite] = useState({}); //終點
-  const [size,setSize]=useState(0);
-  const {user, logout} = useContext(AuthContext);//user uid
-  //伸蓉這個事件
+
   const onPressHandlerForComlete = () => {
-    setCompletePress(true);
     //-----------------------------不重要的
     // setHotData(ORI_DATA);
     // setHolData(ORI_DATA);
@@ -73,27 +65,6 @@ const MapHome = ({ navigation, route }) => {
     // console.log(route.params);
     // console.log("距離: ", Math.sqrt((origin.latitude - destination.latitude) * (origin.latitude - destination.latitude) + (origin.longitude - destination.longitude) * (origin.longitude - destination.longitude)));
     //-----------------------------
-    firestore()
-        .collection('users')
-        .doc(user.uid)
-        .collection('trip')
-        .get()
-        .then((querySnapshot)=>{
-        setSize(querySnapshot.size);
-          })
-    console.log('size= ',size);
-    setModalVisibleForName(true);
-  }
-  const onPressHandlerForHot = () => {
-    setHotPress(!hotPress); //打開
-  }
-  const onPressHandlerForShop = () => {
-    setShopPress(!shopPress); //打開
-  }
-  const onPressHandlerForHoliday = () => {
-    setHolPress(!holPress); //打開
-  }
-  const navToFinal = (tripname) =>{
     var rt = [];
     for(i = 0;i<mainRoute.length;i++){
       if(destination.latitude == mainRoute[i].lat && destination.longitude == mainRoute[i].lng){
@@ -112,34 +83,24 @@ const MapHome = ({ navigation, route }) => {
         type: i.type
       });
     })
-    //伸蓉這邊是要的
-    console.log("tripname: ",tripname);
-    console.log("origin: ",origin);
-    console.log("desSite: ",desSite);
-    console.log("site: ",rt);
-    const users = firestore().collection('users').doc(user.uid);
-    users.collection('trip').doc(tripname)
-    .set({
-        name: tripname,
-        origin:origin,
-        desSite: desSite,
-        site:rt,
-    }).then(()=>{
-        console.log('trip add !');
-      }).catch((error)=>{
-        console.log('trip Failed!',error);
-      });
-
-  //下面註解是跳轉
-    
+    //console.log("跳轉");
+    //下面註解是跳轉
     navigation.navigate("ItineraryHome", {
-      tripname:tripname,
+      tripname:"行程表",
       origin:origin,
       desSite:desSite,
       site:rt,
       from:"map",
     });
-    
+  }
+  const onPressHandlerForHot = () => {
+    setHotPress(!hotPress); //打開
+  }
+  const onPressHandlerForShop = () => {
+    setShopPress(!shopPress); //打開
+  }
+  const onPressHandlerForHoliday = () => {
+    setHolPress(!holPress); //打開
   }
   //過濾導航線的點 最多抓20個點
   const getPositionArray = (array) => {
@@ -303,13 +264,6 @@ const MapHome = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
 
-      <Settripname
-        modalVisible = {modalVisibleForName}
-        size = {size}
-        onClose = {() => { setModalVisibleForName(false); }}
-        completePress = { (tripname) => {navToFinal(tripname)}}
-      />
-
       {/*浮動視窗-------------------------------------------------------------------------------*/}
       <DetailForMap
         entry={modalEntry}//傳進去的資料參數
@@ -361,7 +315,7 @@ const MapHome = ({ navigation, route }) => {
         region={initRegion}
         mapType="standard"
       >
-        {(mainRoute).map((marker, index) => (
+        {(mainRoute).map((marker) => (
           <Marker
             //pinColor='green'
             tracksViewChanges={false}
@@ -415,7 +369,7 @@ const MapHome = ({ navigation, route }) => {
           title="你的位置"
         />
 
-        {(hotPress ? hotData : ORI_DATA).map((marker, index) => {
+        {(hotPress ? hotData : ORI_DATA).map((marker) => {
           if (marker.del >= myLatitudeDelta) {
             ////console.log(myLatitudeDelta);
             return (
@@ -438,10 +392,6 @@ const MapHome = ({ navigation, route }) => {
                     }),
                     city: marker.city,
                     region: marker.region,
-                    source: {
-                      uri:
-                        `https://maps.googleapis.com/maps/api/place/photo?photoreference=${marker.photo.photo_reference}&sensor=false&maxheight=${marker.photo.height}&maxwidth=${marker.photo.width}&key=${API_key}`
-                    }
                   });
                 }}
               >
@@ -475,9 +425,6 @@ const MapHome = ({ navigation, route }) => {
                     }),
                     city: marker.city,
                     region: marker.region,
-                    source: {
-                      uri: marker.photo
-                    }
                   });
                 }}
               >
@@ -512,10 +459,6 @@ const MapHome = ({ navigation, route }) => {
                     }),
                     city: marker.city,
                     region: marker.region,
-                    source: {
-                      uri:
-                        `https://maps.googleapis.com/maps/api/place/photo?photoreference=${marker.photo.photo_reference}&sensor=false&maxheight=${marker.photo.height}&maxwidth=${marker.photo.width}&key=${API_key}`
-                    }
                   });
                 }}
               >
@@ -549,10 +492,7 @@ const MapHome = ({ navigation, route }) => {
                   })),
                   city: marker.city,
                   region: marker.region,
-                  source: {
-                    uri:
-                      `https://maps.googleapis.com/maps/api/place/photo?photoreference=${marker.photo.photo_reference}&sensor=false&maxheight=${marker.photo.height}&maxwidth=${marker.photo.width}&key=${API_key}`
-                  }
+
                 });
               }}
             >

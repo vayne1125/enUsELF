@@ -38,6 +38,12 @@ const HistoryHome = () => {
     },[])  
 
 
+    //todo: 對資料庫的資料作處理
+    useEffect(()=>{
+
+    },[])
+
+
   return (
     <View style={styles.container}>
       {/*頂部*/}

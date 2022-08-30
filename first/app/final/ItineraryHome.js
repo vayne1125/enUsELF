@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useContext} from 'react';
 import {
   StyleSheet,
   View,
@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import DetailForFinal from '../detail/DetailForFinal';
-//import Back from './Back';
+import Back from './Back';
 import { mapStyle } from '../map/mapStyle';
 import MapViewDirections from 'react-native-maps-directions';
 import ItineraryTop from './ItineraryTop';
@@ -21,27 +21,64 @@ import Hotel from '../theme/Hotel'
 import KOL from '../theme/KOL'
 import Monuments from '../theme/Monuments'
 import Nature from '../theme/Nature'
-
+import Settripname from './Settripname';
+import {AuthContext} from '../routes/AutoProvider';
+import firestore from '@react-native-firebase/firestore';
 
 const ItineraryHome = ({ navigation, route }) => {
   const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState({}); //initialState
   const [modalIsMain,setModalIsMain] = useState(false); 
- 
+  //顯示取名字
+  const [modalVisibleForName,setModalVisibleForName] = useState(false);
   const [print,setPrint] = useState(false);
   const [region,setRegion] = useState({ latitude: 24.1365593, longitude: 120.6835935, latitudeDelta: 4, longitudeDelta: 0 });
   const [origin,setOrigin] = useState(route.params.origin);
   const [destination,setDestination] = useState({ lat: 24.1365593, lng: 120.6835935});
   const [waypoints,setWaypoints] = useState([]);
   const [markers,setMarkers] = useState([]);
+
   const [tripname,setTripname] = useState(route.params.tripname);
 
-  const navToHistory = () =>{
-    console.log("his");
+  const [size,setSize]=useState(0);
+  const {user, logout} = useContext(AuthContext);//user uid
 
+  //伸蓉
+  const navToFinal = (tripname) =>{
+    setModalVisibleForName(false);
+    console.log("his");
+        firestore()
+        .collection('users')
+        .doc(user.uid)
+        .collection('trip')
+        .get()
+        .then((querySnapshot)=>{
+        setSize(querySnapshot.size);
+          })
+    console.log('size= ',size);
+
+    const users = firestore().collection('users').doc(user.uid);
+    users.collection('trip').doc(tripname)
+    .set({
+        name: tripname,
+        origin: route.params.origin,
+        desSite: route.params.desSite,
+        site: route.params.site,
+    }).then(()=>{
+        console.log('trip add !');
+    }).catch((error)=>{
+        console.log('trip Failed!',error);
+    });
   }
 
+  //todo:跳去歷史介面
+  const navToHistory = () =>{
+    setModalVisibleForName(true);
+  }
+
+  //todo:返回
+  //這邊存資料
   const navToBack = () => {
     console.log("goback");
 
@@ -72,7 +109,6 @@ const ItineraryHome = ({ navigation, route }) => {
       return tp;
     })
   },[])
-
 
   useEffect(()=>{
     setRegion(() => {
@@ -162,6 +198,14 @@ const ItineraryHome = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
+
+      <Settripname
+        modalVisible = {modalVisibleForName}
+        size = {size}
+        onClose = {() => { setModalVisibleForName(false); }}
+        completePress = { (tripname) => {navToFinal(tripname)}}
+      />
+
       {/*浮動視窗-------------------------------------------------------------------------------*/}
       <DetailForFinal
         entry={modalEntry}//傳進去的資料參數
