@@ -21,7 +21,7 @@ import Post from '../media/Post';
 import Nav from './Nav';
 import List from '../list/List';
 import PersonalFile from '../personal/PersonalFile';
-import Collect from '../personal/Collect/Collect';
+import Collect from '../personal/collect/Collect';
 import HistoryHome from '../personal/history/HistoryHome';
 const Stack=createStackNavigator();
 
