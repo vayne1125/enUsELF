@@ -126,8 +126,6 @@ const MapHome = ({ navigation, route }) => {
         site:rt,
     }).then(()=>{
         console.log('trip add !');
-        //Alert.alert("成功發布");
-        
       }).catch((error)=>{
         console.log('trip Failed!',error);
       });
@@ -138,7 +136,8 @@ const MapHome = ({ navigation, route }) => {
       tripname:tripname,
       origin:origin,
       desSite:desSite,
-      site:rt
+      site:rt,
+      from:"map",
     });
     
   }

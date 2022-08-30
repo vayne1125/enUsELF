@@ -21,6 +21,8 @@ import Hotel from '../theme/Hotel'
 import KOL from '../theme/KOL'
 import Monuments from '../theme/Monuments'
 import Nature from '../theme/Nature'
+
+
 const ItineraryHome = ({ navigation, route }) => {
   const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
   const [modalVisible, setModalVisible] = useState(false);
@@ -35,11 +37,21 @@ const ItineraryHome = ({ navigation, route }) => {
   const [markers,setMarkers] = useState([]);
   const [tripname,setTripname] = useState(route.params.tripname);
 
+  const navToHistory = () =>{
+    console.log("his");
+
+  }
+
+  const navToBack = () => {
+    console.log("goback");
+
+  }
+
   const getDis = (pos, place) => {
     rt = (pos.lat - place.lat) * (pos.lat - place.lat) + (pos.lng - place.lng) * (pos.lng - place.lng);
     return Math.sqrt(rt)
   }
-
+  
   useEffect(()=>{
     setDestination(()=>{
       var desSite = route.params.desSite;
@@ -293,6 +305,22 @@ const ItineraryHome = ({ navigation, route }) => {
         <ItineraryTop tripname = {tripname}></ItineraryTop>
       </View>
 
+      <TouchableHighlight
+          style={styles.button}
+          onPress={()=>{
+            (route.params.from === "map")?
+            navToHistory():
+            navToBack()
+          }}
+          underlayColor='#ddddd'
+        >
+          {
+          (route.params.from === "map")?
+          <Text style={styles.text}>確認</Text>:
+          <Text style={styles.text}>返回</Text>
+          }
+      </TouchableHighlight>
+
     </View>
   )
 };
@@ -325,6 +353,23 @@ const styles = StyleSheet.create({
     color: '#5f695d',
     fontSize: 15,
     fontWeight: "bold",
+  },
+  button: {
+    zIndex: 3,
+    //position: 'absolute',
+    top: 600,
+    left:Dimensions.get('window').width/2-60,
+    backgroundColor: '#5f695d',
+    width: 120,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  text: {
+    fontSize: 17,
+    color: '#F2F2F2',
   },
 });
 export default ItineraryHome;
