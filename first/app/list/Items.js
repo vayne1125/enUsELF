@@ -161,7 +161,7 @@ const Items = () => {
                                 const {type, id, place_id} = doc.data();
                                 if(check){
                                     list.push({
-                                        type: type;
+                                        type: type,
                                         id: id,
                                         place_id: place_id,
                                     })
