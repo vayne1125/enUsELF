@@ -68,7 +68,7 @@ const Items = () => {
                                 name: data.name,
                                 city: data.city,
                                 region: data.region,
-                                check: data.check,
+                                check: check,
                             });
                         })
                     })

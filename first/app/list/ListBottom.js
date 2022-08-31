@@ -20,7 +20,7 @@ import { AuthContext } from '../routes/AutoProvider';
 const ListBottom = () => {
     const {user} = useContext(AuthContext);
     const [check, setCheck] = useState(false);
-    const [empty, setEmpty] = useState(false);
+    const [empty, setEmpty] = useState(true);
 
     useEffect(() => {
         const listen = DeviceEventEmitter
