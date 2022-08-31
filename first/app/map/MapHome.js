@@ -411,6 +411,7 @@ const MapHome = ({ navigation, route }) => {
                     id: marker.id,
                     star: 5,
                     info: marker.name,
+                    date: marker.date,
                     time: marker.time.map((ti) => {
                       return ti + '\n';
                     }),

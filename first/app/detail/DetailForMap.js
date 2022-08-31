@@ -101,6 +101,23 @@ const DetailForMap = ({entry, modalVisible, onClose,onPress1,canPress}) => {
                     {entry['address']}
                     {'\n'}
                   </Text>
+
+                  {
+                  (entry['type'] === "hol") &&
+                  (
+                  <View>
+                  <Text style={styles.infoTitle}>
+                    <Icon name="clock-o" size={23} color={'#5f695d'} />
+                    活動日期
+                  </Text>
+                  <Text style={styles.infoTextStyle}>
+                    {entry['date']}
+                    {'\n'}
+                  </Text>
+                  </View>
+                  )
+                  }
+
                   <Text style={styles.infoTitle}>
                     <Icon name="clock-o" size={23} color={'#5f695d'} />
                     營業時間

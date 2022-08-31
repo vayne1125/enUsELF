@@ -77,7 +77,7 @@ const ItineraryHome = ({ navigation, route }) => {
   //這邊存資料
   const navToBack = () => {
     console.log("goback");
-    navigation.goBack();
+   // navigation.goBack();
   }
   const pressOk = () =>{
     setModalVisibleForName(true);
