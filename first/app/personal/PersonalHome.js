@@ -53,18 +53,21 @@ const PersonalHome = ({navigation}) => {
             {/*內容*/}
             <View style={styles.data}>
                 <Text style={styles.text}>{name} </Text>
-                {/*<Text style={styles.text}>{mail} </Text>*/}
             </View>
             <View style={{flex:0.15}}></View>
             <View style={{flex:0.6}}>
                 <View style={styles.buttonContainer}>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("Collect", user);}}>
+                        <Text style={styles.editText}>收藏</Text>
+                    </TouchableOpacity>
+                </View><View style={styles.buttonContainer}>
                     <TouchableOpacity onPress={() => {navigation.navigate("PersonalFile",{name, mail, pass});}}>
                         <Text style={styles.editText}>編輯個人檔案</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity /*onPress={showok}*/>
-                        <Text style={styles.editText}>收藏</Text>
+                    <TouchableOpacity  onPress={() => {navigation.navigate("HistoryHome");}}>
+                        <Text style={styles.editText}>歷史行程</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.buttonContainer}>
