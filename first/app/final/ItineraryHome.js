@@ -76,8 +76,8 @@ const ItineraryHome = ({ navigation, route }) => {
   //todo:返回
   //這邊存資料
   const navToBack = () => {
-    console.log("goback");
-   // navigation.goBack();
+    //console.log("goback");
+    navigation.goBack();
   }
   const pressOk = () =>{
     setModalVisibleForName(true);
@@ -312,6 +312,7 @@ const ItineraryHome = ({ navigation, route }) => {
                 );
                 setModalVisible(!modalVisible);
                 setModalEntry({
+                  date: marker.date,
                   id: marker.id,
                   type:marker.type,
                   name: marker.name,
