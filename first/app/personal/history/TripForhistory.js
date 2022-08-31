@@ -25,7 +25,7 @@ const TripForhistory =({route}) =>{
         <TripTop name={trip.name} />
       </View>
         <View style={styles.items}>
-              <Tripitems items={trip.site}/>
+              <Tripitems items={trip}/>
         </View>
     </View>
   );

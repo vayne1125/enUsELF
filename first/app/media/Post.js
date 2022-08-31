@@ -37,12 +37,13 @@ const Post = ({navigation, route}) => {
 console.log(user);
     const users = firestore().collection('users').doc(user.uid);
     const [image, setImage] = useState(null);
-   
     const [uploading, setUploading] = useState(false);
     //const [transferred, setTransferred] = useState(0);
     const [post, setPost] = useState(null);
+    const [trip,setTrip]=useState([]);
     
 console.log('!: ',users);
+//選照片
     const selectImage = () => {
         const options = {
           maxWidth: 2000,
@@ -65,7 +66,7 @@ console.log('!: ',users);
           console.log('user name=',user.mail);
         });
       };
-
+//發文
       const SubmitPost = async ()=>{
         const imageUrl=await uploadImage();//等他做完我才跑
           console.log('imageUrl:',imageUrl);
@@ -89,7 +90,7 @@ console.log('!: ',users);
         });
         DeviceEventEmitter.emit('postSend');
       }
-    
+ //上傳照片   
       const uploadImage = async () => {
         console.log(image);
         if(image==null){return null;}
@@ -126,6 +127,11 @@ console.log('!: ',users);
        }
       
       };
+//選行程
+    const ChooseTrip =()=>{
+      navigation.navigate("ChooseTrip",trip);
+    }
+
 
     return (
       
@@ -201,9 +207,7 @@ console.log('!: ',users);
               <View style={styles.buticonContainer2}>
               {/*旅遊行程表*/}
               <TouchableOpacity
-                /*onPress={() => {
-                  navigation.goBack();
-                }}*/
+                 onPress={ChooseTrip}
                 style={{flex: 1}}>
                 <Icon3
                     name="luggage"

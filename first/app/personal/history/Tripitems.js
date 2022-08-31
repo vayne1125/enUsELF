@@ -28,32 +28,52 @@ const width = Dimensions.get('screen').width/2.2;
 
 const Tripitems = (items) => {
   const sites=items.items;
+  console.log('sites ',sites);
   const data=[];
   useEffect(()=>{
-   
-        (sites).map((param)=>{
-          if(param.type === "food"){
-            data.push(Food[param.id]);
-          }else if(param.type === "nature"){
-            data.push(Nature[param.id]);
-          }else if(param.type === "kol"){
-            data.push(KOL[param.id]);
-          }else if(param.type === "monuments"){
-            data.push(Monuments[param.id]);
-          }else if(param.type === "hotel"){
-            data.push(Hotel[param.id]);
-          }else if(param.type === "hol"){
-            data.push(Holplace[param.id]);
-          }else if(param.type === "hot"){
-            data.push(Hotplace[param.id]);
-          }else if(param.type === "shop"){
-            data.push(Shopplace[param.id]);
-          }
-        })
-      })
+      if(sites.desSite.type === "food"){
+      data.push(Food[sites.desSite.id]);
+    }else if(sites.desSite.type === "nature"){
+      data.push(Nature[sites.desSite.id]);
+    }else if(sites.desSite.type === "kol"){
+      data.push(KOL[sites.desSite.id]);
+    }else if(sites.desSite.type === "monuments"){
+      data.push(Monuments[sites.desSite.id]);
+    }else if(sites.desSite.type === "hotel"){
+      data.push(Hotel[sites.desSite.id]);
+    }else if(sites.desSite.type === "hol"){
+      data.push(Holplace[sites.desSite.id]);
+    }else if(sites.desSite.type === "hot"){
+      data.push(Hotplace[sites.desSite.id]);
+    }else if(sites.desSite.type === "shop"){
+      data.push(Shopplace[sites.desSite.id]);
+    }
+    console.log('herse11 ',sites.site);
+    (sites.site).map((param)=>{
+      if(param.type === "food"){
+        data.push(Food[param.id]);
+      }else if(param.type === "nature"){
+        data.push(Nature[param.id]);
+      }else if(param.type === "kol"){
+        data.push(KOL[param.id]);
+      }else if(param.type === "monuments"){
+        data.push(Monuments[param.id]);
+      }else if(param.type === "hotel"){
+        data.push(Hotel[param.id]);
+      }else if(param.type === "hol"){
+        data.push(Holplace[param.id]);
+      }else if(param.type === "hot"){
+        data.push(Hotplace[param.id]);
+      }else if(param.type === "shop"){
+        data.push(Shopplace[param.id]);
+      }
+    })
+    console.log('data ',data);
+  },[]);
   //const list
   const Card = ({site}) => {
-    const s=site.type+(site.id.toString());
+    console.log('212 ',site);
+    //const s=site.type+(site.id.toString());
         return (
             <View style={styles.card}>
                 <View style={styles.boxContainer}>

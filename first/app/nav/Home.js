@@ -26,6 +26,7 @@ import HistoryHome from '../personal/history/HistoryHome';
 import TripForhistory from '../personal/history/TripForhistory';
 import ItineraryHome from '../final/ItineraryHome'
 import PersonalHome from '../personal/PersonalHome';
+import ChooseTrip from '../media/choose/ChooseTrip';
 const Stack=createStackNavigator();
 
 export default class Home extends Component {
@@ -42,6 +43,7 @@ export default class Home extends Component {
             <Stack.Screen name="TripForhistory" component={TripForhistory}/>
             <Stack.Screen name="ItineraryHome" component={ItineraryHome}/>
             <Stack.Screen name="PersonalHome" component={PersonalHome}/>
+            <Stack.Screen name="ChooseTrip" component={ChooseTrip}/>
         </Stack.Navigator>
     );
   }
