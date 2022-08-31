@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import  { useState,useContext} from 'react';
+import  { useState,useContext,useEffect} from 'react';
 import {
   View,
   Text,
@@ -40,9 +40,22 @@ console.log(user);
     const [uploading, setUploading] = useState(false);
     //const [transferred, setTransferred] = useState(0);
     const [post, setPost] = useState(null);
-    const [trip,setTrip]=useState([]);
-    
-console.log('!: ',users);
+    const [trip,setTrip]=useState(null);
+console.log('o o o  ',trip);
+//console.log('!: ',users);
+/*useEffect(() => {
+  setTrip([]);
+},[]);*/
+//get shoosen trip
+  useEffect(() => {
+    const listen = DeviceEventEmitter
+    .addListener('addSchedule',(item) => {
+      setTrip(item);
+      console.log('teip ',item);
+      console.log('teip2 ',trip);
+    });
+    return () => listen.remove();
+  },[]);
 //選照片
     const selectImage = () => {
         const options = {
@@ -79,6 +92,7 @@ console.log('!: ',users);
           post:post,
           postImg:imageUrl,
           postTime:firestore.Timestamp.fromDate(new Date()),
+          Trip:trip,
           //coomments:null,
         }).then(()=>{
           console.log('Post add !');
@@ -129,7 +143,7 @@ console.log('!: ',users);
       };
 //選行程
     const ChooseTrip =()=>{
-      navigation.navigate("ChooseTrip",trip);
+      navigation.navigate("ChooseTrip");
     }
 
 
@@ -176,7 +190,10 @@ console.log('!: ',users);
           <View style={styles.iconContainer}>
             <Icons name={'person-circle-outline'} size={45} />
           </View>
+          <View style={{flexDirection: "column",}}>
             <Text style={styles.nameStyle}>{userdata.name}</Text>
+            {(trip) ? <Text style={styles.tripStyle}>已匯入行程{trip.name}</Text> :null }
+          </View>
         </View>
         <ScrollView style={styles.contentContainer}> 
             {image != null ? <Image source={{uri: image.uri}} style={{  height: 300,width:width}} /> : null}
@@ -224,6 +241,14 @@ console.log('!: ',users);
 
 //button一定要有title
 const styles = StyleSheet.create({
+//trip
+tripStyle:{
+  color:"2f2f2f",
+  left:20,
+  fontSize:14,
+},
+
+//post
   topbar: {
     backgroundColor: '#e2e2e2',//'#F2F2F2',
     //#5f695d',

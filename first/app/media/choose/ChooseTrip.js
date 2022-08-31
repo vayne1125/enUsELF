@@ -9,6 +9,7 @@ import {
   Button,
   Modal,
   TouchableOpacity,
+  DeviceEventEmitter,
 } from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
@@ -21,14 +22,23 @@ import firestore from '@react-native-firebase/firestore';
 //import Card from './Card';
 import ChooseTripTop from './ChooseTripTop';
 import ChooseTripCard from './ChooseTripCard';
-const width = Dimensions.get('screen').width;
+import Notice from '../../theme/Notice';
 
-const data = [
-    {tripname:"我與伸蓉的蜜月之旅"},
-    {tripname:"嘿嘿trip"},
-    {tripname:"pupupupupu"}]
-  
+const width = Dimensions.get('screen').width;
+const initialState = {
+  id: {},
+  name: {},
+  address: {},
+  city: {},
+  region: {},
+  info: {},
+  time: {},
+};
+
 const ChooseTrip = () => {
+  const [noticeVisible, setNoticeVisible] = useState(false);
+  const [noticeEntry, setNoticeEntry] = useState(initialState);
+
   const navigation = useNavigation();
   const {user, logout} = useContext(AuthContext);
   const [trip,setTrip]=useState(null);
@@ -86,7 +96,16 @@ const ChooseTrip = () => {
       <View style={styles.topbar}>
        <ChooseTripTop/>
       </View>
-
+       {/*通知視窗-------------------------------------------------------------------------------*/}
+       <Notice
+        entry={noticeEntry} //傳進去的資料參數
+        noticeVisible={noticeVisible} //可不可見
+        onClose={() => {
+          setNoticeVisible(false);
+        }} //關閉函式
+      />
+      {/*通知視窗-------------------------------------------------------------------------------*/}
+      
       {/*內容*/}
       <FlatList
         //columnWrapperStyle={{justifyContent: 'space-between'}}
@@ -104,12 +123,19 @@ const ChooseTrip = () => {
           onPress1={() => {
             //todo從這裡跳轉去清單
             //this.props.navigation.navigate('TripForhistory' , item);
-            //console.log("顯示清單1 ",item);
+            console.log("choose ",item);
             navigation.navigate("TripForhistory",item);            
             //console.log("顯示清單2 ",item);
           }}
           onPress2={() => {
             navToMap(item);
+            //console.log("顯示地圖");
+          }}
+          onPress3={() => {
+            setNoticeVisible(true);
+            DeviceEventEmitter.emit('addSchedule',item);
+            console.log("addSchedule ",item);
+            navigation.goBack();  
             //console.log("顯示地圖");
           }}
         />}

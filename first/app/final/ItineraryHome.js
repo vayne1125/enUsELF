@@ -59,7 +59,7 @@ const ItineraryHome = ({ navigation, route }) => {
     //console.log('size= ',size);
 
     const users = firestore().collection('users').doc(user.uid);
-    users.collection('trip').doc(tripname)
+    users.collection('trip').doc()
     .set({
         name: tripname,
         origin: route.params.origin,

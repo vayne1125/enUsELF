@@ -41,12 +41,8 @@ const Card = ({navigation,post,onDelete}) => {
     await view.collection('list').get()
     .then((querySnapshot)=>{
       querySnapshot.forEach(doc=>{
-          const {name, city,id, place_id, region,type} = doc.data();
+          const {id, place_id,type} = doc.data();
           list.push({
-              name: name,
-              city: city,
-              region: region,
-              city:city,
               place_od:place_id,
               type:type,
               id:id,

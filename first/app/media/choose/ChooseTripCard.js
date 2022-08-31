@@ -9,7 +9,6 @@ import {
   Button,
   Modal,
   TouchableOpacity,
-  DeviceEventEmitter,
 } from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
@@ -23,9 +22,11 @@ import firestore from '@react-native-firebase/firestore';
 
 const width = Dimensions.get('screen').width;
 //const user = auth().currentUser;
+
 export default class ChooseTrip extends PureComponent  {
-  render() {
-    const trip = this.props.trip;
+render() {
+//const navigation = useNavigation();
+const trip = this.props.trip;
     console.log('tripname  ',trip);
     return (
       <View style={styles.card}>
@@ -37,14 +38,14 @@ export default class ChooseTrip extends PureComponent  {
             </Text>
           </View>
           <View style={styles.info2}>
-          <View style={styles.buttonContainer2}>
+          <View style={styles.buttonContainer}>
             <TouchableOpacity
               onPress={() => {
                 //this.props.navigation.navigate("TripForhistory",trip);
                 this.props.onPress1();
               }}
               style={{flex: 2}}>
-              <Text style={styles.buttonText2}>景點資訊</Text>
+              <Text style={styles.buttonText}>景點資訊</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.buttonContainer}>
@@ -55,6 +56,15 @@ export default class ChooseTrip extends PureComponent  {
               }}
               style={{flex: 1}}>
               <Text style={styles.buttonText}>地圖顯示</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.onPress3();
+              }}
+              style={{flex: 2}}>
+              <Text style={styles.buttonText}>匯入行程</Text>
             </TouchableOpacity>
           </View>
           </View>
@@ -70,6 +80,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2F2F2',
     flex: 2,
   },
+  info2:{ flexDirection: 'row',flex:0.5},
   card: {
     height: 100,
     backgroundColor: '#ffffff',
@@ -94,13 +105,14 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: '#BEBEBE', //較深黃
-    width: 120,
+    width: 115,
     alignSelf: 'flex-end',
-    left: 135,
+   // left: 135,
+     margin:5,
     bottom: 4,
     borderRadius: 25,
     height: 32,
-    position: 'absolute',
+    //position: 'absolute',
     //flexDirection: 'row',
   },
   buttonText: {
@@ -127,6 +139,16 @@ const styles = StyleSheet.create({
     top: 6,
     letterSpacing: 10,
     left: 7,
+  },
+  buttonContainer3: {
+    position: 'absolute',
+    backgroundColor: '#CEFFCE', 
+    width: 120,
+    alignSelf: 'flex-end',
+    left:200,
+    bottom: 4,
+    borderRadius: 25,
+    height: 32,
   },
   nameStyle: {
     //alignSelf: 'center',

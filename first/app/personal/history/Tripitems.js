@@ -28,7 +28,7 @@ const width = Dimensions.get('screen').width/2.2;
 
 const Tripitems = (items) => {
   const sites=items.items;
-  //console.log('sites ',sites);
+  console.log('sites ',sites.desSite);
   const data=[];
   useEffect(()=>{
       if(sites.desSite.type === "food"){
