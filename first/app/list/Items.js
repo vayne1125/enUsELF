@@ -61,9 +61,9 @@ const Items = () => {
                             var data;
                             if(type === "food") data = Food[id];
                             else if(type === "nature") data = Nature[id];
-                            else if(param.type === "kol") data = KOL[id];
-                            else if(param.type === "monuments") data = Monuments[id];
-                            else if(param.type === "hotel") data = Hotel[id];
+                            else if(type === "kol") data = KOL[id];
+                            else if(type === "monuments") data = Monuments[id];
+                            else if(type === "hotel") data = Hotel[id];
                             list.push({
                                 name: data.name,
                                 city: data.city,
