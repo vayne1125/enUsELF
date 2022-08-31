@@ -20,7 +20,16 @@ const ResultTop = () => {
   const navigation = useNavigation();
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={()=>{navigation.navigate("PersonalHome");}} style={{flex:1,}}>
+        <TouchableOpacity onPress={()=>{
+    navigation.navigate("Home",{
+    screen: 'Nav',
+    params: {
+      screen: 'Personal',
+      params: {
+        screen: 'PersonalHome',
+      },
+    },
+  },);}} style={{flex:1,}}>
         <View style={styles.iconContainer2}>
           <Icons
             name="chevron-back-circle-outline"

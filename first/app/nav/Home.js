@@ -21,7 +21,7 @@ import Post from '../media/Post';
 import Nav from './Nav';
 import List from '../list/List';
 import PersonalFile from '../personal/PersonalFile';
-import Collect from '../personal/collect/Collect';
+import Collect from '../personal/Collect/Collect';
 import HistoryHome from '../personal/history/HistoryHome';
 import TripForhistory from '../personal/history/TripForhistory';
 import ItineraryHome from '../final/ItineraryHome'
@@ -42,7 +42,7 @@ export default class Home extends Component {
             <Stack.Screen name="HistoryHome" component={HistoryHome}/>
             <Stack.Screen name="TripForhistory" component={TripForhistory}/>
             <Stack.Screen name="ItineraryHome" component={ItineraryHome}/>
-            <Stack.Screen name="PersonalHome" component={PersonalHome}/>
+            {/* <Stack.Screen name="PersonalHome" component={PersonalHome}/> */}
             <Stack.Screen name="ChooseTrip" component={ChooseTrip}/>
         </Stack.Navigator>
     );
