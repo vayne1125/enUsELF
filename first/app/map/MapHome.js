@@ -56,16 +56,24 @@ const MapHome = ({ navigation, route }) => {
   const onPressHandlerForComlete = () => {
     // console.log("距離: ", Math.sqrt((origin.latitude - destination.latitude) * (origin.latitude - destination.latitude) + (origin.longitude - destination.longitude) * (origin.longitude - destination.longitude)));
     var rt = [];
-    for(i = 0;i<mainRoute.length;i++){
-      if(destination.latitude == mainRoute[i].lat && destination.longitude == mainRoute[i].lng){
-        continue;
+    var desSite;
+    var ori = origin;
+    (mainRoute).map((place)=>{
+      if(destination.latitude == place.lat){
+        desSite = {
+          place_id: place.place_id,
+          id: place.id,
+          type: place.type
+        };
+        console.log("印出: ",desSite);
+      }else{
+        rt.push({
+          place_id: place.place_id,
+          id: place.id,
+          type: place.type
+        });
       }
-      rt.push({
-        place_id: mainRoute[i].place_id,
-        id: mainRoute[i].id,
-        type: mainRoute[i].type
-      });
-    }
+    })
     endData.map((i)=>{
       rt.push({
         place_id: i.place_id,
@@ -75,10 +83,12 @@ const MapHome = ({ navigation, route }) => {
     })
     //console.log("跳轉");
     //下面註解是跳轉
+    //console.log("desSite: ",desSite);
+    //console.log("site: ",rt);
     navigation.navigate("ItineraryHome", {
       tripname:"行程表",
-      origin:origin,
-      desSite:desSite,
+      origin: ori,
+      desSite: desSite,
       site:rt,
       from:"map",
     });
@@ -110,7 +120,7 @@ const MapHome = ({ navigation, route }) => {
   const mySet = new Set();
   //找距離
   const getDis = (pos, place) => {
-    rt = (pos.lat - place.lat) * (pos.lat - place.lat) + (pos.lng - place.lng) * (pos.lng - place.lng);
+    var rt = (pos.lat - place.lat) * (pos.lat - place.lat) + (pos.lng - place.lng) * (pos.lng - place.lng);
     return Math.sqrt(rt)
   }
   //算出附近的點(範圍20km內) 1 -> 111km  0.1 -> 11km
@@ -144,7 +154,7 @@ const MapHome = ({ navigation, route }) => {
     setShopData(() => {
       var tp = [];
       array.map((pos) => {
-        for (i = 0; i < Shopplace.length; i++) {
+        for (var i = 0; i < Shopplace.length; i++) {
           if (mySet.has(Shopplace[i].place_id)) continue;
           if (getDis(pos, Shopplace[i].location) <= 0.2) {
             tp.push(Shopplace[i]);
@@ -200,24 +210,13 @@ const MapHome = ({ navigation, route }) => {
       for (var i = 0; i < mainRoute.length; i++) {
         var nowDis = getDis({ lat: origin.latitude, lng: origin.longitude }, mainRoute[i]);
         if (nowDis > maxDis) {
-          ////console.log("in");
+          //console.log("in");
           des = { latitude: mainRoute[i].lat, longitude: mainRoute[i].lng };
           maxDis = nowDis;
         }
       }
       return des;
     });
-    setDesSite(()=>{
-      for(var i = 0;i<mainRoute.length;i++){
-        if(destination.latitude == mainRoute[i].lat && destination.longitude == mainRoute[i].lng){
-          return {
-            place_id: mainRoute[i].place_id,
-            id: mainRoute[i].id,
-            type: mainRoute[i].type
-          }
-        }
-      }
-    })
   }, [origin,mainRoute])
   
   useEffect(()=>{

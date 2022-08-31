@@ -22,11 +22,6 @@ import Card from './Card';
 import HistoryTop from './HistoryTop';
 //import Card from './Card';
 const width = Dimensions.get('screen').width;
-
-const data = [
-    {tripname:"我與伸蓉的蜜月之旅"},
-    {tripname:"嘿嘿trip"},
-    {tripname:"pupupupupu"}]
   
 const HistoryHome = () => {
   const navigation = useNavigation();
@@ -104,7 +99,7 @@ const HistoryHome = () => {
           onPress1={() => {
             //todo從這裡跳轉去清單
             //this.props.navigation.navigate('TripForhistory' , item);
-            //console.log("顯示清單1 ",item);
+            console.log("顯示清單1 ",item);
             navigation.navigate("TripForhistory",item);            
             //console.log("顯示清單2 ",item);
           }}

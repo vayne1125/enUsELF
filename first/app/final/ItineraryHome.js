@@ -47,7 +47,7 @@ const ItineraryHome = ({ navigation, route }) => {
   //伸蓉
   const navToHistory = (tripname) =>{
     setModalVisibleForName(false);
-    console.log("his");
+    //console.log("his");
         firestore()
         .collection('users')
         .doc(user.uid)
@@ -56,7 +56,7 @@ const ItineraryHome = ({ navigation, route }) => {
         .then((querySnapshot)=>{
         setSize(querySnapshot.size);
           })
-    console.log('size= ',size);
+    //console.log('size= ',size);
 
     const users = firestore().collection('users').doc(user.uid);
     users.collection('trip').doc(tripname)
@@ -124,14 +124,14 @@ const ItineraryHome = ({ navigation, route }) => {
       } else {
         tp = 0.4;
       }
-      //console.log("des: ",destination);
+      //console.log("desInfinal: ",destination);
       //console.log("l: ",longestDis,"   ,tp = ",tp);
-      console.log({
+      /*console.log({
         latitude: (destination.lat + origin.latitude) / 2.0,
         longitude: (destination.lng + origin.longitude) / 2.0,
         latitudeDelta: tp, //數字越小 地圖道路越大
         longitudeDelta: 0,
-      });
+      });*/
       return {
         latitude: (destination.lat + origin.latitude) / 2.0,
         longitude: (destination.lng + origin.longitude) / 2.0,
@@ -188,7 +188,7 @@ const ItineraryHome = ({ navigation, route }) => {
           data.push({latitude: Shopplace[param.id].location.lat,longitude: Shopplace[param.id].location.lng});
         }
       })
-      console.log("data: ",data);
+      //console.log("data: ",data);
       return data;
     })
 
@@ -312,7 +312,6 @@ const ItineraryHome = ({ navigation, route }) => {
                 );
                 setModalVisible(!modalVisible);
                 setModalEntry({
-                  date: marker.date,
                   id: marker.id,
                   type:marker.type,
                   name: marker.name,

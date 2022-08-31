@@ -28,7 +28,7 @@ const width = Dimensions.get('screen').width/2.2;
 
 const Tripitems = (items) => {
   const sites=items.items;
-  console.log('sites ',sites);
+  //console.log('sites ',sites);
   const data=[];
   useEffect(()=>{
       if(sites.desSite.type === "food"){
@@ -48,7 +48,7 @@ const Tripitems = (items) => {
     }else if(sites.desSite.type === "shop"){
       data.push(Shopplace[sites.desSite.id]);
     }
-    console.log('herse11 ',sites.site);
+    //console.log('herse11 ',sites.site);
     (sites.site).map((param)=>{
       if(param.type === "food"){
         data.push(Food[param.id]);
@@ -68,7 +68,7 @@ const Tripitems = (items) => {
         data.push(Shopplace[param.id]);
       }
     })
-    console.log('data ',data);
+    //console.log('data ',data);
   },[]);
   //const list
   const Card = ({site}) => {
