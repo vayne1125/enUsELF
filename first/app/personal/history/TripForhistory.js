@@ -17,8 +17,8 @@ const width = Dimensions.get('screen').width;
 
 const TripForhistory =({route}) =>{
   const trip=route.params;
-  console.log('look here1 ',route.params);
-  console.log('look here1 ',trip.name);
+  // console.log('look here1 ',route.params);
+  // console.log('look here1 ',trip.name);
   return (
     <View style={styles.container}>
       <View style={styles.topbar}> 

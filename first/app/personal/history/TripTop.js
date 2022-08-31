@@ -17,7 +17,7 @@ import Icons from 'react-native-vector-icons/Entypo';
 
 const TripTop = (name) => {
   const navigation = useNavigation();
-  console.log(name);
+  //console.log(name);
   const tripname = name.name;
   return (
     <View style={styles.container}>

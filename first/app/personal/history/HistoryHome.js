@@ -53,26 +53,31 @@ const HistoryHome = () => {
                   site,
                   });
                 })
-                console.log('temp ',temp);
+                //console.log('temp ',temp);
             })
             }catch(e){
-              console.log(e);
+              //console.log(e);
           };
           setTrip(temp);
           //嘉羽
-          console.log('here temp',temp);
-          console.log('here trip',trip);
+          //console.log('here temp',temp);
+          //console.log('here trip',trip);
       }
 
-useEffect(()=>{
-          fetchTrip();
+    useEffect(()=>{
+      fetchTrip();
     },[]);
 
 
-    //todo: 對資料庫的資料作處理
-    useEffect(()=>{
-
-    },[])
+    const navToMap = (data) =>{
+      navigation.navigate("ItineraryHome", {
+        tripname:data.name,
+        origin:data.origin,
+        desSite:data.desSite,
+        site:data.site,
+        from:"history",
+      });
+    }
 
 
   return (
@@ -99,13 +104,13 @@ useEffect(()=>{
           onPress1={() => {
             //todo從這裡跳轉去清單
             //this.props.navigation.navigate('TripForhistory' , item);
-            console.log("顯示清單1 ",item);
+            //console.log("顯示清單1 ",item);
             navigation.navigate("TripForhistory",item);            
-            console.log("顯示清單2 ",item);
+            //console.log("顯示清單2 ",item);
           }}
           onPress2={() => {
-            //嘉羽 todo從這裡跳轉去地圖
-            console.log("顯示地圖");
+            navToMap(item);
+            //console.log("顯示地圖");
           }}
         />}
         >

@@ -24,6 +24,8 @@ import PersonalFile from '../personal/PersonalFile';
 import Collect from '../personal/collect/Collect';
 import HistoryHome from '../personal/history/HistoryHome';
 import TripForhistory from '../personal/history/TripForhistory';
+import ItineraryHome from '../final/ItineraryHome'
+import PersonalHome from '../personal/PersonalHome';
 const Stack=createStackNavigator();
 
 export default class Home extends Component {
@@ -38,6 +40,8 @@ export default class Home extends Component {
             <Stack.Screen name="Collect" component={Collect}/>
             <Stack.Screen name="HistoryHome" component={HistoryHome}/>
             <Stack.Screen name="TripForhistory" component={TripForhistory}/>
+            <Stack.Screen name="ItineraryHome" component={ItineraryHome}/>
+            <Stack.Screen name="PersonalHome" component={PersonalHome}/>
         </Stack.Navigator>
     );
   }
