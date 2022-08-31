@@ -93,11 +93,7 @@ const ListBottom = () => {
                 <Text style={styles.OkText}>完成</Text> 
             </View>:
             <View style={styles.touchContainer}>
-                <TouchableOpacity
-                onPress={()=>{
-                    console.log('press');
-                    DeviceEventEmitter.emit('gotomap');
-                }}>
+                <TouchableOpacity onPress={()=>{DeviceEventEmitter.emit('gotomap')}}>
                     <Text style={styles.OkText}>完成</Text> 
                 </TouchableOpacity>
             </View>

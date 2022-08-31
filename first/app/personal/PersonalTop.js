@@ -22,7 +22,7 @@ const PersonalTop = () => {
       <Text style={styles.textStyle}>個人設置</Text>
       <TouchableOpacity
         onPress={() => {
-          navigation.goBack();
+          navigation.navigate('List')
         }}
         style={{flex: 1}}>
         <View style={styles.iconContainer}>

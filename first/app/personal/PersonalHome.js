@@ -8,26 +8,36 @@ import {
     Image,
     TouchableOpacity,
     DeviceEventEmitter,
+    Settings,
+    ActivityIndicator,
 } from 'react-native';
-import PersonalTop from './PersonalTop';
 import Icons from 'react-native-vector-icons/Ionicons';
-import firestore from '@react-native-firebase/firestore'
+import firestore from '@react-native-firebase/firestore';
+import { ImagePicker }from 'react-native-image-crop-picker';
+
+import PersonalTop from './PersonalTop';
 import { AuthContext } from '../routes/AutoProvider';
 import { setGestureState } from 'react-native-reanimated/lib/reanimated2/NativeMethods';
 
+const{ width,height } = Dimensions.get("window");
 const PersonalHome = ({navigation}) => {
+    
     const [name, setName] = useState("");
     const [mail, setMail] = useState("");
     const [pass, setPass] = useState("");
+    const [img, setImg] = useState("");
+    const [loading, setLoading] = useState(false);
     const {user, logout} = useContext(AuthContext);
     useEffect(() => {
         if(user){
+            setLoading(true);
             firestore().collection('users').doc(user.uid).get()
             .then(doc=>{
                 setName(doc.data().name);
                 setMail(doc.data().email);
                 setPass(doc.data().password);
-            });
+                setImg(doc.data().userImg);
+            }).then(()=>{setLoading(false)});
         }
     },[user]);
 
@@ -37,6 +47,7 @@ const PersonalHome = ({navigation}) => {
             console.log(update);
             setName(update.name);
             setPass(update.password);
+            setLoading(false);
         });
         return () => listen.remove();
     },[]);
@@ -47,20 +58,38 @@ const PersonalHome = ({navigation}) => {
             <View style={styles.topbar}>
                 <PersonalTop />
             </View>
-            <View style={styles.iconContainer}>
-                <Icons name={'person-circle-outline'} size={180} />
-            </View>
-            {/*內容*/}
-            <View style={styles.data}>
-                <Text style={styles.text}>{name} </Text>
-            </View>
-            <View style={{flex:0.15}}></View>
-            <View style={{flex:0.6}}>
+            {loading?
+            <View style={{justifyContent:'center',height:250}}>
+                <ActivityIndicator
+                    animating = {true}
+                    color = {'#BEBEBE'}
+                    size = {'large'}
+                />
+                <Text>loading</Text>
+            </View>:
+            <View style={{alignItems:'center',top:10}}>
+                <View style={styles.iconContainer}>
+                    <View style={{height:20, left:160}}>
+                        <TouchableOpacity onPress={()=>{}}>
+                            <Text style={{fontSize:15, top:5}}>編輯</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.img}>{img?
+                        <Image source={{url}} style={{size:100}}/>:
+                        <Icons name={'person-circle-outline'} size={160} />
+                    }</View>
+                </View>
+                <View style={{alignItems:"center"}}>
+                    <Text style={styles.text}>{name}</Text>
+                </View>
+            </View>}
+            <View style={{flex:0.7,top:10}}>
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity onPress={()=>{navigation.navigate("Collect", user);}}>
                         <Text style={styles.editText}>收藏</Text>
                     </TouchableOpacity>
-                </View><View style={styles.buttonContainer}>
+                </View>
+                <View style={styles.buttonContainer}>
                     <TouchableOpacity onPress={() => {navigation.navigate("PersonalFile",{name, mail, pass});}}>
                         <Text style={styles.editText}>編輯個人檔案</Text>
                     </TouchableOpacity>
@@ -81,34 +110,42 @@ const PersonalHome = ({navigation}) => {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        hight: '100%',
+        backgroundColor: '#F2F2F2',
+        alignContent:"center",
+        flex: 1,
+    },
     topbar: {
       backgroundColor: '#5f695d',
-      //flex:1,
       height: 63,
       borderBottomLeftRadius: 20,
       borderBottomRightRadius: 20,
-      //opacity: 0.9,
     },
     iconContainer:{
-        alignItems:"center",
+        height:200,
+        width:200,
+        backgroundColor:'white',
+        flexDirection:'column',
     },
-    container: {
-      hight: '100%',
-      backgroundColor: '#F2F2F2',
-      alignContent:"center",
-      flex: 1,
+    img:{
+        height:160,
+        width:160,
+        alignSelf: 'center',
     },
-    data:{
-      alignItems:"center",
+    imgchange:{
+        width:40,
+        height:20,
+        alignItems:'center',
     },
     text:{
-      fontSize:20,
-      top:5,
+        alignSelf:'center',
+        fontSize:20,
+        top:5,
     },
     buttonContainer: {
-      backgroundColor: '#DDDDDD', //較深黃
-      //backgroundColor: '#ffc56b',//較淺黃
-      flex: 0.3,
+      backgroundColor: '#DDDDDD',
+      flex: 0.25,
       width: 200,
       height: 20,
       alignSelf: 'center',

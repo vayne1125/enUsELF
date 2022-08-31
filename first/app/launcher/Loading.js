@@ -50,7 +50,7 @@ const Loading = () =>{
                 color = {'#BEBEBE'}
                 size = {'large'}
             />
-            <Text>驗證登入中，請稍後</Text>
+            <Text>loading</Text>
         </View>
     )
 }

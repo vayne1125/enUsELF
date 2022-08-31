@@ -2,6 +2,7 @@ package com.first;
 
 import android.app.Application;
 import android.content.Context;
+import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;

@@ -9,6 +9,7 @@ import {
     Alert,
     TouchableOpacity,
     DeviceEventEmitter,
+    ActivityIndicator,
   } from 'react-native';
 import Icons from 'react-native-vector-icons/Entypo';
 import { CheckBox } from '@rneui/themed';
@@ -31,9 +32,11 @@ const Items = () => {
     const {user} = useContext(AuthContext);
     const [sites, setSites] = useState([]);
     const [cnt, setCnt] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     useEffect(()=>{
         const Cnt = () => {
+            setLoading(true);
             var count = 0;
             if(user){
                 const users = firestore().collection('users').doc(user.uid);
@@ -53,6 +56,7 @@ const Items = () => {
             try{
                 const list=[];
                 if(user){
+                    setLoading(true);
                     const users = firestore().collection('users').doc(user.uid);
                     await users.collection('list').get()
                     .then((querySnapshot)=>{
@@ -73,12 +77,11 @@ const Items = () => {
                         })
                     })
                     setSites(list);
+                    setLoading(false);
                 }
                 DeviceEventEmitter.emit('items');
             }
-          catch(e){
-            console.log(e);
-          };
+          catch(e){console.log(e);};
         }
         fetchSites();
     },[cnt]);
@@ -194,16 +197,24 @@ const Items = () => {
 
     return (
         <View style={styles.container}>
+            {loading?
+            <View style={{justifyContent:'center',flex:1}}>
+                <ActivityIndicator
+                    animating = {true}
+                    color = {'#BEBEBE'}
+                    size = {'large'}
+                />
+            </View>:
             <FlatList
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={{
                 marginTop: 25,
                 paddingBottom: 80,
-            }}
-            numColumns={1}
-            data={sites}
-            renderItem={({item}) => <Card site={item} />}>     
-            </FlatList>
+                }}
+                numColumns={1}
+                data={sites}
+                renderItem={({item}) => <Card site={item} />}>     
+            </FlatList>}
         </View>
     );
 }
