@@ -54,17 +54,7 @@ const MapHome = ({ navigation, route }) => {
   const [desSite,setDesSite] = useState({}); //終點
 
   const onPressHandlerForComlete = () => {
-    //-----------------------------不重要的
-    // setHotData(ORI_DATA);
-    // setHolData(ORI_DATA);
-    // setShopData(ORI_DATA);
-    // setWaypoints(addWaypoint);
-    // console.log(addWaypoint);
-    // console.log(initRegion);
-    // console.log(endData);
-    // console.log(route.params);
     // console.log("距離: ", Math.sqrt((origin.latitude - destination.latitude) * (origin.latitude - destination.latitude) + (origin.longitude - destination.longitude) * (origin.longitude - destination.longitude)));
-    //-----------------------------
     var rt = [];
     for(i = 0;i<mainRoute.length;i++){
       if(destination.latitude == mainRoute[i].lat && destination.longitude == mainRoute[i].lng){
@@ -229,6 +219,7 @@ const MapHome = ({ navigation, route }) => {
       }
     })
   }, [origin,mainRoute])
+  
   useEffect(()=>{
     setWaypoints(() => {
       let way = [];

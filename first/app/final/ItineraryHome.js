@@ -45,7 +45,7 @@ const ItineraryHome = ({ navigation, route }) => {
   const {user, logout} = useContext(AuthContext);//user uid
 
   //伸蓉
-  const navToFinal = (tripname) =>{
+  const navToHistory = (tripname) =>{
     setModalVisibleForName(false);
     console.log("his");
         firestore()
@@ -70,12 +70,7 @@ const ItineraryHome = ({ navigation, route }) => {
     }).catch((error)=>{
         console.log('trip Failed!',error);
     });
-  }
-
-  //todo:跳去歷史介面
-  const navToHistory = () =>{
-    setModalVisibleForName(true);
-    //navigation.navigate("HistoryHome");
+    navigation.navigate("HistoryHome");
   }
 
   //todo:返回
@@ -83,7 +78,9 @@ const ItineraryHome = ({ navigation, route }) => {
   const navToBack = () => {
     console.log("goback");
    // navigation.goBack();
-
+  }
+  const pressOk = () =>{
+    setModalVisibleForName(true);
   }
 
   const getDis = (pos, place) => {
@@ -205,7 +202,7 @@ const ItineraryHome = ({ navigation, route }) => {
         modalVisible = {modalVisibleForName}
         size = {size}
         onClose = {() => { setModalVisibleForName(false); }}
-        completePress = { (tripname) => {navToFinal(tripname)}}
+        completePress = { (tripname) => {navToHistory(tripname)}}
       />
 
       {/*浮動視窗-------------------------------------------------------------------------------*/}
@@ -353,7 +350,7 @@ const ItineraryHome = ({ navigation, route }) => {
           style={styles.button}
           onPress={()=>{
             (route.params.from === "map")?
-            navToHistory():
+            pressOk():
             navToBack()
           }}
           underlayColor='#ddddd'
