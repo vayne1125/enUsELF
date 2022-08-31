@@ -1,4 +1,4 @@
-import React, {Component, useState, useContext} from 'react';
+import React, {Component, useState, useContext, useEffect} from 'react';
 import {
   View,
   Text,
@@ -31,7 +31,7 @@ const height = Dimensions.get('screen').height / 1.3;
 const Detail = ({entry, modalVisible, onClose}) => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(entry);
-  const { user } = useContext(AuthContext);
+
   const Stars = score => {
     var tp = parseFloat(score.starsNum);
     var starsIcon = [];
@@ -127,6 +127,7 @@ const Detail = ({entry, modalVisible, onClose}) => {
                 </View>
               </ScrollView>
             </View>
+            {
             <View style={styles.buttonContainer}>
               <TouchableOpacity
                 onPress={() => {
@@ -149,6 +150,7 @@ const Detail = ({entry, modalVisible, onClose}) => {
                 <Text style={styles.buttonText}>加入清單</Text>
               </TouchableOpacity>
             </View>
+            }
           </View>
         </View>
       </Modal>

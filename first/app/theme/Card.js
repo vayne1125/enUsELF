@@ -1,4 +1,4 @@
-import React, {Component, useState, PureComponent, useContext} from 'react';
+import React, {Component, useState, PureComponent, useEffect} from 'react';
 import {
   View,
   Text,
@@ -57,7 +57,39 @@ const Stars = score => {
       </View>
     );
 };
+
 export default class Card extends PureComponent  {
+    constructor(props) {
+        super(props)
+        this.state = {
+          name:this.props.sites.name,
+          uncheck:true,
+          user:null,
+        }
+    }
+    componentDidMount(){
+        const update = () =>{
+            const user = auth().currentUser;
+            if(user&& user.uid !== this.state.user){
+                this.setState({user:user.uid});
+                const users = firestore().collection('users').doc(user.uid);
+                users.collection('list').doc(this.state.name)
+                .get().then((data)=>{
+                    if(data.exists) this.setState({uncheck:false});
+                })
+            }
+        }
+        this.emitter = listen = DeviceEventEmitter
+        .addListener('delete',(name) => {
+            if(name && name === this.state.name){
+                this.setState({uncheck:true});
+            }
+        })
+        if(!this.state.user) update();
+    }
+    componentWillUnmount(){
+        this.emitter.remove();
+    }
   render() {
     const site = this.props.sites;
     return (
@@ -81,6 +113,7 @@ export default class Card extends PureComponent  {
               <Text style={styles.buttonText2}>詳細資訊</Text>
             </TouchableOpacity>
           </View>
+          {this.state.uncheck?
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               onPress={() => {
@@ -92,7 +125,7 @@ export default class Card extends PureComponent  {
                         type: site.type,
                         place_id: site.place_id,
                         check: false,
-                    })
+                    }).then(this.setState({uncheck:false}))
                     console.log(site.name);
                 }
                 this.props.onPress2(site);
@@ -100,7 +133,10 @@ export default class Card extends PureComponent  {
               style={{flex: 1}}>
               <Text style={styles.buttonText}>加入清單</Text>
             </TouchableOpacity>
-          </View>
+          </View>:
+          <View style={styles.viewContainer}>
+            <Text style={styles.viewText}>已選擇</Text>
+        </View>}
         </View>
       </View>
     );
@@ -185,6 +221,26 @@ const styles = StyleSheet.create({
     top: 6,
     letterSpacing: 10,
     left: 7,
+  },
+  viewContainer: {
+    backgroundColor: '#de9121', //較深黃
+    //backgroundColor: '#ffc56b',//較淺黃
+    //flex: 1,
+    width: 120,
+    alignSelf: 'flex-end',
+    right: 7,
+    bottom: 4,
+    borderRadius: 25,
+    height: 32,
+    //flexDirection: 'row',
+  },
+  viewText: {
+    fontWeight: '800',
+    fontSize: 16,
+    color: '#E3E3E3',
+    top: 6,
+    letterSpacing: 10,
+    alignSelf:'center',
   },
   buttonContainer2: {
     backgroundColor: '#E3E3E3', //較淺黃

@@ -56,7 +56,6 @@ const Items = () => {
             try{
                 const list=[];
                 if(user){
-                    setLoading(true);
                     const users = firestore().collection('users').doc(user.uid);
                     await users.collection('list').get()
                     .then((querySnapshot)=>{
@@ -95,9 +94,11 @@ const Items = () => {
                     text: '確認',
                     onPress: () => {
                         if(user){
+                            setLoading(true);
                             const users = firestore().collection('users').doc(user.uid);
                             users.collection('list').doc(name).delete().
                             then(() =>{
+                                DeviceEventEmitter.emit('delete', name);
                                 setCnt(cnt - 1);
                             })
                             .catch(error => {})
