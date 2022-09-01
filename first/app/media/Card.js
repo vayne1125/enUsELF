@@ -16,52 +16,77 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Iconcross from 'react-native-vector-icons/Entypo';
 import firestore from '@react-native-firebase/firestore';
-import MediaTop from './MediaTop';
 import {AuthContext} from '../routes/AutoProvider';
+import Hotplace from '../map/Hotplace'
+import Shopplace from '../map/Shopplace'
+import Holplace from '../map/Holplace'
+import Food from '../theme/Food'
+import Hotel from '../theme/Hotel'
+import KOL from '../theme/KOL'
+import Monuments from '../theme/Monuments'
+import Nature from '../theme/Nature'
 const width = Dimensions.get('screen').width - 20;
 
 const Card = ({navigation,post,onDelete}) => {
     const {user, logout} = useContext(AuthContext);
    // const [userData, setUserData] = useState(null);
-    const [userSchdule, setUserSchdule] = useState(null);
     const username=post.name;
+    const sites=post.Trip;
+    //const userSchdule=post.Trip;
     let timestamp = post.time;
-    console.log('time ',timestamp);
+    console.log('post1 ',post);
    // console.log('look ',username);
    //// console.log('user.uid= ',user.uid);
    // console.log('post.useid= ',post.userid);
    // console.log('sss =',post);
-
-  const fetchSchdule = async() =>{
-    try{
-    const list=[];
-    const view = firestore().collection('posts').doc(post.id);
-    //const check=false;
-   // console.log('這 ',post.id);
-    await view.collection('list').get()
-    .then((querySnapshot)=>{
-      querySnapshot.forEach(doc=>{
-          const {id, place_id,type} = doc.data();
-          list.push({
-              place_od:place_id,
-              type:type,
-              id:id,
-              check:false,
-        });
-      })
-    })
-    setUserSchdule(list);
-    //console.log('行程= ',list);
-   // console.log('行程2= ',userSchdule);
-
-    }catch(e){
-      console.log(e);
-    };
-  }
-
+  const [userSchdule, setUserSchdule] = useState([]);
+const data=[];
   useEffect(()=>{
-       fetchSchdule();
-  },[]); 
+    if(sites!=null){
+        if(sites.desSite.type === "food"){
+        data.push(Food[sites.desSite.id]);
+      }else if(sites.desSite.type === "nature"){
+        data.push(Nature[sites.desSite.id]);
+      }else if(sites.desSite.type === "kol"){
+        data.push(KOL[sites.desSite.id]);
+      }else if(sites.desSite.type === "monuments"){
+        data.push(Monuments[sites.desSite.id]);
+      }else if(sites.desSite.type === "hotel"){
+        data.push(Hotel[sites.desSite.id]);
+      }else if(sites.desSite.type === "hol"){
+        data.push(Holplace[sites.desSite.id]);
+      }else if(sites.desSite.type === "hot"){
+        data.push(Hotplace[sites.desSite.id]);
+      }else if(sites.desSite.type === "shop"){
+        data.push(Shopplace[sites.desSite.id]);
+      }
+      //console.log('herse11 ',sites.site);
+      (sites.site).map((param)=>{
+        if(param.type === "food"){
+          data.push(Food[param.id]);
+        }else if(param.type === "nature"){
+          data.push(Nature[param.id]);
+        }else if(param.type === "kol"){
+          data.push(KOL[param.id]);
+        }else if(param.type === "monuments"){
+          data.push(Monuments[param.id]);
+        }else if(param.type === "hotel"){
+          data.push(Hotel[param.id]);
+        }else if(param.type === "hol"){
+          data.push(Holplace[param.id]);
+        }else if(param.type === "hot"){
+          data.push(Hotplace[param.id]);
+        }else if(param.type === "shop"){
+          data.push(Shopplace[param.id]);
+        }
+      })
+    }
+    setUserSchdule(data);
+    console.log('data ',data);
+  },[]);
+  console.log('1user.uid ',user.uid);
+
+  console.log('1post.use ',post.userid);
        return (
          <View style={styles.card}>
            <View style={styles.nameContainer}>
@@ -96,7 +121,10 @@ const Card = ({navigation,post,onDelete}) => {
                onPress={() => {navigation.navigate('Schedule',{userSchdule:userSchdule,username:username});
                }}
                style={{flex: 1}}>
-               <Text style={styles.buttonText}>他的行程</Text>
+              {user.uid==post.userid?
+                <Text style={styles.buttonText}>我的行程</Text>
+                :<Text style={styles.buttonText}>他的行程</Text>
+             }
              </TouchableOpacity>
            </View>
          </View>
@@ -125,9 +153,6 @@ const Card = ({navigation,post,onDelete}) => {
           borderBottomWidth:3,
           //borderRightWidth:2,
           //borderStyle:'dashed',
-        },
-        deliconContainer:{
-          left :250,
         },
         mycard: {
           height: 50,
@@ -170,13 +195,7 @@ const Card = ({navigation,post,onDelete}) => {
           //position:'relative',
        
         },
-        nameStyle: {
-          alignSelf: 'center',
-          fontWeight: 'bold',
-          fontSize: 20,
-          color: '#5f695d',
-          left: 15,
-        },
+       
         nameContainer: {
           flexDirection: 'row',
           backgroundColor: '#D1DED7',
@@ -188,6 +207,20 @@ const Card = ({navigation,post,onDelete}) => {
         info: {
           left: 8,
           top: 5,
+          flex:1,
+        },
+        nameStyle: {
+          alignSelf: 'center',
+          fontWeight: 'bold',
+          fontSize: 20,
+          color: '#5f695d',
+          //left: 15,
+          flex:7,
+        },
+        deliconContainer:{
+          //position:'relate',
+          //left :200,
+          flex:1.25,
         },
         buttonContainer: {
           backgroundColor: '#fbb856',//較深黃

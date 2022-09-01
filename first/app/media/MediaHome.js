@@ -41,7 +41,7 @@ const MediaHome = ({navigation}) => {
         .then((querySnapshot)=>{
         //console.log('Total Posts:',querySnapshot.size);
         querySnapshot.forEach(doc=>{
-            const {userid,post,postImg,postTime,name}=doc.data();
+            const {userid,post,postImg,postTime,name,Trip}=doc.data();
             list.push({
               id:doc.id ,
               userid,
@@ -49,6 +49,7 @@ const MediaHome = ({navigation}) => {
               img: postImg,
               content: post,
               time:postTime,
+              Trip:Trip,
             });
           })
         })

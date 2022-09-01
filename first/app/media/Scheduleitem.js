@@ -18,12 +18,13 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/AntDesign';
 //import  CheckBox  from 'react-native-checkbox';
 //import CheckBox from './CheckBox'
-import Image_link from '../theme/Image';
 import { CheckBox } from '@rneui/themed';
 import { checkPluginState } from 'react-native-reanimated/lib/reanimated2/core';
 import {AuthContext} from '../routes/AutoProvider';
 import firestore from '@react-native-firebase/firestore';
-
+import Image_link from '../theme/Image';
+import Image_linkMap from '../map/Image';
+/*check id placeid type */
 const Scheduleitem = (userSchdule) => {
   const {user, logout} = useContext(AuthContext);
   const sites=userSchdule.userSchdule;
@@ -49,19 +50,15 @@ const Scheduleitem = (userSchdule) => {
         const users = firestore().collection('users').doc(user.uid);
         users.collection('list').doc(sites[i].name)
         .set({
-            name: sites[i].name,
-            city: sites[i].city,
-            region: sites[i].region,
-            check:sites[i].check,
+            check:false,
             id:sites[i].id,
-            place_id: sites[i].place_od,
+            place_id: sites[i].place_id,
             type: sites[i].type,
         }).then(()=>{
-            console.log('Post add !');
+            console.log('list add !');
             //Alert.alert("成功發布");
-            
           }).catch((error)=>{
-            console.log('Post Failed!',error);
+            console.log('list add Failed!',error);
           });
         }
       }
@@ -108,9 +105,13 @@ const Card = ({site}) => {
               />
               </View>
               <View style={styles.imageContainer}>
-                  {/*<Image style={{flex: 1, resizeMode: 'center'}} source={site.img} />*/}
-                  {<Image style={styles.image} source={Image_link[site.name]} />}
-              </View>
+              {
+               (site.type=== "hot" || site.type === "hol" || site.type === "shop")?
+                <Image style={styles.image} source={Image_linkMap[site.type+(site.id.toString())]} />:
+                <Image style={styles.image} source={Image_link[site.name]} />
+                
+                }
+                </View>
               <View style={{flex: 4,justifyContent:'space-around',padding:5,}}>
                   <View style={styles.textContainer}>
                       <Text style={styles.nameStyle}>{site.name}</Text>
@@ -122,9 +123,10 @@ const Card = ({site}) => {
           </View>
       );
 };
+
 return (
     <View style={styles.container}>
-        <FlatList
+        {<FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
             marginTop: 25,
@@ -133,7 +135,7 @@ return (
         numColumns={1}
         data={sites}
         renderItem={({item}) => <Card site={item} />}>     
-        </FlatList>
+      </FlatList>}
     </View>
 );
 };

@@ -20,12 +20,15 @@ import { parseMapToJSON } from "source-map-resolve";
 import {AuthContext} from '../routes/AutoProvider';
 import { useNavigation } from '@react-navigation/native';
 
-import Food from '../theme/Food'
-import Hotel from '../theme/Hotel'
-import KOL from '../theme/KOL'
-import Monuments from '../theme/Monuments'
-import Nature from '../theme/Nature'
 
+import Hotplace from '../../map/Hotplace'
+import Shopplace from '../../map/Shopplace'
+import Holplace from '../../map/Holplace'
+import Food from '../../theme/Food'
+import Hotel from '../../theme/Hotel'
+import KOL from '../../theme/KOL'
+import Monuments from '../../theme/Monuments'
+import Nature from '../../theme/Nature'
 const width = Dimensions.get('screen').width;
 
 const Items = () => {
@@ -67,6 +70,10 @@ const Items = () => {
                             else if(type === "kol") data = KOL[id];
                             else if(type === "monuments") data = Monuments[id];
                             else if(type === "hotel") data = Hotel[id];
+                            else if(type === "hol") data = hol[id];
+                            else if(type === "hot") data = hot[id];
+                            else if(type === "shop") data = shop[id];
+                          
                             list.push({
                                 name: data.name,
                                 city: data.city,
