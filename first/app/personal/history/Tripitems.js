@@ -32,7 +32,6 @@ const Tripitems = (items) => {
   const [data,setData] = useState([]);
   //const data=[];
   useEffect(()=>{
-
     setData(()=>{
       var rt = [];
       if(sites.desSite.type === "food"){

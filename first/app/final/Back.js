@@ -48,9 +48,9 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     //zIndex:3,
-    //position: 'absolute',
-    left: 10,
-    top: -Dimensions.get('window').height/2 + 93,
+    position: 'absolute',
+    left: -Dimensions.get('window').width/2 + 10,
+    top: -Dimensions.get('window').height/2 + 83,
     flex:1,
     backgroundColor: '#D1DED7',
     width: 40,

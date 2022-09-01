@@ -143,7 +143,7 @@ const ItineraryHome = ({ navigation, route }) => {
 
   useEffect(() => {
     setMarkers(() => {
-      var data = [];
+      const data = [];
       (route.params.site).map((param) => {
         if (param.type === "food") {
           data.push(Food[param.id]);
@@ -167,7 +167,7 @@ const ItineraryHome = ({ navigation, route }) => {
     })
 
     setWaypoints(() => {
-      var data = [];
+      const data = [];
       //console.log("route.params.site: ",route.params.site);
       (route.params.site).map((param) => {
         if (param.type === "food") {
@@ -342,7 +342,8 @@ const ItineraryHome = ({ navigation, route }) => {
           <View style={styles.topbar}>
         <ItineraryTop tripname = {tripname}></ItineraryTop>
       </View>
-      <Back style={styles.back} />
+      {(route.params.from === "map") && <Back style={styles.back} />}
+      <View style={styles.btnContainner}>
       <TouchableHighlight
           style={styles.button}
           onPress={()=>{
@@ -358,6 +359,7 @@ const ItineraryHome = ({ navigation, route }) => {
           <Text style={styles.text}>返回</Text>
           }
       </TouchableHighlight>
+      </View>
         </Callout>
 
     </View>
@@ -366,6 +368,7 @@ const ItineraryHome = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({
   callout:{
+    position:'absolute',
     flex: 1,
     flexDirection: "column"
   },
@@ -376,20 +379,28 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   mapStyle: {
-    //position: 'absolute',
+    position: 'absolute',
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
+  },
+  btnContainner:{
+    position: 'absolute',
+    top: Dimensions.get('window').height/2 - 60,
+    left: -60,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   topbar: {
     //zIndex: 3,
     backgroundColor: '#5f695d',
     //flex:1,
-    top:-(Dimensions.get('window').height/2)+73,
+    left:-Dimensions.get('window').width/2,
+    top:-Dimensions.get('window').height/2,
     height: 63,
     width:Dimensions.get('window').width,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    //position:'absolute',
+    position:'absolute',
     //opacity: 0.9,
   },
   markerCss: {
@@ -402,9 +413,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   button: {
-    //position: 'absolute',
-    top: Dimensions.get('window').height/2 - 100,
-    left: Dimensions.get('window').width / 2 - 60,
     backgroundColor: '#5f695d',
     width: 120,
     height: 40,
