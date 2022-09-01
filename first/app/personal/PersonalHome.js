@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
-import { ImagePicker }from 'react-native-image-crop-picker';
+import {ImagePicker} from 'react-native-image-crop-picker';
 
 import PersonalTop from './PersonalTop';
 import { AuthContext } from '../routes/AutoProvider';
@@ -51,7 +51,6 @@ const PersonalHome = ({navigation}) => {
         });
         return () => listen.remove();
     },[]);
-    
     return (
         <View style={styles.container}>
             {/*頂部*/}
@@ -65,7 +64,7 @@ const PersonalHome = ({navigation}) => {
                     color = {'#BEBEBE'}
                     size = {'large'}
                 />
-                <Text>loading</Text>
+                <Text style={{alignSelf:'center'}}>loading</Text>
             </View>:
             <View style={{alignItems:'center',top:10}}>
                 <View style={styles.iconContainer}>
@@ -75,7 +74,7 @@ const PersonalHome = ({navigation}) => {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.img}>{img?
-                        <Image source={{url}} style={{size:100}}/>:
+                        <Image source={{img}} style={{height:160,weight:160}}/>:
                         <Icons name={'person-circle-outline'} size={160} />
                     }</View>
                 </View>

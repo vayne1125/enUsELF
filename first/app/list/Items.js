@@ -21,14 +21,14 @@ import {AuthContext} from '../routes/AutoProvider';
 import { useNavigation } from '@react-navigation/native';
 
 
-import Hotplace from '../../map/Hotplace'
-import Shopplace from '../../map/Shopplace'
-import Holplace from '../../map/Holplace'
-import Food from '../../theme/Food'
-import Hotel from '../../theme/Hotel'
-import KOL from '../../theme/KOL'
-import Monuments from '../../theme/Monuments'
-import Nature from '../../theme/Nature'
+import Hotplace from '../map/Hotplace'
+import Shopplace from '../map/Shopplace'
+import Holplace from '../map/Holplace'
+import Food from '../theme/Food'
+import Hotel from '../theme/Hotel'
+import KOL from '../theme/KOL'
+import Monuments from '../theme/Monuments'
+import Nature from '../theme/Nature'
 const width = Dimensions.get('screen').width;
 
 const Items = () => {
