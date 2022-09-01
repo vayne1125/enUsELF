@@ -32,6 +32,7 @@ const MapHome = ({ navigation, route }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState(initialState);
   const [modalCanPress, setModalCanPress] = useState(true);
+  const [modalIsAdd, setModalIsAdd] = useState(true);
   //各式按鈕
   const [completePress, setCompletePress] = useState(false);
   const [hotPress, setHotPress] = useState(false);
@@ -50,23 +51,20 @@ const MapHome = ({ navigation, route }) => {
   const [destination, setDes] = useState({ latitude: 24.1365593, longitude: 120.6835935 });
   const [initRegion, setInitRegion] = useState({ latitude: 24.1365593, longitude: 120.6835935, latitudeDelta: 4, longitudeDelta: 0 });
   const [myLatitudeDelta, setMyLatitudeDelta] = useState(3.8); //地圖縮放程度的變數
-  
-  const [desSite,setDesSite] = useState({}); //終點
 
   const onPressHandlerForComlete = () => {
     // console.log("距離: ", Math.sqrt((origin.latitude - destination.latitude) * (origin.latitude - destination.latitude) + (origin.longitude - destination.longitude) * (origin.longitude - destination.longitude)));
     var rt = [];
     var desSite;
     var ori = origin;
-    (mainRoute).map((place)=>{
-      if(destination.latitude == place.lat){
+    (mainRoute).map((place) => {
+      if (destination.latitude == place.lat) {
         desSite = {
           place_id: place.place_id,
           id: place.id,
           type: place.type
         };
-        console.log("印出: ",desSite);
-      }else{
+      } else {
         rt.push({
           place_id: place.place_id,
           id: place.id,
@@ -74,7 +72,7 @@ const MapHome = ({ navigation, route }) => {
         });
       }
     })
-    endData.map((i)=>{
+    endData.map((i) => {
       rt.push({
         place_id: i.place_id,
         id: i.id,
@@ -86,11 +84,11 @@ const MapHome = ({ navigation, route }) => {
     //console.log("desSite: ",desSite);
     //console.log("site: ",rt);
     navigation.navigate("ItineraryHome", {
-      tripname:"行程表",
+      tripname: "行程表",
       origin: ori,
       desSite: desSite,
-      site:rt,
-      from:"map",
+      site: rt,
+      from: "map",
     });
   }
   const onPressHandlerForHot = () => {
@@ -101,6 +99,47 @@ const MapHome = ({ navigation, route }) => {
   }
   const onPressHandlerForHoliday = () => {
     setHolPress(!holPress); //打開
+  }
+  const addEndData = (data,isAdd) => {
+    var tp = {};
+    if(isAdd){
+    if (data.type === 'hot') {
+      for (var i = 0; i < hotData.length; i++) {
+        if (hotData[i].id === data.id) {
+          tp = hotData[i];
+          hotData.splice(i, 1);
+          break;
+        }
+      }
+    } else if (data.type === 'hol') {
+      for (var i = 0; i < holData.length; i++) {
+        if (holData[i].id === data.id) {
+          tp = holData[i];
+          holData.splice(i, 1);
+          break;
+        }
+      }
+    } else {
+      for (var i = 0; i < shopData.length; i++) {
+        if (shopData[i].id === data.id) {
+          tp = shopData[i];
+          shopData.splice(i, 1);
+          break;
+        }
+      }
+    }
+    endData.push(tp);
+  }else{
+    for (var i = 0; i < endData.length; i++) {
+      if (endData[i].id === data.id && endData[i].type === data.type) {
+        if(data.type === "hot") hotData.push(endData[i]);
+        else if(data.type === "hol") holData.push(endData[i]);
+        else if(data.type === "shop") shopData.push(endData[i]);
+        endData.splice(i, 1);
+        break;
+      }
+    }
+  }
   }
   //過濾導航線的點 最多抓20個點
   const getPositionArray = (array) => {
@@ -172,21 +211,23 @@ const MapHome = ({ navigation, route }) => {
   }
   useEffect(() => {
     //從theme的json抓取主路線資料
-    setMainRoute(()=>{           
+    setMainRoute(() => {
       var data = [];
-      (route.params).map((param)=>{
-        if(param.type === "food"){
-          data.push(Food[param.id]);
-        }else if(param.type === "nature"){
-          data.push(Nature[param.id]);
-        }else if(param.type === "kol"){
-          data.push(KOL[param.id]);
-        }else if(param.type === "monuments"){
-          data.push(Monuments[param.id]);
-        }else if(param.type === "hotel"){
-          data.push(Hotel[param.id]);
+      (route.params).map((param) => {
+        if (!mySet.has(param.place_id)) {
+          mySet.add(param.place_id);
+          if (param.type === "food") {
+            data.push(Food[param.id]);
+          } else if (param.type === "nature") {
+            data.push(Nature[param.id]);
+          } else if (param.type === "kol") {
+            data.push(KOL[param.id]);
+          } else if (param.type === "monuments") {
+            data.push(Monuments[param.id]);
+          } else if (param.type === "hotel") {
+            data.push(Hotel[param.id]);
+          }
         }
-        mySet.add(param.place_id); 
       })
       return data;
     })
@@ -203,7 +244,7 @@ const MapHome = ({ navigation, route }) => {
   //當主路線或是ori改變時，更新最遠點和中間點還有初始視野
   useEffect(() => {
     //console.log("ori ", origin);
-    setDes(() => { 
+    setDes(() => {
       let des = { latitude: 24.1365593, longitude: 120.6835935 };
       let maxDis = -1;
       //console.log("main :",mainRoute.length);
@@ -217,9 +258,9 @@ const MapHome = ({ navigation, route }) => {
       }
       return des;
     });
-  }, [origin,mainRoute])
-  
-  useEffect(()=>{
+  }, [origin, mainRoute])
+
+  useEffect(() => {
     setWaypoints(() => {
       let way = [];
       for (var i = 0; i < mainRoute.length; i++) {
@@ -235,9 +276,9 @@ const MapHome = ({ navigation, route }) => {
         tp = 3.8;
       } else if (longestDis >= 1.5) {
         tp = 2.8;
-      } else if(longestDis >= 1){
+      } else if (longestDis >= 1) {
         tp = 1.8;
-      }else if (longestDis >= 0.5) {
+      } else if (longestDis >= 0.5) {
         tp = 0.9;
       } else {
         tp = 0.4;
@@ -249,7 +290,7 @@ const MapHome = ({ navigation, route }) => {
         longitudeDelta: 0,
       }
     });
-  },[destination])
+  }, [destination])
 
   return (
     <View style={styles.container}>
@@ -259,38 +300,12 @@ const MapHome = ({ navigation, route }) => {
         entry={modalEntry}//傳進去的資料參數
         modalVisible={modalVisible}//可不可見
         onClose={() => { setModalVisible(false); }}//關閉函式
-        onPress1={(data) => {
+        onPress1={(data,isAdd) => {
+          addEndData(data,isAdd);
           //console.log(data);
-          var tp = {};
-          if (data.type === 'hot') {
-            for (var i = 0; i < hotData.length; i++) {
-              if (hotData[i].id === data.id) {
-                tp = hotData[i];
-                hotData.splice(i, 1);
-                break;
-              }
-            }
-          } else if (data.type === 'hol') {
-            for (var i = 0; i < holData.length; i++) {
-              if (holData[i].id === data.id) {
-                tp = holData[i];
-                holData.splice(i, 1);
-                break;
-              }
-            }
-          } else {
-            for (var i = 0; i < shopData.length; i++) {
-              if (shopData[i].id === data.id) {
-                tp = shopData[i];
-                shopData.splice(i, 1);
-                break;
-              }
-            }
-          }
-          addWaypoint.push({ latitude: data.lat, longitude: data.lng });
-          endData.push(tp);
         }}
         canPress={modalCanPress}
+        isAdd={modalIsAdd}
       />
       {/*浮動視窗-------------------------------------------------------------------------------*/}
 
@@ -315,6 +330,9 @@ const MapHome = ({ navigation, route }) => {
               setModalCanPress(false);
               setModalVisible(!modalVisible);
               setModalEntry({
+                type: marker.type,
+                date: marker.date,
+                id: marker.id,
                 name: marker.name,
                 info: marker.info,
                 address: marker.address,
@@ -327,7 +345,7 @@ const MapHome = ({ navigation, route }) => {
           >
             <View style={styles.markerCss}>
               <Text style={styles.markerText}>{marker.name}</Text>
-              <Image style={styles.markerImg} source={require('../../assets/pin/green.png')} />
+              <Image source={require('../../assets/pin/green.png')} />
             </View>
           </Marker>
         ))}
@@ -368,6 +386,7 @@ const MapHome = ({ navigation, route }) => {
                 key={marker.type + (marker.id).toString()}
                 coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
                 onPress={(e) => {
+                  setModalIsAdd(true);
                   setModalCanPress(true);
                   setModalVisible(!modalVisible);
                   setModalEntry({
@@ -397,9 +416,10 @@ const MapHome = ({ navigation, route }) => {
           if (marker.del >= myLatitudeDelta) {
             return (
               <Marker
-              key={marker.type + (marker.id).toString()}
+                key={marker.type + (marker.id).toString()}
                 coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
                 onPress={(e) => {
+                  setModalIsAdd(true);
                   setModalCanPress(true);
                   setModalVisible(!modalVisible);
                   setModalEntry({
@@ -421,7 +441,7 @@ const MapHome = ({ navigation, route }) => {
               >
                 <View style={styles.markerCss}>
                   <Text style={styles.markerText}>{marker.name}</Text>
-                  <Image style={styles.markerImg} source={require('../../assets/pin/yellow.png')} />
+                  <Image source={require('../../assets/pin/yellow.png')} />
                 </View>
               </Marker>
             )
@@ -432,10 +452,11 @@ const MapHome = ({ navigation, route }) => {
           if (marker.del >= myLatitudeDelta) {
             return (
               <Marker
-              key={marker.type + (marker.id).toString()}
+                key={marker.type + (marker.id).toString()}
                 coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
                 pinColor='blue'
                 onPress={(e) => {
+                  setModalIsAdd(true);
                   setModalCanPress(true);
                   setModalVisible(!modalVisible);
                   setModalEntry({
@@ -455,7 +476,7 @@ const MapHome = ({ navigation, route }) => {
               >
                 <View style={styles.markerCss}>
                   <Text style={styles.markerText}>{marker.name}</Text>
-                  <Image style={styles.markerImg} source={require('../../assets/pin/blue.png')} />
+                  <Image source={require('../../assets/pin/blue.png')} />
                 </View>
               </Marker>
             )
@@ -469,6 +490,7 @@ const MapHome = ({ navigation, route }) => {
               key={marker.type + (marker.id).toString()}
               coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
               onPress={(e) => {
+                setModalIsAdd(false);
                 setModalVisible(!modalVisible);
                 setModalEntry({
                   type: marker.type,
@@ -477,10 +499,11 @@ const MapHome = ({ navigation, route }) => {
                   address: marker.address,
                   star: marker.star,
                   info: marker.info,
-                  time: marker.data + (
-                  marker.time.map((ti) => {
-                    return ti + '\n';
-                  })),
+                  date:marker.date,
+                  time: 
+                    marker.time.map((ti) => {
+                      return ti + '\n';
+                    }),
                   city: marker.city,
                   region: marker.region,
 
@@ -489,7 +512,7 @@ const MapHome = ({ navigation, route }) => {
             >
               <View style={styles.markerCss}>
                 <Text style={styles.markerText}>{marker.name}</Text>
-                <Image style={styles.markerImg} source={require('../../assets/pin/green.png')} />
+                <Image source={require('../../assets/pin/green.png')} />
               </View>
             </Marker>
           )
@@ -499,7 +522,7 @@ const MapHome = ({ navigation, route }) => {
 
       </MapView>
       {/* 放在地圖的組件 */}
-      <Callout>
+      <Callout style={styles.callout}>
         <Back />
         {/*熱門景點*/}
         <TouchableHighlight
@@ -548,6 +571,10 @@ const initialState = {
   "info": {},
 }
 const styles = StyleSheet.create({
+  callout: {
+    flex: 1,
+    flexDirection: "column"
+  },
   container: {
     flex: 1,
     backgroundColor: 'black',
@@ -559,9 +586,9 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
   },
   buttonForComlete: {
-    zIndex: 3,
+    //zIndex: 3,
     //position: 'absolute',
-    top: 330,
+    top: Dimensions.get('window').height / 2 - 130,
     backgroundColor: '#5f695d',
     width: 120,
     height: 40,
@@ -571,10 +598,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonForHot: {
-    zIndex: 2,
-    left: -120,
-    position: 'absolute',
-    top: -270,
+    //zIndex: 2,
+    left: -Dimensions.get('window').width / 2 + 70,
+    //position: 'absolute',
+    top: -Dimensions.get('window').height / 2 + 130,
     backgroundColor: '#FF9797',
     width: 120,
     height: 40,
@@ -584,10 +611,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonHoliday: {
-    zIndex: 2,
-    left: -120,
-    position: 'absolute',
-    top: -220,
+    //zIndex: 2,
+    left: -Dimensions.get('window').width / 2 + 70,
+    //position: 'absolute',
+    top: -Dimensions.get('window').height / 2 + 130,
     backgroundColor: '#FFFFB9',
     width: 120,
     height: 40,
@@ -597,10 +624,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonForShop: {
-    zIndex: 2,
-    left: -120,
-    position: 'absolute',
-    top: -170,
+    //zIndex: 2,
+    left: -Dimensions.get('window').width / 2 + 70,
+    //position: 'absolute',
+    top: -Dimensions.get('window').height / 2 + 130,
     backgroundColor: '#C4E1FF',
     width: 120,
     height: 40,

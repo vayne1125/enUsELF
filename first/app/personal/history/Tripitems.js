@@ -29,45 +29,52 @@ const width = Dimensions.get('screen').width/2.2;
 const Tripitems = (items) => {
   const sites=items.items;
   console.log('sites ',sites.desSite);
-  const data=[];
+  const [data,setData] = useState([]);
+  //const data=[];
   useEffect(()=>{
+
+    setData(()=>{
+      var rt = [];
       if(sites.desSite.type === "food"){
-      data.push(Food[sites.desSite.id]);
-    }else if(sites.desSite.type === "nature"){
-      data.push(Nature[sites.desSite.id]);
-    }else if(sites.desSite.type === "kol"){
-      data.push(KOL[sites.desSite.id]);
-    }else if(sites.desSite.type === "monuments"){
-      data.push(Monuments[sites.desSite.id]);
-    }else if(sites.desSite.type === "hotel"){
-      data.push(Hotel[sites.desSite.id]);
-    }else if(sites.desSite.type === "hol"){
-      data.push(Holplace[sites.desSite.id]);
-    }else if(sites.desSite.type === "hot"){
-      data.push(Hotplace[sites.desSite.id]);
-    }else if(sites.desSite.type === "shop"){
-      data.push(Shopplace[sites.desSite.id]);
-    }
-    //console.log('herse11 ',sites.site);
-    (sites.site).map((param)=>{
-      if(param.type === "food"){
-        data.push(Food[param.id]);
-      }else if(param.type === "nature"){
-        data.push(Nature[param.id]);
-      }else if(param.type === "kol"){
-        data.push(KOL[param.id]);
-      }else if(param.type === "monuments"){
-        data.push(Monuments[param.id]);
-      }else if(param.type === "hotel"){
-        data.push(Hotel[param.id]);
-      }else if(param.type === "hol"){
-        data.push(Holplace[param.id]);
-      }else if(param.type === "hot"){
-        data.push(Hotplace[param.id]);
-      }else if(param.type === "shop"){
-        data.push(Shopplace[param.id]);
+        rt.push(Food[sites.desSite.id]);
+      }else if(sites.desSite.type === "nature"){
+        rt.push(Nature[sites.desSite.id]);
+      }else if(sites.desSite.type === "kol"){
+        rt.push(KOL[sites.desSite.id]);
+      }else if(sites.desSite.type === "monuments"){
+        rt.push(Monuments[sites.desSite.id]);
+      }else if(sites.desSite.type === "hotel"){
+        rt.push(Hotel[sites.desSite.id]);
+      }else if(sites.desSite.type === "hol"){
+        rt.push(Holplace[sites.desSite.id]);
+      }else if(sites.desSite.type === "hot"){
+        rt.push(Hotplace[sites.desSite.id]);
+      }else if(sites.desSite.type === "shop"){
+        rt.push(Shopplace[sites.desSite.id]);
       }
+      //console.log('herse11 ',sites.site);
+      (sites.site).map((param)=>{
+        if(param.type === "food"){
+          rt.push(Food[param.id]);
+        }else if(param.type === "nature"){
+          rt.push(Nature[param.id]);
+        }else if(param.type === "kol"){
+          rt.push(KOL[param.id]);
+        }else if(param.type === "monuments"){
+          rt.push(Monuments[param.id]);
+        }else if(param.type === "hotel"){
+          rt.push(Hotel[param.id]);
+        }else if(param.type === "hol"){
+          rt.push(Holplace[param.id]);
+        }else if(param.type === "hot"){
+          rt.push(Hotplace[param.id]);
+        }else if(param.type === "shop"){
+          rt.push(Shopplace[param.id]);
+        }
+      })
+      return rt;
     })
+    
     //console.log('data ',data);
   },[]);
   //const list

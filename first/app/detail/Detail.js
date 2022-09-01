@@ -75,6 +75,7 @@ const Detail = ({entry, modalVisible, onClose}) => {
           onClose={() => {
             //console.log('1.3s --2');
             setNoticeVisible(false);
+            onClose();
           }} //關閉函式
         />
         <View style={styles.modalBackGround}>

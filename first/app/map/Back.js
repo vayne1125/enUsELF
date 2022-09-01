@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     //position: 'absolute',
-    left: -120,
-    top: -320,
+    left: -Dimensions.get('window').width/2 + 70,
+    top: -Dimensions.get('window').height/2 + 125,
     backgroundColor: '#D1DED7',
     width: 40,
     height: 40,

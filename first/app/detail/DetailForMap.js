@@ -18,14 +18,14 @@ import Icons from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
-import Notice from '../theme/Notice';
+import NoticeForMap from './NoticeForMap';
 import Weather from './Weather';
 import Image_link from '../theme/Image';
 import Image_linkMap from '../map/Image';
 const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.3;
 
-const DetailForMap = ({entry, modalVisible, onClose,onPress1,canPress}) => {
+const DetailForMap = ({entry, modalVisible, onClose,onPress1,canPress,isAdd}) => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(entry);
   const Stars = score => {
@@ -65,7 +65,8 @@ const DetailForMap = ({entry, modalVisible, onClose,onPress1,canPress}) => {
   return (
     (
       <Modal transparent={true} visible={modalVisible}>
-        <Notice
+        <NoticeForMap
+          isAdd={isAdd}
           entry={noticeEntry} //傳進去的資料參數
           noticeVisible={noticeVisible} //可不可見
           onClose={() => {
@@ -85,7 +86,7 @@ const DetailForMap = ({entry, modalVisible, onClose,onPress1,canPress}) => {
             <View style={styles.infoContainer}>
               <ScrollView>
                 {
-                canPress?
+                (entry['type']==='hot' || entry['type']==='hol' || entry['type']==='shop')?
                 <Image style={styles.image} source={Image_linkMap[entry['type']+(entry['id'].toString())]} />:
                 <Image style={styles.image} source={Image_link[entry['name']]}/>
                 }
@@ -152,10 +153,14 @@ const DetailForMap = ({entry, modalVisible, onClose,onPress1,canPress}) => {
                   setNoticeVisible(!noticeVisible);
                   setNoticeEntry(entry);
                   //console.log(entry);
-                  onPress1(entry);
+                  onPress1(entry,isAdd);
                 }}
                 style={{flex: 1}}>
-                <Text style={styles.buttonText}>加入行程表</Text>
+                {
+                (isAdd)?
+                <Text style={styles.buttonText}>加入行程表</Text>:
+                <Text style={styles.buttonText}>移除景點</Text>
+                }
               </TouchableOpacity>
             </View>
             )
