@@ -31,7 +31,7 @@ const height = Dimensions.get('screen').height / 1.3;
 const Detail = ({entry, modalVisible, onClose}) => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(entry);
-
+    const {user} = useContext(AuthContext);
   const Stars = score => {
     var tp = parseFloat(score.starsNum);
     var starsIcon = [];
