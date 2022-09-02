@@ -1,7 +1,8 @@
 import React, {createContext, useState, useRef, useEffect} from 'react';
-import { Alert} from 'react-native';
+import { Alert } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import { Card } from 'react-native-paper';
 
 export const AuthContext = createContext();
 
@@ -19,7 +20,7 @@ export const AuthProvider = ({children}) => {
                         if(update){
                             auth().currentUser.updatePassword(update)
                             .then(() => {setMess('success')})
-                            .catch((error)=>{setMess(error)})
+                            .catch((error)=>{setMess(error.code)})
                         }    
                     })
                     .catch((error) => {});
@@ -66,6 +67,14 @@ export const AuthProvider = ({children}) => {
                     console.log('logout: ',error);
                 }
             },
+            forget: async(email, setMess1) => {
+                try{
+                    await auth().sendPasswordResetEmail(email)
+                    .then(()=>{setMess1('success');})
+                    .catch((error)=>{setMess1(error.code)});
+                }
+                catch(error){console.log(error.code)};
+            }
         }}
             >{children}
         </AuthContext.Provider>

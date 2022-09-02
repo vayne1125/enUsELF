@@ -1,6 +1,5 @@
 apply plugin: "com.android.application"
 apply plugin: 'com.google.gms.google-services' // <- Add this line
-//apply plugin: 'com.android.library'
 import com.android.build.OutputFile
 
 /**
@@ -133,7 +132,7 @@ android {
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
-    //buildToolsVersion "33.0.2"
+    //buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.first"
@@ -168,11 +167,10 @@ android {
                 }
             }
         }
-
+        /*dexOption {
+            jumboMode true
+        }*/
     }
-    /*lintOptions {
-        abortOnError false
-    }*/
 
     if (isNewArchitectureEnabled()) {
         // We configure the NDK build only if you decide to opt-in for the New Architecture.
@@ -266,7 +264,8 @@ dependencies {
 
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
-
+    //compile 'com.github.yalantis:ucrop:2.2.2-native' => this change => compile 'com.github.yalantis:ucrop:2.2.1-native'
+    //compile 'id.zelory:compressor:2.1.0'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
@@ -290,6 +289,8 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    compile project(':react-native-image-crop-picker')
 }
 
 if (isNewArchitectureEnabled()) {

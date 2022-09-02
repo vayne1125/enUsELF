@@ -15,19 +15,20 @@ import Icons from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
 import {AuthContext} from '../routes/AutoProvider';
 import { CheckBox } from '@rneui/themed';
-const{width, height} = Dimensions.get("window")
 
+import Forget from './Forget';
+
+const{width, height} = Dimensions.get("screen")
 const LauncherHome = ({navigation}) => {
     const [username, setUsername] = useState(String);
     const [email, setEmail] = useState(String);
     const [password, setPassword] = useState(String);
     const [mess1, setMess1] = useState(String);
     const [mess2, setMess2] = useState(String);
+    const [visible, setVisible] = useState(false);
     const [secret, setSecret] = useState(true);
     const {login, register} = useContext(AuthContext);
-
     useEffect(() => {
-        console.log(mess1);
         if(mess1!=''){
             if(mess1 === 'auth/invalid-email'){
                 Alert.alert('登入失敗','EMAIL格式錯誤');
@@ -93,72 +94,85 @@ const LauncherHome = ({navigation}) => {
     }
 
     return (
-        <ScrollView style={styles.container} keyboardShouldPersistTaps='handled'>
-            <View style={{flex:0.1}}></View>
-            <View style={styles.logo}>
-                <Image
-                    style={{flex: 0.75 ,resizeMode: 'contain'}}
-                    source={require('../../assets/logo.png')}/>
-                <Text style={styles.textstyle}>enjoy yourself</Text>
-            </View>
-            <View style={styles.inputcontain}>
-                <View style ={{flex:0.5}}>
-                    <TextInput style={styles.inputBox} 
-                        onChangeText={
-                            (email) => {
-                                setEmail(email);
-                                if(email.indexOf('@') > 0){
-                                    setUsername(email.substring(0,email.indexOf('@')))
+        <View style={styles.container}>
+            <Forget
+                onClose={() => {setVisible(false);}} 
+                mess={""}
+                email={""}
+                visible = {visible}
+            />
+            <ScrollView keyboardShouldPersistTaps='handled'>
+                <View style={{height:height * 0.05}}></View>
+                <View style={styles.logo}>
+                    <Image
+                        style={{flex: 0.75 ,resizeMode: 'contain'}}
+                        source={require('../../assets/logo.png')}
+                    />
+                    <Text style={styles.textstyle}>enjoy yourself</Text>
+                </View>
+                <View style={styles.inputcontain}>
+                    <View style ={{flex:0.5}}>
+                        <View style={styles.inputBox}>
+                            <TextInput style={{flex:0.95}} 
+                                onChangeText={(email) => 
+                                    {
+                                        setEmail(email);
+                                        if(email.indexOf('@') > 0){
+                                            setUsername(email.substring(0,email.indexOf('@')))
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                        value = {email}
-                        placeholder="請輸入信箱"
-                        placeholderTextColor='#BEBEBE'
-                        keyboardType='email-address'
-                    />
-                    <View style={styles.inputBox}>
-                    <TextInput style={{flex:0.95}}
-                        secureTextEntry={secret}
-                        onChangeText={(password) => setPassword(password)}
-                        value= {password}
-                        placeholder="Password"
-                        placeholderTextColor='#BEBEBE'
-                        maxLength={16}
-                    />
-                    <><CheckBox containerStyle={{flex:0.05, backgroundColor: '#FFFFDF'}}
-                        center
-                        checkedIcon= "eye-slash"
-                        uncheckedIcon= "eye"
-                        checked= { secret }
-                        uncheckedColor= "#88bd80"
-                        checkedColor= "#BEBEBE"
-                        onPress= {() => {setSecret(!secret)}}
-                    /></>
+                                value = {email}
+                                fontSize={15}
+                                placeholder="請輸入信箱"
+                                placeholderTextColor='#BEBEBE'
+                                keyboardType='email-address'
+                            />
+                        </View>
+                        <View style={styles.inputBox}>
+                            <TextInput style={{flex:0.95}}
+                                secureTextEntry={secret}
+                                onChangeText={(password) => setPassword(password)}
+                                value= {password}
+                                placeholder="請輸入密碼"
+                                placeholderTextColor='#BEBEBE'
+                                fontSize={15}
+                                maxLength={16}
+                            />
+                            <><CheckBox containerStyle={{flex:0.05, backgroundColor: '#FFFFDF'}}
+                                center
+                                checkedIcon= "eye-slash"
+                                uncheckedIcon= "eye"
+                                checked= { secret }
+                                uncheckedColor= "#88bd80"
+                                checkedColor= "#BEBEBE"
+                                onPress= {() => {setSecret(!secret)}}
+                            /></>
+                        </View>
+                    </View>
+                    <View style={styles.buttoncontainer}>
+                        <TouchableOpacity style={styles.LoginBut}>
+                            <Text style={styles.LoginText} onPress={to_login}>登入</Text>
+                        </TouchableOpacity>
+                        <View style={{flex:0.05}}/>
+                        <TouchableOpacity style={styles.SigninBut}>
+                            <Text style={styles.SigninText} onPress={to_register}>註冊</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View>
+                        <TouchableOpacity onPress={() => {setVisible(true)}}>
+                            <Text style={styles.forbut}>忘記密碼?</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
-                <View style={styles.buttoncontainer}>
-                    <TouchableOpacity style={styles.LoginBut}>
-                        <Text style={styles.LoginText} onPress={to_login}>登入</Text>
-                    </TouchableOpacity>
-                    <View style={{flex:0.05}}/>
-                    <TouchableOpacity style={styles.SigninBut}>
-                        <Text style={styles.SigninText} onPress={to_register}>註冊</Text>
-                    </TouchableOpacity>
-                </View>
-                <View>
-                    <TouchableOpacity onPress={() => { navigation.navigate("Forget"); }}>
-                        <Text style={styles.forbut}>忘記密碼?</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </View>
     );
 }
 const styles = StyleSheet.create({
     container: {
         width:width,
-        flex: 1,
+        height:height,
         backgroundColor: '#FFFCEC',
     },
     textstyle:{
@@ -167,24 +181,24 @@ const styles = StyleSheet.create({
         color:'#88bd80',
     },
     logo: {
-        flex: 0.4,
-        height: '100%',
+        height:height * 0.4,
         justifyContent:'center',
         alignItems: 'center',
+        flex:1,
     },
     inputcontain: {
-        flex: 0.5,
+        flex:1,
+        height:height * 0.45,
         alignItems:'center',
         justifyContent:'center',
     },
     inputBox: {
-        width: 250,
-        height: 52,
+        width: width*0.75,
+        flex:0.45,
         backgroundColor: '#FFFFDF',
         borderRadius: 1,
         borderWidth: 1,
         borderColor: '#88bd80',
-        fontSize: 12,
         marginVertical: 4,
         flexDirection: 'row',
     },

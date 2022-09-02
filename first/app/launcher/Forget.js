@@ -1,160 +1,136 @@
+import { style } from 'deprecated-react-native-prop-types/DeprecatedImagePropType';
 import React, { useState } from 'react';
-import {
+import { useEffect } from 'react';
+import { useContext } from 'react';
+import { Alert } from 'react-native';
+import { 
     StyleSheet,
-    Text,
     View,
+    Modal,
+    Dimensions, 
     TextInput,
     TouchableOpacity,
-    Dimensions,
-    Alert,
+    ScrollView,
+    Text,
 } from 'react-native';
-import ForgetTop from './ForgetTop';
 
-const Signup = ({navigation}) => {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [confirmpass, setConfirmpass] = useState();
-    const [check, setCheck] = useState();
+import { AuthContext } from '../routes/AutoProvider';
 
+const {height,width} = Dimensions.get('window');
+
+const Forget = ({onClose, mess, email, visible}) => {
+    const [mail, setMail] = useState(email);
+    const [mess1, setMess1] = useState("");
+    const {forget, logout, user} = useContext(AuthContext);
+    useEffect(()=>{
+        if(mess1){
+            console.log(mess1)
+            if(mess1==='success'){
+                if(user) logout();
+                Alert.alert('發送成功','重設密碼信件已寄至信箱');
+                onClose();
+            }
+            else if(mess1==='auth/invalid-email'){
+                Alert.alert('發送失敗','信箱格式錯誤');
+                setMail('');
+            }
+            else if(mess1==='auth/user-not-found'){
+                Alert.alert('發送失敗','找不到該用戶');
+                setMail('');
+            }
+        }
+    },[mess1])
+    const to_forget = () => {
+        if(!mail)   Alert.alert('發送失敗','欄位不可為空')
+        else forget(mail, setMess1);
+    }
     return(
-        <View style={styles.container}>
-            <View style={styles.topbar}>
-                <ForgetTop/>
+        <Modal transparent={true} visible={visible}>
+            <View style={styles.modalContainer}>
+                <ScrollView contentContainerStyle={styles.Container}>
+                <ScrollView>
+                    <View style={{height:height * 0.05, flexDirection:'row', justifyContent:'flex-end'}}>
+                        <TouchableOpacity 
+                            style={{flex:0.2,alignSelf:'flex-end'}}
+                            onPress={() => onClose()}
+                        >
+                            <Text style={style.closeText}>關閉</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{height:height * 0.15, alignItems:'center', justifyContent:'center'}}>
+                        <TextInput 
+                            style = {styles.mailContainer}
+                            onChangeText={(mail) => setMail(mail)}
+                            value= {mail}
+                            placeholder="請輸入信箱"
+                            placeholderTextColor='#BEBEBE'
+                            keyboardType='email-address'
+                            editable={!mess}
+                            fontSize={12}
+                        />
+                    </View>
+                    <View style={{height:height * 0.15, alignItems:'flex-start'}}>
+                        <Text style={styles.messText}>{mess}</Text>
+                        <TouchableOpacity 
+                            style={styles.subBut}
+                            onPress={to_forget}
+                        >
+                            <Text style = {styles.subText}>發送</Text>
+                        </TouchableOpacity>
+                    </View>
+                </ScrollView></ScrollView>
             </View>
-            <View style ={styles.textcontain}>
-                <View style ={styles.textinput}>
-                    <Text style = {styles.text}>信箱: </Text>
-                    <TextInput style={styles.inputBox} 
-                        onChangeText={(email) => setEmail(email)}
-                        //value = {this.state.email}
-                        underlineColorAndroid='#BEBEBE'
-                        placeholder="請輸入信箱"
-                        placeholderTextColor='#BEBEBE'
-                    />
-                </View>
-                <View style ={styles.textinput}>
-                    <Text style = {styles.text}>驗證碼: </Text>
-                    <TextInput style={styles.inputBox} 
-                        onChangeText={(check) => setCheck(check)}
-                        //value = {this.state.userid}
-                        underlineColorAndroid='#BEBEBE'
-                        placeholder="輸入驗證碼"
-                        placeholderTextColor='#BEBEBE'
-                        keyboardType="numeric"//數字鍵盤吧?
-                        maxLength={6}
-                    />
-                </View>
-                <View style ={styles.textinput}>
-                    <Text style = {styles.text}>新密碼: </Text>
-                    <TextInput style={styles.inputBox}
-                        onChangeText={(password) => setPassword(password)}
-                        //value = {this.state.password}
-                        secureTextEntry={true}
-                        underlineColorAndroid='#BEBEBE'
-                        placeholder="長度介於8-16，須包含英文字母及數字"
-                        placeholderTextColor='#BEBEBE'
-                        maxLength={16}
-                    />
-                </View>
-                <View style ={styles.textinput}>
-                    <Text style = {styles.text}>再次輸入新密碼: </Text>
-                    <TextInput style={styles.inputBox}
-                        onChangeText={(confirmpass) => setConfirmpass(confirmpass)}
-                        //value = {this.state.checkpassword}
-                        secureTextEntry={true}
-                        underlineColorAndroid='#BEBEBE'
-                        placeholder="再次輸入新密碼"
-                        placeholderTextColor='#BEBEBE'
-                        maxLength={16}
-                    />
-                </View>
-            </View>
-            <View style={styles.Butcontainer}>
-                <TouchableOpacity 
-                    style={styles.SendContain}
-                    onPress={() => {/*this.sendcheck*/}}>
-                    <Text style={styles.SendText}>發送驗證碼</Text>
-                </TouchableOpacity>
-                <View style={{flex:0.05}}></View>
-                <TouchableOpacity 
-                    style={styles.SignupBut}
-                    onPress={() => {}}>
-                    <Text style={styles.SignupText}>完成</Text>
-                </TouchableOpacity>
-            </View>   
-            <View style={{alignItems:'center'}}>
-                <TouchableOpacity onPress={() => {navigation.navigate("Signup");}}>
-                    <Text style={styles.forbut}>信箱未註冊?前往註冊</Text>
-                </TouchableOpacity>
-            </View> 
-        </View>
+        </Modal>
     )
 }
-
 const styles = StyleSheet.create({
-    container: {
-        flex:1,
-        height:'100%',
+    modalContainer:{
+        width: width,
+        height: height, 
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        alignItems: 'center',
     },
-    topbar: {
-        backgroundColor: '#5f695d',
-        flex: 0.11,
-        height: 63,
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
+    Container:{
+        width: width * 0.75,
+        height: height * 0.35,
+        backgroundColor: '#FCFCFC',
+        top: height * 0.4,
+        justifyContent: 'center',
+        borderRadius: 1,
+        borderWidth: 1,
+        borderColor: '#88bd80',
     },
-    textcontain:{
-        flex: 0.5,
+    closeText:{
+        fontSize:10,
+        color:'gray',
+        alignSelf:'center',
+    },
+    mailContainer:{
+        width: '80%',
+        flex: 0.3,
+        backgroundColor: '#FFFFDF',
+        borderRadius: 1,
+        borderWidth: 1,
+        borderColor: '#88bd80',
+    },
+    messText:{
+        fontSize:10,
+        color:'#EA0000',
+        flex:0.2,
+        alignSelf:'center',
+    },
+    subBut:{
+        flex:0.45,
+        width:width*0.3,
+        backgroundColor: '#88bd80',
+        alignSelf:'center',
         justifyContent:'center',
     },
-    textinput:{
-        flex: 0.2,
-        flexDirection: 'row',
-        alignItems:'center',
-        justifyContent: 'center',
-    },
-    text:{
-        flex: 0.7,
-        fontSize:12,
-        color:'black',
-    },
-    inputBox: {
-        width: 200,
-        fontSize: 12,
-    },
-    SendContain: {
-        flex: 0.35,
-        backgroundColor: 'gray',
-        paddingVertical: 15,
-    },
-    SendText: {
+    subText:{
         fontSize: 15,
         fontWeight: '500',
         color: 'white',
         textAlign: 'center',
     },
-    Butcontainer:{
-        flex: 0.2,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    SignupBut: {
-        flex: 0.35,
-        backgroundColor: '#88bd80',
-        paddingVertical: 15,
-    },
-    SignupText: {
-        fontSize: 15,
-        fontWeight: '500',
-        color: 'white',
-        textAlign: 'center',
-    },
-    forbut: { 
-        color: '#BEBEBE',
-        fontSize:10,
-        fontWeight: '500',
-    },
-});
-
-export default Signup;
+})
+export default Forget;

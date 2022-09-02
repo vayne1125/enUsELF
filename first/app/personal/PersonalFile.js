@@ -16,9 +16,11 @@ import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import PersonalFileTop from './PersonalFileTop'
 import { AuthContext } from '../routes/AutoProvider';
-//const Stack = createNativeStackNavigator();
+
+import Forget from '../launcher/Forget';
+
 const {width, height} = Dimensions.get('screen').width;
-//#5f695d
+
 const PersonalFile = ({navigation, route}) => {
     const userdata = route.params;
     const [mail] = useState(userdata.mail);
@@ -33,6 +35,7 @@ const PersonalFile = ({navigation, route}) => {
     const [focus3, setFocus3] = useState(false);
     const [mess, setMess] = useState("");
     const {user, login} = useContext(AuthContext);
+    const [visible, setVisible] = useState(false);
     
     useEffect(()=>{
         if(mess === 'success'){
@@ -83,6 +86,12 @@ const PersonalFile = ({navigation, route}) => {
 
     return(
         <View style={styles.container}>
+            <Forget
+                onClose={() => {setVisible(false);}} 
+                mess = {"#發送信箱後將自動登出，請謹慎操作"}
+                email = {mail}
+                visible = {visible}
+            />
             <View style={styles.topbar}>
               <PersonalFileTop/>
             </View>
@@ -145,7 +154,7 @@ const PersonalFile = ({navigation, route}) => {
                 <View style={styles.Butcontainer}>
                     <TouchableOpacity 
                         style={styles.FGBut}
-                        onPress={()=>{}}>
+                        onPress={()=>{setVisible(true)}}>
                         <Text style={styles.FGText}>忘記密碼</Text>
                     </TouchableOpacity>
                     <View style={{flex:0.05}}/>

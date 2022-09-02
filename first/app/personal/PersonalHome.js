@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
-import {ImagePicker} from 'react-native-image-crop-picker';
+import  {ImagePicker} from 'react-native-image-crop-picker';
 
 import PersonalTop from './PersonalTop';
 import { AuthContext } from '../routes/AutoProvider';
@@ -51,6 +51,7 @@ const PersonalHome = ({navigation}) => {
         });
         return () => listen.remove();
     },[]);
+    console.log(img);
     return (
         <View style={styles.container}>
             {/*頂部*/}
