@@ -10,6 +10,7 @@ import {
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import DetailForFinal from '../detail/DetailForFinal';
 import Back from './Back';
+import Share from './Share';
 import { mapStyle } from '../map/mapStyle';
 import MapViewDirections from 'react-native-maps-directions';
 import ItineraryTop from './ItineraryTop';
@@ -24,6 +25,7 @@ import Nature from '../theme/Nature'
 import Settripname from './Settripname';
 import { AuthContext } from '../routes/AutoProvider';
 import firestore from '@react-native-firebase/firestore';
+import { Directions } from 'react-native-gesture-handler';
 
 const ItineraryHome = ({ navigation, route }) => {
   const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
@@ -359,6 +361,7 @@ const ItineraryHome = ({ navigation, route }) => {
           <Text style={styles.text}>返回</Text>
           }
       </TouchableHighlight>
+      <Share/>
       </View>
         </Callout>
 
@@ -384,9 +387,8 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
   },
   btnContainner:{
+    flexDirection: "row",
     position: 'absolute',
-    top: Dimensions.get('window').height/2 - 60,
-    left: -60,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -413,8 +415,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   button: {
+    top: Dimensions.get('window').height/2 - 60,
+    left: -Dimensions.get('window').width/4 - 10,
     backgroundColor: '#5f695d',
-    width: 120,
+    width: 100,
     height: 40,
     alignItems: 'center',
     justifyContent: 'center',
