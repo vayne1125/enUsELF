@@ -132,7 +132,6 @@ android {
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
-    //buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.first"
@@ -167,9 +166,7 @@ android {
                 }
             }
         }
-        /*dexOption {
-            jumboMode true
-        }*/
+
     }
 
     if (isNewArchitectureEnabled()) {
@@ -264,8 +261,7 @@ dependencies {
 
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
-    //compile 'com.github.yalantis:ucrop:2.2.2-native' => this change => compile 'com.github.yalantis:ucrop:2.2.1-native'
-    //compile 'id.zelory:compressor:2.1.0'
+
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
@@ -289,8 +285,6 @@ dependencies {
     } else {
         implementation jscFlavor
     }
-
-    compile project(':react-native-image-crop-picker')
 }
 
 if (isNewArchitectureEnabled()) {

@@ -13,7 +13,6 @@ import {
 } from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
-import  {ImagePicker} from 'react-native-image-crop-picker';
 
 import PersonalTop from './PersonalTop';
 import { AuthContext } from '../routes/AutoProvider';
