@@ -33,15 +33,15 @@ const width = Dimensions.get('screen').width;
 
 const Post = ({navigation, route}) => {
     const userdata = route.params;
-    const {user, logout} = useContext(AuthContext);
-console.log(user);
+console.log('o o o  ',userdata);
+const {user, logout} = useContext(AuthContext);
+//console.log(user);
     const users = firestore().collection('users').doc(user.uid);
     const [image, setImage] = useState(null);
     const [uploading, setUploading] = useState(false);
-    //const [transferred, setTransferred] = useState(0);
     const [post, setPost] = useState(null);
     const [trip,setTrip]=useState(null);
-console.log('o o o  ',trip);
+//console.log('o o o  ',trip);
 //console.log('!: ',users);
 /*useEffect(() => {
   setTrip([]);

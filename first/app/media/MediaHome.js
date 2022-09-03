@@ -25,11 +25,13 @@ import Card from './Card'
 const width = Dimensions.get('screen').width - 20;
 
 const MediaHome = ({navigation}) => {
-  const {user, logout} = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
   const [Posts,setPosts]=useState(null);
   const [loading, setLoading] = useState(true);
   const[deleted,setDeleted]=useState(false);
   const [userdata, setuserdata] = useState(null);
+  const [collect, setCollect] = useState([]);
+  const array=[];
   const fetchPosts = async()=>{
     try{
         const list=[];
@@ -67,7 +69,6 @@ const MediaHome = ({navigation}) => {
       const data =documentSnapshot.data();
       setuserdata(data);
     })  
-      console.log('!@: ',userdata);
       }catch(e){
         console.log(e);
       };

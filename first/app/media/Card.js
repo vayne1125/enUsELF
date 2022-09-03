@@ -29,19 +29,28 @@ const width = Dimensions.get('screen').width - 20;
 
 const Card = ({navigation,post,onDelete}) => {
     const {user, logout} = useContext(AuthContext);
-   // const [userData, setUserData] = useState(null);
+    const [color, setColor] = useState('#D1DED7');
     const username=post.name;
     const sites=post.Trip;
     //const userSchdule=post.Trip;
     let timestamp = post.time;
-    console.log('post1 ',post);
-   // console.log('look ',username);
+    //console.log('post1 ',post);
+   console.log('sssslook ',post.id);
    //// console.log('user.uid= ',user.uid);
    // console.log('post.useid= ',post.userid);
    // console.log('sss =',post);
   const [userSchdule, setUserSchdule] = useState([]);
 const data=[];
+//拿景點資料
   useEffect(()=>{
+   firestore().collection('users').doc(user.uid).collection('collect').where('postId','==',post.id).get()
+    .then((snap) => {
+       if(snap.empty) {
+        setColor('#D1DED7');//淺的
+       } else {
+       setColor('#5f695d');//深的
+       }
+    })
     if(sites!=null){
         if(sites.desSite.type === "food"){
         data.push(Food[sites.desSite.id]);
@@ -82,10 +91,45 @@ const data=[];
       })
     }
     setUserSchdule(data);
-    console.log('data ',data);
+    //console.log('data ',data);
   },[]);
-  console.log('1user.uid ',user.uid);
-
+ // console.log('1user.uid ',user.uid);
+//收藏
+const changecollect =()=>{
+ 
+  if(color==='#5f695d'){//取消收藏
+      setColor('#D1DED7');
+      //指定文件名刪除
+      firestore()
+      .collection('users')
+      .doc(user.uid)
+      .collection('collect')
+      .doc(post.id)
+      .delete()
+      .then(() => {
+      console.log('User deleted!');
+      }).catch(e=>
+        console.log('error'))
+  }
+  else{//加入收藏
+      setColor('#5f695d');
+      //用post.id命名
+      firestore()
+      .collection('users')
+      .doc(user.uid)
+      .collection('collect')
+      .doc(post.id)
+      .set({
+        postId:post.id,
+        //coomments:null,
+      }).then(()=>{
+        console.log('collect add !');
+        //Alert.alert("成功發布");
+      }).catch((error)=>{
+        console.log('collect Failed!',error);
+      });
+  }
+}
   console.log('1post.use ',post.userid);
        return (
          <View style={styles.card}>
@@ -113,12 +157,13 @@ const data=[];
              <Image style={styles.image} resizeMode={"stretch"}source={{uri:post.img}}/>
            </View>
            <View style={styles.textContainer}>
-             <Icon name={'heart'} size={24} />
+            <TouchableOpacity  onPress={changecollect}><Icon name={'heart'} size={24} color={color} />
+            </TouchableOpacity>  
              <Text style={styles.textStyle}>{post.content}</Text>
            </View>
            <View style={styles.buttonContainer}>
              <TouchableOpacity
-               onPress={() => {navigation.navigate('Schedule',{userSchdule:userSchdule,username:username});
+               onPress={() => {navigation.navigate('Schedule',{sites:sites,userSchdule:userSchdule,username:username});
                }}
                style={{flex: 1}}>
               {user.uid==post.userid?
