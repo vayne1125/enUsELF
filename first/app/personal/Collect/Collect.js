@@ -1,56 +1,145 @@
-import React from 'react';
+import React ,{useState,useContext,useEffect }from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Dimensions,
   FlatList,
-  Image,
-  Button,
-  TouchableOpacity,
+  DeviceEventEmitter,
+  ActivityIndicator,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import storage from '@react-native-firebase/storage';
+import firestore from '@react-native-firebase/firestore';
+import {AuthContext} from '../../routes/AutoProvider';
 import CollectTop from './CollectTop'
+//import Card from '../../media/Card';
 import Card from './Card';
-
 const width = Dimensions.get('screen').width;
-const data = [
-  {tripname:"我與伸蓉的蜜月之旅"},
-  {tripname:"嘿嘿trip"},
-  {tripname:"pupupupupu"}]
+
 const Collect =() =>{
+  const navigation = useNavigation();
+  const {user} = useContext(AuthContext);
+  const [collect,setCollect]=useState([]); 
+  //const [postname,setPostname]=useState([]); 
+  const[changeCollect,setChangeCollect]=useState(false);
+  const [loading, setLoading] = useState(false);
+  // console.log('user',user);
+  const fetchPosts = async()=>{
+    setLoading(true);
+       const list=[];
+        //get collect post name
+        await  firestore()
+        .collection('users')
+        .doc(user.uid)
+        .collection('collect')
+        .orderBy('collectTime','desc')
+        .get()
+        .then((querySnapshot)=>{
+        //console.log('Total Posts:',querySnapshot.size);
+        querySnapshot.forEach(doc=>{
+            const {postId}=doc.data();
+            list.push({
+              postId
+            });
+          })
+        })
+        //console.log('list ',list);
+       // console.log('postnem ',postname);
+        const list2=[];
+        //get post
+        for await (let item of list) {
+          await firestore().collection('posts').doc(item.postId).get()
+          .then( async (snap) => {
+             if(!snap.exists) {
+                  console.log('no ', snap);
+                 await firestore()
+                  .collection('users')
+                  .doc(user.uid)
+                  .collection('collect')
+                  .doc(item.postId)
+                  .delete()
+                  .then(() => {
+                  console.log('no exist collect deleted!');
+                  }).catch(e=>
+                    console.log('error'))
+             } else {
+                console.log('有 ', snap);
+                console.log('有 Data ', );
+                const {userid,post,postImg,postTime,name,Trip}=snap.data();
+                list2.push({
+                  id:snap.id ,
+                  userid,
+                  name:name,
+                  img: postImg,
+                  content: post,
+                  time:postTime,
+                  Trip:Trip,
+                });
+                console.log('屋 ',list2);
+             }
+          })
+        };
+        setCollect(list2);
+        console.log('list2=',list2);
+        setLoading(false);
+  }
+//初始取值 
+  useEffect(()=>{
+        //setCollect(fetchPosts());
+        fetchPosts();
+        console.log('coll ',collect);
+  },[]);
+
+//取消收藏
+  useEffect(()=>{
+     fetchPosts();
+  DeviceEventEmitter.emit('deleteCollect');
+  setChangeCollect(false);
+  },[changeCollect])
+ 
+ const handleChenge = (postId) => {
+  firestore()
+  .collection('users')
+  .doc(user.uid)
+  .collection('collect')
+  .doc(postId)
+  .delete()
+  .then(() => {
+  console.log('User deleted!');
+  }).catch(e=>
+    console.log('error'))
+  setChangeCollect(true);
+ };
+
   return (
     <View style={styles.container}>
       {/*頂部*/}
       <View style={styles.topbar}>
-        <CollectTop/>
+        <CollectTop collect={collect}/>
       </View>
 
       {/*內容*/}
+      {loading?
+            <View style={{justifyContent:'center',flex:1}}>
+                <ActivityIndicator
+                    animating = {true}
+                    color = {'#BEBEBE'}
+                    size = {'large'}
+                />
+            </View>:
       <FlatList
-        //columnWrapperStyle={{justifyContent: 'space-between'}}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          marginTop: 25,
-          paddingBottom: 80,
-        }}
-        numColumns={1}
-        data={data}
-        initialNumToRender={5}
-        renderItem={({item}) => 
-        <Card 
-          tripname = {item.tripname} 
-          onPress1={() => {
-            //todo從這裡跳轉去清單
-            console.log("顯示清單");
-          }}
-          onPress2={() => {
-            //todo從這裡跳轉去地圖
-            console.log("顯示地圖");
-          }}
-        />}
-        >
-        </FlatList>
-    </View>
+       //columnWrapperStyle={{justifyContent:'space-between'}}
+       showsVerticalScrollIndicator={false}
+       contentContainerStyle={{
+         marginTop: 25,
+         paddingBottom: 80,
+       }}
+       numColumns={1}
+       data={collect}
+       renderItem={({item}) => <Card post={item} changecollect={handleChenge} />}></FlatList>
+        }
+      </View>
   );
 };
 

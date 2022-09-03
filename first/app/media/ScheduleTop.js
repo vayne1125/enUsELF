@@ -20,7 +20,7 @@ const ScheduleTop = props => {
   const aurInfo = props;
   const sites = props.sites;
   //嘉羽sites
-  console.log('hihi ',sites);
+  console.log('資料 ',sites);
   return (
     <View style={styles.container}>
         <TouchableOpacity onPress={()=>{navigation.goBack()}} style={{flex:2,top:2,}}>
@@ -36,6 +36,7 @@ const ScheduleTop = props => {
         <View style={{flex:10,justifyContent:'center',top:12,}}>
         <Text style={styles.textStyle}>{aurInfo.name}的行程</Text>
         </View>
+        {(sites!=null)?
         <TouchableOpacity /*onPress={()=>{console.log('嘉羽地圖')}}*/ style={{flex:3,top:2,}}>
         <View style={styles.iconContainer2}>
           <Icon
@@ -45,7 +46,8 @@ const ScheduleTop = props => {
             style={styles.iconStyle2}
           />
         </View>
-        </TouchableOpacity>
+        </TouchableOpacity>:null
+        }
       </View>
   );
 };

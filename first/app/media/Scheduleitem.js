@@ -25,14 +25,16 @@ import firestore from '@react-native-firebase/firestore';
 import Image_link from '../theme/Image';
 import Image_linkMap from '../map/Image';
 /*check id placeid type */
+const height = Dimensions.get('screen').height/4;
+
 const Scheduleitem = (userSchdule) => {
   const {user, logout} = useContext(AuthContext);
   const sites=userSchdule.userSchdule;
   //DeviceEventEmitter.addListener('callback',(events) ={使用数据events});
   //console.log('site: ',sites);
-  console.log('site: ',sites);
+ // console.log('site: ',sites);
   const len=sites.length;
-  console.log('長度',len);
+ // console.log('長度',len);
   const [isSelected, setSelection] = useState(false);
     //全選
    let set = new Set()
@@ -45,8 +47,8 @@ const Scheduleitem = (userSchdule) => {
       for(let i=0;i<len;++i){
         if(set.has(sites[i].name))
         {
-        console.log('新增uid ', user.uid);
-        console.log('新增name ', sites[i].name);
+        //console.log('新增uid ', user.uid);
+        //console.log('新增name ', sites[i].name);
         const users = firestore().collection('users').doc(user.uid);
         users.collection('list').doc(sites[i].name)
         .set({
@@ -72,12 +74,12 @@ const Card = ({site}) => {
   useEffect(() => {
     const listen = DeviceEventEmitter
     .addListener('scheduleCheck',(check) => {//傳來Ttrue，我要全勾
-      console.log('look ',check);
+      //console.log('look ',check);
       if(check)
         set.add(site.name);
       else
        set.delete(site.name);
-       console.log('set2= ',set);
+      // console.log('set2= ',set);
     setCheck(check);
     });
     return () => listen.remove();
@@ -99,7 +101,7 @@ const Card = ({site}) => {
                     set.delete(site.name);
                   }else 
                  set.add(site.name);
-                console.log('Set: ', set);
+                //console.log('Set: ', set);
                 setCheck(!check);
               }}
               />
@@ -126,7 +128,8 @@ const Card = ({site}) => {
 
 return (
     <View style={styles.container}>
-        {<FlatList
+      {(sites.length)?
+        <FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
             marginTop: 25,
@@ -135,7 +138,9 @@ return (
         numColumns={1}
         data={sites}
         renderItem={({item}) => <Card site={item} />}>     
-      </FlatList>}
+      </FlatList>:
+        <View style={{flex:1,top:height,}}><Text style={{fontSize:28,}}>未提供行程表</Text></View>
+      }
     </View>
 );
 };

@@ -85,7 +85,15 @@ const MediaHome = ({navigation}) => {
     });
     return () => listen.remove();
   },[]);
-
+//取消收藏了
+  useEffect(() => {
+    const listen = DeviceEventEmitter
+    .addListener('deleteCollect',() => {
+      fetchPosts();
+    });
+    return () => listen.remove();
+  },[]);
+//刪文
 useEffect(()=>{fetchPosts();
    setDeleted(false);
 },[deleted]);   
@@ -110,7 +118,7 @@ const handleDelete = (postId) => {
 };
 
 const deletePost = (postId) => {
-  console.log('Current Post Id:',postId);
+ // console.log('Current Post Id:',postId);
   firestore()
   .collection('posts')
   .doc(postId)

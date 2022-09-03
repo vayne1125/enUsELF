@@ -15,6 +15,7 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Iconcross from 'react-native-vector-icons/Entypo';
+import Iconcamera from 'react-native-vector-icons/MaterialCommunityIcons';
 import firestore from '@react-native-firebase/firestore';
 import {AuthContext} from '../routes/AutoProvider';
 import Hotplace from '../map/Hotplace'
@@ -28,7 +29,7 @@ import Nature from '../theme/Nature'
 const width = Dimensions.get('screen').width - 20;
 
 const Card = ({navigation,post,onDelete}) => {
-    const {user, logout} = useContext(AuthContext);
+    const {user} = useContext(AuthContext);
     const [color, setColor] = useState('#D1DED7');
     const username=post.name;
     const sites=post.Trip;
@@ -121,6 +122,7 @@ const changecollect =()=>{
       .doc(post.id)
       .set({
         postId:post.id,
+        collectTime:firestore.Timestamp.fromDate(new Date()),
         //coomments:null,
       }).then(()=>{
         console.log('collect add !');
@@ -130,7 +132,7 @@ const changecollect =()=>{
       });
   }
 }
-  console.log('1post.use ',post.userid);
+  console.log('1post.use ',post.img);
        return (
          <View style={styles.card}>
            <View style={styles.nameContainer}>
@@ -153,9 +155,13 @@ const changecollect =()=>{
              :null}
            </View>
            <View style={styles.imageContainer}>
-             {/*<Image style={{flex: 1, resizeMode: 'contain'}} source={post.img} />*/}
+             {(post.img!=null)?
              <Image style={styles.image} resizeMode={"stretch"}source={{uri:post.img}}/>
-           </View>
+             :<View style={{top:50,alignItems:'center',}/*styles.noImageContainer*/}><View style={{flex:2,}}><Iconcamera name={'camera-off-outline'} size={60} color={'#5f695d'} /></View>
+              <Text style={{fontSize:18,flex:4,}}>此貼文無照片</Text>
+              </View>
+             }
+             </View>
            <View style={styles.textContainer}>
             <TouchableOpacity  onPress={changecollect}><Icon name={'heart'} size={24} color={color} />
             </TouchableOpacity>  
