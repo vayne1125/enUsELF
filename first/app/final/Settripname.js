@@ -14,9 +14,10 @@ const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 4;
 
 const Settripname = ({ size,modalVisible, onClose,completePress}) => {
-  const [tripname,setTripname]=useState(null);
   const tempname='旅程計畫表';
   const namesize=size+1;
+  const forceName = tempname+namesize.toString();
+  const [tripname,setTripname]=useState(forceName);
   // Settripname('旅程計畫表'+namesize);
   // console.log('here setsize= ',namesize);
   // console.log('here temp= ',tempname);
@@ -51,7 +52,7 @@ const Settripname = ({ size,modalVisible, onClose,completePress}) => {
             <View style={styles.buttonContainer}>
               <TouchableOpacity
                 onPress={() => {
-                  completePress(tripname);
+                  completePress((tripname==="")?forceName:tripname);
                 }}
                 style={{flex: 1}}>
                 <Text style={styles.buttonText}>完成</Text>

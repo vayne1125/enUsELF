@@ -1,0 +1,3134 @@
+[
+    {
+        "id": 0,
+        "info": "壽山情人觀景台",
+        "name": "壽山情人觀景台",
+        "location": {
+            "lat": 22.6254266,
+            "lng": 120.274061
+        },
+        "star": 4.4,
+        "photo": {
+            "height": 3648,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/115288783957497864738\">Shun Chen</a>"
+            ],
+            "photo_reference": "AeJbb3dkjQ1NEECojq1PL5vMjn4IoS8scg-VLLK6PRsXWp4oaptG_sGtw90l3-f-tT-zC02NTIGkkXqP3u1wGTuHsQ6V3OJroNbZeNb4oeilo079fqtV2kWnusKBEylUwqbzSmvWokWlYgz_dYluzSo8yuk9ROYLgnbnwXEsfLyMSMc5hoVg",
+            "width": 5472
+        },
+        "vicinity": "鼓山區忠義路30號",
+        "addr": "J7GF+5J 台灣高雄市鼓山區",
+        "address": "台灣高雄市鼓山區忠義路30號",
+        "city": "高雄市",
+        "region": "鼓山區",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "del": 0.0625,
+        "place_id": "ChIJfQJ-NAsEbjQRiUmSi7LapjE",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 1,
+        "info": "大農大富平地森林園區",
+        "name": "大農大富平地森林園區",
+        "location": {
+            "lat": 23.6148548,
+            "lng": 121.4177281
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 2977,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/117652682614129805314\">Joeanne peng</a>"
+            ],
+            "photo_reference": "AeJbb3cs8SXKntc0fTHEcOlVxe_8CCDBtY5sZwBDk7VrOpMV4XchOUCPGElJAxYx07861DtWAHl8tx5FfX7mEK5PkrZflDhovH96Ohd4UUokFdxnsmTnCL_WcnjvXjOLIzgQfqzb7_7MYk9ipI-ZTctu4x_7P5e9kgNrYU-oNp4vNynafXoa",
+            "width": 3970
+        },
+        "vicinity": "光復鄉農場路32號",
+        "addr": "JC79+W3 台灣花蓮縣光復鄉",
+        "address": "台灣花蓮縣光復鄉農場路32號",
+        "city": "花蓮縣",
+        "region": "光復鄉",
+        "time": [
+            "星期一: 08:00 – 17:00",
+            "星期二: 08:00 – 17:00",
+            "星期三: 08:00 – 17:00",
+            "星期四: 08:00 – 17:00",
+            "星期五: 08:00 – 17:00",
+            "星期六: 08:00 – 17:00",
+            "星期日: 08:00 – 17:00"
+        ],
+        "place_id": "ChIJ-b_-vgFNbzQR8qkajZZrKqU",
+        "type": "hot"
+    },
+    {
+        "del": 0.23,
+        "id": 2,
+        "info": "旗津海岸公園",
+        "name": "旗津海岸公園",
+        "location": {
+            "lat": 22.601106,
+            "lng": 120.2738165
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 3096,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/113011390538665634344\">李建國</a>"
+            ],
+            "photo_reference": "AeJbb3dFZGatFOJJ2ai5zgS1V_OMomlMQqgOBkj6wpQ_H3echWthfOOaRfCGejAlAZ9IKVeilkNa-v7kF4BP_VAjW3Ud2ZHB0PilcfytwXMOy1X6WuX-4m3aSOJckFZDx2eAASD3nY3AMjwIibdLOhCB3RAM6sUVBgOWPj-NvVbNfnk-d9T1",
+            "width": 4128
+        },
+        "vicinity": "旗津區旗津三路990號",
+        "addr": "J72F+CG 台灣高雄市前鎮區",
+        "address": "台灣高雄市旗津區旗津三路990號",
+        "city": "高雄市",
+        "region": "旗津區",
+        "time": [
+            "星期一: 休息",
+            "星期二: 09:00 – 17:00",
+            "星期三: 09:00 – 17:00",
+            "星期四: 09:00 – 17:00",
+            "星期五: 09:00 – 17:00",
+            "星期六: 09:00 – 17:00",
+            "星期日: 09:00 – 17:00"
+        ],
+        "place_id": "ChIJpUASyeoDbjQRxlnmoOXkT0A",
+        "type": "hot"
+    },
+    {
+        "del": 0.017,
+        "id": 3,
+        "info": "英商德記洋行",
+        "name": "英商德記洋行",
+        "location": {
+            "lat": 23.0034467,
+            "lng": 120.1597835
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 3000,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/113430088463519914655\">Nike Tu</a>"
+            ],
+            "photo_reference": "AeJbb3fkcrG_znrlML82HR3nONnlJUa5cCGCjeyaWKeii5Juz940mmyea3Ga0z_rqeuGul1QzkmJcJuRPNLa0emHtiDjXjqk6Yjcy_WQfRfMH1mBWZ6pGMWkjmE3RJHKQaXIGxoC4z8yYDQHCK8WZ2AI5-BVJ8xdJY0Yqm0EwiuqpzGTRTkP",
+            "width": 4000
+        },
+        "vicinity": "安平區古堡街108號",
+        "addr": "2535+9W 台灣台南市安平區",
+        "address": "台灣台南市安平區古堡街108號",
+        "city": "台南市",
+        "region": "安平區",
+        "time": [
+            "星期一: 08:30 – 17:30",
+            "星期二: 08:30 – 17:30",
+            "星期三: 08:30 – 17:30",
+            "星期四: 08:30 – 17:30",
+            "星期五: 08:30 – 17:30",
+            "星期六: 08:30 – 17:30",
+            "星期日: 08:30 – 17:30"
+        ],
+        "place_id": "ChIJo7avkR12bjQR9Gvc2sRtx40",
+        "type": "hot"
+    },
+    {
+        "del": 4,
+        "id": 4,
+        "info": "一中街夜市",
+        "name": "一中街夜市",
+        "location": {
+            "lat": 24.1479584,
+            "lng": 120.6844634
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 3472,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/115063691275168908107\">楊宏澤</a>"
+            ],
+            "photo_reference": "AeJbb3cSnAxd4frZ1wxWrK8LCagBBvq7A_xgxBvZ2s80jqf5X2HkDlPVKu6VtHxWEnCewWLKKZG9PXgtN6DqY0SQ7fNNET4snkFa4z26hdkB81951vWGASxpMaukWPA1diyhaKeBP2HVAcuxx5mxBOp3-_YQKZLzbIQ6C-kyTw8E9Ed6DBQq",
+            "width": 4624
+        },
+        "vicinity": "北區一中街",
+        "addr": "4MXM+5Q 台灣台中市北區",
+        "address": "台灣台中市北區一中街",
+        "city": "台中市",
+        "region": "北區一",
+        "time": [
+            "星期一: 11:00 – 22:10",
+            "星期二: 11:00 – 22:10",
+            "星期三: 11:00 – 22:10",
+            "星期四: 11:00 – 22:10",
+            "星期五: 11:00 – 22:10",
+            "星期六: 11:00 – 22:10",
+            "星期日: 11:00 – 22:10"
+        ],
+        "place_id": "ChIJeZhxjmg9aTQRu4ClJlnbzHk",
+        "type": "hot"
+    },
+    {
+        "del": 0.95,
+        "id": 5,
+        "info": "紅毛港文化園區",
+        "name": "紅毛港文化園區",
+        "location": {
+            "lat": 22.5506874,
+            "lng": 120.3179446
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 2268,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/108926484480798584617\">胡傳其</a>"
+            ],
+            "photo_reference": "AeJbb3euUFOltFDCS5Ir2IgJh-RKdlzkoSWfOybmXrg25FATaIuYAz6Zp22zjn1h5ICzFgkyoW8En7zqQEvqHpDjr1KWgdI3FJEoE8EWdTVWKJoRkyKBJ2tcFl2n3hOGOlciUoT5jvM6EYhx7bnMxpRpCwjDT3fzGW9xCCvpAGqT7d8PZRQp",
+            "width": 4032
+        },
+        "vicinity": "小港區南星路2808號",
+        "addr": "H829+75 台灣高雄市小港區",
+        "address": "台灣高雄市小港區南星路2808號",
+        "city": "高雄市",
+        "region": "小港區",
+        "time": [
+            "星期一: 15:00 – 20:00",
+            "星期二: 15:00 – 20:00",
+            "星期三: 休息",
+            "星期四: 15:00 – 20:00",
+            "星期五: 15:00 – 20:00",
+            "星期六: 10:00 – 21:00",
+            "星期日: 10:00 – 21:00"
+        ],
+        "place_id": "ChIJn3Q73aXicTQRndQSbrqd9kg",
+        "type": "hot"
+    },
+    {
+        "del": 4,
+        "id": 6,
+        "info": "烏鬼洞",
+        "name": "烏鬼洞",
+        "location": {
+            "lat": 22.330208,
+            "lng": 120.3557309
+        },
+        "star": 4.1,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/102506046124065506028\">Vicky Tu</a>"
+            ],
+            "photo_reference": "AeJbb3cDGRUsT04IFuact6YUZ0o303rjLvMfzel-DTBW_4_KuI62tpPjGfhNWoc1ysDqMzl8T_-nqt_OZiX0sM8aXMpjhR5zlMOkPR-uNRadM-oKcg30oiIs9_fim0V1dEsbCmwkTSke7N58vgvxL27jMoZz_qVBXxt9ukp1MnsNiwGSaD77",
+            "width": 4032
+        },
+        "vicinity": "Taiwan",
+        "addr": "89J4+37 台灣屏東縣琉球鄉",
+        "address": "台灣屏東縣Taiwan",
+        "city": "屏東縣",
+        "region": "Tai",
+        "time": [
+            "星期一: 07:00 – 18:00",
+            "星期二: 07:00 – 18:00",
+            "星期三: 07:00 – 18:00",
+            "星期四: 07:00 – 18:00",
+            "星期五: 07:00 – 18:00",
+            "星期六: 07:00 – 18:00",
+            "星期日: 07:00 – 18:00"
+        ],
+        "place_id": "ChIJN7CTMebvcTQRvlAZ2AQdHCE",
+        "type": "hot"
+    },
+    {
+        "del": 4,
+        "id": 7,
+        "info": "檜意森活村 Hinoki Village",
+        "name": "檜意森活村",
+        "location": {
+            "lat": 23.4861261,
+            "lng": 120.4540114
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 1108,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/118127238785386741906\">檜意森活村 Hinoki Village</a>"
+            ],
+            "photo_reference": "AeJbb3d7FNKrkxsDBSRXt1u_ZxY-xkomBG53AWUNSWOSxsxt-VdwhwKecPgvxkVpB7xrq6p0uhaIZSk5EM1UCAF5Y2vcIRNy1pzZjJBKPNJEK8aOnknUznhnnaU9zCjUI5vfCo7kD9ljyEkSpa4PacOHqVCapeyT6EZGMSf96MEcItOqX3sk",
+            "width": 1478
+        },
+        "vicinity": "東區林森東路1號",
+        "addr": "FFP3+FJ 台灣嘉義市東區",
+        "address": "台灣嘉義市東區林森東路1號",
+        "city": "嘉義市",
+        "region": "東區林",
+        "time": [
+            "星期一: 10:00 – 18:00",
+            "星期二: 10:00 – 18:00",
+            "星期三: 10:00 – 18:00",
+            "星期四: 10:00 – 18:00",
+            "星期五: 10:00 – 18:00",
+            "星期六: 10:00 – 18:00",
+            "星期日: 10:00 – 18:00"
+        ],
+        "place_id": "ChIJOb09b8uVbjQRigoLMNW9rpE",
+        "type": "hot"
+    },
+    {
+        "del": 4,
+        "id": 8,
+        "info": "積木博物館-展區整修中免門票/優惠活動DIY禮品舖UnderRenovation/GiftShopOpen",
+        "name": "積木博物館",
+        "location": {
+            "lat": 24.7319098,
+            "lng": 121.763824
+        },
+        "star": 4.4,
+        "photo": {
+            "height": 1536,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/101135405476050672120\">Li Hsin Hsu</a>"
+            ],
+            "photo_reference": "AeJbb3c3XtSRJuKXm16Q8xyN1_5xj8oRfIo6SObj_F0KHu1JRblgNgmEIY7iqK9hW7gjZ8DsutpWLm1sV8FG_knCIIBfQDtR0ym5xPJYNFS3xl2P9Fa3FiUDnD_BWSzFgRSaylOkkwUb6ib8g3CdQ-EKke08vu6IsyG6mpryE_ogfVXzKaTi",
+            "width": 2304
+        },
+        "vicinity": "宜蘭市縣政北路2號",
+        "addr": "PQJ7+QG 台灣宜蘭縣宜蘭市",
+        "address": "台灣宜蘭縣宜蘭市縣政北路2號",
+        "city": "宜蘭縣",
+        "region": "宜蘭市",
+        "time": [
+            "星期一: 10:00 – 17:00",
+            "星期二: 10:00 – 17:00",
+            "星期三: 休息",
+            "星期四: 10:00 – 17:00",
+            "星期五: 10:00 – 17:00",
+            "星期六: 10:00 – 17:00",
+            "星期日: 10:00 – 17:00"
+        ],
+        "place_id": "ChIJ66k9lP3kZzQR9wXQpqo4n28",
+        "type": "hot"
+    },
+    {
+        "del:": 4,
+        "id": 9,
+        "info": "大坡池",
+        "name": "大坡池",
+        "location": {
+            "lat": 23.1163535,
+            "lng": 121.2252564
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 3016,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/116917998401572245739\">林建兆</a>"
+            ],
+            "photo_reference": "AeJbb3fof-osJXWKENNlMEsVlGZzUnAX-Pgb3e4Gm7l2OdJSAfbFpXOQJZwk0f6_R_p_9z-u4l6GAX0Lkb7rigqDzmU6sWSzu3JlZvu4zSmCpCAnE86FtAViQTCgW-pvtPwqVQCJK5hn1Au0jflsZFGeDRz6XwQATxpetHOdGnfH8drXerqS",
+            "width": 4022
+        },
+        "vicinity": "池上鄉池富道路23號",
+        "addr": "468G+G4 台灣台東縣池上鄉",
+        "address": "台灣台東縣池上鄉池富道路23號",
+        "city": "台東縣",
+        "region": "池上鄉",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJq6qqqn4LbzQRr0p9zSWvkdE",
+        "type": "hot"
+    },
+    {
+        "del": 4,
+        "id": 10,
+        "info": "七星潭海岸風景特定區",
+        "name": "七星潭海岸風景特定區",
+        "location": {
+            "lat": 24.0314268,
+            "lng": 121.6271764
+        },
+        "star": 4.5,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/106384929557950057717\">Brent Chen</a>"
+            ],
+            "photo_reference": "AeJbb3ejdz5XKo0Yn2-MdmWkA20OVUHY28aj-DdGGYvQmSvZe__Ej5fZEl_vm2PxHXYkM0x01Pk2-hQZa9z1RugI2WJFcaHDOA97rTuCVzp7z61opWsY37mvgDTbFmxB71zCqR1f29BdDiKCoHY9b4ILcTFzbph2u-bDJzK0TbIrrCteNGFu",
+            "width": 4032
+        },
+        "vicinity": "新城鄉七星街79巷5號",
+        "addr": "2JJG+HV 台灣花蓮縣新城鄉",
+        "address": "台灣花蓮縣新城鄉七星街79巷5號",
+        "city": "花蓮縣",
+        "region": "新城鄉",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJpTcgYOidaDQRVHUO3ILkXJs",
+        "type": "hot"
+    },
+    {
+        "del": 4,
+        "id": 11,
+        "info": "安平古堡",
+        "name": "安平古堡",
+        "location": {
+            "lat": 23.0015093,
+            "lng": 120.1606244
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 1365,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/117272444893920338853\">安平古堡</a>"
+            ],
+            "photo_reference": "AeJbb3dT8rUish7d0KOXiykJPx6X7SRCX-W-xln1mgzcVogL8vdq2fQdEx_YH-uO2etwI7DzHXIX7TWn85pFfeJd-qOTv2WqstQerXykC4AjcavQ_saYomVXFxe6VhUT_cJ-ezXQkjHi4vQrNYMSYB5_1nme_c61PWXJ4GhICQLT-WlZwfYG",
+            "width": 2048
+        },
+        "vicinity": "安平區國勝路82號",
+        "addr": "2526+J6 台灣台南市安平區",
+        "address": "台灣台南市安平區國勝路82號",
+        "city": "台南市",
+        "region": "安平區",
+        "time": [
+            "星期一: 08:30 – 17:30",
+            "星期二: 08:30 – 17:30",
+            "星期三: 08:30 – 17:30",
+            "星期四: 08:30 – 17:30",
+            "星期五: 08:30 – 20:00",
+            "星期六: 08:30 – 20:00",
+            "星期日: 08:30 – 20:00"
+        ],
+        "place_id": "ChIJZ-TjeHN2bjQR8a3Jat0VHps",
+        "type": "hot"
+    },
+    {
+        "del": 4,
+        "id": 12,
+        "info": "臺東森林公園",
+        "name": "臺東森林公園",
+        "location": {
+            "lat": 22.7681758,
+            "lng": 121.156259
+        },
+        "star": 4.4,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/110406233559949087283\">Jerry Tsai</a>"
+            ],
+            "photo_reference": "AeJbb3d_oyHKYW_B_gbwJAycJ-wA8bnBl_89ColtPMFfa5lZlEq9KtXaSKTtNtP3TVtkLGy7duPIJ7E_tTvao_QbiC_TwqChAPtPFb_L0G7OMcXfPBpiMR0nG8l4aU01FFz7O9zzE1tiAWEzPsvxKracEDt9h02TosBpFgPFVrqvoD2pVkhK",
+            "width": 4032
+        },
+        "vicinity": "台東市華泰路300號",
+        "addr": "Q594+7G 台灣台東縣台東市",
+        "address": "台灣台東縣台東市華泰路300號",
+        "city": "台東縣",
+        "region": "台東市",
+        "time": [
+            "星期一: 07:30 – 19:30",
+            "星期二: 07:30 – 19:30",
+            "星期三: 07:30 – 19:30",
+            "星期四: 07:30 – 19:30",
+            "星期五: 07:30 – 19:30",
+            "星期六: 07:30 – 19:30",
+            "星期日: 07:30 – 19:30"
+        ],
+        "place_id": "ChIJx9oJH165bzQRHtM1Bkgvyyo",
+        "type": "hot"
+    },
+    {
+        "del": 4,
+        "id": 13,
+        "info": "HOHOCHA喝喝茶丨台灣香日月潭紅茶廠",
+        "name": "HOHOCHA喝喝茶",
+        "location": {
+            "lat": 23.8961935,
+            "lng": 120.9337775
+        },
+        "star": 4.7,
+        "photo": {
+            "height": 3524,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/116944861867348213874\">HOHOCHA喝喝茶丨台灣香日月潭紅茶廠</a>"
+            ],
+            "photo_reference": "AeJbb3fQiJxDoNSkuG7qdyNj-Tst92zeaGvby06atMNiPwOv3-v4q0dUR42fAyF9Hi6wKQnJhnqAKJjBUXwWVAnEoaIHMlHqmKVWVq19duBERcVCYmveFmerQAm5wUAsbNtXnqihCQmXJJfmGSp1W-sh2ehNW11Jj0fPVoHDtqii_aDBGb-J",
+            "width": 5286
+        },
+        "vicinity": "魚池鄉魚池街443-36號",
+        "addr": "VWWM+FG 台灣南投縣魚池鄉",
+        "address": "台灣南投縣魚池鄉魚池街443-36號",
+        "city": "南投縣",
+        "region": "魚池鄉",
+        "time": [
+            "星期一: 09:00 – 17:20",
+            "星期二: 09:00 – 17:20",
+            "星期三: 09:00 – 17:20",
+            "星期四: 09:00 – 17:20",
+            "星期五: 09:00 – 17:20",
+            "星期六: 09:00 – 17:50",
+            "星期日: 09:00 – 17:50"
+        ],
+        "place_id": "ChIJ6eoEWazXaDQRdesTjsukxe8",
+        "type": "hot"
+    },
+    {
+        "del": 0.23,
+        "id": 14,
+        "info": "望龍埤",
+        "name": "望龍埤",
+        "location": {
+            "lat": 24.7766,
+            "lng": 121.6990972
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 3872,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/115388928857957802986\">Taiwan Cherry</a>"
+            ],
+            "photo_reference": "AeJbb3cr-RFg62b9Nm1rK1kQ7j8x9tUU6op8hMkBQR2jGI_qUKZNekPneTMIbhHWEDoH0gMDQtIs9wzEHaJ0QlLhx6SIMc-iUTvoZqA0tp3E_Vy1QC-pHRQ1tpJy_G1oyVlFEBBLFhB9-7h1GqW6oRsvYa4Z9QIqXdfcUQLwGRiRUQLTlXFX",
+            "width": 5163
+        },
+        "vicinity": "員山鄉枕山村坡城路18-6號",
+        "addr": "QMGX+JJ 台灣宜蘭縣員山鄉",
+        "address": "台灣宜蘭縣員山鄉枕山村坡城路18-6號",
+        "city": "宜蘭縣",
+        "region": "員山鄉",
+        "time": [
+            "無"
+        ],
+        "place_id": "ChIJX3qwoUvjZzQRD_TNlJmeDzQ",
+        "type": "hot"
+    },
+    {
+        "del": 4,
+        "id": 15,
+        "info": "石門洞",
+        "name": "石門洞",
+        "location": {
+            "lat": 25.2959536,
+            "lng": 121.5685551
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/114625597565553337734\">星空夜語</a>"
+            ],
+            "photo_reference": "AeJbb3dvaCv5-tPt2oN01NleHIk2jvARh_brPNi_leKX7kfDfbKmhzenomBLi-_3BXWRfOfOYqQTfiuYIzO6YGw9RPkXnJuzpHCooVMPaNhinklrE30SeckA4YKsUfFKvTMVBwfbFrQ-Az7axF4VE--oK892LTbOIhnMce2_xyZSLYsJNSTr",
+            "width": 4032
+        },
+        "vicinity": "石門區中央路",
+        "addr": "7HW9+9C 台灣新北市石門區",
+        "address": "台灣新北市石門區中央路",
+        "city": "新北市",
+        "region": "石門區",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJC_1Xj7y1QjQR_YL4J62VPKc",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 16,
+        "info": "賞蟹步道",
+        "name": "賞蟹步道",
+        "location": {
+            "lat": 24.7831722,
+            "lng": 120.9143118
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 3076,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/114019258278849749838\">JL Chu</a>"
+            ],
+            "photo_reference": "AeJbb3dWx5cB2ytsi82o0q0WRcNQ1iOrXjz1oJSYBFw81CIbaNeRvigl0H6GicEAEwFaJVfWndcLGdKWSPaYwfiUCOm4eM9jicaerBmbx0LP0XmHeMlL-SxmRdl503VLovGm-Qr3Yc_pld2R4pXNXNku5qbPzJXGkxoBRtbfUzbbgEX3ghS7",
+            "width": 4144
+        },
+        "vicinity": "香山區中華路五段320巷35號",
+        "addr": "QWM7+7P 台灣新竹市香山區",
+        "address": "台灣新竹市香山區中華路五段320巷35號",
+        "city": "新竹市",
+        "region": "香山區",
+        "time": [
+            "星期一: 休息",
+            "星期二: 09:00 – 18:00",
+            "星期三: 09:00 – 18:00",
+            "星期四: 09:00 – 18:00",
+            "星期五: 09:00 – 18:00",
+            "星期六: 09:00 – 18:00",
+            "星期日: 09:00 – 18:00"
+        ],
+        "place_id": "ChIJP0L-NKNKaDQRZp5YgpymGy4",
+        "type": "hot"
+    },
+    {
+        "del": 0.1257,
+        "id": 17,
+        "info": "二鯤鯓砲臺(億載金城)",
+        "name": "二鯤鯓砲臺(億載金城)",
+        "location": {
+            "lat": 22.987883,
+            "lng": 120.159255
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 682,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/117649482057955137594\">二鯤鯓礮臺 億載金城</a>"
+            ],
+            "photo_reference": "AeJbb3en6Btjg4V3kQQ01C6febIN5odxzmEDxZeQyjXRetaAAK3I-mrUe-Mv2Hxvzoa2bKKCDBLdswOtmY6rmuucNYqSxfxHH42Y4Ppg2BYNQakaS7Jd6P_x-6U6tQ-1r8XzozwzKFVYzjVgdwrcxnjH7O1ARB3UEGRDnovKjzNqssj0EICt",
+            "width": 1024
+        },
+        "vicinity": "安平區光州路3號",
+        "addr": "X5Q5+5P 台灣台南市安平區",
+        "address": "台灣台南市安平區光州路3號",
+        "city": "台南市",
+        "region": "安平區",
+        "time": [
+            "星期一: 08:30 – 17:30",
+            "星期二: 08:30 – 17:30",
+            "星期三: 08:30 – 17:30",
+            "星期四: 08:30 – 17:30",
+            "星期五: 08:30 – 17:30",
+            "星期六: 08:30 – 17:30",
+            "星期日: 08:30 – 17:30"
+        ],
+        "place_id": "ChIJk_qk9P91bjQRTolgNlHUSrc",
+        "type": "hot"
+    },
+    {
+        "del": 0.52,
+        "id": 18,
+        "info": "臺南孔廟",
+        "name": "臺南孔廟",
+        "location": {
+            "lat": 22.9904444,
+            "lng": 120.2043056
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 682,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/101769276573271281162\">臺南孔子廟 全臺首學</a>"
+            ],
+            "photo_reference": "AeJbb3cx-ngJKUT4FYS8PwemeiinPZO_omm7RwcRBn2drMFoBj_AXHblX1VevbInx3bydbi1GBX1D4Fdvq21FyeKUZ31qcqIJSXp5uYq6eKtQBlrqF3rmf3-bEWI7GxtfllCTeEbcfFDCNlbf-66Qt7volPaOP5QrO-c50Nr_XQUDzpPM9AG",
+            "width": 1024
+        },
+        "vicinity": "中西區南門路2號",
+        "addr": "X6R3+5P 台灣台南市中西區",
+        "address": "台灣台南市中西區南門路2號",
+        "city": "台南市",
+        "region": "中西區",
+        "time": [
+            "星期一: 08:30 – 17:30",
+            "星期二: 08:30 – 17:30",
+            "星期三: 08:30 – 17:30",
+            "星期四: 08:30 – 17:30",
+            "星期五: 08:30 – 17:30",
+            "星期六: 08:30 – 17:30",
+            "星期日: 08:30 – 17:30"
+        ],
+        "place_id": "ChIJFbzVrGJ2bjQRkZC9jslaIgs",
+        "type": "hot"
+    },
+    {
+        "del": 1.8,
+        "id": 19,
+        "info": "國立臺灣歷史博物館",
+        "name": "國立臺灣歷史博物館",
+        "location": {
+            "lat": 23.0583737,
+            "lng": 120.2349839
+        },
+        "star": 4.4,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/105976196766534311212\">Jia-You Tsai</a>"
+            ],
+            "photo_reference": "AeJbb3dBk-wlyiMQa-M70CkC7VTMVIC_uQb2qrtf44XEeAAQ3vQCYC41JbZ1ABU1yxVhwE4-XKEbLc-uSsyY-UohOlWcmK3VNqLHECyGBoCwHzej0xT_0LWYTc8obXXKyz8M6j_1AMXqb6Fv6KeOYaqjSpOh6-azYgQQHkvlMCQ-C3_BDCPR",
+            "width": 4032
+        },
+        "vicinity": "安南區長和路一段250號",
+        "addr": "365M+8X 台灣台南市安南區",
+        "address": "台灣台南市安南區長和路一段250號",
+        "city": "台南市",
+        "region": "安南區",
+        "time": [
+            "星期一: 休息",
+            "星期二: 09:00 – 17:00",
+            "星期三: 09:00 – 17:00",
+            "星期四: 09:00 – 17:00",
+            "星期五: 09:00 – 17:00",
+            "星期六: 09:00 – 17:00",
+            "星期日: 09:00 – 17:00"
+        ],
+        "place_id": "ChIJC7CiCuJ5bjQR0UEDGKs4KF0",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 20,
+        "info": "麗寶樂園",
+        "name": "麗寶樂園",
+        "location": {
+            "lat": 24.3230546,
+            "lng": 120.695524
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 3582,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/111634277429810739767\">林奕辰</a>"
+            ],
+            "photo_reference": "AeJbb3e8TxNDCUpz42PiOXtUS93Pg0uiKx8AmExwEJFEkX0QHQzhpmw1rHsoQL6XX0SRbGqVwCes30cTh8SvM3CdFHf2L5w4A-sUAmrLs99h9i9oQONue0sO9-m0UPli75Fqm4Sd6-SxhTR0vVFH36VANyhdPyCL5eqwEo2jGjXMra6kXP7x",
+            "width": 2717
+        },
+        "vicinity": "后里區福容路8號",
+        "addr": "8MFW+66 台灣台中市后里區",
+        "address": "台灣台中市后里區福容路8號",
+        "city": "台中市",
+        "region": "后里區",
+        "time": [
+            "星期一: 09:30 – 18:00",
+            "星期二: 09:30 – 18:00",
+            "星期三: 09:30 – 18:00",
+            "星期四: 09:30 – 18:00",
+            "星期五: 09:30 – 18:00",
+            "星期六: 09:30 – 20:00",
+            "星期日: 09:30 – 18:00"
+        ],
+        "place_id": "ChIJ1bZU8hkQaTQRqWPxCYpghHE",
+        "type": "hot"
+    },
+    {
+        "del": 1.0,
+        "id": 21,
+        "info": "海洋廣場",
+        "name": "海洋廣場",
+        "location": {
+            "lat": 25.1310222,
+            "lng": 121.741348
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 3000,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/108648384896662106703\">陸癸榮</a>"
+            ],
+            "photo_reference": "AeJbb3fXk9iBvQGzqk_PiYx6Yml10qZTSU2As_upAzEHeJrprym2ZM6Ap-Bk6EJbhhmQKIznh39AaY9OmuPZnDxNae6kGunYC6YVMNBok1SCOhc9__Tqol6NHS8mgaXLBMr6A5cEqp_S3aa9VR79OTR7ANP8b5GTCeLvDmuSPT_J8XGedJzU",
+            "width": 4000
+        },
+        "vicinity": "仁愛區忠一路",
+        "addr": "4PJR+CG 台灣基隆市仁愛區",
+        "address": "台灣基隆市仁愛區忠一路",
+        "city": "基隆市",
+        "region": "仁愛區",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJX6iDchVOXTQR4atveHM3aYU",
+        "type": "hot"
+    },
+    {
+        "del": 0.0625,
+        "id": 22,
+        "info": "臺中刑務所演武場",
+        "name": "臺中刑務所演武場",
+        "location": {
+            "lat": 24.134379,
+            "lng": 120.673899
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 3468,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/109465935661305717174\">洪晏棱</a>"
+            ],
+            "photo_reference": "AeJbb3dOXM99Cl3DJIE2pEoHIcEQqczQKfg7IgW5RfrsORFe013C5Qg_T5oz2kiaogvFLKm6zSeGSZy3Eld2BzVcBHFKZi_97MO3Gmdr8UYIWpmVcxXPK8ETE-21tcOLxIMc3zQqPez2YMcs08EUAni2gYaP0d3hxbCoIZitrO9cPS4d7B8u",
+            "width": 4624
+        },
+        "vicinity": "西區林森路33號",
+        "addr": "4MMF+QH 台灣台中市西區",
+        "address": "台灣台中市西區林森路33號",
+        "city": "台中市",
+        "region": "西區林",
+        "time": [
+            "星期一: 09:30 – 17:30",
+            "星期二: 09:30 – 17:30",
+            "星期三: 09:30 – 17:30",
+            "星期四: 09:30 – 17:30",
+            "星期五: 09:30 – 17:30",
+            "星期六: 09:30 – 17:30",
+            "星期日: 09:30 – 17:30"
+        ],
+        "place_id": "ChIJKQHjEQ89aTQRUejNAZHJUz4",
+        "type": "hot"
+    },
+    {
+        "del": 0.256,
+        "id": 23,
+        "info": "風禾公園",
+        "name": "風禾公園",
+        "location": {
+            "lat": 25.0016072,
+            "lng": 121.2912472
+        },
+        "star": 4.4,
+        "photo": {
+            "height": 4000,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/110142972720236962715\">林天飛</a>"
+            ],
+            "photo_reference": "AeJbb3d7eWInf4kayGbDkrIZeT9z4mm_eoICNYHO2e8dkGcmlakjbx_Iqjdm8-saXI-bQUibe_DKYROz6hks2SwinH1DFnrTx_MisPlJycw-VN8JGQvjbC2txykL43taMsCw9xiSSbQnvqzOh_uTW_BcDBZzqsNwGVFRfcDJTmKSRddvCszN",
+            "width": 6000
+        },
+        "vicinity": "桃園區慈文路688號",
+        "addr": "272R+JF 台灣桃園市桃園區",
+        "address": "台灣桃園市桃園區慈文路688號",
+        "city": "桃園市",
+        "region": "桃園區",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJjZ7YYQkfaDQRADZ8bkIqXbs",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 24,
+        "info": "金城武樹",
+        "name": "金城武樹",
+        "location": {
+            "lat": 23.09746359999999,
+            "lng": 121.2045049
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 2831,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/116048544107778136800\">I CHUAN HO</a>"
+            ],
+            "photo_reference": "AeJbb3dEKxSspTYPrHT22zmz8B1RzWn-6NGVogKx8M1peIdAgJ2Ar-7TyeGIa6C4bTlRWg7ZRMkCQoSlaPj4G83PdQxJNoVETtC53Po7KcwwmBfWg80A0402ol9yNyRzZQLkLQo-XuqNhh-kU8uM-J66Rgtmev05FF7BUUqvidUWbhd-idjX",
+            "width": 5027
+        },
+        "vicinity": "池上鄉伯朗大道",
+        "addr": "36W3+XR 台灣台東縣池上鄉",
+        "address": "台灣台東縣池上鄉伯朗大道",
+        "city": "台東縣",
+        "region": "池上鄉",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJRV43RoILbzQRQqeetM5fD40",
+        "type": "hot"
+    },
+    {
+        "del": 0.052,
+        "id": 25,
+        "info": "臺中國家歌劇院",
+        "name": "臺中國家歌劇院",
+        "location": {
+            "lat": 24.1626492,
+            "lng": 120.6403028
+        },
+        "star": 4.5,
+        "photo": {
+            "height": 3755,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/116279142495769615590\">臺中國家歌劇院 Taichung National Theater</a>"
+            ],
+            "photo_reference": "AeJbb3cUD8BM6eHokpeWoZtFPCrkOfJcEiZyuLfdSPmun--Dxm_m-wxoZtYASD29CdSdf-CHfCQaS6u6UyvhguQSbRD-PgjwBIrbAaJpzrv7gZuKEP9dj2tKpuXf02k6kMAw4Y7Yx4H95_fugcHs0LaTxiZyjkicyxFrs4F82DaHvNLaBqlB",
+            "width": 6675
+        },
+        "vicinity": "西屯區惠來路二段101號",
+        "addr": "5J7R+34 台灣台中市西屯區",
+        "address": "台灣台中市西屯區惠來路二段101號",
+        "city": "台中市",
+        "region": "西屯區",
+        "time": [
+            "星期一: 休息",
+            "星期二: 11:30 – 21:00",
+            "星期三: 11:30 – 21:00",
+            "星期四: 11:30 – 21:00",
+            "星期五: 11:30 – 22:00",
+            "星期六: 11:30 – 22:00",
+            "星期日: 11:30 – 21:00"
+        ],
+        "place_id": "ChIJcaKjTOw9aTQR4mAeJzejtdg",
+        "type": "hot"
+    },
+    {
+        "del": 0.052,
+        "id": 26,
+        "info": "碧潭-Bitan",
+        "name": "碧潭-Bitan",
+        "location": {
+            "lat": 24.95598489999999,
+            "lng": 121.5365043
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 3072,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/116497199643793092547\">冰羽風</a>"
+            ],
+            "photo_reference": "AeJbb3fMJzWJDUOgXABPRgmapks8KAvJWP7WcY4mfM371ZsfxgKcAQW0eNnkPMzWGejp7Zo1TzgKHOpF4E8KFR31gYoqpY8Iyc1JTOTwI3uk3NSb9LTkFS_34BNeJ9y7iozZwwsCz06gmu4KWl2AnVdUe2BNe8ABtcn3cPxkbXaaSKDtHe24",
+            "width": 4080
+        },
+        "vicinity": "新店區新店路",
+        "addr": "XG4P+9J 台灣新北市新店區",
+        "address": "台灣新北市新店區新店路",
+        "city": "新北市",
+        "region": "新店區",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJLY_oiYcBaDQRCELSB3LZxZk",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 27,
+        "info": "靜浦北回歸線界標",
+        "name": "北回歸線界標",
+        "location": {
+            "lat": 23.4513623,
+            "lng": 121.4962333
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 4032,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/107360810118623343622\">古耿嘉</a>"
+            ],
+            "photo_reference": "AeJbb3denkQmPGOUUIkr--yEP618Z4J3f24RrWK8G9M2GjkhQiEHgUuvC7eMX92w6Kv3KGlkl9kCZCCakMrIEyWsEzUV2y-ClNfDJtahdptvdXqLWqiGkIGcDhp5kek_heyO4-2QtwrbnI_Bep30OEM2vYdaCHGhWPrr0B2anzF-tdhsoTZt",
+            "width": 3024
+        },
+        "vicinity": "豐濱鄉台11線",
+        "addr": "FF2W+GF 台灣花蓮縣豐濱鄉",
+        "address": "台灣花蓮縣豐濱鄉台11線",
+        "city": "花蓮縣",
+        "region": "豐濱鄉",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJ-eEKJmFabzQRb6HQhH532sw",
+        "type": "hot"
+    },
+    {
+        "del": 0.52,
+        "id": 28,
+        "info": "深澳岬角 象鼻岩景觀區",
+        "name": "深澳岬角",
+        "location": {
+            "lat": 25.1355953,
+            "lng": 121.8244308
+        },
+        "star": 4.4,
+        "photo": {
+            "height": 4480,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/108521124819426567375\">王寶輝</a>"
+            ],
+            "photo_reference": "AeJbb3ftE6DfgcHB06lUX3aNMsaddz6VdqdgGefGymQwtnp6jlYUZN9ohqUxNvENq9BIblU_8zwYu5gcCjL5vMtVBbjCexSQznJkfbIcsn9J2G7ShKJbeQR0Lgef3n7CTSABKV6hZC3iFWbxgVPt2U-7ulPwM9lD3_T4c1BlyW6-PuJK2lUA",
+            "width": 6720
+        },
+        "vicinity": "瑞芳區",
+        "addr": "4RPF+6Q 台灣新北市瑞芳區",
+        "address": "台灣新北市瑞芳區",
+        "city": "新北市",
+        "region": "瑞芳區",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJR3oKC51FXTQRV7n_bJH8yjI",
+        "type": "hot"
+    },
+    {
+        "del": 0.05,
+        "id": 29,
+        "info": "旺萊山鳳梨文化園區",
+        "name": "旺萊山鳳梨文化園區",
+        "location": {
+            "lat": 23.55306,
+            "lng": 120.480322
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 1754,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/110029554110210923296\">旺萊山鳳梨文化園區-嘉義景點推薦</a>"
+            ],
+            "photo_reference": "AeJbb3fSk0mqmffaTsk0cn9uA70tY1HMkodOz5E5E-Xh9s-FwVFbw5oASylX1C0OF7XgpaaEcW28_TM1NQJLSgetgmEFiL5Q0d7iKUxFJhL0cXxjT4w-rXkyAfoQ_2w01JYaV3s3xbGG-nmDwTT7FAJvMoiwzsSPoGHuelcThtdTZebcVRJw",
+            "width": 1755
+        },
+        "vicinity": "民雄鄉三興村陳厝寮1-3號",
+        "addr": "HF3J+64 台灣嘉義縣民雄鄉",
+        "address": "台灣嘉義縣民雄鄉三興村陳厝寮1-3號",
+        "city": "嘉義縣",
+        "region": "民雄鄉",
+        "time": [
+            "星期一: 09:00 – 18:00",
+            "星期二: 09:00 – 18:00",
+            "星期三: 09:00 – 18:00",
+            "星期四: 09:00 – 18:00",
+            "星期五: 09:00 – 18:00",
+            "星期六: 09:00 – 18:00",
+            "星期日: 09:00 – 18:00"
+        ],
+        "place_id": "ChIJV6cfak2-bjQRd5xDvsSdnUk",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 30,
+        "info": "白人牙膏觀光工廠",
+        "name": "白人牙膏觀光工廠",
+        "location": {
+            "lat": 23.42481399999999,
+            "lng": 120.3918364
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 347,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/115210420422292663891\">白人牙膏觀光工廠</a>"
+            ],
+            "photo_reference": "AeJbb3ffVjIAee0-SKnl__s15nAyLrKGNwyARQ4754vtta7eXXRA5cSPa6Loa1KOV6KZdD0dKunyrns5SoL4VVeHtWT9uSFyPkEGJItHs5bDP1POUjE7xCyb0gxtGekqwfddSlyNc3E-rtH0vq07edECXT8ofZxt95JU6mx-iFSN7xR6CrfM",
+            "width": 618
+        },
+        "vicinity": "水上鄉十一指厝144號",
+        "addr": "C9FR+WP 台灣嘉義縣水上鄉",
+        "address": "台灣嘉義縣水上鄉十一指厝144號",
+        "city": "嘉義縣",
+        "region": "水上鄉",
+        "time": [
+            "星期一: 09:00 – 17:00",
+            "星期二: 09:00 – 17:00",
+            "星期三: 09:00 – 17:00",
+            "星期四: 09:00 – 17:00",
+            "星期五: 09:00 – 17:00",
+            "星期六: 09:00 – 17:00",
+            "星期日: 09:00 – 17:00"
+        ],
+        "place_id": "ChIJIQbcHh2RbjQRqiMl6cn-q5k",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 31,
+        "info": "奧萬大國家森林遊樂區",
+        "name": "奧萬大",
+        "location": {
+            "lat": 23.9643714,
+            "lng": 121.1801555
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 2250,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/112816448060519558674\">陳奕霖</a>"
+            ],
+            "photo_reference": "AeJbb3fRuiI1BLjZxRcGCtE6WegWYkOWzzH_A62u9JmM2uUq-DClhMQ8Xd7LqOiDNx7GRBf2mWqSwoeiDncqnYyKJP6EYpUyhvZLrIXb8oQBDsRAAT2E8KJZMgUMDFTI9u71Gtou-4VlGO49Qao-yjTjpGKDFDskuOzRgV7c1936WCLXv-VP",
+            "width": 4000
+        },
+        "vicinity": "仁愛鄉大安路153號",
+        "addr": "X57J+P3 台灣南投縣仁愛鄉",
+        "address": "台灣南投縣仁愛鄉大安路153號",
+        "city": "南投縣",
+        "region": "仁愛鄉",
+        "time": [
+            "星期一: 08:00 – 17:00",
+            "星期二: 08:00 – 17:00",
+            "星期三: 08:00 – 17:00",
+            "星期四: 08:00 – 17:00",
+            "星期五: 08:00 – 17:00",
+            "星期六: 08:00 – 17:00",
+            "星期日: 08:00 – 17:00"
+        ],
+        "place_id": "ChIJXx8RkabGaDQR--M93L8duRo",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 32,
+        "info": "十鼓仁糖文創園區",
+        "name": "十鼓仁糖文創園區",
+        "location": {
+            "lat": 22.9393947,
+            "lng": 120.2302833
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 1365,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/109945405301150737720\">十鼓仁糖文創園區</a>"
+            ],
+            "photo_reference": "AeJbb3eIkUGPGynbAWSm3w79crjAVz9o1JmTtRMgyUwICzvXJcLTwEMZfASOuohP1YK-kOKwkJ0LEfanuBvjiGOgZkZpFrjLboNNrYcLJFuDJBdnf70UYb9CK20FOpkq_K9emMNylVysk22dw_Rk-UGMJdpQxI8lNQZPjMzz41npRWf6Nedu",
+            "width": 2048
+        },
+        "vicinity": "仁德區文華路二段326號",
+        "addr": "W6QJ+Q4 台灣台南市仁德區",
+        "address": "台灣台南市仁德區文華路二段326號",
+        "city": "台南市",
+        "region": "仁德區",
+        "time": [
+            "星期一: 10:00 – 20:20",
+            "星期二: 10:00 – 20:20",
+            "星期三: 10:00 – 20:20",
+            "星期四: 10:00 – 20:20",
+            "星期五: 10:00 – 20:20",
+            "星期六: 09:30 – 20:20",
+            "星期日: 09:30 – 20:20"
+        ],
+        "place_id": "ChIJA0P9eml0bjQRAFSV5Tjabuc",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 33,
+        "info": "青青草原",
+        "name": "青青草原",
+        "location": {
+            "lat": 24.0572668,
+            "lng": 121.1624901
+        },
+        "star": 4.5,
+        "photo": {
+            "height": 3636,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/107409559997367921723\">Joe</a>"
+            ],
+            "photo_reference": "AeJbb3fflnhvUN-S3cv6hJc584b2k_xGE3w9YRMinlZTiBwVg-ETdxEtYJogib3HOz-APveblEDDZlV_5415zvqjHZnl9Bbv-zFT2vTdg0IN9OsCGt4JT841YeqohgVl4bxPkmsuVpiE63Xk429jdWVeWDHUky2e8hCrWsihKU8emAQVuDdn",
+            "width": 5447
+        },
+        "vicinity": "仁愛鄉仁和路170號",
+        "addr": "3546+WX 台灣南投縣仁愛鄉",
+        "address": "台灣南投縣仁愛鄉仁和路170號",
+        "city": "南投縣",
+        "region": "仁愛鄉",
+        "time": [
+            "星期一: 08:00 – 17:00",
+            "星期二: 08:00 – 17:00",
+            "星期三: 08:00 – 17:00",
+            "星期四: 08:00 – 17:00",
+            "星期五: 08:00 – 17:00",
+            "星期六: 08:00 – 17:00",
+            "星期日: 08:00 – 17:00"
+        ],
+        "place_id": "ChIJK7_xN_zpaDQR7AmuJ4PT_6w",
+        "type": "hot"
+    },
+    {
+        "del": 0.052,
+        "id": 34,
+        "info": "國立國父紀念館",
+        "name": "國立國父紀念館",
+        "location": {
+            "lat": 25.0400306,
+            "lng": 121.5602452
+        },
+        "star": 4.4,
+        "photo": {
+            "height": 683,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/113597960125390035979\">與小3小2</a>"
+            ],
+            "photo_reference": "AeJbb3danW1_EUTtxMXST0H8eDzy-hgdnRnyOTDjDIaNMLz4bj55f0mDyXSM0NWgFe_1WGYaB4cOljUfRJaXLRxCiJSjuAoF4C8-hzhDdiQZfot1PvtmZ6HEx5_l-JUgFwhqElI6xyT32erGQ0MxodlGp6yJVqRKCJDKJcQx_3pujdyecxQ",
+            "width": 1024
+        },
+        "vicinity": "信義區仁愛路四段505號",
+        "addr": "2HR6+23 台灣台北市信義區",
+        "address": "台灣台北市信義區仁愛路四段505號",
+        "city": "台北市",
+        "region": "信義區",
+        "time": [
+            "星期一: 09:00 – 18:00",
+            "星期二: 09:00 – 18:00",
+            "星期三: 09:00 – 18:00",
+            "星期四: 09:00 – 18:00",
+            "星期五: 09:00 – 18:00",
+            "星期六: 09:00 – 18:00",
+            "星期日: 09:00 – 18:00"
+        ],
+        "place_id": "ChIJwyJxyO6pQjQRilcOb_lBRr4",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 35,
+        "info": "民雄金桔觀光工廠",
+        "name": "金桔觀光工廠",
+        "location": {
+            "lat": 23.55810899999999,
+            "lng": 120.4766908
+        },
+        "star": 4.1,
+        "photo": {
+            "height": 1536,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/100298338522335454714\">民雄金桔觀光工廠</a>"
+            ],
+            "photo_reference": "AeJbb3czekndwSmuX8csEOtfbeCaJQePh_aRaT2yHlnhuOE2ZMXGHMTB_3fATd9jnRkABsufC0AWQjjHcCWRkqj_jKSlTZFhR048iKlD6dXyU2WBw7qyUB-FUWFGiyynKCUKFQa17m7Vp6kTbEOExQZLVoTaRWrVrCEO0J_AdvyhgjCfEAMV",
+            "width": 2048
+        },
+        "vicinity": "民雄鄉38號",
+        "addr": "HF5G+6M 台灣嘉義縣民雄鄉",
+        "address": "台灣嘉義縣民雄鄉38號",
+        "city": "嘉義縣",
+        "region": "民雄鄉",
+        "time": [
+            "星期一: 09:00 – 17:00",
+            "星期二: 09:00 – 17:00",
+            "星期三: 09:00 – 17:00",
+            "星期四: 09:00 – 17:00",
+            "星期五: 09:00 – 17:00",
+            "星期六: 09:00 – 17:30",
+            "星期日: 09:00 – 17:30"
+        ],
+        "place_id": "ChIJSdPExVO-bjQRUEvIL0cuafE",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 36,
+        "info": "東眼山國家森林遊樂區",
+        "name": "東眼山",
+        "location": {
+            "lat": 24.831161,
+            "lng": 121.408162
+        },
+        "star": 4.4,
+        "photo": {
+            "height": 2268,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/100135460096348136042\">Lily</a>"
+            ],
+            "photo_reference": "AeJbb3c6hY7GT1jb-r-pDOkyt5DO422cz0G01u8TiqsE2gqE-A3-yP7uWFj2Leuv35OerkdTeYruvo0u2KZjU5Y5JcykqGS_extATfZK9PS5AGmiN21qO-T0Mf5dxQ--gW3qRW5JTC7vAcCbxj3oUWJER987uvmiaKV-8b0GHkRaN7g1Vvyj",
+            "width": 4032
+        },
+        "vicinity": "優霞雲, No. 35號, 里佳志, 復興區",
+        "addr": "RCJ5+F7 台灣桃園市復興區",
+        "address": "台灣桃園市優霞雲, No. 35號, 里佳志, 復興區",
+        "city": "桃園市",
+        "region": "優霞雲",
+        "time": [
+            "星期一: 08:00 – 17:00",
+            "星期二: 08:00 – 17:00",
+            "星期三: 08:00 – 17:00",
+            "星期四: 08:00 – 17:00",
+            "星期五: 08:00 – 17:00",
+            "星期六: 07:00 – 17:00",
+            "星期日: 07:00 – 17:00"
+        ],
+        "place_id": "ChIJQXkJkKg9aDQRroQxl2JMErY",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 37,
+        "info": "虎頭山公園",
+        "name": "虎頭山公園",
+        "location": {
+            "lat": 25.0017706,
+            "lng": 121.3309308
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/106734496417853516619\">Jeny Yu</a>"
+            ],
+            "photo_reference": "AeJbb3c5-gxyFoq9PXCNO4wcZ7uNYiA8xtRceI8kwLwLvV2MTpbHmp8PbA7KBWcQ9UFao4RgtENZEbwNim8xE9xtyQHmj1yHD-DMxwa2l-O_25gxEVveg29rqboJerkzZESZv63jC4PgNmTD2fMIGuCeu41SPCj6q9_4sDeDkI-bhg-2mzM",
+            "width": 4032
+        },
+        "vicinity": "桃園區公園路42號",
+        "addr": "282J+P9 台灣桃園市桃園區",
+        "address": "台灣桃園市桃園區公園路42號",
+        "city": "桃園市",
+        "region": "桃園區",
+        "time": [
+            "星期一: 08:00 – 17:00",
+            "星期二: 08:00 – 17:00",
+            "星期三: 08:00 – 17:00",
+            "星期四: 08:00 – 17:00",
+            "星期五: 08:00 – 17:00",
+            "星期六: 08:00 – 17:00",
+            "星期日: 08:00 – 17:00"
+        ],
+        "place_id": "ChIJpWeyD14eaDQRfKFO3bEGa9k",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 38,
+        "info": "太平山國家森林遊樂區",
+        "name": "太平山國家森林遊樂區",
+        "location": {
+            "lat": 24.49772399999999,
+            "lng": 121.5350318
+        },
+        "star": 4.5,
+        "photo": {
+            "height": 2268,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/100135460096348136042\">Lily</a>"
+            ],
+            "photo_reference": "AeJbb3c30lgUyNrrG0c8EdenDxKb8hzinDLeedy0E1CVOivG7MkTicecvUNGehrUq9v_E3XXESg_FD4iJ2Bbg4PLVD7XXgqINO0nyQSOHRsDKPym7uNXmfqzdTBHVplc75qF9pZZfIfZX3vxpHJcS_jvDGwzlR3zcFKg9QoWqJ1n7DurOGZV",
+            "width": 4032
+        },
+        "vicinity": "大同鄉太平巷58之1號",
+        "addr": "FGXP+32 台灣宜蘭縣大同鄉",
+        "address": "台灣宜蘭縣大同鄉太平巷58之1號",
+        "city": "宜蘭縣",
+        "region": "大同鄉",
+        "time": [
+            "星期一: 06:00 – 18:00",
+            "星期二: 06:00 – 18:00",
+            "星期三: 06:00 – 18:00",
+            "星期四: 06:00 – 18:00",
+            "星期五: 06:00 – 18:00",
+            "星期六: 02:30 – 18:00",
+            "星期日: 04:00 – 18:00"
+        ],
+        "place_id": "ChIJ_TaOy7JwaDQRFf4T-zm2dqo",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 39,
+        "info": "龍山寺",
+        "name": "龍山寺",
+        "location": {
+            "lat": 25.0371623,
+            "lng": 121.4999007
+        },
+        "star": 4.5,
+        "photo": {
+            "height": 583,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/111336305916261699599\">wasim akram</a>"
+            ],
+            "photo_reference": "AeJbb3fnddKcnO2wheFp1TFzdwLgInRHdyhC851Ef9nOC4yErBME_BbhMZQ6HXJXMZSxYwGb7RU78akctmWZKoF4m1IdduDsFGQaA46lfj0Z1Ue7Ek4vYMzKe7s2e9O51aQaBN4YoES8oh5z8I_ta3RU3A3WRRPqfpz9l5Z6gSWBgxMEO0Jw",
+            "width": 824
+        },
+        "vicinity": "萬華區廣州街211號",
+        "addr": "2FPX+VX 台灣台北市萬華區",
+        "address": "台灣台北市萬華區廣州街211號",
+        "city": "台北市",
+        "region": "萬華區",
+        "time": [
+            "星期一: 06:00 – 22:00",
+            "星期二: 06:00 – 22:00",
+            "星期三: 06:00 – 22:00",
+            "星期四: 06:00 – 22:00",
+            "星期五: 06:00 – 22:00",
+            "星期六: 06:00 – 22:00",
+            "星期日: 06:00 – 22:00"
+        ],
+        "place_id": "ChIJCd7n16ipQjQRihzEWF4z6Pg",
+        "type": "hot"
+    },
+    {
+        "del": 0.052,
+        "id": 40,
+        "info": "車城福安宮",
+        "name": "車城福安宮",
+        "location": {
+            "lat": 22.0709441,
+            "lng": 120.7108895
+        },
+        "star": 4.6,
+        "photo": {
+            "height": 2813,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/109801040757751916439\">黃吱吱</a>"
+            ],
+            "photo_reference": "AeJbb3e0ZQU68BTtTVzh8YgJiT3E3b_k-w7KdQ_tz2pIz2446s2_fZa059Hi6sa0gP6isLxyMpnVL-GaEbMO6cYb2GQB0BAThYAo3U42627EEHfZfea-snORTd8sDZ4dEo3zRZP09tHZfBmBAxmxrIVTrQ_KZEyJqWw2qMNx9lSf7SQt_0wV",
+            "width": 3832
+        },
+        "vicinity": "車城鄉福安路51號",
+        "addr": "3PC6+99 台灣屏東縣車城鄉",
+        "address": "台灣屏東縣車城鄉福安路51號",
+        "city": "屏東縣",
+        "region": "車城鄉",
+        "time": [
+            "星期一: 05:00 – 21:00",
+            "星期二: 05:00 – 21:00",
+            "星期三: 05:00 – 21:00",
+            "星期四: 05:00 – 21:00",
+            "星期五: 05:00 – 21:00",
+            "星期六: 05:00 – 21:00",
+            "星期日: 05:00 – 21:00"
+        ],
+        "place_id": "ChIJdU4y8ie4cTQRe0BNxOo2HKc",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 41,
+        "info": "四重溪溫泉公園",
+        "name": "四重溪溫泉公園",
+        "location": {
+            "lat": 22.0947306,
+            "lng": 120.7470638
+        },
+        "star": 4.4,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/118148844701091975653\">alex Cheng</a>"
+            ],
+            "photo_reference": "AeJbb3fnEcXAIOKsIx6V_wy_btgep1yUxvqEzez1c7GIhd3z9WmSapdRtmaiw3LAhmXQaN-cPHWhn4KmXrA0bIavj0l2dxV-YwwTdSaAScGVERv9vlabJXfhoQrKTdwArapOSha5DQBMs_3_yKHZ0JT87b0RkiuUYQutetRKaiItIhkPyciU",
+            "width": 4032
+        },
+        "vicinity": "車城鄉文化路1號",
+        "addr": "3PVW+VR 台灣屏東縣車城鄉",
+        "address": "台灣屏東縣車城鄉文化路1號",
+        "city": "屏東縣",
+        "region": "車城鄉",
+        "time": [
+            "無"
+        ],
+        "place_id": "ChIJEQQD_de3cTQROPaoxqTeFFY",
+        "type": "hot"
+    },
+    {
+        "del": 0.052,
+        "id": 42,
+        "info": "藍晒圖文創園區",
+        "name": "藍晒圖文創園區",
+        "location": {
+            "lat": 22.987102,
+            "lng": 120.1973454
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 3000,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/107965510879476010411\">Hamlet Lin</a>"
+            ],
+            "photo_reference": "AeJbb3ftftNzK1a7AqKPLwm4i-BD6Fj_sSGUOUVp9zBCYM_oQCLEL-GLLytnOSBtQoIYfqykoNwupbDAC6R9FHnFiGXmeAyc7Ux5th6G-ULavN9JQGpYky0yCIkQ2k5sO3a1Ebg9eOvyz_ZE5QVTtUyGCDZXIhWkowVGf9GijIzLHymGMS9B",
+            "width": 4000
+        },
+        "vicinity": "南區西門路一段689巷12號",
+        "addr": "X5PW+RW 台灣台南市南區",
+        "address": "台灣台南市南區西門路一段689巷12號",
+        "city": "台南市",
+        "region": "南區西",
+        "time": [
+            "星期一: 10:00 – 21:00",
+            "星期二: 休息",
+            "星期三: 10:00 – 21:00",
+            "星期四: 10:00 – 21:00",
+            "星期五: 10:00 – 21:00",
+            "星期六: 10:00 – 21:00",
+            "星期日: 10:00 – 21:00"
+        ],
+        "place_id": "ChIJtbdB0Xt2bjQR1IE4qcWD-lg",
+        "type": "hot"
+    },
+    {
+        "del": 0.52,
+        "id": 43,
+        "info": "松園別館",
+        "name": "松園別館",
+        "location": {
+            "lat": 23.9828055,
+            "lng": 121.6154938
+        },
+        "star": 4.1,
+        "photo": {
+            "height": 1875,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/116317322162472090464\">松園別館</a>"
+            ],
+            "photo_reference": "AeJbb3f-PFD8wh1LmMpRALbnivwZgxBuiGeQtm1iiin30xp4AZbiengJE_1LY__9aTfLmYK1cAI99EeafOi24-bpY4nnqCNjRKBjYJ5iTjRGeePn6ECauvQzgxzqpGl-8ewxsSHlGs15jrhUayYn0CfBBzUzO7YmzPuRW_nB_wqVlfF0PpqK",
+            "width": 2500
+        },
+        "vicinity": "花蓮市松園街65號",
+        "addr": "XJM8+45 台灣花蓮縣花蓮市",
+        "address": "台灣花蓮縣花蓮市松園街65號",
+        "city": "花蓮縣",
+        "region": "花蓮市",
+        "time": [
+            "星期一: 09:00 – 18:00",
+            "星期二: 09:00 – 18:00",
+            "星期三: 09:00 – 18:00",
+            "星期四: 09:00 – 18:00",
+            "星期五: 09:00 – 18:00",
+            "星期六: 09:00 – 18:00",
+            "星期日: 09:00 – 18:00"
+        ],
+        "place_id": "ChIJhbRgGMWfaDQRfYxPTbTPdoQ",
+        "type": "hot"
+    },
+    {
+        "del": 0.0625,
+        "id": 44,
+        "info": "審計新村",
+        "name": "審計新村",
+        "location": {
+            "lat": 24.1447331,
+            "lng": 120.6626426
+        },
+        "star": 4.4,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/117452158914111239199\">Gino Lien</a>"
+            ],
+            "photo_reference": "AeJbb3cWGrlzoF73M4knRDNJu12kroEYrVtNbzgVC6uqPPQGr-E7KlOKY79fm-AUy8MpFgwE5lPI2z7t9Tx1mKL7QUc4AXTOHX388TlRW3Mx3mG_yqsiF5NSpMvpfqFvl39eKPPcQBOJb46Fmzi6jvMDOFDPexePPMo-VH_AA8NrXy2kshwk",
+            "width": 4032
+        },
+        "vicinity": "西區民生路368巷4弄8號",
+        "addr": "4MV7+V3 台灣台中市西區",
+        "address": "台灣台中市西區民生路368巷4弄8號",
+        "city": "台中市",
+        "region": "西區民",
+        "time": [
+            "星期一: 09:00 – 19:00",
+            "星期二: 09:00 – 19:00",
+            "星期三: 09:00 – 19:00",
+            "星期四: 09:00 – 19:00",
+            "星期五: 09:00 – 19:00",
+            "星期六: 09:00 – 19:00",
+            "星期日: 09:00 – 19:00"
+        ],
+        "place_id": "ChIJZc4QyaE9aTQRRVwjmQmYS7g",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 45,
+        "info": "竹圍漁港",
+        "name": "竹圍漁港",
+        "location": {
+            "lat": 25.117158,
+            "lng": 121.2444776
+        },
+        "star": 4.1,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/112891681975545978538\">Tu Yung-Jan</a>"
+            ],
+            "photo_reference": "AeJbb3dJWxyzm8PeDb97dUM-i7TdwLsNV5VgX0qWIow4Cgim13c3p6FVE7EWSP7f21OCf73PRY2joDD08RANuYzMWwV9e2lkFUl6mn-DTRHRWtaUBRIkDqPyywdPTnLgFUkFJTkVtWnmKpduWNEap_Zc49nRRrNO0kiBkzaVFSh2xfyeC4g",
+            "width": 4032
+        },
+        "vicinity": "大園區漁港路451巷25號",
+        "addr": "468V+VQ 台灣桃園市大園區",
+        "address": "台灣桃園市大園區漁港路451巷25號",
+        "city": "桃園市",
+        "region": "大園區",
+        "time": [
+            "星期一: 08:00 – 18:00",
+            "星期二: 08:00 – 18:00",
+            "星期三: 08:00 – 18:00",
+            "星期四: 08:00 – 18:00",
+            "星期五: 08:00 – 18:00",
+            "星期六: 08:00 – 18:00",
+            "星期日: 08:00 – 18:00"
+        ],
+        "place_id": "ChIJAQAAAKyfQjQR7fhsd-lMPDU",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 46,
+        "info": "北回歸線標誌公園",
+        "name": "北回公園",
+        "location": {
+            "lat": 23.465731,
+            "lng": 121.3574028
+        },
+        "star": 4.1,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/109533345236654062012\">Alex Kung</a>"
+            ],
+            "photo_reference": "AeJbb3ds-TMou2gbYUxXVoTppA4VY_0UwAlQXxObQqXE53htZSKOeDAw2iaGAyCYoFM9Z6_f11Qe2pSRIP2GIqdz0edWW4qKBIqzc_6M21WaP_u8AIVMi5zdqCVq5dsqgSTIwkok0DyveqT8M7MqvSW0uFl_O22qoUIuVuBvCrfQLw8f_AE",
+            "width": 4032
+        },
+        "vicinity": "瑞穗鄉中正南路二段76-9號",
+        "addr": "F984+7X 台灣花蓮縣瑞穗鄉",
+        "address": "台灣花蓮縣瑞穗鄉中正南路二段76-9號",
+        "city": "花蓮縣",
+        "region": "瑞穗鄉",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJgVBR5NZFbzQRlahAiS__Yf4",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 47,
+        "info": "義大遊樂世界",
+        "name": "義大遊樂世界",
+        "location": {
+            "lat": 22.7307878,
+            "lng": 120.4089865
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 1126,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/112448973702790954803\">阿蓮國小陳昱中</a>"
+            ],
+            "photo_reference": "AeJbb3eJJ_QKCxT9SuiXAePfc19KvFzrmGJAt58g-qjTf92U2KV8J3KqfNAvWnPRKy_aHfwxxs738x_sVy0QaMelIqZU6qiLJgVm_hUzxl3TwwKz4V203KMPcVTpX3YU4iup1RZS4_pnZIHoxji0Gpx5xbe6LFAzdnmHJIj6RX9ob-AcXobd",
+            "width": 1690
+        },
+        "vicinity": "大樹區學城路一段10號",
+        "addr": "PCJ5+8H 台灣高雄市大樹區",
+        "address": "台灣高雄市大樹區學城路一段10號",
+        "city": "高雄市",
+        "region": "大樹區",
+        "time": [
+            "星期一: 09:00 – 17:30",
+            "星期二: 09:00 – 17:30",
+            "星期三: 09:00 – 17:30",
+            "星期四: 09:00 – 17:30",
+            "星期五: 09:00 – 17:30",
+            "星期六: 09:00 – 20:00",
+            "星期日: 09:00 – 17:30"
+        ],
+        "place_id": "ChIJh-J5vhsRbjQR4AcXKxaTRt8",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 48,
+        "info": "臺北市立動物園",
+        "name": "動物園",
+        "location": {
+            "lat": 24.9980725,
+            "lng": 121.5816589
+        },
+        "star": 4.6,
+        "photo": {
+            "height": 1439,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/100605151360982892759\">臺北市立動物園</a>"
+            ],
+            "photo_reference": "AeJbb3fxtsMg6VfbU4WdLp5NYva83rO4RYpEVBhCkgj-UqdLim7FlOPmrytBIa9_19ToZZPRQryrfaS-QzfhIJIRXqSOpedXoWgXm_O9Hs5blG0FKeLpOq4Ts6Z1CmTek6yd_ROFYfESz42m3-Bwo4RzOcctbEfV28va3n4bk4dtm4jexIpz",
+            "width": 2557
+        },
+        "vicinity": "文山區新光路二段30號",
+        "addr": "XHXJ+6M 台灣台北市文山區",
+        "address": "台灣台北市文山區新光路二段30號",
+        "city": "台北市",
+        "region": "文山區",
+        "time": [
+            "星期一: 09:00 – 17:00",
+            "星期二: 09:00 – 17:00",
+            "星期三: 09:00 – 17:00",
+            "星期四: 09:00 – 17:00",
+            "星期五: 09:00 – 17:00",
+            "星期六: 09:00 – 21:00",
+            "星期日: 09:00 – 17:00"
+        ],
+        "place_id": "ChIJj4EySmCqQjQRZte0Cf0G_qo",
+        "type": "hot"
+    },
+    {
+        "del": 0.1257,
+        "id": 49,
+        "info": "台江國家公園管理處遊客中心暨行政中心",
+        "name": "台江國家公園",
+        "location": {
+            "lat": 23.0019817,
+            "lng": 120.1387646
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/101247850180344581536\">陳健民</a>"
+            ],
+            "photo_reference": "AeJbb3f0ZlDHG8fmgd451iU4EJtbN7ytgVi8ebBle7Hfsr6Va7Cs2LQN7fpWdKPdUcod0l4rDHXizBt0mzIAnj__LrtTwkdjkEgqX6NXuUkiBUauGZdyHIiTMygbLPej7488UWJTOhk1uR_5MqNzIL-8y8xdhLdtqJduXatkxjkJvfY2kmF1",
+            "width": 4032
+        },
+        "vicinity": "安南區四草大道118號",
+        "addr": "242Q+QG 台灣台南市安南區",
+        "address": "台灣台南市安南區四草大道118號",
+        "city": "台南市",
+        "region": "安南區",
+        "time": [
+            "星期一: 休息",
+            "星期二: 09:00 – 17:00",
+            "星期三: 09:00 – 17:00",
+            "星期四: 09:00 – 17:00",
+            "星期五: 09:00 – 17:00",
+            "星期六: 09:00 – 17:00",
+            "星期日: 09:00 – 17:00"
+        ],
+        "place_id": "ChIJAV0H0pTYbTQRuS5hyXnarzE",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 50,
+        "info": "溪頭自然教育園區",
+        "name": "溪頭自然教育園區",
+        "location": {
+            "lat": 23.6745178,
+            "lng": 120.7972515
+        },
+        "star": 4.4,
+        "photo": {
+            "height": 1897,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/110713802086665271752\">許鎵鎵</a>"
+            ],
+            "photo_reference": "AeJbb3dstFMTKkYnAtnk1oFICFKmNnw97Ij3afN1bQ2pIy4a76wMqsiTy4usndqAa-_SprOA261gGQIe26JjJ5U_cDJdUI2IVY06VlSi7JBWrwHz4zqNbdijvT4AVsko8vHmsGJtUV7rEvBZAoMdUUftXZbQ67iNoTujM1bXfSkTTOmibHNd",
+            "width": 3372
+        },
+        "vicinity": "鹿谷鄉森林巷9號",
+        "addr": "MQFW+RW 台灣南投縣鹿谷鄉",
+        "address": "台灣南投縣鹿谷鄉森林巷9號",
+        "city": "南投縣",
+        "region": "鹿谷鄉",
+        "time": [
+            "星期一: 07:00 – 17:00",
+            "星期二: 07:00 – 17:00",
+            "星期三: 07:00 – 17:00",
+            "星期四: 07:00 – 17:00",
+            "星期五: 07:00 – 17:00",
+            "星期六: 07:00 – 17:00",
+            "星期日: 07:00 – 17:00"
+        ],
+        "place_id": "ChIJAQAAACzRbjQRUgTggaGCmkA",
+        "type": "hot"
+    },
+    {
+        "del": 4,
+        "id": 51,
+        "info": "鹿境梅花鹿生態園區",
+        "name": "鹿境梅花鹿生態園區",
+        "location": {
+            "lat": 22.0124394,
+            "lng": 120.7416877
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/118018493074767362022\">李文杰</a>"
+            ],
+            "photo_reference": "AeJbb3cCnme_FUgcaxBl725kUozyI-tiOQPdzjVc-x6lNKRXRV9d2pcOrPqZ_sglSTEaL8C3Ev4cm8W16n5GRdn__TlDZf_vR5LHNMj43htMseQlNtmEkMfRC6y30InY3TDjfGdPH-uKVSKqFhAloBBAMkRsaGJureRCg7E8sbVCLfiAXWJ3",
+            "width": 4032
+        },
+        "vicinity": "恆春鎮恆公路1097-1號",
+        "addr": "2P6R+XM 台灣屏東縣恆春鎮",
+        "address": "台灣屏東縣恆春鎮恆公路1097-1號",
+        "city": "屏東縣",
+        "region": "恆春鎮",
+        "time": [
+            "星期一: 10:00 – 17:00",
+            "星期二: 10:00 – 17:00",
+            "星期三: 10:00 – 17:00",
+            "星期四: 10:00 – 17:00",
+            "星期五: 10:00 – 17:00",
+            "星期六: 10:00 – 17:00",
+            "星期日: 10:00 – 17:00"
+        ],
+        "place_id": "ChIJ-baSVPywcTQR9otP4FjiF_A",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 52,
+        "info": "林後四林平地森林園區",
+        "name": "林後四林平地森林園區",
+        "location": {
+            "lat": 22.5386812,
+            "lng": 120.590396
+        },
+        "star": 4.4,
+        "photo": {
+            "height": 2592,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/112048107013056941954\">Weilion</a>"
+            ],
+            "photo_reference": "AeJbb3fTq-OkYArspWGUnRfjNibghX_fWvGx-pAcgW_7ADgs6-JrUdT9XZp8pQ4Q4g9HpnmW63zMHabdlip1Xl092jGcMz6Nc3APEHoB0JcqVvKHqtCIjtDjDlBFhzsWXSYjt62U5Cx5bhePRMnS_Hl0MEjoi8kfN_RVEKqM8I32FJpIXb90",
+            "width": 4608
+        },
+        "vicinity": "潮州鎮潮義路221-1號",
+        "addr": "GHQR+F5 台灣屏東縣潮州鎮",
+        "address": "台灣屏東縣潮州鎮潮義路221-1號",
+        "city": "屏東縣",
+        "region": "潮州鎮",
+        "time": [
+            "星期一: 08:00 – 17:00",
+            "星期二: 08:00 – 17:00",
+            "星期三: 08:00 – 17:00",
+            "星期四: 08:00 – 17:00",
+            "星期五: 08:00 – 17:00",
+            "星期六: 08:00 – 17:00",
+            "星期日: 08:00 – 17:00"
+        ],
+        "place_id": "ChIJ86VLNp0hbjQRMoJG83pE5nM",
+        "type": "hot"
+    },
+    {
+        "del": 4,
+        "id": 53,
+        "info": "三仙台跨海步橋",
+        "name": "三仙台跨海步橋",
+        "location": {
+            "lat": 23.12367,
+            "lng": 121.4129019
+        },
+        "star": 4.5,
+        "photo": {
+            "height": 4000,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/104780617305826329675\">james hu</a>"
+            ],
+            "photo_reference": "AeJbb3eCfKDXfQYntjOdLbTprHOUAiAJRLLsrbMn-z3yEfMN-iIgOP9WqPaQ8zhETJtB8kexeoOeYP17sff0L8nAuNwGR0NQlNICWs4iuzvDggLNvqzO3nFcQSfzXo3g6HubHGD-NxgF5Wz341GlilE7iwFBZnp6KjXbZtRcOihM0WpXSu4w",
+            "width": 6000
+        },
+        "vicinity": "成功鎮基翬路74號",
+        "addr": "4CF7+F5 台灣台東縣成功鎮",
+        "address": "台灣台東縣成功鎮基翬路74號",
+        "city": "台東縣",
+        "region": "成功鎮",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJddQWJkZwbzQR9yWN24_jSsM",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 54,
+        "info": "小叮噹科學主題樂園",
+        "name": "小叮噹科學主題樂園",
+        "location": {
+            "lat": 24.8689717,
+            "lng": 120.9800583
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 3016,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/113230872202928415976\">林敬洲</a>"
+            ],
+            "photo_reference": "AeJbb3ckbgPu3O0vb6gy2ombFj6V3C1_QC17v55xbg8oFK8vka8MVBe7roUeOAE2nPzVpBG-RV5iUSOnmtZBYLThbWer6D6WQD8g1tBFUtn2ZwHkrQ2zGacGS6GYy7DIwsRwAkEsSybnSfu4x4epBPvjh9379gOLieXaxled1ppmsEaE3YIr",
+            "width": 4032
+        },
+        "vicinity": "新豐鄉康和路199號",
+        "addr": "VX9J+H2 台灣新竹縣新豐鄉",
+        "address": "台灣新竹縣新豐鄉康和路199號",
+        "city": "新竹縣",
+        "region": "新豐鄉",
+        "time": [
+            "星期一: 09:00 – 17:00",
+            "星期二: 09:00 – 17:00",
+            "星期三: 09:00 – 17:00",
+            "星期四: 09:00 – 17:00",
+            "星期五: 09:00 – 17:00",
+            "星期六: 09:00 – 17:00",
+            "星期日: 09:00 – 17:00"
+        ],
+        "place_id": "ChIJP1TeZfkzaDQRzOAPuuWWoj4",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 55,
+        "info": "台灣穀堡",
+        "name": "台灣穀堡",
+        "location": {
+            "lat": 23.869704,
+            "lng": 120.4597692
+        },
+        "star": 4.1,
+        "photo": {
+            "height": 576,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/100481028124885837210\">台灣穀堡</a>"
+            ],
+            "photo_reference": "AeJbb3fJuVMKktKkhRp_a_iSh3uH3yJw7REiJQg-jUqOajDtB8HU-KqPY2pBzd9q0e9zkpy-ooQDmX0wL5ueJCxNBZ2R6G5s7wC2zdhVybJF_tE-GFuJUbN9FNJ6ZdqRnh6S4axZTV2PBTS83DX5j0tsLbaN5D8XYwxUNgRXGf8NGeDVfhjl",
+            "width": 1024
+        },
+        "vicinity": "埤頭鄉彰水路二段526號",
+        "addr": "VF95+VW 台灣彰化縣埤頭鄉",
+        "address": "台灣彰化縣埤頭鄉彰水路二段526號",
+        "city": "彰化縣",
+        "region": "埤頭鄉",
+        "time": [
+            "星期一: 08:00 – 17:00",
+            "星期二: 08:00 – 17:00",
+            "星期三: 08:00 – 17:00",
+            "星期四: 08:00 – 17:00",
+            "星期五: 08:00 – 17:00",
+            "星期六: 08:00 – 18:00",
+            "星期日: 08:00 – 18:00"
+        ],
+        "place_id": "ChIJSagIWjVLaTQRSDi4Pjkk7-M",
+        "type": "hot"
+    },
+    {
+        "del": 4,
+        "id": 56,
+        "info": "鹿野高台",
+        "name": "鹿野高台",
+        "location": {
+            "lat": 22.916449,
+            "lng": 121.1215949
+        },
+        "star": 4.5,
+        "photo": {
+            "height": 3120,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/106180549690593676329\">momo tarou</a>"
+            ],
+            "photo_reference": "AeJbb3cGWFgkTCgo9P6ZkjgqItCbgi1Dnnl4J8aaDYqRZ4C1_HIk6BjH2vry_HIGWErQugfrzvmKd3plJuTUgeICpO5AkJV-Vo8_EBH5gZN8u3mfnnICt4H--Jqfi5rivnAZ8mC8fUtA9ZOKaSxoZzGBc8_iF7eyJScPRfTht2taHi_j-pAc",
+            "width": 4160
+        },
+        "vicinity": "鹿野鄉高台路46號",
+        "addr": "W48C+HJ 台灣台東縣鹿野鄉",
+        "address": "台灣台東縣鹿野鄉高台路46號",
+        "city": "台東縣",
+        "region": "鹿野鄉",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJAQAAADSkbzQR2E5XyomxUJo",
+        "type": "hot"
+    },
+    {
+        "del": 0.016,
+        "id": 57,
+        "info": "安平老街",
+        "name": "安平老街",
+        "location": {
+            "lat": 23.000728,
+            "lng": 120.1617807
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 720,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/107568320080952729272\">楊俊榮</a>"
+            ],
+            "photo_reference": "AeJbb3dPNbR_plZHThAyGFRDaYF6l5y_J9lCzxrm_p8Vt1YzfNg4MGXZpeKhzPPPW_QJ6522uqW-t5isLoAdxISwVOGa_4YVSf0mZgroWgrV6-gXQsX5XkcW9dpTAuppjIKaBBM1Cn55i_ozjyBH7_PjxuefZdUCQaTq1z0zqqtfTpfaNgpb",
+            "width": 1080
+        },
+        "vicinity": "安平區延平街",
+        "addr": "2526+7P 台灣台南市安平區",
+        "address": "台灣台南市安平區延平街",
+        "city": "台南市",
+        "region": "安平區",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJ_____wN2bjQRIOio8uGV_Og",
+        "type": "hot"
+    },
+    {
+        "del": 0.52,
+        "id": 58,
+        "info": "薰衣草森林新竹尖石店",
+        "name": "薰衣草森林新竹尖石店",
+        "location": {
+            "lat": 24.7332278,
+            "lng": 121.2339472
+        },
+        "star": 4.6,
+        "photo": {
+            "height": 1365,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/107328775442651482003\">薰衣草森林新竹尖石店</a>"
+            ],
+            "photo_reference": "AeJbb3ewp62d1THb_-hGF4QROk0by_BM8I5wVmmwnlQM_SVKaeFFYXlhYS9mck0SryLSz4DVrmv6Z8OUZNfUagSrI5BcVFG4U3nG43AiLz8CewuBS1ymH5yn230i1STb7CECcub05ao7qRFgtU6k3WkyueA1DkIqiXFJixwWrZeCpuc-WDop",
+            "width": 2048
+        },
+        "vicinity": "尖石鄉嘉樂129號",
+        "addr": "P6MM+7H 台灣新竹縣尖石鄉",
+        "address": "台灣新竹縣尖石鄉嘉樂129號",
+        "city": "新竹縣",
+        "region": "尖石鄉",
+        "time": [
+            "星期一: 10:30 – 18:30",
+            "星期二: 10:30 – 18:30",
+            "星期三: 10:30 – 18:30",
+            "星期四: 10:30 – 18:30",
+            "星期五: 10:30 – 18:30",
+            "星期六: 10:00 – 18:30",
+            "星期日: 10:00 – 18:30"
+        ],
+        "place_id": "ChIJ58Fl7JE_aDQR5JhwZsUfWag",
+        "type": "hot"
+    },
+    {
+        "del": 0.052,
+        "id": 59,
+        "info": "池上伯朗大道",
+        "name": "池上伯朗大道",
+        "location": {
+            "lat": 23.0987769,
+            "lng": 121.2126026
+        },
+        "star": 4.4,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/109653781114774580165\">Jason Young</a>"
+            ],
+            "photo_reference": "AeJbb3dcUGRitVeLezDll7qhns6Y_oxJf5GgObG-3LqAn5nKNeBARguBoku6xEbIa97Ni-kivOH5NO2v5Qvq5lNBMbYKCMqTLKrK-mBQFqqURMRWpyGanMUbWrBEET7lYBRpuYjZhT3CVNGBdk6Z2YlljM3Mt142WEgZlAGar02WWvV5UEdG",
+            "width": 4032
+        },
+        "vicinity": "池上鄉",
+        "addr": "36X7+G2 台灣台東縣池上鄉",
+        "address": "台灣台東縣池上鄉",
+        "city": "台東縣",
+        "region": "池上鄉",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJZatyKu4JbzQRyHuSojQ6qQ0",
+        "type": "hot"
+    },
+    {
+        "del": 0.52,
+        "id": 60,
+        "info": "龍潭大池",
+        "name": "龍潭大池",
+        "location": {
+            "lat": 24.8635524,
+            "lng": 121.2094495
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/105985998501765347614\">KH Yeh</a>"
+            ],
+            "photo_reference": "AeJbb3eXayNetzE4v0XCbN4IXsSnLAyNSQ2dpOT0t0jXgeObjAiC03FgnNqZWQZU9weh4bVfHsXtA-6EynmOmHHEP1O5VBVecM6fxyXhdvLz85NSb1PleOz_qcJln0EA4fat8Jqk8GnrApJW1eyDsdfkN7ZJLPCZh4qKCzaZGp9zmWwTf8ms",
+            "width": 4032
+        },
+        "vicinity": "龍潭區中豐路上林段115巷11號",
+        "addr": "V675+CQ 台灣桃園市龍潭區",
+        "address": "台灣桃園市龍潭區中豐路上林段115巷11號",
+        "city": "桃園市",
+        "region": "龍潭區",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJGWs7Pvs8aDQR85-UeY7fPWE",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 61,
+        "info": "三貂角燈塔",
+        "name": "三貂角燈塔",
+        "location": {
+            "lat": 25.0075515,
+            "lng": 122.0018916
+        },
+        "star": 4.5,
+        "photo": {
+            "height": 2268,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/117974625590433824663\">黃Alex</a>"
+            ],
+            "photo_reference": "AeJbb3cA0_jT9MwtPQWMnEglJy0DV06PK4EvoN8AY895RZgz6sJez2oNfOgxd4vCS4QbDldBBIPkY3mfJX9eJyETO1dXvLdumRQR3_SaJXCRexDk6QQo_7V-Op5xYwOwwbtfre8V_Mq1PyjYEm5aI05X8Ysi-T3SPVU02YR27wLC1Ou5NHLK",
+            "width": 4032
+        },
+        "vicinity": "貢寮區馬崗街38號",
+        "addr": "2252+2Q 台灣新北市貢寮區",
+        "address": "台灣新北市貢寮區馬崗街38號",
+        "city": "新北市",
+        "region": "貢寮區",
+        "time": [
+            "星期一: 休息",
+            "星期二: 09:00 – 17:00",
+            "星期三: 09:00 – 17:00",
+            "星期四: 09:00 – 17:00",
+            "星期五: 09:00 – 17:00",
+            "星期六: 09:00 – 17:00",
+            "星期日: 09:00 – 17:00"
+        ],
+        "place_id": "ChIJmWtqgIJnXTQRGWfG25olU-8",
+        "type": "hot"
+    },
+    {
+        "del": 0.0625,
+        "id": 62,
+        "info": "勝利星村創意生活園區",
+        "name": "勝利星村創意生活園區",
+        "location": {
+            "lat": 22.6786152,
+            "lng": 120.4845247
+        },
+        "star": 4.5,
+        "photo": {
+            "height": 4248,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/100404964272895485179\">林小芸</a>"
+            ],
+            "photo_reference": "AeJbb3elBzMXmljvSgfhh_Hv2WRKyapaEnMkM7Y_lLJUCy7Tu26hf0HdQyqcCVKIV6UyMaLl6MwCSXH72Qpd_-p4508KI4i0dLNLDHtR905-MjhD4FYMy4yltBuYGfVBJj8i5_ES1K3IsDTP4Wy8yzVDFTxn-UPM9iVkUJ11unku95mJ23Pe",
+            "width": 5664
+        },
+        "vicinity": "屏東市青島街106號",
+        "addr": "MFHM+CR 台灣屏東縣屏東市",
+        "address": "台灣屏東縣屏東市青島街106號",
+        "city": "屏東縣",
+        "region": "屏東市",
+        "time": [
+            "星期一: 09:00 – 17:00",
+            "星期二: 09:00 – 17:00",
+            "星期三: 09:00 – 17:00",
+            "星期四: 09:00 – 17:00",
+            "星期五: 09:00 – 17:00",
+            "星期六: 09:00 – 17:00",
+            "星期日: 09:00 – 17:00"
+        ],
+        "place_id": "ChIJq_-Vyp0XbjQRkWTVX78U7QA",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 63,
+        "info": "林田山林業文化園區",
+        "name": "林田山林業文化園區",
+        "location": {
+            "lat": 23.7180886,
+            "lng": 121.3989548
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 1280,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/118409644262306498019\">patrick tseng</a>"
+            ],
+            "photo_reference": "AeJbb3csAaVdDNpK1BWaNvp2UnzTkigIQvWeUmA1mGEAUDww3hI3HTNIqtegeBhnAAu0qzCbNzQZ2LDsUg5_DUlrZkdRdRZyDZXQXBKNJhQ4z7WwuBOnXNiLk5j2jiu1vVK2Cwldj6cWReSSn3A_8aiKKuCIjyJ2NwS3il_0S0Kcjl0jvPYD",
+            "width": 1920
+        },
+        "vicinity": "鳳林鎮林森路99巷99號",
+        "addr": "P99X+6H 台灣花蓮縣鳳林鎮",
+        "address": "台灣花蓮縣鳳林鎮林森路99巷99號",
+        "city": "花蓮縣",
+        "region": "鳳林鎮",
+        "time": [
+            "星期一: 休息",
+            "星期二: 09:00 – 17:00",
+            "星期三: 09:00 – 17:00",
+            "星期四: 09:00 – 17:00",
+            "星期五: 09:00 – 17:00",
+            "星期六: 09:00 – 17:00",
+            "星期日: 09:00 – 17:00"
+        ],
+        "place_id": "ChIJ3-vwJLOzaDQRHnPlTZ31RsQ",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 64,
+        "info": "內灣老街",
+        "name": "內灣老街",
+        "location": {
+            "lat": 24.7038087,
+            "lng": 121.183358
+        },
+        "star": 4.1,
+        "photo": {
+            "height": 3000,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/104029894873031119469\">季鋒陳</a>"
+            ],
+            "photo_reference": "AeJbb3dgfegYQFisTFT7O6LUiVgoLONqytC5QIsk-JpG0gwIH1jJ1xwKBUHbUQcEl5KYN01nJ60UW6gxKxsROS-HYUNG5htNC9UQMApaDkMPIRLvfo4v_ty_j0g4dNVXfzqA7ypX3HS6KvOU6XGsSXs8287nqY-VBXLO7bRHWx1a8JegqK6M",
+            "width": 4000
+        },
+        "vicinity": "橫山鄉光復路",
+        "addr": "P53M+G8 台灣新竹縣橫山鄉",
+        "address": "台灣新竹縣橫山鄉光復路",
+        "city": "新竹縣",
+        "region": "橫山鄉",
+        "time": [
+            "星期一: 10:00 – 18:00",
+            "星期二: 10:00 – 18:00",
+            "星期三: 10:00 – 18:00",
+            "星期四: 10:00 – 18:00",
+            "星期五: 10:00 – 18:00",
+            "星期六: 10:00 – 18:00",
+            "星期日: 10:00 – 18:00"
+        ],
+        "place_id": "ChIJ27GoR89AaDQR78D2c-yQhio",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 65,
+        "info": "烏來老街",
+        "name": "烏來老街",
+        "location": {
+            "lat": 24.8637067,
+            "lng": 121.5514325
+        },
+        "star": 4.1,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/115348368155387394459\">Jim CHIANG</a>"
+            ],
+            "photo_reference": "AeJbb3cANhm5v1nuYB1qyOLkH1Rfsj8dQIPztPfmxnvMApm4nlNzNvs8aDGOro1CyepOcU6TFMXyx-of_IRtnTx81Ojy5DkEb0LJPeAIc-Kiq-bWbsrrlpXTpGOYkE9JJcmB3JBOMnK7JYgp-QegnOQdshVo78EeLsVBrEHkGUg1MCLGoPbu",
+            "width": 4032
+        },
+        "vicinity": "烏來區烏來街12號",
+        "addr": "VH72+FH 台灣新北市烏來區",
+        "address": "台灣新北市烏來區烏來街12號",
+        "city": "新北市",
+        "region": "烏來區",
+        "time": [
+            "星期一: 10:00 – 17:00",
+            "星期二: 10:00 – 17:00",
+            "星期三: 10:00 – 17:00",
+            "星期四: 10:00 – 17:00",
+            "星期五: 10:00 – 17:00",
+            "星期六: 10:00 – 18:00",
+            "星期日: 10:00 – 18:00"
+        ],
+        "place_id": "ChIJcYyEEWQGaDQRelCnuK4S6yo",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 66,
+        "info": "杉林溪森林生態渡假園區",
+        "name": "杉林溪森林生態渡假園區",
+        "location": {
+            "lat": 23.6368454,
+            "lng": 120.7946581
+        },
+        "star": 4.4,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/115059388087039024245\">龍冠延</a>"
+            ],
+            "photo_reference": "AeJbb3ffn4HvBHLLBtQtGPKjhFEY-dMGYgMrvlBm65K4nxO9BMHnd829CQBjrCk7VNy5N4oM7wNRWHhBDUV5-_vlBx0WzzHHZpUU5BjBodZK9_x_EsIBkvYEEoGV9WZ7MuAJINOvcAeWxa-unuYxBFX8D9RPott2kzM-q9lAZrblk9d_hkkD",
+            "width": 4032
+        },
+        "vicinity": "竹山鎮溪山路6號",
+        "addr": "JQPV+PV 台灣南投縣竹山鎮",
+        "address": "台灣南投縣竹山鎮溪山路6號",
+        "city": "南投縣",
+        "region": "竹山鎮",
+        "time": [
+            "星期一: 07:00 – 21:00",
+            "星期二: 07:00 – 21:00",
+            "星期三: 07:00 – 21:00",
+            "星期四: 07:00 – 21:00",
+            "星期五: 07:00 – 21:00",
+            "星期六: 07:00 – 21:00",
+            "星期日: 07:00 – 21:00"
+        ],
+        "place_id": "ChIJaVMVJsHQbjQR77h647d6zCY",
+        "type": "hot"
+    },
+    {
+        "del": 0.0625,
+        "id": 67,
+        "info": "柳川水岸景觀步道",
+        "name": "柳川水岸景觀步道",
+        "location": {
+            "lat": 24.1424817,
+            "lng": 120.6770897
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 3000,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/115789648135318828538\">jeri wu</a>"
+            ],
+            "photo_reference": "AeJbb3f4h6FsLMrYCU0AkYGMmKo0j0ioTVW_BKke0XnmWItIwLtzxn5boNOkGJUBYyuR_WtSsTVF3iL8ACED7VAOXjdw8T3IpdhVaa8aESv2mFPGNtBidHvc9SK1eTxa0NSe7pt6eXdLi5eh-kOWm6nvixN8ZADDgzB1q0HE3C-G6RrZ0P71",
+            "width": 4000
+        },
+        "vicinity": "中區柳川西路三段",
+        "addr": "4MRG+XR 台灣台中市中區",
+        "address": "台灣台中市中區柳川西路三段",
+        "city": "台中市",
+        "region": "中區柳",
+        "time": [
+            "星期一: 06:00 – 22:00",
+            "星期二: 06:00 – 22:00",
+            "星期三: 06:00 – 22:00",
+            "星期四: 06:00 – 22:00",
+            "星期五: 06:00 – 22:00",
+            "星期六: 06:00 – 00:00",
+            "星期日: 06:00 – 00:00"
+        ],
+        "place_id": "ChIJqUZvRQ09aTQRqh9vWv4suqs",
+        "type": "hot"
+    },
+    {
+        "del": 0.05,
+        "id": 68,
+        "info": "青青草原",
+        "name": "青青草原",
+        "location": {
+            "lat": 24.7726541,
+            "lng": 120.9254811
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 1440,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/103151629909305803514\">Juaing Huang</a>"
+            ],
+            "photo_reference": "AeJbb3fWUkxFl3bBaVSJRfUYd2qyNeK4tAQHHA76FNUr9ECtAQxh1w16bg5EJpAb1Oz623HYquHTGkE2JxOB_gOXZ4JrWa35B59DcwoTzVlxielgEH22UrOXvx3CN2ZcjiU2gkmfmlbYovS3dx1SxeT7OB6FB62fJurqKu2C5N7wL8e6fZx9",
+            "width": 1440
+        },
+        "vicinity": "香山區草原路",
+        "addr": "QWFG+35 台灣新竹市香山區",
+        "address": "台灣新竹市香山區草原路",
+        "city": "新竹市",
+        "region": "香山區",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJ9eOyO2JKaDQRakkYan8x6xg",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 69,
+        "info": "六堆客家文化園區",
+        "name": "六堆客家文化園區",
+        "location": {
+            "lat": 22.6584186,
+            "lng": 120.5588158
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 2252,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/106436346826130252021\">iwen hua</a>"
+            ],
+            "photo_reference": "AeJbb3c6-9mOQp0FlZtL2sQZyjGvZxTmrXF9eGWCY3hfBkLVQ3Z87df7plVMXwhcD638Gfky3DaQHj3T3s7vGFpMuxVn0YmlDeLBvcg58gpZzHnwx62daaRX7J1hr-NH1mDIYHUXyx4ShA1wI5QKf4JwFsx9vJOK4pWoHGQZ9DP8YEZkc8fP",
+            "width": 4000
+        },
+        "vicinity": "內埔鄉信義路588號",
+        "addr": "MH55+9G 台灣屏東縣內埔鄉",
+        "address": "台灣屏東縣內埔鄉信義路588號",
+        "city": "屏東縣",
+        "region": "內埔鄉",
+        "time": [
+            "星期一: 09:00 – 17:00",
+            "星期二: 休息",
+            "星期三: 09:00 – 17:00",
+            "星期四: 09:00 – 17:00",
+            "星期五: 09:00 – 17:00",
+            "星期六: 09:00 – 17:00",
+            "星期日: 09:00 – 17:00"
+        ],
+        "place_id": "ChIJz9-onDA9bjQR-VpoaS6wV6A",
+        "type": "hot"
+    },
+    {
+        "del": 0.6,
+        "id": 70,
+        "info": "臺南左鎮化石園區",
+        "name": "臺南左鎮化石園區",
+        "location": {
+            "lat": 23.06425549999999,
+            "lng": 120.3891486
+        },
+        "star": 4.4,
+        "photo": {
+            "height": 758,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/116918540202122894082\">臺南左鎮化石園區</a>"
+            ],
+            "photo_reference": "AeJbb3ftl3GWjT0LhdE-0EbfGTyF_-lgDR4PWnChajccBi645j3Ts3-G1T_kK3t9-JapcGZx5h9Byf91uP4SyJAzB5B0d_Ic9Wnr0VIGNMsbhxoDgUKWII2KmaD6Je57gfupyaM2PTGvSJ9FnqlnotoUzC9Pp8G0Z4ADWSj6MvLQYeT_wDLj",
+            "width": 1300
+        },
+        "vicinity": "左鎮區61-23號",
+        "addr": "397Q+PM 台灣台南市左鎮區",
+        "address": "台灣台南市左鎮區61-23號",
+        "city": "台南市",
+        "region": "左鎮區",
+        "time": [
+            "星期一: 09:00 – 17:00",
+            "星期二: 休息",
+            "星期三: 09:00 – 17:00",
+            "星期四: 09:00 – 17:00",
+            "星期五: 09:00 – 17:00",
+            "星期六: 09:00 – 17:00",
+            "星期日: 09:00 – 17:00"
+        ],
+        "place_id": "ChIJQ9W8A6plbjQRGDjCdnI9f9M",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 71,
+        "info": "武嶺",
+        "name": "武嶺",
+        "location": {
+            "lat": 24.1371034,
+            "lng": 121.2758385
+        },
+        "star": 4.7,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/107695381637711227590\">蕭River</a>"
+            ],
+            "photo_reference": "AeJbb3fyh99KmP7oBh1N-tEcAWVz2_qqtPjaWx0jlRH8Txk6PX_D-3a7flN62FZKDrH4LwEcNmvxpk3VS4Nk6o0Z3p0V2IwjmK_CVrNnv72eHXCF_I9QnZ2VvQgwsyJ0Xi6CPVKd0zJDw3UETyIPy7enPRmxF6-goB5rMA3V4rZT-g8W78fy",
+            "width": 4032
+        },
+        "vicinity": "仁愛鄉仁和路170號",
+        "addr": "47PG+R8 台灣南投縣仁愛鄉",
+        "address": "台灣南投縣仁愛鄉仁和路170號",
+        "city": "南投縣",
+        "region": "仁愛鄉",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJte6zETiTaDQRA6gtQKdhV8k",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 72,
+        "info": "潮境公園",
+        "name": "潮境公園",
+        "location": {
+            "lat": 25.1434517,
+            "lng": 121.8034149
+        },
+        "star": 4.4,
+        "photo": {
+            "height": 2919,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/103110303417376157525\">陳秋玉</a>"
+            ],
+            "photo_reference": "AeJbb3d1yUw4yBOICvHhKUxxxHIYJiIdme-z19kPQ2BxAuJpFO0KyS8kxu4aOJKMXr42Usm7Wd5YiIupSWO5Rpfq_6F0UF_X0fWIVeayVrANZnoLGytvnHQmUeLa4enSMR3AL6AIwHK8U3Gf-WZYVjg3gW8Bm1z9tkUu6WO8sVkAWo-rudCP",
+            "width": 3948
+        },
+        "vicinity": "中正區北寧路369巷61號",
+        "addr": "4RV3+99 台灣基隆市中正區",
+        "address": "台灣基隆市中正區北寧路369巷61號",
+        "city": "基隆市",
+        "region": "中正區",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJGTT2a3lPXTQRjkhw37cYOJM",
+        "type": "hot"
+    },
+    {
+        "del": 0.0625,
+        "id": 73,
+        "info": "赤崁樓",
+        "name": "赤崁樓",
+        "location": {
+            "lat": 22.997478,
+            "lng": 120.2025433
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 682,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/112546264912628277208\">赤崁樓</a>"
+            ],
+            "photo_reference": "AeJbb3fIoO443AVm04130_LlTB6vuc1746rGLB1KKLoJ3f1P1X9GdHMmz4r5vftylxRI8aOwb9WRM0ioKkPqXzRtj7SSbVdTOwNieMKXc85hF_WzXLsOdA9A_SG8K31ESbZmWKDKHL9jWTt9e4Z1RufyCRDWCm2ZrnB9RJDSMqU_q088L-uT",
+            "width": 1024
+        },
+        "vicinity": "中西區民族路二段212號",
+        "addr": "X6W3+X2 台灣台南市中西區",
+        "address": "台灣台南市中西區民族路二段212號",
+        "city": "台南市",
+        "region": "中西區",
+        "time": [
+            "星期一: 08:30 – 21:30",
+            "星期二: 08:30 – 21:30",
+            "星期三: 08:30 – 21:30",
+            "星期四: 08:30 – 21:30",
+            "星期五: 08:30 – 21:30",
+            "星期六: 08:30 – 21:30",
+            "星期日: 08:30 – 21:30"
+        ],
+        "place_id": "ChIJbYl7d2F2bjQRnFdvyMBuZfI",
+        "type": "hot"
+    },
+    {
+        "del": 4,
+        "id": 74,
+        "info": "後龍鎮半天寮休閒文化園區 - 好望角",
+        "name": "後龍鎮半天寮休閒文化園區",
+        "location": {
+            "lat": 24.601974,
+            "lng": 120.731191
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 1081,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/108516466126216981172\">郭耀群</a>"
+            ],
+            "photo_reference": "AeJbb3dAM2GC3nY_7mGglNkzLIFunFVnJgzGr65syILYMDuEqFEiVwgevgSpCRi-aKGvreH36gtrTFxt356_n7pM_dUK0g7m58lcVRwHJLGRgRRUu3yb_kz6MXzL1AwQWqne6graEwS8AiH1rGypEeTeomoK2SoSLTFgwBta7ZD81wJFhGDL",
+            "width": 1440
+        },
+        "vicinity": "後龍鎮半天寮",
+        "addr": "JP2J+QF 台灣苗栗縣後龍鎮",
+        "address": "台灣苗栗縣後龍鎮半天寮",
+        "city": "苗栗縣",
+        "region": "後龍鎮",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJVVVVVWWuaTQRsf_BtcIo5Yo",
+        "type": "hot"
+    },
+    {
+        "del": 0.05,
+        "id": 75,
+        "info": "太平雲梯遊客服務中心Visitor Service Center(附設雲中找茶複合式餐廳）",
+        "name": "太平雲梯服務中心",
+        "location": {
+            "lat": 23.5597128,
+            "lng": 120.6008854
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 4912,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/104926780422686601184\">太平雲梯遊客服務中心Visitor Service Center(附設雲中找茶複合式餐廳）</a>"
+            ],
+            "photo_reference": "AeJbb3eZgZxzsSibbIIy2t3rSaKU9IMuPxwGUlwZ4fYMkn9dzE-PbXHpK6jZaxxdx8bUY4FYDSE7pQEYcSfN_Guso74SIyT6XkTJIWRG_kqPg-w8E0mxKbXSrSOPmjNfB7-yted7pagp5E2dXSaqR85zlIBG0nctt_lLOQ_hqQ3aK5sS_6C_",
+            "width": 7360
+        },
+        "vicinity": "下坑仔, 5號, 梅山乡",
+        "addr": "HJ52+V9 台灣嘉義縣梅山鄉",
+        "address": "台灣嘉義縣下坑仔, 5號, 梅山乡",
+        "city": "嘉義縣",
+        "region": "下坑仔",
+        "time": [
+            "星期一: 09:00 – 17:30",
+            "星期二: 09:00 – 17:30",
+            "星期三: 休息",
+            "星期四: 09:00 – 17:30",
+            "星期五: 09:00 – 17:30",
+            "星期六: 09:00 – 17:30, 18:00 – 20:00",
+            "星期日: 09:00 – 17:30"
+        ],
+        "place_id": "ChIJH4Ouo2rBbjQR50c88GP53ew",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 76,
+        "info": "湯圍溝溫泉公園",
+        "name": "湯圍溝溫泉公園",
+        "location": {
+            "lat": 24.8285141,
+            "lng": 121.7699558
+        },
+        "star": 4.1,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/110085302604379388135\">B C</a>"
+            ],
+            "photo_reference": "AeJbb3e8Z1HsaQ0RUM7lWo918ZkUrU6QW76NCcNk2e3jEz_0efso-CoG5UNAOUkEowwDPXVQ1fI4lEorGeP8Uz2LSa5dRV9Ezz5DKdwNROS0R736ldyS86ToekPYv-Sr5Mowxc8xn5gMzAtwXWgyYTjPncINpJ7Q-c8uSf1L6xLIweXijHmx",
+            "width": 4032
+        },
+        "vicinity": "礁溪鄉德陽路99-11號",
+        "addr": "RQH9+CX 台灣宜蘭縣礁溪鄉",
+        "address": "台灣宜蘭縣礁溪鄉德陽路99-11號",
+        "city": "宜蘭縣",
+        "region": "礁溪鄉",
+        "time": [
+            "星期一: 06:30 – 22:00",
+            "星期二: 06:30 – 22:00",
+            "星期三: 06:30 – 22:00",
+            "星期四: 06:30 – 22:00",
+            "星期五: 06:30 – 23:00",
+            "星期六: 06:30 – 23:00",
+            "星期日: 06:30 – 22:00"
+        ],
+        "place_id": "ChIJ772ubUr6ZzQRuY_2y4RvRrM",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 77,
+        "info": "大湖公園 (防災公園）",
+        "name": "大湖公園",
+        "location": {
+            "lat": 25.0822805,
+            "lng": 121.6044519
+        },
+        "star": 4.5,
+        "photo": {
+            "height": 3265,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/100884651915014423406\">林傳進</a>"
+            ],
+            "photo_reference": "AeJbb3c8ixxfv0Z_42Wpg7XDROrInkp9cicx6bOKnllWZFs8PaEWTmmW0pJF6IUK9HeEDCXFONartU7QdpXt1-Kx_IhjdldTJsFPAVBmtnVBmkFACl63TarKSZjmjSm52u4JbRSHFFBpIp8Am1iJ86yoaGFiVZSz5PD23f39VhcfSzmLdpv7",
+            "width": 4898
+        },
+        "vicinity": "內湖區成功路五段31號",
+        "addr": "3JJ3+WQ 台灣台北市內湖區",
+        "address": "台灣台北市內湖區成功路五段31號",
+        "city": "台北市",
+        "region": "內湖區",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJL25qhuqsQjQRjzwIZ7a6UbI",
+        "type": "hot"
+    },
+    {
+        "del": 2.3,
+        "id": 78,
+        "info": "打狗英國領事館官邸",
+        "name": "打狗英國領事館官邸",
+        "location": {
+            "lat": 22.6188665,
+            "lng": 120.2668686
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/107925822859466701221\">eason chou</a>"
+            ],
+            "photo_reference": "AeJbb3cuWE4rQ5UyldGHppAOTqT97Rma8VuIWdG8EuBnlai2E0Hju95Z3Gj2kvqeGl7hsabXE_UNjNtsRV8KxfTrKHn920tq1NGrFTt7hH1bq9LHSGyIc9LRggQug-jxXNYq1dsEg0zXT8As_v6me2NP7rTRJ126J7cXnBbPGrU1wokXoMtA",
+            "width": 4032
+        },
+        "vicinity": "鼓山區蓮海路20號",
+        "addr": "J798+GP 台灣高雄市鼓山區",
+        "address": "台灣高雄市鼓山區蓮海路20號",
+        "city": "高雄市",
+        "region": "鼓山區",
+        "time": [
+            "星期一: 休息",
+            "星期二: 10:00 – 19:00",
+            "星期三: 10:00 – 19:00",
+            "星期四: 10:00 – 19:00",
+            "星期五: 10:00 – 19:00",
+            "星期六: 09:00 – 19:00",
+            "星期日: 09:00 – 19:00"
+        ],
+        "place_id": "ChIJFfV1wfYDbjQRHdGpq6VRADM",
+        "type": "hot"
+    },
+    {
+        "del": 1.8,
+        "id": 79,
+        "info": "張學良文化園區",
+        "name": "張學良文化園區",
+        "location": {
+            "lat": 24.5724136,
+            "lng": 121.1054525
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/110158541696863275446\">王玉華</a>"
+            ],
+            "photo_reference": "AeJbb3eIoh7tQIIFRB7IZB2yhrBzxs1gg8TGser8HLaCUmZOK5XYpkl-0AiwRvXCfuMK7liShoEHp7fdLttDkLWhIyUXu-KyQxxjp5ZFtXapvm4eBvoBQdQafmcpeEffQ8ewnukXE3vEtMGg18OOwiEu2Nay0_FjgzJAR65Zp8-RFowyWOGI",
+            "width": 4032
+        },
+        "vicinity": "五峰鄉311號",
+        "addr": "H4C4+X5 台灣新竹縣五峰鄉",
+        "address": "台灣新竹縣五峰鄉311號",
+        "city": "新竹縣",
+        "region": "五峰鄉",
+        "time": [
+            "星期一: 休息",
+            "星期二: 09:00 – 17:00",
+            "星期三: 09:00 – 17:00",
+            "星期四: 09:00 – 17:00",
+            "星期五: 09:00 – 17:00",
+            "星期六: 09:00 – 17:00",
+            "星期日: 09:00 – 17:00"
+        ],
+        "place_id": "ChIJV04XbMVEaDQRu-e6P6_tKAo",
+        "type": "hot"
+    },
+    {
+        "del": 0.52,
+        "id": 80,
+        "info": "花蓮觀光糖廠",
+        "name": "花蓮觀光糖廠",
+        "location": {
+            "lat": 23.6586905,
+            "lng": 121.4206067
+        },
+        "star": 4.1,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/105647612369923593812\">shan-ming Huang</a>"
+            ],
+            "photo_reference": "AeJbb3exgA-aRF1fl-HxtN2YokQ5-E7hPp8HsBVbDk-l8vxVcnZM7oantq8li6nUXH1OKBYkS1zhb3BfzWXBe_jbNoxvbsWh3sKwED9p7JJSD76T5BDgVfxodKZSLbjlLiJUWYUXRSslbfvatJ6Fi8awxat2ThpXxjr_nChaOLf4ZWyZtJg7",
+            "width": 4032
+        },
+        "vicinity": "光復鄉糖廠街19號",
+        "addr": "MC5C+F6 台灣花蓮縣光復鄉",
+        "address": "台灣花蓮縣光復鄉糖廠街19號",
+        "city": "花蓮縣",
+        "region": "光復鄉",
+        "time": [
+            "無"
+        ],
+        "place_id": "ChIJpcSL78qyaDQRpJX500RPFLo",
+        "type": "hot"
+    },
+    {
+        "del": 4,
+        "id": 81,
+        "info": "小人國主題樂園",
+        "name": "小人國主題樂園",
+        "location": {
+            "lat": 24.8312408,
+            "lng": 121.1882247
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 1702,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/102632521643617907668\">小人國主題樂園</a>"
+            ],
+            "photo_reference": "AeJbb3dhMMwPEokEb9kBpKXMCFI7ix6hhHj0yyl7qB9rWCC9IfLhPUD2YfWlWHZXhVJCeXKv9D1bkTqMJx-UqX9H0zofE1JoCd9nZnAYVZJmusZPGDBL2Dn5zTWzJvZOQ_Yry2dUpyqMQeqn_t5CIogySU64m77L0el4AoYPl3-K9j_K0eaz",
+            "width": 3024
+        },
+        "vicinity": "龍潭區高原路891號",
+        "addr": "R5JQ+F7 台灣桃園市龍潭區",
+        "address": "台灣桃園市龍潭區高原路891號",
+        "city": "桃園市",
+        "region": "龍潭區",
+        "time": [
+            "星期一: 09:30 – 17:00",
+            "星期二: 09:30 – 17:00",
+            "星期三: 09:30 – 17:00",
+            "星期四: 09:30 – 17:00",
+            "星期五: 09:30 – 17:00",
+            "星期六: 09:30 – 17:00",
+            "星期日: 09:30 – 17:00"
+        ],
+        "place_id": "ChIJIVlPqhY8aDQRcSMa0PLZrkk",
+        "type": "hot"
+    },
+    {
+        "del": 0.052,
+        "id": 82,
+        "info": "國立故宮博物院南部院區",
+        "name": "國立故宮博物院南部院區",
+        "location": {
+            "lat": 23.4731294,
+            "lng": 120.2927165
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 2915,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/104667464581809491023\">國立故宮博物院南部院區</a>"
+            ],
+            "photo_reference": "AeJbb3cfam9tzw_2B1X9zaWpwLO3M-fSR1wQCf3PlVgmUIqYf6M6Yk8-x59GEb16_V_RdaiC46JuHB-6OqltzmWGlcN8J01xO4bqXdQRGyGW31lmGGMlnNzfRWa9YOv_IYzVV5mOmzwDEpZydmBkbi3HdqId1hsG3vzPXHeYqm-T94Vp2uX4",
+            "width": 5189
+        },
+        "vicinity": "太保市故宮大道888號",
+        "addr": "F7FV+73 台灣嘉義縣太保市",
+        "address": "台灣嘉義縣太保市故宮大道888號",
+        "city": "嘉義縣",
+        "region": "太保市",
+        "time": [
+            "星期一: 休息",
+            "星期二: 09:00 – 17:00",
+            "星期三: 09:00 – 17:00",
+            "星期四: 09:00 – 17:00",
+            "星期五: 09:00 – 17:00",
+            "星期六: 09:00 – 18:00",
+            "星期日: 09:00 – 18:00"
+        ],
+        "place_id": "ChIJe6XdK9SbbjQRy7gVi-RqGWk",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 83,
+        "info": "台灣優格餅乾學院 【DIY手作/餅乾/彰化景點/2022中秋禮盒/月餅蛋黃酥】",
+        "name": "台灣優格餅乾學院",
+        "location": {
+            "lat": 24.1260409,
+            "lng": 120.4662116
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 1366,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/106373788513238066235\">台灣優格餅乾學院 【DIY手作/餅乾/彰化景點/2022中秋禮盒/月餅蛋黃酥】</a>"
+            ],
+            "photo_reference": "AeJbb3eF1_MKBMsxNt_BA2D7RjldOP9nUEP_5a2jM2BzUV_el1Su6zf6fIXcvzd_FKHoEGDjjk8YVPZJzoGHrDKS_81padDsLbmGc4CknilVMU0hkNU_WyRuKpWG_1PktsoBmI9YXKoPCRR63Bpwx-SPrelci5ZQS2_9KghyDkcdRSXU-N_I",
+            "width": 2048
+        },
+        "vicinity": "線西鄉草豐路501巷5號",
+        "addr": "4FG8+CF 台灣彰化縣線西鄉",
+        "address": "台灣彰化縣線西鄉草豐路501巷5號",
+        "city": "彰化縣",
+        "region": "線西鄉",
+        "time": [
+            "星期一: 09:00 – 18:00",
+            "星期二: 09:00 – 18:00",
+            "星期三: 09:00 – 18:00",
+            "星期四: 09:00 – 18:00",
+            "星期五: 09:00 – 18:00",
+            "星期六: 09:00 – 18:00",
+            "星期日: 09:00 – 18:00"
+        ],
+        "place_id": "ChIJbUfZ5SxBaTQRlP6jUJVdbMc",
+        "type": "hot"
+    },
+    {
+        "del": 0.52,
+        "id": 84,
+        "info": "小野柳",
+        "name": "小野柳",
+        "location": {
+            "lat": 22.7947736,
+            "lng": 121.1981802
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/117020373944505608486\">Mei Tsao</a>"
+            ],
+            "photo_reference": "AeJbb3f8JPdrPFL_oWzthbggDj_QBRVKH1FEB8B1KdWoXbeidLp5pUa9nqsygN1X9segsUlc2G2e1wXL7UioXHBIeL4sl8gvNI-pGpDgmubNJofQXgRK9S4Gw0umqdW5ojWmuoV6wQdVA0zSe6jnDidok4teIBQBUFMds60KGIGzU5BF0-QL",
+            "width": 4032
+        },
+        "vicinity": "台東市松江路一段500號",
+        "addr": "Q5VX+W7 台灣台東縣台東市",
+        "address": "台灣台東縣台東市松江路一段500號",
+        "city": "台東縣",
+        "region": "台東市",
+        "time": [
+            "星期一: 08:30 – 17:30",
+            "星期二: 08:30 – 17:30",
+            "星期三: 08:30 – 17:30",
+            "星期四: 08:30 – 17:30",
+            "星期五: 08:30 – 17:30",
+            "星期六: 08:30 – 17:30",
+            "星期日: 08:30 – 17:30"
+        ],
+        "place_id": "ChIJgS3U1LG5bzQRGuFTr11jV4A",
+        "type": "hot"
+    },
+    {
+        "del": 1.2,
+        "id": 85,
+        "info": "野柳海洋世界",
+        "name": "野柳海洋世界",
+        "location": {
+            "lat": 25.205185,
+            "lng": 121.69136
+        },
+        "star": 4.2,
+        "photo": {
+            "height": 1536,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/101747572675073564723\">野柳海洋世界</a>"
+            ],
+            "photo_reference": "AeJbb3cqu-qlwaqWNQ4wqjfAKNxTBKBm02MvaowSr-cQBOE0-wQ0V9XFMPCjddKjWcYaDMaSAzLpJYfY6T3eWngc5aqkoqTpeWC9aS1fzA9E_lYQLvavvmcqXMuP7JP_lYy_jiLJ1MA4vZcrX2z09xRNTbanquoYHgiLsgm5MdsVnZRkh1bw",
+            "width": 2048
+        },
+        "vicinity": "萬里區港東路167-3號",
+        "addr": "6M4R+3G 台灣新北市萬里區",
+        "address": "台灣新北市萬里區港東路167-3號",
+        "city": "新北市",
+        "region": "萬里區",
+        "time": [
+            "星期一: 09:00 – 17:00",
+            "星期二: 09:00 – 17:00",
+            "星期三: 09:00 – 17:00",
+            "星期四: 09:00 – 17:00",
+            "星期五: 09:00 – 17:00",
+            "星期六: 09:00 – 17:30",
+            "星期日: 09:00 – 17:30"
+        ],
+        "place_id": "ChIJ_XWXKXRMXTQRHRNq6ov7-rQ",
+        "type": "hot"
+    },
+    {
+        "del": 0.0625,
+        "id": 86,
+        "info": "審計368新創聚落",
+        "name": "審計368新創聚落",
+        "location": {
+            "lat": 24.1446105,
+            "lng": 120.6629322
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/104688623814550246595\">Yen Yen</a>"
+            ],
+            "photo_reference": "AeJbb3d4h6vBlqP85VxBG8yiP_UI8C4BFcwndx06gOcv7-_UTvkTsOI7_Gq0Zmola8heAHrO-WzqgUXLmtWAuzA2qXchk1g7Nvj185i_gzx1cTiDRHsSQHRcFhe0vbJ6Vnocbu2qFPwYGfhpeCYIO0w8wGmpPuInDGrLYZ4ofdilqzSwTyrU",
+            "width": 4032
+        },
+        "vicinity": "西區民生路368巷2弄12號",
+        "addr": "4MV7+R5 台灣台中市西區",
+        "address": "台灣台中市西區民生路368巷2弄12號",
+        "city": "台中市",
+        "region": "西區民",
+        "time": [
+            "星期一: 11:30 – 20:30",
+            "星期二: 11:30 – 20:30",
+            "星期三: 11:30 – 20:30",
+            "星期四: 11:30 – 20:30",
+            "星期五: 11:30 – 20:30",
+            "星期六: 11:30 – 20:30",
+            "星期日: 11:30 – 20:30"
+        ],
+        "place_id": "ChIJ04sByqE9aTQRnw6NwaSUZd8",
+        "type": "hot"
+    },
+    {
+        "del": 1,
+        "id": 87,
+        "info": "旺萊山愛情大草原",
+        "name": "旺萊山愛情大草原",
+        "location": {
+            "lat": 23.4423814,
+            "lng": 120.5909368
+        },
+        "star": 4.1,
+        "photo": {
+            "height": 3456,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/104014022833574724815\">王柔惠</a>"
+            ],
+            "photo_reference": "AeJbb3cZdH6sURdk0LLUM8tBzo724JiWuNrnfwCFjLwZfVNfUKdQqJK_OX7Fx2TWfV56GIFPKr0S8AbrOpqoZDBTT5ITJHO41eYXCxPm0vMduR_YUH2UVUumcOGVJRxiRZgtjBXErE0Icap6PTWYKIR7h18SrhwlXY27wB5Gtjq423zBbSxt",
+            "width": 4608
+        },
+        "vicinity": "番路鄉7鄰15號",
+        "addr": "CHRR+X9 台灣嘉義縣番路鄉",
+        "address": "台灣嘉義縣番路鄉7鄰15號",
+        "city": "嘉義縣",
+        "region": "番路鄉",
+        "time": [
+            "星期一: 09:00 – 17:20",
+            "星期二: 09:00 – 17:20",
+            "星期三: 09:00 – 17:20",
+            "星期四: 09:00 – 17:20",
+            "星期五: 09:00 – 17:20",
+            "星期六: 09:00 – 17:20",
+            "星期日: 09:00 – 17:20"
+        ],
+        "place_id": "ChIJa0lvH7rrbjQRIlSqKc1w4IY",
+        "type": "hot"
+    },
+    {
+        "del": 0.256,
+        "id": 88,
+        "info": "烏來瀑布",
+        "name": "烏來瀑布",
+        "location": {
+            "lat": 24.84744259999999,
+            "lng": 121.5519459
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 2526,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/104948680455800042255\">YC Lu</a>"
+            ],
+            "photo_reference": "AeJbb3dnTNBrpIy97CHn_nilMASY8eFimV4v1Ut5tKSfNWdE_DAEOhsJLDltcfL-1MAGPGLraPl5isOyAQ3IkT7cDHfzP776HRQAYKTwIeBbiX3jqsdx8mrcYgdxExI6Fjv5Vr48imT5Ha4oun2f9RPCFphL237N1V7BfwyWSva2wC7EjF5I",
+            "width": 3372
+        },
+        "vicinity": "烏來區瀑布路16號",
+        "addr": "RHW2+XQ 台灣新北市烏來區",
+        "address": "台灣新北市烏來區瀑布路16號",
+        "city": "新北市",
+        "region": "烏來區",
+        "time": [
+            "星期一: 24 小時營業",
+            "星期二: 24 小時營業",
+            "星期三: 24 小時營業",
+            "星期四: 24 小時營業",
+            "星期五: 24 小時營業",
+            "星期六: 24 小時營業",
+            "星期日: 24 小時營業"
+        ],
+        "place_id": "ChIJ2fpFp28GaDQR3N-e1P4HJ-8",
+        "type": "hot"
+    },
+    {
+        "del": 1.5,
+        "id": 89,
+        "info": "成美文化園-永靖親子景點|打卡景點|推薦景點|親子園區|拍照景點|網紅景點",
+        "name": "成美文化園",
+        "location": {
+            "lat": 23.9201615,
+            "lng": 120.5481614
+        },
+        "star": 4.3,
+        "photo": {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/117780149454926616524\">ChiHsun Su</a>"
+            ],
+            "photo_reference": "AeJbb3eswuVOg1Ny_EZ0dMOl0J6q99CobqIfsQ4Dfj6y-qPsCMHYzRCDPqGld9psmzcLDUvhMkeY8s8Pb4DVd17CrRBayz17OMt7NpOqh64adggnIeTeMdudQ4xX3etiUFlvDWchBIs2UISDQtAFcYOgBG12jCNYgqsSjfHIbhdIodHKpGkc",
+            "width": 4032
+        },
+        "vicinity": "永靖鄉中山路二段60號",
+        "addr": "WGCX+37 台灣彰化縣永靖鄉",
+        "address": "台灣彰化縣永靖鄉中山路二段60號",
+        "city": "彰化縣",
+        "region": "永靖鄉",
+        "time": [
+            "星期一: 09:00 – 17:00",
+            "星期二: 09:00 – 17:00",
+            "星期三: 09:00 – 17:00",
+            "星期四: 09:00 – 17:00",
+            "星期五: 09:00 – 17:00",
+            "星期六: 09:00 – 17:00",
+            "星期日: 09:00 – 17:00"
+        ],
+        "place_id": "ChIJ_9bBguk1aTQRhCIhRswPh4o",
+        "type": "hot"
+    }
+]

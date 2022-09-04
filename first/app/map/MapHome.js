@@ -34,7 +34,6 @@ const MapHome = ({ navigation, route }) => {
   const [modalCanPress, setModalCanPress] = useState(true);
   const [modalIsAdd, setModalIsAdd] = useState(true);
   //各式按鈕
-  const [completePress, setCompletePress] = useState(false);
   const [hotPress, setHotPress] = useState(false);
   const [shopPress, setShopPress] = useState(false);
   const [holPress, setHolPress] = useState(false);
@@ -43,10 +42,11 @@ const MapHome = ({ navigation, route }) => {
   const [holData, setHolData] = useState([]);
   const [shopData, setShopData] = useState([]);
   const [endData, setEndData] = useState([]);
+  //waypoint相關
+  const [points,setPoints] = useState([]); //由direction產生的點
   const [waypoints, setWaypoints] = useState([]);
   //當前位置
   const [origin, setOri] = useState({ latitude: 24.1365593, longitude: 120.6835935 });
-  const [addWaypoint, setAdd] = useState([]);
   const [mainRoute, setMainRoute] = useState([]);
   const [destination, setDes] = useState({ latitude: 24.1365593, longitude: 120.6835935 });
   const [initRegion, setInitRegion] = useState({ latitude: 24.1365593, longitude: 120.6835935, latitudeDelta: 4, longitudeDelta: 0 });
@@ -205,10 +205,17 @@ const MapHome = ({ navigation, route }) => {
     })
   }
   //得到中間有哪些點後去找附近的景點(當導航線畫完才會觸發)
-  const SetData = (array) => {
-    const PositionArray = getPositionArray(array);  //過濾島航線的點(回傳[{lat:  ,lng:  }])
+  // const SetData = (array) => {
+  //   const PositionArray = getPositionArray(array);  //過濾島航線的點(回傳[{lat:  ,lng:  }])
+  //   getPlace(PositionArray);  //用PositionArray去看附近有哪些景點
+  // }
+
+  useEffect(()=>{
+    console.log("s");
+    const PositionArray = getPositionArray(points);  //過濾島航線的點(回傳[{lat:  ,lng:  }])
     getPlace(PositionArray);  //用PositionArray去看附近有哪些景點
-  }
+  },[points])
+
   useEffect(() => {
     //從theme的json抓取主路線資料
     setMainRoute(() => {
@@ -362,7 +369,7 @@ const MapHome = ({ navigation, route }) => {
             //console.log("pol ready");
             if (once) {
               ////console.log("nono");
-              SetData(result.coordinates);
+              setPoints(result.coordinates);
             }
             setOnce(false);
             ////console.log("way: ", waypoints);

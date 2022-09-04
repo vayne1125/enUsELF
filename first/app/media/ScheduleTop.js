@@ -19,8 +19,19 @@ const ScheduleTop = props => {
   const navigation = useNavigation();
   const aurInfo = props;
   const sites = props.sites;
+
+  const navToMap = (data) =>{
+    navigation.navigate("ItineraryHome", {
+      tripname:data.name,
+      origin:data.origin,
+      desSite:data.desSite,
+      site:data.site,
+      from:"history",
+    });
+  }
+
   //嘉羽sites
-  console.log('資料 ',sites);
+  //console.log('資料 ',sites);
   return (
     <View style={styles.container}>
         <TouchableOpacity onPress={()=>{navigation.goBack()}} style={{flex:2,top:2,}}>
@@ -37,7 +48,12 @@ const ScheduleTop = props => {
         <Text style={styles.textStyle}>{aurInfo.name}的行程</Text>
         </View>
         {(sites!=null)?
-        <TouchableOpacity /*onPress={()=>{console.log('嘉羽地圖')}}*/ style={{flex:3,top:2,}}>
+        <TouchableOpacity 
+          onPress={()=>{
+            navToMap(sites);
+            //console.log('嘉羽地圖')
+          }}
+          style={{flex:3,top:2,}}>
         <View style={styles.iconContainer2}>
           <Icon
             name="map-marked-alt"

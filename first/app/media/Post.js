@@ -98,6 +98,7 @@ const {user, logout} = useContext(AuthContext);
           console.log('Post add !');
           setPost(null);
           Alert.alert("成功發布");
+          navigation.goBack();
           
         }).catch((error)=>{
           console.log('Post Failed!',error);

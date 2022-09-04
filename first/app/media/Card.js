@@ -223,11 +223,12 @@ const changecollect =()=>{
           //borderStyle:'dashed',
         },
         textStyle: {
-          fontWeight: 'bold',
-          fontSize: 17,
+          //fontWeight: 'bold', //原本有打開
+          fontSize: 18, //原本17
           color: '#5f695d',
           top: 8,
-          letterSpacing: 8,
+          letterSpacing: 1, //原本8
+          //控制字的間距 
         },
         image: {
           width: '95%',
