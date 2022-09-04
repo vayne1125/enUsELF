@@ -46,7 +46,7 @@ const ItineraryHome = ({ navigation, route }) => {
   const [size, setSize] = useState(0);
   const { user, logout } = useContext(AuthContext);//user uid
 
-  //伸蓉
+  
   const navToHistory = (tripname) => {
     setModalVisibleForName(false);
     //console.log("his");
@@ -58,7 +58,8 @@ const ItineraryHome = ({ navigation, route }) => {
       .then((querySnapshot) => {
         setSize(querySnapshot.size);
       })
-    //console.log('size= ',size);
+    //伸蓉
+    console.log('size= ',size);
 
     const users = firestore().collection('users').doc(user.uid);
     users.collection('trip').doc()
@@ -230,6 +231,7 @@ const ItineraryHome = ({ navigation, route }) => {
         mapType="standard"
         onMapReady={() => {
           //if(print == false)setPrint(true);
+          console.log('map ok');
         }
         }
       >
@@ -286,6 +288,13 @@ const ItineraryHome = ({ navigation, route }) => {
             apikey={API_key}
             strokeWidth={3}
             strokeColor="#5f695d"
+            onError={(res)=>{console.log(err)}}
+            onReady={
+              ()=>{
+                //if(print == false)setPrint(true)
+                console.log("dir ok");
+              }
+            }
           />
 
         {(markers).map((marker) => {

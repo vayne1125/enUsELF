@@ -352,7 +352,7 @@ const MapHome = ({ navigation, route }) => {
           >
             <View style={styles.markerCss}>
               <Text style={styles.markerText}>{marker.name}</Text>
-              <Image source={require('../../assets/pin/green.png')} />
+              <Image style={styles.markerImg} source={require('../../assets/pin/green.png')} />
             </View>
           </Marker>
         ))}
@@ -413,7 +413,7 @@ const MapHome = ({ navigation, route }) => {
               >
                 <View style={styles.markerCss}>
                   <Text style={styles.markerText}>{marker.name}</Text>
-                  <Image source={require('../../assets/pin/red.png')} />
+                  <Image style={styles.markerImg} source={require('../../assets/pin/red.png')} />
                 </View>
               </Marker>)
           }
@@ -448,7 +448,7 @@ const MapHome = ({ navigation, route }) => {
               >
                 <View style={styles.markerCss}>
                   <Text style={styles.markerText}>{marker.name}</Text>
-                  <Image source={require('../../assets/pin/yellow.png')} />
+                  <Image style={styles.markerImg} source={require('../../assets/pin/yellow.png')} />
                 </View>
               </Marker>
             )
@@ -483,7 +483,7 @@ const MapHome = ({ navigation, route }) => {
               >
                 <View style={styles.markerCss}>
                   <Text style={styles.markerText}>{marker.name}</Text>
-                  <Image source={require('../../assets/pin/blue.png')} />
+                  <Image style={styles.markerImg} source={require('../../assets/pin/blue.png')} />
                 </View>
               </Marker>
             )
@@ -519,7 +519,7 @@ const MapHome = ({ navigation, route }) => {
             >
               <View style={styles.markerCss}>
                 <Text style={styles.markerText}>{marker.name}</Text>
-                <Image source={require('../../assets/pin/green.png')} />
+                <Image style={styles.markerImg} source={require('../../assets/pin/green.png')} />
               </View>
             </Marker>
           )
@@ -578,6 +578,10 @@ const initialState = {
   "info": {},
 }
 const styles = StyleSheet.create({
+  markerImg:{
+    // width:40,
+    // height:40,
+  },
   callout: {
     flex: 1,
     flexDirection: "column"
