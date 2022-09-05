@@ -14,13 +14,14 @@ const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 4;
 
 const Settripname = ({ size,modalVisible, onClose,completePress}) => {
-  const tempname='旅程計畫表';
-  const namesize=size+1;
-  const forceName = tempname+namesize.toString();
-  const [tripname,setTripname]=useState(forceName);
-  // Settripname('旅程計畫表'+namesize);
-  // console.log('here setsize= ',namesize);
-  // console.log('here temp= ',tempname);
+ // const tempname='旅程計畫表';
+  //const namesize=size+1;
+  //const forceName = tempname+namesize.toString();
+  const [tripname,setTripname]=useState('旅程計畫表');
+  // setTripname(forceName);
+ // console.log('here setsize= ',namesize);
+   //console.log('here temp= ',forceName);
+  // console.log('heretripname= ',tripname);
   return (
     (
       <Modal transparent={true} visible={modalVisible}>
@@ -44,7 +45,7 @@ const Settripname = ({ size,modalVisible, onClose,completePress}) => {
               value={tripname}
               underlineColorAndroid='#BEBEBE'
               onChangeText={(context)=>setTripname(context)}
-              placeholder={"旅遊計畫表"+namesize} 
+             // placeholder={"旅遊計畫表"+namesize} 
               />
             </View>
             </View>

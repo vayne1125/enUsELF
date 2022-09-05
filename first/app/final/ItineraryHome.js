@@ -46,21 +46,45 @@ const ItineraryHome = ({ navigation, route }) => {
   const [size, setSize] = useState(0);
   const { user, logout } = useContext(AuthContext);//user uid
 
-  
+  /*useEffect(()=>{
+    firestore()
+    .collection('users')
+    .doc(user.uid)
+    .collection('trip')
+    .get()
+    .then((querySnapshot) => {
+      setSize(querySnapshot.size);
+      })
+      console.log('site= ',route.params.site);
+      console.log('DESsite= ',route.params.desSite,);
+  //伸蓉
+   },[]);*/
   const navToHistory = (tripname) => {
     setModalVisibleForName(false);
-    //console.log("his");
+    //菁蕙 刪資料庫
+    for(let i=0;i<markers.length;++i)
+    {
+        firestore()
+        .collection('users')
+        .doc(user.uid)
+        .collection('list')
+        .doc(markers[i].name)
+        .delete()
+        .then(() => {
+        console.log('User deleted!');
+        }).catch(e=>
+        console.log('error'))
+    }
     firestore()
-      .collection('users')
-      .doc(user.uid)
-      .collection('trip')
-      .get()
-      .then((querySnapshot) => {
-        setSize(querySnapshot.size);
-      })
-    //伸蓉
-    console.log('size= ',size);
-
+    .collection('users')
+    .doc(user.uid)
+    .collection('list')
+    .doc(destination.name)
+    .delete()
+    .then(() => {
+    console.log('User deleted!');
+    }).catch(e=>
+    console.log('error'))
     const users = firestore().collection('users').doc(user.uid);
     users.collection('trip').doc()
       .set({
@@ -73,6 +97,7 @@ const ItineraryHome = ({ navigation, route }) => {
       }).catch((error) => {
         console.log('trip Failed!', error);
       });
+      
     navigation.navigate("HistoryHome");
   }
 

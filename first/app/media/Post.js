@@ -69,6 +69,9 @@ const {user, logout} = useContext(AuthContext);
           }
         };
         launchImageLibrary(options, (response) => { // Use launchImageLibrary to open image gallery
+          
+          if(response.didCancel){console.log('沒選');}
+          else{
           console.log('Response = ', response);
            const source = { uri: response.assets[0].uri};//response是選取的物件
            //Asset Object是內容物，然後他很坑紙船一個也會變陣列qq，所以要拿第一個人的uri
@@ -77,6 +80,7 @@ const {user, logout} = useContext(AuthContext);
           setImage(source);
           console.log('user=',user);
           console.log('user name=',user.mail);
+          }
         });
       };
 //發文
