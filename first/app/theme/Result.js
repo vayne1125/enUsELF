@@ -15,7 +15,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
-
+import Icon2 from 'react-native-vector-icons/Foundation';
+import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 import ResultTop from './ResultTop';
 import Detail from '../detail/Detail';
 import Notice from './Notice';
@@ -27,24 +28,25 @@ import MonumentsData from './Monuments';
 import Image_link from './Image';
 import Card from './Card';
 const Stack = createNativeStackNavigator();
-const width = Dimensions.get('screen').width;
+const width = Dimensions.get('screen').width / 6;
+const width2 = (Dimensions.get('screen').width * 49) / 50;
+const height = width - 5;
 
 const initialState = {
   id: {},
   name: {},
   address: {},
-  city:{},
-  region:{},
+  city: {},
+  region: {},
   info: {},
-  time:{},
+  time: {},
 };
-const themeData=
-{
-  "自然":NatureData,
-  "網美景點":KOLData,
-  "美食":FoodData,
-  "住宿":HotelData,
-  "古蹟":MonumentsData
+const themeData = {
+  自然: NatureData,
+  網美景點: KOLData,
+  美食: FoodData,
+  住宿: HotelData,
+  古蹟: MonumentsData,
 };
 const Result = ({navigation, route}) => {
   const theme = route.params;
@@ -83,42 +85,86 @@ const Result = ({navigation, route}) => {
         <ResultTop theme={theme} />
       </View>
 
+      <View style={styles.topBar}>
+        <View style={styles.icons}>
+          <View style={styles.theme}>
+            <Icons name={'fast-food'} color={'#5f695d'} size={40} />
+          </View>
+          <View
+            style={styles.textContainer}>
+            <Text style={styles.textStyle2}>美食</Text>
+          </View>
+        </View>
+        <View style={styles.icons}>
+          <View style={styles.theme2}>
+            <Icon2 name={'mountains'} color={'#5f695d'} size={44} />
+          </View>
+        </View>
+        <View style={styles.icons}>
+          <View style={styles.theme}>
+            <Icon name={'camera-retro'} color={'#5f695d'} size={40} />
+          </View>
+          <View
+            style={styles.textContainer}>
+            <Text style={styles.textStyle2}>網美</Text>
+          </View>
+        </View>
+        <View style={styles.icons}>
+          <View style={styles.theme}>
+            <Icon3 name={'castle'} color={'#5f695d'} size={44} />
+          </View>
+          <View
+            style={styles.textContainer}>
+            <Text style={styles.textStyle2}>古蹟</Text>
+          </View>
+        </View>
+        <View style={styles.icons}>
+          <View style={styles.theme}>
+            <Icons name={'bed'} color={'#5f695d'} size={44} />
+          </View>
+          <View
+            style={styles.textContainer}>
+            <Text style={styles.textStyle2}>住宿</Text>
+          </View>
+        </View>
+      </View>
       {/*內容*/}
-      <FlatList
-        //columnWrapperStyle={{justifyContent: 'space-between'}}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          marginTop: 25,
-          paddingBottom: 80,
-        }}
-        numColumns={1}
-        data={themeData[theme["name"]]}
-        initialNumToRender={5}
-        renderItem={({item}) => 
-        <Card 
-          sites={item} 
-          onPress1={(site) => {
-            setModalVisible(!modalVisible);
-            setModalEntry(site);
+      <View style={styles.info}>
+        <FlatList
+          //columnWrapperStyle={{justifyContent: 'space-around'}}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            //marginTop: 25,
+            paddingBottom: 80,
           }}
-          onPress2={(site) => {
-            setNoticeVisible(!noticeVisible);
-            setNoticeEntry(site);
-          }}
-        />}
-        >
-        </FlatList>
+          numColumns={1}
+          data={themeData[theme['name']]}
+          initialNumToRender={5}
+          renderItem={({item}) => (
+            <Card
+              sites={item}
+              onPress1={site => {
+                setModalVisible(!modalVisible);
+                setModalEntry(site);
+              }}
+              onPress2={site => {
+                setNoticeVisible(!noticeVisible);
+                setNoticeEntry(site);
+              }}
+            />
+          )}></FlatList>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   topbar: {
-    backgroundColor: '#5f695d',
+    //backgroundColor: '#5f695d',
     //flex:1,
-    height: 63,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
+    flex: 1,
+    //borderBottomLeftRadius: 20,
+    //borderBottomRightRadius: 20,
     //opacity: 0.9,
   },
   container: {
@@ -126,113 +172,76 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2F2F2',
     flex: 1,
   },
-  card: {
-    height: 170,
-    //backgroundColor:'#D1DED7',
-    backgroundColor: '#ffffff',
-    width,
-    //marginHorizontal: 10,
-    //borderRadius: 10,
-    marginBottom: 15,
-    //paddingTop:5,
-    padding: 5,
-    //right: 2,
-    //borderColor: '#D1DED7',
-    //borderWidth: 3,
-    flex: 1,
-    flexDirection: 'row',
-    borderBottomWidth: 3,
-    borderBottomColor: '#D1DED7',
-    borderRightWidth: 3,
-    borderRightColor: '#ffffff',
-  },
-  textStyle: {
-    alignSelf: 'center',
-    fontWeight: 'bold',
-    fontSize: 19,
-    color: '#5f695d',
-    top: 8,
-    letterSpacing: 10,
-  },
-  image: {
-    width: 230,
-    height: 140,
-    top: 6,
-    borderRadius: 10,
-    left: 2,
-  },
-  textContainer: {
-    flex: 2,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-    alignSelf: 'center',
-    alignItems: 'center',
-    top: 13,
-    right: 8,
-    //position:'relative',
-  },
-  buttonContainer: {
-    backgroundColor: '#fbb856', //較深黃
-    //backgroundColor: '#ffc56b',//較淺黃
-    //flex: 1,
-    width: 120,
-    alignSelf: 'flex-end',
-    right: 7,
-    bottom: 4,
-    borderRadius: 25,
-    height: 32,
-    //flexDirection: 'row',
-  },
-  buttonText: {
-    fontWeight: '800',
-    fontSize: 16,
-    color: '#6b5238',
-    top: 6,
-    letterSpacing: 10,
-    left: 7,
-  },
-  buttonContainer2: {
-    backgroundColor: '#E3E3E3', //較淺黃
-    //flex: 1,
-    width: 120,
-    alignSelf: 'flex-end',
-    right: 7,
-    bottom: 10,
-    borderRadius: 25,
-    height: 32,
-    //flexDirection: 'row',
-  },
-  buttonText2: {
-    fontWeight: '800',
-    fontSize: 16,
-    top: 6,
-    letterSpacing: 10,
-    left: 7,
-  },
-  imageContainer: {
-    flex: 3,
-    alignItems: 'center',
-    padding: 3,
-  },
-  nameStyle: {
-    alignSelf: 'center',
-    fontWeight: 'bold',
-    fontSize: 20,
-    color: '#5f695d',
-    left: 15,
-    letterSpacing: 1,
-  },
   info: {
-    flex: 2,
+    flex: 10,
+    backgroundColor: '#D1DED7',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    paddingTop: 20,
   },
-  starStyle: {
-    flex: 2,
+
+  topBar: {
+    flex:1.8,
     flexDirection: 'row',
     alignSelf: 'center',
-    left: 5,
-    top: 4,
-    //color:'#f5f6a3',
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: width2,
+    padding: 5,
   },
+  icons: {
+    flex: 1,
+    //width:width,
+    height: '100%',
+    padding: 5,
+  },
+  theme: {
+    borderRadius: 25,
+    flex: 3,
+    //height:height,
+    backgroundColor: 'white',
+    shadowColor: '#7F5DF0',
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.5,
+    elevation: 5,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  theme2:{
+    borderRadius: 25,
+    flex: 3,
+    //height:height,
+    backgroundColor: 'white',
+    shadowColor: '#7F5DF0',
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.5,
+    elevation: 5,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  textContainer:{
+      flex:1,
+      //backgroundColor:'#000000,
+  },
+  textStyle2:{
+    letterSpacing:4,
+    //fontFamily:'NotoSerifTC-Bold',
+    fontSize:16,
+    fontWeight:'bold',
+    alignSelf: 'center',
+    alignContent: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  }
 });
 
 export default Result;

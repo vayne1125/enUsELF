@@ -21,7 +21,8 @@ import firestore from '@react-native-firebase/firestore';
 
 import Image_link from './Image';
 
-const width = Dimensions.get('screen').width;
+const width = Dimensions.get('screen').width*19/20;
+const width2 = Dimensions.get('screen').width*8/20;
 const user = auth().currentUser;
 const Stars = score => {
     var tp = parseFloat(score.starsNum);
@@ -30,19 +31,19 @@ const Stars = score => {
     for (let i = 0; i < 5; i++) {
       if (tp >= 1) {
         starsIcon.push(
-          <Icon key={cnt} name={'star'} color={'#ffb129'} size={18} />,
+          <Icon key={cnt} name={'star'} color={'#ffc56b'} size={18} />,
         );
         tp = tp - 1;
       } else if (tp == 0) {
         starsIcon.push(
-          <Icon key={cnt} name={'star-o'} color={'#ffb129'} size={18} />,
+          <Icon key={cnt} name={'star-o'} color={'#ffc56b'} size={18} />,
         );
       } else {
         starsIcon.push(
           <Icon
             key={cnt}
             name={'star-half-empty'}
-            color={'#ffb129'}
+            color={'#ffc56b'}
             size={18}
           />,
         );
@@ -104,6 +105,7 @@ export default class Card extends PureComponent  {
             </Text>
           </View>
           <Stars starsNum={site.star} />
+          <View style={{justifyContent:'space-around',/*backgroundColor:'#000000',*/flex:2,}}>
           <View style={styles.buttonContainer2}>
             <TouchableOpacity
               onPress={() => {
@@ -138,20 +140,13 @@ export default class Card extends PureComponent  {
             <Text style={styles.viewText}>已選擇</Text>
         </View>}
         </View>
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  topbar: {
-    backgroundColor: '#5f695d',
-    //flex:1,
-    height: 63,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-    //opacity: 0.9,
-  },
   container: {
     hight: '100%',
     backgroundColor: '#F2F2F2',
@@ -159,11 +154,14 @@ const styles = StyleSheet.create({
   },
   card: {
     height: 170,
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center',
     //backgroundColor:'#D1DED7',
     backgroundColor: '#ffffff',
-    width,
+    width:width,
     //marginHorizontal: 10,
-    //borderRadius: 10,
+    borderRadius: 25,
     marginBottom: 15,
     //paddingTop:5,
     padding: 5,
@@ -172,116 +170,135 @@ const styles = StyleSheet.create({
     //borderWidth: 3,
     flex: 1,
     flexDirection: 'row',
-    borderBottomWidth: 3,
+    //borderBottomWidth: 3,
     borderBottomColor: '#D1DED7',
-    borderRightWidth: 3,
+    //borderRightWidth: 3,
     borderRightColor: '#ffffff',
-  },
-  textStyle: {
-    alignSelf: 'center',
-    fontWeight: 'bold',
-    fontSize: 19,
-    color: '#5f695d',
-    top: 8,
-    letterSpacing: 10,
+    shadowColor: '#7F5DF0',
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.5,
+    elevation: 5,
   },
   image: {
-    width: 230,
-    height: 140,
-    top: 6,
-    borderRadius: 10,
+    width: '100%',
+    height: '100%',
+    borderRadius: 20,
+    //borderTopLeftRadius:20,
+    //borderBottomLeftRadius:20,
     left: 2,
   },
   textContainer: {
-    flex: 2,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+    flex: 1,
     alignSelf: 'center',
     alignItems: 'center',
-    top: 13,
-    right: 8,
-    //position:'relative',
+    //backgroundColor:'#000000',
+    //padding:4,
   },
   buttonContainer: {
-    backgroundColor: '#fbb856', //較深黃
-    //backgroundColor: '#ffc56b',//較淺黃
-    //flex: 1,
-    width: 120,
-    alignSelf: 'flex-end',
-    right: 7,
-    bottom: 4,
+    //backgroundColor: '#fbb856', //較深黃
+    backgroundColor: '#ffc56b',//較淺黃
+    //backgroundColor: '#F1C179',//灰黃 
+    width: width2,
+    //width: 120,
+    //alignSelf: 'flex-end',
     borderRadius: 25,
     height: 32,
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center',
+    justifyContent:'center',
     //flexDirection: 'row',
   },
   buttonText: {
     fontWeight: '800',
+    top:'20%',
+    /*fontFamily:'NotoSerifTC-Black',
+    bottom:'20%',*/
     fontSize: 16,
     color: '#6b5238',
-    top: 6,
     letterSpacing: 10,
-    left: 7,
-  },
-  viewContainer: {
-    backgroundColor: '#de9121', //較深黃
-    //backgroundColor: '#ffc56b',//較淺黃
-    //flex: 1,
-    width: 120,
-    alignSelf: 'flex-end',
-    right: 7,
-    bottom: 4,
-    borderRadius: 25,
-    height: 32,
-    //flexDirection: 'row',
-  },
-  viewText: {
-    fontWeight: '800',
-    fontSize: 16,
-    color: '#E3E3E3',
-    top: 6,
-    letterSpacing: 10,
+    alignContent:'center',
+    alignItems:'center',
     alignSelf:'center',
+    justifyContent:'center',
   },
   buttonContainer2: {
-    backgroundColor: '#E3E3E3', //較淺黃
-    //flex: 1,
-    width: 120,
-    alignSelf: 'flex-end',
-    right: 7,
-    bottom: 10,
+    backgroundColor: '#E3E3E3', //灰色
+    width: width2,
     borderRadius: 25,
     height: 32,
-    //flexDirection: 'row',
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center',
+    justifyContent:'center',
   },
   buttonText2: {
     fontWeight: '800',
+    top:'20%',
+    /*fontFamily:'NotoSerifTC-Black',
+    bottom:'20%',*/
     fontSize: 16,
-    top: 6,
     letterSpacing: 10,
-    left: 7,
+    //alignContent:'center',
+    //alignItems:'center',
+    alignSelf:'center',
+    //justifyContent:'center',
   },
   imageContainer: {
-    flex: 3,
+    flex: 2.1,
     alignItems: 'center',
     padding: 3,
   },
   nameStyle: {
     alignSelf: 'center',
     fontWeight: 'bold',
+    top:'20%',
     fontSize: 20,
     color: '#5f695d',
-    left: 15,
     letterSpacing: 1,
+    /*fontFamily:'NotoSerifTC-Bold',
+    bottom:'15%',*/
   },
   info: {
     flex: 2,
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center',
+    justifyContent:'space-around',
+    //paddingTop:4,
+    //paddingBottom:4,
+    padding:4,
   },
   starStyle: {
-    flex: 2,
+    flex: 1,
     flexDirection: 'row',
     alignSelf: 'center',
-    left: 5,
-    top: 4,
+    alignItems:'center',
+    alignSelf:'center',
+    justifyContent:'space-around',
     //color:'#f5f6a3',
+    //backgroundColor:'#000000',
+  },
+  viewContainer: {
+    backgroundColor: '#80735d', //咖啡
+    width: width2,
+    borderRadius: 25,
+    height: 32,
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center',
+    justifyContent:'center',
+    //flexDirection: 'row',
+  },
+  viewText: {
+    fontWeight: '800',
+    fontSize: 16,
+    color: '#E3E3E3',
+    letterSpacing: 10,
+    alignSelf:'center',
   },
 });

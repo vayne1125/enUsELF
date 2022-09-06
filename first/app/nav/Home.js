@@ -21,7 +21,7 @@ import Post from '../media/Post';
 import Nav from './Nav';
 import List from '../list/List';
 import PersonalFile from '../personal/PersonalFile';
-import Collect from '../personal/collect/Collect';
+import Collect from '../personal/Collect/Collect';
 import HistoryHome from '../personal/history/HistoryHome';
 import TripForhistory from '../personal/history/TripForhistory';
 import ItineraryHome from '../final/ItineraryHome'

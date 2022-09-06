@@ -55,15 +55,17 @@ const Nav = () => {
         tabBarInactiveTintColor: 'white',//沒按
         headerShown: false,//不顯示在標頭
         tabBarStyle: {  //底下bar的圓弧和陰影設計
-          backgroundColor: '#88bd80',
+          //backgroundColor: '#88bd80',
+          backgroundColor: '#6E877B',
           position: 'absolute',
-          bottom: 18,
-          left: 8,
-          right: 10,
+          //bottom: 18,
+          //left: 8,
+          //right: 10,
           elevation: 0,
-          borderRadius: 20,
+          //borderRadius: 20,
           //hight: 100,
-          width:380,
+          //width:380,
+          width:'100%',
           ...styles.shadow,
         },
         tabBarShowLabel:false,

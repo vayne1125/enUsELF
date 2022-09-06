@@ -21,7 +21,7 @@ const ResultTop = (props) => {
   const themeInfo=props;
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={()=>{navigation.goBack()}} style={{flex:1,}}>
+        {/* <TouchableOpacity onPress={()=>{navigation.goBack()}} style={{flex:1,}}>
         <View style={styles.iconContainer2}>
           <Icons
             name="chevron-back-circle-outline"
@@ -30,9 +30,10 @@ const ResultTop = (props) => {
             style={styles.iconStyle2}
           />
         </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <View style={{flex:4,}}>
-        <Text style={styles.textStyle}>{themeInfo.theme.name}</Text>
+        {/* <Text style={styles.textStyle}>{themeInfo.theme.name}</Text> */}
+          <Text style={styles.textStyle}>主題分類</Text>
         </View>
         <TouchableOpacity onPress={()=>{navigation.navigate("List")}} style={{flex:1,}}>
         <View style={styles.iconContainer}>
@@ -51,10 +52,13 @@ const ResultTop = (props) => {
 const styles = StyleSheet.create({
   textStyle: {
     position: 'absolute',
-    top: 10,
+    top: -10,
+    left:10,
     fontSize: 30,
-    fontWeight: 'bold',
-    color: '#ffffff',
+    //fontWeight: 'bold',
+    //color: '#ffffff',
+    color:'#5f695d',
+    fontFamily:'NotoSerifTC-Bold',
     letterSpacing:10,
   },
   container: {
@@ -66,9 +70,10 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     position: 'absolute',
-    right: 24,
-    top: 6,
-    backgroundColor: '#D1DED7',
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center',
+    justifyContent:'center',
     width: 48,
     height: 48,
     alignSelf: 'center',
