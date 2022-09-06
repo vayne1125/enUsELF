@@ -46,19 +46,6 @@ const ItineraryHome = ({ navigation, route }) => {
   const [size, setSize] = useState(0);
   const { user, logout } = useContext(AuthContext);//user uid
 
-  /*useEffect(()=>{
-    firestore()
-    .collection('users')
-    .doc(user.uid)
-    .collection('trip')
-    .get()
-    .then((querySnapshot) => {
-      setSize(querySnapshot.size);
-      })
-      console.log('site= ',route.params.site);
-      console.log('DESsite= ',route.params.desSite,);
-  //伸蓉
-   },[]);*/
   const navToHistory = (tripname) => {
     setModalVisibleForName(false);
     //菁蕙 刪資料庫
@@ -101,12 +88,10 @@ const ItineraryHome = ({ navigation, route }) => {
     navigation.navigate("HistoryHome");
   }
 
-  //todo:返回
-  //這邊存資料
   const navToBack = () => {
-    //console.log("goback");
     navigation.goBack();
   }
+
   const pressOk = () => {
     setModalVisibleForName(true);
   }
@@ -152,14 +137,6 @@ const ItineraryHome = ({ navigation, route }) => {
       } else {
         tp = 0.8;
       }
-      //console.log("desInfinal: ",destination);
-      //console.log("l: ",longestDis,"   ,tp = ",tp);
-      /*console.log({
-        latitude: (destination.lat + origin.latitude) / 2.0,
-        longitude: (destination.lng + origin.longitude) / 2.0,
-        latitudeDelta: tp, //數字越小 地圖道路越大
-        longitudeDelta: 0,
-      });*/
       return {
         latitude: (destination.lat + origin.latitude) / 2.0,
         longitude: (destination.lng + origin.longitude) / 2.0,
@@ -191,6 +168,7 @@ const ItineraryHome = ({ navigation, route }) => {
           data.push(Shopplace[param.id]);
         }
       })
+      //console.log(data);
       return data;
     })
 
@@ -260,6 +238,26 @@ const ItineraryHome = ({ navigation, route }) => {
         }
         }
       >
+        <MapViewDirections
+            optimizeWaypoints={true}
+            origin={origin}
+            destination={{
+              latitude: destination.lat,
+              longitude: destination.lng
+            }}
+            waypoints={waypoints}
+            apikey={API_key}
+            strokeWidth={3}
+            strokeColor="#5f695d"
+            onError={(res)=>{console.log(err)}}
+            onReady={
+              ()=>{
+                //if(print == false)
+                //setPrint(true)
+                console.log("dir ok");
+              }
+            }
+          />
 
         <Marker
           key={'origin'}
@@ -292,8 +290,6 @@ const ItineraryHome = ({ navigation, route }) => {
             });
           }}
         >
-
-
           {(print) && (
             <View style={styles.markerCss}>
               <Text style={styles.markerText}>{destination.name}</Text>
@@ -302,30 +298,13 @@ const ItineraryHome = ({ navigation, route }) => {
           }
           </Marker>
           
-          <MapViewDirections
-            optimizeWaypoints={true}
-            origin={origin}
-            destination={{
-              latitude: destination.lat,
-              longitude: destination.lng
-            }}
-            waypoints={waypoints}
-            apikey={API_key}
-            strokeWidth={3}
-            strokeColor="#5f695d"
-            onError={(res)=>{console.log(err)}}
-            onReady={
-              ()=>{
-                //if(print == false)setPrint(true)
-                console.log("dir ok");
-              }
-            }
-          />
+          
 
-        {(markers).map((marker) => {
-          return(
+        {(markers).map((marker) => (
             <Marker
-              pinColor='green'
+              // pinColor={
+              //   (marker.type === 'hot')?'red':((marker.type === "shop")?'blue':'yellow')
+              // }
               key={marker.type + (marker.id).toString()}
               coordinate={
                 (marker.type === "hot" || marker.type === "hol" || marker.type === "shop") ?
@@ -364,13 +343,14 @@ const ItineraryHome = ({ navigation, route }) => {
               {(print) && (
                 <View style={styles.markerCss}>
                   <Text style={styles.markerText}>{marker.name}</Text>
+                  {/* {(marker.type === "hot") && <Image source={require('../../assets/pin/red.png')} />}
+                  {(marker.type === "hol") && <Image source={require('../../assets/pin/yellow.png')} />}
+                  {(marker.type === "shop") && <Image source={require('../../assets/pin/blue.png')} />} */}
                   <Image source={require('../../assets/pin/green.png')} />
                 </View>)
               }
             </Marker>
-          )
-        }
-        )}
+          ))}
       </MapView>
 
         <Callout style={styles.callout}>

@@ -43,7 +43,7 @@ const MapHome = ({ navigation, route }) => {
   const [shopData, setShopData] = useState([]);
   const [endData, setEndData] = useState([]);
   //waypoint相關
-  const [points,setPoints] = useState([]); //由direction產生的點
+  const [points, setPoints] = useState([]); //由direction產生的點
   const [waypoints, setWaypoints] = useState([]);
   //當前位置
   const [origin, setOri] = useState({ latitude: 24.1365593, longitude: 120.6835935 });
@@ -100,46 +100,46 @@ const MapHome = ({ navigation, route }) => {
   const onPressHandlerForHoliday = () => {
     setHolPress(!holPress); //打開
   }
-  const addEndData = (data,isAdd) => {
+  const addEndData = (data, isAdd) => {
     var tp = {};
-    if(isAdd){
-    if (data.type === 'hot') {
-      for (var i = 0; i < hotData.length; i++) {
-        if (hotData[i].id === data.id) {
-          tp = hotData[i];
-          hotData.splice(i, 1);
-          break;
+    if (isAdd) {
+      if (data.type === 'hot') {
+        for (var i = 0; i < hotData.length; i++) {
+          if (hotData[i].id === data.id) {
+            tp = hotData[i];
+            hotData.splice(i, 1);
+            break;
+          }
+        }
+      } else if (data.type === 'hol') {
+        for (var i = 0; i < holData.length; i++) {
+          if (holData[i].id === data.id) {
+            tp = holData[i];
+            holData.splice(i, 1);
+            break;
+          }
+        }
+      } else {
+        for (var i = 0; i < shopData.length; i++) {
+          if (shopData[i].id === data.id) {
+            tp = shopData[i];
+            shopData.splice(i, 1);
+            break;
+          }
         }
       }
-    } else if (data.type === 'hol') {
-      for (var i = 0; i < holData.length; i++) {
-        if (holData[i].id === data.id) {
-          tp = holData[i];
-          holData.splice(i, 1);
-          break;
-        }
-      }
+      endData.push(tp);
     } else {
-      for (var i = 0; i < shopData.length; i++) {
-        if (shopData[i].id === data.id) {
-          tp = shopData[i];
-          shopData.splice(i, 1);
+      for (var i = 0; i < endData.length; i++) {
+        if (endData[i].id === data.id && endData[i].type === data.type) {
+          if (data.type === "hot") hotData.push(endData[i]);
+          else if (data.type === "hol") holData.push(endData[i]);
+          else if (data.type === "shop") shopData.push(endData[i]);
+          endData.splice(i, 1);
           break;
         }
       }
     }
-    endData.push(tp);
-  }else{
-    for (var i = 0; i < endData.length; i++) {
-      if (endData[i].id === data.id && endData[i].type === data.type) {
-        if(data.type === "hot") hotData.push(endData[i]);
-        else if(data.type === "hol") holData.push(endData[i]);
-        else if(data.type === "shop") shopData.push(endData[i]);
-        endData.splice(i, 1);
-        break;
-      }
-    }
-  }
   }
   //過濾導航線的點 最多抓20個點
   const getPositionArray = (array) => {
@@ -157,6 +157,7 @@ const MapHome = ({ navigation, route }) => {
   }
   //避免重複抓景點
   const mySet = new Set();
+
   //找距離
   const getDis = (pos, place) => {
     var rt = (pos.lat - place.lat) * (pos.lat - place.lat) + (pos.lng - place.lng) * (pos.lng - place.lng);
@@ -164,6 +165,7 @@ const MapHome = ({ navigation, route }) => {
   }
   //算出附近的點(範圍20km內) 1 -> 111km  0.1 -> 11km
   const getPlace = (array) => {
+    console.log("mySet=",mySet);
     setHolData(() => {
       var tp = [];
       array.map((pos) => {
@@ -210,19 +212,21 @@ const MapHome = ({ navigation, route }) => {
   //   getPlace(PositionArray);  //用PositionArray去看附近有哪些景點
   // }
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log("s");
     const PositionArray = getPositionArray(points);  //過濾島航線的點(回傳[{lat:  ,lng:  }])
     getPlace(PositionArray);  //用PositionArray去看附近有哪些景點
-  },[points])
+  }, [points])
 
   useEffect(() => {
     //從theme的json抓取主路線資料
     setMainRoute(() => {
+      //console.log("in");
       var data = [];
       (route.params).map((param) => {
         if (!mySet.has(param.place_id)) {
           mySet.add(param.place_id);
+          console.log("param.place_id= "+param.place_id);
           if (param.type === "food") {
             data.push(Food[param.id]);
           } else if (param.type === "nature") {
@@ -283,13 +287,14 @@ const MapHome = ({ navigation, route }) => {
         tp = 3.8;
       } else if (longestDis >= 1.5) {
         tp = 2.8;
-      } else if (longestDis >= 1) {
+      } else if (longestDis >= 0.9) {
         tp = 1.8;
       } else if (longestDis >= 0.5) {
         tp = 0.9;
       } else {
         tp = 0.4;
       }
+      console.log("long="+longestDis+" tp= ",tp);
       return {
         latitude: (destination.latitude + origin.latitude) / 2.0,
         longitude: (destination.longitude + origin.longitude) / 2.0,
@@ -307,8 +312,8 @@ const MapHome = ({ navigation, route }) => {
         entry={modalEntry}//傳進去的資料參數
         modalVisible={modalVisible}//可不可見
         onClose={() => { setModalVisible(false); }}//關閉函式
-        onPress1={(data,isAdd) => {
-          addEndData(data,isAdd);
+        onPress1={(data, isAdd) => {
+          addEndData(data, isAdd);
           //console.log(data);
         }}
         canPress={modalCanPress}
@@ -506,8 +511,8 @@ const MapHome = ({ navigation, route }) => {
                   address: marker.address,
                   star: marker.star,
                   info: marker.info,
-                  date:marker.date,
-                  time: 
+                  date: marker.date,
+                  time:
                     marker.time.map((ti) => {
                       return ti + '\n';
                     }),
@@ -578,7 +583,7 @@ const initialState = {
   "info": {},
 }
 const styles = StyleSheet.create({
-  markerImg:{
+  markerImg: {
     // width:40,
     // height:40,
   },
