@@ -125,7 +125,7 @@ const Collect =() =>{
                 <ActivityIndicator
                     animating = {true}
                     color = {'#BEBEBE'}
-                    size = {'large'}
+                    size = {70}//only android can use number
                 />
             </View>:
       <FlatList

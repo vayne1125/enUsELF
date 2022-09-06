@@ -8,7 +8,7 @@ import {
   Image,
   Button,
   Modal,
-  TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
@@ -27,6 +27,8 @@ const HistoryHome = () => {
   const navigation = useNavigation();
   const {user, logout} = useContext(AuthContext);
   const [trip,setTrip]=useState(null);
+  const [loading, setLoading] = useState(true);
+  const[deleted,setDeleted]=useState(false);
     //todo:這裡要讀取資料庫的資料
     const fetchTrip = async()=>{
       const temp=[];
@@ -41,19 +43,22 @@ const HistoryHome = () => {
           .then((querySnapshot)=>{
             //console.log('Total Posts:',querySnapshot.size);
             querySnapshot.forEach(doc=>{
-                const {desSite,name,origin,site} =doc.data();
+                const {desSite,name,origin,site,} =doc.data();
                 temp.push({
                   name,
                   desSite ,
                   origin,
                   site,
+                  tripId:doc.id
                   });
                 })
-                //console.log('temp ',temp);
+              console.log('doc.id ',doc.id);
             })
             }catch(e){
               //console.log(e);
           };
+          if(loading)
+          setLoading(false);
           setTrip(temp);
           //嘉羽
           //console.log('here temp',temp);
@@ -64,6 +69,10 @@ const HistoryHome = () => {
       fetchTrip();
     },[]);
 
+    useEffect(()=>{
+      fetchTrip();
+      setDeleted(false);
+    },[deleted]);
 
     const navToMap = (data) =>{
       navigation.navigate("ItineraryHome", {
@@ -75,6 +84,20 @@ const HistoryHome = () => {
       });
     }
 
+    const deleteTrip=async (data)=>{
+     console.log('ss = ',data.tripId);
+     setDeleted(true);
+     await firestore()
+      .collection('users')
+      .doc(user.uid)
+      .collection('trip')
+      .doc(data.tripId)
+      .delete()
+      .then(() => {
+      console.log('Trip deleted!');
+      }).catch(e=>
+        console.log('error'))
+      }
 
   return (
     <View style={styles.container}>
@@ -84,6 +107,14 @@ const HistoryHome = () => {
       </View>
 
       {/*內容*/}
+      {loading?
+            <View style={{justifyContent:'center',flex:1}}>
+                <ActivityIndicator
+                    animating = {true}
+                    color = {'#BEBEBE'}
+                    size = {50}
+                />
+            </View>:
       <FlatList
         //columnWrapperStyle={{justifyContent: 'space-between'}}
         showsVerticalScrollIndicator={false}
@@ -108,9 +139,13 @@ const HistoryHome = () => {
             navToMap(item);
             //console.log("顯示地圖");
           }}
+          onPress3={() => {
+            deleteTrip(item);
+            //console.log("顯示地圖");
+          }}
         />}
         >
-        </FlatList>
+        </FlatList>}
     </View>
   );
 };

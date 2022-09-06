@@ -10,6 +10,7 @@ import {
   Alert,
   DeviceEventEmitter,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -182,6 +183,14 @@ const FlatList_Header=({})=>{
        <MediaTop />
      </View>
      {/*內容*/}
+     {loading?
+            <View style={{justifyContent:'center',flex:1}}>
+                <ActivityIndicator
+                    animating = {true}
+                    color = {'#BEBEBE'}
+                    size = {80}
+                />
+            </View>:
      <FlatList
        //columnWrapperStyle={{justifyContent:'space-between'}}
        showsVerticalScrollIndicator={false}
@@ -193,7 +202,8 @@ const FlatList_Header=({})=>{
        data={Posts}
        ListHeaderComponent={FlatList_Header}
        renderItem={({item}) => <Card navigation={navigation} post={item} onDelete={handleDelete} />}></FlatList>
-   </View>
+      }
+      </View>
  );
 };
 

@@ -15,11 +15,9 @@ import {
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Icons from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import Iconcross from 'react-native-vector-icons/Entypo';
 
 
 const width = Dimensions.get('screen').width;
@@ -31,23 +29,13 @@ export default class Card extends PureComponent  {
     return (
       <View style={styles.card}>
 
+        <View>
           <View style={styles.textContainer}>
             <Text numberOfLines={1} style={styles.nameStyle}>
               {trip.name}
             </Text>
-            <View style={{flex:1,}}>
-                  <TouchableOpacity
-                    onPress={()=>onDelete(post.id)}
-               style={{flex: 1}}>
-               <Iconcross
-                   name="cross"
-                   size={40}
-                     color={'#5f695d'}
-                     style={styles.TopiconStyle}
-                 />
-             </TouchableOpacity>
           </View>
-          <View style={{flex:0.75,}}>
+          <View style={{flex:1,flexDirection:'row',marginBottom:8,}}>
           <View style={styles.buttonContainer2}>
             <TouchableOpacity
               onPress={() => {
@@ -68,6 +56,21 @@ export default class Card extends PureComponent  {
               <Text style={styles.buttonText}>地圖顯示</Text>
             </TouchableOpacity>
           </View>
+          <View style={styles.buttonContainer3}>
+          <TouchableOpacity
+                    //返回建X
+                    onPress={() => {
+                      this.props.onPress3();
+                    }}
+                    style={{flex: 1}}>
+                    <Icon
+                        name="trash"
+                        size={26}
+                          color={'#BE2D23'}
+                          style={styles.TopiconStyle}
+                      />
+                  </TouchableOpacity>
+          </View>
           </View>
         </View>
       </View>
@@ -76,11 +79,6 @@ export default class Card extends PureComponent  {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    hight: '100%',
-    backgroundColor: '#F2F2F2',
-    flex: 2,
-  },
   card: {
     height: 100,
     backgroundColor: '#ffffff',
@@ -99,21 +97,25 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 10,
     // alignSelf: 'center',
     // alignItems: 'center',
-    top: 13,
-    right: 8,
-    flexDirection:'row',
-    //position:'relative',
+    top: 8,
+  },
+  nameStyle: {
+    //alignSelf: 'center',
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: '#5f695d',
+    left: 4,
+    letterSpacing: 1,
   },
   buttonContainer: {
     backgroundColor: '#BEBEBE', //較深黃
     width: 120,
     alignSelf: 'flex-end',
-    left: 135,
-    bottom: 4,
+    //left:5,
+   // bottom: 4,
+    marginLeft:8,
     borderRadius: 25,
     height: 32,
-    position: 'absolute',
-    //flexDirection: 'row',
   },
   buttonText: {
     fontWeight: '800',
@@ -124,12 +126,12 @@ const styles = StyleSheet.create({
     left: 7,
   },
   buttonContainer2: {
-    position: 'absolute',
+  //  position: 'absolute',
     backgroundColor: '#CEFFCE', 
     width: 120,
     alignSelf: 'flex-end',
-    left:5,
-    bottom: 4,
+    //left:5,
+   // bottom: 4,
     borderRadius: 25,
     height: 32,
   },
@@ -140,14 +142,9 @@ const styles = StyleSheet.create({
     letterSpacing: 10,
     left: 7,
   },
-  nameStyle: {
-    //alignSelf: 'center',
-    fontWeight: 'bold',
-    fontSize: 20,
-    color: '#5f695d',
-    //left: 15,
-    flex:2,
-    letterSpacing: 1,
+  buttonContainer3: {
+    alignSelf: 'flex-end',
+    marginLeft:8,
+    height: 30,
   },
-
 });
