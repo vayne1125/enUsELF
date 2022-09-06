@@ -20,5 +20,5 @@ cd enUsELF
 npx react-native run-android
 ```
 
-# How to use
+## How to use
 
