@@ -27,6 +27,7 @@ import { AuthContext } from '../routes/AutoProvider';
 import firestore from '@react-native-firebase/firestore';
 import { Directions } from 'react-native-gesture-handler';
 
+
 const ItineraryHome = ({ navigation, route }) => {
   const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
   const [modalVisible, setModalVisible] = useState(false);
@@ -79,6 +80,7 @@ const ItineraryHome = ({ navigation, route }) => {
         origin: route.params.origin,
         desSite: route.params.desSite,
         site: route.params.site,
+        postTime:firestore.Timestamp.fromDate(new Date()),
       }).then(() => {
         console.log('trip add !');
       }).catch((error) => {

@@ -19,6 +19,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import Iconcross from 'react-native-vector-icons/Entypo';
 
 
 const width = Dimensions.get('screen').width;
@@ -30,13 +31,23 @@ export default class Card extends PureComponent  {
     return (
       <View style={styles.card}>
 
-        <View>
           <View style={styles.textContainer}>
             <Text numberOfLines={1} style={styles.nameStyle}>
               {trip.name}
             </Text>
+            <View style={{flex:1,}}>
+                  <TouchableOpacity
+                    onPress={()=>onDelete(post.id)}
+               style={{flex: 1}}>
+               <Iconcross
+                   name="cross"
+                   size={40}
+                     color={'#5f695d'}
+                     style={styles.TopiconStyle}
+                 />
+             </TouchableOpacity>
           </View>
-          <View style={styles.info2}>
+          <View style={{flex:0.75,}}>
           <View style={styles.buttonContainer2}>
             <TouchableOpacity
               onPress={() => {
@@ -90,6 +101,7 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     top: 13,
     right: 8,
+    flexDirection:'row',
     //position:'relative',
   },
   buttonContainer: {
@@ -133,7 +145,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     color: '#5f695d',
-    left: 15,
+    //left: 15,
+    flex:2,
     letterSpacing: 1,
   },
 

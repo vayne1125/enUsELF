@@ -36,6 +36,7 @@ const HistoryHome = () => {
           .collection('users')
           .doc(user.uid)
           .collection('trip')
+          .orderBy('postTime','desc')//照時間排
           .get()
           .then((querySnapshot)=>{
             //console.log('Total Posts:',querySnapshot.size);
