@@ -7,6 +7,8 @@ demo video:
 [android stdio](https://developer.android.com/studio)<br>
 if you don't know how to install,you can follow this [video](https://www.youtube.com/watch?v=oZFCt69Bccc).</br>
 
+-------------
+
 ## Execute project
 ### cmd
 ```
@@ -19,6 +21,8 @@ emulator -avd xxx     //xxx is your phone name
 cd enUsELF
 npx react-native run-android
 ```
+
+----
 
 ## How to use
 
