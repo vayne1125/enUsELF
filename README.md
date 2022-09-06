@@ -1,6 +1,6 @@
 # enUsELF
 
-介紹影片:
+demo video:
 
 ## For development
 [react-native](https://reactnative.dev/docs/environment-setup) 0.69.2 </br>
@@ -11,12 +11,14 @@ if you don't know how to install,you can follow this [video](https://www.youtube
 ### cmd
 ```
 cd C:\Users\user\AppData\Local\Android\Sdk\emulator
-emulator -list-avds   //see the phone's name you creat
+emulator -list-avds   //see the phone's name you create
 emulator -avd xxx     //xxx is your phone name
 ```
 ### vscode
-open 
 ```  
+cd enUsELF
 npx react-native run-android
 ```
+
+# How to use
 
