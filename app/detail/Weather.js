@@ -100,7 +100,6 @@ const test = ({city, region}) => {
   }, []);
 
   return (
-    console.log(result.icon_num[0]),
     <View style={styles.weatherContainer}>
       <View style={styles.container}>
         <Text>{day[Moment(result['time'][0]).format('ddd')]}</Text>

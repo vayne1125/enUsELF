@@ -26,7 +26,7 @@ export default class Theme extends Component {
   render() {
     return (
       //<NavigationContainer>
-        <Stack.Navigator initialRouteName="ThemeHome" screenOptions={{header: () => null}} >
+        <Stack.Navigator initialRouteName="Result" screenOptions={{header: () => null}} >
           <Stack.Screen name="ThemeHome" component={ThemeHome}/>
           <Stack.Screen name="Result" component={Result}/>
           {/* <Stack.Screen name="List" component={List}/> */}
