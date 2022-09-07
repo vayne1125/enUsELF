@@ -25,7 +25,6 @@ import Nature from '../theme/Nature'
 import Settripname from './Settripname';
 import { AuthContext } from '../routes/AutoProvider';
 import firestore from '@react-native-firebase/firestore';
-import { Directions } from 'react-native-gesture-handler';
 
 
 const ItineraryHome = ({ navigation, route }) => {
@@ -41,6 +40,11 @@ const ItineraryHome = ({ navigation, route }) => {
   const [destination, setDestination] = useState({ lat: 24.1365593, lng: 120.6835935 });
   const [waypoints, setWaypoints] = useState([]);
   const [markers, setMarkers] = useState([]);
+
+  const [south,setSouth] = useState(route.params.origin.latitude);
+  const [north,setNorth] = useState(route.params.origin.latitude);
+  const [west,setWest] = useState(route.params.origin.longitude);
+  const [east,setEast] = useState(route.params.origin.longitude); 
 
   const [tripname, setTripname] = useState(route.params.tripname);
 
@@ -104,51 +108,6 @@ const ItineraryHome = ({ navigation, route }) => {
   }
 
   useEffect(() => {
-    setDestination(() => {
-      var desSite = route.params.desSite;
-      var tp = Food[0];
-      //console.log(desSite);
-      if (desSite.type === "food") {
-        tp = (Food[desSite.id]);
-      } else if (desSite.type === "nature") {
-        tp = (Nature[desSite.id]);
-      } else if (desSite.type === "kol") {
-        tp = (KOL[desSite.id]);
-      } else if (desSite.type === "monuments") {
-        tp = (Monuments[desSite.id]);
-      } else if (desSite.type === "hotel") {
-        tp = (Hotel[desSite.id]);
-      }
-      //console.log("tp: ",tp);
-      return tp;
-    })
-  }, [])
-
-  useEffect(() => {
-    setRegion(() => {
-      var longestDis = getDis({ lat: origin.latitude, lng: origin.longitude }, destination);
-      var tp = 0;
-      if (longestDis >= 2) {
-        tp = 4.2;
-      } else if (longestDis >= 1.5) {
-        tp = 3.2;
-      } else if (longestDis >= 1) {
-        tp = 2.2;
-      } else if (longestDis >= 0.5) {
-        tp = 1.3;
-      } else {
-        tp = 0.8;
-      }
-      return {
-        latitude: (destination.lat + origin.latitude) / 2.0,
-        longitude: (destination.lng + origin.longitude) / 2.0,
-        latitudeDelta: tp, //數字越小 地圖道路越大
-        longitudeDelta: 0,
-      }
-    });
-  }, [destination])
-
-  useEffect(() => {
     setMarkers(() => {
       const data = [];
       (route.params.site).map((param) => {
@@ -199,9 +158,94 @@ const ItineraryHome = ({ navigation, route }) => {
       //console.log("data: ",data);
       return data;
     })
+  }, [])
+
+  useEffect(() => {
+    setDestination(() => {
+      var desSite = route.params.desSite;
+      var tp = Food[0];
+      //console.log(desSite);
+      if (desSite.type === "food") {
+        tp = (Food[desSite.id]);
+      } else if (desSite.type === "nature") {
+        tp = (Nature[desSite.id]);
+      } else if (desSite.type === "kol") {
+        tp = (KOL[desSite.id]);
+      } else if (desSite.type === "monuments") {
+        tp = (Monuments[desSite.id]);
+      } else if (desSite.type === "hotel") {
+        tp = (Hotel[desSite.id]);
+      }
+      //console.log("tp: ",tp);
+      return tp;
+    })
 
   }, [])
 
+  useEffect(()=>{
+    
+    setEast(()=>{
+      var rt = east;
+      markers.map((i)=>{
+        if(i.lng < rt) rt = i.lng;
+      })
+      if(destination.lng < rt) rt = destination.lng;
+      return rt;
+    })
+
+    setWest(()=>{
+      var rt = west;
+      markers.map((i)=>{
+        if(i.lng > rt) rt = i.lng;
+      })
+      if(destination.lng > rt) rt = destination.lng;
+      return rt;
+    })
+
+    setNorth(()=>{
+      var rt = north;
+      markers.map((i)=>{
+        if(i.lat > rt) rt = i.lat;
+      })
+      if(destination.lat > rt) rt = destination.lat;
+      return rt;
+    })
+
+    setSouth(()=>{
+      var rt = south;
+      markers.map((i)=>{
+        if(i.lat < rt) rt = i.lat;
+      })
+      if(destination.lat < rt) rt = destination.lat;
+      return rt;
+    })
+
+  },[markers,destination])
+
+  useEffect(() => {
+    setRegion(() => {
+      var longestDis = getDis({ lat: south, lng: east }, { lat: north, lng: west });
+      var tp = 0;
+      if (longestDis >= 2) {
+        tp = 4.3;
+      } else if (longestDis >= 1.5) {
+        tp = 3.3;
+      } else if (longestDis >= 0.9) {
+        tp = 2.3;
+      } else if (longestDis >= 0.5) {
+        tp = 1.4;
+      } else {
+        tp = 0.9;
+      }
+      console.log("long="+longestDis+" tp= ",tp);
+      return {
+        latitude: (south+north) / 2.0,
+        longitude: (east+west) / 2.0,
+        latitudeDelta: tp, //數字越小 地圖道路越大
+        longitudeDelta: 0,
+      }
+    });
+  }, [north,south,west,east])
 
   return (
     <View style={styles.container}>
@@ -304,6 +348,7 @@ const ItineraryHome = ({ navigation, route }) => {
 
         {(markers).map((marker) => (
             <Marker
+              pinColor='green'
               // pinColor={
               //   (marker.type === 'hot')?'red':((marker.type === "shop")?'blue':'yellow')
               // }

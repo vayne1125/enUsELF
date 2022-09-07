@@ -24,6 +24,7 @@ import Monuments from '../theme/Monuments'
 import Nature from '../theme/Nature'
 //import Hotplace from './tp'
 //{ navigation, route }
+  
 const MapHome = ({ navigation, route }) => {
   // console.log("haha:",route.params);
   const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
@@ -51,7 +52,11 @@ const MapHome = ({ navigation, route }) => {
   const [destination, setDes] = useState({ latitude: 24.1365593, longitude: 120.6835935 });
   const [initRegion, setInitRegion] = useState({ latitude: 24.1365593, longitude: 120.6835935, latitudeDelta: 4, longitudeDelta: 0 });
   const [myLatitudeDelta, setMyLatitudeDelta] = useState(3.8); //地圖縮放程度的變數
-
+  const [south,setSouth] = useState(24.1365593);
+  const [north,setNorth] = useState(24.1365593);
+  const [west,setWest] = useState(120.6835935);
+  const [east,setEast] = useState(120.6835935); 
+  //console.log("選染 ",mySet);
   const onPressHandlerForComlete = () => {
     // console.log("距離: ", Math.sqrt((origin.latitude - destination.latitude) * (origin.latitude - destination.latitude) + (origin.longitude - destination.longitude) * (origin.longitude - destination.longitude)));
     var rt = [];
@@ -79,10 +84,6 @@ const MapHome = ({ navigation, route }) => {
         type: i.type
       });
     })
-    //console.log("跳轉");
-    //下面註解是跳轉
-    //console.log("desSite: ",desSite);
-    //console.log("site: ",rt);
     navigation.navigate("ItineraryHome", {
       tripname: "行程表",
       origin: ori,
@@ -141,6 +142,7 @@ const MapHome = ({ navigation, route }) => {
       }
     }
   }
+
   //過濾導航線的點 最多抓20個點
   const getPositionArray = (array) => {
     const rt = [];
@@ -155,8 +157,6 @@ const MapHome = ({ navigation, route }) => {
     })
     return rt;
   }
-  //避免重複抓景點
-  const mySet = new Set();
 
   //找距離
   const getDis = (pos, place) => {
@@ -165,8 +165,14 @@ const MapHome = ({ navigation, route }) => {
   }
   //算出附近的點(範圍20km內) 1 -> 111km  0.1 -> 11km
   const getPlace = (array) => {
-    console.log("mySet=",mySet);
+    const mySet = new Set(); //避免重複抓景點
+    (mainRoute).map((mainR)=>{
+      mySet.add(mainR.place_id);
+      //console.log("0");
+    })
+    //console.log("1");
     setHolData(() => {
+      //console.log("2");
       var tp = [];
       array.map((pos) => {
         for (var i = 0; i < Holplace.length; i++) {
@@ -213,20 +219,15 @@ const MapHome = ({ navigation, route }) => {
   // }
 
   useEffect(() => {
-    console.log("s");
-    const PositionArray = getPositionArray(points);  //過濾島航線的點(回傳[{lat:  ,lng:  }])
-    getPlace(PositionArray);  //用PositionArray去看附近有哪些景點
-  }, [points])
-
-  useEffect(() => {
     //從theme的json抓取主路線資料
+    //console.log("main,mypos useEffect");
     setMainRoute(() => {
-      //console.log("in");
       var data = [];
+      const mySet = new Set();
       (route.params).map((param) => {
         if (!mySet.has(param.place_id)) {
           mySet.add(param.place_id);
-          console.log("param.place_id= "+param.place_id);
+          //console.log("param.place_id= "+param.place_id);
           if (param.type === "food") {
             data.push(Food[param.id]);
           } else if (param.type === "nature") {
@@ -240,6 +241,7 @@ const MapHome = ({ navigation, route }) => {
           }
         }
       })
+      //console.log(data);
       return data;
     })
     //設置自己的位子
@@ -249,6 +251,10 @@ const MapHome = ({ navigation, route }) => {
       const lng = position.coords.longitude;
       console.log(lat);
       console.log(lng);
+      setEast(lng);
+      setWest(lng);
+      setSouth(lat);
+      setNorth(lat);
       setOri({ latitude: lat, longitude: lng });
     }, console.log("wait second..."), positionOption);
   }, [])
@@ -269,6 +275,39 @@ const MapHome = ({ navigation, route }) => {
       }
       return des;
     });
+
+    setEast(()=>{
+      var rt = east;
+      mainRoute.map((i)=>{
+        if(i.lng < rt) rt = i.lng;
+      })
+      return rt;
+    })
+
+    setWest(()=>{
+      var rt = west;
+      mainRoute.map((i)=>{
+        if(i.lng > rt) rt = i.lng;
+      })
+      return rt;
+    })
+
+    setNorth(()=>{
+      var rt = north;
+      mainRoute.map((i)=>{
+        if(i.lat > rt) rt = i.lat;
+      })
+      return rt;
+    })
+
+    setSouth(()=>{
+      var rt = south;
+      mainRoute.map((i)=>{
+        if(i.lat < rt) rt = i.lat;
+      })
+      return rt;
+    })
+
   }, [origin, mainRoute])
 
   useEffect(() => {
@@ -280,8 +319,13 @@ const MapHome = ({ navigation, route }) => {
       }
       return way;
     });
+  }, [destination])
+
+  useEffect(()=>{
     setInitRegion(() => {
-      var longestDis = getDis({ lat: origin.latitude, lng: origin.longitude }, { lat: destination.latitude, lng: destination.longitude });
+      //var longestDis = getDis({ lat: origin.latitude, lng: origin.longitude }, { lat: destination.latitude, lng: destination.longitude });
+      //console.log(north," ",east," ",south," ",west);
+      var longestDis = getDis({ lat: south, lng: east }, { lat: north, lng: west });
       var tp = 0;
       if (longestDis >= 2) {
         tp = 3.8;
@@ -294,15 +338,21 @@ const MapHome = ({ navigation, route }) => {
       } else {
         tp = 0.4;
       }
-      console.log("long="+longestDis+" tp= ",tp);
+      //console.log("long="+longestDis+" tp= ",tp);
       return {
-        latitude: (destination.latitude + origin.latitude) / 2.0,
-        longitude: (destination.longitude + origin.longitude) / 2.0,
+        latitude: (south+north) / 2.0,
+        longitude: (east+west) / 2.0,
         latitudeDelta: tp, //數字越小 地圖道路越大
         longitudeDelta: 0,
       }
     });
-  }, [destination])
+  },[north,south,west,east])
+
+  useEffect(() => {
+    //console.log("過濾島航線的點 useEffect");
+    const PositionArray = getPositionArray(points);  //過濾島航線的點(回傳[{lat:  ,lng:  }])
+    getPlace(PositionArray);  //用PositionArray去看附近有哪些景點
+  }, [points])
 
   return (
     <View style={styles.container}>
@@ -373,7 +423,7 @@ const MapHome = ({ navigation, route }) => {
           onReady={(result) => {
             //console.log("pol ready");
             if (once) {
-              ////console.log("nono");
+              //console.log("MapViewDirections");
               setPoints(result.coordinates);
             }
             setOnce(false);
