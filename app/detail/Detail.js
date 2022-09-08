@@ -80,13 +80,6 @@ const Detail = ({entry, modalVisible, onClose}) => {
         />
         <View style={styles.modalBackGround}>
           <View style={styles.modalContainer}>
-            {/* <View style={styles.header}>
-              <TouchableOpacity onPress={() => onClose()} style={{flex: 1}}>
-                <View style={styles.iconContainer}>
-                  <Icons name="cross" size={45} color={'#5f695d'} />
-                </View>
-              </TouchableOpacity>
-            </View> */}
             <View style={styles.topContainer}>
             <View style={styles.imageContainer}>
             <Image style={styles.image} source={Image_link[entry['name']]} />
@@ -98,7 +91,7 @@ const Detail = ({entry, modalVisible, onClose}) => {
             <View style={styles.infoContainer}>
               <ScrollView>
                 <View style={styles.infoStyle}>
-                <Text style={styles.textStyle2}>{entry['name']}</Text>
+                <Text style={styles.siteNameStyle}>{entry['name']}</Text>
                   <Stars starsNum={entry['star']} />
                   <Text style={styles.infoTitle}>
                     {'\n'}
@@ -161,8 +154,7 @@ const Detail = ({entry, modalVisible, onClose}) => {
                   <Text style={styles.buttonText}>入</Text>
                   <Text style={styles.buttonText}>清</Text>
                   <Text style={styles.buttonText}>單</Text>
-                  </View>
-                
+                  </View>           
               </TouchableOpacity>
             </View>
             }
@@ -185,48 +177,14 @@ const styles = StyleSheet.create({
   modalContainer: {
     width: '95%',
     height,
-    //height: 600,
     backgroundColor: 'white',
-    //paddingHorizontal: 20,
-    //paddingVertical: 20,
-    //padding: 5,
     borderRadius: 20,
     elevation: 20,
-    //flex:1,
-  },
-  header: {
-    height: 50,
-    alignItems: 'center',
-    alignSelf: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    flex: 1,
-  },
-  iconContainer: {
-    //position: 'absolute',
-    top: 2,
-    //backgroundColor: '#D1DED7',
-    width: 48,
-    height: 48,
-    alignSelf: 'flex-end',
-    //justifycontent: 'flex-start',
-    //justifyContent:'left',
-    borderRadius: 30,
-    right: 2,
-  },
-  iconStyle:{
-    position:'absolute',
-    top: '2%',
-    right: '2%',
-    backgroundColor:'rgba(255,255,255,0.6)',
-    borderRadius:20,
   },
   topContainer:{
     flex:9,
-    //backgroundColor:'#ffc56b',
-    backgroundColor:'#D1DED7',
+    backgroundColor:'#ffc56b',
+    //backgroundColor:'#D1DED7',
     borderBottomRightRadius: 50,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -246,53 +204,63 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     alignSelf: 'center',
   },
+  iconStyle:{
+    position:'absolute',
+    top: '2%',
+    right: '2%',
+    backgroundColor:'rgba(255,255,255,0.6)',
+    borderRadius:20,
+  },
   spaceContainer:{
     backgroundColor:'rgba(0,0,0,0)',
-    //bottom:'10%',
     flex:1,
   },
-  space:{
-    //borderBottomRightRadius: 50,
-    //backgroundColor:'#ffc56b',
-    //borderTopLeftRadius:50,
-    //borderTopRightRadius:10,
-    flex:1,
+  infoBack:{
+    flex: 14,
+    backgroundColor:'#ffc56b',
+    //backgroundColor:'#D1DED7',
   },
-  textStyle: {
+  infoContainer: {
+    backgroundColor:'white',
+    borderBottomRightRadius:50,
+    borderTopLeftRadius:50,
+    padding:5,
+  },
+  siteNameStyle: {
     fontSize: 26,
     fontWeight: 'bold',
-    left: 20,
-    top: 1,
-  },
-  textStyle2: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    //alignSelf: 'center',
     letterSpacing:2,
+  },
+  starStyle: {
+    flex: 1,
+    flexDirection: 'row',
+    //alignSelf: 'center',
+    top:8,
+    //color:'#f5f6a3',
   },
   infoStyle: {
     flex: 1,
     width: 335,
     alignSelf: 'center',
     marginTop: 20,
-    //backgroundColor:'#000000',
   },
   infoTitle: {
     fontSize: 22,
-    //alignSelf: 'center',
     letterSpacing: 10,
-    //textAlign: 'center',
   },
   infoTextStyle: {
     fontSize: 18,
-    //alignSelf: 'center',
     letterSpacing: 4,
-    //textAlign: 'center',
     paddingTop:10,
   },
+  weatherContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingTop: 10,
+  },
   buttonContainer: {
-    backgroundColor:'#D1DED7',
-    //backgroundColor: '#ffc56b',//較淺黃
+    //backgroundColor:'#D1DED7',
+    backgroundColor: '#ffc56b',//較淺黃
     //width: 150,
     //height: 45,
     //flexDirection: 'row',
@@ -304,17 +272,6 @@ const styles = StyleSheet.create({
     borderTopLeftRadius:50,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-  },
-  infoBack:{
-    flex: 14,
-    //backgroundColor:'#ffc56b',
-    backgroundColor:'#D1DED7',
-  },
-  infoContainer: {
-    backgroundColor:'white',
-    borderBottomRightRadius:50,
-    borderTopLeftRadius:50,
-    padding:5,
   },
   buttonTextContainer:{
     flexDirection:'row',
@@ -328,18 +285,6 @@ const styles = StyleSheet.create({
     color: '#6b5238',
     top: 9,
     alignSelf: 'center',
-  },
-  weatherContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingTop: 10,
-  },
-  starStyle: {
-    flex: 1,
-    flexDirection: 'row',
-    //alignSelf: 'center',
-    top:8,
-    //color:'#f5f6a3',
   },
 });
 

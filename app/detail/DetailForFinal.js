@@ -24,9 +24,9 @@ import Image_link from '../theme/Image';
 import Image_linkMap from '../map/Image';
 
 const width = Dimensions.get('screen').width - 50;
-const height = Dimensions.get('screen').height / 1.3;
+const height = Dimensions.get('screen').height / 1.15;
 
-const DetailForFinal = ({entry, modalVisible, onClose,isMain}) => {
+const DetailForFinal = ({entry, modalVisible, onClose, isMain}) => {
   //console.log("entry: ",entry);
   const Stars = score => {
     var tp = parseFloat(score.starsNum);
@@ -35,19 +35,19 @@ const DetailForFinal = ({entry, modalVisible, onClose,isMain}) => {
     for (let i = 0; i < 5; i++) {
       if (tp >= 1) {
         starsIcon.push(
-          <Icon key={cnt} name={'star'} color={'#ffb129'} size={24} />,
+          <Icon key={cnt} name={'star'} color={'#ffc56b'} size={24} />,
         );
         tp = tp - 1;
       } else if (tp == 0) {
         starsIcon.push(
-          <Icon key={cnt} name={'star-o'} color={'#ffb129'} size={24} />,
+          <Icon key={cnt} name={'star-o'} color={'#ffc56b'} size={24} />,
         );
       } else {
         starsIcon.push(
           <Icon
             key={cnt}
             name={'star-half-empty'}
-            color={'#ffb129'}
+            color={'#ffc56b'}
             size={24}
           />,
         );
@@ -57,32 +57,43 @@ const DetailForFinal = ({entry, modalVisible, onClose,isMain}) => {
     }
     return (
       <View style={styles.starStyle}>
-        <Text style={{fontSize:20,bottom:2}}>{score.starsNum} </Text>
+        <Text style={{fontSize: 20, bottom: 2}}>{score.starsNum} </Text>
         {starsIcon}
       </View>
     );
   };
   return (
-    (
-      <Modal transparent={true} visible={modalVisible}>
-        <View style={styles.modalBackGround}>
-          <View style={styles.modalContainer}>
-            <View style={styles.header}>
-              <TouchableOpacity onPress={() => onClose()} style={{flex: 1}}>
-                <View style={styles.iconContainer}>
-                  <Icons name="cross" size={45} color={'#5f695d'} />
-                </View>
-              </TouchableOpacity>
+    <Modal transparent={true} visible={modalVisible}>
+      <View style={styles.modalBackGround}>
+        <View style={styles.modalContainer}>
+          <View style={styles.topContainer}>
+            <View style={styles.imageContainer}>
+              {isMain ? (
+                <Image
+                  style={styles.image}
+                  source={Image_link[entry['name']]}
+                />
+              ) : (
+                <Image
+                  style={styles.image}
+                  source={Image_linkMap[entry['type'] + entry['id'].toString()]}
+                />
+              )}
+              <Icons
+                name="cross"
+                size={42}
+                color={'#5f695d'}
+                onPress={() => onClose()}
+                style={styles.iconStyle}
+              />
             </View>
+            <View style={styles.spaceContainer}></View>
+          </View>
+          <View style={styles.infoBack}>
             <View style={styles.infoContainer}>
               <ScrollView>
-                {
-                isMain?
-                <Image style={styles.image} source={Image_link[entry['name']]}/>:
-                <Image style={styles.image} source={Image_linkMap[entry['type']+(entry['id'].toString())]} />
-                }
                 <View style={styles.infoStyle}>
-                <Text style={styles.textStyle2}>{entry['name']}</Text>
+                  <Text style={styles.siteNameStyle}>{entry['name']}</Text>
                   <Stars starsNum={entry['star']} />
                   <Text style={styles.infoTitle}>
                     {'\n'}
@@ -94,21 +105,18 @@ const DetailForFinal = ({entry, modalVisible, onClose,isMain}) => {
                     {'\n'}
                   </Text>
 
-                  {
-                  (entry['type'] === "hol") &&
-                  (
-                  <View>
-                  <Text style={styles.infoTitle}>
-                    <Icon name="clock-o" size={23} color={'#5f695d'} />
-                    活動日期
-                  </Text>
-                  <Text style={styles.infoTextStyle}>
-                    {entry['date']}
-                    {'\n'}
-                  </Text>
-                  </View>
-                  )
-                  }
+                  {entry['type'] === 'hol' && (
+                    <View>
+                      <Text style={styles.infoTitle}>
+                        <Icon name="clock-o" size={23} color={'#5f695d'} />
+                        活動日期
+                      </Text>
+                      <Text style={styles.infoTextStyle}>
+                        {entry['date']}
+                        {'\n'}
+                      </Text>
+                    </View>
+                  )}
 
                   <Text style={styles.infoTitle}>
                     <Icon name="clock-o" size={23} color={'#5f695d'} />
@@ -130,16 +138,16 @@ const DetailForFinal = ({entry, modalVisible, onClose,isMain}) => {
                     <Icon3 name="weather-cloudy" size={23} color={'#5f695d'} />
                     天氣
                   </Text>
-                  <Weather 
-                    city={entry['city']}
-                    region={entry['region']}/>
+                  <Weather city={entry['city']} region={entry['region']} />
                 </View>
               </ScrollView>
             </View>
           </View>
+          <View style={styles.buttonContainer}>
+            </View>
         </View>
-      </Modal>
-    )
+      </View>
+    </Modal>
   );
 };
 
@@ -155,108 +163,114 @@ const styles = StyleSheet.create({
   modalContainer: {
     width: '95%',
     height,
-    //height: 600,
     backgroundColor: 'white',
-    //paddingHorizontal: 20,
-    //paddingVertical: 20,
-    padding: 5,
     borderRadius: 20,
     elevation: 20,
-    //flex:1,
   },
-  header: {
-    height: 50,
-    alignItems: 'center',
-    alignSelf: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
+  topContainer: {
+    flex: 9,
+    //backgroundColor:'#ffc56b',
+    backgroundColor: '#D1DED7',
+    borderBottomRightRadius: 50,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    flex: 1,
   },
-  iconContainer: {
-    //position: 'absolute',
-    top: 2,
-    //backgroundColor: '#D1DED7',
-    width: 48,
-    height: 48,
-    alignSelf: 'flex-end',
-    //justifycontent: 'flex-start',
-    //justifyContent:'left',
-    borderRadius: 30,
-    right: 2,
+  imageContainer: {
+    backgroundColor: '#ffc56b',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    borderBottomRightRadius: 50,
+    flex: 9,
   },
   image: {
-    width: 335,
-    height: 195,
-    top: 6,
-    borderRadius: 10,
+    width: '100%',
+    height: '100%',
+    borderBottomRightRadius: 50,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     alignSelf: 'center',
   },
-  textStyle: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    left: 20,
-    top: 1,
+  iconStyle: {
+    position: 'absolute',
+    top: '2%',
+    right: '2%',
+    backgroundColor: 'rgba(255,255,255,0.6)',
+    borderRadius: 20,
   },
-  textStyle2: {
+  spaceContainer: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    flex: 1,
+  },
+  infoBack: {
+    flex: 14,
+    //backgroundColor:'#ffc56b',
+    backgroundColor: '#D1DED7',
+  },
+  infoContainer: {
+    backgroundColor: 'white',
+    borderBottomRightRadius: 50,
+    borderTopLeftRadius: 50,
+    padding: 5,
+  },
+  siteNameStyle: {
     fontSize: 26,
     fontWeight: 'bold',
-    alignSelf: 'center',
-    letterSpacing:2,
+    letterSpacing: 2,
+  },
+  starStyle: {
+    flex: 1,
+    flexDirection: 'row',
+    //alignSelf: 'center',
+    top: 8,
+    //color:'#f5f6a3',
   },
   infoStyle: {
     flex: 1,
     width: 335,
     alignSelf: 'center',
     marginTop: 20,
-    //backgroundColor:'#000000',
   },
   infoTitle: {
     fontSize: 22,
-    alignSelf: 'center',
     letterSpacing: 10,
-    textAlign: 'center',
   },
   infoTextStyle: {
-    fontSize: 20,
-    alignSelf: 'center',
-    letterSpacing: 4,
-    textAlign: 'center',
-  },
-  buttonContainer: {
-    backgroundColor: '#fbb856', //較深黃
-    //backgroundColor: '#ffc56b',//較淺黃
-    width: 150,
-    alignSelf: 'center',
-    borderRadius: 25,
-    //height: 45,
-    //flexDirection: 'row',
-    flex: 1.2,
-  },
-  infoContainer: {
-    flex: 14,
-    //backgroundColor:'#000000',
-  },
-  buttonText: {
-    fontWeight: '800',
     fontSize: 18,
-    color: '#6b5238',
-    top: 9,
-    letterSpacing: 10,
-    alignSelf: 'center',
+    letterSpacing: 4,
+    paddingTop: 10,
   },
   weatherContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingTop: 10,
   },
-  starStyle: {
-    flex: 1,
-    flexDirection: 'row',
+  buttonContainer: {
+    backgroundColor: '#D1DED7',
+    //backgroundColor: '#ffc56b',//較淺黃
+    //width: 150,
+    //height: 45,
+    //flexDirection: 'row',
+    //flex: 1.2,
+    //borderRadius: 25,
     alignSelf: 'center',
-    top:8,
-    //color:'#f5f6a3',
+    flex: 2,
+    width: '100%',
+    borderTopLeftRadius: 50,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+  },
+  buttonTextContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingLeft: '18%',
+    paddingRight: '18%',
+  },
+  buttonText: {
+    fontWeight: '800',
+    fontSize: 24,
+    color: '#6b5238',
+    top: 9,
+    alignSelf: 'center',
   },
 });
 
