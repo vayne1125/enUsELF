@@ -132,8 +132,8 @@ return (
         <FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-            marginTop: 25,
-            paddingBottom: 80,
+            //marginTop: 25,
+            //paddingBottom: 80,
         }}
         numColumns={1}
         data={sites}
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     width:'100%',
     //marginHorizontal: 10,
     //borderRadius: 10,
-    marginBottom: 12,
+    marginBottom: 3,
     //paddingTop:5,
     padding: 3,
     //right: 2,
@@ -165,10 +165,12 @@ const styles = StyleSheet.create({
     //borderWidth: 3,
     flex: 1,
     flexDirection: 'row',
-    borderBottomWidth: 3,
-    borderBottomColor:'#D1DED7',
-    borderRightWidth:3,
-    borderRightColor:'#ffffff',
+
+    //borderBottomWidth: 1,
+    //borderBottomColor:'#AAAAAA',
+    // borderRightWidth:3,
+    // borderRightColor:'#ffffff',
+
     justifyContent:'space-around'
   },
   image: {
@@ -212,7 +214,7 @@ const styles = StyleSheet.create({
   nameStyle: {
     alignSelf: 'center',
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 18,
     //color: '#D1DED7',
     color:'#5f695d',
     letterSpacing: 3,

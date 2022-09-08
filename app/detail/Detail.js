@@ -26,7 +26,7 @@ import Image_link from '../theme/Image';
 import { AuthContext } from '../routes/AutoProvider';
 
 const width = Dimensions.get('screen').width - 50;
-const height = Dimensions.get('screen').height / 1.3;
+const height = Dimensions.get('screen').height / 1.15;
 
 const Detail = ({entry, modalVisible, onClose}) => {
   const [noticeVisible, setNoticeVisible] = useState(false);
@@ -39,20 +39,20 @@ const Detail = ({entry, modalVisible, onClose}) => {
     for (let i = 0; i < 5; i++) {
       if (tp >= 1) {
         starsIcon.push(
-          <Icon key={cnt} name={'star'} color={'#ffb129'} size={24} />,
+          <Icon key={cnt} name={'star'} color={'#ffc56b'} size={24} />,
         );
         tp = tp - 1;
       } else if (tp == 0) {
         starsIcon.push(
-          <Icon key={cnt} name={'star-o'} color={'#ffb129'} size={24} />,
+          <Icon key={cnt} name={'star-o'} color={'#ffc56b'} size={24} />,
         );
       } else {
         starsIcon.push(
           <Icon
             key={cnt}
             name={'star-half-empty'}
-            color={'#ffb129'}
-            size={18}
+            color={'#ffc56b'}
+            size={24}
           />,
         );
         tp = 0;
@@ -80,16 +80,23 @@ const Detail = ({entry, modalVisible, onClose}) => {
         />
         <View style={styles.modalBackGround}>
           <View style={styles.modalContainer}>
-            <View style={styles.header}>
+            {/* <View style={styles.header}>
               <TouchableOpacity onPress={() => onClose()} style={{flex: 1}}>
                 <View style={styles.iconContainer}>
                   <Icons name="cross" size={45} color={'#5f695d'} />
                 </View>
               </TouchableOpacity>
+            </View> */}
+            <View style={styles.topContainer}>
+            <View style={styles.imageContainer}>
+            <Image style={styles.image} source={Image_link[entry['name']]} />
+            <Icons name="cross" size={42} color={'#5f695d'} onPress={() => onClose()} style={styles.iconStyle}/>
             </View>
+            <View style={styles.spaceContainer}></View>
+            </View>
+            <View style={styles.infoBack}>
             <View style={styles.infoContainer}>
               <ScrollView>
-                <Image style={styles.image} source={Image_link[entry['name']]} />
                 <View style={styles.infoStyle}>
                 <Text style={styles.textStyle2}>{entry['name']}</Text>
                   <Stars starsNum={entry['star']} />
@@ -128,6 +135,7 @@ const Detail = ({entry, modalVisible, onClose}) => {
                 </View>
               </ScrollView>
             </View>
+            </View>
             {
             <View style={styles.buttonContainer}>
               <TouchableOpacity
@@ -148,7 +156,13 @@ const Detail = ({entry, modalVisible, onClose}) => {
                   //console.log('plus2');
                 }}
                 style={{flex: 1}}>
-                <Text style={styles.buttonText}>加入清單</Text>
+                  <View style={styles.buttonTextContainer}>
+                  <Text style={styles.buttonText}>加</Text>
+                  <Text style={styles.buttonText}>入</Text>
+                  <Text style={styles.buttonText}>清</Text>
+                  <Text style={styles.buttonText}>單</Text>
+                  </View>
+                
               </TouchableOpacity>
             </View>
             }
@@ -175,7 +189,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     //paddingHorizontal: 20,
     //paddingVertical: 20,
-    padding: 5,
+    //padding: 5,
     borderRadius: 20,
     elevation: 20,
     //flex:1,
@@ -202,12 +216,47 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     right: 2,
   },
+  iconStyle:{
+    position:'absolute',
+    top: '2%',
+    right: '2%',
+    backgroundColor:'rgba(255,255,255,0.6)',
+    borderRadius:20,
+  },
+  topContainer:{
+    flex:9,
+    //backgroundColor:'#ffc56b',
+    backgroundColor:'#D1DED7',
+    borderBottomRightRadius: 50,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+  imageContainer:{
+    backgroundColor:'#ffc56b',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    borderBottomRightRadius: 50,
+    flex:9,
+  },
   image: {
-    width: 335,
-    height: 195,
-    top: 6,
-    borderRadius: 10,
+    width: '100%',
+    height: '100%',
+    borderBottomRightRadius: 50,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     alignSelf: 'center',
+  },
+  spaceContainer:{
+    backgroundColor:'rgba(0,0,0,0)',
+    //bottom:'10%',
+    flex:1,
+  },
+  space:{
+    //borderBottomRightRadius: 50,
+    //backgroundColor:'#ffc56b',
+    //borderTopLeftRadius:50,
+    //borderTopRightRadius:10,
+    flex:1,
   },
   textStyle: {
     fontSize: 26,
@@ -218,7 +267,7 @@ const styles = StyleSheet.create({
   textStyle2: {
     fontSize: 26,
     fontWeight: 'bold',
-    alignSelf: 'center',
+    //alignSelf: 'center',
     letterSpacing:2,
   },
   infoStyle: {
@@ -230,36 +279,54 @@ const styles = StyleSheet.create({
   },
   infoTitle: {
     fontSize: 22,
-    alignSelf: 'center',
+    //alignSelf: 'center',
     letterSpacing: 10,
-    textAlign: 'center',
+    //textAlign: 'center',
   },
   infoTextStyle: {
-    fontSize: 20,
-    alignSelf: 'center',
+    fontSize: 18,
+    //alignSelf: 'center',
     letterSpacing: 4,
-    textAlign: 'center',
+    //textAlign: 'center',
+    paddingTop:10,
   },
   buttonContainer: {
-    backgroundColor: '#fbb856', //較深黃
+    backgroundColor:'#D1DED7',
     //backgroundColor: '#ffc56b',//較淺黃
-    width: 150,
-    alignSelf: 'center',
-    borderRadius: 25,
+    //width: 150,
     //height: 45,
     //flexDirection: 'row',
-    flex: 1.2,
+    //flex: 1.2,
+    //borderRadius: 25,
+    alignSelf: 'center',
+    flex:2,
+    width:'100%',
+    borderTopLeftRadius:50,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+  },
+  infoBack:{
+    flex: 14,
+    //backgroundColor:'#ffc56b',
+    backgroundColor:'#D1DED7',
   },
   infoContainer: {
-    flex: 14,
-    //backgroundColor:'#000000',
+    backgroundColor:'white',
+    borderBottomRightRadius:50,
+    borderTopLeftRadius:50,
+    padding:5,
+  },
+  buttonTextContainer:{
+    flexDirection:'row',
+    justifyContent:'space-around',
+    paddingLeft:'18%',
+    paddingRight:'18%',
   },
   buttonText: {
     fontWeight: '800',
-    fontSize: 20,
+    fontSize: 24,
     color: '#6b5238',
     top: 9,
-    letterSpacing: 10,
     alignSelf: 'center',
   },
   weatherContainer: {
@@ -270,7 +337,7 @@ const styles = StyleSheet.create({
   starStyle: {
     flex: 1,
     flexDirection: 'row',
-    alignSelf: 'center',
+    //alignSelf: 'center',
     top:8,
     //color:'#f5f6a3',
   },
