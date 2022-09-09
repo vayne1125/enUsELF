@@ -77,7 +77,7 @@ const ListBottom = () => {
                 <><CheckBox
                     //center
                     title="全選"
-                    textStyle={{fontSize:12}}
+                    textStyle={styles.ChanceText} 
                     checkedIcon="dot-circle-o"
                     uncheckedIcon="circle-o"
                     checked={check}
@@ -87,12 +87,11 @@ const ListBottom = () => {
                     }}
                 /></>
             </View>
-            <View style={{flex:0.4}}></View>
             {empty?
-            <View style={styles.UntouchContainer}>
+            <View style={styles.NoContainer}>
                 <Text style={styles.OkText}>完成</Text> 
             </View>:
-            <View style={styles.touchContainer}>
+            <View style={styles.OkContainer}>
                 <TouchableOpacity onPress={()=>{DeviceEventEmitter.emit('gotomap')}}>
                     <Text style={styles.OkText}>完成</Text> 
                 </TouchableOpacity>
@@ -105,35 +104,74 @@ const styles = StyleSheet.create({
   Container: {
     flex: 1,
     flexDirection: 'row',
-    borderTopWidth: 3,
-    borderColor: 'rgba(0, 0, 0, 0.1)',
-    backgroundColor:'white',
+    //borderTopWidth: 1,
+    borderColor: '#AAAAAA',
+    backgroundColor: '#ffffff',
+    borderTopLeftRadius:50,
+    borderTopRightRadius:40,
   },
   ChanceContainer: {
-    flex: 0.3,
-    alignItems:'center',
+    backgroundColor: '#ffffff',
+    flex: 0.55,
+    alignItems:'flex-start',
     justifyContent:'center',
+    padding:2,
+    borderTopLeftRadius:40,
+    borderTopRightRadius:20,
+    //left:-8,
+   // top:10,
   },
-  touchContainer: {
-    backgroundColor: '#88bd80',
-    flex: 0.3,
+  ChanceText: {
+    //left: 10,
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'gray',
+    letterSpacing: 6,
+  },
+  OkContainer: {
+    backgroundColor: '#6E877B',
+    flex: 0.4,
     padding:5,
     alignItems:'center',
     justifyContent:'center',
+    alignSelf:'center',
+    height:'75%',
+    borderRadius:30,
+
+    shadowColor: '#7F5DF0',
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.5,
+    elevation: 3,
   },
   OkText: {
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#ffffff',
     letterSpacing: 10,
   },
-  UntouchContainer: {
+  NoContainer:{
     backgroundColor: 'gray',
-    flex: 0.3,
+    flex: 0.4,
     padding:5,
     alignItems:'center',
     justifyContent:'center',
-  },
+    alignSelf:'center',
+    height:'75%',
+    borderRadius:30,
+
+    shadowColor: '#7F5DF0',
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.5,
+    elevation: 3,
+  }
 });
 
 export default ListBottom;

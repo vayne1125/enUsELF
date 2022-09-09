@@ -19,7 +19,9 @@ const ListTop = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
+      <View style={styles.textContainer}>
       <Text style={styles.textStyle}>清單</Text>
+      </View>
       <TouchableOpacity
         onPress={() => {
             navigation.goBack();
@@ -28,7 +30,7 @@ const ListTop = () => {
         <View style={styles.iconContainer}>
           <Icons
             name="cross"
-            size={56}
+            size={40}
             color={'#5f695d'}
             style={styles.iconStyle}
           />
@@ -38,32 +40,46 @@ const ListTop = () => {
   );
 };
 const styles = StyleSheet.create({
-  textStyle: {
-    position: 'absolute',
-    left: 15,
-    top: 10,
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#ffffff',
-    letterSpacing: 10,
-  },
   container: {
     flexDirection: 'row',
+    flex:1,
+    borderBottomWidth:1,
+    borderColor:'#AAAAAA',
+  },
+  textContainer:{
+    flex:4,
+    // alignContent:'center',
+    // alignSelf:'center',
+    // justifyContent:'center',  
+    //position:'absolute',
+  },
+  textStyle: {
+    //alignContent:'center',
+    //justifyContent:'center',
+    bottom:'15%',
+    left:'5%',
+    fontSize: 30,
+    //fontWeight: 'bold',
+    //color: '#ffffff',
+    color:'#5f695d',
+    fontFamily:'NotoSerifTC-Bold',
+    letterSpacing:10,
   },
   iconStyle: {
-    top: -4,
-    left: -4,
+    //top: 5,
+    //left: 8,
+    top:'18%',
   },
   iconContainer: {
+    flex:1,
     position: 'absolute',
-    right: 24,
-    top: 6,
-    backgroundColor: '#D1DED7',
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center',
+    justifyContent:'center',
     width: 48,
     height: 48,
     alignSelf: 'center',
-    alignItems:'center',
-    justifyContent:'center',
     borderRadius: 30,
   },
 });

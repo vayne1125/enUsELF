@@ -26,6 +26,7 @@ import Image_link from '../theme/Image';
 import Image_linkMap from '../map/Image';
 /*check id placeid type */
 const height = Dimensions.get('screen').height/4;
+const cardHeight = Dimensions.get('screen').height/7;
 
 const Scheduleitem = (userSchdule) => {
   const {user, logout} = useContext(AuthContext);
@@ -93,6 +94,7 @@ const Card = ({site}) => {
               center
               checkedIcon="dot-circle-o"
               uncheckedIcon="circle-o"
+              containerStyle={{backgroundColor:'#F2F2F2'}}
               checked={ check }
               onPress={()=>{
                 if(check)//選變不選(原本是選)
@@ -106,6 +108,7 @@ const Card = ({site}) => {
               }}
               />
               </View>
+              <View style={styles.siteContainer}>
               <View style={styles.imageContainer}>
               {
                (site.type=== "hot" || site.type === "hol" || site.type === "shop")?
@@ -116,11 +119,12 @@ const Card = ({site}) => {
                 </View>
               <View style={{flex: 4,justifyContent:'space-around',padding:5,}}>
                   <View style={styles.textContainer}>
-                      <Text style={styles.nameStyle}>{site.name}</Text>
+                      <Text numberOfLines={1} style={styles.nameStyle}>{site.name}</Text>
                   </View>
                   <View style={styles.textContainer2}>
             <Text style={styles.addressStyle}>{site.city} {site.region}</Text>
                   </View>
+              </View>
               </View>
           </View>
       );
@@ -132,8 +136,8 @@ return (
         <FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-            //marginTop: 25,
-            //paddingBottom: 80,
+            marginTop: '2%',
+            paddingBottom: '5%',
         }}
         numColumns={1}
         data={sites}
@@ -151,21 +155,20 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   card: {
-    height: 155,
+    height: cardHeight,
     //backgroundColor:'#D1DED7',
-    backgroundColor: '#ffffff',
+    //backgroundColor: '#ffffff',
     width:'100%',
-    //marginHorizontal: 10,
+    marginTop: '2%',
     //borderRadius: 10,
-    marginBottom: 3,
-    //paddingTop:5,
-    padding: 3,
+    //marginBottom: '2%',
+    //padding: 3,
     //right: 2,
     //borderColor: '#D1DED7',
     //borderWidth: 3,
     flex: 1,
     flexDirection: 'row',
-
+    paddingRight:'2%',
     //borderBottomWidth: 1,
     //borderBottomColor:'#AAAAAA',
     // borderRightWidth:3,
@@ -173,18 +176,42 @@ const styles = StyleSheet.create({
 
     justifyContent:'space-around'
   },
+  boxContainer:{
+    flexDirection: 'column',
+    flex:1,
+    alignItems: 'center',
+    alignSelf: 'center',
+    justifyContent:'center',
+},
+  siteContainer:{
+    flex:8.5,
+    flexDirection:'row',
+    backgroundColor:'white',
+    padding:'3%',
+    borderRadius:30,
+    borderColor:'#D1DED7',
+    //borderWidth:2,
+    shadowColor: '#7F5DF0',
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.5,
+    elevation: 5,
+  },
   image: {
     width: '100%',
-    height: 100,
-    borderRadius: 10,
+    height: '100%',
+    borderRadius: 30,
     resizeMode:'cover',
   },
   textContainer: {
     flex: 2,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-    alignSelf: 'center',
-    alignItems: 'center',
+    //alignSelf: 'center',
+    //alignItems: 'center',
     justifyContent:'center',
     padding:5,
   },
@@ -192,27 +219,20 @@ const styles = StyleSheet.create({
     flex: 2,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-    alignSelf: 'center',
-    alignItems: 'center',
+    //alignSelf: 'center',
+    //alignItems: 'center',
     justifyContent:'flex-start',
-    padding:5,
+    padding:10,
     //backgroundColor:'#000000'
   },
   imageContainer: {
-    flex: 4,
+    flex: 3,
     alignItems: 'flex-start',
     alignSelf: 'center',
     justifyContent: 'center',
   },
-  boxContainer:{
-      flexDirection: 'column',
-      flex:1,
-      alignItems: 'center',
-      alignSelf: 'center',
-      justifyContent:'center',
-  },
   nameStyle: {
-    alignSelf: 'center',
+    //alignSelf: 'center',
     fontWeight: 'bold',
     fontSize: 18,
     //color: '#D1DED7',
@@ -225,7 +245,7 @@ const styles = StyleSheet.create({
     paddingRight:8,
   },
   addressStyle: {
-      alignSelf: 'center',
+      //alignSelf: 'center',
       fontWeight: 'bold',
       fontSize: 14,
       color: 'gray',

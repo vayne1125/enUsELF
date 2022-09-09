@@ -42,8 +42,8 @@ const ItineraryTop = props => {
 const styles = StyleSheet.create({
   textStyle: {
     position: 'absolute',
-    left: 15,
-    top: 10,
+    left: '3%',
+    top: 15,
     fontSize: 30,
     fontWeight: 'bold',
     color: '#ffffff',

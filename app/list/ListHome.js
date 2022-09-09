@@ -16,7 +16,7 @@ export default class List extends Component {
             <View style={styles.items}>
                 <Items/>
             </View>
-            <View style={styles.bottombar}>
+            <View style={styles.buttonbar}>
                 <ListBottom/>
             </View>
         </View>
@@ -28,34 +28,28 @@ export default class List extends Component {
 }
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        hight: '100%',
-        backgroundColor: '#F2F2F2',
+      hight: '100%',
+      backgroundColor: '#F2F2F2',
+      flex: 1,
     },
     topbar: {
-        backgroundColor: '#5f695d',
-        flex:1.2,
-        height: 63,
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
-        //opacity: 0.9,
+      //backgroundColor: '#5f695d',
+      flex:1,
+      
+      //height: 63,
+      //borderBottomLeftRadius: 20,
+      //borderBottomRightRadius: 20,
+      //opacity: 0.9,
     },
     items: {
-        flex: 10,
-        alignItems:'center',
-        justifyContent:'center',
+      flex: 9.2,
+      alignItems:'center',
+      justifyContent:'center',
     },
-    textStyle:{
-        fontSize:40,
-        textAlign: 'center',
-        fontWeight:'bold',
-        letterSpacing:5,
-        color:'white',
-    },
-    bottombar: {
-        backgroundColor: '#5f695d',
-        flex:1.2,
-        height: 63,
+    buttonbar: {
+      //backgroundColor: '#5f695d',
+       flex:1.3,
+       //height: 200,
         //opacity: 0.9,
     },
-});
+  });

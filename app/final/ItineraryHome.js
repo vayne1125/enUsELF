@@ -459,7 +459,7 @@ const styles = StyleSheet.create({
     //flex:1,
     left:-Dimensions.get('window').width/2,
     top:-Dimensions.get('window').height/2,
-    height: 63,
+    height: Dimensions.get('window').height/11,
     width:Dimensions.get('window').width,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
