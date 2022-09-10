@@ -268,7 +268,7 @@ const ItineraryHome = ({ navigation, route }) => {
       <MapView
         loadingEnabled={true}
         moveOnMarkerPress={false}
-        customMapStyle={mapStyle}
+        //customMapStyle={mapStyle}
         //rotateEnabled = {false}
         //zoomEnabled = {false}
         //zoomControlEnabled = {false}

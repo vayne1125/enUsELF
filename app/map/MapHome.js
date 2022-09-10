@@ -376,7 +376,7 @@ const MapHome = ({ navigation, route }) => {
         moveOnMarkerPress={false}
         loadingEnabled={true}
         onRegionChangeComplete={(e) => { setMyLatitudeDelta(e.latitudeDelta); }}
-        customMapStyle={mapStyle}
+        //customMapStyle={mapStyle}
         provider={PROVIDER_GOOGLE}
         style={styles.mapStyle}
         region={initRegion}
