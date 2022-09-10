@@ -19,7 +19,9 @@ const PersonalTop = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
+      <View style={styles.textContainer}>
       <Text style={styles.textStyle}>個人設置</Text>
+      </View>
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('List')
@@ -37,28 +39,43 @@ const PersonalTop = () => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
-  textStyle: {
-   // position: 'absolute',
-    left: 15,
-    top: 10,
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#ffffff',
-    letterSpacing: 10,
-  },
   container: {
     flexDirection: 'row',
   },
+  textContainer:{
+    flex:4,
+    // alignContent:'center',
+    // alignSelf:'center',
+    // justifyContent:'center',  
+    position:'absolute',
+  },
+  textStyle: {
+    //alignContent:'center',
+    //justifyContent:'center',
+    bottom:'15%',
+    left:'5%',
+    fontSize: 30,
+    //fontWeight: 'bold',
+    //color: '#ffffff',
+    color:'#5f695d',
+    fontFamily:'NotoSerifTC-Bold',
+    letterSpacing:10,
+  },
   iconStyle: {
-    top: 5,
-    left: 8,
+    //top: 5,
+    //left: 8,
+    top:'23%',
+    left:'350%',
   },
   iconContainer: {
+    flex:1,
     position: 'absolute',
-    right: 24,
-    top: 6,
-    backgroundColor: '#D1DED7',
+    // alignContent:'center',
+    // alignItems:'center',
+    // alignSelf:'center',
+    // justifyContent:'center',
     width: 48,
     height: 48,
     alignSelf: 'center',
