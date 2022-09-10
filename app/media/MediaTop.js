@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component,useContext,useEffect,useState} from 'react';
 import {
   View,
   Text,
@@ -14,12 +14,37 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/AntDesign';
+import firestore from '@react-native-firebase/firestore';
+import {AuthContext} from '../routes/AutoProvider';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
 import Icon3 from 'react-native-vector-icons/Feather';
+import { read } from 'react-native-fs';
 const Stack = createNativeStackNavigator();
 
 const MediaTop = () => {
+  const {user} = useContext(AuthContext);
   const navigation = useNavigation();
+  const [userdata,setuserdata]=useState(null);
+  const fetchPosts = async()=>{
+    try{
+    await firestore()
+    .collection('users')
+    .doc(user.uid)
+    .get()
+    .then(documentSnapshot => {
+      const data =documentSnapshot.data();
+      console.log('sda ' );
+      setuserdata(data);
+    })  
+      }catch(e){
+        console.log(e);
+      };
+    }
+
+  useEffect(()=>{
+        fetchPosts();
+  },[]);
+  
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
@@ -28,7 +53,8 @@ const MediaTop = () => {
       <View style={styles.iconContainer}>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('List');
+            console.log('11 ',userdata);
+            navigation.navigate('Post',userdata);
           }}
           style={{flex: 1}}>
           <Icon3

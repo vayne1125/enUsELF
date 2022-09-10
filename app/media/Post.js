@@ -33,7 +33,7 @@ const width = Dimensions.get('screen').width;
 
 const Post = ({navigation, route}) => {
     const userdata = route.params;
-console.log('o o o  ',userdata);
+console.log('o o o1  ',route.params);
 const {user, logout} = useContext(AuthContext);
 //console.log(user);
     const users = firestore().collection('users').doc(user.uid);
@@ -41,18 +41,17 @@ const {user, logout} = useContext(AuthContext);
     const [uploading, setUploading] = useState(false);
     const [post, setPost] = useState(null);
     const [trip,setTrip]=useState(null);
+    const [username,setUserName]=useState(null);
 //console.log('o o o  ',trip);
 //console.log('!: ',users);
-/*useEffect(() => {
-  setTrip([]);
-},[]);*/
+
 //get shoosen trip
   useEffect(() => {
     const listen = DeviceEventEmitter
     .addListener('addSchedule',(item) => {
       setTrip(item);
-      console.log('teip ',item);
-      console.log('teip2 ',trip);
+     // console.log('teip ',item);
+     // console.log('teip2 ',trip);
     });
     return () => listen.remove();
   },[]);
@@ -88,11 +87,11 @@ const {user, logout} = useContext(AuthContext);
         const imageUrl=await uploadImage();//等他做完我才跑
           console.log('imageUrl:',imageUrl);
 
-        firestore()
+          await firestore()
         .collection('posts')
         .add({
           userid:user.uid,
-          name:userdata.name,
+         name:userdata.name,
           post:post,
           postImg:imageUrl,
           postTime:firestore.Timestamp.fromDate(new Date()),
@@ -101,12 +100,12 @@ const {user, logout} = useContext(AuthContext);
         }).then(()=>{
           console.log('Post add !');
           setPost(null);
-          Alert.alert("成功發布");
+        DeviceEventEmitter.emit('postSend');
+        Alert.alert("成功發布");
           navigation.goBack();
         }).catch((error)=>{
           console.log('Post Failed!',error);
         });
-        DeviceEventEmitter.emit('postSend');
       }
  //上傳照片   
       const uploadImage = async () => {

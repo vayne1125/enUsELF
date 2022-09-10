@@ -7,6 +7,7 @@ import {
   FlatList,
   Image,
   Button,
+  DeviceEventEmitter,
   TouchableOpacity,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
@@ -38,11 +39,6 @@ const Card = ({navigation, post, onDelete}) => {
   const sites = post.Trip;
   //const userSchdule=post.Trip;
   let timestamp = post.time;
-  //console.log('post1 ',post);
-  console.log('sssslook ', post.id);
-  //// console.log('user.uid= ',user.uid);
-  // console.log('post.useid= ',post.userid);
-  // console.log('sss =',post);
   const [userSchdule, setUserSchdule] = useState([]);
   const data = [];
   //拿景點資料
@@ -105,7 +101,7 @@ const Card = ({navigation, post, onDelete}) => {
   // console.log('1user.uid ',user.uid);
   //收藏
   const changecollect = () => {
-    if (collect === true) {
+    if (collect == true) {
       //取消收藏
       setCollect(false);
       //指定文件名刪除
@@ -140,9 +136,9 @@ const Card = ({navigation, post, onDelete}) => {
         .catch(error => {
           console.log('collect Failed!', error);
         });
-    }
+    } DeviceEventEmitter.emit('collectSend');
   };
-  console.log('1post.use ', post.img);
+  //console.log('1post.use ', post.img);
   return (
     <View style={styles.card}>
       <View style={styles.nameContainer}>

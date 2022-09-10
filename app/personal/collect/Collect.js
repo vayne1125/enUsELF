@@ -82,6 +82,7 @@ const Collect =() =>{
         };
         setCollect(list2);
         console.log('list2=',list2);
+        console.log('setCollect=',collect);
         setLoading(false);
   }
 //初始取值 

@@ -29,16 +29,20 @@ const width = Dimensions.get('screen').width - 20;
 const MediaHome = ({navigation}) => {
   const {user} = useContext(AuthContext);
   const [Posts, setPosts] = useState(null);
+  const [collect, setCollect] = useState([]);
+  const [my, setMy] = useState([]);
+  const [data, setdata] = useState(null);
   const [loading, setLoading] = useState(true);
   const [deleted, setDeleted] = useState(false);
+  //const [addcollected, setDeleted] = useState(false);
   const [userdata, setuserdata] = useState(null);
-  const [collect, setCollect] = useState([]);
   const [all, setAll] = useState([]);
   const [choose, setChoose] = useState('all');
   const array = [];
   const fetchPosts = async () => {
     try {
-      const list = [];
+      const listpost = [];
+      const listmy = [];
       //get post
       await firestore()
         .collection('posts')
@@ -48,7 +52,18 @@ const MediaHome = ({navigation}) => {
           //console.log('Total Posts:',querySnapshot.size);
           querySnapshot.forEach(doc => {
             const {userid, post, postImg, postTime, name, Trip} = doc.data();
-            list.push({
+           if(userid===user.uid){
+            listmy.push({
+              id: doc.id,
+              userid,
+              name: name,
+              img: postImg,
+              content: post,
+              time: postTime,
+              Trip: Trip,
+            });
+          }
+            listpost.push({
               id: doc.id,
               userid,
               name: name,
@@ -59,11 +74,15 @@ const MediaHome = ({navigation}) => {
             });
           });
         });
-      setPosts(list);
+      setPosts(listpost);
+     // console.log('listpost ',listpost);
+      //console.log('posts ',Posts);
+      setMy(listmy);
+      //console.log('my ',my);
       if (loading) {
         setLoading(false);
       }
-      console.log('ㄟㄟˋpost:', list);
+     // console.log('ㄟㄟˋpost:', listpost);
       //get post user name
       await firestore()
         .collection('users')
@@ -76,27 +95,120 @@ const MediaHome = ({navigation}) => {
     } catch (e) {
       console.log(e);
     }
-  };
 
+  };
+  /*const fetchuserdata= async () => {
+    try {
+      await firestore()
+        .collection('users')
+        .doc(user.uid)
+        .get()
+        .then(documentSnapshot => {
+          const data = documentSnapshot.data();
+          setuserdata(data);
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  };*/
+
+  const fetchCollect=async()=>{
+    const listget=[];
+    //get collect post name
+    await  firestore()
+    .collection('users')
+    .doc(user.uid)
+    .collection('collect')
+    .orderBy('collectTime','desc')
+    .get()
+    .then((querySnapshot)=>{
+    //console.log('Total Posts:',querySnapshot.size);
+    querySnapshot.forEach(doc=>{
+        const {postId}=doc.data();
+        listget.push({
+          postId
+        });
+      })
+    })
+    console.log('listget ',listget);
+   // console.log('postnem ',postname);
+    const listget2=[];
+    //get post
+    for await (let item of listget) {
+      await firestore().collection('posts').doc(item.postId).get()
+      .then( async (snap) => {
+         if(!snap.exists) {
+             // console.log('no ', snap);
+             await firestore()
+              .collection('users')
+              .doc(user.uid)
+              .collection('collect')
+              .doc(item.postId)
+              .delete()
+              .then(() => {
+              console.log('no exist collect deleted!');
+              }).catch(e=>
+                console.log('error'))
+         } else {
+            console.log('有 ', snap);
+            console.log('有 Data ', );
+            const {userid,post,postImg,postTime,name,Trip}=snap.data();
+            listget2.push({
+              id:snap.id ,
+              userid,
+              name:name,
+              img: postImg,
+              content: post,
+              time:postTime,
+              Trip:Trip,
+            });
+            //console.log('屋 ',list2);
+         }
+      })
+    };
+    setCollect(listget2);
+   // console.log('wwlistget2',listget2);
+    //console.log(collect);
+    //console.log('list2=',list2);
+   // setLoading(false);
+  }
+  useEffect(() => {
+    console.log('s    Posts',Posts);
+   // console.log(' s  collect',collect);
+   // console.log(' s   my',my);
+    if(choose === 'all') setdata(Posts);
+    else if (choose === 'collect') setdata (collect);
+    else  setdata (my);
+   // fetchMy();
+  }, [collect],[Posts],[my]);
+ /* const getdata=()=>{
+    if(choose === 'all')return Posts;
+    else if (choose === 'collect' )return collect;
+    else return my;
+  }*/
   useEffect(() => {
     fetchPosts();
+    fetchCollect();
+   // fetchMy();
   }, []);
 
   useEffect(() => {
     const listen = DeviceEventEmitter.addListener('postSend', () => {
+      console.log('yessssssssssssssssssss ');
       fetchPosts();
     });
     return () => listen.remove();
   }, []);
-  //取消收藏了
+  //收藏change
   useEffect(() => {
-    const listen = DeviceEventEmitter.addListener('deleteCollect', () => {
-      fetchPosts();
+    const listen = DeviceEventEmitter.addListener('collectSend', () => {
+      fetchCollect();
     });
     return () => listen.remove();
   }, []);
   //刪文
   useEffect(() => {
+    console.log('有珊     123');
     fetchPosts();
     setDeleted(false);
   }, [deleted]);
@@ -122,7 +234,7 @@ const MediaHome = ({navigation}) => {
 
   const deletePost = postId => {
     // console.log('Current Post Id:',postId);
-    firestore()
+     firestore()
       .collection('posts')
       .doc(postId)
       .get()
@@ -136,47 +248,34 @@ const MediaHome = ({navigation}) => {
             imgRef
               .delete()
               .then(() => {
-                console.log(`${postImg} has  delete`);
+               // console.log(`${postImg} has  delete`);
+               // setDeleted(true);
+                console.log('qqqqqqqqqq ',deleted);
                 deleteFirebaseData(postId);
-                setDeleted(true);
               })
               .catch(e => {
                 console.log('Error: ', e);
               });
           } else {
             deleteFirebaseData(postId);
+           // setDeleted(true);
+            console.log('qqqqqqqqqq ',deleted);
           }
         }
       });
   };
   const deleteFirebaseData = postId => {
-    firestore()
+    console.log('deleteFirebaseData ',deleted);
+     firestore()
       .collection('posts')
       .doc(postId)
       .delete()
       .then(() => {
         Alert.alert('成功刪除貼文!');
         setDeleted(true);
+        console.log('qq ',deleted);
       })
       .catch(e => console.log('山資料err ', e));
-  };
-  const FlatList_Header = ({}) => {
-    return (
-      <View style={styles.mycard}>
-        <View style={styles.nameContainer}>
-          <View style={styles.icon}>
-            <Icons name={'person-circle-outline'} size={32} />
-          </View>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('Post', userdata);
-            }}
-            style={{flex: 1}}>
-            <Text style={styles.buttonText}>和大家分享你的旅遊經歷吧</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
   };
 
   return (
@@ -203,6 +302,7 @@ const MediaHome = ({navigation}) => {
               <TouchableOpacity
                 onPress={() => {
                   setChoose('all');
+                  setdata(Posts);
                 }}>
                 <Text style={styles.textStyle2}>全 部</Text>
               </TouchableOpacity>
@@ -213,6 +313,7 @@ const MediaHome = ({navigation}) => {
             <TouchableOpacity
               onPress={() => {
                 setChoose('all');
+                setdata(Posts);
               }}>
               <Text style={styles.textStyle}>全 部</Text>
             </TouchableOpacity>
@@ -229,6 +330,7 @@ const MediaHome = ({navigation}) => {
               <TouchableOpacity
                 onPress={() => {
                   setChoose('collect');
+                setdata(collect);
                 }}>
                 <Text style={styles.textStyle2}>收 藏</Text>
               </TouchableOpacity>
@@ -238,6 +340,7 @@ const MediaHome = ({navigation}) => {
           <View style={styles.unchoose}>
             <TouchableOpacity
               onPress={() => {
+                setdata(collect);
                 setChoose('collect');
               }}>
               <Text style={styles.textStyle}>收 藏</Text>
@@ -255,6 +358,7 @@ const MediaHome = ({navigation}) => {
               <TouchableOpacity
                 onPress={() => {
                   setChoose('mypost');
+                  setdata(my);
                 }}>
                 <Text style={styles.textStyle2}>我的貼文</Text>
               </TouchableOpacity>
@@ -265,6 +369,7 @@ const MediaHome = ({navigation}) => {
             <TouchableOpacity
               onPress={() => {
                 setChoose('mypost');
+                setdata(my);
               }}>
               <Text style={styles.textStyle}>我的貼文</Text>
             </TouchableOpacity>
@@ -286,7 +391,7 @@ const MediaHome = ({navigation}) => {
               paddingBottom: 80,
             }}
             numColumns={1}
-            data={Posts}
+            data={data}
             //ListHeaderComponent={FlatList_Header}
             renderItem={({item}) => (
               <Card
