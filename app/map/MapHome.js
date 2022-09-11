@@ -506,7 +506,7 @@ const MapHome = ({ navigation, route }) => {
                     address: marker.address,
                     id: marker.id,
                     star: 5,
-                    info: marker.name,
+                    info: marker.info,
                     date: marker.date,
                     time: marker.time.map((ti) => {
                       return ti + '\n';
@@ -542,7 +542,7 @@ const MapHome = ({ navigation, route }) => {
                     name: marker.name,
                     address: marker.address,
                     star: marker.star,
-                    info: marker.name,
+                    info: marker.info,
                     time: marker.time.map((ti) => {
                       return ti + '\n';
                     }),
