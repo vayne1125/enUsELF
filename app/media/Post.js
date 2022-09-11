@@ -87,7 +87,7 @@ const {user, logout} = useContext(AuthContext);
         const imageUrl=await uploadImage();//等他做完我才跑
           console.log('imageUrl:',imageUrl);
 
-          await firestore()
+          firestore()
         .collection('posts')
         .add({
           userid:user.uid,
@@ -100,8 +100,8 @@ const {user, logout} = useContext(AuthContext);
         }).then(()=>{
           console.log('Post add !');
           setPost(null);
-        DeviceEventEmitter.emit('postSend');
-        Alert.alert("成功發布");
+          DeviceEventEmitter.emit('postSend');
+          Alert.alert("成功發布");
           navigation.goBack();
         }).catch((error)=>{
           console.log('Post Failed!',error);

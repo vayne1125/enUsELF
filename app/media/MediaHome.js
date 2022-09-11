@@ -49,7 +49,6 @@ const MediaHome = ({navigation}) => {
         .orderBy('postTime', 'desc') //照時間排
         .get()
         .then(querySnapshot => {
-          //console.log('Total Posts:',querySnapshot.size);
           querySnapshot.forEach(doc => {
             const {userid, post, postImg, postTime, name, Trip} = doc.data();
            if(userid===user.uid){
@@ -75,42 +74,16 @@ const MediaHome = ({navigation}) => {
           });
         });
       setPosts(listpost);
-     // console.log('listpost ',listpost);
-      //console.log('posts ',Posts);
       setMy(listmy);
       //console.log('my ',my);
       if (loading) {
         setLoading(false);
       }
-     // console.log('ㄟㄟˋpost:', listpost);
-      //get post user name
-      await firestore()
-        .collection('users')
-        .doc(user.uid)
-        .get()
-        .then(documentSnapshot => {
-          const data = documentSnapshot.data();
-          setuserdata(data);
-        });
     } catch (e) {
       console.log(e);
     }
 
   };
-  /*const fetchuserdata= async () => {
-    try {
-      await firestore()
-        .collection('users')
-        .doc(user.uid)
-        .get()
-        .then(documentSnapshot => {
-          const data = documentSnapshot.data();
-          setuserdata(data);
-        });
-    } catch (e) {
-      console.log(e);
-    }
-  };*/
 
   const fetchCollect=async()=>{
     const listget=[];
@@ -131,14 +104,12 @@ const MediaHome = ({navigation}) => {
       })
     })
     console.log('listget ',listget);
-   // console.log('postnem ',postname);
     const listget2=[];
     //get post
     for await (let item of listget) {
       await firestore().collection('posts').doc(item.postId).get()
       .then( async (snap) => {
          if(!snap.exists) {
-             // console.log('no ', snap);
              await firestore()
               .collection('users')
               .doc(user.uid)
@@ -162,39 +133,25 @@ const MediaHome = ({navigation}) => {
               time:postTime,
               Trip:Trip,
             });
-            //console.log('屋 ',list2);
          }
       })
     };
     setCollect(listget2);
-   // console.log('wwlistget2',listget2);
-    //console.log(collect);
-    //console.log('list2=',list2);
-   // setLoading(false);
   }
   useEffect(() => {
     console.log('s    Posts',Posts);
-   // console.log(' s  collect',collect);
-   // console.log(' s   my',my);
+    console.log(' s   my',my);
     if(choose === 'all') setdata(Posts);
     else if (choose === 'collect') setdata (collect);
     else  setdata (my);
-   // fetchMy();
-  }, [collect],[Posts],[my]);
- /* const getdata=()=>{
-    if(choose === 'all')return Posts;
-    else if (choose === 'collect' )return collect;
-    else return my;
-  }*/
+  }, [collect,Posts,my]);
   useEffect(() => {
     fetchPosts();
     fetchCollect();
-   // fetchMy();
   }, []);
 
   useEffect(() => {
     const listen = DeviceEventEmitter.addListener('postSend', () => {
-      console.log('yessssssssssssssssssss ');
       fetchPosts();
     });
     return () => listen.remove();
@@ -208,7 +165,6 @@ const MediaHome = ({navigation}) => {
   }, []);
   //刪文
   useEffect(() => {
-    console.log('有珊     123');
     fetchPosts();
     setDeleted(false);
   }, [deleted]);
@@ -228,7 +184,7 @@ const MediaHome = ({navigation}) => {
           onPress: () => deletePost(postId),
         },
       ],
-      //{cancelable: false},
+      {cancelable: false},
     );
   };
 
@@ -250,7 +206,6 @@ const MediaHome = ({navigation}) => {
               .then(() => {
                // console.log(`${postImg} has  delete`);
                // setDeleted(true);
-                console.log('qqqqqqqqqq ',deleted);
                 deleteFirebaseData(postId);
               })
               .catch(e => {
@@ -259,25 +214,38 @@ const MediaHome = ({navigation}) => {
           } else {
             deleteFirebaseData(postId);
            // setDeleted(true);
-            console.log('qqqqqqqqqq ',deleted);
           }
         }
       });
   };
-  const deleteFirebaseData = postId => {
+  const deleteFirebaseData =async  (postId) => {
     console.log('deleteFirebaseData ',deleted);
-     firestore()
+    console.log('postid ',postId);
+     await firestore()
       .collection('posts')
       .doc(postId)
       .delete()
       .then(() => {
+        console.log('成功');
         Alert.alert('成功刪除貼文!');
-        setDeleted(true);
         console.log('qq ',deleted);
-      })
+        setDeleted(true); })
       .catch(e => console.log('山資料err ', e));
-  };
-
+     
+    };
+    const EmptyList =({})=>{
+      return ( 
+      <View style={{flex:1, 
+        justifyContent: 'center',
+        alignItems: 'center',}}>
+          
+        {(choose==='collect')?
+          <Text style={{fontSize: 40,textAlignVertical: 'center' ,}}>尚無收藏</Text>
+      : <Text style={{fontSize: 40,textAlignVertical: 'center' ,}}>尚無貼文</Text>
+    }
+      </View>
+      );
+    }
   return (
     <View style={styles.container}>
       {/*頂部*/}
@@ -390,6 +358,7 @@ const MediaHome = ({navigation}) => {
               marginTop: 10,
               paddingBottom: 80,
             }}
+            ListEmptyComponent={EmptyList}
             numColumns={1}
             data={data}
             //ListHeaderComponent={FlatList_Header}

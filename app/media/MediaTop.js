@@ -33,7 +33,6 @@ const MediaTop = () => {
     .get()
     .then(documentSnapshot => {
       const data =documentSnapshot.data();
-      console.log('sda ' );
       setuserdata(data);
     })  
       }catch(e){
@@ -134,6 +133,7 @@ const styles = StyleSheet.create({
     alignContent:'center',
     alignItems:'center',
     alignSelf:'center',
+
     justifyContent:'space-around',
     //width: 48,
     //height: 48,

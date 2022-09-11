@@ -14,7 +14,6 @@ import {
 import Icons from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {CheckBox} from '@rneui/themed';
-import Image_link from '../theme/Image';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import {parseMapToJSON} from 'source-map-resolve';
@@ -29,6 +28,8 @@ import Hotel from '../theme/Hotel';
 import KOL from '../theme/KOL';
 import Monuments from '../theme/Monuments';
 import Nature from '../theme/Nature';
+import Image_link from '../theme/Image';
+import Image_linkMap from '../map/Image';
 const width = Dimensions.get('screen').width;
 const cardHeight = Dimensions.get('screen').height / 7;
 
@@ -77,15 +78,17 @@ const Items = () => {
                 else if (type === 'kol') data = KOL[id];
                 else if (type === 'monuments') data = Monuments[id];
                 else if (type === 'hotel') data = Hotel[id];
-                else if (type === 'hol') data = hol[id];
-                else if (type === 'hot') data = hot[id];
-                else if (type === 'shop') data = shop[id];
+                else if (type === 'hol') data = Holplace[id];
+                else if (type === 'hot') data = Hotplace[id];
+                else if (type === 'shop') data = Shopplace[id];
 
                 list.push({
                   name: data.name,
                   city: data.city,
                   region: data.region,
                   check: check,
+                  type:type,
+                  id:id,
                 });
               });
             });
@@ -159,7 +162,12 @@ const Items = () => {
         </View>
         <View style={styles.siteContainer}>
           <View style={styles.imageContainer}>
-            {<Image style={styles.image} source={Image_link[site.name]} />}
+          {
+               (site.type=== "hot" || site.type === "hol" || site.type === "shop")?
+                <Image style={styles.image} source={Image_linkMap[site.type+(site.id.toString())]} />:
+                <Image style={styles.image} source={Image_link[site.name]} />
+                
+          }
           </View>
           {/* <View style={{flex: 2}}>
             <TouchableOpacity
