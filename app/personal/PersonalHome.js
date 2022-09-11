@@ -219,8 +219,9 @@ const styles = StyleSheet.create({
   },
   text: {
     alignSelf: 'center',
-    fontSize: 20,
+    fontSize: 22,
     top: 5,
+    fontFamily:'SignikaNegative-SemiBold',
   },
   chooseContainer: {
     flex: 1.5,

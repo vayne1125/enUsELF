@@ -62,7 +62,7 @@ const Result = ({navigation, route}) => {
   const [kol, setKol] = useState(false);
   const [hotel, setHotel] = useState(false);
   const [monuments, setMonuments] = useState(false);
-  const[refreshing,setRefreshing]=useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   // const onRefresh = React.useCallback(() => {
   //   setRefreshing(true);
   //   wait(2000).then(() => setRefreshing(false));
@@ -95,7 +95,21 @@ const Result = ({navigation, route}) => {
       </View>
       <View style={styles.topBar}>
         <View style={styles.icons}>
-          <View style={styles.theme}>
+          {
+            food?(<View style={styles.theme2}>
+              <TouchableOpacity
+                onPress={() => {
+                  setTheme('美食');
+                  setFood(true);
+                  setNature(false);
+                  setKol(false);
+                  setMonuments(false);
+                  setHotel(false);
+                  setRefreshing(true);
+                }}>
+                <Icons name={'fast-food'} color={'#ffffff'} size={40} />
+              </TouchableOpacity>
+            </View>):(<View style={styles.theme}>
             <TouchableOpacity
               onPress={() => {
                 setTheme('美食');
@@ -108,15 +122,67 @@ const Result = ({navigation, route}) => {
               }}>
               <Icons name={'fast-food'} color={'#5f695d'} size={40} />
             </TouchableOpacity>
-          </View>
-          {
-            (food)?<View style={{flex:0.1}}></View>:<View style={styles.textContainer}>
-            <Text style={styles.textStyle2}>美食</Text>
-          </View>
+          </View>)
           }
+          {/* <View style={styles.theme}>
+            <TouchableOpacity
+              onPress={() => {
+                setTheme('美食');
+                setFood(true);
+                setNature(false);
+                setKol(false);
+                setMonuments(false);
+                setHotel(false);
+                setRefreshing(true);
+              }}>
+              <Icons name={'fast-food'} color={'#5f695d'} size={40} />
+            </TouchableOpacity>
+          </View> */}
+          {food ? (
+            // <View style={{flex: 0.1}}></View>
+            //暫時
+            <View style={styles.textContainer}>
+              <Text style={styles.textStyle2}>美食</Text>
+            </View>
+          ) : (
+            <View style={styles.textContainer}>
+              <Text style={styles.textStyle2}>美食</Text>
+            </View>
+          )}
         </View>
         <View style={styles.icons}>
-          <View style={styles.theme}>
+          {nature ? (
+            <View style={styles.theme2}>
+              <TouchableOpacity
+                onPress={() => {
+                  setTheme('自然');
+                  setFood(false);
+                  setNature(true);
+                  setKol(false);
+                  setMonuments(false);
+                  setHotel(false);
+                  setRefreshing(true);
+                }}>
+                <Icon2 name={'mountains'} color={'#ffffff'} size={44} />
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <View style={styles.theme}>
+              <TouchableOpacity
+                onPress={() => {
+                  setTheme('自然');
+                  setFood(false);
+                  setNature(true);
+                  setKol(false);
+                  setMonuments(false);
+                  setHotel(false);
+                  setRefreshing(true);
+                }}>
+                <Icon2 name={'mountains'} color={'#5f695d'} size={44} />
+              </TouchableOpacity>
+            </View>
+          )}
+          {/* <View style={styles.theme}>
             <TouchableOpacity
               onPress={() => {
                 setTheme('自然');
@@ -129,15 +195,34 @@ const Result = ({navigation, route}) => {
               }}>
               <Icon2 name={'mountains'} color={'#5f695d'} size={44} />
             </TouchableOpacity>
-          </View>
-          {
-            (nature)?<View style={{flex:0.1}}></View>:<View style={styles.textContainer}>
-            <Text style={styles.textStyle2}>自然</Text>
-          </View>
-          }
+          </View> */}
+          {nature ? (
+            // <View style={{flex: 0.1}}></View>
+            //暫時
+            <View style={styles.textContainer}>
+              <Text style={styles.textStyle2}>自然</Text>
+            </View>
+          ) : (
+            <View style={styles.textContainer}>
+              <Text style={styles.textStyle2}>自然</Text>
+            </View>
+          )}
         </View>
         <View style={styles.icons}>
-          <View style={styles.theme}>
+          {kol?(<View style={styles.theme2}>
+            <TouchableOpacity
+              onPress={() => {
+                setTheme('網美');
+                setFood(false);
+                setNature(false);
+                setKol(true);
+                setMonuments(false);
+                setHotel(false);
+                setRefreshing(true);
+              }}>
+              <Icon name={'camera-retro'} color={'#ffffff'} size={40} />
+            </TouchableOpacity>
+          </View>):(<View style={styles.theme}>
             <TouchableOpacity
               onPress={() => {
                 setTheme('網美');
@@ -150,15 +235,49 @@ const Result = ({navigation, route}) => {
               }}>
               <Icon name={'camera-retro'} color={'#5f695d'} size={40} />
             </TouchableOpacity>
-          </View>
-          {
-            (kol)?<View style={{flex:0.1}}></View>:<View style={styles.textContainer}>
-            <Text style={styles.textStyle2}>網美</Text>
-          </View>
-          }
+          </View>)}
+          {/* <View style={styles.theme}>
+            <TouchableOpacity
+              onPress={() => {
+                setTheme('網美');
+                setFood(false);
+                setNature(false);
+                setKol(true);
+                setMonuments(false);
+                setHotel(false);
+                setRefreshing(true);
+              }}>
+              <Icon name={'camera-retro'} color={'#5f695d'} size={40} />
+            </TouchableOpacity>
+          </View> */}
+          {kol ? (
+            // <View style={{flex: 0.1}}></View>
+            //暫時
+            <View style={styles.textContainer}>
+              <Text style={styles.textStyle2}>網美</Text>
+            </View>
+          ) : (
+            <View style={styles.textContainer}>
+              <Text style={styles.textStyle2}>網美</Text>
+            </View>
+          )}
         </View>
         <View style={styles.icons}>
-          <View style={styles.theme}>
+          {
+            monuments?(<View style={styles.theme2}>
+              <TouchableOpacity
+                onPress={() => {
+                  setTheme('古蹟');
+                  setFood(false);
+                  setNature(false);
+                  setKol(false);
+                  setMonuments(true);
+                  setHotel(false);
+                  setRefreshing(true);
+                }}>
+                <Icon3 name={'castle'} color={'#ffffff'} size={44} />
+              </TouchableOpacity>
+            </View>):(<View style={styles.theme}>
             <TouchableOpacity
               onPress={() => {
                 setTheme('古蹟');
@@ -171,15 +290,49 @@ const Result = ({navigation, route}) => {
               }}>
               <Icon3 name={'castle'} color={'#5f695d'} size={44} />
             </TouchableOpacity>
-          </View>
-          {
-            (monuments)?<View style={{flex:0.1}}></View>:<View style={styles.textContainer}>
-            <Text style={styles.textStyle2}>古蹟</Text>
-          </View>
+          </View>)
           }
+          {/* <View style={styles.theme}>
+            <TouchableOpacity
+              onPress={() => {
+                setTheme('古蹟');
+                setFood(false);
+                setNature(false);
+                setKol(false);
+                setMonuments(true);
+                setHotel(false);
+                setRefreshing(true);
+              }}>
+              <Icon3 name={'castle'} color={'#5f695d'} size={44} />
+            </TouchableOpacity>
+          </View> */}
+          {monuments ? (
+            // <View style={{flex: 0.1}}></View>
+            //暫時
+            <View style={styles.textContainer}>
+              <Text style={styles.textStyle2}>古蹟</Text>
+            </View>
+          ) : (
+            <View style={styles.textContainer}>
+              <Text style={styles.textStyle2}>古蹟</Text>
+            </View>
+          )}
         </View>
         <View style={styles.icons}>
-          <View style={styles.theme}>
+          {hotel?(<View style={styles.theme2}>
+            <TouchableOpacity
+              onPress={() => {
+                setTheme('住宿');
+                setFood(false);
+                setNature(false);
+                setKol(false);
+                setMonuments(false);
+                setHotel(true);
+                setRefreshing(true);
+              }}>
+              <Icons name={'bed'} color={'#ffffff'} size={44} />
+            </TouchableOpacity>
+          </View>):(<View style={styles.theme}>
             <TouchableOpacity
               onPress={() => {
                 setTheme('住宿');
@@ -192,12 +345,32 @@ const Result = ({navigation, route}) => {
               }}>
               <Icons name={'bed'} color={'#5f695d'} size={44} />
             </TouchableOpacity>
-          </View>
-          {
-            (hotel)?<View style={{flex:0.1}}></View>:<View style={styles.textContainer}>
-            <Text style={styles.textStyle2}>住宿</Text>
-          </View>
-          }   
+          </View>)}
+          {/* <View style={styles.theme}>
+            <TouchableOpacity
+              onPress={() => {
+                setTheme('住宿');
+                setFood(false);
+                setNature(false);
+                setKol(false);
+                setMonuments(false);
+                setHotel(true);
+                setRefreshing(true);
+              }}>
+              <Icons name={'bed'} color={'#5f695d'} size={44} />
+            </TouchableOpacity>
+          </View> */}
+          {hotel ? (
+            // <View style={{flex: 0.1}}></View>
+            //暫時
+            <View style={styles.textContainer}>
+              <Text style={styles.textStyle2}>住宿</Text>
+            </View>
+          ) : (
+            <View style={styles.textContainer}>
+              <Text style={styles.textStyle2}>住宿</Text>
+            </View>
+          )}
         </View>
       </View>
       {/*內容*/}
@@ -276,6 +449,22 @@ const styles = StyleSheet.create({
     flex: 3,
     //height:height,
     backgroundColor: 'white',
+    shadowColor: '#7F5DF0',
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.5,
+    elevation: 5,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  theme2:{
+    borderRadius: 25,
+    flex: 3,
+    //height:height,
+    backgroundColor: '#5f695d',
     shadowColor: '#7F5DF0',
     shadowOffset: {
       width: 0,
