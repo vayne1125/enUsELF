@@ -238,6 +238,21 @@ const MapHome = ({ navigation, route }) => {
             data.push(Monuments[param.id]);
           } else if (param.type === "hotel") {
             data.push(Hotel[param.id]);
+          }else if(param.type === "hot"){
+            var tp = Hotplace[param.id];
+            tp.lat = Hotplace[param.id].location.lat;
+            tp.lng = Hotplace[param.id].location.lng;
+            data.push(tp);
+          }else if(param.type === "shop"){
+            var tp = Shopplace[param.id];
+            tp.lat = Shopplace[param.id].location.lat;
+            tp.lng = Shopplace[param.id].location.lng;
+            data.push(tp);
+          }else if(param.type === "hol"){
+            var tp = Holplace[param.id];
+            tp.lat = Holplace[param.id].location.lat;
+            tp.lng = Holplace[param.id].location.lng;
+            data.push(tp);
           }
         }
       })
@@ -694,7 +709,8 @@ const styles = StyleSheet.create({
     left: -Dimensions.get('window').width / 2 + 70,
     //position: 'absolute',
     top: -Dimensions.get('window').height / 2 + 130,
-    backgroundColor: '#C4E1FF',
+    backgroundColor: '#D9FFFF',
+    //#C4E1FF
     width: 120,
     height: 40,
     alignItems: 'center',
