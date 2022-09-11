@@ -16,15 +16,16 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Icons from 'react-native-vector-icons/Ionicons';
-import Iconcross from 'react-native-vector-icons/Entypo';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import MediaTop from './MediaTop';
 import {AuthContext} from '../routes/AutoProvider';
 import Card from './Card';
+//import Iconcamera from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { vi } from 'date-fns/locale';
 const width = Dimensions.get('screen').width - 20;
+const height = Dimensions.get('screen').height/5;
 
 const MediaHome = ({navigation}) => {
   const {user} = useContext(AuthContext);
@@ -235,14 +236,34 @@ const MediaHome = ({navigation}) => {
     };
     const EmptyList =({})=>{
       return ( 
+      <View style={{flex:1,flexDirection:'column',top:80,}}>
       <View style={{flex:1, 
         justifyContent: 'center',
         alignItems: 'center',}}>
-          
+          <View style={styles.imageContainer}>
+           { (choose==='collect')?
+            <View>
+              <Icon
+                name={'bookmark-multiple-outline'}
+                size={60}
+                color={'#5f695d'}
+              />
+            </View>:
+            <View>
+            <Icon
+              name={'camera-outline'}
+              size={60}
+              color={'#5f695d'}
+            />
+          </View>
+            }
+          </View>
+        <View syle={{flex:1,}}>
         {(choose==='collect')?
-          <Text style={{fontSize: 40,textAlignVertical: 'center' ,}}>尚無收藏</Text>
-      : <Text style={{fontSize: 40,textAlignVertical: 'center' ,}}>尚無貼文</Text>
-    }
+          <Text style={{fontSize: 25,textAlignVertical: 'center' ,}}>尚無收藏</Text>
+      : <Text style={{fontSize: 25,textAlignVertical: 'center' ,}}>尚無貼文</Text>
+    }</View>
+      </View>
       </View>
       );
     }
@@ -384,6 +405,15 @@ const styles = StyleSheet.create({
   },
   topbar: {
     flex: 1,
+  },
+  imageContainer: {
+    flex: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    //backgroundColor: '#D1DED7',
+    //borderColor: '#D1DED7',
+    //borderWidth: 3,
+    //borderBottomWidth:10,
   },
   chooseContainer: {
     flex: 1,
