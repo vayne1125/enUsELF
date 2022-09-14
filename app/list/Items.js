@@ -218,10 +218,11 @@ const Items = () => {
   const navigation = useRef(useNavigation());
   useEffect(() => {
     const fetchSchedule = () => {
-      const list = [];
+      let list = [];
       const listen = DeviceEventEmitter.addListener('gotomap', async () => {
         try {
           if (user) {
+            list = [];
             const users = firestore().collection('users').doc(user.uid);
             await users
               .collection('list')

@@ -21,9 +21,10 @@ export const AuthProvider = ({children}) => {
                             auth().currentUser.updatePassword(update)
                             .then(() => {setMess('success')})
                             .catch((error)=>{setMess(error.code)})
-                        }    
+                        }
+                        else setMess('success')   
                     })
-                    .catch((error) => {});
+                    .catch((error) => {setMess(error.code);})
                 }
                 catch(error){
                     setMess(error.code);
@@ -45,6 +46,7 @@ export const AuthProvider = ({children}) => {
                         })
                         //ensure we catch any errors at this stage to advise us if something does go wrong
                         .catch(error => {
+                            setMess(error.code);
                             console.log('Something went wrong with added user to firestore: ', error);
                         })
                         setMess('success');
@@ -56,6 +58,7 @@ export const AuthProvider = ({children}) => {
                     });
                 }
                 catch (error) {
+                    setMess(error.code);
                     console.log(error);
                 }
             },

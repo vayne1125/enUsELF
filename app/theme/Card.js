@@ -65,13 +65,14 @@ export default class Card extends PureComponent  {
         this.state = {
           name:this.props.sites.name,
           uncheck:true,
+          type:null,
           user:null,
         }
     }
     componentDidMount(){
         const update = () =>{
             const user = auth().currentUser;
-            if(user&& user.uid !== this.state.user){
+            if(user && user.uid !== this.state.user){
                 this.setState({user:user.uid});
                 const users = firestore().collection('users').doc(user.uid);
                 users.collection('list').doc(this.state.name)

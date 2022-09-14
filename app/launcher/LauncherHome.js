@@ -29,6 +29,7 @@ const LauncherHome = ({navigation}) => {
     const [secret, setSecret] = useState(true);
     const {login, register} = useContext(AuthContext);
     useEffect(() => {
+        console.log(mess1)
         if(mess1!=''){
             if(mess1 === 'auth/invalid-email'){
                 Alert.alert('登入失敗','EMAIL格式錯誤');
