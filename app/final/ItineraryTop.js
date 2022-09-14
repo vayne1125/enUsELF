@@ -9,22 +9,23 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
+import Time from './time/Time';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
-//const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
 const ItineraryTop = props => {
- // const navigation = useNavigation();
+ const navigation = useNavigation();
  const aurInfo = props;
   return (
     <View style={styles.container}>
       <Text style={styles.textStyle}>{aurInfo.tripname}</Text>
       <TouchableOpacity
-        // onPress={() => {
-        //   navigation.navigate('List');
-        // }}
+        onPress={() => {
+          navigation.navigate('Time',props.time);
+        }}
         style={{flex: 1}}>
         {/* <View style={styles.iconContainer}>
           <Icons

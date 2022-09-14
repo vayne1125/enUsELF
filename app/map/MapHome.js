@@ -6,6 +6,7 @@ import {
   Text,
   TouchableHighlight,
   Image,
+  alert
 } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
@@ -13,6 +14,7 @@ import { mapStyle } from './mapStyle';
 import { ORI_DATA } from './OriData'; //空資料 -> 初始化
 import DetailForMap from '../detail/DetailForMap';
 import Back from './Back';
+import CustomMarkerComponent from './CustomMarkerComponent';
 import MapViewDirections from 'react-native-maps-directions';
 import Hotplace from './Hotplace'
 import Shopplace from './Shopplace'
@@ -22,10 +24,14 @@ import Hotel from '../theme/Hotel'
 import KOL from '../theme/KOL'
 import Monuments from '../theme/Monuments'
 import Nature from '../theme/Nature'
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useNavigation} from '@react-navigation/native';
 //import Hotplace from './tp'
 //{ navigation, route }
-  
+const Stack = createNativeStackNavigator();
+
 const MapHome = ({ navigation, route }) => {
+  const NewNavigation = useNavigation();
   // console.log("haha:",route.params);
   const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
   const [once, setOnce] = useState(true);    //控制只會一次線
@@ -59,38 +65,44 @@ const MapHome = ({ navigation, route }) => {
   //console.log("選染 ",mySet);
   const onPressHandlerForComlete = () => {
     // console.log("距離: ", Math.sqrt((origin.latitude - destination.latitude) * (origin.latitude - destination.latitude) + (origin.longitude - destination.longitude) * (origin.longitude - destination.longitude)));
-    var rt = [];
-    var desSite;
-    var ori = origin;
-    (mainRoute).map((place) => {
-      if (destination.latitude == place.lat) {
-        desSite = {
-          place_id: place.place_id,
-          id: place.id,
-          type: place.type
-        };
-      } else {
+    try {
+      var rt = [];
+      var desSite;
+      var ori = origin;
+      (mainRoute).map((place) => {
+        if (destination.latitude == place.lat) {
+          desSite = {
+            place_id: place.place_id,
+            id: place.id,
+            type: place.type
+          };
+        } else {
+          rt.push({
+            place_id: place.place_id,
+            id: place.id,
+            type: place.type
+          });
+        }
+      })
+      endData.map((i) => {
         rt.push({
-          place_id: place.place_id,
-          id: place.id,
-          type: place.type
+          place_id: i.place_id,
+          id: i.id,
+          type: i.type
         });
-      }
-    })
-    endData.map((i) => {
-      rt.push({
-        place_id: i.place_id,
-        id: i.id,
-        type: i.type
-      });
-    })
-    navigation.navigate("ItineraryHome", {
-      tripname: "行程表",
-      origin: ori,
-      desSite: desSite,
-      site: rt,
-      from: "map",
-    });
+      })
+        NewNavigation.navigate("ItineraryHome", {
+          tripname: "行程表",
+          origin: ori,
+          desSite: desSite,
+          site: rt,
+          from: "map",
+        });
+      
+    } catch (error) {
+      console.log(error);
+      alert("伺服器發生錯誤，請檢查網路狀況或重新加載");
+    }
   }
   const onPressHandlerForHot = () => {
     setHotPress(!hotPress); //打開
@@ -316,11 +328,15 @@ const MapHome = ({ navigation, route }) => {
     })
 
     setSouth(()=>{
-      var rt = south;
-      mainRoute.map((i)=>{
-        if(i.lat < rt) rt = i.lat;
-      })
-      return rt;
+      try {
+        var rt = south;
+        mainRoute.map((i)=>{
+          if(i.lat < rt) rt = i.lat;
+        })
+        return rt;
+      } catch (error) {
+        alert("伺服器發生錯誤，請檢查網路狀況或重新加載");
+      }     
     })
 
   }, [origin, mainRoute])
@@ -397,36 +413,29 @@ const MapHome = ({ navigation, route }) => {
         region={initRegion}
         mapType="standard"
       >
-        {(mainRoute).map((marker) => (
-          <Marker
-            //pinColor='green'
-            tracksViewChanges={false}
-            key={marker.type + (marker.id).toString()}
-            coordinate={{ latitude: marker.lat, longitude: marker.lng }}
-            onPress={(e) => {
-              setModalCanPress(false);
-              setModalVisible(!modalVisible);
-              setModalEntry({
-                type: marker.type,
-                date: marker.date,
-                id: marker.id,
-                name: marker.name,
-                info: marker.info,
-                address: marker.address,
-                star: marker.star,
-                time: marker.time,
-                city: marker.city,
-                region: marker.region,
-              });
-            }}
-          >
-            <View style={styles.markerCss}>
-              <Text style={styles.markerText}>{marker.name}</Text>
-              <Image style={styles.markerImg} source={require('../../assets/pin/green.png')} />
-            </View>
-          </Marker>
-        ))}
 
+        {(mainRoute).map((marker,index)=>(     
+          <CustomMarkerComponent 
+              data = {marker}
+              color = 'green'
+              onPressHandler={(e) => {
+                setModalCanPress(false);
+                setModalVisible(!modalVisible);
+                setModalEntry({
+                  type: marker.type,
+                  date: marker.date,
+                  id: marker.id,
+                  name: marker.name,
+                  info: marker.info,
+                  address: marker.address,
+                  star: marker.star,
+                  time: marker.time,
+                  city: marker.city,
+                  region: marker.region,
+                });
+              }}
+          />
+        ))}
 
         <MapViewDirections
           optimizeWaypoints={true}
@@ -453,11 +462,31 @@ const MapHome = ({ navigation, route }) => {
           coordinate={origin}
           title="你的位置"
         />
-
-        {(hotPress ? hotData : ORI_DATA).map((marker) => {
+   {(hotPress ? hotData : ORI_DATA).map((marker) => {
           if (marker.del >= myLatitudeDelta) {
             ////console.log(myLatitudeDelta);
             return (
+          //     <CustomMarkerComponent 
+          //     data = {marker}
+          //     color = 'red'
+          //     onPressHandler={(e) => {
+          //       setModalCanPress(false);
+          //       setModalVisible(!modalVisible);
+          //       setModalEntry({
+          //           type: marker.type,
+          //           id: marker.id,
+          //           name: marker.name,
+          //           info: marker.info,
+          //           address: marker.address,
+          //           star: marker.star,
+          //           time: marker.time.map((ti) => {
+          //             return ti + '\n';
+          //           }),
+          //           city: marker.city,
+          //           region: marker.region,
+          //       });
+          //     }}
+          // />
               <Marker
                 tracksViewChanges={false}
                 key={marker.type + (marker.id).toString()}
@@ -485,9 +514,10 @@ const MapHome = ({ navigation, route }) => {
                   <Text style={styles.markerText}>{marker.name}</Text>
                   <Image style={styles.markerImg} source={require('../../assets/pin/red.png')} />
                 </View>
-              </Marker>)
-          }
+              </Marker>
+        )}
         })}
+       
 
         {(holPress ? holData : ORI_DATA).map((marker) => {
           if (marker.del >= myLatitudeDelta) {
@@ -631,7 +661,9 @@ const MapHome = ({ navigation, route }) => {
         {/*完成*/}
         <TouchableHighlight
           style={styles.buttonForComlete}
-          onPress={onPressHandlerForComlete}
+          onPress={
+            onPressHandlerForComlete
+          }
           underlayColor='#ddddd'
         >
           <Text style={styles.text}>完成</Text>

@@ -48,6 +48,10 @@ const ItineraryHome = ({ navigation, route }) => {
 
   const [tripname, setTripname] = useState(route.params.tripname);
 
+  const [time,setTime] = useState();
+  const [order,setOrder] = useState();
+  const [place,setPlace] = useState();
+
   const [size, setSize] = useState(0);
   const { user, logout } = useContext(AuthContext);//user uid
 
@@ -247,6 +251,25 @@ const ItineraryHome = ({ navigation, route }) => {
     });
   }, [north,south,west,east])
 
+  useEffect(()=>{
+    // setPlace(()=>{
+    //   var data = [];
+    //   for(var i = 0;i<order.length;i++){
+    //     data.push(route.params.site[order[i]]);
+    //   }
+    //   data.push(route.params.desSite);
+    //   return data;
+    // })
+    // setTime(()=>{
+    //   var rt = [];
+    //   time.map((t)=>{
+    //     rt.push({distance:t.distance.text,duration:t.duration.text});
+    //   })
+    //   return rt;
+    // })
+  },[order])
+
+
   return (
     <View style={styles.container}>
 
@@ -297,9 +320,12 @@ const ItineraryHome = ({ navigation, route }) => {
             strokeColor="#5f695d"
             onError={(res)=>{console.log(err)}}
             onReady={
-              ()=>{
-                //if(print == false)
-                //setPrint(true)
+              (result)=>{
+                setOrder(result.waypointOrder);
+                setTime(result.legs);
+                // console.log("legs: ",result.legs);
+                // console.log("steps: ",result.legs.steps)
+                // console.log("way: ",result.waypointOrder);
                 console.log("dir ok");
               }
             }
@@ -403,7 +429,7 @@ const ItineraryHome = ({ navigation, route }) => {
         <Callout style={styles.callout}>
           
           <View style={styles.topbar}>
-        <ItineraryTop tripname = {tripname}></ItineraryTop>
+        <ItineraryTop tripname = {tripname} time = {time} place = {place}></ItineraryTop>
       </View>
       {(route.params.from === "map") && <Back style={styles.back} />}
       <View style={styles.btnContainner}>
@@ -423,6 +449,7 @@ const ItineraryHome = ({ navigation, route }) => {
           }
       </TouchableHighlight>
       <Share/>
+      
       </View>
         </Callout>
 
