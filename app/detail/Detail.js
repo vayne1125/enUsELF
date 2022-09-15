@@ -245,11 +245,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   infoTitle: {
-    fontSize: 22,
+    fontSize: 20,
     letterSpacing: 10,
   },
   infoTextStyle: {
-    fontSize: 18,
+    fontSize: 16,
     letterSpacing: 4,
     paddingTop:10,
   },

@@ -49,15 +49,24 @@ const Nav = () => {
           {
             size=0;
           }
+          if(focused)
+          return (//<View style={styles.choose}>
+            <Icons name={iconName} size={size} color={color} />
+            //</View>
+            )
+          else 
           return <Icons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: '#5f695d',//按下:灰色
-        tabBarInactiveTintColor: 'white',//沒按
+        tabBarActiveTintColor: '#5f695d',//按下:灰色9/14
+        //tabBarActiveTintColor: 'white',//按下
+        tabBarInactiveTintColor: '#5f695d',//沒按9/14
+        //tabBarInactiveTintColor: '#ffc56b',//沒按
         headerShown: false,//不顯示在標頭
         tabBarStyle: {  //底下bar的圓弧和陰影設計
           //backgroundColor: '#88bd80',
-          backgroundColor: '#6E877B',
-          position: 'absolute',
+          //backgroundColor: '#6E877B',//9/14改
+          backgroundColor: '#ffffff',
+          //position: 'absolute',
           //bottom: 18,
           //left: 8,
           //right: 10,
@@ -92,6 +101,16 @@ const styles = StyleSheet.create({
   container:{
     flex:1,
     backgroundColor:'white',
+  },
+  choose:{
+    flexDirection:'row',
+    backgroundColor:'#D1DED7',
+    width:'70%',
+    //height:'50%',
+    //borderWidth:5,
+    //borderColor:'#ffc56b',
+    borderRadius:20,
+    justifyContent:'center',
   }
 });
 

@@ -29,7 +29,8 @@ const ResultTop = (props) => {
           <Icons
             name="calendar-outline"
             size={33}
-            color={'#5f695d'}
+            color={'#5f695d'}//9/14改
+            //color={'#A17747'}
             style={styles.iconStyle}
           />
         </View>
@@ -55,10 +56,12 @@ const styles = StyleSheet.create({
     //justifyContent:'center',
     bottom:'15%',
     left:'5%',
-    fontSize: 30,
+    //fontSize: 30,//9/14
+    fontSize: 26,
     //fontWeight: 'bold',
     //color: '#ffffff',
-    color:'#5f695d',
+    color:'#5f695d',//9/14改
+    //color:'#A17747',
     fontFamily:'NotoSerifTC-Bold',
     letterSpacing:10,
   },

@@ -23,6 +23,7 @@ import Image_link from './Image';
 
 const width = Dimensions.get('screen').width*19/20;
 const width2 = Dimensions.get('screen').width*8/20;
+const height = Dimensions.get('screen').height*6/30;
 const user = auth().currentUser;
 const Stars = score => {
     var tp = parseFloat(score.starsNum);
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   card: {
-    height: 170,
+    height: height,
     alignContent:'center',
     alignItems:'center',
     alignSelf:'center',
@@ -219,7 +220,8 @@ const styles = StyleSheet.create({
     top:'20%',
     /*fontFamily:'NotoSerifTC-Black',
     bottom:'20%',*/
-    fontSize: 16,
+    //fontSize: 16,//9/14
+    fontSize: 14,
     color: '#6b5238',
     letterSpacing: 10,
     alignContent:'center',
@@ -242,7 +244,8 @@ const styles = StyleSheet.create({
     top:'20%',
     /*fontFamily:'NotoSerifTC-Black',
     bottom:'20%',*/
-    fontSize: 16,
+    //fontSize: 16,//9/14
+    fontSize: 14,
     letterSpacing: 10,
     //alignContent:'center',
     //alignItems:'center',
@@ -258,7 +261,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontWeight: 'bold',
     top:'20%',
-    fontSize: 20,
+    //fontSize: 20,//9/14
+    fontSize: 18,
     color: '#5f695d',
     letterSpacing: 1,
     /*fontFamily:'NotoSerifTC-Bold',
@@ -297,7 +301,8 @@ const styles = StyleSheet.create({
   },
   viewText: {
     fontWeight: '800',
-    fontSize: 16,
+    //fontSize: 16,//9/14
+    fontSize: 14,
     color: '#E3E3E3',
     letterSpacing: 10,
     alignSelf:'center',

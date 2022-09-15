@@ -10,6 +10,7 @@ import {
   Modal,
   TouchableOpacity,
   RefreshControl,
+  Pressable
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -57,12 +58,6 @@ const Result = ({navigation, route}) => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(initialState);
   const [theme, setTheme] = useState('美食');
-  const [food, setFood] = useState(true);
-  const [nature, setNature] = useState(false);
-  const [kol, setKol] = useState(false);
-  const [hotel, setHotel] = useState(false);
-  const [monuments, setMonuments] = useState(false);
-  const [refreshing, setRefreshing] = useState(false);
   // const onRefresh = React.useCallback(() => {
   //   setRefreshing(true);
   //   wait(2000).then(() => setRefreshing(false));
@@ -95,35 +90,26 @@ const Result = ({navigation, route}) => {
       </View>
       <View style={styles.topBar}>
         <View style={styles.icons}>
-          {
-            food?(<View style={styles.theme2}>
-              <TouchableOpacity
-                onPress={() => {
-                  setTheme('美食');
-                  setFood(true);
-                  setNature(false);
-                  setKol(false);
-                  setMonuments(false);
-                  setHotel(false);
-                  setRefreshing(true);
-                }}>
-                <Icons name={'fast-food'} color={'#ffffff'} size={40} />
-              </TouchableOpacity>
+          
+        {/* <View style={styles.theme}>
+        <Image source={require('../../assets/foodicon.jpg')} style={{width:'100%',height:'100%',borderRadius: 25,}}/></View> */}
+          
+            {(theme==='美食')?(<View style={styles.theme2}> 
+                <Icons name={'fast-food'} color={'#ffffff'} size={38} />
             </View>):(<View style={styles.theme}>
             <TouchableOpacity
               onPress={() => {
                 setTheme('美食');
-                setFood(true);
-                setNature(false);
-                setKol(false);
-                setMonuments(false);
-                setHotel(false);
-                setRefreshing(true);
               }}>
-              <Icons name={'fast-food'} color={'#5f695d'} size={40} />
+              { <Icons name={'fast-food'} 
+              color={'#5f695d'}//9/14改
+              //color={'#ffc56b'}
+              size={38} /> }
+              
             </TouchableOpacity>
-          </View>)
-          }
+            </View>
+          )
+         }
           {/* <View style={styles.theme}>
             <TouchableOpacity
               onPress={() => {
@@ -138,7 +124,7 @@ const Result = ({navigation, route}) => {
               <Icons name={'fast-food'} color={'#5f695d'} size={40} />
             </TouchableOpacity>
           </View> */}
-          {food ? (
+          {(theme==='美食') ? (
             // <View style={{flex: 0.1}}></View>
             //暫時
             <View style={styles.textContainer}>
@@ -151,37 +137,25 @@ const Result = ({navigation, route}) => {
           )}
         </View>
         <View style={styles.icons}>
-          {nature ? (
+        {/* <View style={styles.theme}>
+        <Image source={require('../../assets/natureicon.jpg')} style={{width:'100%',height:'100%',borderRadius: 25,}}/></View> */}
+          { (theme==='自然') ? (
             <View style={styles.theme2}>
-              <TouchableOpacity
-                onPress={() => {
-                  setTheme('自然');
-                  setFood(false);
-                  setNature(true);
-                  setKol(false);
-                  setMonuments(false);
-                  setHotel(false);
-                  setRefreshing(true);
-                }}>
-                <Icon2 name={'mountains'} color={'#ffffff'} size={44} />
-              </TouchableOpacity>
+                <Icon2 name={'mountains'} color={'#ffffff'} size={40} />
             </View>
           ) : (
             <View style={styles.theme}>
               <TouchableOpacity
                 onPress={() => {
                   setTheme('自然');
-                  setFood(false);
-                  setNature(true);
-                  setKol(false);
-                  setMonuments(false);
-                  setHotel(false);
-                  setRefreshing(true);
                 }}>
-                <Icon2 name={'mountains'} color={'#5f695d'} size={44} />
+                <Icon2 name={'mountains'} 
+                color={'#5f695d'}//9/14改
+                //color={'#ffc56b'}
+                size={40} />
               </TouchableOpacity>
             </View>
-          )}
+              )}
           {/* <View style={styles.theme}>
             <TouchableOpacity
               onPress={() => {
@@ -196,7 +170,7 @@ const Result = ({navigation, route}) => {
               <Icon2 name={'mountains'} color={'#5f695d'} size={44} />
             </TouchableOpacity>
           </View> */}
-          {nature ? (
+          {(theme==='自然') ? (
             // <View style={{flex: 0.1}}></View>
             //暫時
             <View style={styles.textContainer}>
@@ -209,33 +183,21 @@ const Result = ({navigation, route}) => {
           )}
         </View>
         <View style={styles.icons}>
-          {kol?(<View style={styles.theme2}>
-            <TouchableOpacity
-              onPress={() => {
-                setTheme('網美');
-                setFood(false);
-                setNature(false);
-                setKol(true);
-                setMonuments(false);
-                setHotel(false);
-                setRefreshing(true);
-              }}>
-              <Icon name={'camera-retro'} color={'#ffffff'} size={40} />
-            </TouchableOpacity>
+        {/* <View style={styles.theme}>
+        <Image source={require('../../assets/kolicon.jpg')} style={{width:'100%',height:'100%',borderRadius: 25,}} onPress={() => {setTheme('網美');}}/></View> */}
+          {(theme==='網美') ?(<View style={styles.theme2}>
+              <Icon name={'camera-retro'} color={'#ffffff'} size={36} />
           </View>):(<View style={styles.theme}>
             <TouchableOpacity
               onPress={() => {
                 setTheme('網美');
-                setFood(false);
-                setNature(false);
-                setKol(true);
-                setMonuments(false);
-                setHotel(false);
-                setRefreshing(true);
               }}>
-              <Icon name={'camera-retro'} color={'#5f695d'} size={40} />
+              <Icon name={'camera-retro'} 
+              color={'#5f695d'}//9/14改
+              //color={'#ffc56b'}
+              size={36} />
             </TouchableOpacity>
-          </View>)}
+            </View>)}
           {/* <View style={styles.theme}>
             <TouchableOpacity
               onPress={() => {
@@ -250,7 +212,7 @@ const Result = ({navigation, route}) => {
               <Icon name={'camera-retro'} color={'#5f695d'} size={40} />
             </TouchableOpacity>
           </View> */}
-          {kol ? (
+          {(theme==='網美') ? (
             // <View style={{flex: 0.1}}></View>
             //暫時
             <View style={styles.textContainer}>
@@ -263,35 +225,24 @@ const Result = ({navigation, route}) => {
           )}
         </View>
         <View style={styles.icons}>
+        {/* <View style={styles.theme}>
+        <Image source={require('../../assets/monumentsicon.jpg')} style={{width:'100%',height:'100%',borderRadius: 25,}}/></View> */}
           {
-            monuments?(<View style={styles.theme2}>
-              <TouchableOpacity
-                onPress={() => {
-                  setTheme('古蹟');
-                  setFood(false);
-                  setNature(false);
-                  setKol(false);
-                  setMonuments(true);
-                  setHotel(false);
-                  setRefreshing(true);
-                }}>
-                <Icon3 name={'castle'} color={'#ffffff'} size={44} />
-              </TouchableOpacity>
+            (theme==='古蹟')?(<View style={styles.theme2}>
+                <Icon3 name={'castle'} color={'#ffffff'} size={40} />
             </View>):(<View style={styles.theme}>
             <TouchableOpacity
               onPress={() => {
                 setTheme('古蹟');
-                setFood(false);
-                setNature(false);
-                setKol(false);
-                setMonuments(true);
-                setHotel(false);
-                setRefreshing(true);
+               
               }}>
-              <Icon3 name={'castle'} color={'#5f695d'} size={44} />
+              <Icon3 name={'castle'} 
+              color={'#5f695d'}//9/14改
+              //color={'#ffc56b'} 
+              size={40} />
             </TouchableOpacity>
           </View>)
-          }
+            }
           {/* <View style={styles.theme}>
             <TouchableOpacity
               onPress={() => {
@@ -306,7 +257,7 @@ const Result = ({navigation, route}) => {
               <Icon3 name={'castle'} color={'#5f695d'} size={44} />
             </TouchableOpacity>
           </View> */}
-          {monuments ? (
+          {(theme==='古蹟') ? (
             // <View style={{flex: 0.1}}></View>
             //暫時
             <View style={styles.textContainer}>
@@ -319,33 +270,22 @@ const Result = ({navigation, route}) => {
           )}
         </View>
         <View style={styles.icons}>
-          {hotel?(<View style={styles.theme2}>
-            <TouchableOpacity
-              onPress={() => {
-                setTheme('住宿');
-                setFood(false);
-                setNature(false);
-                setKol(false);
-                setMonuments(false);
-                setHotel(true);
-                setRefreshing(true);
-              }}>
-              <Icons name={'bed'} color={'#ffffff'} size={44} />
-            </TouchableOpacity>
+        {/* <View style={styles.theme}>
+        <Image source={require('../../assets/hotelicon.jpg')} style={{width:'100%',height:'100%',borderRadius: 25,}}/></View> */}
+          {(theme==='住宿')?(<View style={styles.theme2}>
+              <Icons name={'bed'} color={'#ffffff'} size={42} />
           </View>):(<View style={styles.theme}>
             <TouchableOpacity
               onPress={() => {
                 setTheme('住宿');
-                setFood(false);
-                setNature(false);
-                setKol(false);
-                setMonuments(false);
-                setHotel(true);
-                setRefreshing(true);
+                
               }}>
-              <Icons name={'bed'} color={'#5f695d'} size={44} />
+              <Icons name={'bed'} 
+              color={'#5f695d'}//9/14改
+              //color={'#ffc56b'}
+              size={42} />
             </TouchableOpacity>
-          </View>)}
+            </View>)}
           {/* <View style={styles.theme}>
             <TouchableOpacity
               onPress={() => {
@@ -360,7 +300,7 @@ const Result = ({navigation, route}) => {
               <Icons name={'bed'} color={'#5f695d'} size={44} />
             </TouchableOpacity>
           </View> */}
-          {hotel ? (
+          {(theme==='住宿') ? (
             // <View style={{flex: 0.1}}></View>
             //暫時
             <View style={styles.textContainer}>
@@ -417,19 +357,22 @@ const styles = StyleSheet.create({
   },
   container: {
     hight: '100%',
-    backgroundColor: '#F2F2F2',
+    //backgroundColor: '#F2F2F2',//9/14改
+    backgroundColor: '#ffffff',
     flex: 1,
   },
   info: {
     flex: 10,
-    backgroundColor: '#D1DED7',
+    //backgroundColor: '#D1DED7',//9/14改
+    //backgroundColor: '#ffffe0',
+    backgroundColor: '#F2F2F2',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingTop: 20,
   },
 
   topBar: {
-    flex: 1.8,
+    flex: 1.6,
     flexDirection: 'row',
     alignSelf: 'center',
     alignContent: 'center',
@@ -459,12 +402,14 @@ const styles = StyleSheet.create({
     elevation: 5,
     alignItems: 'center',
     justifyContent: 'space-around',
+    marginBottom:3,
   },
   theme2:{
     borderRadius: 25,
     flex: 3,
     //height:height,
-    backgroundColor: '#5f695d',
+    backgroundColor: '#5f695d',//9/14改
+    //backgroundColor: '#ffc56b',
     shadowColor: '#7F5DF0',
     shadowOffset: {
       width: 0,
@@ -475,6 +420,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     alignItems: 'center',
     justifyContent: 'space-around',
+    marginBottom:3,
   },
   textContainer: {
     flex: 1,
@@ -489,6 +435,7 @@ const styles = StyleSheet.create({
     alignContent: 'flex-start',
     alignItems: 'center',
     justifyContent: 'space-around',
+    //color:'#A17747'//9/14改
   },
 });
 
