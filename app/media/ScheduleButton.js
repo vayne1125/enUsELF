@@ -29,10 +29,13 @@ const initialState = {
   time: {},
 };
 
-const ScheduleButton = (navigation) => {
+const ScheduleButton = ({}) => {
+  const navigation = useNavigation();
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(initialState);
   const [check, setCheck] = useState(false);
+  const [empty, setEmpty] = useState(true);
+  console.log('empty ',empty);
   
   useEffect(() => {
     const listen = DeviceEventEmitter
@@ -42,7 +45,30 @@ const ScheduleButton = (navigation) => {
     return () => listen.remove();
   },[]);
 
+  useEffect(() => {
+    const listen = DeviceEventEmitter
+    .addListener('hadAllCheck',() => {//傳來Ttrue，我要全勾
+      //console.log('look ',check);
+      setCheck(true);
+    });
+    return () => listen.remove();
+  },[]);
+  
+  useEffect(() => {
+    const listen = DeviceEventEmitter
+    .addListener('ChooseCnt',(cnt) => {//傳來Ttrue，我要全勾
+      console.log('look cnt ',cnt);
+      if(cnt)
+      setEmpty(false);
+      else
+      setEmpty(true);
+    });
+    return () => listen.remove();
+  },[]);
+
   const change=async()=>{
+    if(check)setEmpty(true);
+    else setEmpty(false);
     setCheck(!check);
     DeviceEventEmitter.emit('scheduleCheck',!check);
   }
@@ -64,23 +90,24 @@ const ScheduleButton = (navigation) => {
         checkedIcon="dot-circle-o"
         uncheckedIcon="circle-o"
         checked={check}
-        /*onPress={()=>{
-          change
-         
-        }
-        }*/
         onPress={change}
         title="全選"/>
       </View>
+      {empty?
+            <View style={styles.NoContainer}>
+                <Text style={styles.OkText}>加入清單</Text> 
+            </View>:
       <View style={styles.OkContainer}>
         <TouchableOpacity
           onPress={() => {
             setNoticeVisible(!noticeVisible);
             DeviceEventEmitter.emit('sendToDatabase');
-          }}>
+            navigation.goBack();
+            }}>
           <Text style={styles.OkText}>加入清單</Text>
         </TouchableOpacity>
       </View>
+      }
     </View>
   );
 };
@@ -93,6 +120,25 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     borderTopLeftRadius:50,
     borderTopRightRadius:40,
+  },
+  NoContainer:{
+    backgroundColor: 'gray',
+    flex: 0.4,
+    padding:5,
+    alignItems:'center',
+    justifyContent:'center',
+    alignSelf:'center',
+    height:'75%',
+    borderRadius:30,
+
+    shadowColor: '#7F5DF0',
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.5,
+    elevation: 3,
   },
   ChanceContainer: {
     backgroundColor: '#ffffff',

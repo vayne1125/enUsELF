@@ -23,11 +23,8 @@ const width = Dimensions.get('screen').width;
 
 
 const Schedule = ({navigation, route}) => {
+  console.log('navigation ', navigation);
     const {userSchdule,username,sites} = route.params;
-    console.log('route.params= ',route.params);
-    console.log('ㄟuserSchdule= ',userSchdule);
-    console.log('username= ',username);
-    console.log('sites= ',sites);
     return (
       <View style={styles.Container}>
             <View style={styles.topbar}>
