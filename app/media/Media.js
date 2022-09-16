@@ -18,6 +18,7 @@ import 'react-native-gesture-handler';
 //import {ViewPropTypes} from 'deprecated-react-native-prop-types';
 //import Schedule from './Schedule';
 import MediaHome from './MediaHome';
+import Schedule from './Schedule';
 //import List from '../list/List';
 import Post from './Post';
 

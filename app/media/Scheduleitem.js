@@ -35,6 +35,7 @@ const Scheduleitem = (userSchdule) => {
   //console.log('site: ',sites);
  // console.log('site: ',sites);
   const len=sites.length;
+  let cnt=0;
  // console.log('長度',len);
   const [isSelected, setSelection] = useState(false);
     //全選
@@ -81,7 +82,8 @@ const Card = ({site}) => {
       else
        set.delete(site.name);
       // console.log('set2= ',set);
-    setCheck(check);
+      cnt=len;
+      setCheck(check);
     });
     return () => listen.remove();
   },[]);
@@ -97,14 +99,22 @@ const Card = ({site}) => {
               containerStyle={{backgroundColor:'#F2F2F2'}}
               checked={ check }
               onPress={()=>{
+                console.log('1  len',len);
                 if(check)//選變不選(原本是選)
                   {
                     DeviceEventEmitter.emit('scheduleItemcheck',!check);
                     set.delete(site.name);
+                    cnt--;
+                    console.log('cnt ',cnt);
                   }else 
-                 set.add(site.name);
-                //console.log('Set: ', set);
+                 {set.add(site.name);
+                  cnt++;
+                  console.log('cnt ',cnt);
+                  if(len==cnt)
+                  DeviceEventEmitter.emit('hadAllCheck');
+                }//console.log('Set: ', set);
                 setCheck(!check);
+                DeviceEventEmitter.emit('ChooseCnt',cnt);
               }}
               />
               </View>
