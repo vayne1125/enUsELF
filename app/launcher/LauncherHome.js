@@ -140,7 +140,7 @@ const LauncherHome = ({navigation}) => {
                                 fontSize={15}
                                 maxLength={16}
                             />
-                            <><CheckBox containerStyle={{flex:0.05, backgroundColor: '#FFFFDF'}}
+                            <><CheckBox containerStyle={{flex:0.05, backgroundColor: '#FFFFDF', alignSelf:'center'}}
                                 center
                                 checkedIcon= "eye-slash"
                                 uncheckedIcon= "eye"
