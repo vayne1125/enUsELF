@@ -21,7 +21,7 @@ const ResultTop = () => {
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={()=>{
-    navigation.navigate("Home",{
+    navigation.navigate('Personal',{
     screen: 'Nav',
     params: {
       screen: 'Personal',
