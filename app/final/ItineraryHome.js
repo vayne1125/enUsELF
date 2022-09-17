@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
   Image,
 } from 'react-native';
+import CustomMarkerComponent from '../map/CustomMarkerComponent';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import DetailForFinal from '../detail/DetailForFinal';
 import Back from './Back';
@@ -34,23 +35,24 @@ const ItineraryHome = ({ navigation, route }) => {
   const [modalIsMain, setModalIsMain] = useState(true);
   //顯示取名字
   const [modalVisibleForName, setModalVisibleForName] = useState(false);
-  const [print, setPrint] = useState(false);
+  const [print, setPrint] = useState(true);
   const [region, setRegion] = useState({ latitude: 24.1365593, longitude: 120.6835935, latitudeDelta: 4, longitudeDelta: 0 });
   const [origin, setOrigin] = useState(route.params.origin);
   const [destination, setDestination] = useState({ lat: 24.1365593, lng: 120.6835935 });
   const [waypoints, setWaypoints] = useState([]);
   const [markers, setMarkers] = useState([]);
 
-  const [south,setSouth] = useState(route.params.origin.latitude);
-  const [north,setNorth] = useState(route.params.origin.latitude);
-  const [west,setWest] = useState(route.params.origin.longitude);
-  const [east,setEast] = useState(route.params.origin.longitude); 
+  const [south, setSouth] = useState(route.params.origin.latitude);
+  const [north, setNorth] = useState(route.params.origin.latitude);
+  const [west, setWest] = useState(route.params.origin.longitude);
+  const [east, setEast] = useState(route.params.origin.longitude);
 
   const [tripname, setTripname] = useState(route.params.tripname);
 
-  const [time,setTime] = useState();
-  const [order,setOrder] = useState();
-  const [place,setPlace] = useState();
+  const [schedule,setSchedule] = useState([]);
+  const [time, setTime] = useState([]);
+  const [order, setOrder] = useState([]);
+  const [place, setPlace] = useState([]);
 
   const [size, setSize] = useState(0);
   const { user, logout } = useContext(AuthContext);//user uid
@@ -58,29 +60,28 @@ const ItineraryHome = ({ navigation, route }) => {
   const navToHistory = (tripname) => {
     setModalVisibleForName(false);
     //菁蕙 刪資料庫
-    for(let i=0;i<markers.length;++i)
-    {
-        firestore()
+    for (let i = 0; i < markers.length; ++i) {
+      firestore()
         .collection('users')
         .doc(user.uid)
         .collection('list')
         .doc(markers[i].name)
         .delete()
         .then(() => {
-        console.log('User deleted!');
-        }).catch(e=>
-        console.log('error'))
+          console.log('User deleted!');
+        }).catch(e =>
+          console.log('error'))
     }
     firestore()
-    .collection('users')
-    .doc(user.uid)
-    .collection('list')
-    .doc(destination.name)
-    .delete()
-    .then(() => {
-    console.log('User deleted!');
-    }).catch(e=>
-    console.log('error'))
+      .collection('users')
+      .doc(user.uid)
+      .collection('list')
+      .doc(destination.name)
+      .delete()
+      .then(() => {
+        console.log('User deleted!');
+      }).catch(e =>
+        console.log('error'))
     const users = firestore().collection('users').doc(user.uid);
     users.collection('trip').doc()
       .set({
@@ -88,13 +89,13 @@ const ItineraryHome = ({ navigation, route }) => {
         origin: route.params.origin,
         desSite: route.params.desSite,
         site: route.params.site,
-        postTime:firestore.Timestamp.fromDate(new Date()),
+        postTime: firestore.Timestamp.fromDate(new Date()),
       }).then(() => {
         console.log('trip add !');
       }).catch((error) => {
         console.log('trip Failed!', error);
       });
-      
+
     navigation.navigate("HistoryHome");
   }
 
@@ -139,7 +140,6 @@ const ItineraryHome = ({ navigation, route }) => {
 
     setWaypoints(() => {
       const data = [];
-      //console.log("route.params.site: ",route.params.site);
       (route.params.site).map((param) => {
         if (param.type === "food") {
           data.push({ latitude: Food[param.id].lat, longitude: Food[param.id].lng });
@@ -152,11 +152,11 @@ const ItineraryHome = ({ navigation, route }) => {
         } else if (param.type === "hotel") {
           data.push({ latitude: Hotel[param.id].lat, longitude: Hotel[param.id].lng });
         } else if (param.type === "hol") {
-          data.push({ latitude: Holplace[param.id].location.lat, longitude: Holplace[param.id].location.lng });
+          data.push({ latitude: Holplace[param.id].lat, longitude: Holplace[param.id].lng });
         } else if (param.type === "hot") {
-          data.push({ latitude: Hotplace[param.id].location.lat, longitude: Hotplace[param.id].location.lng });
+          data.push({ latitude: Hotplace[param.id].lat, longitude: Hotplace[param.id].lng });
         } else if (param.type === "shop") {
-          data.push({ latitude: Shopplace[param.id].location.lat, longitude: Shopplace[param.id].location.lng });
+          data.push({ latitude: Shopplace[param.id].lat, longitude: Shopplace[param.id].lng });
         }
       })
       //console.log("data: ",data);
@@ -179,6 +179,12 @@ const ItineraryHome = ({ navigation, route }) => {
         tp = (Monuments[desSite.id]);
       } else if (desSite.type === "hotel") {
         tp = (Hotel[desSite.id]);
+      } else if (desSite.type === "hot") {
+        tp = (Hotplace[desSite.id]);
+      } else if (desSite.type === "shop") {
+        tp = (Shopplace[desSite.id]);
+      } else if (desSite.type === "hol") {
+        tp = (Holplace[desSite.id]);
       }
       //console.log("tp: ",tp);
       return tp;
@@ -186,45 +192,45 @@ const ItineraryHome = ({ navigation, route }) => {
 
   }, [])
 
-  useEffect(()=>{
-    
-    setEast(()=>{
+  useEffect(() => {
+
+    setEast(() => {
       var rt = east;
-      markers.map((i)=>{
-        if(i.lng < rt) rt = i.lng;
+      markers.map((i) => {
+        if (i.lng < rt) rt = i.lng;
       })
-      if(destination.lng < rt) rt = destination.lng;
+      if (destination.lng < rt) rt = destination.lng;
       return rt;
     })
 
-    setWest(()=>{
+    setWest(() => {
       var rt = west;
-      markers.map((i)=>{
-        if(i.lng > rt) rt = i.lng;
+      markers.map((i) => {
+        if (i.lng > rt) rt = i.lng;
       })
-      if(destination.lng > rt) rt = destination.lng;
+      if (destination.lng > rt) rt = destination.lng;
       return rt;
     })
 
-    setNorth(()=>{
+    setNorth(() => {
       var rt = north;
-      markers.map((i)=>{
-        if(i.lat > rt) rt = i.lat;
+      markers.map((i) => {
+        if (i.lat > rt) rt = i.lat;
       })
-      if(destination.lat > rt) rt = destination.lat;
+      if (destination.lat > rt) rt = destination.lat;
       return rt;
     })
 
-    setSouth(()=>{
+    setSouth(() => {
       var rt = south;
-      markers.map((i)=>{
-        if(i.lat < rt) rt = i.lat;
+      markers.map((i) => {
+        if (i.lat < rt) rt = i.lat;
       })
-      if(destination.lat < rt) rt = destination.lat;
+      if (destination.lat < rt) rt = destination.lat;
       return rt;
     })
 
-  },[markers,destination])
+  }, [markers, destination])
 
   useEffect(() => {
     setRegion(() => {
@@ -241,33 +247,38 @@ const ItineraryHome = ({ navigation, route }) => {
       } else {
         tp = 0.9;
       }
-      console.log("long="+longestDis+" tp= ",tp);
+      console.log("long=" + longestDis + " tp= ", tp);
       return {
-        latitude: (south+north) / 2.0,
-        longitude: (east+west) / 2.0,
+        latitude: (south + north) / 2.0,
+        longitude: (east + west) / 2.0,
         latitudeDelta: tp, //數字越小 地圖道路越大
         longitudeDelta: 0,
       }
     });
-  }, [north,south,west,east])
+  }, [north, south, west, east])
 
-  useEffect(()=>{
-    // setPlace(()=>{
-    //   var data = [];
-    //   for(var i = 0;i<order.length;i++){
-    //     data.push(route.params.site[order[i]]);
-    //   }
-    //   data.push(route.params.desSite);
-    //   return data;
-    // })
-    // setTime(()=>{
-    //   var rt = [];
-    //   time.map((t)=>{
-    //     rt.push({distance:t.distance.text,duration:t.duration.text});
-    //   })
-    //   return rt;
-    // })
-  },[order])
+  useEffect(() => {
+    // console.log("order = ",order);
+    // console.log("route.params.site = ",route.params.site)
+    // console.log(time);
+    setPlace(()=>{
+      var data = [];
+      var tp = {};
+      for(var i = 0;i<order.length;i++){
+        tp = route.params.site[order[i]];
+        data.push(tp);
+      }
+      data.push(route.params.desSite);
+      return data;
+    })
+    setTime(()=>{
+      var rt = [];
+      time.map((t)=>{
+        rt.push({distance:t.distance.text,duration:t.duration.text});
+      })
+      return rt;
+    })
+  }, [order])
 
 
   return (
@@ -308,28 +319,28 @@ const ItineraryHome = ({ navigation, route }) => {
         }
       >
         <MapViewDirections
-            optimizeWaypoints={true}
-            origin={origin}
-            destination={{
-              latitude: destination.lat,
-              longitude: destination.lng
-            }}
-            waypoints={waypoints}
-            apikey={API_key}
-            strokeWidth={3}
-            strokeColor="#5f695d"
-            onError={(res)=>{console.log(err)}}
-            onReady={
-              (result)=>{
-                setOrder(result.waypointOrder);
-                setTime(result.legs);
-                // console.log("legs: ",result.legs);
-                // console.log("steps: ",result.legs.steps)
-                // console.log("way: ",result.waypointOrder);
-                console.log("dir ok");
-              }
+          optimizeWaypoints={true}
+          origin={origin}
+          destination={{
+            latitude: destination.lat,
+            longitude: destination.lng
+          }}
+          waypoints={waypoints}
+          apikey={API_key}
+          strokeWidth={3}
+          strokeColor="#5f695d"
+          onError={(res) => { console.log(err) }}
+          onReady={
+            (result) => {
+              setOrder(result.waypointOrder[0]);
+              setTime(result.legs);
+              // console.log("legs: ",result.legs);
+              // console.log("steps: ",result.legs.steps)
+              // console.log("way: ",result.waypointOrder);
+              console.log("dir ok");
             }
-          />
+          }
+        />
 
         <Marker
           key={'origin'}
@@ -339,14 +350,11 @@ const ItineraryHome = ({ navigation, route }) => {
           title="你的位置"
         />
 
-        <Marker
-          key={'destination'}
-          pinColor='green'
-          coordinate={{
-            latitude: destination.lat,
-            longitude: destination.lng
-          }}
-          onPress={(e) => {
+        <CustomMarkerComponent
+          key={'des'}
+          data={destination}
+          color='green'
+          onPressHandler={(e) => {
             setModalIsMain(true);
             setModalVisible(!modalVisible);
             setModalEntry({
@@ -361,35 +369,15 @@ const ItineraryHome = ({ navigation, route }) => {
               region: destination.region,
             });
           }}
-        >
-          {(print) && (
-            <View style={styles.markerCss}>
-              <Text style={styles.markerText}>{destination.name}</Text>
-              <Image source={require('../../assets/pin/green.png')} />
-            </View>)
-          }
-          </Marker>
-          
-          
+        />
 
-        {(markers).map((marker) => (
-            <Marker
-              pinColor='green'
-              // pinColor={
-              //   (marker.type === 'hot')?'red':((marker.type === "shop")?'blue':'yellow')
-              // }
+        {(markers).map((marker) => {
+          return (
+            <CustomMarkerComponent
               key={marker.type + (marker.id).toString()}
-              coordinate={
-                (marker.type === "hot" || marker.type === "hol" || marker.type === "shop") ?
-                  {
-                    latitude: marker.location.lat,
-                    longitude: marker.location.lng
-                  } : {
-                    latitude: marker.lat,
-                    longitude: marker.lng
-                  }
-              }
-              onPress={(e) => {
+              data={marker}
+              color='green'
+              onPressHandler={(e) => {
                 setModalIsMain(
                   (marker.type === "hot" || marker.type === "hol" || marker.type === "shop") ?
                     false : true
@@ -402,64 +390,50 @@ const ItineraryHome = ({ navigation, route }) => {
                   address: marker.address,
                   star: marker.star,
                   info: marker.info,
-                  time: (
-                    (marker.type === "hot" || marker.type === "hol" || marker.type === "shop") ?
-                      marker.time.map((i) => {
-                        return i + '\n';
-                      }) : marker.time
-                  ),
+                  time: marker.time,
                   city: marker.city,
                   region: marker.region,
                 });
               }}
-            >
-              {(print) && (
-                <View style={styles.markerCss}>
-                  <Text style={styles.markerText}>{marker.name}</Text>
-                  {/* {(marker.type === "hot") && <Image source={require('../../assets/pin/red.png')} />}
-                  {(marker.type === "hol") && <Image source={require('../../assets/pin/yellow.png')} />}
-                  {(marker.type === "shop") && <Image source={require('../../assets/pin/blue.png')} />} */}
-                  <Image source={require('../../assets/pin/green.png')} />
-                </View>)
-              }
-            </Marker>
-          ))}
+            />
+          )
+        })}
       </MapView>
 
-        <Callout style={styles.callout}>
-          
-          <View style={styles.topbar}>
-        <ItineraryTop tripname = {tripname} time = {time} place = {place}></ItineraryTop>
-      </View>
-      {(route.params.from === "map") && <Back style={styles.back} />}
-      <View style={styles.btnContainner}>
-      <TouchableHighlight
-          style={styles.button}
-          onPress={()=>{
-            (route.params.from === "map")?
-            pressOk():
-            navToBack()
-          }}
-          underlayColor='#ddddd'
-        >
-          {
-          (route.params.from === "map")?
-          <Text style={styles.text}>確認</Text>:
-          <Text style={styles.text}>返回</Text>
-          }
-      </TouchableHighlight>
-      <Share/>
-      
-      </View>
-        </Callout>
+      <Callout style={styles.callout}>
+
+        <View style={styles.topbar}>
+          <ItineraryTop tripname={tripname} time={time} place={place}></ItineraryTop>
+        </View>
+        {(route.params.from === "map") && <Back style={styles.back} />}
+        <View style={styles.btnContainner}>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={() => {
+              (route.params.from === "map") ?
+                pressOk() :
+                navToBack()
+            }}
+            underlayColor='#ddddd'
+          >
+            {
+              (route.params.from === "map") ?
+                <Text style={styles.text}>確認</Text> :
+                <Text style={styles.text}>返回</Text>
+            }
+          </TouchableHighlight>
+          <Share />
+
+        </View>
+      </Callout>
 
     </View>
   )
 };
 
 const styles = StyleSheet.create({
-  callout:{
-    position:'absolute',
+  callout: {
+    position: 'absolute',
     flex: 1,
     flexDirection: "column"
   },
@@ -474,7 +448,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
   },
-  btnContainner:{
+  btnContainner: {
     flexDirection: "row",
     position: 'absolute',
     alignItems: 'center',
@@ -484,13 +458,13 @@ const styles = StyleSheet.create({
     //zIndex: 3,
     backgroundColor: '#5f695d',
     //flex:1,
-    left:-Dimensions.get('window').width/2,
-    top:-Dimensions.get('window').height/2,
-    height: Dimensions.get('window').height/11,
-    width:Dimensions.get('window').width,
+    left: -Dimensions.get('window').width / 2,
+    top: -Dimensions.get('window').height / 2,
+    height: Dimensions.get('window').height / 11,
+    width: Dimensions.get('window').width,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    position:'absolute',
+    position: 'absolute',
     //opacity: 0.9,
   },
   markerCss: {
@@ -503,8 +477,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   button: {
-    top: Dimensions.get('window').height/2 - 60,
-    left: -Dimensions.get('window').width/4 - 10,
+    top: Dimensions.get('window').height / 2 - 60,
+    left: -Dimensions.get('window').width / 4 - 10,
     backgroundColor: '#5f695d',
     width: 100,
     height: 40,

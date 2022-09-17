@@ -80,6 +80,7 @@ const test = ({city, region}) => {
     'Content-Type': 'application/json',
   };
   const url = 'http://10.0.2.2:8000/weather';
+  //const url = 'http://172.20.10.3:8080/weather';
   const message = async () => {
     try {
       let res = await axios.get(url, {

@@ -414,8 +414,38 @@ const MapHome = ({ navigation, route }) => {
         mapType="standard"
       >
 
-        {(mainRoute).map((marker,index)=>(     
+        {(mainRoute).map((marker,index)=>{
+          return( 
+                  // <Marker
+                  //   //pinColor='green'
+                  //   onReady={console.log('s')}
+                  //   tracksViewChanges={false}
+                  //   key={marker.type + (marker.id).toString()}
+                  //   coordinate={{ latitude: marker.lat, longitude: marker.lng }}
+                  //   onPress={(e) => {
+                  //     setModalCanPress(false);
+                  //     setModalVisible(!modalVisible);
+                  //     setModalEntry({
+                  //       type: marker.type,
+                  //       date: marker.date,
+                  //       id: marker.id,
+                  //       name: marker.name,
+                  //       info: marker.info,
+                  //       address: marker.address,
+                  //       star: marker.star,
+                  //       time: marker.time,
+                  //       city: marker.city,
+                  //       region: marker.region,
+                  //     });
+                  //   }}
+                  // >
+                  //   <View style={styles.markerCss}>
+                  //     <Text style={styles.markerText}>{marker.name}</Text>
+                  //     <Image style={styles.markerImg} source={require('../../assets/pin/green.png')} />
+                  //   </View>
+                  // </Marker>
           <CustomMarkerComponent 
+              key = {index}
               data = {marker}
               color = 'green'
               onPressHandler={(e) => {
@@ -435,37 +465,7 @@ const MapHome = ({ navigation, route }) => {
                 });
               }}
           />
-        ))}
-        {/* {(mainRoute).map((marker) => (
-          <Marker
-            //pinColor='green'
-            tracksViewChanges={false}
-            key={marker.type + (marker.id).toString()}
-            coordinate={{ latitude: marker.lat, longitude: marker.lng }}
-            onPress={(e) => {
-              setModalCanPress(false);
-              setModalVisible(!modalVisible);
-              setModalEntry({
-                type: marker.type,
-                date: marker.date,
-                id: marker.id,
-                name: marker.name,
-                info: marker.info,
-                address: marker.address,
-                star: marker.star,
-                time: marker.time,
-                city: marker.city,
-                region: marker.region,
-              });
-            }}
-          >
-            <View style={styles.markerCss}>
-              <Text style={styles.markerText}>{marker.name}</Text>
-              <Image style={styles.markerImg} source={require('../../assets/pin/green.png')} />
-            </View>
-          </Marker>
-        ))} */}
-
+        )})}
 
         <MapViewDirections
           optimizeWaypoints={true}
@@ -492,11 +492,31 @@ const MapHome = ({ navigation, route }) => {
           coordinate={origin}
           title="你的位置"
         />
-
-        {(hotPress ? hotData : ORI_DATA).map((marker) => {
+   {(hotPress ? hotData : ORI_DATA).map((marker) => {
           if (marker.del >= myLatitudeDelta) {
             ////console.log(myLatitudeDelta);
             return (
+          //     <CustomMarkerComponent 
+          //     data = {marker}
+          //     color = 'red'
+          //     onPressHandler={(e) => {
+          //       setModalCanPress(false);
+          //       setModalVisible(!modalVisible);
+          //       setModalEntry({
+          //           type: marker.type,
+          //           id: marker.id,
+          //           name: marker.name,
+          //           info: marker.info,
+          //           address: marker.address,
+          //           star: marker.star,
+          //           time: marker.time.map((ti) => {
+          //             return ti + '\n';
+          //           }),
+          //           city: marker.city,
+          //           region: marker.region,
+          //       });
+          //     }}
+          // />
               <Marker
                 tracksViewChanges={false}
                 key={marker.type + (marker.id).toString()}
@@ -524,9 +544,10 @@ const MapHome = ({ navigation, route }) => {
                   <Text style={styles.markerText}>{marker.name}</Text>
                   <Image style={styles.markerImg} source={require('../../assets/pin/red.png')} />
                 </View>
-              </Marker>)
-          }
+              </Marker>
+        )}
         })}
+       
 
         {(holPress ? holData : ORI_DATA).map((marker) => {
           if (marker.del >= myLatitudeDelta) {

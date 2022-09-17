@@ -12,18 +12,21 @@ import {
 } from 'react-native';
 
 const Time = ({ navigation, route }) => {
-  const [data,SetData] = useState(route.params);
-  console.log(data);
+  const [time,setTime] = useState(route.params.time);
+  const [place,setPlace] = useState(route.params.place);
   return (
+    // <View>
+    // </View>
     <FlatList //只許KEY是string 一定要叫item
       //horizontal
       //inverted
-      keyExtractor={(data, index) => index.toString()} //用index當key
-      data={data}
+      keyExtractor={(place, index) => index.toString()} //用index當key
+      data={place}
       //numColumns={2}
       renderItem={({ item }) => (
         <View style={styles.item}>
-          <Text style={styles.text}>{1}</Text>
+          <Text style={styles.text}>{item.id}</Text>
+          <Text style={styles.text}>{item.place_id}</Text>
         </View>
       )}
     />

@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, useState } from 'react';
 import { Image } from 'react-native';
 import { Marker } from 'react-native-maps';
 import {
@@ -7,81 +7,42 @@ import {
     View,
 } from 'react-native';
 
-export default class CustomMarker extends PureComponent {
-    constructor() {
-        super();
-        this.state = {
-            tracksViewChanges: true,
-        };
+const CustomMarker =({data, color,onPressHandler})=>{
+    const stopTrackingViewChanges = () => {
+        setTracksViewChanges(false);
+        // console.log("false");
     }
-    stopTrackingViewChanges = () => {
-        this.setState(() => ({
-            tracksViewChanges: false,
-        }));
-    }
-    render() {
-        const { tracksViewChanges } = this.state;
-        const  marker  = this.props.data;
-
+        //const { tracksViewChanges } = this.state;
+        const [tracksViewChanges,setTracksViewChanges] = useState(true);
+        const  marker  = data;
+        //console.log(marker.type + (marker.id).toString());
         return (
             <Marker
                 tracksViewChanges={tracksViewChanges}
                 key={marker.type + (marker.id).toString()}
                 coordinate={
-                    (this.props.color === 'green')?
-                    { latitude: marker.lat, longitude: marker.lng }:
-                    { latitude: marker.location.lat, longitude: marker.location.lng }
+                    {latitude: marker.lat, longitude: marker.lng }
                 }
-                onPress={this.props.onPressHandler}
+                onPress={onPressHandler}
             >
                 <View style={styles.markerCss}>
                     <Text style={styles.markerText}>{marker.name}</Text>
                     <Image
-                        onLoad={this.stopTrackingViewChanges}
+                        onLoad={stopTrackingViewChanges}
+                        //onLoad={setTracksViewChanges(false)}
                         fadeDuration={0}
                         style={styles.markerImg}
                         source={
-                            ((this.props.color === 'green') && require('../../assets/pin/green.png')) ||
-                            ((this.props.color === 'red') && require('../../assets/pin/red.png')) ||
-                            ((this.props.color === 'blue') && require('../../assets/pin/blue.png')) ||
-                            ((this.props.color === 'yellow') && require('../../assets/pin/yellow.png'))
+                            ((color === 'green') && require('../../assets/pin/green.png')) ||
+                            ((color === 'red') && require('../../assets/pin/red.png')) ||
+                            ((color === 'blue') && require('../../assets/pin/blue.png')) ||
+                            ((color === 'yellow') && require('../../assets/pin/yellow.png'))
                         } 
                         />
                 </View>
             </Marker>
         );
     }
-}
-{/* {(mainRoute).map((marker) => (
-          <Marker
-            //pinColor='green'
-            tracksViewChanges={false}
-            key={marker.type + (marker.id).toString()}
-            coordinate={{ latitude: marker.lat, longitude: marker.lng }}
-            onPress={(e) => {
-              setModalCanPress(false);
-              setModalVisible(!modalVisible);
-              setModalEntry({
-                type: marker.type,
-                date: marker.date,
-                id: marker.id,
-                name: marker.name,
-                info: marker.info,
-                address: marker.address,
-                star: marker.star,
-                time: marker.time,
-                city: marker.city,
-                region: marker.region,
-              });
-            }}
-          >
-            <View style={styles.markerCss}>
-              <Text style={styles.markerText}>{marker.name}</Text>
-              <Image style={styles.markerImg} source={require('../../assets/pin/green.png')} />
-            </View>
-          </Marker>
-        ))} */}
-
 const styles = StyleSheet.create({
     markerCss: {
         alignItems: 'center',
@@ -94,3 +55,4 @@ const styles = StyleSheet.create({
     },
 
 });
+export default CustomMarker;
