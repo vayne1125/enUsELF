@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState, useContext} from 'react';
+import React, {useCallback, useEffect, useState, useContext} from 'react';
 import {
   View,
   Text,
@@ -35,6 +35,8 @@ const Card = ({navigation, post, onDelete}) => {
   const {user} = useContext(AuthContext);
   const [color, setColor] = useState('#ffc56b'); //改
   const [collect, setCollect] = useState(false);
+  const [textShown, setTextShown] = useState(false); //To show ur remaining Text
+  const [lengthMore,setLengthMore] = useState(false);
   const username = post.name;
   const sites = post.Trip;
   //const userSchdule=post.Trip;
@@ -139,6 +141,13 @@ const Card = ({navigation, post, onDelete}) => {
     } DeviceEventEmitter.emit('collectSend');
   };
   //console.log('1post.use ', post.img);
+  const onTextLayout = useCallback(e =>{
+    setLengthMore(e.nativeEvent.lines.length >=4); //to check the text is more than 4 lines or not
+    // console.log(e.nativeEvent);
+},[]);
+const toggleNumberOfLines = () => { //To toggle the show text or hide it
+  setTextShown(!textShown);
+}
   return (
     <View style={styles.card}>
       <View style={styles.nameContainer}>
@@ -250,9 +259,20 @@ const Card = ({navigation, post, onDelete}) => {
         </View> */}
       </View>
       <View style={styles.textContainer}>
-        <Text numberOfLines={2} style={styles.textStyle}>
+        {/*<Text numberOfLines={2} style={styles.textStyle}>
           {post.content}
-        </Text>
+      </Text>*/}
+        <Text
+              onTextLayout={onTextLayout}
+              numberOfLines={textShown ? undefined : 2}
+              style={{ lineHeight: 21 }}>{post.content}</Text>
+
+              {
+                  lengthMore ? <Text
+                  onPress={toggleNumberOfLines}
+                  style={{ lineHeight: 21, marginTop: 10 }}>{textShown ? 'Read less...' : 'Read more...'}</Text>
+                  :null
+              }
       </View>
     </View>
   );
@@ -260,7 +280,7 @@ const Card = ({navigation, post, onDelete}) => {
 
 const styles = StyleSheet.create({
   card: {
-    height: height,
+    height: 'auto',
     backgroundColor: 'white',
     //backgroundColor: 'rgba(255,255,255,0.8)',
     width,
@@ -332,7 +352,9 @@ const styles = StyleSheet.create({
     top: '13%',
   },
   imageContainer: {
-    flex: 8,
+    //flex: 8,
+    height :220,
+    width:300,
     alignItems: 'center',
     justifyContent: 'center',
     //backgroundColor: '#D1DED7',
