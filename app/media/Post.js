@@ -27,6 +27,7 @@ import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {AuthContext} from '../routes/AutoProvider';
 //import PostTop from './PostTop'
 //import PostButton from './PostButton'
+import ImagePicker from 'react-native-image-crop-picker';
 
 const Stack = createNativeStackNavigator();
 const width = Dimensions.get('screen').width;
@@ -56,7 +57,7 @@ const {user, logout} = useContext(AuthContext);
     return () => listen.remove();
   },[]);
 //選照片
-    const selectImage = () => {
+    /*const selectImage = () => {
         const options = {
           maxWidth: 2000,
           maxHeight: 2000,
@@ -81,7 +82,27 @@ const {user, logout} = useContext(AuthContext);
           console.log('user name=',user.mail);
           }
         });
+      };*/
+      const selectImage = () => {
+        ImagePicker.openPicker({
+          width: 300,
+          height: 220,
+          cropping: true
+        }).then(image => {
+          console.log(image);
+          const source = { uri: image.path};//response是選取的物件
+          //Asset Object是內容物，然後他很坑紙船一個也會變陣列qq，所以要拿第一個人的uri
+         // console.log('Response uri = ', response.assets[0].uri);
+          //console.log(source);
+         setImage(source);
+        }).catch(e => {
+          if (e.code !== 'E_PICKER_CANCELLED') {
+            console.log(e);
+            Alert.alert('Sorry, there was an issue attempting to get the image/video you selected. Please try again');
+          }
+        });
       };
+
 //發文
       const SubmitPost = async ()=>{
         const imageUrl=await uploadImage();//等他做完我才跑
