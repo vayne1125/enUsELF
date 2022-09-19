@@ -24,17 +24,20 @@ const ItineraryTop = props => {
       <Text style={styles.textStyle}>{aurInfo.tripname}</Text>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('Time',props.time);
+          navigation.navigate('Time',{
+            time:aurInfo.time,
+            place:aurInfo.place
+          });
         }}
         style={{flex: 1}}>
-        {/* <View style={styles.iconContainer}>
+        <View style={styles.iconContainer}>
           <Icons
             name="calendar-outline"
             size={33}
             color={'#5f695d'}
             style={styles.iconStyle}
           />
-        </View> */}
+        </View>
       </TouchableOpacity>
     </View>
   );

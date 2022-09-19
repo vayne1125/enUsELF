@@ -189,7 +189,7 @@ const MapHome = ({ navigation, route }) => {
       array.map((pos) => {
         for (var i = 0; i < Holplace.length; i++) {
           if (mySet.has(Holplace[i].place_id)) continue;
-          if (getDis(pos, Holplace[i].location) <= 0.2) {
+          if (getDis(pos, Holplace[i]) <= 0.2) {
             tp.push(Holplace[i]);
             mySet.add(Holplace[i].place_id);
           }
@@ -202,7 +202,7 @@ const MapHome = ({ navigation, route }) => {
       array.map((pos) => {
         for (var i = 0; i < Hotplace.length; i++) {
           if (mySet.has(Hotplace[i].place_id)) continue;
-          if (getDis(pos, Hotplace[i].location) <= 0.2) {
+          if (getDis(pos, Hotplace[i]) <= 0.2) {
             tp.push(Hotplace[i]);
             mySet.add(Hotplace[i].place_id);
           }
@@ -215,7 +215,7 @@ const MapHome = ({ navigation, route }) => {
       array.map((pos) => {
         for (var i = 0; i < Shopplace.length; i++) {
           if (mySet.has(Shopplace[i].place_id)) continue;
-          if (getDis(pos, Shopplace[i].location) <= 0.2) {
+          if (getDis(pos, Shopplace[i]) <= 0.2) {
             tp.push(Shopplace[i]);
             mySet.add(Shopplace[i].place_id);
           }
@@ -251,20 +251,11 @@ const MapHome = ({ navigation, route }) => {
           } else if (param.type === "hotel") {
             data.push(Hotel[param.id]);
           }else if(param.type === "hot"){
-            var tp = Hotplace[param.id];
-            tp.lat = Hotplace[param.id].location.lat;
-            tp.lng = Hotplace[param.id].location.lng;
-            data.push(tp);
+            data.push(Hotplace[param.id]);
           }else if(param.type === "shop"){
-            var tp = Shopplace[param.id];
-            tp.lat = Shopplace[param.id].location.lat;
-            tp.lng = Shopplace[param.id].location.lng;
-            data.push(tp);
+            data.push(Shopplace[param.id]);
           }else if(param.type === "hol"){
-            var tp = Holplace[param.id];
-            tp.lat = Holplace[param.id].location.lat;
-            tp.lng = Holplace[param.id].location.lng;
-            data.push(tp);
+            data.push(Holplace[param.id]);
           }
         }
       })
@@ -414,8 +405,10 @@ const MapHome = ({ navigation, route }) => {
         mapType="standard"
       >
 
-        {(mainRoute).map((marker,index)=>(     
+        {(mainRoute).map((marker)=>{
+          return( 
           <CustomMarkerComponent 
+              key={marker.type + (marker.id).toString()}
               data = {marker}
               color = 'green'
               onPressHandler={(e) => {
@@ -435,7 +428,7 @@ const MapHome = ({ navigation, route }) => {
                 });
               }}
           />
-        ))}
+        )})}
 
         <MapViewDirections
           optimizeWaypoints={true}
@@ -445,13 +438,10 @@ const MapHome = ({ navigation, route }) => {
           strokeWidth={3}
           strokeColor="#5f695d"
           onReady={(result) => {
-            //console.log("pol ready");
             if (once) {
-              //console.log("MapViewDirections");
               setPoints(result.coordinates);
             }
             setOnce(false);
-            ////console.log("way: ", waypoints);
           }}
           waypoints={waypoints}
         />
@@ -464,34 +454,12 @@ const MapHome = ({ navigation, route }) => {
         />
    {(hotPress ? hotData : ORI_DATA).map((marker) => {
           if (marker.del >= myLatitudeDelta) {
-            ////console.log(myLatitudeDelta);
             return (
-          //     <CustomMarkerComponent 
-          //     data = {marker}
-          //     color = 'red'
-          //     onPressHandler={(e) => {
-          //       setModalCanPress(false);
-          //       setModalVisible(!modalVisible);
-          //       setModalEntry({
-          //           type: marker.type,
-          //           id: marker.id,
-          //           name: marker.name,
-          //           info: marker.info,
-          //           address: marker.address,
-          //           star: marker.star,
-          //           time: marker.time.map((ti) => {
-          //             return ti + '\n';
-          //           }),
-          //           city: marker.city,
-          //           region: marker.region,
-          //       });
-          //     }}
-          // />
-              <Marker
-                tracksViewChanges={false}
+              <CustomMarkerComponent 
                 key={marker.type + (marker.id).toString()}
-                coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
-                onPress={(e) => {
+                data = {marker}
+                color = 'red'
+                onPressHandler={(e) => {
                   setModalIsAdd(true);
                   setModalCanPress(true);
                   setModalVisible(!modalVisible);
@@ -502,19 +470,12 @@ const MapHome = ({ navigation, route }) => {
                     info: marker.info,
                     address: marker.address,
                     star: marker.star,
-                    time: marker.time.map((ti) => {
-                      return ti + '\n';
-                    }),
+                    time: marker.time,
                     city: marker.city,
                     region: marker.region,
                   });
                 }}
-              >
-                <View style={styles.markerCss}>
-                  <Text style={styles.markerText}>{marker.name}</Text>
-                  <Image style={styles.markerImg} source={require('../../assets/pin/red.png')} />
-                </View>
-              </Marker>
+          />
         )}
         })}
        
@@ -522,35 +483,29 @@ const MapHome = ({ navigation, route }) => {
         {(holPress ? holData : ORI_DATA).map((marker) => {
           if (marker.del >= myLatitudeDelta) {
             return (
-              <Marker
-                key={marker.type + (marker.id).toString()}
-                coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
-                onPress={(e) => {
-                  setModalIsAdd(true);
-                  setModalCanPress(true);
-                  setModalVisible(!modalVisible);
-                  setModalEntry({
-                    type: marker.type,
-                    id: marker.id,
-                    name: marker.name,
-                    address: marker.address,
-                    id: marker.id,
-                    star: 5,
-                    info: marker.info,
-                    date: marker.date,
-                    time: marker.time.map((ti) => {
-                      return ti + '\n';
-                    }),
-                    city: marker.city,
-                    region: marker.region,
-                  });
-                }}
-              >
-                <View style={styles.markerCss}>
-                  <Text style={styles.markerText}>{marker.name}</Text>
-                  <Image style={styles.markerImg} source={require('../../assets/pin/yellow.png')} />
-                </View>
-              </Marker>
+              <CustomMarkerComponent 
+              key={marker.type + (marker.id).toString()}
+              data = {marker}
+              color = 'yellow'
+              onPressHandler={(e) => {
+                setModalIsAdd(true);
+                setModalCanPress(true);
+                setModalVisible(!modalVisible);
+                setModalEntry({
+                  type: marker.type,
+                  id: marker.id,
+                  name: marker.name,
+                  address: marker.address,
+                  id: marker.id,
+                  star: 5,
+                  info: marker.info,
+                  date: marker.date,
+                  time: marker.time,
+                  city: marker.city,
+                  region: marker.region,
+                });
+              }}
+        />
             )
           }
         })}
@@ -558,12 +513,12 @@ const MapHome = ({ navigation, route }) => {
         {(shopPress ? shopData : ORI_DATA).map((marker) => {
           if (marker.del >= myLatitudeDelta) {
             return (
-              <Marker
-                key={marker.type + (marker.id).toString()}
-                coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
-                pinColor='blue'
-                onPress={(e) => {
-                  setModalIsAdd(true);
+              <CustomMarkerComponent 
+              key={marker.type + (marker.id).toString()}
+              data = {marker}
+              color = 'blue'
+              onPressHandler={(e) => {
+                setModalIsAdd(true);
                   setModalCanPress(true);
                   setModalVisible(!modalVisible);
                   setModalEntry({
@@ -573,19 +528,12 @@ const MapHome = ({ navigation, route }) => {
                     address: marker.address,
                     star: marker.star,
                     info: marker.info,
-                    time: marker.time.map((ti) => {
-                      return ti + '\n';
-                    }),
+                    time: marker.time,
                     city: marker.city,
                     region: marker.region,
                   });
-                }}
-              >
-                <View style={styles.markerCss}>
-                  <Text style={styles.markerText}>{marker.name}</Text>
-                  <Image style={styles.markerImg} source={require('../../assets/pin/blue.png')} />
-                </View>
-              </Marker>
+              }}
+        />
             )
           }
         }
@@ -593,10 +541,11 @@ const MapHome = ({ navigation, route }) => {
 
         {(endData).map((marker) => {
           return (
-            <Marker
+            <CustomMarkerComponent 
               key={marker.type + (marker.id).toString()}
-              coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
-              onPress={(e) => {
+              data = {marker}
+              color = 'green'
+              onPressHandler={(e) => {
                 setModalIsAdd(false);
                 setModalVisible(!modalVisible);
                 setModalEntry({
@@ -607,21 +556,42 @@ const MapHome = ({ navigation, route }) => {
                   star: marker.star,
                   info: marker.info,
                   date: marker.date,
-                  time:
-                    marker.time.map((ti) => {
-                      return ti + '\n';
-                    }),
+                  time:marker.time,
                   city: marker.city,
                   region: marker.region,
 
                 });
               }}
-            >
-              <View style={styles.markerCss}>
-                <Text style={styles.markerText}>{marker.name}</Text>
-                <Image style={styles.markerImg} source={require('../../assets/pin/green.png')} />
-              </View>
-            </Marker>
+        />
+            // <Marker
+            //   key={marker.type + (marker.id).toString()}
+            //   coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
+            //   onPress={(e) => {
+            //     setModalIsAdd(false);
+            //     setModalVisible(!modalVisible);
+            //     setModalEntry({
+            //       type: marker.type,
+            //       id: marker.id,
+            //       name: marker.name,
+            //       address: marker.address,
+            //       star: marker.star,
+            //       info: marker.info,
+            //       date: marker.date,
+            //       time:
+            //         marker.time.map((ti) => {
+            //           return ti + '\n';
+            //         }),
+            //       city: marker.city,
+            //       region: marker.region,
+
+            //     });
+            //   }}
+            // >
+            //   <View style={styles.markerCss}>
+            //     <Text style={styles.markerText}>{marker.name}</Text>
+            //     <Image style={styles.markerImg} source={require('../../assets/pin/green.png')} />
+            //   </View>
+            // </Marker>
           )
 
         }

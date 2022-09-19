@@ -79,7 +79,8 @@ const test = ({city, region}) => {
   const headers = {
     'Content-Type': 'application/json',
   };
-  const url = 'http://10.0.2.2:8000/weather';
+  const url = 'https://59ee-140-121-198-98.jp.ngrok.io/weather';
+  //const url = 'http://172.20.10.3:8080/weather';
   const message = async () => {
     try {
       let res = await axios.get(url, {
