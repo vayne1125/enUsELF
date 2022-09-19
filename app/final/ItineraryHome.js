@@ -29,7 +29,6 @@ import firestore from '@react-native-firebase/firestore';
 
 
 const ItineraryHome = ({ navigation, route }) => {
-  const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState({}); //initialState
   const [modalIsMain, setModalIsMain] = useState(true);
@@ -53,9 +52,25 @@ const ItineraryHome = ({ navigation, route }) => {
   const [time, setTime] = useState([]);
   const [order, setOrder] = useState([]);
   const [place, setPlace] = useState([]);
-
+  const [mode,setMode] = useState('DRIVING');
+  const [changeMode,setChangeMode] = useState();
   const [size, setSize] = useState(0);
   const { user, logout } = useContext(AuthContext);//user uid
+
+  const [driPress,setDriPress] = useState(false);
+  const [walkPress,setWalkPress] = useState(false);
+
+  const onPressHandlerForDriving = () =>{
+    setChangeMode('DRIVING');
+  }
+
+  const onPressHandlerForWalking = () =>{
+    setChangeMode('WALKING');
+  }
+  useEffect(()=>{
+    console.log(changeMode);
+    setMode(changeMode);
+  },[changeMode])
 
   const navToHistory = (tripname) => {
     setModalVisibleForName(false);
@@ -325,6 +340,7 @@ const ItineraryHome = ({ navigation, route }) => {
             latitude: destination.lat,
             longitude: destination.lng
           }}
+          mode={mode}
           waypoints={waypoints}
           apikey={API_key}
           strokeWidth={3}
@@ -332,6 +348,8 @@ const ItineraryHome = ({ navigation, route }) => {
           onError={(res) => { console.log(err) }}
           onReady={
             (result) => {
+              console.log(result.legs);
+              //console.log(result.legs[0].steps);
               setOrder(result.waypointOrder[0]);
               setTime(result.legs);
               // console.log("legs: ",result.legs);
@@ -402,10 +420,25 @@ const ItineraryHome = ({ navigation, route }) => {
 
       <Callout style={styles.callout}>
 
+
         <View style={styles.topbar}>
-          <ItineraryTop tripname={tripname} time={time} place={place}></ItineraryTop>
+          <ItineraryTop
+            mode = {mode} 
+            tripname={tripname} 
+            time={time} 
+            place={place}
+            onPressHandler1={()=>{
+              onPressHandlerForDriving();
+              //changeMode('DRIVING');
+            }}
+            onPressHandler2={()=>{
+              onPressHandlerForWalking();
+            }}
+          ></ItineraryTop>
         </View>
+   
         {(route.params.from === "map") && <Back style={styles.back} />}
+        {/* <Driving/> */}
         <View style={styles.btnContainner}>
           <TouchableHighlight
             style={styles.button}

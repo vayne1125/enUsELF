@@ -11,5 +11,5 @@ import Share from './app/final/ItineraryHome'
 import Itmes from './app/list/Items'
 // import CollectHome from './app/personal/collect/CollectHome'
 import HistoryHome from './app/personal/history/HistoryHome'
-
+global.API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'; //set your api key
 AppRegistry.registerComponent(appName, () => App);

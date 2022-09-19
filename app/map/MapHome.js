@@ -33,7 +33,6 @@ const Stack = createNativeStackNavigator();
 const MapHome = ({ navigation, route }) => {
   const NewNavigation = useNavigation();
   // console.log("haha:",route.params);
-  const API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'
   const [once, setOnce] = useState(true);    //控制只會一次線
   //顯示detail
   const [modalVisible, setModalVisible] = useState(false);
@@ -452,7 +451,7 @@ const MapHome = ({ navigation, route }) => {
           coordinate={origin}
           title="你的位置"
         />
-   {(hotPress ? hotData : ORI_DATA).map((marker) => {
+   {(hotPress) && (hotData).map((marker) => {
           if (marker.del >= myLatitudeDelta) {
             return (
               <CustomMarkerComponent 
@@ -480,7 +479,7 @@ const MapHome = ({ navigation, route }) => {
         })}
        
 
-        {(holPress ? holData : ORI_DATA).map((marker) => {
+        {(holPress) && (holData).map((marker) => {
           if (marker.del >= myLatitudeDelta) {
             return (
               <CustomMarkerComponent 
@@ -510,7 +509,7 @@ const MapHome = ({ navigation, route }) => {
           }
         })}
 
-        {(shopPress ? shopData : ORI_DATA).map((marker) => {
+        {(shopPress)&& (shopData).map((marker) => {
           if (marker.del >= myLatitudeDelta) {
             return (
               <CustomMarkerComponent 

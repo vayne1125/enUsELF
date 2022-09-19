@@ -14,6 +14,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
+import Icons2 from 'react-native-vector-icons/FontAwesome';
+import Icons3 from 'react-native-vector-icons/FontAwesome5'
+//FontAwesome
 const Stack = createNativeStackNavigator();
 
 const ItineraryTop = props => {
@@ -32,12 +35,39 @@ const ItineraryTop = props => {
         style={{flex: 1}}>
         <View style={styles.iconContainer}>
           <Icons
-            name="calendar-outline"
-            size={33}
-            color={'#5f695d'}
+            name="time-outline"
+            size={40}
+            color={'#D1DED7'}
             style={styles.iconStyle}
           />
         </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={props.onPressHandler1}
+        >
+        <View style={styles.iconContainer2}>
+          <Icons2
+            name="car"
+            size={33}
+            color={'#D1DED7'}
+            style={styles.iconStyle}
+          />
+        </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={props.onPressHandler2}
+        >
+        <View style={styles.iconContainer3}>
+          <Icons3
+            name="walking"
+            size={33}
+            color={'#D1DED7'}
+            style={styles.iconStyle}
+          />
+        </View>
+
       </TouchableOpacity>
     </View>
   );
@@ -60,11 +90,31 @@ const styles = StyleSheet.create({
     top: 5,
     left: 8,
   },
+  iconContainer3:{
+    position: 'absolute',
+    right: 115,
+    top: 10,
+    //backgroundColor: '#D1DED7',
+    width: 48,
+    height: 48,
+    alignSelf: 'center',
+    borderRadius: 30,
+  },
+  iconContainer2:{
+    position: 'absolute',
+    right: 75,
+    top: 10,
+    //backgroundColor: '#D1DED7',
+    width: 48,
+    height: 48,
+    alignSelf: 'center',
+    borderRadius: 30,
+  },
   iconContainer: {
     position: 'absolute',
     right: 24,
     top: 6,
-    backgroundColor: '#D1DED7',
+    //backgroundColor: '#D1DED7',
     width: 48,
     height: 48,
     alignSelf: 'center',
