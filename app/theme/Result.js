@@ -8,9 +8,9 @@ import {
   Image,
   Button,
   Modal,
+  SafeAreaView,
   TouchableOpacity,
-  RefreshControl,
-  Pressable
+  VirtualizedList,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -43,13 +43,20 @@ const initialState = {
   info: {},
   time: {},
 };
-const themeData = {
-  自然: NatureData,
-  網美: KOLData,
-  美食: FoodData,
-  住宿: HotelData,
-  古蹟: MonumentsData,
+const themeCnt = {
+  自然: 142,
+  網美: 182,
+  美食: 68,
+  住宿: 60,
+  古蹟: 89,
 };
+const themeData = {
+    自然: NatureData,
+    網美: KOLData,
+    美食: FoodData,
+    住宿: HotelData,
+    古蹟: MonumentsData,
+  };
 const Result = ({navigation, route}) => {
   //const theme = route.params;
 
@@ -58,6 +65,8 @@ const Result = ({navigation, route}) => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(initialState);
   const [theme, setTheme] = useState('美食');
+  const Data = [];
+  const getItem = (data, index)=>{return themeData[theme][index]};
   // const onRefresh = React.useCallback(() => {
   //   setRefreshing(true);
   //   wait(2000).then(() => setRefreshing(false));
@@ -234,7 +243,6 @@ const Result = ({navigation, route}) => {
             <TouchableOpacity
               onPress={() => {
                 setTheme('古蹟');
-               
               }}>
               <Icon3 name={'castle'} 
               color={'#5f695d'}//9/14改
@@ -278,7 +286,6 @@ const Result = ({navigation, route}) => {
             <TouchableOpacity
               onPress={() => {
                 setTheme('住宿');
-                
               }}>
               <Icons name={'bed'} 
               color={'#5f695d'}//9/14改
@@ -315,19 +322,22 @@ const Result = ({navigation, route}) => {
       </View>
       {/*內容*/}
       <View style={styles.info}>
-        <FlatList
+        <VirtualizedList
           //columnWrapperStyle={{justifyContent: 'space-around'}}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{
-            //marginTop: 25,
-            paddingBottom: 80,
-          }}
-          numColumns={1}
-          data={themeData[theme]}
+          //showsVerticalScrollIndicator={false}
+        //   contentContainerStyle={{
+        //     //marginTop: 25,
+        //     paddingBottom: 80,
+        //   }}
+          //numColumns={1}
+          data={Data}
           initialNumToRender={5}
           // refreshControl={
           //   <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           // }
+          //keyExtractor={item => item.place_id}
+          getItem = {getItem}
+          getItemCount = {data => themeCnt[theme]}
           renderItem={({item}) => (
             <Card
               sites={item}
@@ -340,7 +350,8 @@ const Result = ({navigation, route}) => {
                 setNoticeEntry(site);
               }}
             />
-          )}></FlatList>
+          )}>
+        </VirtualizedList>
       </View>
     </View>
   );

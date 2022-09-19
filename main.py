@@ -83,3 +83,4 @@ def weather_data(City: str, Region: str):
     else:
         print("Can't get data!")
   
+print('d')
