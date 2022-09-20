@@ -36,6 +36,7 @@ const Time = ({ navigation, route }) => {
         tp.name = "你的位置";
         tp.duration = route.params.time[0].duration;
         tp.distance = route.params.time[0].distance;
+        tp.circleColor= '#5f695d';
         data.push(tp);
         for(var i=0;i<route.params.place.length;i++){
           const param = route.params.place[i];
@@ -56,10 +57,15 @@ const Time = ({ navigation, route }) => {
           } else if (param.type === "shop") {
             tp = (Shopplace[param.id]);
           }
+          tp.time = "";
           if(i!=route.params.place.length-1){
             tp.duration = route.params.time[i+1].duration;
             tp.distance = route.params.time[i+1].distance;
+          }else{
+            tp.distance = "-1";
           }
+          if(i&1) tp.circleColor= '#5f695d';
+          else tp.circleColor= '#bcddb7';
           data.push(tp);
         }
       ////console.log("data:",data);
