@@ -6,6 +6,7 @@ import {
   Text,
   TouchableHighlight,
   Image,
+  TouchableOpacity
 } from 'react-native';
 import CustomMarkerComponent from '../map/CustomMarkerComponent';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
@@ -16,6 +17,8 @@ import { mapStyle } from '../map/mapStyle';
 import MapViewDirections from 'react-native-maps-directions';
 import { AuthContext } from '../routes/AutoProvider';
 import firestore from '@react-native-firebase/firestore';
+import Icons2 from 'react-native-vector-icons/FontAwesome';
+import Icons3 from 'react-native-vector-icons/FontAwesome5';
 
 import ItineraryTop from './ItineraryTop';
 import Hotplace from '../data/Hotplace'
@@ -426,18 +429,35 @@ const ItineraryHome = ({ navigation, route }) => {
             tripname = {tripname} 
             time = {time} 
             place = {place}
-            onPressHandler1={()=>{
-              onPressHandlerForDriving();
-              //changeMode('DRIVING');
-            }}
-            onPressHandler2={()=>{
-              onPressHandlerForWalking();
-            }}
           ></ItineraryTop>
         </View>
-   
+
+        <View style={styles.buttonContainer}>
+        <TouchableOpacity
+           onPress={onPressHandlerForDriving}>
+        <View style={styles.iconContainer2}>
+          <Icons2
+            name="car"
+            size={33}
+            color={'#5f695d'}
+          />
+        </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={onPressHandlerForWalking}
+        >
+        <View style={styles.iconContainer3}>
+          <Icons3
+            name="walking"
+            size={33}
+            color={'#5f695d'}
+          />
+        </View>
+
+      </TouchableOpacity>
+          </View>
         {(route.params.from === "map") && <Back style={styles.back} />}
-        {/* <Driving/> */}
         <View style={styles.btnContainner}>
           <TouchableHighlight
             style={styles.button}
@@ -487,17 +507,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   topbar: {
-    //zIndex: 3,
-    backgroundColor: '#5f695d',
-    //flex:1,
+    backgroundColor: 'rgba(255,255,255,0.7)',
     left: -Dimensions.get('window').width / 2,
     top: -Dimensions.get('window').height / 2,
     height: Dimensions.get('window').height / 11,
     width: Dimensions.get('window').width,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
     position: 'absolute',
-    //opacity: 0.9,
   },
   markerCss: {
     alignItems: 'center',
@@ -510,18 +525,43 @@ const styles = StyleSheet.create({
   },
   button: {
     top: Dimensions.get('window').height / 2 - 60,
-    left: -Dimensions.get('window').width / 4 - 10,
-    backgroundColor: '#5f695d',
-    width: 100,
-    height: 40,
+    left: -Dimensions.get('window').width*2 / 5,
+    backgroundColor: 'rgba(95,105,93,0.8)',
+    width: 130,
+    height: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
+    borderRadius: 20,
     marginBottom: 10,
+    borderWidth:2,
+    borderColor:'#badecb',
+    // width: 100,
+    // height: 40,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // borderRadius: 10,
+    // marginBottom: 10,
+    //position: 'absolute',
   },
   text: {
     fontSize: 17,
     color: '#F2F2F2',
+  },
+  back:{
+    backgroundColor:'black',
+  },
+  buttonContainer: {
+    width: 80,
+    height: 100,
+    right: -Dimensions.get('window').width*5/11,
+    bottom: -Dimensions.get('window').height*8/21,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255,255,255,0.7)',
+    alignSelf: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    position: 'absolute',
   },
 });
 export default ItineraryHome;
