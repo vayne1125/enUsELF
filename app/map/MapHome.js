@@ -12,11 +12,11 @@ import Geolocation from '@react-native-community/geolocation';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import { mapStyle } from './mapStyle';
 import { ORI_DATA } from './OriData'; //空資料 -> 初始化
-import DetailForMap from '../detail/DetailForMap';
 import Back from './Back';
 import CustomMarkerComponent from './CustomMarkerComponent';
 import MapViewDirections from 'react-native-maps-directions';
 
+import DetailForMap from './DetailForMap';
 import Hotplace from '../data/Hotplace'
 import Shopplace from '../data/Shopplace'
 import Holplace from '../data/Holplace'

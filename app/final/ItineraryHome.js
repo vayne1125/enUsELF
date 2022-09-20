@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import CustomMarkerComponent from '../map/CustomMarkerComponent';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
-import DetailForFinal from '../detail/DetailForFinal';
+import DetailForFinal from './DetailForFinal';
 import Back from './Back';
 import Share from './Share';
 import { mapStyle } from '../map/mapStyle';

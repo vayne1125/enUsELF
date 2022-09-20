@@ -19,8 +19,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 import firestore from '@react-native-firebase/firestore';
-import Notice from '../theme/Notice';
-import Weather from './Weather';
+import Notice from './Notice';
+import Weather from '../data/Weather';
 import ThemeImg from '../data/ThemeImg';
 
 import { AuthContext } from '../routes/AutoProvider';

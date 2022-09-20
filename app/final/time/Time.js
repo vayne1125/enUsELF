@@ -20,8 +20,8 @@ import Hotel from '../../data/Hotel'
 import KOL from '../../data/KOL'
 import Monuments from '../../data/Monuments'
 import Nature from '../../data/Nature'
+import DetailForFinal from '../DetailForFinal';
 
-import DetailForFinal from '../../detail/DetailForFinal';
 const Time = ({ navigation, route }) => {
   const [time, setTime] = useState(route.params.time);
   const [place, setPlace] = useState(route.params.place);

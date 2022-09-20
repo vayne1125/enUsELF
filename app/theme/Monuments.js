@@ -10,7 +10,6 @@ import {
   Modal,
   SafeAreaView,
   TouchableOpacity,
-  VirtualizedList,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -20,7 +19,7 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/Foundation';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Detail from '../detail/Detail';
+import Detail from './Detail';
 import Notice from './Notice';
 import MonumentsData from '../data/Monuments';
 import Card from './Card';
@@ -77,10 +76,10 @@ const Monuments = () => {
           }}
           numColumns={2}
           data={MonumentsData}
-          initialNumToRender={5}
-          getItemLayout={(data, index) => (
-            {length: Height, offset: Height * index, index}
-          )}
+          initialNumToRender={4}
+          windowSize={2}
+          removeClippedSubviews={true}
+          keyExtractor={item=>item.place_id}
           renderItem={({item}) => (
             <Card
               sites={item}
