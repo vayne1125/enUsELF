@@ -49,16 +49,14 @@ const ItineraryHome = ({ navigation, route }) => {
   const [tripname, setTripname] = useState(route.params.tripname);
 
   const [schedule,setSchedule] = useState([]);
+  const [wayTime, setWayTime] = useState([]);
   const [time, setTime] = useState([]);
   const [order, setOrder] = useState([]);
   const [place, setPlace] = useState([]);
   const [mode,setMode] = useState('DRIVING');
-  const [changeMode,setChangeMode] = useState();
+  const [changeMode,setChangeMode] = useState('DRIVING');
   const [size, setSize] = useState(0);
   const { user, logout } = useContext(AuthContext);//user uid
-
-  const [driPress,setDriPress] = useState(false);
-  const [walkPress,setWalkPress] = useState(false);
 
   const onPressHandlerForDriving = () =>{
     setChangeMode('DRIVING');
@@ -67,8 +65,9 @@ const ItineraryHome = ({ navigation, route }) => {
   const onPressHandlerForWalking = () =>{
     setChangeMode('WALKING');
   }
+
   useEffect(()=>{
-    console.log(changeMode);
+    //console.log(changeMode);
     setMode(changeMode);
   },[changeMode])
 
@@ -262,7 +261,7 @@ const ItineraryHome = ({ navigation, route }) => {
       } else {
         tp = 0.9;
       }
-      console.log("long=" + longestDis + " tp= ", tp);
+      //console.log("long=" + longestDis + " tp= ", tp);
       return {
         latitude: (south + north) / 2.0,
         longitude: (east + west) / 2.0,
@@ -288,7 +287,7 @@ const ItineraryHome = ({ navigation, route }) => {
     })
     setTime(()=>{
       var rt = [];
-      time.map((t)=>{
+      wayTime.map((t)=>{
         rt.push({distance:t.distance.text,duration:t.duration.text});
       })
       return rt;
@@ -351,7 +350,7 @@ const ItineraryHome = ({ navigation, route }) => {
               console.log(result.legs);
               //console.log(result.legs[0].steps);
               setOrder(result.waypointOrder[0]);
-              setTime(result.legs);
+              setWayTime(result.legs);
               // console.log("legs: ",result.legs);
               // console.log("steps: ",result.legs.steps)
               // console.log("way: ",result.waypointOrder);
@@ -424,9 +423,9 @@ const ItineraryHome = ({ navigation, route }) => {
         <View style={styles.topbar}>
           <ItineraryTop
             mode = {mode} 
-            tripname={tripname} 
-            time={time} 
-            place={place}
+            tripname = {tripname} 
+            time = {time} 
+            place = {place}
             onPressHandler1={()=>{
               onPressHandlerForDriving();
               //changeMode('DRIVING');

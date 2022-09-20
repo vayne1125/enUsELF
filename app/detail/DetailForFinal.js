@@ -71,7 +71,7 @@ const DetailForFinal = ({entry, modalVisible, onClose, isMain}) => {
               {isMain ? (
                 <Image
                   style={styles.image}
-                  source={Image_link[entry['name']]}
+                  source={ThemeImg[entry['name']]}
                 />
               ) : (
                 <Image
