@@ -149,8 +149,9 @@ return (
             marginTop: '2%',
             paddingBottom: '5%',
         }}
-        numColumns={1}
         data={sites}
+        keyExtractor={(item)=>item.place_id}
+        numColumns={1}
         renderItem={({item}) => <Card site={item} />}>     
       </FlatList>:
         <View style={{flex:1,top:height,}}><Text style={{fontSize:28,}}>未提供行程表</Text></View>
