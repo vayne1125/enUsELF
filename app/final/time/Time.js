@@ -32,9 +32,13 @@ const Time = ({ navigation, route }) => {
   useEffect(()=>{
     setData(() => {
       const data = [];
+      var tp = {};
+        tp.name = "你的位置";
+        tp.duration = route.params.time[0].duration;
+        tp.distance = route.params.time[0].distance;
+        data.push(tp);
         for(var i=0;i<route.params.place.length;i++){
           const param = route.params.place[i];
-          var tp = {};
           if (param.type === "food") {
             tp = (Food[param.id]);
           } else if (param.type === "nature") {
@@ -52,18 +56,20 @@ const Time = ({ navigation, route }) => {
           } else if (param.type === "shop") {
             tp = (Shopplace[param.id]);
           }
-          tp.duration = route.params.time[i].duration;
-          tp.distance = route.params.time[i].distance;
+          if(i!=route.params.place.length-1){
+            tp.duration = route.params.time[i+1].duration;
+            tp.distance = route.params.time[i+1].distance;
+          }
           data.push(tp);
         }
-      // console.log(data);
-      // const data = [
+      //console.log("data:",data);
+      // return [
       //   {time: '09:00', title: 'Event 1', description: 'Event 1 Description'},
       //   {time: '10:45', title: 'Event 2', description: 'Event 2 Description'},
       //   {time: '12:00', title: 'Event 3', description: 'Event 3 Description'},
       //   {time: '14:00', title: 'Event 4', description: 'Event 4 Description'},
       //   {time: '16:30', title: 'Event 5', description: 'Event 5 Description'}
-      // ]
+      // ];
       return data;
     })
   },[])
