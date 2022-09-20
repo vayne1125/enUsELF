@@ -142,7 +142,7 @@ const Card = ({navigation, post, onDelete}) => {
   };
   //console.log('1post.use ', post.img);
   const onTextLayout = useCallback(e =>{
-    setLengthMore(e.nativeEvent.lines.length >=4); //to check the text is more than 4 lines or not
+    setLengthMore(e.nativeEvent.lines.length >=2); //to check the text is more than 4 lines or not
     // console.log(e.nativeEvent);
 },[]);
 const toggleNumberOfLines = () => { //To toggle the show text or hide it
