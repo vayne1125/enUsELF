@@ -26,8 +26,8 @@ import KOL from '../data/KOL'
 import Monuments from '../data/Monuments'
 import Nature from '../data/Nature'
 
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 //import Hotplace from './tp'
 //{ navigation, route }
 const Stack = createNativeStackNavigator();
@@ -59,10 +59,10 @@ const MapHome = ({ navigation, route }) => {
   const [destination, setDes] = useState({ latitude: 24.1365593, longitude: 120.6835935 });
   const [initRegion, setInitRegion] = useState({ latitude: 24.1365593, longitude: 120.6835935, latitudeDelta: 4, longitudeDelta: 0 });
   const [myLatitudeDelta, setMyLatitudeDelta] = useState(3.8); //地圖縮放程度的變數
-  const [south,setSouth] = useState(24.1365593);
-  const [north,setNorth] = useState(24.1365593);
-  const [west,setWest] = useState(120.6835935);
-  const [east,setEast] = useState(120.6835935); 
+  const [south, setSouth] = useState(24.1365593);
+  const [north, setNorth] = useState(24.1365593);
+  const [west, setWest] = useState(120.6835935);
+  const [east, setEast] = useState(120.6835935);
   //console.log("選染 ",mySet);
   const onPressHandlerForComlete = () => {
     // console.log("距離: ", Math.sqrt((origin.latitude - destination.latitude) * (origin.latitude - destination.latitude) + (origin.longitude - destination.longitude) * (origin.longitude - destination.longitude)));
@@ -92,14 +92,14 @@ const MapHome = ({ navigation, route }) => {
           type: i.type
         });
       })
-        NewNavigation.navigate("ItineraryHome", {
-          tripname: "行程表",
-          origin: ori,
-          desSite: desSite,
-          site: rt,
-          from: "map",
-        });
-      
+      NewNavigation.navigate("ItineraryHome", {
+        tripname: "行程表",
+        origin: ori,
+        desSite: desSite,
+        site: rt,
+        from: "map",
+      });
+
     } catch (error) {
       console.log(error);
       alert("伺服器發生錯誤，請檢查網路狀況或重新加載");
@@ -179,7 +179,7 @@ const MapHome = ({ navigation, route }) => {
   //算出附近的點(範圍20km內) 1 -> 111km  0.1 -> 11km
   const getPlace = (array) => {
     const mySet = new Set(); //避免重複抓景點
-    (mainRoute).map((mainR)=>{
+    (mainRoute).map((mainR) => {
       mySet.add(mainR.place_id);
       //console.log("0");
     })
@@ -251,11 +251,11 @@ const MapHome = ({ navigation, route }) => {
             data.push(Monuments[param.id]);
           } else if (param.type === "hotel") {
             data.push(Hotel[param.id]);
-          }else if(param.type === "hot"){
+          } else if (param.type === "hot") {
             data.push(Hotplace[param.id]);
-          }else if(param.type === "shop"){
+          } else if (param.type === "shop") {
             data.push(Shopplace[param.id]);
-          }else if(param.type === "hol"){
+          } else if (param.type === "hol") {
             data.push(Holplace[param.id]);
           }
         }
@@ -295,40 +295,40 @@ const MapHome = ({ navigation, route }) => {
       return des;
     });
 
-    setEast(()=>{
+    setEast(() => {
       var rt = east;
-      mainRoute.map((i)=>{
-        if(i.lng < rt) rt = i.lng;
+      mainRoute.map((i) => {
+        if (i.lng < rt) rt = i.lng;
       })
       return rt;
     })
 
-    setWest(()=>{
+    setWest(() => {
       var rt = west;
-      mainRoute.map((i)=>{
-        if(i.lng > rt) rt = i.lng;
+      mainRoute.map((i) => {
+        if (i.lng > rt) rt = i.lng;
       })
       return rt;
     })
 
-    setNorth(()=>{
+    setNorth(() => {
       var rt = north;
-      mainRoute.map((i)=>{
-        if(i.lat > rt) rt = i.lat;
+      mainRoute.map((i) => {
+        if (i.lat > rt) rt = i.lat;
       })
       return rt;
     })
 
-    setSouth(()=>{
+    setSouth(() => {
       try {
         var rt = south;
-        mainRoute.map((i)=>{
-          if(i.lat < rt) rt = i.lat;
+        mainRoute.map((i) => {
+          if (i.lat < rt) rt = i.lat;
         })
         return rt;
       } catch (error) {
         alert("伺服器發生錯誤，請檢查網路狀況或重新加載");
-      }     
+      }
     })
 
   }, [origin, mainRoute])
@@ -344,7 +344,7 @@ const MapHome = ({ navigation, route }) => {
     });
   }, [destination])
 
-  useEffect(()=>{
+  useEffect(() => {
     setInitRegion(() => {
       //var longestDis = getDis({ lat: origin.latitude, lng: origin.longitude }, { lat: destination.latitude, lng: destination.longitude });
       //console.log(north," ",east," ",south," ",west);
@@ -363,13 +363,13 @@ const MapHome = ({ navigation, route }) => {
       }
       //console.log("long="+longestDis+" tp= ",tp);
       return {
-        latitude: (south+north) / 2.0,
-        longitude: (east+west) / 2.0,
+        latitude: (south + north) / 2.0,
+        longitude: (east + west) / 2.0,
         latitudeDelta: tp, //數字越小 地圖道路越大
         longitudeDelta: 0,
       }
     });
-  },[north,south,west,east])
+  }, [north, south, west, east])
 
   useEffect(() => {
     //console.log("過濾島航線的點 useEffect");
@@ -406,12 +406,12 @@ const MapHome = ({ navigation, route }) => {
         mapType="standard"
       >
 
-        {(mainRoute).map((marker)=>{
-          return( 
-          <CustomMarkerComponent 
+        {(mainRoute).map((marker) => {
+          return (
+            <CustomMarkerComponent
               key={marker.type + (marker.id).toString()}
-              data = {marker}
-              color = 'green'
+              data={marker}
+              color='green'
               onPressHandler={(e) => {
                 setModalCanPress(false);
                 setModalVisible(!modalVisible);
@@ -428,8 +428,9 @@ const MapHome = ({ navigation, route }) => {
                   region: marker.region,
                 });
               }}
-          />
-        )})}
+            />
+          )
+        })}
 
         <MapViewDirections
           optimizeWaypoints={true}
@@ -453,13 +454,13 @@ const MapHome = ({ navigation, route }) => {
           coordinate={origin}
           title="你的位置"
         />
-   {(hotPress) && (hotData).map((marker) => {
+        {(hotPress) && (hotData).map((marker) => {
           if (marker.del >= myLatitudeDelta) {
             return (
-              <CustomMarkerComponent 
+              <CustomMarkerComponent
                 key={marker.type + (marker.id).toString()}
-                data = {marker}
-                color = 'red'
+                data={marker}
+                color='red'
                 onPressHandler={(e) => {
                   setModalIsAdd(true);
                   setModalCanPress(true);
@@ -476,50 +477,51 @@ const MapHome = ({ navigation, route }) => {
                     region: marker.region,
                   });
                 }}
-          />
-        )}
-        })}
-       
-
-        {(holPress) && (holData).map((marker) => {
-          if (marker.del >= myLatitudeDelta) {
-            return (
-              <CustomMarkerComponent 
-              key={marker.type + (marker.id).toString()}
-              data = {marker}
-              color = 'yellow'
-              onPressHandler={(e) => {
-                setModalIsAdd(true);
-                setModalCanPress(true);
-                setModalVisible(!modalVisible);
-                setModalEntry({
-                  type: marker.type,
-                  id: marker.id,
-                  name: marker.name,
-                  address: marker.address,
-                  id: marker.id,
-                  star: 5,
-                  info: marker.info,
-                  date: marker.date,
-                  time: marker.time,
-                  city: marker.city,
-                  region: marker.region,
-                });
-              }}
-        />
+              />
             )
           }
         })}
 
-        {(shopPress)&& (shopData).map((marker) => {
+
+        {(holPress) && (holData).map((marker) => {
           if (marker.del >= myLatitudeDelta) {
             return (
-              <CustomMarkerComponent 
-              key={marker.type + (marker.id).toString()}
-              data = {marker}
-              color = 'blue'
-              onPressHandler={(e) => {
-                setModalIsAdd(true);
+              <CustomMarkerComponent
+                key={marker.type + (marker.id).toString()}
+                data={marker}
+                color='yellow'
+                onPressHandler={(e) => {
+                  setModalIsAdd(true);
+                  setModalCanPress(true);
+                  setModalVisible(!modalVisible);
+                  setModalEntry({
+                    type: marker.type,
+                    id: marker.id,
+                    name: marker.name,
+                    address: marker.address,
+                    id: marker.id,
+                    star: 5,
+                    info: marker.info,
+                    date: marker.date,
+                    time: marker.time,
+                    city: marker.city,
+                    region: marker.region,
+                  });
+                }}
+              />
+            )
+          }
+        })}
+
+        {(shopPress) && (shopData).map((marker) => {
+          if (marker.del >= myLatitudeDelta) {
+            return (
+              <CustomMarkerComponent
+                key={marker.type + (marker.id).toString()}
+                data={marker}
+                color='blue'
+                onPressHandler={(e) => {
+                  setModalIsAdd(true);
                   setModalCanPress(true);
                   setModalVisible(!modalVisible);
                   setModalEntry({
@@ -533,8 +535,8 @@ const MapHome = ({ navigation, route }) => {
                     city: marker.city,
                     region: marker.region,
                   });
-              }}
-        />
+                }}
+              />
             )
           }
         }
@@ -542,10 +544,10 @@ const MapHome = ({ navigation, route }) => {
 
         {(endData).map((marker) => {
           return (
-            <CustomMarkerComponent 
+            <CustomMarkerComponent
               key={marker.type + (marker.id).toString()}
-              data = {marker}
-              color = 'green'
+              data={marker}
+              color='green'
               onPressHandler={(e) => {
                 setModalIsAdd(false);
                 setModalVisible(!modalVisible);
@@ -557,13 +559,13 @@ const MapHome = ({ navigation, route }) => {
                   star: marker.star,
                   info: marker.info,
                   date: marker.date,
-                  time:marker.time,
+                  time: marker.time,
                   city: marker.city,
                   region: marker.region,
 
                 });
               }}
-        />
+            />
             // <Marker
             //   key={marker.type + (marker.id).toString()}
             //   coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
@@ -602,7 +604,7 @@ const MapHome = ({ navigation, route }) => {
       {/* 放在地圖的組件 */}
       <Callout style={styles.callout}>
         <Back />
-        {/*熱門景點*/}
+        {/* 熱門景點
         <TouchableHighlight
           style={styles.buttonForHot}
           onPress={onPressHandlerForHot}
@@ -611,7 +613,7 @@ const MapHome = ({ navigation, route }) => {
           <Text style={styles.textForOption}>熱門景點</Text>
         </TouchableHighlight>
 
-        {/*節日*/}
+        {/*節日}
         <TouchableHighlight
           style={styles.buttonHoliday}
           onPress={onPressHandlerForHoliday}
@@ -620,18 +622,68 @@ const MapHome = ({ navigation, route }) => {
           <Text style={styles.textForOption}>節日</Text>
         </TouchableHighlight>
 
-        {/*購物*/}
+        {/*購物}
         <TouchableHighlight
           style={styles.buttonForShop}
           onPress={onPressHandlerForShop}
           underlayColor='#eeeeee'
         >
           <Text style={styles.textForOption}>購物</Text>
+        </TouchableHighlight> */}
+        <View style={styles.buttonContainer}>
+          <View style={{
+            flex: 1, alignSelf: 'center',
+            alignContent: 'center',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+          }}>
+            <TouchableHighlight
+              //style={styles.buttonForHot}
+              onPress={onPressHandlerForHot}
+              underlayColor='#eeeeee'
+            >
+              <Text style={styles.textForOption}>熱門景點</Text>
+            </TouchableHighlight>
+          </View>
+
+          <View style={{
+            flex: 1, alignSelf: 'center',
+            alignContent: 'center',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            borderBottomWidth:1,
+            width:'100%',
+            borderTopWidth:1,
+            borderColor:'#bec8bc'
+          }}>
+             <TouchableHighlight
+          //style={styles.buttonHoliday}
+          onPress={onPressHandlerForHoliday}
+          underlayColor='#eeeeee'
+        >
+          <Text style={styles.textForOption2}>節日</Text>
         </TouchableHighlight>
+          </View>
+
+          <View style={{
+            flex: 1, alignSelf: 'center',
+            alignContent: 'center',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+          }}>
+            <TouchableHighlight
+          //style={styles.buttonForShop}
+          onPress={onPressHandlerForShop}
+          underlayColor='#eeeeee'
+        >
+          <Text style={styles.textForOption3}>購物</Text>
+        </TouchableHighlight>
+          </View>
+        </View>
 
         {/*完成*/}
+        <View style={styles.buttonForComlete}>
         <TouchableHighlight
-          style={styles.buttonForComlete}
           onPress={
             onPressHandlerForComlete
           }
@@ -639,6 +691,7 @@ const MapHome = ({ navigation, route }) => {
         >
           <Text style={styles.text}>完成</Text>
         </TouchableHighlight>
+        </View>
       </Callout>
     </View>
   );
@@ -670,16 +723,17 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
   },
   buttonForComlete: {
-    //zIndex: 3,
-    //position: 'absolute',
     top: Dimensions.get('window').height / 2 - 130,
-    backgroundColor: '#5f695d',
-    width: 120,
-    height: 40,
+    //backgroundColor: '#5f695d',
+    backgroundColor: 'rgba(95,105,93,0.8)',
+    width: 130,
+    height: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
+    borderRadius: 20,
     marginBottom: 10,
+    borderWidth:2,
+    borderColor:'#badecb',
   },
   buttonForHot: {
     //zIndex: 2,
@@ -723,11 +777,29 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 17,
-    color: '#F2F2F2',
+    color: 'white',
+    fontWeight:'bold',
+    letterSpacing:5,
   },
   textForOption: {
     fontSize: 17,
-    color: '#5f695d',
+    //color: '#5f695d',
+    color:'#FF9797',
+    fontWeight:'bold',
+  },
+  textForOption2: {
+    fontSize: 17,
+    //color: '#5f695d',
+    color:'#ffbb47',
+    fontWeight:'bold',
+    letterSpacing:5,
+  },
+  textForOption3: {
+    fontSize: 17,
+    //color: '#5f695d',
+    color:'#386b9f',
+    fontWeight:'bold',
+    letterSpacing:5,
   },
   markerCss: {
     alignItems: 'center',
@@ -737,6 +809,18 @@ const styles = StyleSheet.create({
     color: '#5f695d',
     fontSize: 15,
     fontWeight: "bold",
+  },
+  buttonContainer: {
+    width: 120,
+    height: 145,
+    left: -Dimensions.get('window').width*3/10,
+    top: -Dimensions.get('window').height*6/20,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255,255,255,0.7)',
+    alignSelf: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'space-around',
   },
 });
 export default MapHome; 
