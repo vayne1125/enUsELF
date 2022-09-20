@@ -56,9 +56,9 @@ const styles = StyleSheet.create({
   textStyle: {
     //alignContent:'center',
     //justifyContent:'center',
-    bottom:'15%',
+    bottom:'12%',
     left:'5%',
-    fontSize: 30,
+    fontSize: 26,
     //fontWeight: 'bold',
     //color: '#ffffff',
     color:'#5f695d',
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   iconStyle: {
     //top: 5,
     //left: 8,
-    top:'18%',
+    top:'15%',
   },
   iconContainer: {
     flex:1,
