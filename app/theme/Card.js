@@ -99,7 +99,7 @@ export default class Card extends PureComponent {
     return (
       <TouchableOpacity
         onPress={() => {
-          this.props.onPress1(site);
+          this.props.onPress1(site, this.state.uncheck, ()=>{this.setState({uncheck: false})});
         }}>
         <View style={styles.card}>
           <View style={styles.imageContainer}>

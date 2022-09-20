@@ -45,6 +45,8 @@ const Food = () => {
   const [modalEntry, setModalEntry] = useState(initialState);
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(initialState);
+  const [uncheck, setUncheck] = useState(false);
+  const [cardcheck, setCardCheck] = useState();
   return (
     <View style={styles.container}>
       {/*浮動視窗-------------------------------------------------------------------------------*/}
@@ -54,6 +56,8 @@ const Food = () => {
         onClose={() => {
           setModalVisible(false);
         }} //關閉函式
+        uncheck={uncheck}
+        check = {cardcheck}
       />
       {/*浮動視窗-------------------------------------------------------------------------------*/}
 
@@ -83,9 +87,11 @@ const Food = () => {
           renderItem={({item}) => (
             <Card
               sites={item}
-              onPress1={site => {
+              onPress1={(site, uncheck, check) => {
                 setModalVisible(!modalVisible);
                 setModalEntry(site);
+                setUncheck(uncheck);
+                setCardCheck(check);
               }}
               onPress2={site => {
                 setNoticeVisible(!noticeVisible);

@@ -28,7 +28,7 @@ import { AuthContext } from '../routes/AutoProvider';
 const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.15;
 
-const Detail = ({entry, modalVisible, onClose}) => {
+const Detail = ({entry, modalVisible, onClose, uncheck, check}) => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(entry);
     const {user} = useContext(AuthContext);
@@ -129,7 +129,7 @@ const Detail = ({entry, modalVisible, onClose}) => {
               </ScrollView>
             </View>
             </View>
-            {
+            {uncheck?
             <View style={styles.buttonContainer}>
               <TouchableOpacity
                 onPress={() => {
@@ -142,7 +142,7 @@ const Detail = ({entry, modalVisible, onClose}) => {
                             place_id: entry['place_id'],
                             check: false,
                         })
-                        //console.log(entry['name']);
+                        .then(()=>{check;});
                     }
                   setNoticeVisible(!noticeVisible);
                   setNoticeEntry(entry);
@@ -156,6 +156,15 @@ const Detail = ({entry, modalVisible, onClose}) => {
                   <Text style={styles.buttonText}>單</Text>
                   </View>           
               </TouchableOpacity>
+            </View>:
+            <View style={styles.buttonContainer}>
+                <View style={styles.buttonTextContainer}>
+                    <Text style={styles.buttonText}>已</Text>
+                    <Text style={styles.buttonText}>加</Text>
+                    <Text style={styles.buttonText}>入</Text>
+                    <Text style={styles.buttonText}>清</Text>
+                    <Text style={styles.buttonText}>單</Text>
+                </View>           
             </View>
             }
           </View>
