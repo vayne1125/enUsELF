@@ -23,7 +23,6 @@ export default class Launcher extends Component {
     return (
         <Stack.Navigator initialRouteName="LauncherHome" screenOptions={{header: () => null}} >
             <Stack.Screen name="LauncherHome" component={LauncherHome} />
-            {/*<Stack.Screen name="Signup" component={Signup}/>*/}
             <Stack.Screen name="Forget" component={Forget}/>
         </Stack.Navigator>
     );
