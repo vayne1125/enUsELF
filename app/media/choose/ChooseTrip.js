@@ -106,14 +106,14 @@ const ChooseTrip = () => {
         }} //關閉函式
       />
       {/*通知視窗-------------------------------------------------------------------------------*/}
-      
+      <View style={{flex:11.8}}>
       {/*內容*/}
       <FlatList
         //columnWrapperStyle={{justifyContent: 'space-between'}}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          marginTop: 25,
-          paddingBottom: 80,
+          marginTop: '3%',
+          paddingBottom: '5%',
         }}
         numColumns={1}
         data={trip}
@@ -142,43 +142,24 @@ const ChooseTrip = () => {
         />}
         >
         </FlatList>
+        </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   topbar: {
-    backgroundColor: '#5f695d',
-    //flex:1,
-    height: 63,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
+    backgroundColor: '#ffffff',
+    flex:1,
+    //height: 63,
+    //borderBottomLeftRadius: 20,
+    //borderBottomRightRadius: 20,
     //opacity: 0.9,
   },
   container: {
     hight: '100%',
     backgroundColor: '#F2F2F2',
     flex: 1,
-  },
-  card: {
-    height: 170,
-    //backgroundColor:'#D1DED7',
-    backgroundColor: '#ffffff',
-    width,
-    //marginHorizontal: 10,
-    //borderRadius: 10,
-    marginBottom: 15,
-    //paddingTop:5,
-    padding: 5,
-    //right: 2,
-    //borderColor: '#D1DED7',
-    //borderWidth: 3,
-    flex: 1,
-    flexDirection: 'row',
-    borderBottomWidth: 3,
-    borderBottomColor: '#D1DED7',
-    borderRightWidth: 3,
-    borderRightColor: '#ffffff',
   },
   textStyle: {
     alignSelf: 'center',

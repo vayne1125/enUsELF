@@ -38,13 +38,13 @@ const ScheduleTop = props => {
         <View style={styles.iconContainer2}>
           <Icons
             name="chevron-back-circle-outline"
-            size={28}
-            color={'white'}
+            size={33}
+            color={'#5f695d'}
             style={styles.iconStyle2}
           />
         </View>
         </TouchableOpacity>
-        <View style={{flex:10,justifyContent:'center',top:12,}}>
+        <View style={{flex:10,justifyContent:'center',}}>
         <Text style={styles.textStyle}>{aurInfo.name}的行程</Text>
         </View>
         {(sites!=null)?
@@ -58,7 +58,7 @@ const ScheduleTop = props => {
           <Icon
             name="map-marked-alt"
             size={28}
-            color={'white'}
+            color={'#5f695d'}
             style={styles.iconStyle2}
           />
         </View>
@@ -73,8 +73,9 @@ const styles = StyleSheet.create({
    // top: 10,
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#5f695d',
     letterSpacing:4,
+    top:'42%',
   },
   container: {
     flexDirection: 'row',
