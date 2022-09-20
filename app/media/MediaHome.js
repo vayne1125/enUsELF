@@ -18,12 +18,14 @@ import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
-import MediaTop from './MediaTop';
-import {AuthContext} from '../routes/AutoProvider';
-import Card from './Card';
 //import Iconcamera from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { vi } from 'date-fns/locale';
+
+import Card from './Card';
+import MediaTop from './MediaTop';
+import {AuthContext} from '../routes/AutoProvider';
+
 const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height/5;
 

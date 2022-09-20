@@ -20,7 +20,7 @@ import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-import Image_link from './Image';
+import Image_link from '../data/ThemeImg';
 
 const width = Dimensions.get('screen').width * 19 / 40;
 const width2 = Dimensions.get('screen').width * 8 / 20;

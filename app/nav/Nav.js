@@ -16,12 +16,12 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Icons from 'react-native-vector-icons/Ionicons';
+
 import Theme from '../theme/Theme'
 import Media from '../media/Media';
 import Personal from '../personal/Personal';
-
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Icons from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
 

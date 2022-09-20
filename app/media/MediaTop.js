@@ -15,10 +15,11 @@ import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/AntDesign';
 import firestore from '@react-native-firebase/firestore';
-import {AuthContext} from '../routes/AutoProvider';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
 import Icon3 from 'react-native-vector-icons/Feather';
 import { read } from 'react-native-fs';
+
+import {AuthContext} from '../routes/AutoProvider';
 const Stack = createNativeStackNavigator();
 
 const MediaTop = () => {

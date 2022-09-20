@@ -28,8 +28,8 @@ import Hotel from '../data/Hotel';
 import KOL from '../data/KOL';
 import Monuments from '../data/Monuments';
 import Nature from '../data/Nature';
-import Image_link from '../theme/Image';
-import Image_linkMap from '../map/Image';
+import ThemeImg from '../data/ThemeImg';
+import MapImg from '../data/MapImg';
 
 const width = Dimensions.get('screen').width;
 const cardHeight = Dimensions.get('screen').height / 7;
@@ -165,8 +165,8 @@ const Items = () => {
           <View style={styles.imageContainer}>
           {
                (site.type=== "hot" || site.type === "hol" || site.type === "shop")?
-                <Image style={styles.image} source={Image_linkMap[site.type+(site.id.toString())]} />:
-                <Image style={styles.image} source={Image_link[site.name]} />
+                <Image style={styles.image} source={MapImg[site.type+(site.id.toString())]} />:
+                <Image style={styles.image} source={ThemeImg[site.name]} />
                 
           }
           </View>
