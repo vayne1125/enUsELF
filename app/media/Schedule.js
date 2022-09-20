@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   topbar: {
-    backgroundColor: '#5f695d',
+    backgroundColor: '#ffffff',
     flex:1,
     //height: 63,
     //borderBottomLeftRadius: 20,

@@ -27,12 +27,12 @@ const ResultTop = () => {
           <Icons
             name="chevron-back-circle-outline"
             size={33}
-            color={'white'}
+            color={'#5f695d'}
             style={styles.iconStyle2}
           />
         </View>
         </TouchableOpacity>
-        <View style={{flex:4,}}>
+        <View style={{flex:5}}>
         <Text style={styles.textStyle}>歷史行程</Text>
         </View>
         {/* <TouchableOpacity onPress={()=>{navigation.navigate("List")}} style={{flex:1,}}>
@@ -51,12 +51,12 @@ const ResultTop = () => {
 
 const styles = StyleSheet.create({
   textStyle: {
-    position: 'absolute',
-    top: 10,
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#ffffff',
+    //position: 'absolute',
+    fontSize: 26,
+    color:'#5f695d',//9/14改
+    fontFamily:'NotoSerifTC-Bold',
     letterSpacing:10,
+    bottom:'12%',
   },
   container: {
     flexDirection: 'row',
@@ -79,8 +79,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 11,
     top: 14,
-    width: 50,
-    height: 35,
+    flex:1,
     alignSelf: 'center',
     borderRadius: 10,
   },

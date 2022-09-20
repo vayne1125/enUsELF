@@ -416,7 +416,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     fontWeight: 'bold',
-    fontSize: 17,
+    fontSize: 18,
     color: '#5f695d',
     top: 8,
     letterSpacing: 8,
@@ -430,7 +430,7 @@ const styles = StyleSheet.create({
     padding: 6,
   },
   contentText: {
-    fontSize: 20,
+    fontSize: 18,
     left: 10,
     // color:"red",
   },
