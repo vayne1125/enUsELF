@@ -150,13 +150,15 @@ export default class Card extends PureComponent {
                     <Icon
                       name={'calendar-plus-o'}
                       color={'#5f695d'}
+                      //color={'orange'}
                       size={26} />
                   </TouchableOpacity>
                 </View> :
                 <View style={styles.buttonContainer2}>
                   <Icon2
                       name={'calendar-check'}
-                      color={'#5f695d'}
+                      color={'#badecb'}
+                      //color={'#5f695d'}
                       size={26} />
                 </View>}
             </View>

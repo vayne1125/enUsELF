@@ -270,7 +270,10 @@ const Items = () => {
             paddingBottom: '5%',
           }}
           numColumns={1}
+          initialNumToRender={6}
+          windowSize={2}
           data={sites}
+          keyExtractor={item => item.place_id}
           renderItem={({item}) => <Card site={item} />}></FlatList>
       )}
     </View>
