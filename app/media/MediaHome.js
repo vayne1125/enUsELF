@@ -383,6 +383,8 @@ const MediaHome = ({navigation}) => {
             }}
             ListEmptyComponent={EmptyList}
             numColumns={1}
+            initialNumToRender={2}
+            windowSize={2}
             data={data}
             //ListHeaderComponent={FlatList_Header}
             renderItem={({item}) => (

@@ -200,20 +200,21 @@ const Post = ({ navigation, route }) => {
           <View style={styles.ToptextContainer}>
             <Text style={styles.ToptextStyle}>分享旅途</Text>
           </View>
-          <View style={styles.TopbuttonContainer2}>
+          <View style={{flex: 1.2, height: '75%', alignItems:'center', justifyContent:'center'}}>
             {uploading ? (
               <View style={styles.cycleContainer}>
                 {/* <Progress.Bar progress={transferred} width={300} />*/}
                 {/*轉圈圈*/}
                 <ActivityIndicator size='small' color='#2f2f2f' />
               </View>
-            ) : (<TouchableOpacity
-              //回到社群
-              onPress={SubmitPost}
-              style={{ flex: 1 }}>
+            ) : 
+            ((image||post||trip)?
+            <TouchableOpacity onPress={SubmitPost} style={{borderRadius: 10, backgroundColor: '#5f695d', flex:1}}>
               <Text style={styles.TopbuttonText}>發布</Text>
-            </TouchableOpacity>
-            )}
+            </TouchableOpacity>:
+            <View style={{borderRadius: 10, backgroundColor: 'gray', flex:1}}>
+              <Text style={styles.TopbuttonText}>發布</Text>
+            </View>)}
           </View>
         </View>
       </View>
@@ -378,17 +379,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 30,
   },
-  TopbuttonContainer2: {
-    flex: 1.2,
-    alignContent: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    textAlign: 'center',
-    height: '75%',
-    borderRadius: 10,
-    backgroundColor: '#5f695d',
-  },
   TopbuttonText: {
     fontWeight: '800',
     fontSize: 17,
@@ -397,6 +387,7 @@ const styles = StyleSheet.create({
     letterSpacing: 5,
     height: '70%',
     paddingRight: 5,
+    alignSelf:'center',
     top: '20%',
   },
   cycleContainer: {
