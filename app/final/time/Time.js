@@ -20,18 +20,18 @@ import Hotel from '../../data/Hotel'
 import KOL from '../../data/KOL'
 import Monuments from '../../data/Monuments'
 import Nature from '../../data/Nature'
+import DetailForFinal from '../DetailForFinal';
 
-import DetailForFinal from '../../detail/DetailForFinal';
 const Time = ({ navigation, route }) => {
   const [time, setTime] = useState(route.params.time);
   const [place, setPlace] = useState(route.params.place);
   const [data,setData] = useState([]);
   const mode = route.params.mode;
-  console.log(time);
-  console.log(place);
-  useEffect(()=>{
-    setData(() => {
-      const data = [];
+  //console.log(mode);
+  //console.log(time);
+  //console.log(place);
+  const getData = () =>{
+    const data = [];
       var tp = {};
         tp.name = "你的位置";
         tp.duration = route.params.time[0].duration;
@@ -62,7 +62,7 @@ const Time = ({ navigation, route }) => {
           }
           data.push(tp);
         }
-      //console.log("data:",data);
+      ////console.log("data:",data);
       // return [
       //   {time: '09:00', title: 'Event 1', description: 'Event 1 Description'},
       //   {time: '10:45', title: 'Event 2', description: 'Event 2 Description'},
@@ -70,16 +70,16 @@ const Time = ({ navigation, route }) => {
       //   {time: '14:00', title: 'Event 4', description: 'Event 4 Description'},
       //   {time: '16:30', title: 'Event 5', description: 'Event 5 Description'}
       // ];
+      console.log("set!!!");
       return data;
-    })
-  },[])
+  }
   return (
     <View style={styles.container}>
       <View style={styles.topbar}>
-        <TimeTop />
+        <TimeTop/>
       </View>
       <CusTimeline
-        data = {data}
+        data = {getData()}
         mode = {mode}>
       </CusTimeline>
     </View>

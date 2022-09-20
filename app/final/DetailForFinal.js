@@ -19,7 +19,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Notice from '../theme/Notice';
-import Weather from './Weather';
+import Weather from '../data/Weather';
 import ThemeImg from '../data/ThemeImg';
 import MapImg from '../data/MapImg';
 
@@ -71,7 +71,7 @@ const DetailForFinal = ({entry, modalVisible, onClose, isMain}) => {
               {isMain ? (
                 <Image
                   style={styles.image}
-                  source={Image_link[entry['name']]}
+                  source={ThemeImg[entry['name']]}
                 />
               ) : (
                 <Image

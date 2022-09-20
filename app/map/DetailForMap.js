@@ -19,7 +19,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 import NoticeForMap from './NoticeForMap';
-import Weather from './Weather';
+import Weather from '../data/Weather';
 import ThemeImg from '../data/ThemeImg';
 import MapImg from '../data/MapImg';
 const width = Dimensions.get('screen').width - 50;

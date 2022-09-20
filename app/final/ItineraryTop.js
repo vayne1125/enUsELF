@@ -22,6 +22,7 @@ const Stack = createNativeStackNavigator();
 const ItineraryTop = props => {
  const navigation = useNavigation();
  const aurInfo = props;
+ console.log("jjjjjjjjjjj:",aurInfo);
   return (
     <View style={styles.container}>
       <Text style={styles.textStyle}>{aurInfo.tripname}</Text>
@@ -29,7 +30,8 @@ const ItineraryTop = props => {
         onPress={() => {
           navigation.navigate('Time',{
             time:aurInfo.time,
-            place:aurInfo.place
+            place:aurInfo.place,
+            mode:aurInfo.mode
           });
         }}
         style={{flex: 1}}>

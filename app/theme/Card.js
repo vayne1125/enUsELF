@@ -20,7 +20,7 @@ import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-import Image_link from '../data/ThemeImg';
+import ThemeImg from '../data/ThemeImg';
 
 const width = Dimensions.get('screen').width * 19 / 40;
 const width2 = Dimensions.get('screen').width * 8 / 20;
@@ -80,7 +80,7 @@ export default class Card extends PureComponent {
         users.collection('list').doc(this.state.name)
           .get().then((data) => {
             if (data.exists) this.setState({ uncheck: false });
-          })
+        })
       }
     }
     this.emitter = listen = DeviceEventEmitter
@@ -103,7 +103,7 @@ export default class Card extends PureComponent {
         }}>
         <View style={styles.card}>
           <View style={styles.imageContainer}>
-            {<Image style={styles.image} source={Image_link[site.name]} />}
+            {<Image style={styles.image} source={ThemeImg[site.name]} />}
           </View>
           <View style={styles.info}>
             <View style={styles.textContainer}>
@@ -154,8 +154,8 @@ export default class Card extends PureComponent {
                   </TouchableOpacity>
                 </View> :
                 <View style={styles.buttonContainer2}>
-                  <Icon
-                      name={'calendar-check-o'}
+                  <Icon2
+                      name={'calendar-check'}
                       color={'#5f695d'}
                       size={26} />
                 </View>}
