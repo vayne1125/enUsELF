@@ -322,22 +322,22 @@ const Result = ({navigation, route}) => {
       </View>
       {/*內容*/}
       <View style={styles.info}>
-        <VirtualizedList
-          //columnWrapperStyle={{justifyContent: 'space-around'}}
-          //showsVerticalScrollIndicator={false}
-        //   contentContainerStyle={{
-        //     //marginTop: 25,
-        //     paddingBottom: 80,
-        //   }}
-          //numColumns={1}
-          data={Data}
+        <FlatList
+          columnWrapperStyle={{justifyContent: 'space-around'}}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            //marginTop: 25,
+            paddingBottom: 80,
+          }}
+          numColumns={2}
+          data={themeData[theme]}
           initialNumToRender={5}
           // refreshControl={
           //   <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           // }
-          //keyExtractor={item => item.place_id}
-          getItem = {getItem}
-          getItemCount = {data => themeCnt[theme]}
+          keyExtractor={item => item.place_id}
+          //getItem = {getItem}
+          //getItemCount = {data => themeCnt[theme]}
           renderItem={({item}) => (
             <Card
               sites={item}
@@ -351,7 +351,7 @@ const Result = ({navigation, route}) => {
               }}
             />
           )}>
-        </VirtualizedList>
+        </FlatList>
       </View>
     </View>
   );

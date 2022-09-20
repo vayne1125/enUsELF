@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import TimeTop from './TimeTop';
+import CusTimeline from './CusTimeLine'
 import {
   StyleSheet,
   Text,
@@ -22,18 +23,15 @@ const Time = ({ navigation, route }) => {
   const [time, setTime] = useState(route.params.time);
   const [place, setPlace] = useState(route.params.place);
   const [data,setData] = useState([]);
+  const mode = route.params.mode;
   console.log(time);
   console.log(place);
   useEffect(()=>{
     setData(() => {
       const data = [];
-      var tp = {};
-      tp.name = "你的位置";
-      tp.duration = -1;
-      data.push(tp);
         for(var i=0;i<route.params.place.length;i++){
           const param = route.params.place[i];
-          tp = {};
+          var tp = {};
           if (param.type === "food") {
             tp = (Food[param.id]);
           } else if (param.type === "nature") {
@@ -55,7 +53,14 @@ const Time = ({ navigation, route }) => {
           tp.distance = route.params.time[i].distance;
           data.push(tp);
         }
-      console.log(data);
+      // console.log(data);
+      // const data = [
+      //   {time: '09:00', title: 'Event 1', description: 'Event 1 Description'},
+      //   {time: '10:45', title: 'Event 2', description: 'Event 2 Description'},
+      //   {time: '12:00', title: 'Event 3', description: 'Event 3 Description'},
+      //   {time: '14:00', title: 'Event 4', description: 'Event 4 Description'},
+      //   {time: '16:30', title: 'Event 5', description: 'Event 5 Description'}
+      // ]
       return data;
     })
   },[])
@@ -64,40 +69,11 @@ const Time = ({ navigation, route }) => {
       <View style={styles.topbar}>
         <TimeTop />
       </View>
-      <FlatList //只許KEY是string 一定要叫item
-      //horizontal
-      //inverted
-      keyExtractor={(place, index) => index.toString()} //用index當key
-      data={data}
-      //numColumns={2}
-      renderItem={({ item }) => (
-        <View style={styles.item}>
-          {
-          (item.duration != "-1") && ( //特殊處理
-            <View style={styles.textView}>
-              <Text style={styles.text}>{item.duration}</Text>
-              <Text style={styles.text}>{item.distance}</Text>
-            </View>)
-          }
-          <Text style={styles.text}>{item.name}</Text>
-        </View>
-      )}
-    />
+      <CusTimeline
+        data = {data}
+        mode = {mode}>
+      </CusTimeline>
     </View>
-
-    // <ScrollView 
-    //   style = {styles.body}
-    // >
-    // {
-    //   data.map((i)=>{
-    //     return(
-    //       <View style = {styles.item} key={i.key}>
-    //         <Text style = {styles.text}>{i.item}</Text>
-    //       </View>
-    //     )
-    //   })
-    // }
-    // </ScrollView>
   );
 };
 const styles = StyleSheet.create({
@@ -132,7 +108,11 @@ const styles = StyleSheet.create({
     //margin: 10,
   },textView:{
     alignItems:'center',
-  }
+  },
+  list: {
+    flex: 1,
+    marginTop:20,
+  },
 });
 export default Time;
 

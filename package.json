@@ -54,6 +54,7 @@
     "react-native-share": "^7.9.0",
     "react-native-svg": "^12.4.4",
     "react-native-tab-navigator": "^0.3.4",
+    "react-native-timeline-flatlist": "^0.8.0",
     "react-native-vector-icons": "^9.2.0",
     "react-native-view-shot": "^3.4.0",
     "react-navigation": "^4.4.4",
