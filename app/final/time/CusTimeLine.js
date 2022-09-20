@@ -28,7 +28,8 @@ export default class CusTimeLine extends Component {
   }
 
   renderSelected() {
-    // if (this.state.selected)
+    if (this.state.selected)
+      props.pressHandler(this.state.selected);
     //   return <Text style={{ marginTop: 10 }}>Selected event: {this.state.selected.title} at {this.state.selected.time}</Text>
   }
 
