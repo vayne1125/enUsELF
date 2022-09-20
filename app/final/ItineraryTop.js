@@ -15,14 +15,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icons2 from 'react-native-vector-icons/FontAwesome';
-import Icons3 from 'react-native-vector-icons/FontAwesome5'
+import Icons3 from 'react-native-vector-icons/FontAwesome5';
 //FontAwesome
 const Stack = createNativeStackNavigator();
 
 const ItineraryTop = props => {
  const navigation = useNavigation();
  const aurInfo = props;
- console.log("jjjjjjjjjjj:",aurInfo);
+ //console.log("jjjjjjjjjjj:",aurInfo);
   return (
     <View style={styles.container}>
       <Text style={styles.textStyle}>{aurInfo.tripname}</Text>
@@ -39,51 +39,31 @@ const ItineraryTop = props => {
           <Icons
             name="time-outline"
             size={40}
-            color={'#D1DED7'}
+            color={'#5f695d'}
             style={styles.iconStyle}
           />
         </View>
         </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={props.onPressHandler1}
-        >
-        <View style={styles.iconContainer2}>
-          <Icons2
-            name="car"
-            size={33}
-            color={'#D1DED7'}
-            style={styles.iconStyle}
-          />
-        </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={props.onPressHandler2}
-        >
-        <View style={styles.iconContainer3}>
-          <Icons3
-            name="walking"
-            size={33}
-            color={'#D1DED7'}
-            style={styles.iconStyle}
-          />
-        </View>
-
-      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   textStyle: {
-    position: 'absolute',
-    left: '3%',
-    top: 15,
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#ffffff',
-    //letterSpacing: 10,
+    //alignContent:'center',
+    //justifyContent:'center',
+    //bottom:'15%',
+    //left:'5%',
+    //fontSize: 30,//9/14
+    fontSize: 26,
+    //fontWeight: 'bold',
+    //color: '#ffffff',
+    color:'#5f695d',//9/14改
+    //color:'#A17747',
+    fontFamily:'NotoSerifTC-Bold',
+    letterSpacing:10,
+    marginLeft:'12%',
+    bottom:'1%',
   },
   container: {
     flexDirection: 'row',

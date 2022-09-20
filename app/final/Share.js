@@ -66,14 +66,16 @@ const styles = StyleSheet.create({
   },
   button: {
     top: Dimensions.get('window').height/2 - 60,
-    left: Dimensions.get('window').width/4 - 200 ,
-    backgroundColor: '#5f695d',
-    width: 100,
-    height: 40,
+    right: Dimensions.get('window').width*2 / 7,
+    backgroundColor: 'rgba(95,105,93,0.8)',
+    width: 130,
+    height: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
+    borderRadius: 20,
     marginBottom: 10,
+    borderWidth:2,
+    borderColor:'#badecb',
   },
 });
 export default SharePic;

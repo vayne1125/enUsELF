@@ -40,6 +40,8 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     flexDirection:'row',
+    left: -Dimensions.get('window').width / 2,
+    top: -Dimensions.get('window').height / 2+15,
   },
   iconStyle: {
     top: -4,
@@ -49,10 +51,7 @@ const styles = StyleSheet.create({
   iconContainer: {
     //zIndex:3,
     position: 'absolute',
-    left: -Dimensions.get('window').width/2 + 10,
-    top: -Dimensions.get('window').height/2 + 83,
     flex:1,
-    backgroundColor: '#D1DED7',
     width: 40,
     height: 40,
     borderRadius: 30,
