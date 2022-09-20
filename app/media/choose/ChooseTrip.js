@@ -19,6 +19,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 import {AuthContext} from '../../routes/AutoProvider';
 import firestore from '@react-native-firebase/firestore';
+
 //import Card from './Card';
 import ChooseTripTop from './ChooseTripTop';
 import ChooseTripCard from './ChooseTripCard';

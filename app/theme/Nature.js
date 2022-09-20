@@ -19,12 +19,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/Foundation';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
-import ResultTop from './ResultTop';
+
 import Detail from '../detail/Detail';
 import Notice from './Notice';
 import NatureData from '../data/Nature';
-import Image_link from './Image';
 import Card from './Card';
+
 const Stack = createNativeStackNavigator();
 const width = Dimensions.get('screen').width / 6;
 const width2 = (Dimensions.get('screen').width * 49) / 50;
@@ -40,7 +40,7 @@ const initialState = {
   info: {},
   time: {},
 };
-const Result = () => {
+const Nature = () => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState(initialState);
@@ -108,4 +108,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Result;
+export default Nature;

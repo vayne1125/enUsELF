@@ -17,12 +17,14 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Foundation';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
+
 const Stack = createNativeStackNavigator();
 const width2 = (Dimensions.get('screen').width * 49) / 50;
-const ResultTop = (props) => {
+
+const ThemeTop = () => {
     const navigation = useNavigation();
     const [theme, setTheme] = useState('美食');
-    const themeInfo=props;
+    
     useEffect(()=>{
         DeviceEventEmitter.emit('NewTheme',theme);
     },[theme])
@@ -248,4 +250,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ResultTop;
+export default ThemeTop;

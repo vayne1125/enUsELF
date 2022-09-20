@@ -6,8 +6,7 @@ import {
   DeviceEventEmitter,
 } from 'react-native';
 
-import ResultTop from './ResultTop';
-
+import ThemeTop from './ThemeTop';
 import Nature from './Nature';
 import KOL from './KOL';
 import Food from './Food';
@@ -18,7 +17,7 @@ const width = Dimensions.get('screen').width / 6;
 const height = width - 5;
 const Height = Dimensions.get('screen').height*6/30;
 
-const Result = () => {
+const Theme = () => {
   const [theme, setTheme] = useState('美食')
   useEffect(() => {
     const listen = DeviceEventEmitter
@@ -29,14 +28,14 @@ const Result = () => {
   return (
     <View style={styles.container}>
         {/*頂部*/}
-        <View style={styles.topbar}><ResultTop  /></View>
+        <View style={styles.topbar}><ThemeTop /></View>
         {/*內容*/}
         <View style={styles.info}>
-            {theme==='美食'? <Food/>:
-            (theme==='自然'? <Nature/>:
-            (theme==='網美'? <KOL/>:
-            (theme==='古蹟'? <Monuments/>:
-            <Hotel/>)))}
+            {theme==='美食'? <Food />:
+            (theme==='自然'? <Nature />:
+            (theme==='網美'? <KOL />:
+            (theme==='古蹟'? <Monuments />:
+            <Hotel />)))}
         </View>
     </View>
   );
@@ -68,4 +67,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Result;
+export default Theme;

@@ -14,6 +14,9 @@ import Back from './Back';
 import Share from './Share';
 import { mapStyle } from '../map/mapStyle';
 import MapViewDirections from 'react-native-maps-directions';
+import { AuthContext } from '../routes/AutoProvider';
+import firestore from '@react-native-firebase/firestore';
+
 import ItineraryTop from './ItineraryTop';
 import Hotplace from '../data/Hotplace'
 import Shopplace from '../data/Shopplace'
@@ -24,9 +27,6 @@ import KOL from '../data/KOL'
 import Monuments from '../data/Monuments'
 import Nature from '../data/Nature'
 import Settripname from './Settripname';
-import { AuthContext } from '../routes/AutoProvider';
-import firestore from '@react-native-firebase/firestore';
-
 
 const ItineraryHome = ({ navigation, route }) => {
   const [modalVisible, setModalVisible] = useState(false);

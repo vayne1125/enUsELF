@@ -21,7 +21,7 @@ import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 import firestore from '@react-native-firebase/firestore';
 import Notice from '../theme/Notice';
 import Weather from './Weather';
-import Image_link from '../theme/Image';
+import ThemeImg from '../data/ThemeImg';
 
 import { AuthContext } from '../routes/AutoProvider';
 
@@ -82,7 +82,7 @@ const Detail = ({entry, modalVisible, onClose}) => {
           <View style={styles.modalContainer}>
             <View style={styles.topContainer}>
             <View style={styles.imageContainer}>
-            <Image style={styles.image} source={Image_link[entry['name']]} />
+            <Image style={styles.image} source={ThemeImg[entry['name']]} />
             <Icons name="cross" size={42} color={'#5f695d'} onPress={() => onClose()} style={styles.iconStyle}/>
             </View>
             <View style={styles.spaceContainer}></View>

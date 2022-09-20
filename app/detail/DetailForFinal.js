@@ -20,8 +20,8 @@ import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Notice from '../theme/Notice';
 import Weather from './Weather';
-import Image_link from '../theme/Image';
-import Image_linkMap from '../map/Image';
+import ThemeImg from '../data/ThemeImg';
+import MapImg from '../data/MapImg';
 
 const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.15;
@@ -76,7 +76,7 @@ const DetailForFinal = ({entry, modalVisible, onClose, isMain}) => {
               ) : (
                 <Image
                   style={styles.image}
-                  source={Image_linkMap[entry['type'] + entry['id'].toString()]}
+                  source={MapImg[entry['type'] + entry['id'].toString()]}
                 />
               )}
               <Icons
