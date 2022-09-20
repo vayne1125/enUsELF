@@ -93,12 +93,13 @@ const MediaTop = () => {
   );
 };
 
+
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     //backgroundColor:'black'
-    borderBottomWidth:1,
-    borderColor:'#AAAAAA',
+    // borderBottomWidth:1,
+    // borderColor:'#AAAAAA',
   },
   textContainer: {
     flex: 3,
@@ -109,9 +110,9 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     //position: 'absolute',
-    bottom: '25%',
-    left: '3%',
-    fontSize: 30,
+    bottom: '15%',
+    left: '5%',
+    fontSize: 26,
     //fontWeight: 'bold',
     //color: '#ffffff',
     color: '#5f695d',
@@ -121,11 +122,12 @@ const styles = StyleSheet.create({
   iconStyle: {
     //top: 5,
     //left: 8,
-    //top: '30%',
+    top: '5%',
     //left: '86%',
   },
   iconContainer: {
     //flex: 2, //last
+    right:'0.8%',
     flex:1,
     flexDirection: 'row',
     //backgroundColor:'black',

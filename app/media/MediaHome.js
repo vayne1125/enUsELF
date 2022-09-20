@@ -24,7 +24,7 @@ import Card from './Card';
 //import Iconcamera from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { vi } from 'date-fns/locale';
-const width = Dimensions.get('screen').width - 20;
+const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height/5;
 
 const MediaHome = ({navigation}) => {
@@ -282,12 +282,12 @@ const MediaHome = ({navigation}) => {
       <View style={styles.chooseContainer}>
         {choose === 'all' ? (
           <View style={styles.chooseed}>
-            <LinearGradient
+            {/* <LinearGradient
               start={{x: 1.0, y: 0.0}}
               end={{x: 1.0, y: 1.0}}
               locations={[0, 0.45, 0.55, 1.0]}
               colors={['#BECFC3', '#F2F2F2', '#F2F2F2', '#BECFC3']}
-              style={styles.linearGradient}>
+              style={styles.linearGradient}> */}
               <TouchableOpacity
                 onPress={() => {
                   setChoose('all');
@@ -295,7 +295,7 @@ const MediaHome = ({navigation}) => {
                 }}>
                 <Text style={styles.textStyle2}>全 部</Text>
               </TouchableOpacity>
-            </LinearGradient>
+            {/* </LinearGradient> */}
           </View>
         ) : (
           <View style={styles.unchoose}>
@@ -310,12 +310,12 @@ const MediaHome = ({navigation}) => {
         )}
         {choose === 'collect' ? (
           <View style={styles.chooseed}>
-            <LinearGradient
+            {/* <LinearGradient
               start={{x: 1.0, y: 0.0}}
               end={{x: 1.0, y: 1.0}}
               locations={[0, 0.45, 0.55, 1.0]}
               colors={['#BECFC3', '#F2F2F2', '#F2F2F2', '#BECFC3']}
-              style={styles.linearGradient}>
+              style={styles.linearGradient}> */}
               <TouchableOpacity
                 onPress={() => {
                   setChoose('collect');
@@ -323,7 +323,7 @@ const MediaHome = ({navigation}) => {
                 }}>
                 <Text style={styles.textStyle2}>收 藏</Text>
               </TouchableOpacity>
-            </LinearGradient>
+            {/* </LinearGradient> */}
           </View>
         ) : (
           <View style={styles.unchoose}>
@@ -338,12 +338,12 @@ const MediaHome = ({navigation}) => {
         )}
         {choose === 'mypost' ? (
           <View style={styles.chooseed}>
-            <LinearGradient
+            {/* <LinearGradient
               start={{x: 1.0, y: 0.0}}
               end={{x: 1.0, y: 1.0}}
               locations={[0, 0.45, 0.55, 1.0]}
               colors={['#BECFC3', '#F2F2F2', '#F2F2F2', '#BECFC3']}
-              style={styles.linearGradient}>
+              style={styles.linearGradient}> */}
               <TouchableOpacity
                 onPress={() => {
                   setChoose('mypost');
@@ -351,7 +351,7 @@ const MediaHome = ({navigation}) => {
                 }}>
                 <Text style={styles.textStyle2}>我的貼文</Text>
               </TouchableOpacity>
-            </LinearGradient>
+            {/* </LinearGradient> */}
           </View>
         ) : (
           <View style={styles.unchoose}>
@@ -400,7 +400,7 @@ const MediaHome = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     hight: '100%',
-    backgroundColor: '#F2F2F2',
+    backgroundColor: '#ffffff',
     flex: 1,
   },
   topbar: {
@@ -451,33 +451,15 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
-    backgroundColor: '#D1DED7',
+    //backgroundColor: '#D1DED7',
+    borderBottomWidth:3,
+    borderColor:'#5f695d',
     height: '75%',
-    borderRadius: 20,
+    //borderRadius: 20,
   },
   info: {
     flex: 10.8, //last:11.8
-    //backgroundColor:'#D1DED7',
-  },
-  mycard: {
-    height: 50,
-    //backgroundColor:'#D1DED7',
-    backgroundColor: '#ffffff',
-    //width,
-    marginHorizontal: 10,
-    borderRadius: 10,
-    marginBottom: 15,
-    //paddingTop:5,
-    //padding: 5,
-    borderColor: '#D1DED7',
-    //borderWidth: 2,
-    //borderStyle:'solid',
-    borderBottomWidth: 3,
-    //borderRightWidth:2,
-    //borderStyle:'dashed',
-  },
-  deliconContainer: {
-    left: 250,
+    backgroundColor:'#f2f2f2',
   },
   nameContainer: {
     flexDirection: 'row',

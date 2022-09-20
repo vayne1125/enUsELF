@@ -28,7 +28,7 @@ import Hotel from '../theme/Hotel';
 import KOL from '../theme/KOL';
 import Monuments from '../theme/Monuments';
 import Nature from '../theme/Nature';
-const width = Dimensions.get('screen').width - 20;
+const width = Dimensions.get('screen').width;
 const height = (Dimensions.get('screen').height * 9) / 20;
 
 const Card = ({navigation, post, onDelete}) => {
@@ -270,7 +270,7 @@ const toggleNumberOfLines = () => { //To toggle the show text or hide it
               {
                   lengthMore ? <Text
                   onPress={toggleNumberOfLines}
-                  style={{ lineHeight: 21, marginTop: 10 }}>{textShown ? 'Read less...' : 'Read more...'}</Text>
+                  style={{ lineHeight: 21, marginTop: 10 ,fontWeight:'700'}}>{textShown ? 'Read less...' : 'Read more...'}</Text>
                   :null
               }
       </View>
@@ -283,9 +283,10 @@ const styles = StyleSheet.create({
     height: 'auto',
     backgroundColor: 'white',
     //backgroundColor: 'rgba(255,255,255,0.8)',
-    width,
+    width:'100%',
+    right:'2%',
     marginHorizontal: 10,
-    borderRadius: 10,
+    //borderRadius: 10,
     marginBottom: 15,
     //paddingTop:5,
     //padding: 5,
@@ -354,22 +355,24 @@ const styles = StyleSheet.create({
   imageContainer: {
     //flex: 8,
     height :220,
-    width:300,
+    width:'100%',
     alignItems: 'center',
     justifyContent: 'center',
     //backgroundColor: '#D1DED7',
     //borderColor: '#D1DED7',
     //borderWidth: 3,
     //borderBottomWidth:10,
+    resizeMode:'contain',
   },
   image: {
-    width: '90%',
+    width: '100%',
     //width:'99%',
     height: '100%',
-    borderTopRightRadius: 25,
-    borderTopLeftRadius: 5,
-    borderBottomRightRadius: 5,
-    borderBottomLeftRadius: 25,
+    // borderTopRightRadius: 25,
+    // borderTopLeftRadius: 5,
+    // borderBottomRightRadius: 5,
+    // borderBottomLeftRadius: 25,
+    resizeMode:'contain',
   },
   textContainer: {
     //backgroundColor: '#D1DED7',

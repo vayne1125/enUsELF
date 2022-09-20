@@ -150,14 +150,14 @@ export default class Card extends PureComponent {
                     <Icon
                       name={'calendar-plus-o'}
                       color={'#5f695d'}
-                      size={30} />
+                      size={26} />
                   </TouchableOpacity>
                 </View> :
                 <View style={styles.buttonContainer2}>
                   <Icon
                       name={'calendar-check-o'}
                       color={'#5f695d'}
-                      size={30} />
+                      size={26} />
                 </View>}
             </View>
             </View>
@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
     left: 2,
   },
   textContainer: {
-    flex: 1,
+    flex: 1.7,
     alignSelf: 'center',
     alignItems: 'center',
     //backgroundColor:'#000000',
@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
     //alignSelf: 'flex-end',
     //borderRadius: 25,
     //height: 32,
-    flex:1,
+    flex:1.5,
     alignContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
   nameStyle: {
     alignSelf: 'center',
     fontWeight: 'bold',
-    top: '20%',
+    //top: '10%',
     //fontSize: 20,//9/14
     fontSize: 18,
     color: '#5f695d',
@@ -294,7 +294,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'space-around',
-    //paddingTop:4,
+    paddingTop:'5%',
     //paddingBottom:4,
     padding: 4,
   },

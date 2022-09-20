@@ -183,14 +183,14 @@ const styles = StyleSheet.create({
   },
   topContainer:{
     flex:9,
-    backgroundColor:'#ffc56b',
-    //backgroundColor:'#D1DED7',
+    //backgroundColor:'#ffc56b',
+    backgroundColor:'#D1DED7',
     borderBottomRightRadius: 50,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
   imageContainer:{
-    backgroundColor:'#ffc56b',
+    backgroundColor:'#D1DED7',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     borderBottomRightRadius: 50,
@@ -217,8 +217,8 @@ const styles = StyleSheet.create({
   },
   infoBack:{
     flex: 14,
-    backgroundColor:'#ffc56b',
-    //backgroundColor:'#D1DED7',
+    //backgroundColor:'#ffc56b',
+    backgroundColor:'#D1DED7',
   },
   infoContainer: {
     backgroundColor:'white',
@@ -259,8 +259,8 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   buttonContainer: {
-    //backgroundColor:'#D1DED7',
-    backgroundColor: '#ffc56b',//較淺黃
+    backgroundColor:'#D1DED7',
+    //backgroundColor: '#ffc56b',//較淺黃
     //width: 150,
     //height: 45,
     //flexDirection: 'row',
