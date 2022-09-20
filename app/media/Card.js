@@ -20,16 +20,19 @@ import Iconcross from 'react-native-vector-icons/Entypo';
 import Iconcamera from 'react-native-vector-icons/MaterialCommunityIcons';
 import firestore from '@react-native-firebase/firestore';
 import {AuthContext} from '../routes/AutoProvider';
-import Hotplace from '../map/Hotplace';
-import Shopplace from '../map/Shopplace';
-import Holplace from '../map/Holplace';
-import Food from '../theme/Food';
-import Hotel from '../theme/Hotel';
-import KOL from '../theme/KOL';
-import Monuments from '../theme/Monuments';
-import Nature from '../theme/Nature';
+
+import Hotplace from '../data/Hotplace';
+import Shopplace from '../data/Shopplace';
+import Holplace from '../data/Holplace';
+import Food from '../data/Food';
+import Hotel from '../data/Hotel';
+import KOL from '../data/KOL';
+import Monuments from '../data/Monuments';
+import Nature from '../data/Nature';
+
 const width = Dimensions.get('screen').width;
 const height = (Dimensions.get('screen').height * 9) / 20;
+const screenwidth = Dimensions.get('screen').width ;
 
 const Card = ({navigation, post, onDelete}) => {
   const {user} = useContext(AuthContext);
@@ -42,7 +45,19 @@ const Card = ({navigation, post, onDelete}) => {
   //const userSchdule=post.Trip;
   let timestamp = post.time;
   const [userSchdule, setUserSchdule] = useState([]);
+  const [imageheight,setimageheight] = useState(200);
   const data = [];
+
+  useEffect (()=>{
+    if(post.img!=null){
+    Image.getSize(post.img, (width, height) => {
+      console.log('hahaha ',imagesize);
+      setimageheight( Math.floor(screenwidth/(width*height)));
+    //console.log('pcture ',height);
+  //console.log('pcturewidth ',width);
+  });}
+    },[])
+
   //拿景點資料
   useEffect(() => {
     firestore()
@@ -175,7 +190,7 @@ const toggleNumberOfLines = () => { //To toggle the show text or hide it
         )}
       </View>
 
-      <View style={styles.imageContainer}>
+      <View style={[styles.imageContainer,{height:imageheight,}]}>
         {post.img != null ? (
           <Image
             style={styles.image}
@@ -183,7 +198,7 @@ const toggleNumberOfLines = () => { //To toggle the show text or hide it
             source={{uri: post.img}}
           />
         ) : (
-          <View style={styles.imageContainer}>
+          <View style={[styles.imageContainer,{height:imageheight,}]}>
             <View>
               <Iconcamera
                 name={'camera-off-outline'}
@@ -284,7 +299,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     //backgroundColor: 'rgba(255,255,255,0.8)',
     width:'100%',
-    right:'2%',
+    right:'2.5%',
     marginHorizontal: 10,
     //borderRadius: 10,
     marginBottom: 15,
@@ -354,7 +369,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     //flex: 8,
-    height :220,
+   // height :220,
     width:'100%',
     alignItems: 'center',
     justifyContent: 'center',

@@ -20,16 +20,17 @@ import {parseMapToJSON} from 'source-map-resolve';
 import {AuthContext} from '../routes/AutoProvider';
 import {useNavigation} from '@react-navigation/native';
 
-import Hotplace from '../map/Hotplace';
-import Shopplace from '../map/Shopplace';
-import Holplace from '../map/Holplace';
-import Food from '../theme/Food';
-import Hotel from '../theme/Hotel';
-import KOL from '../theme/KOL';
-import Monuments from '../theme/Monuments';
-import Nature from '../theme/Nature';
+import Hotplace from '../data/Hotplace';
+import Shopplace from '../data/Shopplace';
+import Holplace from '../data/Holplace';
+import Food from '../data/Food';
+import Hotel from '../data/Hotel';
+import KOL from '../data/KOL';
+import Monuments from '../data/Monuments';
+import Nature from '../data/Nature';
 import Image_link from '../theme/Image';
 import Image_linkMap from '../map/Image';
+
 const width = Dimensions.get('screen').width;
 const cardHeight = Dimensions.get('screen').height / 7;
 

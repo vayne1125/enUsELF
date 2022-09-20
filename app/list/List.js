@@ -16,7 +16,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StackNavigator } from "react-navigation";
 import 'react-native-gesture-handler';
 import ListHome from './ListHome';
-import Map from '../map/Map'
 import MapHome from '../map/MapHome'
 import ItineraryHome from '../final/ItineraryHome'
 

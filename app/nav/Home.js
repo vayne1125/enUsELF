@@ -16,18 +16,18 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StackNavigator } from "react-navigation";
 import 'react-native-gesture-handler';
 //import {ViewPropTypes} from 'deprecated-react-native-prop-types';
+
 import Schedule from '../media/Schedule';
 import Post from '../media/Post';
 import Nav from './Nav';
 import List from '../list/List';
 import PersonalFile from '../personal/PersonalFile';
-import Collect from '../personal/collect/Collect';
 import HistoryHome from '../personal/history/HistoryHome';
 import TripForhistory from '../personal/history/TripForhistory';
 import ItineraryHome from '../final/ItineraryHome'
-import PersonalHome from '../personal/PersonalHome';
 import ChooseTrip from '../media/choose/ChooseTrip';
-import Time from '../final/time/Time'
+import Time from '../final/time/Time';
+
 const Stack=createStackNavigator();
 
 export default class Home extends Component {
@@ -39,7 +39,6 @@ export default class Home extends Component {
             <Stack.Screen name="PersonalFile" component={PersonalFile}/>
             <Stack.Screen name="Post" component={Post}/>
             <Stack.Screen name="List" component={List}/>
-            <Stack.Screen name="Collect" component={Collect}/>
             <Stack.Screen name="HistoryHome" component={HistoryHome}/>
             <Stack.Screen name="TripForhistory" component={TripForhistory}/>
             <Stack.Screen name="ItineraryHome" component={ItineraryHome}/>

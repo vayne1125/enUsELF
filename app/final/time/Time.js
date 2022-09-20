@@ -11,13 +11,16 @@ import {
   RefreshControl,
   FlatList
 } from 'react-native';
-import Hotplace from '../../map/Hotplace'
-import Shopplace from '../../map/Shopplace'
-import Holplace from '../../map/Holplace'
-import Food from '../../theme/Food'
-import Hotel from '../../theme/Hotel'
-import KOL from '../../theme/KOL'
-import Monuments from '../../theme/Monuments'
+
+import Hotplace from '../../data/Hotplace'
+import Shopplace from '../../data/Shopplace'
+import Holplace from '../../data/Holplace'
+import Food from '../../data/Food'
+import Hotel from '../../data/Hotel'
+import KOL from '../../data/KOL'
+import Monuments from '../../data/Monuments'
+import Nature from '../../data/Nature'
+
 import DetailForFinal from '../../detail/DetailForFinal';
 const Time = ({ navigation, route }) => {
   const [time, setTime] = useState(route.params.time);

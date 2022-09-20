@@ -1,40 +1,70 @@
-import React,{Component} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   Dimensions,
-  FlatList,
-  Image,
-  Button,
-  //TouchableOpacity,
+  DeviceEventEmitter,
 } from 'react-native';
-import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
-import {NavigationContainer} from '@react-navigation/native';
-//import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { createStackNavigator } from '@react-navigation/stack';
-import { StackNavigator } from "react-navigation";
-import 'react-native-gesture-handler';
-//import {ViewPropTypes} from 'deprecated-react-native-prop-types';
-import Result from './Result';
-import ThemeHome from './ThemeHome';
-//import List from '../list/List';
 
-const Stack=createStackNavigator();
+import ThemeTop from './ThemeTop';
+import Nature from './Nature';
+import KOL from './KOL';
+import Food from './Food';
+import Hotel from './Hotel';
+import Monuments from './Monuments';
 
-export default class Theme extends Component {
-  render() {
-    return (
-      //<NavigationContainer>
-        <Stack.Navigator initialRouteName="Result" screenOptions={{header: () => null}} >
-          <Stack.Screen name="ThemeHome" component={ThemeHome}/>
-          <Stack.Screen name="Result" component={Result}/>
-          {/* <Stack.Screen name="List" component={List}/> */}
-        </Stack.Navigator>
-      //</NavigationContainer>
-      //   <Button
-      //     onPress={()=>this.props.navigation.navigate()}
-      //   />
-    );
-  }
-}
+const width = Dimensions.get('screen').width / 6;
+const height = width - 5;
+const Height = Dimensions.get('screen').height*6/30;
+
+const Theme = () => {
+  const [theme, setTheme] = useState('美食')
+  useEffect(() => {
+    const listen = DeviceEventEmitter
+    .addListener('NewTheme', theme => {setTheme(theme)});
+    return () => listen.remove();
+  }, []);
+
+  return (
+    <View style={styles.container}>
+        {/*頂部*/}
+        <View style={styles.topbar}><ThemeTop /></View>
+        {/*內容*/}
+        <View style={styles.info}>
+            {theme==='美食'? <Food />:
+            (theme==='自然'? <Nature />:
+            (theme==='網美'? <KOL />:
+            (theme==='古蹟'? <Monuments />:
+            <Hotel />)))}
+        </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    hight: '100%',
+    //backgroundColor: '#F2F2F2',//9/14改
+    backgroundColor: '#ffffff',
+    flex: 1,
+  },
+  topbar: {
+    //backgroundColor: '#5f695d',
+    //flex:1,
+    flex: 2.5,
+    //borderBottomLeftRadius: 20,
+    //borderBottomRightRadius: 20,
+    //opacity: 0.9,
+  },
+  info: {
+    flex: 10,
+    //backgroundColor: '#D1DED7',//9/14改
+    //backgroundColor: '#ffffe0',
+    backgroundColor: '#ffffff',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    paddingTop: 20,
+  },
+});
+
+export default Theme;

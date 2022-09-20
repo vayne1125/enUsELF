@@ -16,14 +16,16 @@ import DetailForMap from '../detail/DetailForMap';
 import Back from './Back';
 import CustomMarkerComponent from './CustomMarkerComponent';
 import MapViewDirections from 'react-native-maps-directions';
-import Hotplace from './Hotplace'
-import Shopplace from './Shopplace'
-import Holplace from './Holplace'
-import Food from '../theme/Food'
-import Hotel from '../theme/Hotel'
-import KOL from '../theme/KOL'
-import Monuments from '../theme/Monuments'
-import Nature from '../theme/Nature'
+
+import Hotplace from '../data/Hotplace'
+import Shopplace from '../data/Shopplace'
+import Holplace from '../data/Holplace'
+import Food from '../data/Food'
+import Hotel from '../data/Hotel'
+import KOL from '../data/KOL'
+import Monuments from '../data/Monuments'
+import Nature from '../data/Nature'
+
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 //import Hotplace from './tp'

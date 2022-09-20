@@ -15,14 +15,14 @@ import Share from './Share';
 import { mapStyle } from '../map/mapStyle';
 import MapViewDirections from 'react-native-maps-directions';
 import ItineraryTop from './ItineraryTop';
-import Hotplace from '../map/Hotplace'
-import Shopplace from '../map/Shopplace'
-import Holplace from '../map/Holplace'
-import Food from '../theme/Food'
-import Hotel from '../theme/Hotel'
-import KOL from '../theme/KOL'
-import Monuments from '../theme/Monuments'
-import Nature from '../theme/Nature'
+import Hotplace from '../data/Hotplace'
+import Shopplace from '../data/Shopplace'
+import Holplace from '../data/Holplace'
+import Food from '../data/Food'
+import Hotel from '../data/Hotel'
+import KOL from '../data/KOL'
+import Monuments from '../data/Monuments'
+import Nature from '../data/Nature'
 import Settripname from './Settripname';
 import { AuthContext } from '../routes/AutoProvider';
 import firestore from '@react-native-firebase/firestore';
