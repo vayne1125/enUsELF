@@ -22,8 +22,8 @@ import { CheckBox } from '@rneui/themed';
 import { checkPluginState } from 'react-native-reanimated/lib/reanimated2/core';
 import {AuthContext} from '../routes/AutoProvider';
 import firestore from '@react-native-firebase/firestore';
-import Image_link from '../theme/Image';
-import Image_linkMap from '../map/Image';
+import ThemeImg from '../data/ThemeImg';
+import MapImg from '../data/MapImg';
 /*check id placeid type */
 const height = Dimensions.get('screen').height/4;
 const cardHeight = Dimensions.get('screen').height/7;
@@ -122,8 +122,8 @@ const Card = ({site}) => {
               <View style={styles.imageContainer}>
               {
                (site.type=== "hot" || site.type === "hol" || site.type === "shop")?
-                <Image style={styles.image} source={Image_linkMap[site.type+(site.id.toString())]} />:
-                <Image style={styles.image} source={Image_link[site.name]} />
+                <Image style={styles.image} source={MapImg[site.type+(site.id.toString())]} />:
+                <Image style={styles.image} source={ThemeImg[site.name]} />
                 
                 }
                 </View>
