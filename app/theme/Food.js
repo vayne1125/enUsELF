@@ -40,7 +40,7 @@ const initialState = {
   info: {},
   time: {},
 };
-const Result = () => {
+const Food = () => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState(initialState);
@@ -108,4 +108,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Result;
+export default Food;

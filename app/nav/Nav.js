@@ -15,7 +15,8 @@ import {
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
-import Theme from '../theme/Result'
+
+import Theme from '../theme/Theme'
 import Media from '../media/Media';
 import Personal from '../personal/Personal';
 
