@@ -19,12 +19,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/Foundation';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
-import ResultTop from './ResultTop';
+
 import Detail from '../detail/Detail';
 import Notice from './Notice';
-import KOLData from './KOL';
-import Image_link from './Image';
+import FoodData from '../data/Food';
 import Card from './Card';
+
 const Stack = createNativeStackNavigator();
 const width = Dimensions.get('screen').width / 6;
 const width2 = (Dimensions.get('screen').width * 49) / 50;
@@ -76,7 +76,7 @@ const Result = () => {
             paddingBottom: 80,
           }}
           numColumns={2}
-          data={KOLData}
+          data={FoodData}
           initialNumToRender={5}
           getItemLayout={(data, index) => (
             {length: Height, offset: Height * index, index}

@@ -7,13 +7,12 @@ import {
 } from 'react-native';
 
 import ResultTop from './ResultTop';
-import ResultHome from './ResultHome';
 
-import Nature from './theme_Nature';
-import KOL from './theme_KOL';
-import Food from './theme_food';
-import Hotel from './theme_hotel';
-import Monuments from './theme_monuments';
+import Nature from './Nature';
+import KOL from './KOL';
+import Food from './Food';
+import Hotel from './Hotel';
+import Monuments from './Monuments';
 
 const width = Dimensions.get('screen').width / 6;
 const height = width - 5;

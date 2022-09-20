@@ -22,7 +22,7 @@ import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 import ResultTop from './ResultTop';
 import Detail from '../detail/Detail';
 import Notice from './Notice';
-import NatureData from './Nature';
+import KOLData from '../data/KOL';
 import Image_link from './Image';
 import Card from './Card';
 const Stack = createNativeStackNavigator();
@@ -76,7 +76,7 @@ const Result = () => {
             paddingBottom: 80,
           }}
           numColumns={2}
-          data={NatureData}
+          data={KOLData}
           initialNumToRender={5}
           getItemLayout={(data, index) => (
             {length: Height, offset: Height * index, index}

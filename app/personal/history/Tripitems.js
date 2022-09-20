@@ -22,9 +22,8 @@ import Monuments from '../../data/Monuments'
 import Nature from '../../data/Nature'
 import Image_link from '../../theme/Image';
 import Image_linkMap from '../../map/Image';
-//import  CheckBox  from 'react-native-checkbox';
-//import CheckBox from './CheckBox'
-//import Image_link from '../theme/Image';
+
+
 const width = Dimensions.get('screen').width/2.2;
 
 const Tripitems = (items) => {

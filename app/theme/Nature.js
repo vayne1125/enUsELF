@@ -22,7 +22,7 @@ import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 import ResultTop from './ResultTop';
 import Detail from '../detail/Detail';
 import Notice from './Notice';
-
+import NatureData from '../data/Nature';
 import Image_link from './Image';
 import Card from './Card';
 const Stack = createNativeStackNavigator();
@@ -40,13 +40,12 @@ const initialState = {
   info: {},
   time: {},
 };
-const Result = (props) => {
+const Result = () => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState(initialState);
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(initialState);
-  const data = props.data;
   return (
     <View style={styles.container}>
       {/*浮動視窗-------------------------------------------------------------------------------*/}
@@ -77,7 +76,7 @@ const Result = (props) => {
             paddingBottom: 80,
           }}
           numColumns={2}
-          data={data}
+          data={NatureData}
           initialNumToRender={5}
           getItemLayout={(data, index) => (
             {length: Height, offset: Height * index, index}

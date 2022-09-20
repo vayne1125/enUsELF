@@ -12,7 +12,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 
-import Signup from './Signup';
 import LauncherHome from './LauncherHome';
 import Forget from './Forget';
 

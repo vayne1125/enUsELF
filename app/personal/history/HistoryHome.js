@@ -19,6 +19,7 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import {AuthContext} from '../../routes/AutoProvider';
 import firestore from '@react-native-firebase/firestore';
 import Card from './Card';
+
 import HistoryTop from './HistoryTop';
 //import Card from './Card';
 const width = Dimensions.get('screen').width;

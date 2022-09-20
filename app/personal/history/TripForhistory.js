@@ -9,6 +9,7 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
+
 import Card from './Card';
 import TripTop from './TripTop'
 import Tripitems from './Tripitems'
