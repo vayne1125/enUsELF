@@ -84,9 +84,9 @@ export default class Card extends PureComponent {
       }
     }
     this.emitter = listen = DeviceEventEmitter
-      .addListener('delete', (name) => {
+      .addListener('change', (name, change) => {
         if (name && name === this.state.name) {
-          this.setState({ uncheck: true });
+          this.setState({ uncheck: change });
         }
       })
     if (!this.state.user) update();
@@ -99,7 +99,7 @@ export default class Card extends PureComponent {
     return (
       <TouchableOpacity
         onPress={() => {
-          this.props.onPress1(site, this.state.uncheck, ()=>{this.setState({uncheck: false})});
+          this.props.onPress1(site, this.state.uncheck);
         }}>
         <View style={styles.card}>
           <View style={styles.imageContainer}>

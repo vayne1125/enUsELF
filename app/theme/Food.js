@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -45,19 +45,15 @@ const Food = () => {
   const [modalEntry, setModalEntry] = useState(initialState);
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(initialState);
-  const [uncheck, setUncheck] = useState(false);
-  const [cardcheck, setCardCheck] = useState();
+  const [uncheck, setUncheck] = useState(true);
   return (
     <View style={styles.container}>
       {/*浮動視窗-------------------------------------------------------------------------------*/}
       <Detail
         entry={modalEntry} //傳進去的資料參數
         modalVisible={modalVisible} //可不可見
-        onClose={() => {
-          setModalVisible(false);
-        }} //關閉函式
+        onClose={() => {setModalVisible(false);}} //關閉函式
         uncheck={uncheck}
-        check = {cardcheck}
       />
       {/*浮動視窗-------------------------------------------------------------------------------*/}
 
@@ -87,11 +83,10 @@ const Food = () => {
           renderItem={({item}) => (
             <Card
               sites={item}
-              onPress1={(site, uncheck, check) => {
+              onPress1={(site, uncheck) => {
                 setModalVisible(!modalVisible);
                 setModalEntry(site);
                 setUncheck(uncheck);
-                setCardCheck(check);
               }}
               onPress2={site => {
                 setNoticeVisible(!noticeVisible);

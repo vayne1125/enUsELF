@@ -48,15 +48,7 @@ const Card = ({navigation, post, onDelete}) => {
   const [imageheight,setimageheight] = useState(200);
   const data = [];
 
-  useEffect (()=>{
-    if(post.img!=null){
-    Image.getSize(post.img, (width, height) => {
-      console.log('hahaha ',imagesize);
-      setimageheight( Math.floor(screenwidth/(width*height)));
-    //console.log('pcture ',height);
-  //console.log('pcturewidth ',width);
-  });}
-    },[])
+ 
 
   //拿景點資料
   useEffect(() => {

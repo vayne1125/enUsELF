@@ -117,7 +117,7 @@ const Items = () => {
               .doc(name)
               .delete()
               .then(() => {
-                DeviceEventEmitter.emit('delete', name);
+                DeviceEventEmitter.emit('change', name, true);
                 setCnt(cnt - 1);
               })
               .catch(error => {});

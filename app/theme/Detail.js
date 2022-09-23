@@ -10,6 +10,7 @@ import {
   Modal,
   TouchableOpacity,
   ScrollView,
+  DeviceEventEmitter,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -83,7 +84,7 @@ const Detail = ({entry, modalVisible, onClose, uncheck, check}) => {
             <View style={styles.topContainer}>
             <View style={styles.imageContainer}>
             <Image style={styles.image} source={ThemeImg[entry['name']]} />
-            <Icons name="cross" size={42} color={'#5f695d'} onPress={() => onClose()} style={styles.iconStyle}/>
+            <Icons name="cross" size={42} color={'#5f695d'} onPress={() => {onClose()}} style={styles.iconStyle}/>
             </View>
             <View style={styles.spaceContainer}></View>
             </View>
@@ -142,7 +143,7 @@ const Detail = ({entry, modalVisible, onClose, uncheck, check}) => {
                             place_id: entry['place_id'],
                             check: false,
                         })
-                        .then(()=>{check;});
+                        .then(DeviceEventEmitter.emit('change', entry['name'], false));
                     }
                   setNoticeVisible(!noticeVisible);
                   setNoticeEntry(entry);
