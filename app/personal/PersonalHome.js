@@ -11,13 +11,14 @@ import {
   Settings,
   ActivityIndicator,
 } from 'react-native';
+import {setGestureState} from 'react-native-reanimated/lib/reanimated2/NativeMethods';
 import Icon from 'react-native-vector-icons/Entypo';
 import Icons from 'react-native-vector-icons/Ionicons';
-import firestore from '@react-native-firebase/firestore';
-
+import firestore, { firebase } from '@react-native-firebase/firestore';
+import ImagePicker from 'react-native-image-crop-picker';
+import storage from '@react-native-firebase/storage';
 import PersonalTop from './PersonalTop';
 import {AuthContext} from '../routes/AutoProvider';
-import {setGestureState} from 'react-native-reanimated/lib/reanimated2/NativeMethods';
 
 const {width, height} = Dimensions.get('window');
 const PersonalHome = ({navigation}) => {
@@ -55,7 +56,57 @@ const PersonalHome = ({navigation}) => {
     });
     return () => listen.remove();
   }, []);
-  console.log(img);
+
+  const selectImage = async() => {
+    ImagePicker.openPicker({
+      width: 100,
+      height: 100,
+      cropping: true
+    })
+    .then(image  => {
+      console.log(image);
+      const source = { uri: image.path };
+      uploadImage(source);
+    }).catch(e => {
+        Alert.alert('失敗','選擇圖片失敗，請稍後重試');
+    })
+  };
+
+  const uploadImage = async (source) => {
+    if (!source) return;
+    const uri = source.uri;
+    console.log('image= ', uri);
+    let filename = uri.substring(uri.lastIndexOf('/') + 1);
+    console.log('filename= ', filename);
+    //have change
+    setLoading(true);
+    // transferred(0);//轉圈圈
+    const storageRef = storage().ref(`user/${filename}`);//creat a folder
+    const task = storageRef.putFile(uri);
+    task.on('state_changed', taskSnapshot => {
+        //file size<256 kb(very small size)" 所以我的上傳才會只有0跟100%
+        console.log(`${taskSnapshot.bytesTransferred} transferred out of ${taskSnapshot.totalBytes}`);
+    });
+    try {
+        //等待一下
+        await task;
+        //get download Url storageRef是自訂的路徑
+        //上面的filename是我們自己設的
+        const Uri = await storageRef.getDownloadURL();
+        if(user && Uri){
+            console.log(source.uri);
+            firestore().collection('users').doc(user.uid)
+            .update({userImg:Uri})
+            .then(()=>{setImg(Uri);setLoading(false);})
+            .catch(e => {setLoading(false);})
+        }
+        console.log("url= ", Uri)
+    }
+    catch (e) {
+        console.log(e);
+        setLoading(false);
+    }
+  };
   return (
     <View style={styles.container}>
       {/*頂部*/}
@@ -75,22 +126,20 @@ const PersonalHome = ({navigation}) => {
         ) : (
           <View style={styles.headContainer}>
             <View style={styles.iconContainer}>
-              <View style={styles.img}>
-                {img ? (
-                  <Image
-                    source={{img}}
-                    style={{height: '100%', weight: '100%'}}
-                  />
-                ) : (
-                  <Icons
-                    name={'person-circle-outline'}
-                    size={160}
-                    style={styles.infoIcon}
-                  />
-                )}
-              </View>
+                <View style={styles.img}>
+                    {img? 
+                    (<Image
+                        source={{ uri: img }}
+                        style={{height: '100%', weight: '100%'}}
+                    />):
+                    (<Icons
+                        name={'person'}
+                        size={120}
+                        style={styles.infoIcon}
+                    />)}
+                </View>
               <View style={styles.editContainer}>
-                <TouchableOpacity onPress={() => {}}>
+                <TouchableOpacity onPress={() => {selectImage()}}>
                   {/* <Text style={{fontSize: 15}}>編輯</Text> */}
                   <Icons name={'camera'} size={30} style={styles.camera} />
                 </TouchableOpacity>
@@ -190,6 +239,8 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     alignSelf: 'center',
+    alignContent:'center',
+    justifyContent:'center',
     flex: 1,
   },
   infoIcon: {
