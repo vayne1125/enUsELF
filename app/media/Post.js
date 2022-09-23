@@ -85,6 +85,7 @@ const Post = ({ navigation, route }) => {
     };*/
   const selectImage = () => {
     ImagePicker.openPicker({
+     //樺樺圖片大小
       width: 300,
       height: 220,
       cropping: true
