@@ -60,6 +60,9 @@ const ListBottom = () => {
                         count++;
                     })
                 })
+                .then(()=>{
+                    DeviceEventEmitter.emit('allcheck', check);
+                })
                 if(count){
                     setCheck(!check);
                     setEmpty(check? true : false);
@@ -82,8 +85,7 @@ const ListBottom = () => {
                     uncheckedIcon="circle-o"
                     checked={check}
                     onPress={() => {
-                        if(user){update();}
-                        DeviceEventEmitter.emit('allcheck', check);          
+                        if(user){update();}        
                     }}
                 /></>
             </View>
