@@ -26,6 +26,10 @@ import Card from './Card';
 import MediaTop from './MediaTop';
 import {AuthContext} from '../routes/AutoProvider';
 
+
+import Collect from './Collect';
+import All from './All';
+import Mypost from './Mypost';
 const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height/5;
 
@@ -36,7 +40,6 @@ const MediaHome = ({navigation}) => {
   const [my, setMy] = useState([]);
   const [data, setdata] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [deleted, setDeleted] = useState(false);
   //const [addcollected, setDeleted] = useState(false);
   const [userdata, setuserdata] = useState(null);
   const [all, setAll] = useState([]);
@@ -168,9 +171,12 @@ const MediaHome = ({navigation}) => {
   }, []);
   //刪文
   useEffect(() => {
-    fetchPosts();
-    setDeleted(false);
-  }, [deleted]);
+    const listen = DeviceEventEmitter.addListener('postdelete', () => {
+      fetchPosts();
+      setDeleted(false);
+    });
+    return () => listen.remove();
+  }, []);
 
   const handleDelete = postId => {
     Alert.alert(
@@ -374,26 +380,9 @@ const MediaHome = ({navigation}) => {
             <ActivityIndicator animating={true} color={'#BEBEBE'} size={80} />
           </View>
         ) : (
-          <FlatList
-            //columnWrapperStyle={{justifyContent:'space-between'}}
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{
-              marginTop: 10,
-              paddingBottom: 80,
-            }}
-            ListEmptyComponent={EmptyList}
-            numColumns={1}
-            initialNumToRender={2}
-            windowSize={2}
-            data={data}
-            //ListHeaderComponent={FlatList_Header}
-            renderItem={({item}) => (
-              <Card
-                navigation={navigation}
-                post={item}
-                onDelete={handleDelete}
-              />
-            )}></FlatList>
+          (choose==='all'? <All item={data}/>:
+            (choose==='collect'? <Collect />:
+            <Mypost />))
         )}
       </View>
       {/* </LinearGradient> */}
