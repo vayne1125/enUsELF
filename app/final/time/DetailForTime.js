@@ -18,10 +18,10 @@ import Icons from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
-import Notice from '../theme/Notice';
-import Weather from '../data/Weather';
-import ThemeImg from '../data/ThemeImg';
-import MapImg from '../data/MapImg';
+import Notice from '../../theme/Notice';
+import Weather from '../../data/Weather';
+import ThemeImg from '../../data/ThemeImg';
+import MapImg from '../../data/MapImg';
 
 const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.15;

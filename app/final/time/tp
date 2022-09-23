@@ -1,4 +1,4 @@
-import React, { Component,PureComponent } from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,7 +12,7 @@ import Icons2 from 'react-native-vector-icons/FontAwesome';
 import Icons3 from 'react-native-vector-icons/FontAwesome5'
 import ThemeImg from '../../data/ThemeImg';
 import MapImg from '../../data/MapImg';
-export default class CusTimeLine extends PureComponent {
+export default class CusTimeLine extends Component {
   constructor(props) {
     super(props)
     this.onEventPress = this.onEventPress.bind(this)
@@ -28,47 +28,46 @@ export default class CusTimeLine extends PureComponent {
   }
 
   renderSelected() {
-    //console.log(this.props);
-    if (this.state.selected != null && this.state.selected.name != "初始位置" ){
+    console.log(this.props);
+    if (this.state.selected != "你的位置"){
       //console.log("this.state.selected");
       var tp = this.state.selected;
-      this.props.onPress(this.state.selected);
+      this.props.onPressHandler(this.state.selected);
     }
       //return <Text style={{ marginTop: 10 }}>Selected event: {this.state.selected.title} at {this.state.selected.time}</Text>
   }
 
   renderDetail(rowData, sectionID, rowID) {
     var title = null;
-    title = <Text style={styles.title}>{rowData.name}</Text>
-
-    var desc = null,desc2 = null;
-    
-    if(rowData.name != "初始位置"){
-      if (rowData.type === "hot" || rowData.type === "hol" || rowData.type === "shop") {
-        desc = (
-          <View style={styles.titleContainer}>
-            <Image
-              style={styles.image}
-              source={MapImg[rowData.type + rowData.id.toString()]}
-            />
-          </View>
-        )
-      } else {
-        desc = (
-          <View style={styles.titleContainer}>
-            <Image
-              style={styles.image}
-              source={ThemeImg[rowData.name]}
-            />
-          </View>
-        )
-      }
+    if (rowData.name === "你的位置") {
+      title = <Text style={styles.title}>{rowData.name}</Text>
+    } else if (rowData.type === "hot" || rowData.type === "hol" || rowData.type === "shop") {
+      title = (
+        <View style={styles.titleContainer}>
+          <Image
+            style={styles.image}
+            source={MapImg[rowData.type + rowData.id.toString()]}
+          />
+          <Text style={styles.title}>{rowData.name}</Text>
+        </View>
+      )
+    } else {
+      title = (
+        <View style={styles.titleContainer}>
+          <Image
+            style={styles.image}
+            source={ThemeImg[rowData.name]}
+          />
+          <Text style={styles.title}>{rowData.name}</Text>
+        </View>
+      )
     }
+
+    var desc = null;
     if(rowData.distance != -1){
     if(this.mode === "DRIVING"){
-      desc2 = (
+      desc = (
         <View style={styles.descriptionContainer}>
-          {title}
           <View style={styles.itemContainer}>
           <Icons2
             name="car"
@@ -90,7 +89,7 @@ export default class CusTimeLine extends PureComponent {
         </View>
       )
     }else{
-      desc2 = (
+      desc = (
         <View style={styles.descriptionContainer}>
           <View style={styles.itemContainer}>
           <Icons3
@@ -113,17 +112,12 @@ export default class CusTimeLine extends PureComponent {
         </View>
       )
     }
-  }else{
-    desc2 = <View style = {{justifyContent:'center'}}>{title}</View>;
   }
 
     return (
       <View style={{ flex: 1 }}>
-        
-        <View style = {styles.decStyles}>
+        {title}
         {desc}
-        {desc2}
-        </View>
       </View>
     )
   }
@@ -131,7 +125,7 @@ export default class CusTimeLine extends PureComponent {
   render() {
     return (
       <View style={styles.container}>
-        {/* {this.renderSelected()} */}
+        {this.renderSelected()}
         <Timeline
           style={styles.list}
           data={this.data}
@@ -167,18 +161,17 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   title: {
-    marginLeft:10,
     fontSize: 20,
     fontWeight: 'bold'
   },
   descriptionContainer: {
     flexDirection: 'column',
-    paddingRight: 50,
+    paddingRight: 50
   },
   image: {
-    width: 130,
-    height: 90,    
-    borderRadius: 20
+    width: 50,
+    height: 50,
+    borderRadius: 25
   },
   textDescription: {
     fontSize: 14,
@@ -192,12 +185,8 @@ const styles = StyleSheet.create({
     alignItems:'center',
     marginTop: 10,
     flex:1,
-    marginLeft:15,
     flexDirection: 'row',
   },iconStyleForWalk:{
     marginLeft: 5,
-  },decStyles:{
-    flexDirection: 'row',
-    marginTop: 35,
   }
 });

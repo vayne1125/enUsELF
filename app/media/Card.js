@@ -20,6 +20,8 @@ import Iconcross from 'react-native-vector-icons/Entypo';
 import Iconcamera from 'react-native-vector-icons/MaterialCommunityIcons';
 import firestore from '@react-native-firebase/firestore';
 import {AuthContext} from '../routes/AutoProvider';
+import moment from 'moment';
+
 
 import Hotplace from '../data/Hotplace';
 import Shopplace from '../data/Shopplace';
@@ -33,7 +35,7 @@ import Nature from '../data/Nature';
 const width = Dimensions.get('screen').width;
 const height = (Dimensions.get('screen').height * 9) / 20;
 const screenwidth = Dimensions.get('screen').width ;
-
+//widt 300 h220
 const Card = ({navigation, post, onDelete}) => {
   const {user} = useContext(AuthContext);
   const [color, setColor] = useState('#ffc56b'); //改
@@ -44,11 +46,14 @@ const Card = ({navigation, post, onDelete}) => {
   const sites = post.Trip;
   //const userSchdule=post.Trip;
   let timestamp = post.time;
+  let timestring =moment(timestamp.toDate()).format('YYYY-MM-DD');
+  //console.log("time ",timestamp);//d.toDateString();
+  //console.log("time string  ",timestamp.toDate());//d.toDateString();
+  //console.log("time try  2 ",timestring);//d.toDateString();
   const [userSchdule, setUserSchdule] = useState([]);
   const [imageheight,setimageheight] = useState(200);
   const data = [];
 
- 
 
   //拿景點資料
   useEffect(() => {
@@ -182,7 +187,7 @@ const toggleNumberOfLines = () => { //To toggle the show text or hide it
         )}
       </View>
 
-      <View style={[styles.imageContainer,{height:imageheight,}]}>
+      <View style={styles.imageContainer}>
         {post.img != null ? (
           <Image
             style={styles.image}
@@ -190,7 +195,7 @@ const toggleNumberOfLines = () => { //To toggle the show text or hide it
             source={{uri: post.img}}
           />
         ) : (
-          <View style={[styles.imageContainer,{height:imageheight,}]}>
+          <View style={styles.imageContainer}>
             <View>
               <Iconcamera
                 name={'camera-off-outline'}
@@ -277,9 +282,11 @@ const toggleNumberOfLines = () => { //To toggle the show text or hide it
               {
                   lengthMore ? <Text
                   onPress={toggleNumberOfLines}
-                  style={{ lineHeight: 21, marginTop: 10 ,fontWeight:'700'}}>{textShown ? 'Read less...' : 'Read more...'}</Text>
+                  style={{ lineHeight: 21, marginTop: 10 ,fontWeight:'700'}}>{textShown ? 'Read less' : 'Read more...'}</Text>
                   :null
               }
+              {/*樺樺時間位置 */}
+              <Text >{timestring}</Text>
       </View>
     </View>
   );
@@ -361,8 +368,10 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     //flex: 8,
-   // height :220,
-    width:'100%',
+    //樺樺 這邊是等比縮放公式
+    //Math.floor(screenwidth/(image_width*image_height)
+    height :220,
+    width:300,
     alignItems: 'center',
     justifyContent: 'center',
     //backgroundColor: '#D1DED7',
