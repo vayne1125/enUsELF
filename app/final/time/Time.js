@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import TimeTop from './TimeTop';
 import CusTimeline from './CusTimeLine'
 import {
@@ -11,7 +11,6 @@ import {
   RefreshControl,
   FlatList
 } from 'react-native';
-
 import Hotplace from '../../data/Hotplace'
 import Shopplace from '../../data/Shopplace'
 import Holplace from '../../data/Holplace'
@@ -20,12 +19,16 @@ import Hotel from '../../data/Hotel'
 import KOL from '../../data/KOL'
 import Monuments from '../../data/Monuments'
 import Nature from '../../data/Nature'
-import DetailForFinal from '../DetailForFinal';
+import DetailForTime from './DetailForTime';
+import { AuthContext } from '../../routes/AutoProvider';
 
 const Time = ({ navigation, route }) => {
-  const [time, setTime] = useState(route.params.time);
-  const [place, setPlace] = useState(route.params.place);
-  const [data, setData] = useState([]);
+  const { user } = useContext(AuthContext);
+
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalEntry, setModalEntry] = useState({}); //initialState
+  const [modalIsMain, setModalIsMain] = useState(true);
+
   const mode = route.params.mode;
   //console.log(mode);
   //console.log(time);
@@ -33,7 +36,8 @@ const Time = ({ navigation, route }) => {
   const getData = () => {
     const data = [];
     var tp = {};
-    tp.name = "你的位置";
+    tp.name = "初始位置";
+    tp.type = "none"
     tp.duration = route.params.time[0].duration;
     tp.distance = route.params.time[0].distance;
     tp.circleColor = '#5f695d';
@@ -68,27 +72,51 @@ const Time = ({ navigation, route }) => {
       else tp.circleColor = '#bcddb7';
       data.push(tp);
     }
-    ////console.log("data:",data);
-    // return [
-    //   {time: '09:00', title: 'Event 1', description: 'Event 1 Description'},
-    //   {time: '10:45', title: 'Event 2', description: 'Event 2 Description'},
-    //   {time: '12:00', title: 'Event 3', description: 'Event 3 Description'},
-    //   {time: '14:00', title: 'Event 4', description: 'Event 4 Description'},
-    //   {time: '16:30', title: 'Event 5', description: 'Event 5 Description'}
-    // ];
     console.log("set!!!");
     return data;
   }
+  const det = (e) => {
+    if (e != null) {
+      setModalIsMain(
+        (e.type === "hot" || e.type === "hol" || e.type === "shop") ?
+          false : true
+      );
+      setModalVisible(!modalVisible);
+      setModalEntry({
+        id: e.id,
+        type: e.type,
+        name: e.name,
+        address: e.address,
+        star: e.star,
+        info: e.info,
+        time: e.time,
+        city: e.city,
+        region: e.region,
+      });
+    }
+  }
   return (
     <View style={styles.container}>
+
+      {/*浮動視窗-------------------------------------------------------------------------------*/}
+      <DetailForTime
+        entry={modalEntry}//傳進去的資料參數
+        modalVisible={modalVisible}//可不可見
+        onClose={() => { setModalVisible(false); }}//關閉函式
+        isMain={modalIsMain}
+      />
+      {/*浮動視窗-------------------------------------------------------------------------------*/}
+
       <View style={styles.topbar}>
         <TimeTop />
       </View>
-      <View style={{flex:10.8}}>
+      <View style={{ flex: 10.8 }}>
         <CusTimeline
           data={getData()}
-          mode={mode}>
-        </CusTimeline>
+          mode={mode}
+          onPress={(e) => {
+            det(e);
+          }} />
       </View>
     </View>
   );
@@ -101,8 +129,8 @@ const styles = StyleSheet.create({
     //borderBottomLeftRadius: 20,
     //borderBottomRightRadius: 20,
     //opacity: 0.9,
-    borderBottomWidth:1,
-    borderColor:'#aaaaaa',
+    borderBottomWidth: 1,
+    borderColor: '#aaaaaa',
   },
   container: {
     hight: '100%',

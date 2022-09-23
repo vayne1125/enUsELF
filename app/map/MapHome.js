@@ -562,39 +562,9 @@ const MapHome = ({ navigation, route }) => {
                   time: marker.time,
                   city: marker.city,
                   region: marker.region,
-
                 });
               }}
             />
-            // <Marker
-            //   key={marker.type + (marker.id).toString()}
-            //   coordinate={{ latitude: marker.location.lat, longitude: marker.location.lng }}
-            //   onPress={(e) => {
-            //     setModalIsAdd(false);
-            //     setModalVisible(!modalVisible);
-            //     setModalEntry({
-            //       type: marker.type,
-            //       id: marker.id,
-            //       name: marker.name,
-            //       address: marker.address,
-            //       star: marker.star,
-            //       info: marker.info,
-            //       date: marker.date,
-            //       time:
-            //         marker.time.map((ti) => {
-            //           return ti + '\n';
-            //         }),
-            //       city: marker.city,
-            //       region: marker.region,
-
-            //     });
-            //   }}
-            // >
-            //   <View style={styles.markerCss}>
-            //     <Text style={styles.markerText}>{marker.name}</Text>
-            //     <Image style={styles.markerImg} source={require('../../assets/pin/green.png')} />
-            //   </View>
-            // </Marker>
           )
 
         }
@@ -604,32 +574,6 @@ const MapHome = ({ navigation, route }) => {
       {/* 放在地圖的組件 */}
       <Callout style={styles.callout}>
         <Back />
-        {/* 熱門景點
-        <TouchableHighlight
-          style={styles.buttonForHot}
-          onPress={onPressHandlerForHot}
-          underlayColor='#eeeeee'
-        >
-          <Text style={styles.textForOption}>熱門景點</Text>
-        </TouchableHighlight>
-
-        {/*節日}
-        <TouchableHighlight
-          style={styles.buttonHoliday}
-          onPress={onPressHandlerForHoliday}
-          underlayColor='#eeeeee'
-        >
-          <Text style={styles.textForOption}>節日</Text>
-        </TouchableHighlight>
-
-        {/*購物}
-        <TouchableHighlight
-          style={styles.buttonForShop}
-          onPress={onPressHandlerForShop}
-          underlayColor='#eeeeee'
-        >
-          <Text style={styles.textForOption}>購物</Text>
-        </TouchableHighlight> */}
         <View style={styles.buttonContainer}>
           <View style={{
             flex: 1, alignSelf: 'center',

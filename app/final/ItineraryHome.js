@@ -51,7 +51,6 @@ const ItineraryHome = ({ navigation, route }) => {
 
   const [tripname, setTripname] = useState(route.params.tripname);
 
-  const [schedule,setSchedule] = useState([]);
   const [wayTime, setWayTime] = useState([]);
   const [time, setTime] = useState([]);
   const [order, setOrder] = useState([]);
