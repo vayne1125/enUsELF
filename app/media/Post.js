@@ -31,6 +31,8 @@ import ImagePicker from 'react-native-image-crop-picker';
 
 const Stack = createNativeStackNavigator();
 const width = Dimensions.get('screen').width;
+const picwidth = Dimensions.get('screen').width*0.9;
+const picheight =picwidth*2/3;
 
 const Post = ({ navigation, route }) => {
   const userdata = route.params;
@@ -86,8 +88,8 @@ const Post = ({ navigation, route }) => {
   const selectImage = () => {
     ImagePicker.openPicker({
      //樺樺圖片大小
-      width: 300,
-      height: 220,
+      width: picwidth,
+      height: picheight,
       cropping: true
     }).then(image => {
       console.log(image);

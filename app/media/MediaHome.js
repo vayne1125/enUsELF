@@ -377,7 +377,7 @@ const styles = StyleSheet.create({
   textStyle2: {
     fontWeight: 'bold',
     fontSize: 18,
-    color: '#5f695d',
+    color: '#88bd80',
     letterSpacing: 5,
   },
   chooseed: {
@@ -387,8 +387,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
     //backgroundColor: '#D1DED7',
-    borderBottomWidth:3,
-    borderColor:'#5f695d',
+    borderBottomWidth:5,
+    borderColor:'#88bd80',
     height: '100%',
     //borderRadius: 20,
   },

@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState, useContext} from 'react';
+import React, { useCallback, useEffect, useState, useContext } from 'react';
 import {
   View,
   Text,
@@ -10,16 +10,16 @@ import {
   DeviceEventEmitter,
   TouchableOpacity,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Iconcross from 'react-native-vector-icons/Entypo';
 import Iconcamera from 'react-native-vector-icons/MaterialCommunityIcons';
 import firestore from '@react-native-firebase/firestore';
-import {AuthContext} from '../routes/AutoProvider';
+import { AuthContext } from '../routes/AutoProvider';
 import moment from 'moment';
 
 
@@ -34,24 +34,26 @@ import Nature from '../data/Nature';
 
 const width = Dimensions.get('screen').width;
 const height = (Dimensions.get('screen').height * 9) / 20;
-const screenwidth = Dimensions.get('screen').width ;
+const screenwidth = Dimensions.get('screen').width;
+const picwidth = Dimensions.get('screen').width * 0.9;
+const picheight = picwidth * 2 / 3;
 //widt 300 h220
-const Card = ({navigation, post, onDelete}) => {
-  const {user} = useContext(AuthContext);
+const Card = ({ navigation, post, onDelete }) => {
+  const { user } = useContext(AuthContext);
   const [color, setColor] = useState('#ffc56b'); //改
   const [collect, setCollect] = useState(false);
   const [textShown, setTextShown] = useState(false); //To show ur remaining Text
-  const [lengthMore,setLengthMore] = useState(false);
+  const [lengthMore, setLengthMore] = useState(false);
   const username = post.name;
   const sites = post.Trip;
   //const userSchdule=post.Trip;
   let timestamp = post.time;
-  let timestring =moment(timestamp.toDate()).format('YYYY-MM-DD');
+  let timestring = moment(timestamp.toDate()).format('YYYY-MM-DD');
   //console.log("time ",timestamp);//d.toDateString();
   //console.log("time string  ",timestamp.toDate());//d.toDateString();
   //console.log("time try  2 ",timestring);//d.toDateString();
   const [userSchdule, setUserSchdule] = useState([]);
-  const [imageheight,setimageheight] = useState(200);
+  const [imageheight, setimageheight] = useState(200);
   const data = [];
 
 
@@ -153,26 +155,26 @@ const Card = ({navigation, post, onDelete}) => {
     } DeviceEventEmitter.emit('collectSend');
   };
   //console.log('1post.use ', post.img);
-  const onTextLayout = useCallback(e =>{
-    setLengthMore(e.nativeEvent.lines.length >=2); //to check the text is more than 4 lines or not
+  const onTextLayout = useCallback(e => {
+    setLengthMore(e.nativeEvent.lines.length >= 2); //to check the text is more than 4 lines or not
     // console.log(e.nativeEvent);
-},[]);
-const toggleNumberOfLines = () => { //To toggle the show text or hide it
-  setTextShown(!textShown);
-}
+  }, []);
+  const toggleNumberOfLines = () => { //To toggle the show text or hide it
+    setTextShown(!textShown);
+  }
   return (
     <View style={styles.card}>
       <View style={styles.nameContainer}>
-      <View style={styles.info}>
-         {post.userImg==""? <Icons name={'person-circle-outline'} size={36} />
-          :<Image
-          roundAsCircle={true}
-          resizeMode={'stretch'}
-          style={{ margin:10,borderRadius: 20,height: 35, width: 35}}
-          source={{uri: post.userImg}}
-        />
-        }
-      </View>
+        <View style={styles.info}>
+          {post.userImg == "" ? <Icons name={'person-circle-outline'} size={36} />
+            : <Image
+              roundAsCircle={true}
+              resizeMode={'stretch'}
+              style={{ margin: 10, borderRadius: 20, height: 35, width: 35 }}
+              source={{ uri: post.userImg }}
+            />
+          }
+        </View>
         <View style={styles.nameTextContainer}>
           <Text style={styles.nameStyle}>{post.name}</Text>
         </View>
@@ -180,7 +182,7 @@ const toggleNumberOfLines = () => { //To toggle the show text or hide it
           <View style={styles.deliconContainer}>
             <TouchableOpacity
               onPress={() => onDelete(post.id)}
-              style={{flex: 1}}>
+              style={{ flex: 1 }}>
               <Iconcross
                 name="cross"
                 size={40}
@@ -199,7 +201,7 @@ const toggleNumberOfLines = () => { //To toggle the show text or hide it
           <Image
             style={styles.image}
             resizeMode={'stretch'}
-            source={{uri: post.img}}
+            source={{ uri: post.img }}
           />
         ) : (
           <View style={styles.imageContainer}>
@@ -210,7 +212,7 @@ const toggleNumberOfLines = () => { //To toggle the show text or hide it
                 color={'#5f695d'}
               />
             </View>
-            <Text style={{fontSize: 18}}>此貼文無照片</Text>
+            <Text style={{ fontSize: 18 }}>此貼文無照片</Text>
           </View>
         )}
       </View>
@@ -218,7 +220,7 @@ const toggleNumberOfLines = () => { //To toggle the show text or hide it
         <View style={styles.collectContainer}>
           <TouchableOpacity onPress={changecollect}>
             {collect ? (
-              <View style={{flexDirection: 'row'}}>
+              <View style={{ flexDirection: 'row' }}>
                 <Icon
                   name={'bookmark'}
                   size={24}
@@ -231,7 +233,7 @@ const toggleNumberOfLines = () => { //To toggle the show text or hide it
                 </Text> */}
               </View>
             ) : (
-              <View style={{flexDirection: 'row'}}>
+              <View style={{ flexDirection: 'row' }}>
                 <Icon
                   name={'bookmark-o'}
                   size={24}
@@ -245,21 +247,22 @@ const toggleNumberOfLines = () => { //To toggle the show text or hide it
             )}
           </TouchableOpacity>
           <Text>{'     '}</Text>
-            <TouchableOpacity  onPress={() => {
-              navigation.navigate('Schedule', {
-                sites: sites,
-                userSchdule: userSchdule,
-                username: username,
-              });
-            }}>
-              <Iconcamera
-                name={'bag-suitcase-outline'}
-                size={27}
-                //color={'#ffc56b'}
-                style={styles.collectIconStyle}
-              />
-            </TouchableOpacity >
+          <TouchableOpacity onPress={() => {
+            navigation.navigate('Schedule', {
+              sites: sites,
+              userSchdule: userSchdule,
+              username: username,
+            });
+          }}>
+            <Iconcamera
+              name={'bag-suitcase-outline'}
+              size={27}
+              //color={'#ffc56b'}
+              style={styles.collectIconStyle}
+            />
+          </TouchableOpacity >
         </View>
+        <View style={{ justifyContent: 'flex-end', flex: 2 }}><Text style={{ textAlign: 'right' }}>已有 3 人收藏</Text></View>
         {/* <View style={styles.buttonContainer}>
           <TouchableOpacity
             onPress={() => {
@@ -282,18 +285,18 @@ const toggleNumberOfLines = () => { //To toggle the show text or hide it
           {post.content}
       </Text>*/}
         <Text
-              onTextLayout={onTextLayout}
-              numberOfLines={textShown ? undefined : 2}
-              style={{ lineHeight: 21 }}>{post.content}</Text>
+          onTextLayout={onTextLayout}
+          numberOfLines={textShown ? undefined : 2}
+          style={{ lineHeight: 21, color: '#5f695d', flexDirection: 'row' }}>{post.content}</Text>
 
-              {
-                  lengthMore ? <Text
-                  onPress={toggleNumberOfLines}
-                  style={{ lineHeight: 21, marginTop: 10 ,fontWeight:'700'}}>{textShown ? 'Read less' : 'Read more...'}</Text>
-                  :null
-              }
-              {/*樺樺時間位置 */}
-              <Text >{timestring}</Text>
+        {
+          lengthMore ? <Text
+            onPress={toggleNumberOfLines}
+            style={{ fontWeight: '700', flexDirection: 'row' }}>{textShown ? '\n收起' : '...更多'}</Text>
+            : null
+        }
+        {/*樺樺時間位置 */}
+        <Text style={{ textAlign: 'right' }}>{timestring}</Text>
       </View>
     </View>
   );
@@ -304,8 +307,8 @@ const styles = StyleSheet.create({
     height: 'auto',
     backgroundColor: 'white',
     //backgroundColor: 'rgba(255,255,255,0.8)',
-    width:'100%',
-    right:'2.5%',
+    width: '100%',
+    right: '2.5%',
     marginHorizontal: 10,
     //borderRadius: 10,
     marginBottom: 15,
@@ -377,33 +380,34 @@ const styles = StyleSheet.create({
     //flex: 8,
     //樺樺 這邊是等比縮放公式
     //Math.floor(screenwidth/(image_width*image_height)
-    height :220,
-    width:300,
+    height: picheight,
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     //backgroundColor: '#D1DED7',
     //borderColor: '#D1DED7',
     //borderWidth: 3,
     //borderBottomWidth:10,
-    resizeMode:'contain',
+    resizeMode: 'contain',
   },
   image: {
-    width: '100%',
-    //width:'99%',
-    height: '100%',
+    height: picheight,
+    width: picwidth,
     // borderTopRightRadius: 25,
     // borderTopLeftRadius: 5,
     // borderBottomRightRadius: 5,
     // borderBottomLeftRadius: 25,
-    resizeMode:'contain',
+    resizeMode: 'contain',
   },
   textContainer: {
     //backgroundColor: '#D1DED7',
     flex: 2,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-    paddingLeft: '7%',
-    paddingRight: '8%',
+    //paddingLeft: '7%',
+    //paddingRight: '8%',
+    width: picwidth,
+    alignSelf: 'center',
     marginBottom: '2%',
     //marginTop: '2%',
     //backgroundColor:'black',
@@ -422,9 +426,12 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     flex: 2,
-    //backgroundColor: 'pink',
+    paddingTop: 5,
     justifyContent: 'center',
+    alignItems: 'center',
     flexDirection: 'row',
+    width: picwidth,
+    alignSelf: 'center',
   },
   collectContainer: {
     flex: 3,
@@ -435,7 +442,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     //backgroundColor:'#FFF4C1',
     height: '100%',
-    paddingLeft: '8%',
     //borderBottomLeftRadius: 10,
   },
   collectIconStyle: {

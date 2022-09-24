@@ -107,8 +107,11 @@ export default class Card extends PureComponent {
           </View>
           <View style={styles.info}>
             <View style={styles.textContainer}>
-              <Text numberOfLines={2} style={styles.nameStyle}>
+              <Text numberOfLines={1} style={styles.nameStyle}>
                 {site.name}
+              </Text>
+              <Text numberOfLines={1} style={styles.addressStyle}>
+                {site.city}{' '}{site.region}
               </Text>
             </View>
             {/* <View style={{flex:1,flexDirection:'row'}}> */}
@@ -157,7 +160,7 @@ export default class Card extends PureComponent {
                 <View style={styles.buttonContainer2}>
                   <Icon2
                       name={'calendar-check'}
-                      color={'#badecb'}
+                      color={'#88bd80'}
                       //color={'#5f695d'}
                       size={26} />
                 </View>}
@@ -216,11 +219,12 @@ const styles = StyleSheet.create({
     left: 2,
   },
   textContainer: {
-    flex: 1.7,
+    flex: 1.9,
     alignSelf: 'center',
     alignItems: 'center',
     //backgroundColor:'#000000',
     //padding:4,
+    justifyContent:'space-around',
   },
   buttonContainer: {
     //backgroundColor: '#fbb856', //較深黃
@@ -289,6 +293,11 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     /*fontFamily:'NotoSerifTC-Bold',
     bottom:'15%',*/
+  },
+  addressStyle:{
+    fontWeight: 'bold',
+    fontSize: 12,
+    color: '#afb1b0',
   },
   info: {
     flex: 2,

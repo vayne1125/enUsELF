@@ -57,7 +57,7 @@ const Nav = () => {
           else 
           return <Icons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: '#5f695d',//按下:灰色9/14
+        tabBarActiveTintColor: '#88bd80',//按下:灰色9/14
         //tabBarActiveTintColor: 'white',//按下
         tabBarInactiveTintColor: '#5f695d',//沒按9/14
         //tabBarInactiveTintColor: '#ffc56b',//沒按

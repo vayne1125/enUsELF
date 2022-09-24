@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     //opacity: 0.9,
   },
   info: {
-    flex: 10,
+    flex: 9,
     //backgroundColor: '#D1DED7',//9/14改
     //backgroundColor: '#ffffe0',
     backgroundColor: '#ffffff',

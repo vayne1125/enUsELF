@@ -44,16 +44,16 @@ const ThemeTop = () => {
                 <View style={styles.icons}>
                     {(theme==='美食')?
                     (<View style={styles.theme2}> 
-                        <Icons name={'fast-food'} color={'#ffffff'} size={38} />
+                        <Icons name={'fast-food'} color={'#ffffff'} size={36} />
                     </View>):
                     (<View style={styles.theme}>
                         <TouchableOpacity onPress={() => {setTheme('美食');}}>
-                            <Icons name={'fast-food'} color={'#5f695d'} size={38} />
+                            <Icons name={'fast-food'} color={'#5f695d'} size={36} />
                         </TouchableOpacity>
                     </View>)}
                     {(theme==='美食') ? 
                     (<View style={styles.text}>
-                        <Text style={styles.textStyle2}>美食</Text>
+                        <Text style={styles.textStyle3}>美食</Text>
                     </View>):
                     (<View style={styles.text}>
                         <Text style={styles.textStyle2}>美食</Text>
@@ -62,16 +62,16 @@ const ThemeTop = () => {
                 <View style={styles.icons}>
                     {(theme==='自然') ? (
                     <View style={styles.theme2}>
-                        <Icon2 name={'mountains'} color={'#ffffff'} size={40} />
+                        <Icon2 name={'mountains'} color={'#ffffff'} size={38} />
                     </View>):
                     (<View style={styles.theme}>
                         <TouchableOpacity onPress={() => {setTheme('自然');}}>
-                            <Icon2 name={'mountains'} color={'#5f695d'} size={40} />
+                            <Icon2 name={'mountains'} color={'#5f695d'} size={38} />
                         </TouchableOpacity>
                     </View>)}
                     {(theme==='自然') ? 
                     (<View style={styles.text}>
-                        <Text style={styles.textStyle2}>自然</Text>
+                        <Text style={styles.textStyle3}>自然</Text>
                     </View>):
                     (<View style={styles.text}>
                         <Text style={styles.textStyle2}>自然</Text>
@@ -80,16 +80,16 @@ const ThemeTop = () => {
                 <View style={styles.icons}>
                     {(theme==='網美')?
                     (<View style={styles.theme2}>
-                        <Icon name={'camera-retro'} color={'#ffffff'} size={36}/>
+                        <Icon name={'camera-retro'} color={'#ffffff'} size={34}/>
                     </View>):
                     (<View style={styles.theme}>
                         <TouchableOpacity onPress={() => { setTheme('網美');}}>
-                            <Icon name={'camera-retro'} color={'#5f695d'} size={36} />
+                            <Icon name={'camera-retro'} color={'#5f695d'} size={34} />
                         </TouchableOpacity>
                     </View>)}
                     {(theme==='網美')?
                     (<View style={styles.text}>
-                        <Text style={styles.textStyle2}>網美</Text>
+                        <Text style={styles.textStyle3}>網美</Text>
                     </View>):
                     (<View style={styles.text}>
                         <Text style={styles.textStyle2}>網美</Text>
@@ -99,16 +99,16 @@ const ThemeTop = () => {
                 <View style={styles.icons}>
                     {(theme==='古蹟')?
                     (<View style={styles.theme2}>
-                        <Icon3 name={'castle'} color={'#ffffff'} size={40}/>
+                        <Icon3 name={'castle'} color={'#ffffff'} size={38}/>
                     </View>):
                     (<View style={styles.theme}>
                         <TouchableOpacity onPress={() => {setTheme('古蹟');}}>
-                            <Icon3 name={'castle'} color={'#5f695d'} size={40}/>
+                            <Icon3 name={'castle'} color={'#5f695d'} size={38}/>
                         </TouchableOpacity>
                     </View>)}
                     {(theme==='古蹟') ? 
                     (<View style={styles.text}>
-                        <Text style={styles.textStyle2}>古蹟</Text>
+                        <Text style={styles.textStyle3}>古蹟</Text>
                     </View>):
                     (<View style={styles.text}>
                         <Text style={styles.textStyle2}>古蹟</Text>
@@ -117,16 +117,16 @@ const ThemeTop = () => {
                 <View style={styles.icons}>
                     {(theme==='住宿')?
                     (<View style={styles.theme2}>
-                        <Icons name={'bed'} color={'#ffffff'} size={42} />
+                        <Icons name={'bed'} color={'#ffffff'} size={40} />
                     </View>):
                     (<View style={styles.theme}>
                         <TouchableOpacity onPress={() => {setTheme('住宿');}}>
-                            <Icons name={'bed'} color={'#5f695d'} size={42} />
+                            <Icons name={'bed'} color={'#5f695d'} size={40} />
                         </TouchableOpacity>
                     </View>)}
                     {(theme==='住宿') ? 
                     (<View style={styles.text}>
-                        <Text style={styles.textStyle2}>住宿</Text>
+                        <Text style={styles.textStyle3}>住宿</Text>
                     </View>):
                     (<View style={styles.text}>
                         <Text style={styles.textStyle2}>住宿</Text>
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     //fontWeight: 'bold',
     //color: '#ffffff',
-    color:'#5f695d',//9/14改
+    color:'#5f695d',//9/25改
     //color:'#A17747',
     fontFamily:'NotoSerifTC-Bold',
     letterSpacing:10,
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     flex: 3,
     //height:height,
-    backgroundColor: '#5f695d',//9/14改
+    backgroundColor: '#88bd80',//9/14改
     //backgroundColor: '#ffc56b',
     shadowColor: '#7F5DF0',
     shadowOffset: {
@@ -246,7 +246,18 @@ const styles = StyleSheet.create({
     alignContent: 'flex-start',
     alignItems: 'center',
     justifyContent: 'space-around',
-    //color:'#A17747'//9/14改
+    color:'#5f695d'
+  },
+  textStyle3: {
+    letterSpacing: 4,
+    //fontFamily:'NotoSerifTC-Bold',
+    fontSize: 16,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    alignContent: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    color:'#88bd80'
   },
 });
 
