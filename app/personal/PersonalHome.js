@@ -129,8 +129,10 @@ const PersonalHome = ({navigation}) => {
                 <View style={styles.img}>
                     {img? 
                     (<Image
+                      roundAsCircle={true}
+                      resizeMode={'stretch'}
                         source={{ uri: img }}
-                        style={{height: '100%', weight: '100%'}}
+                        style={{ borderRadius: 600,height: '100%', weight: '100%'}}
                     />):
                     (<Icons
                         name={'person'}
@@ -227,11 +229,11 @@ const styles = StyleSheet.create({
     //top: 10,
   },
   iconContainer: {
-    height: '80%',
-    width: '50%',
+    height: '100%',
+    width: '100%',
     backgroundColor: 'white',
     flexDirection: 'column',
-    borderRadius: 60,
+    borderRadius: 600,
     marginTop: '3%',
     flex: 4,
   },

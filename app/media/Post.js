@@ -118,6 +118,7 @@ const Post = ({ navigation, route }) => {
         postImg: imageUrl,
         postTime: firestore.Timestamp.fromDate(new Date()),
         Trip: trip,
+        userImg: userdata.userImg,
         //coomments:null,
       }).then(() => {
         console.log('Post add !');
@@ -221,7 +222,14 @@ const Post = ({ navigation, route }) => {
       </View>
       <View style={styles.userpost}>
         <View style={styles.iconContainer}>
-          <Icons name={'person-circle-outline'} size={43} />
+          {
+           userdata.userImg==""? <Icons name={'person-circle-outline'} size={43} />
+          :<Image
+          roundAsCircle={true}
+          resizeMode={'stretch'}
+          style={{ margin:10,borderRadius: 25,height: 43, width: 43}}
+          source={{uri: userdata.userImg}}
+        />}
         </View>
         <View style={{ flexDirection: "column", justifyContent: 'center' }}>
           <Text style={styles.nameStyle}>{userdata.name}</Text>

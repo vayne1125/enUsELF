@@ -163,9 +163,16 @@ const toggleNumberOfLines = () => { //To toggle the show text or hide it
   return (
     <View style={styles.card}>
       <View style={styles.nameContainer}>
-        <View style={styles.info}>
-          <Icons name={'person-circle-outline'} size={36} />
-        </View>
+      <View style={styles.info}>
+         {post.userImg==""? <Icons name={'person-circle-outline'} size={36} />
+          :<Image
+          roundAsCircle={true}
+          resizeMode={'stretch'}
+          style={{ margin:10,borderRadius: 20,height: 35, width: 35}}
+          source={{uri: post.userImg}}
+        />
+        }
+      </View>
         <View style={styles.nameTextContainer}>
           <Text style={styles.nameStyle}>{post.name}</Text>
         </View>

@@ -72,7 +72,7 @@ const Collect = (item) => {
          } else {
             console.log('有 ', snap);
             console.log('有 Data ', );
-            const {userid,post,postImg,postTime,name,Trip}=snap.data();
+            const {userid,post,postImg,postTime,name,Trip,userImg}=snap.data();
             listget2.push({
               id:snap.id ,
               userid,
@@ -81,6 +81,7 @@ const Collect = (item) => {
               content: post,
               time:postTime,
               Trip:Trip,
+              userImg,
             });
          }
       })

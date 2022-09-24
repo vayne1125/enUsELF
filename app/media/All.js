@@ -41,7 +41,7 @@ const All = (item) => {
         .get()
         .then(querySnapshot => {
           querySnapshot.forEach(doc => {
-            const {userid, post, postImg, postTime, name, Trip} = doc.data();
+            const {userid, post, postImg, postTime, name, Trip,userImg} = doc.data();
             listpost.push({
               id: doc.id,
               userid,
@@ -50,9 +50,11 @@ const All = (item) => {
               content: post,
               time: postTime,
               Trip: Trip,
+              userImg,
             });
           });
         });
+        console.log('listpost ',listpost); 
       setPosts(listpost);
       //console.log('my ',my);
       if (loading) {
