@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {Component, useEffect, useState,useContext} from 'react';
 import {
   View,
   Text,
@@ -7,33 +7,82 @@ import {
   FlatList,
   Image,
   Button,
-  Modal,
-  SafeAreaView,
-  TouchableOpacity,
+  DeviceEventEmitter,
+  Alert,
+  ActivityIndicator,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Card from './Card';
+import firestore from '@react-native-firebase/firestore';
+import storage from '@react-native-firebase/storage';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {AuthContext} from '../routes/AutoProvider';
 
 const Stack = createNativeStackNavigator();
 const width = Dimensions.get('screen').width / 6;
 const width2 = (Dimensions.get('screen').width * 49) / 50;
-const height = width - 5;
-const Height = Dimensions.get('screen').height*6/30;
+//const height = width - 5;
+const height = Dimensions.get('screen').height/2;
 
-const initialState = {
-  id: {},
-  name: {},
-  address: {},
-  city: {},
-  region: {},
-  info: {},
-  time: {},
-};
-const Mypost = () => {
+const Mypost = (item) => {
+  const {user} = useContext(AuthContext);
+    const [deleted, setDeleted] = useState(false);
+  const [Posts, setPosts] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const navigation = useNavigation();
+   const data=item.item;
+   const fetchPosts = async () => {
+    try {
+      const listpost = [];
+      //get post
+      await firestore()
+        .collection('posts')
+        .orderBy('postTime', 'desc') //照時間排
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            const {userid, post, postImg, postTime, name, Trip} = doc.data();
+            if(userid===user.uid){
+              listpost.push({
+                id: doc.id,
+                userid,
+                name: name,
+                img: postImg,
+                content: post,
+                time: postTime,
+                Trip: Trip,
+              });
+            }
+          });
+        });
+      setPosts(listpost);
+      //console.log('my ',my);
+      if (loading) {
+        setLoading(false);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-    const handleDelete = postId => {
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+  useEffect(() => {
+    console.log('have delete ');
+    fetchPosts();
+  }, [deleted]);
+
+  useEffect(() => {
+    const listen = DeviceEventEmitter.addListener('postSend', () => {
+      fetchPosts();
+    });
+    return () => listen.remove();
+  }, []);
+
+const handleDelete = postId => {
         Alert.alert(
           '貼文刪除後不可復原',
           '確定要刪除貼文嗎?',
@@ -97,10 +146,62 @@ const Mypost = () => {
           .catch(e => console.log('山資料err ', e));
          
         };
+        const EmptyList =({})=>{
+            return ( 
+            <View style={{flex:1,flexDirection:'column',top:80,}}>
+            <View style={{flex:1, 
+              justifyContent: 'center',
+              alignItems: 'center',}}>
+                <View style={styles.imageContainer}>
+                
+                  <View>
+                  <Icon
+                    name={'camera-outline'}
+                    size={60}
+                    color={'#5f695d'}
+                  />
+                </View>
+                  
+                </View>
+              <View syle={{flex:1,}}>
+              <Text style={{fontSize: 25,textAlignVertical: 'center' ,}}>尚無貼文</Text>
+          </View>
+            </View>
+            </View>
+            );
+          }
 
   return (
-  
-    <Text>Mypost</Text>
+      <View>
+    {loading ?
+      (<View style={{top:height/2,justifyContent: 'center', flex: 1}}>
+        <ActivityIndicator animating={true} color={'#BEBEBE'} size='large' />
+       </View> )
+       :
+      (<FlatList
+      //columnWrapperStyle={{justifyContent:'space-between'}}
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{
+        marginTop: 10,
+        paddingBottom: 80,
+      }}
+      ListEmptyComponent={EmptyList}
+      numColumns={1}
+      initialNumToRender={2}
+      windowSize={2}
+      data={Posts}
+      //ListHeaderComponent={FlatList_Header}
+      renderItem={({item}) => (
+        <Card
+          navigation={navigation}
+          post={item}
+          onDelete={handleDelete}
+        />
+      )}></FlatList>
+    
+    )
+    }
+    </View>
   );
 };
 

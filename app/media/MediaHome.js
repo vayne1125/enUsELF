@@ -45,53 +45,9 @@ const MediaHome = ({navigation}) => {
   const [all, setAll] = useState([]);
   const [choose, setChoose] = useState('all');
   const array = [];
-  const fetchPosts = async () => {
-    try {
-      const listpost = [];
-      const listmy = [];
-      //get post
-      await firestore()
-        .collection('posts')
-        .orderBy('postTime', 'desc') //照時間排
-        .get()
-        .then(querySnapshot => {
-          querySnapshot.forEach(doc => {
-            const {userid, post, postImg, postTime, name, Trip} = doc.data();
-           if(userid===user.uid){
-            listmy.push({
-              id: doc.id,
-              userid,
-              name: name,
-              img: postImg,
-              content: post,
-              time: postTime,
-              Trip: Trip,
-            });
-          }
-            listpost.push({
-              id: doc.id,
-              userid,
-              name: name,
-              img: postImg,
-              content: post,
-              time: postTime,
-              Trip: Trip,
-            });
-          });
-        });
-      setPosts(listpost);
-      setMy(listmy);
-      //console.log('my ',my);
-      if (loading) {
-        setLoading(false);
-      }
-    } catch (e) {
-      console.log(e);
-    }
+   
 
-  };
-
-  const fetchCollect=async()=>{
+  /*const fetchCollect=async()=>{
     const listget=[];
     //get collect post name
     await  firestore()
@@ -151,10 +107,6 @@ const MediaHome = ({navigation}) => {
     else if (choose === 'collect') setdata (collect);
     else  setdata (my);
   }, [collect,Posts,my]);
-  useEffect(() => {
-    fetchPosts();
-    fetchCollect();
-  }, []);
 
   useEffect(() => {
     const listen = DeviceEventEmitter.addListener('postSend', () => {
@@ -168,9 +120,10 @@ const MediaHome = ({navigation}) => {
       fetchCollect();
     });
     return () => listen.remove();
-  }, []);
+  }, []);*/
+  
   //刪文
-  useEffect(() => {
+  /*useEffect(() => {
     const listen = DeviceEventEmitter.addListener('postdelete', () => {
       fetchPosts();
       setDeleted(false);
@@ -274,7 +227,7 @@ const MediaHome = ({navigation}) => {
       </View>
       </View>
       );
-    }
+    }*/
   return (
     <View style={styles.container}>
       {/*頂部*/}
@@ -299,7 +252,6 @@ const MediaHome = ({navigation}) => {
               <TouchableOpacity
                 onPress={() => {
                   setChoose('all');
-                  setdata(Posts);
                 }}>
                 <Text style={styles.textStyle2}>全 部</Text>
               </TouchableOpacity>
@@ -310,7 +262,6 @@ const MediaHome = ({navigation}) => {
             <TouchableOpacity
               onPress={() => {
                 setChoose('all');
-                setdata(Posts);
               }}>
               <Text style={styles.textStyle}>全 部</Text>
             </TouchableOpacity>
@@ -327,7 +278,6 @@ const MediaHome = ({navigation}) => {
               <TouchableOpacity
                 onPress={() => {
                   setChoose('collect');
-                setdata(collect);
                 }}>
                 <Text style={styles.textStyle2}>收 藏</Text>
               </TouchableOpacity>
@@ -337,7 +287,6 @@ const MediaHome = ({navigation}) => {
           <View style={styles.unchoose}>
             <TouchableOpacity
               onPress={() => {
-                setdata(collect);
                 setChoose('collect');
               }}>
               <Text style={styles.textStyle}>收 藏</Text>
@@ -355,7 +304,6 @@ const MediaHome = ({navigation}) => {
               <TouchableOpacity
                 onPress={() => {
                   setChoose('mypost');
-                  setdata(my);
                 }}>
                 <Text style={styles.textStyle2}>我的貼文</Text>
               </TouchableOpacity>
@@ -366,7 +314,6 @@ const MediaHome = ({navigation}) => {
             <TouchableOpacity
               onPress={() => {
                 setChoose('mypost');
-                setdata(my);
               }}>
               <Text style={styles.textStyle}>我的貼文</Text>
             </TouchableOpacity>
@@ -375,15 +322,10 @@ const MediaHome = ({navigation}) => {
       </View>
       <View style={styles.info}>
         {/*內容*/}
-        {loading ? (
-          <View style={{justifyContent: 'center', flex: 1}}>
-            <ActivityIndicator animating={true} color={'#BEBEBE'} size={80} />
-          </View>
-        ) : (
-          (choose==='all'? <All item={data}/>:
+        {choose==='all'? <All />:
             (choose==='collect'? <Collect />:
-            <Mypost />))
-        )}
+            <Mypost />)
+        }
       </View>
       {/* </LinearGradient> */}
     </View>

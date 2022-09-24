@@ -7,10 +7,9 @@ import {
   FlatList,
   Image,
   Button,
-  Modal,
+  DeviceEventEmitter,
   Alert,
-  SafeAreaView,
-  TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -18,26 +17,67 @@ import {useNavigation} from '@react-navigation/native';
 import Card from './Card';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Stack = createNativeStackNavigator();
 const width = Dimensions.get('screen').width / 6;
 const width2 = (Dimensions.get('screen').width * 49) / 50;
-const height = width - 5;
-const Height = Dimensions.get('screen').height*6/30;
+//const height = width - 5;
+const height = Dimensions.get('screen').height/2;
 
-const initialState = {
-  id: {},
-  name: {},
-  address: {},
-  city: {},
-  region: {},
-  info: {},
-  time: {},
-};
 const All = (item) => {
     const [deleted, setDeleted] = useState(false);
-    const navigation = useNavigation();
+  const [Posts, setPosts] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const navigation = useNavigation();
    const data=item.item;
+   const fetchPosts = async () => {
+    try {
+      const listpost = [];
+      //get post
+      await firestore()
+        .collection('posts')
+        .orderBy('postTime', 'desc') //照時間排
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            const {userid, post, postImg, postTime, name, Trip} = doc.data();
+            listpost.push({
+              id: doc.id,
+              userid,
+              name: name,
+              img: postImg,
+              content: post,
+              time: postTime,
+              Trip: Trip,
+            });
+          });
+        });
+      setPosts(listpost);
+      //console.log('my ',my);
+      if (loading) {
+        setLoading(false);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+  useEffect(() => {
+    console.log('have delete ');
+    fetchPosts();
+  }, [deleted]);
+
+  useEffect(() => {
+    const listen = DeviceEventEmitter.addListener('postSend', () => {
+      fetchPosts();
+    });
+    return () => listen.remove();
+  }, []);
+
 const handleDelete = postId => {
         Alert.alert(
           '貼文刪除後不可復原',
@@ -128,8 +168,13 @@ const handleDelete = postId => {
           }
 
   return (
-      
-      <FlatList
+      <View>
+    {loading ?
+      (<View style={{top:height/2,justifyContent: 'center', flex: 1}}>
+        <ActivityIndicator animating={true} color={'#BEBEBE'} size='large' />
+       </View> )
+       :
+      (<FlatList
       //columnWrapperStyle={{justifyContent:'space-between'}}
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{
@@ -140,7 +185,7 @@ const handleDelete = postId => {
       numColumns={1}
       initialNumToRender={2}
       windowSize={2}
-      data={data}
+      data={Posts}
       //ListHeaderComponent={FlatList_Header}
       renderItem={({item}) => (
         <Card
@@ -149,7 +194,10 @@ const handleDelete = postId => {
           onDelete={handleDelete}
         />
       )}></FlatList>
-   
+    
+    )
+    }
+    </View>
   );
 };
 
