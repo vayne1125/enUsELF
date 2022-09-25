@@ -120,6 +120,7 @@ const Post = ({ navigation, route }) => {
         postImg: imageUrl,
         postTime: firestore.Timestamp.fromDate(new Date()),
         Trip: trip,
+        collected:0,
         userImg: userdata.userImg,
         //coomments:null,
       }).then(() => {
