@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     hight: '100%',
     //backgroundColor: '#F2F2F2',//9/14改
     backgroundColor: '#ffffff',
+   //rong  backgroundColor: '#D0D0D0',
     flex: 1,
   },
   topbar: {
@@ -65,6 +66,7 @@ const styles = StyleSheet.create({
     //backgroundColor: '#D1DED7',//9/14改
     //backgroundColor: '#ffffe0',
     backgroundColor: '#ffffff',
+    //rong gray backgroundColor: '#D0D0D0',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingTop: 20,

@@ -103,7 +103,8 @@ const Food = () => {
 const styles = StyleSheet.create({
   container: {
     hight: '100%',
-    //backgroundColor: '#F2F2F2',//9/14改
+   // backgroundColor: '#F2F2F2',//9/14改
+    //rong gray backgroundColor: '#D0D0D0',
     backgroundColor: '#ffffff',
     flex: 1,
   },

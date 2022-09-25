@@ -43,7 +43,7 @@ const Mypost = (item) => {
         .get()
         .then(querySnapshot => {
           querySnapshot.forEach(doc => {
-            const {userid, post, postImg, postTime, name, Trip,userImg} = doc.data();
+            const {userid, post, postImg, postTime, name, Trip,userImg,collected} = doc.data();
             if(userid===user.uid){
               listpost.push({
                 id: doc.id,
@@ -54,6 +54,7 @@ const Mypost = (item) => {
                 time: postTime,
                 Trip: Trip,
                 userImg,
+                collected,
               });
             }
           });

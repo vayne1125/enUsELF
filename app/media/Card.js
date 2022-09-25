@@ -44,6 +44,7 @@ const Card = ({ navigation, post, onDelete }) => {
   const [collect, setCollect] = useState(false);
   const [textShown, setTextShown] = useState(false); //To show ur remaining Text
   const [lengthMore, setLengthMore] = useState(false);
+  const [becollected, setbecollected] = useState(post.collected);
   const username = post.name;
   const sites = post.Trip;
   //const userSchdule=post.Trip;
@@ -119,7 +120,19 @@ const Card = ({ navigation, post, onDelete }) => {
   const changecollect = () => {
     if (collect == true) {
       //取消收藏
-      setCollect(false);
+      setCollect(false); 
+      setbecollected(becollected-1);
+      console.log('colected--  ',becollected);
+     
+      firestore()
+      .collection('posts')
+      .doc(post.id)
+      .update({
+      collected: becollected-1,
+      })
+      .then(() => {
+        console.log('User updated!');
+      });
       //指定文件名刪除
       firestore()
         .collection('users')
@@ -134,6 +147,19 @@ const Card = ({ navigation, post, onDelete }) => {
     } else {
       //加入收藏
       setCollect(true);
+      setbecollected(becollected+1);
+      console.log('colected ',becollected);
+      
+      firestore()
+      .collection('posts')
+      .doc(post.id)
+      .update({
+      collected: becollected+1,
+      })
+      .then(() => {
+        console.log('User updated!');
+      });
+      
       //用post.id命名
       firestore()
         .collection('users')
@@ -262,7 +288,7 @@ const Card = ({ navigation, post, onDelete }) => {
             />
           </TouchableOpacity >
         </View>
-        <View style={{ justifyContent: 'flex-end', flex: 2 }}><Text style={{ textAlign: 'right' }}>已有 3 人收藏</Text></View>
+        <View style={{ justifyContent: 'flex-end', flex: 2 }}><Text style={{ textAlign: 'right' }}>已有 {becollected} 人收藏</Text></View>
         {/* <View style={styles.buttonContainer}>
           <TouchableOpacity
             onPress={() => {
