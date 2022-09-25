@@ -46,7 +46,7 @@ const forSlideX = ({ current, next, inverted, layouts: { screen } }) => {
             progress.interpolate({
               inputRange: [0, 1, 2],
               outputRange: [
-                screen.widht, // Focused, but offscreen in the beginning
+                screen.width, // Focused, but offscreen in the beginning
                 0, // Fully focused
                 screen.width * -0.3, // Fully unfocused
               ],
@@ -70,13 +70,13 @@ export default class Theme extends Component {
     return (
       <Stack.Navigator initialRouteName="List" screenOptions={{ header: () => null }} >
         <Stack.Screen name="ListHome" component={ListHome} />
-        <Stack.Screen name="MapHome" component={MapHome} options={{
+        <Stack.Screen name="MapHome" component={MapHome}  options={{
           transitionSpec: {
             open: config,
             close: config,
           },
           cardStyleInterpolator: forSlideX
-        }} />
+        }}/>
         <Stack.Screen name="ItineraryHome" component={ItineraryHome} options={{
           transitionSpec: {
             open: config,

@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     letterSpacing: 6,
   },
   OkContainer: {
-    backgroundColor: '#6E877B',
+    backgroundColor: '#88bd80',
     flex: 0.4,
     padding:5,
     alignItems:'center',
