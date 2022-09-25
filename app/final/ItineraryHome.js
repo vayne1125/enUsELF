@@ -437,7 +437,7 @@ const ItineraryHome = ({ navigation, route }) => {
         <View style={styles.iconContainer2}>
           <Icons2
             name="car"
-            size={33}
+            size={28}
             color={'#5f695d'}
           />
         </View>
@@ -449,7 +449,7 @@ const ItineraryHome = ({ navigation, route }) => {
         <View style={styles.iconContainer3}>
           <Icons3
             name="walking"
-            size={33}
+            size={28}
             color={'#5f695d'}
           />
         </View>
@@ -524,7 +524,7 @@ const styles = StyleSheet.create({
   },
   button: {
     top: Dimensions.get('window').height / 2 - 60,
-    left: -Dimensions.get('window').width*2 / 5,
+    left: -Dimensions.get('window').width*3 / 8,
     backgroundColor: 'rgba(95,105,93,0.8)',
     width: 130,
     height: 50,
@@ -550,7 +550,7 @@ const styles = StyleSheet.create({
     backgroundColor:'black',
   },
   buttonContainer: {
-    width: 80,
+    width: 65,
     height: 100,
     right: -Dimensions.get('window').width*5/11,
     bottom: -Dimensions.get('window').height*8/21,

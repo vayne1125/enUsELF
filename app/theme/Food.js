@@ -46,6 +46,7 @@ const Food = () => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(initialState);
   const [uncheck, setUncheck] = useState(true);
+
   return (
     <View style={styles.container}>
       {/*浮動視窗-------------------------------------------------------------------------------*/}
