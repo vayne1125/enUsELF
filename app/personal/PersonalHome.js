@@ -68,7 +68,10 @@ const PersonalHome = ({navigation}) => {
       const source = { uri: image.path };
       uploadImage(source);
     }).catch(e => {
-        Alert.alert('失敗','選擇圖片失敗，請稍後重試');
+        console.log(e.code)
+        if(e.code !== 'E_PICKER_CANCELLED'){
+            Alert.alert('失敗','選擇圖片失敗，請稍後重試');
+        }
     })
   };
 
@@ -103,6 +106,7 @@ const PersonalHome = ({navigation}) => {
         console.log("url= ", Uri)
     }
     catch (e) {
+        Alert.alert('失敗','選擇圖片失敗，請稍後重試');
         console.log(e);
         setLoading(false);
     }
@@ -132,7 +136,7 @@ const PersonalHome = ({navigation}) => {
                       roundAsCircle={true}
                       resizeMode={'stretch'}
                         source={{ uri: img }}
-                        style={{ borderRadius: 600,height: '100%', weight: '100%'}}
+                        style={{ borderRadius: height*0.13,height: height*0.25, weight: height*0.3}}
                     />):
                     (<Icons
                         name={'person'}
@@ -208,7 +212,7 @@ const PersonalHome = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    hight: '100%',
+    hight: height,
     backgroundColor: '#F2F2F2',
     flex: 1,
   },
@@ -229,17 +233,18 @@ const styles = StyleSheet.create({
     //top: 10,
   },
   iconContainer: {
-    height: '100%',
-    width: '100%',
-    backgroundColor: 'white',
+    height: height*0.3,
+    width: height*0.3,
     flexDirection: 'column',
-    borderRadius: 600,
+    borderRadius: height*0.15,
     marginTop: '3%',
     flex: 4,
   },
   img: {
-    height: '100%',
-    width: '100%',
+    height: height*0.25,
+    width: height*0.3,
+    borderRadius: height*0.13,
+    backgroundColor:'white',
     alignSelf: 'center',
     alignContent:'center',
     justifyContent:'center',
@@ -256,8 +261,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 40,
     height: 40,
-    right: '1%',
-    bottom: '1%',
+    right: '7%',
+    bottom: '0%',
     backgroundColor: 'rgba(163,173,168,0.3)',
     borderRadius: 20,
   },

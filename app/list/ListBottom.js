@@ -20,6 +20,7 @@ import { AuthContext } from '../routes/AutoProvider';
 const ListBottom = () => {
     const {user} = useContext(AuthContext);
     const [check, setCheck] = useState(false);
+    const [nocheck, setNocheck] = useState(true);
     const [empty, setEmpty] = useState(true);
 
     useEffect(() => {
@@ -40,7 +41,8 @@ const ListBottom = () => {
                     .catch(()=>{return 0;})
                     if(items==count && count)setCheck(true);
                     else setCheck(false);
-                    setEmpty(items? false:true);
+                    setNocheck(items? false:true);
+                    setEmpty(count? false:true);
                 }
             }
             Cnt();
@@ -65,7 +67,7 @@ const ListBottom = () => {
                 })
                 if(count){
                     setCheck(!check);
-                    setEmpty(check? true : false);
+                    setNocheck(check? true : false);
                 }
             }
         }
@@ -76,6 +78,8 @@ const ListBottom = () => {
 
     return (
         <View style = {styles.Container}>
+            {empty?
+            <View style={styles.ChanceContainer}/>:
             <View style={styles.ChanceContainer}>
                 <><CheckBox
                     //center
@@ -89,7 +93,8 @@ const ListBottom = () => {
                     }}
                 /></>
             </View>
-            {empty?
+            }
+            {nocheck?
             <View style={styles.NoContainer}>
                 <Text style={styles.OkText}>完成</Text> 
             </View>:

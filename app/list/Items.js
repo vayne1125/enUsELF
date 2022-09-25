@@ -11,14 +11,13 @@ import {
   DeviceEventEmitter,
   ActivityIndicator,
 } from 'react-native';
-import Icons from 'react-native-vector-icons/Entypo';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {CheckBox} from '@rneui/themed';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import {parseMapToJSON} from 'source-map-resolve';
 import {AuthContext} from '../routes/AutoProvider';
 import {useNavigation} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Hotplace from '../data/Hotplace';
 import Shopplace from '../data/Shopplace';
@@ -31,7 +30,7 @@ import Nature from '../data/Nature';
 import ThemeImg from '../data/ThemeImg';
 import MapImg from '../data/MapImg';
 
-const width = Dimensions.get('screen').width;
+const height = Dimensions.get('screen').height;
 const cardHeight = Dimensions.get('screen').height / 7;
 
 const Items = () => {
@@ -87,6 +86,7 @@ const Items = () => {
                   name: data.name,
                   city: data.city,
                   region: data.region,
+                  place_id: data.place_id,
                   check: check,
                   type:type,
                   id:id,
@@ -252,6 +252,22 @@ const Items = () => {
     fetchSchedule();
   }, []);
 
+  const EmptyList =({})=>{
+    return ( 
+    <View style={{justifyContent: 'center',alignItems: 'center'}}>
+        <View style={{flex:5,justifyContent:'center',alignContent:'center',alignSelf:'center'}}>
+          <Icon
+            name={'map-marker-off'}
+            size={60}
+            color={'#5f695d'}
+          />
+        </View>
+        <View syle={{flex:1,}}>
+            <Text style={{fontSize: 25,textAlignVertical: 'center' ,}}>尚無景點</Text>
+        </View>
+    </View>
+    );
+  }
   return (
     <View style={styles.container}>
       {loading ? (
@@ -264,6 +280,7 @@ const Items = () => {
         </View>
       ) : (
         <FlatList
+          ListEmptyComponent={EmptyList}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{
             marginTop: '2%',
