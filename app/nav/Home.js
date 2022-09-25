@@ -56,7 +56,7 @@ const forSlideX = ({ current, next, inverted, layouts: { screen } }) => {
             progress.interpolate({
               inputRange: [0, 1, 2],
               outputRange: [
-                screen.widht, // Focused, but offscreen in the beginning
+                screen.width, // Focused, but offscreen in the beginning
                 0, // Fully focused
                 screen.width * -0.3, // Fully unfocused
               ],
