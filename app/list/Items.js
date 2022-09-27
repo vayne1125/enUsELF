@@ -18,6 +18,7 @@ import {parseMapToJSON} from 'source-map-resolve';
 import {AuthContext} from '../routes/AutoProvider';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icons from 'react-native-vector-icons/EvilIcons';
 
 import Hotplace from '../data/Hotplace';
 import Shopplace from '../data/Shopplace';
@@ -201,7 +202,7 @@ const Items = () => {
                 CheckDel(site.name);
               }}>
               <View>
-                <Icon
+                <Icons
                   name="trash"
                   size={28}
                   color={'#5f695d'}
