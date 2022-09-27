@@ -17,14 +17,14 @@ enÜsELF是一款**旅遊app**，主要提供3種功能，自己diy行程、旅�
  
       <img src="/readmeImg/theme.jpg" alt="theme" title="theme" width="150">
       <img src="/readmeImg/map.jpg" alt="map" title="map" width="150">
-      <img src="/readmeImg/detail.jpg" alt="detail" title="detail" width="150"><br>
-      <img src="/readmeImg/final.jpg" alt="final" title="final" width="150"><br>
-      <img src="/readmeImg/detail.jpg" alt="detail" title="detail" width="150"><br>
-      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(圖一)主題分類
-      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(圖二)智能推薦
-      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(圖三)詳細資訊
+      <img src="/readmeImg/detail.jpg" alt="detail" title="detail" width="150">
+      <img src="/readmeImg/final.jpg" alt="final" title="final" width="150">
+      <img src="/readmeImg/timeline.jpg" alt="timeline" title="timeline" width="150"><br>
+      &nbsp&nbsp&nbsp&nbsp&nbsp(圖一)主題分類
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(圖二)智能推薦
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(圖三)詳細資訊
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(圖四)最終路線表
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(圖五)時程表
   
 - ### 社群:
   enUself將旅遊與社群結合。除了可以發文分享遊玩經歷外，也可以分享旅遊行程表，如圖四所示。
