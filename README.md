@@ -15,11 +15,12 @@ enÜsELF is a **travel app** that mainly provides three functions, including DIY
 </br>After the intelligent recommendation, the final route table and schedule will be obtained, as shown in Figure 4 and Figure 5
 
   <div align="center">
-      <img src="/readmeImg/theme.jpg" alt="theme" title="theme" width="150"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-      <img src="/readmeImg/map.jpg" alt="map" title="map" width="150"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-      <img src="/readmeImg/detail.jpg" alt="detail" title="detail" width="150" > &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-      <img src="/readmeImg/final.jpg" alt="final" title="final" width="150" > &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <img src="/readmeImg/theme.jpg" alt="theme" title="theme" width="150"> 
+      <img src="/readmeImg/map.jpg" alt="map" title="map" width="150">
+      <img src="/readmeImg/detail.jpg" alt="detail" title="detail" width="150" > 
+      <img src="/readmeImg/final.jpg" alt="final" title="final" width="150" > 
       <img src="/readmeImg/timeline.jpg" alt="timeline" title="timeline" width="150" >
+      <img src="/readmeImg/media.jpg" alt="media" title="media" width="150" >
   </div>
       Figure 1、Theme Selection</span>
       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp圖二、智能推薦
