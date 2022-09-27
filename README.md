@@ -6,25 +6,33 @@ Document:<Br>
   
 ## What is enÜsELF
 
-enÜsELF是一款**旅遊App**，主要提供3種功能，自己DIY行程、旅遊社群、個人設置。 
+enÜsELF is a **travel app** that mainly provides three functions, including DIY itinerary, travel community and personal settings.
 
-- ### DIY行程:
-  DIY排程又可以分為2步驟:「主題選擇和智能推薦」。
-  - 將景點分成自然、美食、網美、古蹟、住宿五大主題。可依據當前需求選擇合適景點，每個類別均包含多個景點可供參考，也提供該項景點的詳細資訊及一鍵加入行程表功能，如圖一所示。
-選擇完主題後，會進入智能推薦的步驟。
-  - 智能推薦會根據主路線圖，推薦附近的景點。可選擇要顯示的為熱門景點、購物或是當地節日活動，按下景點將會顯示詳細資料，包括營業時間和天氣，如圖二、圖三所示。
-智能推薦結束後，將會得到最終路線表和時間表，如圖四、圖五所示。
- 
-      <img src="/readmeImg/theme.jpg" alt="theme" title="theme" width="150">
-      <img src="/readmeImg/map.jpg" alt="map" title="map" width="150">
-      <img src="/readmeImg/detail.jpg" alt="detail" title="detail" width="150">
-      <img src="/readmeImg/final.jpg" alt="final" title="final" width="150">
-      <img src="/readmeImg/timeline.jpg" alt="timeline" title="timeline" width="150"><br>
-      &nbsp&nbsp&nbsp&nbsp&nbsp(圖一)主題分類
-      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(圖二)智能推薦
-      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(圖三)詳細資訊
-      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(圖四)最終路線表
-      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(圖五)時程表
+- ### DIY itinerary:
+  DIY itinerary can be divided into two steps: " `Theme Selection` and `Intelligent Recommendation`".
+  - The scenic spots are divided into five themes: nature, food, online beauty, historic sites and accommodation. You can select appropriate scenic spots according to the current needs. Each category includes multiple scenic spots for reference. It also provides detailed information about the scenic spots, as shown in Figure 1.After selecting the theme, the step of intelligent recommendation will be entered.
+  - Intelligent recommendation will recommend nearby scenic spots according to the main route map. You can select the popular scenic spots, shopping or local festivals to display. Press the scenic spots to display details, including business hours and weather, as shown in Figure 2 and Figure 3.
+After the intelligent recommendation, the final route table and schedule will be obtained, as shown in Figure 4 and Figure 5
+  <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+  <tbody>
+  <tr>
+      <td><img src="/readmeImg/theme.jpg" alt="theme" title="theme" width="150"></td>
+      <td><img src="/readmeImg/map.jpg" alt="map" title="map" width="150"></td>
+      <td><img src="/readmeImg/detail.jpg" alt="detail" title="detail" width="150"></td>
+      <td><img src="/readmeImg/final.jpg" alt="final" title="final" width="150"></td>
+      <td><img src="/readmeImg/timeline.jpg" alt="timeline" title="timeline" width="150"></td>
+  </tr>
+      <td>Figure 1、Theme Selection</td>
+      <td>Figure 2、Intelligent Recommendation</td>
+      <td>Figure 3、Theme Selection</td>
+      <td>Figure 4、Theme Selection</td>
+      <td>Figure 5、Theme Selection</td>
+    </tbody></table>
+      Figure 1、Theme Selection
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp圖二、智能推薦
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp圖三、詳細資訊
+      &nbsp&nbsp&nbsp&nbsp&nbsp圖四、最終路線表
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp圖五、時程表
   
 - ### 社群:
   enUself將旅遊與社群結合。除了可以發文分享遊玩經歷外，也可以分享旅遊行程表，如圖四所示。
