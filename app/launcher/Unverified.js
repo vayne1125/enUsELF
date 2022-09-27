@@ -14,26 +14,42 @@ const{ width,height } = Dimensions.get("window")
 const Unverified = () =>{
     const { user, logout } = useContext(AuthContext);
     const [ out, setOut ] = useState(false);
+    const [mess, setMess] = useState('success');
 
     useEffect(()=>{
         const sendVerifyEmail = async() =>{
-            if( user ){
-                console.log(user.email)
-                await user.sendEmailVerification()
-                .then(()=>{setOut(true);})
-                .catch(e=>{console.log(e)});
-            }
+            console.log(user.email)
+            await user.sendEmailVerification()
+            .then(()=>{setMess('success');setOut(true);})
+            .catch(e=>{
+                console.log(e);
+                setMess(e.code);
+                setOut(true);});
         }
-        sendVerifyEmail();
+        if(user) sendVerifyEmail();
     },[])
 
     useEffect(() => {
         if(out){
             logout();
-            Alert.alert(
-                '驗證',
-                '驗證信已發送至信箱\n請驗證後登入\n如未收到驗證信按登入可再次發送郵件',
-            );
+            if(mess === 'success'){
+                Alert.alert(
+                    '驗證',
+                    '驗證信已發送至信箱\n請驗證後登入\n如未收到驗證信按登入可再次發送郵件',
+                );
+            }
+            else if(mess === 'auth/too-many-requests'){
+                Alert.alert(
+                    '錯誤',
+                    '驗證信已發送太多次\n請晚點再嘗試\n如未收到驗證信請檢查垃圾郵件',
+                );
+            }
+            else{
+                Alert.alert(
+                    '錯誤',
+                    '系統發生未知的錯誤\n請晚點再嘗試',
+                );
+            }
         }
     },[out])
     return(

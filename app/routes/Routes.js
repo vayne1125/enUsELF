@@ -6,6 +6,7 @@ import {AuthContext} from './AutoProvider';
 import Home from '../nav/Home';
 import Launcher from '../launcher/Launcher';
 import Unverified from '../launcher/Unverified';
+import { DeviceEventEmitter } from 'react-native';
 
 const Routes = () => {
     const {user, setUser} = useContext(AuthContext);
@@ -24,10 +25,14 @@ const Routes = () => {
 
     useEffect(()=>{
         if( user && user.emailVerified){
-            setHome(true)
+            setHome(true);
         }
     }, [user]);
 
+    useEffect(()=>{
+        DeviceEventEmitter.addListener('logout',()=>{ setHome(false); })
+        return () => listen.remove();
+    },[])
     
 
     if (initializing) return null;

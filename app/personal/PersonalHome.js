@@ -198,6 +198,7 @@ const PersonalHome = ({navigation}) => {
             <View style={styles.logoutButtonContainer}>
               <TouchableOpacity
                 onPress={() => {
+                    DeviceEventEmitter.emit('logout');
                   logout();
                 }}>
                 <Text style={styles.logoutText}>登出</Text>

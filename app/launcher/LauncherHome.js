@@ -20,18 +20,23 @@ import Forget from './Forget';
 
 const{width, height} = Dimensions.get("screen")
 const LauncherHome = ({navigation}) => {
-    const [username, setUsername] = useState(String);
-    const [email, setEmail] = useState(String);
-    const [password, setPassword] = useState(String);
-    const [mess1, setMess1] = useState(String);
-    const [mess2, setMess2] = useState(String);
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [mess1, setMess1] = useState('');
+    const [mess2, setMess2] = useState('');
     const [visible, setVisible] = useState(false);
     const [secret, setSecret] = useState(true);
     const {login, register} = useContext(AuthContext);
+
     useEffect(() => {
         console.log(mess1)
-        if(mess1!=''){
-            if(mess1 === 'auth/invalid-email'){
+        if(mess1 !== ''){
+            if(mess1 === 'auth/wrong-password'){
+                Alert.alert('登入失敗','密碼錯誤');
+                setPassword('')
+            }
+            else if(mess1 === 'auth/invalid-email'){
                 Alert.alert('登入失敗','EMAIL格式錯誤');
                 setEmail('')
                 setPassword('')
@@ -40,18 +45,14 @@ const LauncherHome = ({navigation}) => {
                 Alert.alert('登入失敗','該EMAIL尚未註冊');
             }
             else if(mess1 !== 'success'){
-                Alert.alert('登入失敗','密碼錯誤');
-                setPassword('')
+                Alert.alert('錯誤','系統發生未知的錯誤\n請晚點再嘗試')
             }
         }
     }, [mess1])
 
     useEffect(() => {
         console.log(mess2);
-        if(mess2!=''){
-            if(mess2 === 'success'){
-                Alert.alert('註冊成功','進行信箱驗證後即可登入')
-            }
+        if(mess2 !== ''){
             if(mess2 === 'auth/invalid-email'){
                 Alert.alert('註冊失敗','信箱格式錯誤')
                 setEmail('')
@@ -59,6 +60,9 @@ const LauncherHome = ({navigation}) => {
             }
             else if(mess2 === 'auth/email-already-in-use'){
                 Alert.alert('註冊失敗','該信箱已註冊過')
+            }
+            else if(mess2 !== 'success'){
+                Alert.alert('註冊失敗','系統發生未知的錯誤\n請晚點再嘗試')
             }
         }
     }, [mess2])
@@ -68,6 +72,7 @@ const LauncherHome = ({navigation}) => {
             Alert.alert('登入失敗', '欄位不可為空');
         }
         else{
+            setMess1('');
             login(email, password, setMess1, "")
         }
     }
@@ -88,7 +93,7 @@ const LauncherHome = ({navigation}) => {
                 setPassword('');
             }
             else{
-                console.log('register');
+                setMess2('');
                 register(username, email, password, setMess2)
             }
         }
@@ -113,6 +118,9 @@ const LauncherHome = ({navigation}) => {
                 </View>
                 <View style={styles.inputcontain}>
                     <View style ={{flex:0.5}}>
+                        <Text style={{color:'gray',fontSize:12 ,alignSelf:'center'}}>
+                            輸入信箱密碼後即可登入or註冊
+                        </Text>
                         <View style={styles.inputBox}>
                             <TextInput style={{flex:0.95}} 
                                 onChangeText={(email) => 

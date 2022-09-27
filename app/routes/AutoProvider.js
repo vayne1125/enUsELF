@@ -22,7 +22,7 @@ export const AuthProvider = ({children}) => {
                             .then(() => {setMess('success')})
                             .catch((error)=>{setMess(error.code)})
                         }
-                        else setMess('success')   
+                        else setMess('success') 
                     })
                     .catch((error) => {setMess(error.code);})
                 }
