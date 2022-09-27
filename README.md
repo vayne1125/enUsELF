@@ -13,21 +13,13 @@ enÜsELF is a **travel app** that mainly provides three functions, including DIY
   - The scenic spots are divided into five themes: nature, food, online beauty, historic sites and accommodation. You can select appropriate scenic spots according to the current needs. Each category includes multiple scenic spots for reference. It also provides detailed information about the scenic spots, as shown in Figure 1.After selecting the theme, the step of intelligent recommendation will be entered.
   - Intelligent recommendation will recommend nearby scenic spots according to the main route map. You can select the popular scenic spots, shopping or local festivals to display. Press the scenic spots to display details, including business hours and weather, as shown in Figure 2 and Figure 3.
 After the intelligent recommendation, the final route table and schedule will be obtained, as shown in Figure 4 and Figure 5
-  <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
-  <tbody>
-  <tr>
-      <td><img src="/readmeImg/theme.jpg" alt="theme" title="theme" width="150"></td>
-      <td><img src="/readmeImg/map.jpg" alt="map" title="map" width="150"></td>
-      <td><img src="/readmeImg/detail.jpg" alt="detail" title="detail" width="150"></td>
-      <td><img src="/readmeImg/final.jpg" alt="final" title="final" width="150"></td>
-      <td><img src="/readmeImg/timeline.jpg" alt="timeline" title="timeline" width="150"></td>
-  </tr>
-      <td>Figure 1、Theme Selection</td>
-      <td>Figure 2、Intelligent Recommendation</td>
-      <td>Figure 3、Theme Selection</td>
-      <td>Figure 4、Theme Selection</td>
-      <td>Figure 5、Theme Selection</td>
-    </tbody></table>
+  <div al>
+      <img src="/readmeImg/theme.jpg" alt="theme" title="theme" width="150">
+      <img src="/readmeImg/map.jpg" alt="map" title="map" width="150">
+      <img src="/readmeImg/detail.jpg" alt="detail" title="detail" width="150">
+      <img src="/readmeImg/final.jpg" alt="final" title="final" width="150">
+      <img src="/readmeImg/timeline.jpg" alt="timeline" title="timeline" width="150">
+  </div>
       Figure 1、Theme Selection
       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp圖二、智能推薦
       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp圖三、詳細資訊
