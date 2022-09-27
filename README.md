@@ -6,7 +6,7 @@ Document:<Br>
   
 ## What is enÜsELF
 
-enÜsELF是一款**旅遊app**，主要提供3種功能，自己diy行程、旅遊社群、個人設置。 
+enÜsELF是一款**旅遊App**，主要提供3種功能，自己DIY行程、旅遊社群、個人設置。 
 
 - ### DIY行程:
   DIY排程又可以分為2步驟:「主題選擇和智能推薦」。
