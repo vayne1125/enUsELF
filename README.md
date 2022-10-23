@@ -67,6 +67,3 @@ npx react-native run-android
 
 ## How to use
 
-Demo video:<Br>
-Document:<Br>
-
