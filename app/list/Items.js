@@ -241,7 +241,7 @@ const Items = () => {
                   }
                 });
               });
-            console.log(list);
+            //console.log(list);
             navigation.current.navigate('MapHome', list);
           }
         } catch (e) {}

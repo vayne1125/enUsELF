@@ -30,7 +30,7 @@ const SharePic = () => {
                     };
                     Share.open(options)
                       .then((res) => {
-                        console.log("res: ",res);
+                        //console.log("res: ",res);
                       })
                       .catch((err) => {
                         err && console.log(err);

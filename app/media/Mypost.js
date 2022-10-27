@@ -134,8 +134,8 @@ const handleDelete = postId => {
           });
       };
       const deleteFirebaseData =async  (postId) => {
-        console.log('deleteFirebaseData ',deleted);
-        console.log('postid ',postId);
+        //console.log('deleteFirebaseData ',deleted);
+        //console.log('postid ',postId);
          await firestore()
           .collection('posts')
           .doc(postId)

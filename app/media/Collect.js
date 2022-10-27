@@ -52,7 +52,7 @@ const Collect = (item) => {
         });
       })
     })
-    console.log('listget ',listget);
+    //console.log('listget ',listget);
     const listget2=[];
     //get post
     for await (let item of listget) {
@@ -70,8 +70,8 @@ const Collect = (item) => {
               }).catch(e=>
                 console.log('error'))
          } else {
-            console.log('有 ', snap);
-            console.log('有 Data ', );
+          //  console.log('有 ', snap);
+         //   console.log('有 Data ', );
             const {userid,post,postImg,postTime,name,Trip,userImg,collected}=snap.data();
             listget2.push({
               id:snap.id ,
@@ -158,8 +158,8 @@ const handleDelete = postId => {
           });
       };
       const deleteFirebaseData =async  (postId) => {
-        console.log('deleteFirebaseData ',deleted);
-        console.log('postid ',postId);
+       // console.log('deleteFirebaseData ',deleted);
+       // console.log('postid ',postId);
          await firestore()
           .collection('posts')
           .doc(postId)
@@ -167,7 +167,7 @@ const handleDelete = postId => {
           .then(() => {
             console.log('成功');
             Alert.alert('成功刪除貼文!');
-            console.log('qq ',deleted);
+            //console.log('qq ',deleted);
             setDeleted(true); })
           .catch(e => console.log('山資料err ', e));
          

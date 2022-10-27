@@ -55,7 +55,7 @@ const All = (item) => {
             });
           });
         });
-        console.log('listpost ',listpost); 
+       // console.log('listpost ',listpost); 
       setPosts(listpost);
       //console.log('my ',my);
       if (loading) {

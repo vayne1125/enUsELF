@@ -11,6 +11,6 @@ import Share from './app/final/ItineraryHome'
 import Itmes from './app/list/Items'
 // import CollectHome from './app/personal/collect/CollectHome'
 import HistoryHome from './app/personal/history/HistoryHome'
-global.API_key = 'AIzaSyDHq53RuJ511QN4rLqFmwLWiXA1_-nR7vY'; //set your api key
+global.API_key = 'AIzaSyCEP70zS446CDugv9m7x-4xzvqyhvuIU3U'; //set your api key
 global.WeatherUrl = 'https://6e6a-140-121-198-98.jp.ngrok.io/weather';
 AppRegistry.registerComponent(appName, () => App);

@@ -148,7 +148,7 @@ const Card = ({ navigation, post, onDelete }) => {
       //加入收藏
       setCollect(true);
       setbecollected(becollected+1);
-      console.log('colected ',becollected);
+     // console.log('colected ',becollected);
       
       firestore()
       .collection('posts')

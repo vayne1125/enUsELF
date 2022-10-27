@@ -28,7 +28,7 @@ const width = Dimensions.get('screen').width/2.2;
 
 const Tripitems = (items) => {
   const sites=items.items;
-  console.log('sites ',sites.desSite);
+  //console.log('sites ',sites.desSite);
   const [data,setData] = useState([]);
   //const data=[];
   useEffect(()=>{
@@ -78,7 +78,7 @@ const Tripitems = (items) => {
   },[]);
   //const list
   const Card = ({site}) => {
-    console.log('212 ',site);
+    //console.log('212 ',site);
     //const s=site.type+(site.id.toString());
         return (
             <View style={styles.card}>

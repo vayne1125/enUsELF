@@ -53,7 +53,7 @@ const HistoryHome = () => {
                   tripId:doc.id
                   });
                 })
-              console.log('doc.id ',doc.id);
+              //console.log('doc.id ',doc.id);
             })
             }catch(e){
               //console.log(e);
@@ -86,7 +86,7 @@ const HistoryHome = () => {
     }
 
     const deleteTrip=async (data)=>{
-     console.log('ss = ',data.tripId);
+     //console.log('ss = ',data.tripId);
      setDeleted(true);
      await firestore()
       .collection('users')
@@ -132,7 +132,7 @@ const HistoryHome = () => {
           onPress1={() => {
             //todo從這裡跳轉去清單
             //this.props.navigation.navigate('TripForhistory' , item);
-            console.log("顯示清單1 ",item);
+            //console.log("顯示清單1 ",item);
             navigation.navigate("TripForhistory",item);            
             //console.log("顯示清單2 ",item);
           }}

@@ -349,7 +349,7 @@ const ItineraryHome = ({ navigation, route }) => {
           onError={(res) => { console.log(err) }}
           onReady={
             (result) => {
-              console.log(result.legs);
+              //console.log(result.legs);
               //console.log(result.legs[0].steps);
               setOrder(result.waypointOrder[0]);
               setWayTime(result.legs);
