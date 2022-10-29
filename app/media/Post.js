@@ -36,7 +36,7 @@ const picheight =picwidth*2/3;
 
 const Post = ({ navigation, route }) => {
   const userdata = route.params;
-  console.log('o o o1  ', route.params);
+  //console.log('o o o1  ', route.params);
   const { user, logout } = useContext(AuthContext);
   //console.log(user);
   const users = firestore().collection('users').doc(user.uid);
@@ -92,7 +92,7 @@ const Post = ({ navigation, route }) => {
       height: picheight,
       cropping: true
     }).then(image => {
-      console.log(image);
+      //console.log(image);
       const source = { uri: image.path };//response是選取的物件
       //Asset Object是內容物，然後他很坑紙船一個也會變陣列qq，所以要拿第一個人的uri
       // console.log('Response uri = ', response.assets[0].uri);
@@ -109,7 +109,7 @@ const Post = ({ navigation, route }) => {
   //發文
   const SubmitPost = async () => {
     const imageUrl = await uploadImage();//等他做完我才跑
-    console.log('imageUrl:', imageUrl);
+    //console.log('imageUrl:', imageUrl);
 
     firestore()
       .collection('posts')
@@ -135,12 +135,12 @@ const Post = ({ navigation, route }) => {
   }
   //上傳照片   
   const uploadImage = async () => {
-    console.log(image);
+    //console.log(image);
     if (image == null) { return null; }
     const uri = image.uri;
-    console.log('image= ', image.uri);
+    //console.log('image= ', image.uri);
     let filename = uri.substring(uri.lastIndexOf('/') + 1);
-    console.log('filename= ', filename);
+    //console.log('filename= ', filename);
     //have change
     setUploading(true);
     // transferred(0);//轉圈圈

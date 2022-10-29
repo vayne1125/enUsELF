@@ -29,6 +29,8 @@ const width = Dimensions.get('screen').width / 6;
 const width2 = (Dimensions.get('screen').width * 49) / 50;
 const height = width - 5;
 const Height = Dimensions.get('screen').height*6/30;
+const hgt = Dimensions.get('screen').height * 10 / 30;
+
 
 const initialState = {
   id: {},
@@ -75,6 +77,9 @@ const KOL = () => {
               paddingBottom: 80,
             }}
             numColumns={2}
+            getItemLayout={(data, index ) => (
+                { length : hgt, offset : hgt * index , index }
+             )}
             data={KOLData}
             initialNumToRender={4}
             windowSize={2}
