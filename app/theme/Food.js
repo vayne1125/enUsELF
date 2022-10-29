@@ -77,15 +77,12 @@ const Food = () => {
             //marginTop: 25,
             paddingBottom: 80,
           }}
-          //getItemLayout={(data, index ) => (
-          //  { length : hgt, offset : hgt * index , index }
-         //)}
           numColumns={2}
+          data={FoodData}
+          initialNumToRender={4}
           getItemLayout={(data, index ) => (
             { length : hgt, offset : hgt * index , index }
          )}
-          data={FoodData}
-          initialNumToRender={4}
           windowSize={2}
           removeClippedSubviews={true}
           keyExtractor={item=>item.place_id}

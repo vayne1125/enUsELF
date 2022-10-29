@@ -31,7 +31,6 @@ const height = width - 5;
 const Height = Dimensions.get('screen').height*6/30;
 const hgt = Dimensions.get('screen').height * 10 / 30;
 
-
 const initialState = {
   id: {},
   name: {},
@@ -78,10 +77,10 @@ const Nature = () => {
             }}
             numColumns={2}
             data={NatureData}
-             getItemLayout={(data, index ) => (
-            { length : hgt, offset : hgt * index , index }
-         )}
             initialNumToRender={4}
+            getItemLayout={(data, index ) => (
+                { length : hgt, offset : hgt * index , index }
+             )}
             windowSize={2}
             removeClippedSubviews={true}
             keyExtractor={item=>item.place_id}

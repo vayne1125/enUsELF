@@ -31,7 +31,6 @@ const height = width - 5;
 const Height = Dimensions.get('screen').height*6/30;
 const hgt = Dimensions.get('screen').height * 10 / 30;
 
-
 const initialState = {
   id: {},
   name: {},
@@ -76,12 +75,12 @@ const Hotel = () => {
             //marginTop: 25,
             paddingBottom: 80,
           }}
-           getItemLayout={(data, index ) => (
-            { length : hgt, offset : hgt * index , index }
-         )}
           numColumns={2}
           data={HotelData}
           initialNumToRender={4}
+          getItemLayout={(data, index ) => (
+            { length : hgt, offset : hgt * index , index }
+          )}
           windowSize={2}
           removeClippedSubviews={true}
           keyExtractor={item=>item.place_id}

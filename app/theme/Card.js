@@ -144,7 +144,7 @@ export default class Card extends PureComponent {
                             place_id: site.place_id,
                             check: false,
                           }).then(this.setState({ uncheck: false }))
-                        console.log(site.name);
+                        //console.log(site.name);
                       }
                       this.props.onPress2(site);
                     }}

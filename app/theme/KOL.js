@@ -31,7 +31,6 @@ const height = width - 5;
 const Height = Dimensions.get('screen').height*6/30;
 const hgt = Dimensions.get('screen').height * 10 / 30;
 
-
 const initialState = {
   id: {},
   name: {},
@@ -77,11 +76,11 @@ const KOL = () => {
               paddingBottom: 80,
             }}
             numColumns={2}
+            data={KOLData}
+            initialNumToRender={4}
             getItemLayout={(data, index ) => (
                 { length : hgt, offset : hgt * index , index }
              )}
-            data={KOLData}
-            initialNumToRender={4}
             windowSize={2}
             removeClippedSubviews={true}
             keyExtractor={item=>item.place_id}
