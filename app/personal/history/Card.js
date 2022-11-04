@@ -20,7 +20,9 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 
-const width = Dimensions.get('screen').width;
+const width = Dimensions.get('screen').width-20;
+const height = Dimensions.get('screen').height*1/8;
+
 //const user = auth().currentUser;
 export default class Card extends PureComponent  {
   render() {
@@ -28,32 +30,30 @@ export default class Card extends PureComponent  {
     //console.log('tripname  ',trip);
     return (
       <View style={styles.card}>
-
-        <View>
           <View style={styles.textContainer}>
             <Text numberOfLines={1} style={styles.nameStyle}>
               {trip.name}
             </Text>
           </View>
-          <View style={{flex:1,flexDirection:'row',marginBottom:8,}}>
-          <View style={styles.buttonContainer2}>
+          <View style={styles.info2}>
+          <View style={styles.buttonContainer}>
             <TouchableOpacity
               onPress={() => {
                 //this.props.navigation.navigate("TripForhistory",trip);
                 this.props.onPress1();
               }}
               style={{flex: 2}}>
-              <Text style={styles.buttonText2}>景點資訊</Text>
+              <Text style={styles.buttonText}>景點資訊</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.buttonContainer}>
+          <View style={styles.buttonContainer2}>
             <TouchableOpacity
               onPress={() => {
                 this.props.onPress2();
                 //console.log(this.props.name);
               }}
               style={{flex: 1}}>
-              <Text style={styles.buttonText}>地圖顯示</Text>
+              <Text style={styles.buttonText2}>地圖顯示</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.buttonContainer3}>
@@ -62,89 +62,115 @@ export default class Card extends PureComponent  {
                     onPress={() => {
                       this.props.onPress3();
                     }}
-                    style={{flex: 1}}>
+                    style={{flex: 2}}>
                     <Icon
                         name="trash"
-                        size={26}
-                          color={'#BE2D23'}
+                        size={24}
+                          //color={'#BE2D23'}
                           style={styles.TopiconStyle}
                       />
                   </TouchableOpacity>
           </View>
           </View>
         </View>
-      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  card: {
-    height: 100,
-    backgroundColor: '#ffffff',
-    marginBottom: 15,
-    padding: 5,
-    //flex: 2,
-    flexDirection: 'row',
-    borderBottomWidth: 3,
-    borderBottomColor: '#D1DED7',
-    borderRightWidth: 3,
-    borderRightColor: '#ffffff',
-  },
-  textContainer: {
-    flex: 1,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-    // alignSelf: 'center',
-    // alignItems: 'center',
-    top: 8,
-  },
-  nameStyle: {
-    //alignSelf: 'center',
-    fontWeight: 'bold',
-    fontSize: 20,
-    color: '#5f695d',
-    left: 4,
-    letterSpacing: 1,
-  },
-  buttonContainer: {
-    backgroundColor: '#BEBEBE', //較深黃
-    width: 120,
-    alignSelf: 'flex-end',
-    //left:5,
-   // bottom: 4,
-    marginLeft:8,
-    borderRadius: 25,
-    height: 32,
-  },
-  buttonText: {
-    fontWeight: '800',
-    fontSize: 16,
-    color: '#6b5238',
-    top: 6,
-    letterSpacing: 10,
-    left: 7,
-  },
-  buttonContainer2: {
-  //  position: 'absolute',
-    backgroundColor: '#CEFFCE', 
-    width: 120,
-    alignSelf: 'flex-end',
-    //left:5,
-   // bottom: 4,
-    borderRadius: 25,
-    height: 32,
-  },
-  buttonText2: {
-    fontWeight: '800',
-    fontSize: 16,
-    top: 6,
-    letterSpacing: 10,
-    left: 7,
-  },
-  buttonContainer3: {
-    alignSelf: 'flex-end',
-    marginLeft:8,
-    height: 30,
-  },
-});
+    container: {
+      hight: '100%',
+      backgroundColor: '#F2F2F2',
+      flex: 1,
+    },
+    info2:{ flexDirection: 'row',flex:1},
+    card: {
+      height: height,
+      backgroundColor: '#ffffff',
+      marginBottom: 15,
+      padding: 5,
+      width:width,
+      alignItems: 'center',
+      alignSelf: 'center',
+      justifyContent:'center',
+      borderRadius:30,
+      shadowColor: '#7F5DF0',
+      shadowOffset: {
+        width: 0,
+        height: 10,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.5,
+      elevation: 5,
+    },
+    textContainer: {
+      flex: 1.3,  
+      textAlign:'center',
+      justifyContent:'center',
+      alignItems:'center',
+      alignSelf:'center',
+    },
+    nameStyle: {
+      textAlign:'center',
+      justifyContent:'center',
+      alignItems:'center',
+      alignSelf:'center',
+      fontWeight: 'bold',
+      fontSize: 20,
+      color: '#5f695d',
+      letterSpacing: 4,
+    },
+    buttonContainer: {
+      backgroundColor: '#dedede', 
+      width:'100%',
+      borderRadius: 25,
+      flex:1,
+      margin:3,
+      textAlign:'center',
+      justifyContent:'center',
+      alignItems:'center',
+      alignSelf:'center',
+    },
+    buttonText: {
+      fontWeight: '800',
+      fontSize: 16,
+      letterSpacing: 6,
+      top:'15%',
+    },
+    buttonContainer2: { 
+      backgroundColor: '#dedede',  
+      borderRadius: 25,
+      flex:1,
+      margin:3,
+      textAlign:'center',
+      justifyContent:'center',
+      alignItems:'center',
+      alignSelf:'center',
+    },
+    buttonText2: {
+      fontWeight: '800',
+      fontSize: 16,
+      letterSpacing:6,
+      top:'15%',
+    },
+    buttonContainer3: {
+      backgroundColor: '#badecb', 
+      borderRadius: 25,
+      flex:1,
+      margin:3,
+      textAlign:'center',
+      justifyContent:'center',
+      alignItems:'center',
+      alignSelf:'center',
+    },
+    buttonText3: {
+      fontWeight: 'bold',
+      color:'#5f695d',
+      top:'15%',
+      fontSize: 16,  
+      letterSpacing: 6,
+    },
+    TopiconStyle:{
+        top:7,
+    }
+  });

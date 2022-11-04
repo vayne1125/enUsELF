@@ -24,7 +24,7 @@ const ListTop = () => {
       </View>
       <TouchableOpacity
         onPress={() => {
-            navigation.goBack();
+            navigation.navigate("Theme");
         }}
         style={{flex: 1}}>
         <View style={styles.iconContainer}>
