@@ -1,6 +1,6 @@
 # enÜsELF
 Demo video:https://youtu.be/94m-T8cSo6w <Br>
-Document:<Br>
+Document:https://docs.google.com/document/d/1tQOJijvA0ns8Rxeczx5CVYBvtcsmZAOR/edit?usp=share_link&ouid=113366313058201755061&rtpof=true&sd=true<Br>
 
 ------------------------
   
