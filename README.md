@@ -65,5 +65,3 @@ npx react-native run-android
 
 ----
 
-## How to use
-
