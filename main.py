@@ -84,10 +84,7 @@ def weather_data(City: str, Region: str):
     else:
         print("Can't get data!")
   
-<<<<<<< HEAD
-print('d')
-=======
-if __name__ == '__main__':
-    print('gogo')
-    uvicorn.run(app='main:app',host='127.0.0.1',port=8000,reload=True,debug = True)
->>>>>>> cd894a781f66a455030c5cdfabd788233f40e962
+
+# if __name__ == '__main__':
+#     print('gogo')
+#     uvicorn.run(app='main:app',host='127.0.0.1',port=8000,reload=True)

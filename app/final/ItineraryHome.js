@@ -175,7 +175,6 @@ const ItineraryHome = ({ navigation, route }) => {
           data.push({ latitude: Shopplace[param.id].lat, longitude: Shopplace[param.id].lng });
         }
       })
-      //console.log("data: ",data);
       return data;
     })
   }, [])
@@ -184,7 +183,6 @@ const ItineraryHome = ({ navigation, route }) => {
     setDestination(() => {
       var desSite = route.params.desSite;
       var tp = Food[0];
-      //console.log(desSite);
       if (desSite.type === "food") {
         tp = (Food[desSite.id]);
       } else if (desSite.type === "nature") {
@@ -202,7 +200,6 @@ const ItineraryHome = ({ navigation, route }) => {
       } else if (desSite.type === "hol") {
         tp = (Holplace[desSite.id]);
       }
-      //console.log("tp: ",tp);
       return tp;
     })
 
@@ -274,9 +271,6 @@ const ItineraryHome = ({ navigation, route }) => {
   }, [north, south, west, east])
 
   useEffect(() => {
-    // console.log("order = ",order);
-    // console.log("route.params.site = ",route.params.site)
-    // console.log(time);
     setPlace(()=>{
       var data = [];
       var tp = {};
@@ -534,13 +528,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderWidth:2,
     borderColor:'#badecb',
-    // width: 100,
-    // height: 40,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // borderRadius: 10,
-    // marginBottom: 10,
-    //position: 'absolute',
   },
   text: {
     fontSize: 17,

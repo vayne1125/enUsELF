@@ -10,12 +10,12 @@ import parsel
 from urllib.parse import quote
 import string
 import googlemaps
+#/home/hui0309/Desktop/enUsELF/app/data
 sys.stdout = open('output.txt', 'w', encoding='UTF-8')
-json_path = 'D:\\react\\enUsELF\\first\\app\\theme\\Monuments.json'
-json_path1 = 'D:\\react\\enUsELF\\first\\app\\theme\\Monuments_.json'
-json_path2 = 'D:\\react\\enUsELF\\first\\app\\theme\\tp.json'
-img_path = 'D:\\react\\enUsELF\\first\\assets\\KOLImage\\'
-
+json_path = 'C:\\react\\enUsELF\\first\\app\\data\\Monuments.json'
+json_path1 = 'C:\\react\\enUsELF\\first\\app\\data\\Monuments_.json'
+json_path2 = 'C:\\react\\enUsELF\\first\\app\\data\\tp.json'
+img_path = 'C:\\react\\enUsELF\\first\\assets\\KOLImage\\'
 
 def get_json_data(json_path):
     img_links = {}

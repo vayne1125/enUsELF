@@ -14,14 +14,7 @@ const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 4;
 
 const Settripname = ({ size,modalVisible, onClose,completePress}) => {
- // const tempname='旅程計畫表';
-  //const namesize=size+1;
-  //const forceName = tempname+namesize.toString();
   const [tripname,setTripname]=useState('旅程計畫表');
-  // setTripname(forceName);
- // console.log('here setsize= ',namesize);
-   //console.log('here temp= ',forceName);
-  // console.log('heretripname= ',tripname);
   return (
     (
       <Modal transparent={true} visible={modalVisible}>
@@ -45,7 +38,6 @@ const Settripname = ({ size,modalVisible, onClose,completePress}) => {
               value={tripname}
               underlineColorAndroid='#BEBEBE'
               onChangeText={(context)=>setTripname(context)}
-             // placeholder={"旅遊計畫表"+namesize} 
               />
             </View>
             </View>
@@ -78,24 +70,16 @@ const styles = StyleSheet.create({
   modalContainer: {
     width: '95%',
     height,
-    //height: 600,
     backgroundColor: 'white',
-    //paddingHorizontal: 20,
-    //paddingVertical: 20,
     padding: 5,
     borderRadius: 20,
     elevation: 20,
-    //flex:1,
   },
   iconContainer: {
-    //position: 'absolute',
     top: 2,
-    //backgroundColor: '#D1DED7',
     width: 48,
     height: 48,
     alignSelf: 'flex-end',
-    //justifycontent: 'flex-start',
-    //justifyContent:'left',
     borderRadius: 30,
     right: 2,
   },
@@ -111,46 +95,36 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     left: 20,
     top: 1,
+    color: "#000000",
   },
   textStyle2: {
     fontSize: 26,
     fontWeight: 'bold',
     alignSelf: 'center',
     letterSpacing:2,
+    color: "gray",
   },
   infoStyle: {
     flex: 1,
     width: 335,
     alignSelf: 'center',
     marginTop: 20,
-    //backgroundColor:'#000000',
   },
   setname:{
     flex:3,
     alignItems:'center',
     right:20,
-    //justifyContent:'center',
-  },
-  infoTextStyle: {
-    fontSize: 20,
-    alignSelf: 'center',
-    letterSpacing: 4,
-    textAlign: 'center',
   },
   buttonContainer: {
     backgroundColor: '#fbb856', //較深黃
-    //backgroundColor: '#ffc56b',//較淺黃
     width: 150,
     alignSelf: 'center',
     borderRadius: 25,
-    //height: 45,
-    //flexDirection: 'row',
     flex: 1,
   },
   infoContainer: {
     flex: 5,
     top:20,
-    //backgroundColor:'#000000',
   },
   buttonText: {
     fontWeight: '800',

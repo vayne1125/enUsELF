@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
     LoginText: {
         fontSize: 15,
         fontWeight: '500',
-        color: '#ffffff',
+        color: '#000000',
         textAlign: 'center'
     },
     SigninText: {

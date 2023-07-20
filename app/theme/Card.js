@@ -1,4 +1,4 @@
-import React, { Component, useState, PureComponent, useEffect } from 'react';
+import React, { useState, useEffect, memo, useContext } from 'react';
 import {
   View,
   Text,
@@ -18,6 +18,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import auth from '@react-native-firebase/auth';
+import {AuthContext} from '../routes/AutoProvider';
 import firestore from '@react-native-firebase/firestore';
 
 import ThemeImg from '../data/ThemeImg';
@@ -25,7 +26,7 @@ import ThemeImg from '../data/ThemeImg';
 const width = Dimensions.get('screen').width * 19 / 40;
 const width2 = Dimensions.get('screen').width * 8 / 20;
 const height = Dimensions.get('screen').height * 10 / 30;
-const user = auth().currentUser;
+
 const Stars = score => {
   var tp = parseFloat(score.starsNum);
   var starsIcon = [];
@@ -61,117 +62,112 @@ const Stars = score => {
   );
 };
 
-export default class Card extends PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: this.props.sites.name,
-      uncheck: true,
-      type: null,
-      user: null,
-    }
-  }
-  componentDidMount() {
-    const update = () => {
-      const user = auth().currentUser;
-      if (user && user.uid !== this.state.user) {
-        this.setState({ user: user.uid });
-        const users = firestore().collection('users').doc(user.uid);
-        users.collection('list').doc(this.state.name)
-          .get().then((data) => {
-            if (data.exists) this.setState({ uncheck: false });
-        })
-      }
-    }
-    this.emitter = listen = DeviceEventEmitter
-      .addListener('change', (name, change) => {
-        if (name && name === this.state.name) {
-          this.setState({ uncheck: change });
-        }
-      })
-    if (!this.state.user) update();
-  }
-  componentWillUnmount() {
-    this.emitter.remove();
-  }
-  render() {
-    const site = this.props.sites;
-    return (
-      <TouchableOpacity
-        onPress={() => {
-          this.props.onPress1(site, this.state.uncheck);
-        }}>
-        <View style={styles.card}>
-          <View style={styles.imageContainer}>
-            {<Image style={styles.image} source={ThemeImg[site.name]} />}
-          </View>
-          <View style={styles.info}>
-            <View style={styles.textContainer}>
-              <Text numberOfLines={1} style={styles.nameStyle}>
-                {site.name}
-              </Text>
-              <Text numberOfLines={1} style={styles.addressStyle}>
-                {site.city}{' '}{site.region}
-              </Text>
-            </View>
-            {/* <View style={{flex:1,flexDirection:'row'}}> */}
+const Card = ({ sites, onPress1, onPress2}) => {
+  const [uncheck, setUncheck] = useState(true);
+  const {user} = useContext(AuthContext);
 
-            <Stars starsNum={site.star} />
-            {/* <View style={styles.starStyle}>
-            <Text>{site.star} </Text>
-            <Icon name={'star'} color={'#ffc56b'} size={18} />
-            </View> */}
-            <View style={styles.buttonContainer}>
-              {/* <View style={styles.buttonContainer2}>
-            <TouchableOpacity
-              onPress={() => {
-                this.props.onPress1(site);
-              }}
-              style={{flex: 2}}>
-              <Text style={styles.buttonText2}>詳細資訊</Text>
-            </TouchableOpacity>
-          </View> */}
-              {this.state.uncheck ?
-                <View style={styles.buttonContainer2}>
-                  <TouchableOpacity
-                    onPress={() => {
-                      if (user) {
-                        const users = firestore().collection('users').doc(user.uid);
-                        users.collection('list').doc(site.name)
-                          .set({
-                            id: site.id,
-                            type: site.type,
-                            place_id: site.place_id,
-                            check: false,
-                          }).then(this.setState({ uncheck: false }))
-                        //console.log(site.name);
-                      }
-                      this.props.onPress2(site);
-                    }}
-                    >
-                    {/* <Text style={styles.buttonText}>加入清單</Text> */}
+  useEffect(() => {
+    const update = async () => {
+      try {
+        if (user) {
+          const users = firestore().collection('users').doc(user.uid);
+          const data = await users.collection('list').doc(sites.name).get();
+          if (data.exists) {
+            setUncheck(false);
+          }
+        }
+      } catch (error) {
+        console.error('Firestore Error:', error);
+        // 在出现错误时，可以在这里展示错误提示给用户或者进行其他适当的处理
+      }
+    };
+
+    const listener = DeviceEventEmitter.addListener('change', (name, change) => {
+      if (name && name === sites.name) {
+        setUncheck(change);
+      }
+    });
+
+    update();
+
+    return () => listener.remove();
+  }, [sites.name, user]);
+
+  return (
+    <TouchableOpacity
+      onPress={() => {
+          onPress1(sites, uncheck);
+      }}
+    >
+      <View style={styles.card}>
+        <View style={styles.imageContainer}>
+          {<Image style={styles.image} source={ThemeImg[sites.name]} />}
+        </View>
+        <View style={styles.info}>
+          <View style={styles.textContainer}>
+            <Text numberOfLines={1} style={styles.nameStyle}>
+              {sites.name}
+            </Text>
+            <Text numberOfLines={1} style={styles.addressStyle}>
+              {sites.city}{' '}{sites.region}
+            </Text>
+          </View>
+          <Stars starsNum={sites.star} />
+          <View style={styles.buttonContainer}>
+            {uncheck ?
+              <View style={styles.buttonContainer2}>
+                <TouchableOpacity
+                  onPress={() => {
+                    // console.log(uncheck);
+                    if (user) {
+                      const users = firestore().collection('users').doc(user.uid);
+                      users.collection('list').doc(sites.name)
+                      .set({
+                        id: sites.id,
+                        type: sites.type,
+                        place_id: sites.place_id,
+                        check: false,
+                        })
+                        .then(() => {
+                          // Firestore 写入操作完成后执行状态更新
+                          setUncheck(false);
+                        })
+                        .catch((error) => {
+                          // 错误处理
+                          console.error('Firestore Error:', error);
+                        });
+                    }
+                    onPress2(sites);
+                  }}>
                     <Icon
                       name={'calendar-plus-o'}
                       color={'#5f695d'}
-                      //color={'orange'}
                       size={26} />
-                  </TouchableOpacity>
-                </View> :
-                <View style={styles.buttonContainer2}>
-                  <Icon2
-                      name={'calendar-check'}
-                      color={'#88bd80'}
-                      //color={'#5f695d'}
-                      size={26} />
-                </View>}
-            </View>
-            </View>
+                </TouchableOpacity>
+              </View> :
+              <View style={styles.buttonContainer2}>
+                <Icon2
+                  name={'calendar-check'}
+                  color={'#88bd80'}
+                  size={26} />
+              </View>
+            }
           </View>
-        
-      </TouchableOpacity>
-    );
-  }
-}
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+};
+
+export default memo(Card, (prevProps, nextProps) => {
+  // 这里定义 props 是否相同的逻辑
+  // 如果 props 没有变化，React.memo() 将不会进行不必要的重新渲染
+  return (
+    prevProps.uncheck === nextProps.uncheck
+    // 检查其他需要比较的 prop ...
+    // 返回 true 表示 props 没有变化
+  );
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -184,22 +180,13 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    //backgroundColor:'#D1DED7',
     backgroundColor: '#ffffff',
     width: width,
-    //marginHorizontal: 10,
     borderRadius: 25,
     marginBottom: 15,
-    //paddingTop:5,
     padding: 5,
-    //right: 2,
-    //borderColor: '#D1DED7',
-    //borderWidth: 3,
     flex: 1,
-    //flexDirection: 'row',
-    //borderBottomWidth: 3,
     borderBottomColor: '#D1DED7',
-    //borderRightWidth: 3,
     borderRightColor: '#ffffff',
     shadowColor: '#7F5DF0',
     shadowOffset: {

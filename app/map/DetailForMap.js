@@ -261,6 +261,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: 'bold',
     letterSpacing: 2,
+    color: "#000000",
   },
   starStyle: {
     flex: 1,
@@ -278,11 +279,13 @@ const styles = StyleSheet.create({
   infoTitle: {
     fontSize: 22,
     letterSpacing: 10,
+    color: "#000000",
   },
   infoTextStyle: {
     fontSize: 18,
     letterSpacing: 4,
     paddingTop: 10,
+    color: "#000000",
   },
   weatherContainer: {
     flexDirection: 'row',

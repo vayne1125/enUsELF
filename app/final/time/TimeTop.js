@@ -35,31 +35,15 @@ const ResultTop = () => {
         <View style={{flex:5,}}>
         <Text style={styles.textStyle}>時程表</Text>
         </View>
-        {/* <TouchableOpacity onPress={()=>{navigation.navigate("List")}} style={{flex:1,}}>
-        <View style={styles.iconContainer}>
-          <Icons
-            name="calendar-outline"
-            size={33}
-            color={'#5f695d'}
-            style={styles.iconStyle}
-          />
-        </View>
-        </TouchableOpacity> */}
       </View>
     );
 }
 
 const styles = StyleSheet.create({
   textStyle: {
-    //alignContent:'center',
-    //justifyContent:'center',
     bottom:'15%',
-    //fontSize: 30,//9/14
     fontSize: 26,
-    //fontWeight: 'bold',
-    //color: '#ffffff',
-    color:'#5f695d',//9/14改
-    //color:'#A17747',
+    color:'#5f695d',
     fontFamily:'NotoSerifTC-Bold',
     letterSpacing:10,
   },

@@ -25,6 +25,7 @@ import Weather from '../data/Weather';
 import ThemeImg from '../data/ThemeImg';
 
 import { AuthContext } from '../routes/AutoProvider';
+import { black } from 'react-native-paper/lib/typescript/styles/colors';
 
 const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.15;
@@ -32,7 +33,7 @@ const height = Dimensions.get('screen').height / 1.15;
 const Detail = ({entry, modalVisible, onClose, uncheck, check}) => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(entry);
-    const {user} = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
   const Stars = score => {
     var tp = parseFloat(score.starsNum);
     var starsIcon = [];
@@ -67,6 +68,7 @@ const Detail = ({entry, modalVisible, onClose, uncheck, check}) => {
       </View>
     );
   };
+  //console.log(entry['name'])
   return (
     (
       <Modal transparent={true} visible={modalVisible}>
@@ -240,6 +242,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: 'bold',
     letterSpacing:2,
+    color: "#000000"
   },
   starStyle: {
     flex: 1,
@@ -257,11 +260,13 @@ const styles = StyleSheet.create({
   infoTitle: {
     fontSize: 20,
     letterSpacing: 10,
+    color: "#000000",
   },
   infoTextStyle: {
     fontSize: 16,
     letterSpacing: 4,
     paddingTop:10,
+    color: "#000000",
   },
   weatherContainer: {
     flexDirection: 'row',
@@ -295,6 +300,7 @@ const styles = StyleSheet.create({
     color: '#6b5238',
     top: 9,
     alignSelf: 'center',
+    color: "#000000",
   },
 });
 

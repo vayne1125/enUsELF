@@ -31,10 +31,8 @@ export default class CusTimeLine extends PureComponent {
     //console.log(this.props);
     if (this.state.selected != null && this.state.selected.name != "初始位置" ){
       //console.log("this.state.selected");
-      var tp = this.state.selected;
       this.props.onPress(this.state.selected);
     }
-      //return <Text style={{ marginTop: 10 }}>Selected event: {this.state.selected.title} at {this.state.selected.time}</Text>
   }
 
   renderDetail(rowData, sectionID, rowID) {
@@ -136,14 +134,12 @@ export default class CusTimeLine extends PureComponent {
           style={styles.list}
           data={this.data}
           circleSize={20}
-          //showTime={false}
           circleColor='#2E8B57'
           lineColor='#227700'
           descriptionStyle={{ color: 'gray'}}
           options={{
             style: { paddingTop: 5 }
           }}
-          //columnFormat='two-column'
           onEventPress={this.onEventPress}
           renderDetail={this.renderDetail}
         />
@@ -154,12 +150,9 @@ export default class CusTimeLine extends PureComponent {
 
 const styles = StyleSheet.create({
   container: {
-    //justifyContent:'center',
-    //alignItems:'center',
     flex: 1,
     marginLeft:-50,
     padding: 20,
-    //paddingTop: 65,
     backgroundColor: 'white'
   },
   list: {
@@ -169,7 +162,8 @@ const styles = StyleSheet.create({
   title: {
     marginLeft:10,
     fontSize: 20,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#000000',
   },
   descriptionContainer: {
     flexDirection: 'column',
@@ -188,15 +182,18 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-  },itemContainer:{
+  },
+  itemContainer:{
     alignItems:'center',
     marginTop: 10,
     flex:1,
     marginLeft:15,
     flexDirection: 'row',
-  },iconStyleForWalk:{
+  },
+  iconStyleForWalk:{
     marginLeft: 5,
-  },decStyles:{
+  },
+  decStyles:{
     flexDirection: 'row',
     marginTop: 35,
   }

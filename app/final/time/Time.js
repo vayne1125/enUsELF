@@ -5,11 +5,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
-  Linking,
-  ScrollView,
-  RefreshControl,
-  FlatList
 } from 'react-native';
 import Hotplace from '../../data/Hotplace'
 import Shopplace from '../../data/Shopplace'
@@ -125,42 +120,13 @@ const styles = StyleSheet.create({
   topbar: {
     backgroundColor: 'white',
     flex: 1,
-    //height: 63,
-    //borderBottomLeftRadius: 20,
-    //borderBottomRightRadius: 20,
-    //opacity: 0.9,
     borderBottomWidth: 1,
     borderColor: '#aaaaaa',
   },
   container: {
     hight: '100%',
-    //backgroundColor: '#F2F2F2',
     flex: 1,
-  },
-  body: {
-    flex: 1,
-    flexDirection: 'column', //排列方式
-    //backgroundColor: '#bcddb7', //背景 
-  },
-  item: {
-    margin: 10,
-    //backgroundColor: '#88bd80',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: 20,
-    color: '#000000',
-    //fontStyle: 'italic',
-    //margin: 10,
-  }, textView: {
-    alignItems: 'center',
-  },
-  list: {
-    flex: 1,
-    marginTop: 20,
   },
 });
-export default Time;
 
-//npx react-native run-android
+export default Time;

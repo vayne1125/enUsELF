@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import Moment from 'moment';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
+import { color } from 'react-native-reanimated';
 
 const initialState = {
   max_tem: [, , , , , ,],
@@ -103,46 +104,46 @@ const test = ({city, region}) => {
   return (
     <View style={styles.weatherContainer}>
       <View style={styles.container}>
-        <Text>{day[Moment(result['time'][0]).format('ddd')]}</Text>
+        <Text style={styles.weatherText}>{day[Moment(result['time'][0]).format('ddd')]}</Text>
         <Image source={icon[result.icon_num[0]]} style={styles.image} />
-        <Text>{result['max_tem'][0]}</Text>
-        <Text>{result['min_tem'][0]}</Text>
+        <Text style={styles.weatherText}>{result['max_tem'][0]}</Text>
+        <Text style={styles.weatherText}>{result['min_tem'][0]}</Text>
       </View>
       <View style={styles.container}>
-        <Text>{day[Moment(result['time'][1]).format('ddd')]}</Text>
+        <Text style={styles.weatherText}>{day[Moment(result['time'][1]).format('ddd')]}</Text>
         <Image source={icon[result.icon_num[1]]} style={styles.image} />
-        <Text>{result['max_tem'][1]}</Text>
-        <Text>{result['min_tem'][1]}</Text>
+        <Text style={styles.weatherText}>{result['max_tem'][1]}</Text>
+        <Text style={styles.weatherText}>{result['min_tem'][1]}</Text>
       </View>
       <View style={styles.container}>
-        <Text>{day[Moment(result['time'][2]).format('ddd')]}</Text>
+        <Text style={styles.weatherText}>{day[Moment(result['time'][2]).format('ddd')]}</Text>
         <Image source={icon[result.icon_num[2]]} style={styles.image} />
-        <Text>{result['max_tem'][2]}</Text>
-        <Text>{result['min_tem'][2]}</Text>
+        <Text style={styles.weatherText}>{result['max_tem'][2]}</Text>
+        <Text style={styles.weatherText}>{result['min_tem'][2]}</Text>
       </View>
       <View style={styles.container}>
-        <Text>{day[Moment(result['time'][3]).format('ddd')]}</Text>
+        <Text style={styles.weatherText}>{day[Moment(result['time'][3]).format('ddd')]}</Text>
         <Image source={icon[result.icon_num[3]]} style={styles.image} />
-        <Text>{result['max_tem'][3]}</Text>
-        <Text>{result['min_tem'][3]}</Text>
+        <Text style={styles.weatherText}>{result['max_tem'][3]}</Text>
+        <Text style={styles.weatherText}>{result['min_tem'][3]}</Text>
       </View>
       <View style={styles.container}>
-        <Text>{day[Moment(result['time'][4]).format('ddd')]}</Text>
+        <Text style={styles.weatherText}>{day[Moment(result['time'][4]).format('ddd')]}</Text>
         <Image source={icon[result.icon_num[4]]} style={styles.image} />
-        <Text>{result['max_tem'][4]}</Text>
-        <Text>{result['min_tem'][4]}</Text>
+        <Text style={styles.weatherText}>{result['max_tem'][4]}</Text>
+        <Text style={styles.weatherText}>{result['min_tem'][4]}</Text>
       </View>
       <View style={styles.container}>
-        <Text>{day[Moment(result['time'][5]).format('ddd')]}</Text>
+        <Text style={styles.weatherText}>{day[Moment(result['time'][5]).format('ddd')]}</Text>
         <Image source={icon[result.icon_num[5]]} style={styles.image} />
-        <Text>{result['max_tem'][5]}</Text>
-        <Text>{result['min_tem'][5]}</Text>
+        <Text style={styles.weatherText}>{result['max_tem'][5]}</Text>
+        <Text style={styles.weatherText}>{result['min_tem'][5]}</Text>
       </View>
       <View style={styles.container}>
-        <Text>{day[Moment(result['time'][6]).format('ddd')]}</Text>
+        <Text style={styles.weatherText}>{day[Moment(result['time'][6]).format('ddd')]}</Text>
         <Image source={icon[result.icon_num[6]]} style={styles.image} />
-        <Text>{result['max_tem'][6]}</Text>
-        <Text>{result['min_tem'][6]}</Text>
+        <Text style={styles.weatherText}>{result['max_tem'][6]}</Text>
+        <Text style={styles.weatherText}>{result['min_tem'][6]}</Text>
       </View>
     </View>
   );
@@ -153,6 +154,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingTop: 10,
+  },
+  weatherText: {
+    color: '#000000',
   },
   container: {
     alignItems: 'center',

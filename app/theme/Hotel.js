@@ -47,6 +47,8 @@ const Hotel = () => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(initialState);
   const [uncheck, setUncheck] = useState(false);
+  const MemoizedCard = React.memo(Card);
+
   return (
     <View style={styles.container}>
       {/*浮動視窗-------------------------------------------------------------------------------*/}
@@ -85,7 +87,7 @@ const Hotel = () => {
           removeClippedSubviews={true}
           keyExtractor={item=>item.place_id}
           renderItem={({item}) => (
-            <Card
+            <MemoizedCard
               sites={item}
               onPress1={(site, uncheck) => {
                 setModalVisible(!modalVisible);

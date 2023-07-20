@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {Component, useEffect, useState, memo} from 'react';
 import {
   View,
   Text,
@@ -48,6 +48,7 @@ const Food = () => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(initialState);
   const [uncheck, setUncheck] = useState(true);
+  const MemoizedCard = React.memo(Card);
 
   return (
     <View style={styles.container}>
@@ -86,8 +87,8 @@ const Food = () => {
           windowSize={2}
           removeClippedSubviews={true}
           keyExtractor={item=>item.place_id}
-          renderItem={({item}) => (
-            <Card
+          renderItem={({ item }) => (
+            <MemoizedCard
               sites={item}
               onPress1={(site, uncheck) => {
                 setModalVisible(!modalVisible);
@@ -108,8 +109,6 @@ const Food = () => {
 const styles = StyleSheet.create({
   container: {
     hight: '100%',
-   // backgroundColor: '#F2F2F2',//9/14改
-    //rong gray backgroundColor: '#D0D0D0',
     backgroundColor: '#ffffff',
     flex: 1,
   },

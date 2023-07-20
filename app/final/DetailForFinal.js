@@ -169,7 +169,6 @@ const styles = StyleSheet.create({
   },
   topContainer: {
     flex: 9,
-    //backgroundColor:'#ffc56b',
     backgroundColor: '#D1DED7',
     borderBottomRightRadius: 50,
     borderTopLeftRadius: 20,
@@ -203,7 +202,6 @@ const styles = StyleSheet.create({
   },
   infoBack: {
     flex: 14,
-    //backgroundColor:'#ffc56b',
     backgroundColor: '#D1DED7',
   },
   infoContainer: {
@@ -216,13 +214,12 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: 'bold',
     letterSpacing: 2,
+    color: "#000000",
   },
   starStyle: {
     flex: 1,
     flexDirection: 'row',
-    //alignSelf: 'center',
     top: 8,
-    //color:'#f5f6a3',
   },
   infoStyle: {
     flex: 1,
@@ -233,11 +230,13 @@ const styles = StyleSheet.create({
   infoTitle: {
     fontSize: 22,
     letterSpacing: 10,
+    color: "#000000",
   },
   infoTextStyle: {
     fontSize: 18,
     letterSpacing: 4,
     paddingTop: 10,
+    color: "#000000",
   },
   weatherContainer: {
     flexDirection: 'row',
@@ -246,12 +245,6 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: '#D1DED7',
-    //backgroundColor: '#ffc56b',//較淺黃
-    //width: 150,
-    //height: 45,
-    //flexDirection: 'row',
-    //flex: 1.2,
-    //borderRadius: 25,
     alignSelf: 'center',
     flex: 2,
     width: '100%',

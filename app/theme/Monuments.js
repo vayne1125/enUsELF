@@ -47,6 +47,8 @@ const Monuments = () => {
     const [noticeVisible, setNoticeVisible] = useState(false);
     const [noticeEntry, setNoticeEntry] = useState(initialState);
     const [uncheck, setUncheck] = useState(false);
+    const MemoizedCard = React.memo(Card);
+
     return (
       <View style={styles.container}>
         {/*浮動視窗-------------------------------------------------------------------------------*/}
@@ -85,18 +87,17 @@ const Monuments = () => {
             removeClippedSubviews={true}
             keyExtractor={item=>item.place_id}
             renderItem={({item}) => (
-              <Card
-                sites={item}
-                onPress1={(site, uncheck) => {
-                  setModalVisible(!modalVisible);
-                  setModalEntry(site);
-                  setUncheck(uncheck);
-                }}
-                onPress2={site => {
-                  setNoticeVisible(!noticeVisible);
-                  setNoticeEntry(site);
-                }}
-              />
+              <MemoizedCard
+              sites={item}
+              onPress1={(site, uncheck) => {
+                setModalVisible(!modalVisible);
+                setModalEntry(site);
+                setUncheck(uncheck);
+              }}
+              onPress2={site => {
+                setNoticeVisible(!noticeVisible);
+                setNoticeEntry(site);
+              }}/>
             )}>
           </FlatList>
       </View>

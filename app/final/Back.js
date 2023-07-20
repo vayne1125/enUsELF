@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
     fontSize:45,
   },
   iconContainer: {
-    //zIndex:3,
     position: 'absolute',
     flex:1,
     width: 40,

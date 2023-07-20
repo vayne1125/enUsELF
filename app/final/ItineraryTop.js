@@ -50,16 +50,8 @@ const ItineraryTop = props => {
 
 const styles = StyleSheet.create({
   textStyle: {
-    //alignContent:'center',
-    //justifyContent:'center',
-    //bottom:'15%',
-    //left:'5%',
-    //fontSize: 30,//9/14
     fontSize: 26,
-    //fontWeight: 'bold',
-    //color: '#ffffff',
-    color:'#5f695d',//9/14改
-    //color:'#A17747',
+    color:'#5f695d',
     fontFamily:'NotoSerifTC-Bold',
     letterSpacing:10,
     marginLeft:'12%',
@@ -76,7 +68,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 115,
     top: 10,
-    //backgroundColor: '#D1DED7',
     width: 48,
     height: 48,
     alignSelf: 'center',
@@ -86,7 +77,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 75,
     top: 10,
-    //backgroundColor: '#D1DED7',
     width: 48,
     height: 48,
     alignSelf: 'center',
@@ -96,7 +86,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 24,
     top: 6,
-    //backgroundColor: '#D1DED7',
     width: 48,
     height: 48,
     alignSelf: 'center',
