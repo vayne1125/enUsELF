@@ -1,24 +1,18 @@
-import React, {Component, useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Dimensions,
-  FlatList,
   Image,
-  Button,
   Modal,
-  TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
-import Notice from '../theme/Notice';
+
 import Weather from '../data/Weather';
 import ThemeImg from '../data/ThemeImg';
 import MapImg from '../data/MapImg';
@@ -27,7 +21,6 @@ const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.15;
 
 const DetailForFinal = ({entry, modalVisible, onClose, isMain}) => {
-  //console.log("entry: ",entry);
   const Stars = score => {
     var tp = parseFloat(score.starsNum);
     var starsIcon = [];
@@ -68,7 +61,7 @@ const DetailForFinal = ({entry, modalVisible, onClose, isMain}) => {
         <View style={styles.modalContainer}>
           <View style={styles.topContainer}>
             <View style={styles.imageContainer}>
-              {isMain ? (
+              { isMain ? (
                 <Image
                   style={styles.image}
                   source={ThemeImg[entry['name']]}
@@ -87,7 +80,7 @@ const DetailForFinal = ({entry, modalVisible, onClose, isMain}) => {
                 style={styles.iconStyle}
               />
             </View>
-            <View style={styles.spaceContainer}></View>
+            <View style={styles.spaceContainer}/>
           </View>
           <View style={styles.infoBack}>
             <View style={styles.infoContainer}>
@@ -143,8 +136,7 @@ const DetailForFinal = ({entry, modalVisible, onClose, isMain}) => {
               </ScrollView>
             </View>
           </View>
-          <View style={styles.buttonContainer}>
-            </View>
+          <View style={styles.buttonContainer}/>
         </View>
       </View>
     </Modal>

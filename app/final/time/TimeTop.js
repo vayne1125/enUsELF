@@ -1,20 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  Dimensions,
-  FlatList,
-  Image,
-  Button,
   TouchableOpacity,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/AntDesign';
-//const Stack = createNativeStackNavigator();
 
 const ResultTop = () => {
   const navigation = useNavigation();

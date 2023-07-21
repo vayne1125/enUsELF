@@ -1,31 +1,20 @@
-import React, {Component, useEffect, useState,useContext} from 'react';
+import React, { useEffect, useState,useContext} from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   Dimensions,
   FlatList,
-  Image,
-  Button,
-  Modal,
-  TouchableOpacity,
   DeviceEventEmitter,
 } from 'react-native';
 
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Icons from 'react-native-vector-icons/Ionicons';
-import {AuthContext} from '../../routes/AutoProvider';
 import firestore from '@react-native-firebase/firestore';
 
-//import Card from './Card';
+import {AuthContext} from '../../routes/AutoProvider';
 import ChooseTripTop from './ChooseTripTop';
 import ChooseTripCard from './ChooseTripCard';
 import Notice from '../../theme/Notice';
 
-const width = Dimensions.get('screen').width;
 const initialState = {
   id: {},
   name: {},
@@ -47,14 +36,12 @@ const ChooseTrip = () => {
     const fetchTrip = async()=>{
       const temp=[];
       try{           
-            //console.log('123 ',list);
           await firestore()
           .collection('users')
           .doc(user.uid)
           .collection('trip')
           .get()
           .then((querySnapshot)=>{
-            //console.log('Total Posts:',querySnapshot.size);
             querySnapshot.forEach(doc=>{
                 const {desSite,name,origin,site} =doc.data();
                 temp.push({
@@ -64,14 +51,11 @@ const ChooseTrip = () => {
                   site,
                   });
                 })
-                //console.log('temp ',temp);
             })
             }catch(e){
               //console.log(e);
           };
           setTrip(temp);
-          //嘉羽
-          //console.log('here temp',temp);
           console.log('here trip',trip);
       }
 
@@ -123,21 +107,17 @@ const ChooseTrip = () => {
           trip={item}
           onPress1={() => {
             //todo從這裡跳轉去清單
-            //this.props.navigation.navigate('TripForhistory' , item);
             console.log("choose ",item);
             navigation.navigate("TripForhistory",item);            
-            //console.log("顯示清單2 ",item);
           }}
           onPress2={() => {
             navToMap(item);
-            //console.log("顯示地圖");
           }}
           onPress3={() => {
             setNoticeVisible(true);
             DeviceEventEmitter.emit('addSchedule',item);
             console.log("addSchedule ",item);
             navigation.goBack();  
-            //console.log("顯示地圖");
           }}
         />}
         >
@@ -151,10 +131,6 @@ const styles = StyleSheet.create({
   topbar: {
     backgroundColor: '#ffffff',
     flex:1,
-    //height: 63,
-    //borderBottomLeftRadius: 20,
-    //borderBottomRightRadius: 20,
-    //opacity: 0.9,
   },
   container: {
     hight: '100%',
@@ -184,19 +160,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     top: 13,
     right: 8,
-    //position:'relative',
   },
   buttonContainer: {
-    backgroundColor: '#fbb856', //較深黃
-    //backgroundColor: '#ffc56b',//較淺黃
-    //flex: 1,
+    backgroundColor: '#fbb856',
     width: 120,
     alignSelf: 'flex-end',
     right: 7,
     bottom: 4,
     borderRadius: 25,
     height: 32,
-    //flexDirection: 'row',
   },
   buttonText: {
     fontWeight: '800',
@@ -207,15 +179,13 @@ const styles = StyleSheet.create({
     left: 7,
   },
   buttonContainer2: {
-    backgroundColor: '#E3E3E3', //較淺黃
-    //flex: 1,
+    backgroundColor: '#E3E3E3',
     width: 120,
     alignSelf: 'flex-end',
     right: 7,
     bottom: 10,
     borderRadius: 25,
     height: 32,
-    //flexDirection: 'row',
   },
   buttonText2: {
     fontWeight: '800',
@@ -246,7 +216,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     left: 5,
     top: 4,
-    //color:'#f5f6a3',
   },
 });
 

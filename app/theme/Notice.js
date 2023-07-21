@@ -1,19 +1,11 @@
-import React, {Component, useState,PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Dimensions,
-  FlatList,
-  Image,
-  Button,
   Modal,
-  TouchableOpacity,
-  ScrollView,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
@@ -56,20 +48,16 @@ const styles = StyleSheet.create({
   modalContainer: {
     width: '80%',
     height,
-    //height: 600,
     backgroundColor: 'white',
-    //paddingHorizontal: 20,
-    //paddingVertical: 20,
     padding: 5,
     borderRadius: 20,
     elevation: 20,
     justifyContent:"space-around",
     padding:25,
     alignItems:"center",
-    
-    //flex:1,
   },
   textStyle:{
     fontSize:25,
+    color: "#000000",
   }
 });

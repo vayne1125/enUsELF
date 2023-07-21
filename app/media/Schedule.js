@@ -27,18 +27,18 @@ const Schedule = ({navigation, route}) => {
     const {userSchdule,username,sites} = route.params;
     return (
       <View style={styles.Container}>
-            <View style={styles.topbar}>
-                <ScheduleTop name={username} sites={sites}/>
-            </View>
-            {
-              <View style={styles.items}>
-              <Scheduleitem userSchdule={userSchdule}/>
-            </View>
-             }
-        <View style={styles.buttonbar}>
-                <ScheduleButton/>
-            </View>
+        <View style={styles.topbar}>
+          <ScheduleTop name={username} sites={sites}/>
         </View>
+        {
+          <View style={styles.items}>
+            <Scheduleitem userSchdule={userSchdule}/>
+          </View>
+        }
+        <View style={styles.buttonbar}>
+          <ScheduleButton/>
+        </View>
+      </View>
     );
 }
 
@@ -51,10 +51,6 @@ const styles = StyleSheet.create({
   topbar: {
     backgroundColor: '#ffffff',
     flex:1,
-    //height: 63,
-    //borderBottomLeftRadius: 20,
-    //borderBottomRightRadius: 20,
-    //opacity: 0.9,
   },
   items: {
     flex: 9.2,
@@ -62,10 +58,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
   },
   buttonbar: {
-    //backgroundColor: '#5f695d',
-     flex:1.3,
-     //height: 200,
-      //opacity: 0.9,
+    flex:1.3,
   },
 });
 export default Schedule;

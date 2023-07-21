@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { useState, useContext, useEffect } from 'react';
 import {
   View,
@@ -13,9 +13,7 @@ import {
   DeviceEventEmitter,
   TouchableOpacity,
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/AntDesign';//照片icon
@@ -23,80 +21,40 @@ import Icon3 from 'react-native-vector-icons/MaterialIcons';//行李箱icon
 import Iconcross from 'react-native-vector-icons/Entypo';
 import storage from '@react-native-firebase/storage';
 import firestore from '@react-native-firebase/firestore';
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
-import { AuthContext } from '../routes/AutoProvider';
-//import PostTop from './PostTop'
-//import PostButton from './PostButton'
 import ImagePicker from 'react-native-image-crop-picker';
 
-const Stack = createNativeStackNavigator();
+import { AuthContext } from '../routes/AutoProvider';
+
 const width = Dimensions.get('screen').width;
 const picwidth = Dimensions.get('screen').width*0.9;
 const picheight =picwidth*2/3;
 
 const Post = ({ navigation, route }) => {
   const userdata = route.params;
-  //console.log('o o o1  ', route.params);
   const { user, logout } = useContext(AuthContext);
-  //console.log(user);
   const users = firestore().collection('users').doc(user.uid);
   const [image, setImage] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [post, setPost] = useState(null);
   const [trip, setTrip] = useState(null);
   const [username, setUserName] = useState(null);
-  //console.log('o o o  ',trip);
-  //console.log('!: ',users);
 
   //get shoosen trip
   useEffect(() => {
     const listen = DeviceEventEmitter
       .addListener('addSchedule', (item) => {
         setTrip(item);
-        // console.log('teip ',item);
-        // console.log('teip2 ',trip);
       });
     return () => listen.remove();
   }, []);
-  //選照片
-  /*const selectImage = () => {
-      const options = {
-        maxWidth: 2000,
-        maxHeight: 2000,
-        mediaType: "photo", 
-        includeBase64: true,
-        storageOptions: {
-          skipBackup: true,
-          path: 'images'
-        }
-      };
-      launchImageLibrary(options, (response) => { // Use launchImageLibrary to open image gallery
-        
-        if(response.didCancel){console.log('沒選');}
-        else{
-        console.log('Response = ', response);
-         const source = { uri: response.assets[0].uri};//response是選取的物件
-         //Asset Object是內容物，然後他很坑紙船一個也會變陣列qq，所以要拿第一個人的uri
-         console.log('Response uri = ', response.assets[0].uri);
-         console.log(source);
-        setImage(source);
-        console.log('user=',user);
-        console.log('user name=',user.mail);
-        }
-      });
-    };*/
   const selectImage = () => {
     ImagePicker.openPicker({
-     //樺樺圖片大小
       width: picwidth,
       height: picheight,
       cropping: true
     }).then(image => {
-      //console.log(image);
       const source = { uri: image.path };//response是選取的物件
       //Asset Object是內容物，然後他很坑紙船一個也會變陣列qq，所以要拿第一個人的uri
-      // console.log('Response uri = ', response.assets[0].uri);
-      //console.log(source);
       setImage(source);
     }).catch(e => {
       if (e.code !== 'E_PICKER_CANCELLED') {
@@ -109,7 +67,6 @@ const Post = ({ navigation, route }) => {
   //發文
   const SubmitPost = async () => {
     const imageUrl = await uploadImage();//等他做完我才跑
-    //console.log('imageUrl:', imageUrl);
 
     firestore()
       .collection('posts')
@@ -122,7 +79,6 @@ const Post = ({ navigation, route }) => {
         Trip: trip,
         collected:0,
         userImg: userdata.userImg,
-        //coomments:null,
       }).then(() => {
         console.log('Post add !');
         setPost(null);
@@ -135,20 +91,15 @@ const Post = ({ navigation, route }) => {
   }
   //上傳照片   
   const uploadImage = async () => {
-    //console.log(image);
     if (image == null) { return null; }
     const uri = image.uri;
-    //console.log('image= ', image.uri);
     let filename = uri.substring(uri.lastIndexOf('/') + 1);
-    //console.log('filename= ', filename);
     //have change
     setUploading(true);
-    // transferred(0);//轉圈圈
 
     const storageRef = storage().ref(`photos/${filename}`);//creat a folder
     const task = storageRef.putFile(uri);
     task.on('state_changed', taskSnapshot => {
-      //file size<256 kb(very small size)" 所以我的上傳才會只有0跟100%
       console.log(`${taskSnapshot.bytesTransferred} transferred out of ${taskSnapshot.totalBytes}`);
     });
 
@@ -208,7 +159,6 @@ const Post = ({ navigation, route }) => {
           <View style={{flex: 1.2, height: '75%', alignItems:'center', justifyContent:'center'}}>
             {uploading ? (
               <View style={styles.cycleContainer}>
-                {/* <Progress.Bar progress={transferred} width={300} />*/}
                 {/*轉圈圈*/}
                 <ActivityIndicator size='small' color='#2f2f2f' />
               </View>
@@ -236,7 +186,6 @@ const Post = ({ navigation, route }) => {
         </View>
         <View style={{ flexDirection: "column", justifyContent: 'center' }}>
           <Text style={styles.nameStyle}>{userdata.name}</Text>
-          {/*(trip) ? <Text style={styles.tripStyle}>已匯入行程{trip.name}</Text> : null*/}
         </View>
       </View>
       <View style={styles.contentContainer}>
@@ -244,7 +193,6 @@ const Post = ({ navigation, route }) => {
           {image != null ? <Image source={{ uri: image.uri }} style={{ height: 300, width: width }} /> : null}
           <TextInput style={styles.contentText}
             multiline
-            //numberOfLines={4}
             value={post}
             onChangeText={(context) => setPost(context)}
             placeholder="在想些什麼呢?" />
@@ -341,15 +289,10 @@ const styles = StyleSheet.create({
 
   //post
   topbar: {
-    backgroundColor: '#e2e2e2',//'#F2F2F2',
-    //#5f695d',
+    backgroundColor: '#e2e2e2',
     flex: 1,
-    //height: 50,
     borderColor: '#AAAAAA',
     borderBottomWidth: 1,
-    // borderBottomLeftRadius: 20,
-    // borderBottomRightRadius: 20,
-    //opacity: 0.9,
     paddingRight: 10,
   },
   Topcontainer: {
@@ -368,7 +311,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   ToptextStyle: {
-    //left:150,
     top: '25%',
     fontSize: 20,
     fontWeight: 'bold',
@@ -404,8 +346,6 @@ const styles = StyleSheet.create({
   },
   cycleContainer: {
     top: 2,
-    //justifyContent:'center',  
-    //alignContent:'center',
   },
   //body
   container: {
@@ -435,7 +375,7 @@ const styles = StyleSheet.create({
   contentText: {
     fontSize: 18,
     left: 10,
-    // color:"red",
+    color: "#000000"
   },
   nameStyle: {
     alignSelf: 'center',
@@ -449,7 +389,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#D1DED7',
     flex: 1,
-    //position:'relative',
   },
   iconContainer: {
     left: 8,
@@ -462,7 +401,6 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: '#fbb856',//較深黃
-    //backgroundColor: '#ffc56b',//較淺黃
     flex: 1,
     width: 120,
     alignSelf: 'flex-end',
@@ -493,8 +431,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#e2e2e2",
     flexDirection: 'row',
     justifyContent: 'center',
-    //borderColor: '#000000',
-    // borderBottomWidth:3,
   },
   buticonContainer1: {
     right: 100,

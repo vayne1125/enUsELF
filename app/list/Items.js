@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext, useRef} from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import {
   View,
   Text,
@@ -10,11 +10,10 @@ import {
   TouchableOpacity,
   DeviceEventEmitter,
   ActivityIndicator,
+  ToastAndroid,
 } from 'react-native';
 import {CheckBox} from '@rneui/themed';
 import firestore from '@react-native-firebase/firestore';
-import auth from '@react-native-firebase/auth';
-import {parseMapToJSON} from 'source-map-resolve';
 import {AuthContext} from '../routes/AutoProvider';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -40,88 +39,76 @@ const Items = () => {
   const [cnt, setCnt] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const Cnt = () => {
-      setLoading(true);
+  const Cnt = async () => {
+    setLoading(true);
+    try {
       var count = 0;
       if (user) {
         const users = firestore().collection('users').doc(user.uid);
-        users
-          .collection('list')
-          .get()
-          .then(querySnapshot => {
-            querySnapshot.forEach(() => {
-              count++;
-            });
-            setCnt(count);
-          })
-          .catch(() => {});
+        const querySnapshot = await users.collection('list').get();
+        querySnapshot.forEach(() => {
+          count++; 
+        });
+        setCnt(count);
       }
-    };
-    Cnt();
-  }, [user]);
+    } catch (e) {
+      console.error("items_Cnt: ", e);
+    }
+  }
 
-  useEffect(() => {
-    const fetchSites = async () => {
-      try {
-        const list = [];
-        if (user) {
-          const users = firestore().collection('users').doc(user.uid);
-          await users
-            .collection('list')
-            .get()
-            .then(querySnapshot => {
-              querySnapshot.forEach(doc => {
-                const {check, id, type} = doc.data();
-                var data;
-                if (type === 'food') data = Food[id];
-                else if (type === 'nature') data = Nature[id];
-                else if (type === 'kol') data = KOL[id];
-                else if (type === 'monuments') data = Monuments[id];
-                else if (type === 'hotel') data = Hotel[id];
-                else if (type === 'hol') data = Holplace[id];
-                else if (type === 'hot') data = Hotplace[id];
-                else if (type === 'shop') data = Shopplace[id];
+  const fetchSites = async () => {
+    try {
+      if (user) {
+        const users = firestore().collection('users').doc(user.uid);
+        const querySnapshot = await users.collection('list').get();
+        const list = querySnapshot.docs.map(doc => {
+          const { check, id, type } = doc.data();
+          var data;
+          if (type === 'food') data = Food[id];
+          else if (type === 'nature') data = Nature[id];
+          else if (type === 'kol') data = KOL[id];
+          else if (type === 'monuments') data = Monuments[id];
+          else if (type === 'hotel') data = Hotel[id];
+          else if (type === 'hol') data = Holplace[id];
+          else if (type === 'hot') data = Hotplace[id];
+          else if (type === 'shop') data = Shopplace[id];
 
-                list.push({
-                  name: data.name,
-                  city: data.city,
-                  region: data.region,
-                  place_id: data.place_id,
-                  check: check,
-                  type:type,
-                  id:id,
-                });
-              });
-            });
-          setSites(list);
-          setLoading(false);
-        }
-        DeviceEventEmitter.emit('items');
-      } catch (e) {
-        console.log(e);
+          return {
+            name: data.name,
+            city: data.city,
+            region: data.region,
+            place_id: data.place_id,
+            check: check,
+            type: type,
+            id: id,
+          };
+        });
+        setSites(list);
+        setLoading(false);
       }
-    };
-    fetchSites();
-  }, [cnt]);
+      DeviceEventEmitter.emit('items');
+    } catch (e) {
+      console.log("items_fetchSites: ", e);
+    }
+  };
 
-  const CheckDel = name => {
+  const CheckDel = (name) => {
     Alert.alert('', '確定要刪除嗎?', [
       {
         text: '確認',
-        onPress: () => {
-          if (user) {
-            setLoading(true);
-            const users = firestore().collection('users').doc(user.uid);
-            users
-              .collection('list')
-              .doc(name)
-              .delete()
-              .then(() => {
-                DeviceEventEmitter.emit('change', name, true);
-                setCnt(cnt - 1);
-              })
-              .catch(error => {});
+        onPress: async () => {
+          setLoading(true);
+          try {
+            if (user) {
+              const users = firestore().collection('users').doc(user.uid);
+              await users.collection('list').doc(name).delete();
+              ToastAndroid.show("已成功刪除！",ToastAndroid.SHORT);
+              DeviceEventEmitter.emit('change', name, true);
+              setCnt(cnt - 1);
+            }
+          } catch (error) {
+            ToastAndroid.show("發生錯誤！請稍後重試",ToastAndroid.SHORT);
+            console.error("items_CheckDel: ", error);
           }
         },
       },
@@ -130,13 +117,24 @@ const Items = () => {
       },
     ]);
   };
+
+
+  useEffect(() => {
+    Cnt();
+  }, [user]);
+
+  useEffect(() => {
+    fetchSites();
+  }, [cnt]);
+
+
   const Card = ({site}) => {
     useEffect(() => {
       const listen = DeviceEventEmitter.addListener('allcheck', check => {
         setCheck(!check);
       });
       return () => listen.remove();
-    }, []);
+    }, [cnt]);
     const [check, setCheck] = useState(site.check);
     return (
       <View style={styles.card}>
@@ -165,27 +163,11 @@ const Items = () => {
         <View style={styles.siteContainer}>
           <View style={styles.imageContainer}>
           {
-               (site.type=== "hot" || site.type === "hol" || site.type === "shop")?
-                <Image style={styles.image} source={MapImg[site.type+(site.id.toString())]} />:
-                <Image style={styles.image} source={ThemeImg[site.name]} />
-                
+            (site.type=== "hot" || site.type === "hol" || site.type === "shop")?
+            <Image style={styles.image} source={MapImg[site.type+(site.id.toString())]} />:
+            <Image style={styles.image} source={ThemeImg[site.name]} />   
           }
           </View>
-          {/* <View style={{flex: 2}}>
-            <TouchableOpacity
-              onPress={() => {
-                CheckDel(site.name);
-              }}>
-              <View style={{right: -100}}>
-                <Icons
-                  name="circle-with-cross"
-                  size={25}
-                  color={'#5f695d'}
-                  style={styles.iconStyle}
-                />
-              </View>
-            </TouchableOpacity>
-            </View> */}
             <View style={{flex: 4, justifyContent: 'space-around', padding: 5}}>
               <View style={styles.textContainer}>
                 <Text numberOfLines={1} style={styles.nameStyle}>
@@ -217,40 +199,40 @@ const Items = () => {
       </View>
     );
   };
+
+  const fetchSchedule = async () => {
+    try {
+      let list = [];
+      if (user) {
+        ToastAndroid.show('開啟地圖中，請等候', ToastAndroid.SHORT);
+        const users = firestore().collection('users').doc(user.uid);
+        const querySnapshot = await users.collection('list').get();
+        querySnapshot.forEach(doc => {
+          const { type, id, place_id, check } = doc.data();
+          if (check) {
+            list.push({
+              type: type,
+              id: id,
+              place_id: place_id,
+            });
+          }
+        });
+        navigation.current.navigate('MapHome', list);
+      }
+    } catch (e) {
+      ToastAndroid.show('開啟地圖失敗，請稍後再試', ToastAndroid.SHORT);
+      console.error("items_fetchSchedule: ", e);
+    }
+  };
   const navigation = useRef(useNavigation());
   useEffect(() => {
-    const fetchSchedule = () => {
-      let list = [];
-      const listen = DeviceEventEmitter.addListener('gotomap', async () => {
-        try {
-          if (user) {
-            list = [];
-            const users = firestore().collection('users').doc(user.uid);
-            await users
-              .collection('list')
-              .get()
-              .then(querySnapshot => {
-                querySnapshot.forEach(doc => {
-                  const {type, id, place_id, check} = doc.data();
-                  if (check) {
-                    list.push({
-                      type: type,
-                      id: id,
-                      place_id: place_id,
-                    });
-                  }
-                });
-              });
-            //console.log(list);
-            navigation.current.navigate('MapHome', list);
-          }
-        } catch (e) {}
-      });
-      return () => {
-        listen.remove();
-      };
+    const listen = DeviceEventEmitter.addListener('gotomap', () => {
+      fetchSchedule();
+    });
+
+    return () => {
+      listen.remove();
     };
-    fetchSchedule();
   }, []);
 
   const EmptyList =({})=>{
@@ -263,7 +245,7 @@ const Items = () => {
             color={'#5f695d'}
           />
         </View>
-        <View syle={{flex:1,}}>
+        <View style={{flex:1,}}>
             <Text style={{fontSize: 25,textAlignVertical: 'center' ,}}>尚無景點</Text>
         </View>
     </View>
@@ -306,24 +288,11 @@ const styles = StyleSheet.create({
   },
   card: {
     height: cardHeight,
-    //backgroundColor:'#D1DED7',
-    //backgroundColor: '#ffffff',
     width: '100%',
     marginTop: '2%',
-    //borderRadius: 10,
-    //marginBottom: '2%',
-    //padding: 3,
-    //right: 2,
-    //borderColor: '#D1DED7',
-    //borderWidth: 3,
     flex: 1,
     flexDirection: 'row',
     paddingRight: '2%',
-    //borderBottomWidth: 1,
-    //borderBottomColor:'#AAAAAA',
-    // borderRightWidth:3,
-    // borderRightColor:'#ffffff',
-
     justifyContent: 'space-around',
   },
   boxContainer: {
@@ -340,7 +309,6 @@ const styles = StyleSheet.create({
     padding: '3%',
     borderRadius: 30,
     borderColor: '#D1DED7',
-    //borderWidth:2,
     shadowColor: '#7F5DF0',
     shadowOffset: {
       width: 0,
@@ -360,8 +328,6 @@ const styles = StyleSheet.create({
     flex: 2,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-    //alignSelf: 'center',
-    //alignItems: 'center',
     justifyContent: 'center',
     padding: 5,
   },
@@ -369,11 +335,8 @@ const styles = StyleSheet.create({
     flex: 2,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-    //alignSelf: 'center',
-    //alignItems: 'center',
     justifyContent: 'flex-start',
     padding: 10,
-    //backgroundColor:'#000000'
     flexDirection:'row',
   },
   imageContainer: {
@@ -383,20 +346,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   nameStyle: {
-    //alignSelf: 'center',
     fontWeight: 'bold',
     fontSize: 18,
-    //color: '#D1DED7',
     color: '#5f695d',
     letterSpacing: 3,
     backgroundColor: '#D1DED7',
-    //backgroundColor:'#5f695d',
     borderRadius: 10,
     paddingLeft: 8,
     paddingRight: 8,
   },
   addressStyle: {
-    //alignSelf: 'center',
     fontWeight: 'bold',
     fontSize: 14,
     color: 'gray',
@@ -405,7 +364,6 @@ const styles = StyleSheet.create({
   iconContainer:{
     flex:1,
     justifyContent:'flex-end',
-    //backgroundColor:'black',
     alignItems:'flex-end',
   }
 });

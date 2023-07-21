@@ -1,17 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  Dimensions,
-  FlatList,
-  Image,
-  Button,
   TouchableOpacity,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -30,8 +24,6 @@ const ScheduleTop = props => {
     });
   }
 
-  //嘉羽sites
-  //console.log('資料 ',sites);
   return (
     <View style={styles.container}>
         <TouchableOpacity onPress={()=>{navigation.goBack()}} style={{flex:2,top:2,}}>
@@ -51,7 +43,6 @@ const ScheduleTop = props => {
         <TouchableOpacity 
           onPress={()=>{
             navToMap(sites);
-            //console.log('嘉羽地圖')
           }}
           style={{flex:3,top:2,}}>
         <View style={styles.iconContainer2}>
@@ -69,8 +60,6 @@ const ScheduleTop = props => {
 };
 const styles = StyleSheet.create({
   textStyle: {
-    //position: 'absolute',
-   // top: 10,
     fontSize: 18,
     fontWeight: 'bold',
     color: '#5f695d',
@@ -85,8 +74,6 @@ const styles = StyleSheet.create({
     left: 8,
   },
   iconContainer2:{
-    //position: 'absolute',
-    //left: 11,
     top: 14,
     width: 50,
     height: 35,

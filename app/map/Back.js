@@ -1,16 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   Dimensions,
-  FlatList,
-  Image,
-  Button,
   TouchableOpacity,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Entypo';
 
@@ -23,7 +17,6 @@ const Back = () => {
             navigation.goBack();
         }}
         style={{flex: 1}}>
-        
         <View style={styles.iconContainer}>
           <Icons
             name="chevron-left"
@@ -49,7 +42,6 @@ const styles = StyleSheet.create({
     fontSize:45,
   },
   iconContainer: {
-    //position: 'absolute',
     backgroundColor: 'rgba(255, 255, 255,0.6)',
     width: 40,
     height: 40,

@@ -1,23 +1,10 @@
 import React, { Component } from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
-  Dimensions,
-  FlatList,
-  Image,
-  Button,
   Animated,
   Easing
-  //TouchableOpacity,
 } from 'react-native';
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-//import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { createStackNavigator, StackViewTransitionConfigs } from '@react-navigation/stack';
-import { StackNavigator } from "react-navigation";
+import { createStackNavigator } from '@react-navigation/stack';
 import 'react-native-gesture-handler';
-//import {ViewPropTypes} from 'deprecated-react-native-prop-types';
 
 import Schedule from '../media/Schedule';
 import Post from '../media/Post';
@@ -39,13 +26,11 @@ const forSlideX = ({ current, next, inverted, layouts: { screen } }) => {
       outputRange: [0, 1],
       extrapolate: 'clamp',
     }),
-    next
-      ? next.progress.interpolate({
-        inputRange: [0, 1],
-        outputRange: [0, 1],
-        extrapolate: 'clamp',
-      })
-      : 0
+    next? next.progress.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 1],
+      extrapolate: 'clamp',
+    }) : 0
   );
 
   return {
@@ -146,7 +131,6 @@ export default class Home extends Component {
         <Stack.Screen name="HistoryHome" component={HistoryHome} />
         <Stack.Screen name="TripForhistory" component={TripForhistory} />
         <Stack.Screen name="ItineraryHome" component={ItineraryHome} />
-        {/* <Stack.Screen name="PersonalHome" component={PersonalHome}/> */}
         <Stack.Screen name="ChooseTrip" component={ChooseTrip} />
         <Stack.Screen name="Time" component={Time} options={{
           transitionSpec: {

@@ -81,7 +81,6 @@ const test = ({city, region}) => {
     'Content-Type': 'application/json',
   };
   const url = WeatherUrl;
-  //const url = 'http://172.20.10.3:8080/weather';
   const message = async () => {
     try {
       let res = await axios.get(url, {
@@ -90,9 +89,6 @@ const test = ({city, region}) => {
       });
       let result_ = res.data;
       setResult(result_);
-      //console.log(result_);
-      //console.log(result_['icon_num'][0]);
-      //console.log(icon[result_['icon_num'][0]].src);
     } catch (e) {
       console.log(e);
     }

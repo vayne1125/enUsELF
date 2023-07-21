@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,19 +8,18 @@ import {
   Image,
   TouchableOpacity,
   DeviceEventEmitter,
-  Settings,
   ActivityIndicator,
 } from 'react-native';
-import {setGestureState} from 'react-native-reanimated/lib/reanimated2/NativeMethods';
 import Icon from 'react-native-vector-icons/Entypo';
 import Icons from 'react-native-vector-icons/Ionicons';
-import firestore, { firebase } from '@react-native-firebase/firestore';
+import firestore from '@react-native-firebase/firestore';
 import ImagePicker from 'react-native-image-crop-picker';
 import storage from '@react-native-firebase/storage';
 import PersonalTop from './PersonalTop';
 import {AuthContext} from '../routes/AutoProvider';
 
 const {width, height} = Dimensions.get('window');
+
 const PersonalHome = ({navigation}) => {
   const [name, setName] = useState('');
   const [mail, setMail] = useState('');
@@ -83,7 +82,6 @@ const PersonalHome = ({navigation}) => {
     console.log('filename= ', filename);
     //have change
     setLoading(true);
-    // transferred(0);//轉圈圈
     const storageRef = storage().ref(`user/${filename}`);//creat a folder
     const task = storageRef.putFile(uri);
     task.on('state_changed', taskSnapshot => {
@@ -157,14 +155,6 @@ const PersonalHome = ({navigation}) => {
           </View>
         )}
         <View style={styles.chooseContainer}>
-          {/* <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('Collect', user);
-              }}>
-              <Text style={styles.editText}>收藏</Text>
-            </TouchableOpacity>
-          </View> */}
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               onPress={() => {
@@ -225,13 +215,11 @@ const styles = StyleSheet.create({
   infoContainer: {
     flex: 11.8,
     marginTop: '3%',
-    //backgroundColor:'black',
   },
   headContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    //top: 10,
   },
   iconContainer: {
     height: height*0.3,
@@ -291,24 +279,16 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     alignSelf: 'center',
-    //alignItems: 'center',
     justifyContent: 'center',
-    //borderRadius: 5,
-    //marginTop: '1%',
     borderBottomWidth: 1,
     borderColor: '#AAAAAA',
   },
   spaceContainer: {
-    //backgroundColor: 'white',
     flex: 2,
     width: '100%',
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
-    //borderRadius: 5,
-    //marginTop: '1%',
-    //borderBottomWidth:1,
-    //borderColor:'#AAAAAA',
   },
   logoutContainer: {
     flex: 1,
@@ -340,6 +320,7 @@ const styles = StyleSheet.create({
     letterSpacing: 5,
     left: '5%',
     fontFamily: 'NotoSerifTC-Bold',
+    color: "#000000",
   },
   rightIcon: {
     flex: 1,

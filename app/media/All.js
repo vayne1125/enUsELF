@@ -1,37 +1,30 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Dimensions,
   FlatList,
-  Image,
-  Button,
   DeviceEventEmitter,
   Alert,
   ActivityIndicator,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
-import Card from './Card';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Stack = createNativeStackNavigator();
-const width = Dimensions.get('screen').width / 6;
-const width2 = (Dimensions.get('screen').width * 49) / 50;
-//const height = width - 5;
+import Card from './Card';
+
 const height = Dimensions.get('screen').height/2;
 
-const All = (item) => {
-    const [deleted, setDeleted] = useState(false);
+const All = () => {
+  const [deleted, setDeleted] = useState(false);
   const [Posts, setPosts] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
-   const data=item.item;
-   const fetchPosts = async () => {
+  const fetchPosts = async () => {
     try {
       const listpost = [];
       //get post
@@ -55,9 +48,7 @@ const All = (item) => {
             });
           });
         });
-       // console.log('listpost ',listpost); 
       setPosts(listpost);
-      //console.log('my ',my);
       if (loading) {
         setLoading(false);
       }
@@ -101,7 +92,6 @@ const handleDelete = postId => {
       };
     
       const deletePost = postId => {
-        // console.log('Current Post Id:',postId);
          firestore()
           .collection('posts')
           .doc(postId)
@@ -116,8 +106,6 @@ const handleDelete = postId => {
                 imgRef
                   .delete()
                   .then(() => {
-                   // console.log(`${postImg} has  delete`);
-                   // setDeleted(true);
                     deleteFirebaseData(postId);
                   })
                   .catch(e => {
@@ -125,7 +113,6 @@ const handleDelete = postId => {
                   });
               } else {
                 deleteFirebaseData(postId);
-               // setDeleted(true);
               }
             }
           });
@@ -152,7 +139,6 @@ const handleDelete = postId => {
               justifyContent: 'center',
               alignItems: 'center',}}>
                 <View style={styles.imageContainer}>
-                
                   <View>
                   <Icon
                     name={'camera-outline'}
@@ -178,7 +164,6 @@ const handleDelete = postId => {
        </View> )
        :
       (<FlatList
-      //columnWrapperStyle={{justifyContent:'space-between'}}
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{
         marginTop: 10,
@@ -189,7 +174,6 @@ const handleDelete = postId => {
       initialNumToRender={2}
       windowSize={2}
       data={Posts}
-      //ListHeaderComponent={FlatList_Header}
       renderItem={({item}) => (
         <Card
           navigation={navigation}
@@ -207,7 +191,6 @@ const handleDelete = postId => {
 const styles = StyleSheet.create({
   container: {
     hight: '100%',
-    //backgroundColor: '#F2F2F2',//9/14改
     backgroundColor: '#ffffff',
     flex: 1,
   },

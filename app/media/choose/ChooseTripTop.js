@@ -1,59 +1,43 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  Dimensions,
-  FlatList,
-  Image,
-  Button,
   TouchableOpacity,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
-import Icon from 'react-native-vector-icons/AntDesign';
-//const Stack = createNativeStackNavigator();
 
 const ResultTop = () => {
   const navigation = useNavigation();
-    return (
-      <View style={styles.container}>
-        <TouchableOpacity onPress={() => {
-                      navigation.goBack();
-                    }} style={{flex:1,}}>
-        <View style={styles.iconContainer2}>
-          <Icons
-            name="chevron-back-circle-outline"
-            size={33}
-            color={'#5f695d'}
-            style={styles.iconStyle2}
-          />
-        </View>
-        </TouchableOpacity>
-        <View style={{flex:5}}>
-        <Text style={styles.textStyle}>歷史行程</Text>
-        </View>
-        {/* <TouchableOpacity onPress={()=>{navigation.navigate("List")}} style={{flex:1,}}>
-        <View style={styles.iconContainer}>
-          <Icons
-            name="calendar-outline"
-            size={33}
-            color={'#5f695d'}
-            style={styles.iconStyle}
-          />
-        </View>
-        </TouchableOpacity> */}
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity 
+        onPress={() => {
+          navigation.goBack();
+        }}
+        style={ { flex:1 } }
+      >
+      <View style={styles.iconContainer2}>
+        <Icons
+          name="chevron-back-circle-outline"
+          size={33}
+          color={'#5f695d'}
+          style={styles.iconStyle2}
+        />
       </View>
-    );
+      </TouchableOpacity>
+      <View style={{flex:5}}>
+        <Text style={styles.textStyle}>歷史行程</Text>
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   textStyle: {
-    //position: 'absolute',
     fontSize: 26,
-    color:'#5f695d',//9/14改
+    color:'#5f695d',
     fontFamily:'NotoSerifTC-Bold',
     letterSpacing:10,
     bottom:'12%',

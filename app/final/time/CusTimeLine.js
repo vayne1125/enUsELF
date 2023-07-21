@@ -1,4 +1,4 @@
-import React, { Component,PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,12 +6,13 @@ import {
   Image
 } from 'react-native';
 import Timeline from 'react-native-timeline-flatlist'
-//Ionicons
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icons2 from 'react-native-vector-icons/FontAwesome';
 import Icons3 from 'react-native-vector-icons/FontAwesome5'
+
 import ThemeImg from '../../data/ThemeImg';
 import MapImg from '../../data/MapImg';
+
 export default class CusTimeLine extends PureComponent {
   constructor(props) {
     super(props)
@@ -28,20 +29,16 @@ export default class CusTimeLine extends PureComponent {
   }
 
   renderSelected() {
-    //console.log(this.props);
     if (this.state.selected != null && this.state.selected.name != "初始位置" ){
-      //console.log("this.state.selected");
       this.props.onPress(this.state.selected);
     }
   }
 
-  renderDetail(rowData, sectionID, rowID) {
+  renderDetail( rowData ) {
     var title = null;
     title = <Text style={styles.title}>{rowData.name}</Text>
-
-    var desc = null,desc2 = null;
-    
-    if(rowData.name != "初始位置"){
+    var desc = null, desc2 = null;
+    if(rowData.name != "初始位置") {
       if (rowData.type === "hot" || rowData.type === "hol" || rowData.type === "shop") {
         desc = (
           <View style={styles.titleContainer}>
@@ -63,64 +60,62 @@ export default class CusTimeLine extends PureComponent {
       }
     }
     if(rowData.distance != -1){
-    if(this.mode === "DRIVING"){
-      desc2 = (
-        <View style={styles.descriptionContainer}>
-          {title}
-          <View style={styles.itemContainer}>
-          <Icons2
-            name="car"
-            size={20}
-            color={'#5f695d'}
-            style={styles.iconStyle}
-          />  
-          <Text style={styles.textDescription}>{rowData.distance}</Text>
+      if(this.mode === "DRIVING"){
+        desc2 = (
+          <View style={styles.descriptionContainer}>
+            {title}
+            <View style={styles.itemContainer}>
+            <Icons2
+              name="car"
+              size={20}
+              color={'#5f695d'}
+              style={styles.iconStyle}
+            />  
+            <Text style={styles.textDescription}>{rowData.distance}</Text>
+            </View>
+            <View style={styles.itemContainer}>
+            <Icons
+              name="time-outline"
+              size={25}
+              color={'#5f695d'}
+              style={styles.iconStyle}
+            />  
+            <Text style={styles.textDescription}>{rowData.duration}</Text>
+            </View>
           </View>
-          <View style={styles.itemContainer}>
-          <Icons
-            name="time-outline"
-            size={25}
-            color={'#5f695d'}
-            style={styles.iconStyle}
-          />  
-          <Text style={styles.textDescription}>{rowData.duration}</Text>
+        )
+      } else {
+        desc2 = (
+          <View style={styles.descriptionContainer}>
+            <View style={styles.itemContainer}>
+              <Icons3
+                name="walking"
+                size={22}
+                color={'#5f695d'}
+                style={styles.iconStyleForWalk}
+              />  
+              <Text style={styles.textDescription}>{rowData.distance}</Text>
+            </View>
+            <View style={styles.itemContainer}>
+              <Icons
+                name="time-outline"
+                size={25}
+                color={'#5f695d'}
+                style={styles.iconStyle}
+              />  
+              <Text style={styles.textDescription}>{rowData.duration}</Text>
+            </View>
           </View>
-        </View>
-      )
-    }else{
-      desc2 = (
-        <View style={styles.descriptionContainer}>
-          <View style={styles.itemContainer}>
-          <Icons3
-            name="walking"
-            size={22}
-            color={'#5f695d'}
-            style={styles.iconStyleForWalk}
-          />  
-          <Text style={styles.textDescription}>{rowData.distance}</Text>
-          </View>
-          <View style={styles.itemContainer}>
-          <Icons
-            name="time-outline"
-            size={25}
-            color={'#5f695d'}
-            style={styles.iconStyle}
-          />  
-          <Text style={styles.textDescription}>{rowData.duration}</Text>
-          </View>
-        </View>
-      )
+        )
+      }
+    } else {
+      desc2 = <View style = {{justifyContent:'center'}}>{title}</View>;
     }
-  }else{
-    desc2 = <View style = {{justifyContent:'center'}}>{title}</View>;
-  }
-
     return (
-      <View style={{ flex: 1 }}>
-        
+      <View style={{ flex: 1 }}>  
         <View style = {styles.decStyles}>
-        {desc}
-        {desc2}
+          {desc}
+          {desc2}
         </View>
       </View>
     )
@@ -129,7 +124,6 @@ export default class CusTimeLine extends PureComponent {
   render() {
     return (
       <View style={styles.container}>
-        {/* {this.renderSelected()} */}
         <Timeline
           style={styles.list}
           data={this.data}

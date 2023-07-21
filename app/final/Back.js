@@ -1,17 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   Dimensions,
-  FlatList,
-  Image,
-  Button,
   TouchableOpacity,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Entypo';
 
 const Back = () => {
@@ -20,10 +14,10 @@ const Back = () => {
     <View style={styles.container}>
       <TouchableOpacity
         onPress={() => {
-            navigation.goBack();
+          navigation.goBack();
         }}
-        style={{flex: 1}}>
-        
+        style={ { flex: 1 } }
+      >
         <View style={styles.iconContainer}>
           <Icons
             name="chevron-left"
@@ -41,7 +35,7 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection:'row',
     left: -Dimensions.get('window').width / 2,
-    top: -Dimensions.get('window').height / 2+15,
+    top: -Dimensions.get('window').height / 2 + 15,
   },
   iconStyle: {
     top: -4,

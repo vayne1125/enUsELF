@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useContext } from 'react';
-import TimeTop from './TimeTop';
-import CusTimeline from './CusTimeLine'
+import React, { useState, useContext } from 'react';
 import {
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
+
+import TimeTop from './TimeTop';
+import CusTimeline from './CusTimeLine'
 import Hotplace from '../../data/Hotplace'
 import Shopplace from '../../data/Shopplace'
 import Holplace from '../../data/Holplace'
@@ -17,17 +17,13 @@ import Nature from '../../data/Nature'
 import DetailForTime from './DetailForTime';
 import { AuthContext } from '../../routes/AutoProvider';
 
-const Time = ({ navigation, route }) => {
-  const { user } = useContext(AuthContext);
+const Time = ({ route }) => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEntry, setModalEntry] = useState({}); //initialState
   const [modalIsMain, setModalIsMain] = useState(true);
-
   const mode = route.params.mode;
-  //console.log(mode);
-  //console.log(time);
-  //console.log(place);
+
   const getData = () => {
     const data = [];
     var tp = {};

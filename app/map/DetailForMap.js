@@ -1,29 +1,49 @@
-import React, {Component, useState} from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Dimensions,
-  FlatList,
   Image,
-  Button,
   Modal,
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import NoticeForMap from './NoticeForMap';
 import Weather from '../data/Weather';
 import ThemeImg from '../data/ThemeImg';
 import MapImg from '../data/MapImg';
+
 const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.15;
+
+const OpenURLButton = ({url, children}) => {
+  const handlePress = useCallback(async () => {
+    
+    const supported = await Linking.openURL(url);
+
+    if (supported) {
+      ToastAndroid.show("正在開啟連結", ToastAndroid.SHORT);
+
+      //await Linking.openURL(url);
+    } else {
+      ToastAndroid.show("該地點目前未提供即時影像", ToastAndroid.SHORT);
+      console.error("Detail_openExternalLink: ", url);
+    }
+  }, [url]);                            
+  return (
+    <TouchableOpacity onPress={handlePress} style={{ flex: 1 }}>
+      <Text style={styles.WeatherButText}>即時天氣影像</Text>
+    </TouchableOpacity>
+  );
+};
+
+let URL = 'https://tw.live/alishan/';
 
 const DetailForMap = ({
   entry,
@@ -155,6 +175,9 @@ const DetailForMap = ({
                   <Text style={styles.infoTitle}>
                     <Icon3 name="weather-cloudy" size={23} color={'#5f695d'} />
                     天氣
+                    <View style={styles.WeatherButContainer}>
+                      <OpenURLButton url={URL} />
+                    </View>
                   </Text>
                   <Weather city={entry['city']} region={entry['region']} />
                 </View>
@@ -214,7 +237,6 @@ const styles = StyleSheet.create({
   },
   topContainer: {
     flex: 9,
-    //backgroundColor:'#ffc56b',
     backgroundColor: '#D1DED7',
     borderBottomRightRadius: 50,
     borderTopLeftRadius: 20,
@@ -248,7 +270,6 @@ const styles = StyleSheet.create({
   },
   infoBack: {
     flex: 14,
-    //backgroundColor:'#ffc56b',
     backgroundColor: '#D1DED7',
   },
   infoContainer: {
@@ -266,9 +287,7 @@ const styles = StyleSheet.create({
   starStyle: {
     flex: 1,
     flexDirection: 'row',
-    //alignSelf: 'center',
     top: 8,
-    //color:'#f5f6a3',
   },
   infoStyle: {
     flex: 1,
@@ -294,12 +313,6 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: '#D1DED7',
-    //backgroundColor: '#ffc56b',//較淺黃
-    //width: 150,
-    //height: 45,
-    //flexDirection: 'row',
-    //flex: 1.2,
-    //borderRadius: 25,
     alignSelf: 'center',
     flex: 2,
     width: '100%',
@@ -319,6 +332,11 @@ const styles = StyleSheet.create({
     color: '#6b5238',
     top: 9,
     alignSelf: 'center',
+  },
+  WeatherButText: {
+    fontSize: 11, 
+    color: '#606060', 
+    paddingTop:15,
   },
 });
 

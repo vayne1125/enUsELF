@@ -1,23 +1,15 @@
-import React, {Component,useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  Dimensions,
-  FlatList,
-  Image,
-  Button,
-  Alert,
   TouchableOpacity,
   DeviceEventEmitter,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
-import Icons from 'react-native-vector-icons/Entypo';
-//import Icon from 'react-native-vector-icons/FontAwesome';
-import Notice from '../theme/Notice';
 import { CheckBox } from '@rneui/themed';
+
+import Notice from '../theme/Notice';
 
 const initialState = {
   id: {},
@@ -48,7 +40,6 @@ const ScheduleButton = ({}) => {
   useEffect(() => {
     const listen = DeviceEventEmitter
     .addListener('hadAllCheck',() => {//傳來Ttrue，我要全勾
-      //console.log('look ',check);
       setCheck(true);
     });
     return () => listen.remove();
@@ -94,16 +85,16 @@ const ScheduleButton = ({}) => {
         title="全選"/>
       </View>
       {empty?
-            <View style={styles.NoContainer}>
-                <Text style={styles.OkText}>加入清單</Text> 
-            </View>:
+        <View style={styles.NoContainer}>
+          <Text style={styles.OkText}>加入清單</Text> 
+        </View>:
       <View style={styles.OkContainer}>
         <TouchableOpacity
           onPress={() => {
             setNoticeVisible(!noticeVisible);
             DeviceEventEmitter.emit('sendToDatabase');
             navigation.goBack();
-            }}>
+          }}>
           <Text style={styles.OkText}>加入清單</Text>
         </TouchableOpacity>
       </View>
@@ -115,7 +106,6 @@ const styles = StyleSheet.create({
   Container: {
     flex: 1,
     flexDirection: 'row',
-    //borderTopWidth: 1,
     borderColor: '#AAAAAA',
     backgroundColor: '#ffffff',
     borderTopLeftRadius:50,
@@ -148,11 +138,8 @@ const styles = StyleSheet.create({
     padding:2,
     borderTopLeftRadius:40,
     borderTopRightRadius:20,
-    //left:-8,
-   // top:10,
   },
   ChanceText: {
-    //left: 10,
     fontSize: 18,
     fontWeight: 'bold',
     color: 'gray',

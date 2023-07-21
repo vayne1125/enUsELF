@@ -1,19 +1,12 @@
-import React, {Component, useState,PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Dimensions,
-  FlatList,
-  Image,
-  Button,
   Modal,
-  TouchableOpacity,
-  ScrollView,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
+
 import Icons from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
@@ -26,7 +19,6 @@ const height = Dimensions.get('screen').height / 4;
 export default class NoticeForMap extends PureComponent {
 
   render() {
-    console.log('close?');
     if (this.props.noticeVisible == true) {
       setTimeout(() => {
         this.props.onClose();
@@ -37,9 +29,10 @@ export default class NoticeForMap extends PureComponent {
         <View style={styles.modalBackGround}>
           <View style={styles.modalContainer}>
             <Icon2 name={"checkmark-circle-outline"} size={70} color={"green"}/>
-            {this.props.isAdd?
-            <Text style={styles.textStyle}>已成功加入行程表</Text>:
-            <Text style={styles.textStyle}>已成功移除景點</Text>
+            {
+              this.props.isAdd?
+              <Text style={styles.textStyle}>已成功加入行程表</Text>:
+              <Text style={styles.textStyle}>已成功移除景點</Text>
             }
           </View>
         </View>
@@ -59,18 +52,13 @@ const styles = StyleSheet.create({
   modalContainer: {
     width: '80%',
     height,
-    //height: 600,
     backgroundColor: 'white',
-    //paddingHorizontal: 20,
-    //paddingVertical: 20,
     padding: 5,
     borderRadius: 20,
     elevation: 20,
     justifyContent:"space-around",
     padding:25,
     alignItems:"center",
-    
-    //flex:1,
   },
   textStyle:{
     fontSize:25,

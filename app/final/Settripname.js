@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -13,14 +13,14 @@ import Icons from 'react-native-vector-icons/Entypo';
 const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 4;
 
-const Settripname = ({ size,modalVisible, onClose,completePress}) => {
+const Settripname = ({ modalVisible, onClose, completePress}) => {
   const [tripname,setTripname]=useState('旅程計畫表');
   return (
     (
       <Modal transparent={true} visible={modalVisible}>
         <View style={styles.modalBackGround}>
           <View style={styles.modalContainer}>
-          <View style={styles.header}>
+            <View style={styles.header}>
               <TouchableOpacity onPress={()=>{onClose()}} style={{flex: 1}}>
                 <View style={styles.iconContainer}>
                   <Icons name="cross" size={45} color={'#5f695d'} />
@@ -28,24 +28,22 @@ const Settripname = ({ size,modalVisible, onClose,completePress}) => {
               </TouchableOpacity>
             </View>
             <View style={styles.infoContainer}>
-               
               <View style={styles.infoStyle}>
-              <Text style={styles.textStyle2}>為旅程取個特別的名字吧!</Text>
+                <Text style={styles.textStyle2}>為旅程取個特別的名字吧!</Text>
               </View>
               <View style={styles.setname}> 
-            <TextInput style={styles.textStyle} 
-              keyboardType='default'
-              value={tripname}
-              underlineColorAndroid='#BEBEBE'
-              onChangeText={(context)=>setTripname(context)}
-              />
-            </View>
-            </View>
-            
+                <TextInput style={styles.textStyle} 
+                  keyboardType='default'
+                  value={tripname}
+                  underlineColorAndroid='#BEBEBE'
+                  onChangeText={(context)=>setTripname(context)}
+                />
+              </View>
+            </View> 
             <View style={styles.buttonContainer}>
               <TouchableOpacity
                 onPress={() => {
-                  completePress((tripname==="")?forceName:tripname);
+                  completePress((tripname==="")? forceName : tripname);
                 }}
                 style={{flex: 1}}>
                 <Text style={styles.buttonText}>完成</Text>
@@ -53,7 +51,7 @@ const Settripname = ({ size,modalVisible, onClose,completePress}) => {
             </View>
           </View>
         </View>
-        </Modal>
+      </Modal>
     )
   );
 };
@@ -116,7 +114,7 @@ const styles = StyleSheet.create({
     right:20,
   },
   buttonContainer: {
-    backgroundColor: '#fbb856', //較深黃
+    backgroundColor: '#fbb856',
     width: 150,
     alignSelf: 'center',
     borderRadius: 25,

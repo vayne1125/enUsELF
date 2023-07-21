@@ -1,21 +1,13 @@
-import React, {Component, useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  Dimensions,
-  FlatList,
-  Image,
-  Button,
   TouchableOpacity,
   DeviceEventEmitter,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
 import { CheckBox } from '@rneui/themed';
 import firestore from '@react-native-firebase/firestore'
-//import Icon from 'react-native-vector-icons/FontAwesome';
 import { AuthContext } from '../routes/AutoProvider';
 const ListBottom = () => {
     const {user} = useContext(AuthContext);
@@ -23,87 +15,86 @@ const ListBottom = () => {
     const [nocheck, setNocheck] = useState(true);
     const [empty, setEmpty] = useState(true);
 
-    useEffect(() => {
-        const listen = DeviceEventEmitter
-        .addListener('items', () => {
-            const Cnt = async() => {
-                var count = 0;
-                var items = 0;
-                if(user){
-                    const users = firestore().collection('users').doc(user.uid);
-                    await users.collection('list').get()
-                    .then((querySnapshot)=>{
-                        querySnapshot.forEach((doc)=>{
-                            if(doc.data().check)items++;
-                            count++;
-                        });
-                    })
-                    .catch(()=>{return 0;})
-                    if(items==count && count)setCheck(true);
-                    else setCheck(false);
-                    setNocheck(items? false:true);
-                    setEmpty(count? false:true);
-                }
-            }
-            Cnt();
-        });
-        return () => listen.remove();
-    },[]);
-
-    const update = async() => {
-        var count = 0;
-        try{
-            if(user){
-                const users = firestore().collection('users').doc(user.uid);
-                await users.collection('list').get()
-                .then((querySnapshot)=>{
-                    querySnapshot.forEach(doc =>{
-                        doc.ref.update({check:!check});
-                        count++;
-                    })
-                })
-                .then(()=>{
-                    DeviceEventEmitter.emit('allcheck', check);
-                })
-                if(count){
-                    setCheck(!check);
-                    setNocheck(check? true : false);
-                }
-            }
+    const getItemsCount = async () => {
+      try {
+        if (user) {
+          const users = firestore().collection('users').doc(user.uid);
+          const querySnapshot = await users.collection('list').get();
+          let count = 0;
+          let items = 0;
+          querySnapshot.forEach((doc) => {
+            if (doc.data().check) items++;
+            count++;
+          });
+  
+          setCheck(items === count);
+          setNocheck(items ? false : true);
+          setEmpty(count ? false : true);
         }
-      catch(e){
-        console.log(e);
-      };
-    }
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-    return (
-        <View style = {styles.Container}>
-            {empty?
-            <View style={styles.ChanceContainer}/>:
-            <View style={styles.ChanceContainer}>
-                <><CheckBox
-                    //center
-                    title="全選"
-                    textStyle={styles.ChanceText} 
-                    checkedIcon="dot-circle-o"
-                    uncheckedIcon="circle-o"
-                    checked={check}
-                    onPress={() => {
-                        if(user){update();}        
-                    }}
-                /></>
-            </View>
-            }
-            {nocheck?
-            <View style={styles.NoContainer}>
-                <Text style={styles.OkText}>完成</Text> 
-            </View>:
-            <View style={styles.OkContainer}>
-                <TouchableOpacity onPress={()=>{DeviceEventEmitter.emit('gotomap')}}>
-                    <Text style={styles.OkText}>完成</Text> 
-                </TouchableOpacity>
-            </View>
-            }
+    useEffect(() => {
+    const listen = DeviceEventEmitter.addListener('items', () => {
+      getItemsCount();
+    });
+    return () => listen.remove();
+  }, []);
+
+  const update = async () => {
+    try {
+      if (user) {
+        const users = firestore().collection('users').doc(user.uid);
+        const querySnapshot = await users.collection('list').get();
+        let count = 0;
+
+        querySnapshot.forEach((doc) => {
+          doc.ref.update({ check: !check });
+          count++;
+        });
+
+        if (count) {
+          setCheck(!check);
+          setNocheck(check ? true : false);
+        }
+
+        DeviceEventEmitter.emit('allcheck', check);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <View style = {styles.Container}>
+        {
+          empty?
+          <View style={styles.ChanceContainer}/>:
+          <View style={styles.ChanceContainer}>
+            <><CheckBox
+              title="全選"
+              textStyle={styles.ChanceText} 
+              checkedIcon="dot-circle-o"
+              uncheckedIcon="circle-o"
+              checked={check}
+              onPress={() => {
+                  if(user){update();}        
+              }}/></>
+          </View>
+        }
+        {
+          nocheck?
+          <View style={styles.NoContainer}>
+            <Text style={styles.OkText}>完成</Text> 
+          </View>:
+          <View style={styles.OkContainer}>
+            <TouchableOpacity onPress={()=>{DeviceEventEmitter.emit('gotomap')}}>
+              <Text style={styles.OkText}>完成</Text> 
+            </TouchableOpacity>
+          </View>
+        }
     </View>
   );
 };
@@ -111,7 +102,6 @@ const styles = StyleSheet.create({
   Container: {
     flex: 1,
     flexDirection: 'row',
-    //borderTopWidth: 1,
     borderColor: '#AAAAAA',
     backgroundColor: '#ffffff',
     borderTopLeftRadius:50,
@@ -125,11 +115,8 @@ const styles = StyleSheet.create({
     padding:2,
     borderTopLeftRadius:40,
     borderTopRightRadius:20,
-    //left:-8,
-   // top:10,
   },
   ChanceText: {
-    //left: 10,
     fontSize: 18,
     fontWeight: 'bold',
     color: 'gray',

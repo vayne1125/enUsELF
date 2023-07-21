@@ -5,15 +5,15 @@ import {
   Dimensions,
   Text,
   TouchableHighlight,
-  Image,
+  DeviceEventEmitter,
   TouchableOpacity
 } from 'react-native';
+
 import CustomMarkerComponent from '../map/CustomMarkerComponent';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import DetailForFinal from './DetailForFinal';
 import Back from './Back';
 import Share from './Share';
-import { mapStyle } from '../map/mapStyle';
 import MapViewDirections from 'react-native-maps-directions';
 import { AuthContext } from '../routes/AutoProvider';
 import firestore from '@react-native-firebase/firestore';
@@ -69,49 +69,54 @@ const ItineraryHome = ({ navigation, route }) => {
   }
 
   useEffect(()=>{
-    //console.log(changeMode);
     setMode(changeMode);
   },[changeMode])
 
   const navToHistory = (tripname) => {
     setModalVisibleForName(false);
-    //菁蕙 刪資料庫
-    for (let i = 0; i < markers.length; ++i) {
-      firestore()
-        .collection('users')
-        .doc(user.uid)
-        .collection('list')
-        .doc(markers[i].name)
-        .delete()
-        .then(() => {
-          console.log('User deleted!');
-        }).catch(e =>
-          console.log('error'))
-    }
+    const deletePromises = markers.map((marker) =>
+    firestore()
+      .collection('users')
+      .doc(user.uid)
+      .collection('list')
+      .doc(marker.name)
+      .delete()
+  );
+
+    Promise.all(deletePromises)
+    .then(() => {
+      // This code will execute when all the delete requests are successful
+      console.log('All documents deleted');
+      for (let i = 0; i < markers.length; ++i) {
+        DeviceEventEmitter.emit('change', markers[i].name, true);
+      }
+    }).catch((error) => {
+      // Handle errors if any delete request fails
+      console.error('Error deleting documents:', error);
+    });
+
     firestore()
       .collection('users')
       .doc(user.uid)
       .collection('list')
       .doc(destination.name)
       .delete()
-      .then(() => {
-        console.log('User deleted!');
-      }).catch(e =>
-        console.log('error'))
+      .catch(e => {
+        console.error('error', e)
+      })
     const users = firestore().collection('users').doc(user.uid);
     users.collection('trip').doc()
-      .set({
-        name: tripname,
-        origin: route.params.origin,
-        desSite: route.params.desSite,
-        site: route.params.site,
-        postTime: firestore.Timestamp.fromDate(new Date()),
-      }).then(() => {
-        console.log('trip add !');
-      }).catch((error) => {
-        console.log('trip Failed!', error);
-      });
-
+    .set({
+      name: tripname,
+      origin: route.params.origin,
+      desSite: route.params.desSite,
+      site: route.params.site,
+      postTime: firestore.Timestamp.fromDate(new Date()),
+    }).then(() => {
+      console.log('trip add !');
+    }).catch((error) => {
+      console.error('trip Failed!', error);
+    });
     navigation.navigate("HistoryHome");
   }
 
@@ -150,7 +155,6 @@ const ItineraryHome = ({ navigation, route }) => {
           data.push(Shopplace[param.id]);
         }
       })
-      //console.log(data);
       return data;
     })
 
@@ -206,7 +210,6 @@ const ItineraryHome = ({ navigation, route }) => {
   }, [])
 
   useEffect(() => {
-
     setEast(() => {
       var rt = east;
       markers.map((i) => {
@@ -260,7 +263,6 @@ const ItineraryHome = ({ navigation, route }) => {
       } else {
         tp = 0.9;
       }
-      //console.log("long=" + longestDis + " tp= ", tp);
       return {
         latitude: (south + north) / 2.0,
         longitude: (east + west) / 2.0,
@@ -293,14 +295,12 @@ const ItineraryHome = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-
       <Settripname
         modalVisible={modalVisibleForName}
         size={size}
         onClose={() => { setModalVisibleForName(false); }}
         completePress={(tripname) => { navToHistory(tripname) }}
       />
-
       {/*浮動視窗-------------------------------------------------------------------------------*/}
       <DetailForFinal
         entry={modalEntry}//傳進去的資料參數
@@ -312,12 +312,6 @@ const ItineraryHome = ({ navigation, route }) => {
       <MapView
         loadingEnabled={true}
         moveOnMarkerPress={false}
-        //customMapStyle={mapStyle}
-        //rotateEnabled = {false}
-        //zoomEnabled = {false}
-        //zoomControlEnabled = {false}
-        //scrollEnabled = {false}
-        //customMapStyle={mapStyle}
         provider={PROVIDER_GOOGLE}
         style={styles.mapStyle}
         region={region}
@@ -325,92 +319,86 @@ const ItineraryHome = ({ navigation, route }) => {
         onMapReady={() => {
           //if(print == false)setPrint(true);
           console.log('map ok');
-        }
-        }
+        }}
       >
-        <MapViewDirections
-          optimizeWaypoints={true}
-          origin={origin}
-          destination={{
-            latitude: destination.lat,
-            longitude: destination.lng
-          }}
-          mode={mode}
-          waypoints={waypoints}
-          apikey={API_key}
-          strokeWidth={3}
-          strokeColor="#5f695d"
-          onError={(res) => { console.log(err) }}
-          onReady={
-            (result) => {
-              //console.log(result.legs);
-              //console.log(result.legs[0].steps);
-              setOrder(result.waypointOrder[0]);
-              setWayTime(result.legs);
-              // console.log("legs: ",result.legs);
-              // console.log("steps: ",result.legs.steps)
-              // console.log("way: ",result.waypointOrder);
-              console.log("dir ok");
-            }
+      <MapViewDirections
+        optimizeWaypoints={true}
+        origin={origin}
+        destination={{
+          latitude: destination.lat,
+          longitude: destination.lng
+        }}
+        mode={mode}
+        waypoints={waypoints}
+        apikey={API_key}
+        strokeWidth={3}
+        strokeColor="#5f695d"
+        onError={(res) => { console.error(res) }}
+        onReady={
+          (result) => {
+            setOrder(result.waypointOrder[0]);
+            setWayTime(result.legs);
+            console.log("dir ok");
           }
-        />
+        }
+      />
 
-        <Marker
-          key={'origin'}
-          pinColor='tan'
-          tracksViewChanges={false}
-          coordinate={origin}
-          title="你的位置"
-        />
+      <Marker
+        key={'origin'}
+        pinColor='tan'
+        tracksViewChanges={false}
+        coordinate={origin}
+        title="你的位置"
+      />
 
-        <CustomMarkerComponent
-          key={'des'}
-          data={destination}
-          color='green'
-          onPressHandler={(e) => {
-            setModalIsMain(true);
-            setModalVisible(!modalVisible);
-            setModalEntry({
-              id: destination.id,
-              type: destination.type,
-              name: destination.name,
-              address: destination.address,
-              star: destination.star,
-              info: destination.info,
-              time: destination.time,
-              city: destination.city,
-              region: destination.region,
-            });
-          }}
-        />
+      <CustomMarkerComponent
+        key={'des'}
+        data={destination}
+        color='green'
+        onPressHandler={(e) => {
+          setModalIsMain(true);
+          setModalVisible(!modalVisible);
+          setModalEntry({
+            id: destination.id,
+            type: destination.type,
+            name: destination.name,
+            address: destination.address,
+            star: destination.star,
+            info: destination.info,
+            time: destination.time,
+            city: destination.city,
+            region: destination.region,
+          });
+        }}
+      />
 
-        {(markers).map((marker) => {
-          return (
-            <CustomMarkerComponent
-              key={marker.type + (marker.id).toString()}
-              data={marker}
-              color='green'
-              onPressHandler={(e) => {
-                setModalIsMain(
-                  (marker.type === "hot" || marker.type === "hol" || marker.type === "shop") ?
-                    false : true
-                );
-                setModalVisible(!modalVisible);
-                setModalEntry({
-                  id: marker.id,
-                  type: marker.type,
-                  name: marker.name,
-                  address: marker.address,
-                  star: marker.star,
-                  info: marker.info,
-                  time: marker.time,
-                  city: marker.city,
-                  region: marker.region,
-                });
-              }}
-            />
-          )
-        })}
+      {(markers).map((marker) => {
+        return (
+          <CustomMarkerComponent
+            key={marker.type + (marker.id).toString()}
+            data={marker}
+            color='green'
+            onPressHandler={(e) => {
+              setModalIsMain(
+                (marker.type === "hot" || marker.type === "hol" || marker.type === "shop") ?
+                  false : true
+              );
+              setModalVisible(!modalVisible);
+              setModalEntry({
+                id: marker.id,
+                type: marker.type,
+                name: marker.name,
+                address: marker.address,
+                star: marker.star,
+                info: marker.info,
+                time: marker.time,
+                city: marker.city,
+                region: marker.region,
+              });
+            }}
+          />
+        )
+      })}
       </MapView>
 
       <Callout style={styles.callout}>
@@ -422,56 +410,53 @@ const ItineraryHome = ({ navigation, route }) => {
             tripname = {tripname} 
             time = {time} 
             place = {place}
-          ></ItineraryTop>
+          />
         </View>
 
         <View style={styles.buttonContainer}>
-        <TouchableOpacity
-           onPress={onPressHandlerForDriving}>
-        <View style={styles.iconContainer2}>
-          <Icons2
-            name="car"
-            size={28}
-            color={'#5f695d'}
-          />
-        </View>
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={onPressHandlerForDriving}>
+            <View style={styles.iconContainer2}>
+              <Icons2
+                name="car"
+                size={28}
+                color={'#5f695d'}
+              />
+            </View>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={onPressHandlerForWalking}
-        >
-        <View style={styles.iconContainer3}>
-          <Icons3
-            name="walking"
-            size={28}
-            color={'#5f695d'}
-          />
-        </View>
-
-      </TouchableOpacity>
-          </View>
-        {(route.params.from === "map") && <Back style={styles.back} />}
-        <View style={styles.btnContainner}>
-          <TouchableHighlight
-            style={styles.button}
-            onPress={() => {
-              (route.params.from === "map") ?
-                pressOk() :
-                navToBack()
-            }}
-            underlayColor='#ddddd'
+          <TouchableOpacity
+            onPress={onPressHandlerForWalking}
           >
-            {
-              (route.params.from === "map") ?
+            <View style={styles.iconContainer3}>
+              <Icons3
+                name="walking"
+                size={28}
+                color={'#5f695d'}
+              />
+            </View>
+          </TouchableOpacity>
+        </View>
+          {(route.params.from === "map") && <Back style={styles.back} />}
+          <View style={styles.btnContainner}>
+            <TouchableHighlight
+              style={styles.button}
+              onPress={() => {
+                (route.params.from === "map") ?
+                  pressOk() : 
+                  navToBack() ;
+              }}
+              underlayColor='#ddddd'
+            >
+              {
+                (route.params.from === "map") ?
                 <Text style={styles.text}>確認</Text> :
                 <Text style={styles.text}>返回</Text>
-            }
-          </TouchableHighlight>
-          <Share />
-
-        </View>
+              }
+            </TouchableHighlight>
+            <Share />
+          </View>
       </Callout>
-
     </View>
   )
 };

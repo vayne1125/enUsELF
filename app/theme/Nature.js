@@ -1,34 +1,16 @@
-import React, {Component, useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   Dimensions,
   FlatList,
-  Image,
-  Button,
-  Modal,
-  SafeAreaView,
-  TouchableOpacity,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Icons from 'react-native-vector-icons/Ionicons';
-import Icon2 from 'react-native-vector-icons/Foundation';
-import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Detail from './Detail';
 import Notice from './Notice';
 import NatureData from '../data/Nature';
 import Card from './Card';
 
-const Stack = createNativeStackNavigator();
-const width = Dimensions.get('screen').width / 6;
-const width2 = (Dimensions.get('screen').width * 49) / 50;
-const height = width - 5;
-const Height = Dimensions.get('screen').height*6/30;
 const hgt = Dimensions.get('screen').height * 10 / 30;
 
 const initialState = {
@@ -47,7 +29,6 @@ const Nature = () => {
     const [noticeVisible, setNoticeVisible] = useState(false);
     const [noticeEntry, setNoticeEntry] = useState(initialState);
     const [uncheck, setUncheck] = useState(false);
-    const MemoizedCard = React.memo(Card);
 
     return (
       <View style={styles.container}>
@@ -70,24 +51,23 @@ const Nature = () => {
         />
         {/*通知視窗-------------------------------------------------------------------------------*/}
   
-          <FlatList
-            columnWrapperStyle={{justifyContent: 'space-around'}}
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{
-              //marginTop: 25,
-              paddingBottom: 80,
-            }}
-            numColumns={2}
-            data={NatureData}
-            initialNumToRender={4}
-            getItemLayout={(data, index ) => (
-                { length : hgt, offset : hgt * index , index }
-             )}
-            windowSize={2}
-            removeClippedSubviews={true}
-            keyExtractor={item=>item.place_id}
-            renderItem={({item}) => (
-              <MemoizedCard
+        <FlatList
+          columnWrapperStyle={{justifyContent: 'space-around'}}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingBottom: 80,
+          }}
+          numColumns={2}
+          data={NatureData}
+          initialNumToRender={6}
+          getItemLayout={(data, index ) => (
+            { length : hgt, offset : hgt * index , index }
+         )}
+          windowSize={2}
+          removeClippedSubviews={true}
+          keyExtractor={item=>item.place_id}
+          renderItem={({ item }) => (
+            <Card
               sites={item}
               onPress1={(site, uncheck) => {
                 setModalVisible(!modalVisible);
@@ -97,9 +77,10 @@ const Nature = () => {
               onPress2={site => {
                 setNoticeVisible(!noticeVisible);
                 setNoticeEntry(site);
-              }}/>
-            )}>
-          </FlatList>
+              }}
+            />
+          )}>
+        </FlatList>
       </View>
     );
 };
@@ -107,7 +88,6 @@ const Nature = () => {
 const styles = StyleSheet.create({
   container: {
     hight: '100%',
-    //backgroundColor: '#F2F2F2',//9/14改
     backgroundColor: '#ffffff',
     flex: 1,
   },

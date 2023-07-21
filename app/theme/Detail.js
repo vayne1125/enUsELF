@@ -1,39 +1,34 @@
-import React, {Component, useState, useContext, useEffect} from 'react';
+import React, { useState, useContext, useCallback } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Dimensions,
-  FlatList,
   Image,
-  Button,
   Modal,
   TouchableOpacity,
   ScrollView,
   DeviceEventEmitter,
+  Linking,
+  ToastAndroid,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 import firestore from '@react-native-firebase/firestore';
+
 import Notice from './Notice';
 import Weather from '../data/Weather';
 import ThemeImg from '../data/ThemeImg';
-
 import { AuthContext } from '../routes/AutoProvider';
-import { black } from 'react-native-paper/lib/typescript/styles/colors';
 
-const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.15;
 
 const Detail = ({entry, modalVisible, onClose, uncheck, check}) => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const [noticeEntry, setNoticeEntry] = useState(entry);
   const {user} = useContext(AuthContext);
+  
   const Stars = score => {
     var tp = parseFloat(score.starsNum);
     var starsIcon = [];
@@ -68,7 +63,45 @@ const Detail = ({entry, modalVisible, onClose, uncheck, check}) => {
       </View>
     );
   };
-  //console.log(entry['name'])
+
+
+  const OpenURLButton = ({url}) => {
+    const handlePress = useCallback(async () => {
+      
+      const supported = await Linking.openURL(url);
+
+      if (supported) {
+        ToastAndroid.show("正在開啟連結", ToastAndroid.SHORT);
+
+        //await Linking.openURL(url);
+      } else {
+        ToastAndroid.show("該地點目前未提供即時影像", ToastAndroid.SHORT);
+        console.error("Detail_openExternalLink: ", url);
+      }
+    }, [url]);                            
+    return (
+      <TouchableOpacity onPress={handlePress} style={{ flex: 1 }}>
+        <Text style={styles.WeatherButText}>即時天氣影像</Text>
+      </TouchableOpacity>
+    );
+  };
+  
+  const handleAddToList = () => {
+    if (user) {
+      const users = firestore().collection('users').doc(user.uid);
+      users.collection('list').doc(entry['name']).set({
+        id: entry['id'],
+        type: entry['type'],
+        place_id: entry['place_id'],
+        check: false,
+      }).then(() => {
+        DeviceEventEmitter.emit('change', entry['name'], false);
+      });
+    }
+    setNoticeVisible(true);
+    setNoticeEntry(entry);
+  };
+  let URL = 'https://tw.live/alishan/';
   return (
     (
       <Modal transparent={true} visible={modalVisible}>
@@ -76,7 +109,6 @@ const Detail = ({entry, modalVisible, onClose, uncheck, check}) => {
           entry={noticeEntry} //傳進去的資料參數
           noticeVisible={noticeVisible} //可不可見
           onClose={() => {
-            //console.log('1.3s --2');
             setNoticeVisible(false);
             onClose();
           }} //關閉函式
@@ -91,83 +123,70 @@ const Detail = ({entry, modalVisible, onClose, uncheck, check}) => {
             <View style={styles.spaceContainer}></View>
             </View>
             <View style={styles.infoBack}>
-            <View style={styles.infoContainer}>
-              <ScrollView>
-                <View style={styles.infoStyle}>
-                <Text style={styles.siteNameStyle}>{entry['name']}</Text>
-                  <Stars starsNum={entry['star']} />
-                  <Text style={styles.infoTitle}>
-                    {'\n'}
-                    <Icon name="map-marker" size={25} color={'#5f695d'} />
-                    地址
-                  </Text>
-                  <Text style={styles.infoTextStyle}>
-                    {entry['address']}
-                    {'\n'}
-                  </Text>
-                  <Text style={styles.infoTitle}>
-                    <Icon name="clock-o" size={23} color={'#5f695d'} />
-                    營業時間
-                  </Text>
-                  <Text style={styles.infoTextStyle}>
-                    {entry['time']}
-                    {'\n'}
-                  </Text>
-                  <Text style={styles.infoTitle}>
-                    <Icon name="info-circle" size={23} color={'#5f695d'} />
-                    簡介
-                  </Text>
-                  <Text style={styles.infoTextStyle}>
-                    {entry['info']}
-                    {'\n'}
-                  </Text>
-                  <Text style={styles.infoTitle}>
-                    <Icon3 name="weather-cloudy" size={23} color={'#5f695d'} />
-                    天氣
-                  </Text>
-                  <Weather 
-                    city={entry['city']}
-                    region={entry['region']}/>
-                </View>
-              </ScrollView>
-            </View>
+              <View style={styles.infoContainer}>
+                <ScrollView>
+                  <View style={styles.infoStyle}>
+                    <Text style={styles.siteNameStyle}>{entry['name']}</Text>
+                      <Stars starsNum={entry['star']} />
+                      <Text style={styles.infoTitle}>
+                        {'\n'}
+                        <Icon name="map-marker" size={25} color={'#5f695d'} />
+                        地址
+                      </Text>
+                      <Text style={styles.infoTextStyle}>
+                        {entry['address']}
+                        {'\n'}
+                      </Text>
+                      <Text style={styles.infoTitle}>
+                        <Icon name="clock-o" size={23} color={'#5f695d'} />
+                        營業時間
+                      </Text>
+                      <Text style={styles.infoTextStyle}>
+                        {entry['time']}
+                        {'\n'}
+                      </Text>
+                      <Text style={styles.infoTitle}>
+                        <Icon name="info-circle" size={23} color={'#5f695d'} />
+                        簡介
+                      </Text>
+                      <Text style={styles.infoTextStyle}>
+                        {entry['info']}
+                        {'\n'}
+                      </Text>
+                      <Text style={styles.infoTitle}>
+                        <Icon3 name="weather-cloudy" size={23} color={'#5f695d'} />
+                        天氣
+                        <View style={styles.WeatherButContainer}>
+                          <OpenURLButton url={URL} />
+                        </View>
+                      </Text>
+                      <Weather 
+                        city={entry['city']}
+                        region={entry['region']}
+                      />
+                    </View>
+                </ScrollView>
+              </View>
             </View>
             {uncheck?
             <View style={styles.buttonContainer}>
-              <TouchableOpacity
-                onPress={() => {
-                    if(user){
-                        const users = firestore().collection('users').doc(user.uid);
-                        users.collection('list').doc(entry['name'])
-                        .set({
-                            id: entry['id'],
-                            type: entry['type'],
-                            place_id: entry['place_id'],
-                            check: false,
-                        })
-                        .then(DeviceEventEmitter.emit('change', entry['name'], false));
-                    }
-                  setNoticeVisible(!noticeVisible);
-                  setNoticeEntry(entry);
-                  //console.log('plus2');
-                }}
-                style={{flex: 1}}>
-                  <View style={styles.buttonTextContainer}>
+              <TouchableOpacity onPress={handleAddToList} style={{ flex: 1 }}>
+                <View style={styles.buttonTextContainer}>
                   <Text style={styles.buttonText}>加</Text>
                   <Text style={styles.buttonText}>入</Text>
                   <Text style={styles.buttonText}>清</Text>
                   <Text style={styles.buttonText}>單</Text>
-                  </View>           
+                </View>           
               </TouchableOpacity>
             </View>:
             <View style={styles.buttonContainer}>
-                <View style={styles.buttonTextContainer}>
-                    <Text style={styles.buttonText}>已</Text>
-                    <Text style={styles.buttonText}>加</Text>
-                    <Text style={styles.buttonText}>入</Text>
-                    <Text style={styles.buttonText}>清</Text>
-                    <Text style={styles.buttonText}>單</Text>
-                </View>           
+              <View style={styles.buttonTextContainer}>
+                <Text style={styles.buttonText}>已</Text>
+                <Text style={styles.buttonText}>加</Text>
+                <Text style={styles.buttonText}>入</Text>
+                <Text style={styles.buttonText}>清</Text>
+                <Text style={styles.buttonText}>單</Text>
+              </View>           
             </View>
             }
           </View>
@@ -195,7 +214,6 @@ const styles = StyleSheet.create({
   },
   topContainer:{
     flex:9,
-    //backgroundColor:'#ffc56b',
     backgroundColor:'#D1DED7',
     borderBottomRightRadius: 50,
     borderTopLeftRadius: 20,
@@ -229,7 +247,6 @@ const styles = StyleSheet.create({
   },
   infoBack:{
     flex: 14,
-    //backgroundColor:'#ffc56b',
     backgroundColor:'#D1DED7',
   },
   infoContainer: {
@@ -247,9 +264,7 @@ const styles = StyleSheet.create({
   starStyle: {
     flex: 1,
     flexDirection: 'row',
-    //alignSelf: 'center',
     top:8,
-    //color:'#f5f6a3',
   },
   infoStyle: {
     flex: 1,
@@ -275,12 +290,6 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor:'#D1DED7',
-    //backgroundColor: '#ffc56b',//較淺黃
-    //width: 150,
-    //height: 45,
-    //flexDirection: 'row',
-    //flex: 1.2,
-    //borderRadius: 25,
     alignSelf: 'center',
     flex:2,
     width:'100%',
@@ -301,6 +310,11 @@ const styles = StyleSheet.create({
     top: 9,
     alignSelf: 'center',
     color: "#000000",
+  },
+  WeatherButText: {
+    fontSize: 11, 
+    color: '#606060', 
+    paddingTop:15,
   },
 });
 

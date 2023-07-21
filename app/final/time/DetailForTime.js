@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -8,14 +8,11 @@ import {
   Modal,
   ScrollView,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
-import Notice from '../../theme/Notice';
+
 import Weather from '../../data/Weather';
 import ThemeImg from '../../data/ThemeImg';
 import MapImg from '../../data/MapImg';
@@ -24,7 +21,6 @@ const width = Dimensions.get('screen').width - 50;
 const height = Dimensions.get('screen').height / 1.15;
 
 const DetailForFinal = ({entry, modalVisible, onClose, isMain}) => {
-  //console.log("entry: ",entry);
   const Stars = score => {
     var tp = parseFloat(score.starsNum);
     var starsIcon = [];
@@ -60,12 +56,15 @@ const DetailForFinal = ({entry, modalVisible, onClose, isMain}) => {
     );
   };
   return (
-    <Modal transparent={true} visible={modalVisible}>
+    <Modal 
+      transparent={true} 
+      visible={modalVisible}
+    >
       <View style={styles.modalBackGround}>
         <View style={styles.modalContainer}>
           <View style={styles.topContainer}>
             <View style={styles.imageContainer}>
-              {isMain ? (
+              { isMain ? (
                 <Image
                   style={styles.image}
                   source={ThemeImg[entry['name']]}
@@ -102,7 +101,7 @@ const DetailForFinal = ({entry, modalVisible, onClose, isMain}) => {
                     {'\n'}
                   </Text>
 
-                  {entry['type'] === 'hol' && (
+                  { entry['type'] === 'hol' && (
                     <View>
                       <Text style={styles.infoTitle}>
                         <Icon name="clock-o" size={23} color={'#5f695d'} />
@@ -113,7 +112,7 @@ const DetailForFinal = ({entry, modalVisible, onClose, isMain}) => {
                         {'\n'}
                       </Text>
                     </View>
-                  )}
+                  ) }
 
                   <Text style={styles.infoTitle}>
                     <Icon name="clock-o" size={23} color={'#5f695d'} />
@@ -140,8 +139,7 @@ const DetailForFinal = ({entry, modalVisible, onClose, isMain}) => {
               </ScrollView>
             </View>
           </View>
-          <View style={styles.buttonContainer}>
-            </View>
+          <View style={styles.buttonContainer}/>
         </View>
       </View>
     </Modal>

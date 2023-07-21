@@ -4,25 +4,18 @@ import {
   Text,
   StyleSheet,
   Dimensions,
-  FlatList,
   Image,
-  Button,
   DeviceEventEmitter,
   TouchableOpacity,
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/native';
-import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Iconcross from 'react-native-vector-icons/Entypo';
 import Iconcamera from 'react-native-vector-icons/MaterialCommunityIcons';
 import firestore from '@react-native-firebase/firestore';
-import { AuthContext } from '../routes/AutoProvider';
 import moment from 'moment';
 
-
+import { AuthContext } from '../routes/AutoProvider';
 import Hotplace from '../data/Hotplace';
 import Shopplace from '../data/Shopplace';
 import Holplace from '../data/Holplace';
@@ -32,31 +25,22 @@ import KOL from '../data/KOL';
 import Monuments from '../data/Monuments';
 import Nature from '../data/Nature';
 
-const width = Dimensions.get('screen').width;
-const height = (Dimensions.get('screen').height * 9) / 20;
-const screenwidth = Dimensions.get('screen').width;
 const picwidth = Dimensions.get('screen').width * 0.9;
 const picheight = picwidth * 2 / 3;
 //widt 300 h220
+
 const Card = ({ navigation, post, onDelete }) => {
   const { user } = useContext(AuthContext);
-  const [color, setColor] = useState('#ffc56b'); //改
   const [collect, setCollect] = useState(false);
   const [textShown, setTextShown] = useState(false); //To show ur remaining Text
   const [lengthMore, setLengthMore] = useState(false);
   const [becollected, setbecollected] = useState(post.collected);
   const username = post.name;
   const sites = post.Trip;
-  //const userSchdule=post.Trip;
   let timestamp = post.time;
   let timestring = moment(timestamp.toDate()).format('YYYY-MM-DD');
-  //console.log("time ",timestamp);//d.toDateString();
-  //console.log("time string  ",timestamp.toDate());//d.toDateString();
-  //console.log("time try  2 ",timestring);//d.toDateString();
   const [userSchdule, setUserSchdule] = useState([]);
-  const [imageheight, setimageheight] = useState(200);
   const data = [];
-
 
   //拿景點資料
   useEffect(() => {
@@ -91,7 +75,6 @@ const Card = ({ navigation, post, onDelete }) => {
       } else if (sites.desSite.type === 'shop') {
         data.push(Shopplace[sites.desSite.id]);
       }
-      //console.log('herse11 ',sites.site);
       sites.site.map(param => {
         if (param.type === 'food') {
           data.push(Food[param.id]);
@@ -113,9 +96,7 @@ const Card = ({ navigation, post, onDelete }) => {
       });
     }
     setUserSchdule(data);
-    //console.log('data ',data);
   }, []);
-  // console.log('1user.uid ',user.uid);
   //收藏
   const changecollect = () => {
     if (collect == true) {
@@ -123,7 +104,6 @@ const Card = ({ navigation, post, onDelete }) => {
       setCollect(false); 
       setbecollected(becollected-1);
       console.log('colected--  ',becollected);
-     
       firestore()
       .collection('posts')
       .doc(post.id)
@@ -147,9 +127,7 @@ const Card = ({ navigation, post, onDelete }) => {
     } else {
       //加入收藏
       setCollect(true);
-      setbecollected(becollected+1);
-     // console.log('colected ',becollected);
-      
+      setbecollected(becollected+1);      
       firestore()
       .collection('posts')
       .doc(post.id)
@@ -169,21 +147,17 @@ const Card = ({ navigation, post, onDelete }) => {
         .set({
           postId: post.id,
           collectTime: firestore.Timestamp.fromDate(new Date()),
-          //coomments:null,
         })
         .then(() => {
           console.log('collect add !');
-          //Alert.alert("成功發布");
         })
         .catch(error => {
           console.log('collect Failed!', error);
         });
     } DeviceEventEmitter.emit('collectSend');
   };
-  //console.log('1post.use ', post.img);
   const onTextLayout = useCallback(e => {
     setLengthMore(e.nativeEvent.lines.length > 2); //to check the text is more than 4 lines or not
-    // console.log(e.nativeEvent);
   }, []);
   const toggleNumberOfLines = () => { //To toggle the show text or hide it
     setTextShown(!textShown);
@@ -192,8 +166,11 @@ const Card = ({ navigation, post, onDelete }) => {
     <View style={styles.card}>
       <View style={styles.nameContainer}>
         <View style={styles.info}>
-          {post.userImg == "" ? <Icons name={'person-circle-outline'} size={36} />
-            : <Image
+          { post.userImg == "" ? 
+            <Icons
+              name={'person-circle-outline'} 
+              size={36} 
+            /> : <Image
               roundAsCircle={true}
               resizeMode={'stretch'}
               style={{ margin: 10, borderRadius: 20, height: 35, width: 35 }}
@@ -204,26 +181,26 @@ const Card = ({ navigation, post, onDelete }) => {
         <View style={styles.nameTextContainer}>
           <Text style={styles.nameStyle}>{post.name}</Text>
         </View>
-        {user.uid == post.userid ? (
-          <View style={styles.deliconContainer}>
-            <TouchableOpacity
-              onPress={() => onDelete(post.id)}
-              style={{ flex: 1 }}>
-              <Iconcross
-                name="cross"
-                size={40}
-                color={'#5f695d'}
-                style={styles.TopiconStyle}
-              />
-            </TouchableOpacity>
-          </View>
+        { user.uid == post.userid ? (
+            <View style={styles.deliconContainer}>
+              <TouchableOpacity
+                onPress={() => onDelete(post.id)}
+                style={{ flex: 1 }}>
+                <Iconcross
+                  name="cross"
+                  size={40}
+                  color={'#5f695d'}
+                  style={styles.TopiconStyle}
+                />
+              </TouchableOpacity>
+            </View>
         ) : (
           <View style={styles.deliconContainer}></View>
         )}
       </View>
 
       <View style={styles.imageContainer}>
-        {post.img != null ? (
+        { post.img != null ? (
           <Image
             style={styles.image}
             resizeMode={'stretch'}
@@ -253,22 +230,15 @@ const Card = ({ navigation, post, onDelete }) => {
                   color={'#ffc56b'}
                   style={styles.collectIconStyle}
                 />
-                {/* <Text style={styles.collectTextStyle}>
-                  <Text> </Text>
-                  <Text style={{color:'#ffc56b'}}>已收藏</Text>
-                </Text> */}
               </View>
             ) : (
               <View style={{ flexDirection: 'row' }}>
                 <Icon
                   name={'bookmark-o'}
                   size={24}
+                  color={'#000000'}
                   style={styles.collectIconStyle}
                 />
-                {/* <Text style={styles.collectTextStyle}>
-                  <Text> </Text>
-                  <Text>收藏</Text>
-                </Text> */}
               </View>
             )}
           </TouchableOpacity>
@@ -283,45 +253,24 @@ const Card = ({ navigation, post, onDelete }) => {
             <Iconcamera
               name={'bag-suitcase-outline'}
               size={27}
-              //color={'#ffc56b'}
+              color={'#000000'}
               style={styles.collectIconStyle}
             />
           </TouchableOpacity >
         </View>
         <View style={{ justifyContent: 'flex-end', flex: 2 }}><Text style={{ textAlign: 'right' }}>已有 {becollected} 人收藏</Text></View>
-        {/* <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('Schedule', {
-                sites: sites,
-                userSchdule: userSchdule,
-                username: username,
-              });
-            }}>
-            {user.uid == post.userid ? (
-              <Text style={styles.buttonText}>行程</Text>
-            ) : (
-              <Text style={styles.buttonText}>行程</Text>
-            )}
-          </TouchableOpacity>
-        </View> */}
       </View>
       <View style={styles.textContainer}>
-        {/*<Text numberOfLines={2} style={styles.textStyle}>
-          {post.content}
-      </Text>*/}
         <Text
           onTextLayout={onTextLayout}
           numberOfLines={textShown ? undefined : 2}
           style={{ lineHeight: 21, color: '#5f695d', flexDirection: 'row' }}>{post.content}</Text>
-
         {
           lengthMore ? <Text
             onPress={toggleNumberOfLines}
             style={{ fontWeight: '700', flexDirection: 'row' }}>{textShown ? '\n收起' : '...更多'}</Text>
             : null
         }
-        {/*樺樺時間位置 */}
         <Text style={{ textAlign: 'right' }}>{timestring}</Text>
       </View>
     </View>
@@ -332,21 +281,10 @@ const styles = StyleSheet.create({
   card: {
     height: 'auto',
     backgroundColor: 'white',
-    //backgroundColor: 'rgba(255,255,255,0.8)',
     width: '100%',
     right: '2.5%',
     marginHorizontal: 10,
-    //borderRadius: 10,
     marginBottom: 15,
-    //paddingTop:5,
-    //padding: 5,
-    //borderColor: '#D1DED7',
-    //borderWidth: 2,
-    //borderStyle:'solid',
-    //borderBottomWidth:3,
-    //borderRightWidth:2,
-    //borderStyle:'dashed',
-
     shadowColor: '#7F5DF0',
     shadowOffset: {
       width: 0,
@@ -358,11 +296,9 @@ const styles = StyleSheet.create({
   },
   nameContainer: {
     flexDirection: 'row',
-    //backgroundColor: '#D1DED7',
     flex: 2.1,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
-    //position:'relative',
   },
   info: {
     alignContent: 'center',
@@ -376,20 +312,15 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
-    //alignItems:'center',
   },
   nameStyle: {
-    //alignSelf: 'center',
     fontWeight: 'bold',
     fontSize: 21,
     color: '#5f695d',
     left: '-3%',
   },
   deliconContainer: {
-    //position:'relate',
-    //left :200,
     flex: 1,
-    //backgroundColor:'black',
     alignContent: 'center',
     justifyContent: 'center',
     alignItems: 'center',
@@ -403,52 +334,30 @@ const styles = StyleSheet.create({
     top: '13%',
   },
   imageContainer: {
-    //flex: 8,
-    //樺樺 這邊是等比縮放公式
-    //Math.floor(screenwidth/(image_width*image_height)
     height: picheight,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    //backgroundColor: '#D1DED7',
-    //borderColor: '#D1DED7',
-    //borderWidth: 3,
-    //borderBottomWidth:10,
     resizeMode: 'contain',
   },
   image: {
     height: picheight,
     width: picwidth,
-    // borderTopRightRadius: 25,
-    // borderTopLeftRadius: 5,
-    // borderBottomRightRadius: 5,
-    // borderBottomLeftRadius: 25,
     resizeMode: 'contain',
   },
   textContainer: {
-    //backgroundColor: '#D1DED7',
     flex: 2,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-    //paddingLeft: '7%',
-    //paddingRight: '8%',
     width: picwidth,
     alignSelf: 'center',
     marginBottom: '2%',
-    //marginTop: '2%',
-    //backgroundColor:'black',
-    //backgroundColor: 'rgba(255,255,255,0.9)',
-    //borderRadius:5,
-    //borderTopWidth:2,
     borderColor: '#D1DED7',
-    //position:'relative',
   },
   textStyle: {
-    //fontWeight: 'bold', //原本有打開
-    fontSize: 16, //原本17
+    fontSize: 16,
     color: '#5f695d',
-    letterSpacing: 1, //原本8
-    //控制字的間距
+    letterSpacing: 1,
   },
   bottomContainer: {
     flex: 2,
@@ -466,9 +375,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     alignSelf: 'center',
-    //backgroundColor:'#FFF4C1',
     height: '100%',
-    //borderBottomLeftRadius: 10,
   },
   collectIconStyle: {
     alignSelf: 'center',
@@ -487,45 +394,25 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: '#ffc56b', //較深黃
-    //backgroundColor: '#80735d',
-    //backgroundColor:'rgba(255,197,107,0.6)',
-    //margin:5,
     flex: 1,
     height: '80%',
-    //right: '6%',
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
-    //bottom: 10,
-    //borderRadius:10,
     borderRadius: 30,
-    //borderTopLeftRadius: 10,
-    //borderBottomRightRadius: 10,
     margin: 5,
     right: '10%',
-    // shadowColor: '#7F5DF0',
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 10,
-    // },
-    // shadowOpacity: 0.25,
-    // shadowRadius: 3.5,
-    // elevation: 5,
   },
   buttonText: {
     fontWeight: '800',
     fontSize: 17,
     color: '#6b5238',
-    //color:'white',
-    //top: 8,
-    //letterSpacing: 10,
     letterSpacing: 8,
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
-    //left: 7,
   },
 });
 export default Card;

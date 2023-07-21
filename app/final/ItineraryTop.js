@@ -1,28 +1,21 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  Dimensions,
-  FlatList,
-  Image,
-  Button,
   TouchableOpacity,
 } from 'react-native';
-import Time from './time/Time';
-import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icons2 from 'react-native-vector-icons/FontAwesome';
 import Icons3 from 'react-native-vector-icons/FontAwesome5';
-//FontAwesome
+
 const Stack = createNativeStackNavigator();
 
 const ItineraryTop = props => {
  const navigation = useNavigation();
  const aurInfo = props;
- //console.log("jjjjjjjjjjj:",aurInfo);
   return (
     <View style={styles.container}>
       <Text style={styles.textStyle}>{aurInfo.tripname}</Text>

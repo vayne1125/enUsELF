@@ -1,32 +1,17 @@
-import React, {Component, useState, PureComponent, useContext} from 'react';
+import React, { PureComponent } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Dimensions,
-  FlatList,
-  Image,
-  Button,
-  Modal,
   TouchableOpacity,
 } from 'react-native';
 
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Icons from 'react-native-vector-icons/Ionicons';
-import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
-
-
-const width = Dimensions.get('screen').width-20;
-const height = Dimensions.get('screen').height*1/8;
-//const user = auth().currentUser;
+const width = Dimensions.get('screen').width - 20;
+const height = Dimensions.get('screen').height * 1 / 8;
 
 export default class ChooseTrip extends PureComponent  {
 render() {
-//const navigation = useNavigation();
 const trip = this.props.trip;
     console.log('tripname  ',trip);
     return (
@@ -40,7 +25,6 @@ const trip = this.props.trip;
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               onPress={() => {
-                //this.props.navigation.navigate("TripForhistory",trip);
                 this.props.onPress1();
               }}
               style={{flex: 2}}>

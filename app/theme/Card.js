@@ -4,23 +4,16 @@ import {
   Text,
   StyleSheet,
   Dimensions,
-  FlatList,
   Image,
-  Button,
-  Modal,
   TouchableOpacity,
   DeviceEventEmitter,
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
-import auth from '@react-native-firebase/auth';
-import {AuthContext} from '../routes/AutoProvider';
 import firestore from '@react-native-firebase/firestore';
 
+import {AuthContext} from '../routes/AutoProvider';
 import ThemeImg from '../data/ThemeImg';
 
 const width = Dimensions.get('screen').width * 19 / 40;
@@ -78,7 +71,6 @@ const Card = ({ sites, onPress1, onPress2}) => {
         }
       } catch (error) {
         console.error('Firestore Error:', error);
-        // 在出现错误时，可以在这里展示错误提示给用户或者进行其他适当的处理
       }
     };
 
@@ -129,11 +121,9 @@ const Card = ({ sites, onPress1, onPress2}) => {
                         check: false,
                         })
                         .then(() => {
-                          // Firestore 写入操作完成后执行状态更新
                           setUncheck(false);
                         })
                         .catch((error) => {
-                          // 错误处理
                           console.error('Firestore Error:', error);
                         });
                     }
@@ -160,12 +150,8 @@ const Card = ({ sites, onPress1, onPress2}) => {
 };
 
 export default memo(Card, (prevProps, nextProps) => {
-  // 这里定义 props 是否相同的逻辑
-  // 如果 props 没有变化，React.memo() 将不会进行不必要的重新渲染
   return (
-    prevProps.uncheck === nextProps.uncheck
-    // 检查其他需要比较的 prop ...
-    // 返回 true 表示 props 没有变化
+    prevProps.sites.uncheck === nextProps.sites.uncheck
   );
 });
 
@@ -201,40 +187,25 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     borderRadius: 20,
-    //borderTopLeftRadius:20,
-    //borderBottomLeftRadius:20,
     left: 2,
   },
   textContainer: {
     flex: 1.9,
     alignSelf: 'center',
     alignItems: 'center',
-    //backgroundColor:'#000000',
-    //padding:4,
     justifyContent:'space-around',
   },
   buttonContainer: {
-    //backgroundColor: '#fbb856', //較深黃
-    //backgroundColor: '#ffc56b',//較淺黃
-    //backgroundColor: '#F1C179',//灰黃 
-    //width: width2,
     width: '100%',
-    //alignSelf: 'flex-end',
-    //borderRadius: 25,
-    //height: 32,
     flex:1.5,
     alignContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
-    //flexDirection: 'row',
   },
   buttonText: {
     fontWeight: '800',
     top: '20%',
-    /*fontFamily:'NotoSerifTC-Black',
-    bottom:'20%',*/
-    //fontSize: 16,//9/14
     fontSize: 14,
     color: '#6b5238',
     letterSpacing: 10,
@@ -254,15 +225,9 @@ const styles = StyleSheet.create({
   buttonText2: {
     fontWeight: '800',
     top: '20%',
-    /*fontFamily:'NotoSerifTC-Black',
-    bottom:'20%',*/
-    //fontSize: 16,//9/14
     fontSize: 14,
     letterSpacing: 10,
-    //alignContent:'center',
-    //alignItems:'center',
     alignSelf: 'center',
-    //justifyContent:'center',
   },
   imageContainer: {
     flex: 2.1,
@@ -273,13 +238,9 @@ const styles = StyleSheet.create({
   nameStyle: {
     alignSelf: 'center',
     fontWeight: 'bold',
-    //top: '10%',
-    //fontSize: 20,//9/14
     fontSize: 18,
     color: '#5f695d',
     letterSpacing: 1,
-    /*fontFamily:'NotoSerifTC-Bold',
-    bottom:'15%',*/
   },
   addressStyle:{
     fontWeight: 'bold',
@@ -293,7 +254,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'space-around',
     paddingTop:'5%',
-    //paddingBottom:4,
     padding: 4,
   },
   starStyle: {
@@ -302,12 +262,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    //justifyContent: 'space-around',
-    //color:'#f5f6a3',
-    //backgroundColor:'#000000',
   },
   viewContainer: {
-    //backgroundColor: '#80735d', //咖啡
     width: width2,
     borderRadius: 25,
     height: 32,
@@ -315,11 +271,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
-    //flexDirection: 'row',
   },
   viewText: {
     fontWeight: '800',
-    //fontSize: 16,//9/14
     fontSize: 14,
     color: '#E3E3E3',
     letterSpacing: 10,
